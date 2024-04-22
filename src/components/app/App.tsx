@@ -46,7 +46,7 @@ const extraComponent = (page: Page, isMobile: boolean, stateMobileNavigation: bo
 };
 
 const App = (): React.JSX.Element => {
-    const isMobile: boolean = useMediaQuery({ maxWidth: 1200 });
+    const isMobile: boolean = useMediaQuery({ maxWidth: 768 });
 
     const [PageComponent, page, setPage] = usePage('welcome');
     const [availability, setAvailability] = React.useState<boolean>(false);

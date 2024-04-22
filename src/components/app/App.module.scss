@@ -43,6 +43,12 @@
     }
 }
 
+@media (max-width: 1200px) {
+    .navigation {
+        display: none;
+    }
+}
+
 @media (max-width: 768px) {
     .wrapper {
         grid-template-columns: 0rem minmax(auto, 84rem) 0rem;

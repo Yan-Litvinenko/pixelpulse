@@ -90,17 +90,8 @@
         }
 
         &__box_title {
-            max-width: none;
             position: static;
             transform: none;
-        }
-
-        &__title {
-            @include fontSize26px();
-        }
-
-        &__subtitle {
-            @include fontSize20px();
         }
 
         &__background_box {
@@ -120,12 +111,6 @@
             display: none;
         }
     }
-
-    .profile_mobile {
-        @include grid-container(1fr 1fr, repeat(4, 1fr), 0.9375rem 0rem);
-        margin-bottom: 10rem;
-        width: 100%;
-    }
 }
 
 @media (max-width: 768px) {
@@ -137,15 +122,15 @@
             gap: 1.5625rem 0rem;
         }
 
-        &__title {
-            @include fontSize18px();
-            letter-spacing: 0.075rem;
+        &__box_title {
+            max-width: none;
         }
+    }
 
-        &__subtitle {
-            @include fontSize14px();
-            letter-spacing: 0.075rem;
-        }
+    .profile_mobile {
+        @include grid-container(1fr 1fr, repeat(4, 1fr), 0.9375rem 0rem);
+        margin-bottom: 10rem;
+        width: 100%;
     }
 }
 
