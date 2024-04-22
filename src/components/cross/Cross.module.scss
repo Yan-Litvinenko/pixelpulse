@@ -1,0 +1,32 @@
+.cross_box {
+    cursor: pointer;
+    padding: 0rem 2rem;
+    display: none;
+    height: max-content;
+}
+
+@media (max-width: 1200px) {
+    .cross_box {
+        display: block;
+    }
+
+    .cross {
+        scale: 1.2;
+    }
+}
+
+@media (max-width: 768px) {
+    .cross_box {
+        padding: 0rem 1.25rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .cross_box {
+        padding: 0rem 0.75rem;
+    }
+
+    .cross {
+        scale: 1;
+    }
+}

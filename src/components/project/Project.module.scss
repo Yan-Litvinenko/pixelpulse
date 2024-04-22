@@ -1,0 +1,48 @@
+@import '../../css/mixin.scss';
+
+.project {
+    @include flex-container(column, $gap: 0.3125rem 0rem);
+    margin-bottom: 1.125rem;
+
+    &__title {
+        border: none;
+        background-color: var(--main-color);
+        color: #000;
+    }
+
+    &__item {
+        @include text-properties();
+    }
+
+    &__item span {
+        color: var(--dark-grey);
+    }
+}
+
+@media (max-width: 1200px) {
+    .project {
+        row-gap: 0.4rem;
+
+        &__title {
+            @include fontSize24px();
+        }
+
+        &__item {
+            @include fontSize22px();
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .project {
+        row-gap: 0.3125rem;
+
+        &__title {
+            @include fontSize18px();
+        }
+
+        &__item {
+            @include fontSize16px();
+        }
+    }
+}

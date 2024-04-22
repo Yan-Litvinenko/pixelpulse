@@ -1,0 +1,151 @@
+@mixin text-properties(
+    $font-family: 'Iceland',
+    $font-size: 1rem,
+    $font-weight: 400,
+    $letter-spacing: 0.075rem,
+    $line-height: $font-size + $letter-spacing
+) {
+    font-family: $font-family;
+    font-size: $font-size;
+    font-weight: $font-weight;
+    letter-spacing: $letter-spacing;
+    line-height: $line-height;
+}
+
+@mixin grid-container(
+    $columns: auto,
+    $rows: auto,
+    $gap: 0,
+    $justify-items: stretch,
+    $align-items: stretch,
+    $justify-content: start,
+    $align-content: start
+) {
+    display: grid;
+    grid-template-rows: $rows;
+    grid-template-columns: $columns;
+    gap: $gap;
+    align-content: $align-content;
+    align-items: $align-items;
+    justify-content: $justify-content;
+    justify-items: $justify-items;
+}
+
+@mixin flex-container(
+    $direction: row,
+    $justify-content: flex-start,
+    $align-items: stretch,
+    $gap: 0,
+    $flex-wrap: nowrap
+) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify-content;
+    align-items: $align-items;
+    gap: $gap;
+    flex-wrap: $flex-wrap;
+}
+
+@mixin absolute-position($top: auto, $right: auto, $bottom: auto, $left: auto) {
+    position: absolute;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
+@mixin position($position: relative, $top: auto, $right: auto, $bottom: auto, $left: auto) {
+    position: $position;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
+@mixin button {
+    @include text-properties('Big-Shoulders', 1.375rem, 700, 0.075rem);
+    background-color: var(--main-darklight-color);
+    border: none;
+    color: var(--main-background-color);
+    cursor: pointer;
+    margin-top: 0.9375rem;
+    padding: 0.4375rem 0.3125rem 0.25rem 0.3125rem;
+    text-transform: uppercase;
+    transition: all 0.4s;
+    width: 100%;
+}
+
+@mixin modal {
+    @include flex-container($align-items: center);
+    @include position(fixed, 0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.5);
+    padding-left: 9.6875rem;
+    z-index: 10;
+}
+
+@mixin modal-title {
+    @include text-properties('Big-Shoulders', 1.125rem, 700, 0.075rem);
+    color: var(--main-text-color);
+    margin-bottom: 0.3125rem;
+}
+
+@mixin modal-subtitle {
+    @include text-properties();
+    color: var(--stone-grey);
+    margin-bottom: 1.25rem;
+}
+
+@mixin fontSize32px {
+    font-size: 2rem;
+    line-height: 2rem;
+}
+
+@mixin fontSize26px {
+    font-size: 1.625rem;
+    line-height: 1.625rem;
+}
+
+@mixin fontSize24px {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+}
+
+@mixin fontSize23px {
+    font-size: 1.4375rem;
+    line-height: 1.4375rem;
+}
+
+@mixin fontSize22px {
+    font-size: 1.375rem;
+    line-height: 1.375rem;
+}
+
+@mixin fontSize20px {
+    font-size: 1.25rem;
+    line-height: 1.25rem;
+}
+
+@mixin fontSize18px {
+    font-size: 1.125rem;
+    line-height: 1.125rem;
+}
+
+@mixin fontSize16px {
+    font-size: 1rem;
+    line-height: 1rem;
+}
+
+@mixin fontSize15px {
+    font-size: 0.9375rem;
+    line-height: 0.9375rem;
+}
+
+@mixin fontSize14px {
+    font-size: 0.875rem;
+    line-height: 0.875rem;
+}
+
+@mixin fontSize12px {
+    font-size: 0.75rem;
+    line-height: 0.75rem;
+}

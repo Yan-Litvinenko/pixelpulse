@@ -1,0 +1,44 @@
+@import '../../css/mixin.scss';
+
+.profile {
+    @include flex-container(column, $gap: 1.375rem 0rem);
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+
+.avatar {
+    @include flex-container($align-items: center, $justify-content: center);
+    border: 0.0625rem solid var(--frame-border-color);
+    cursor: pointer;
+    padding: 0.9375rem;
+    position: relative;
+}
+
+.motto {
+    margin-top: auto;
+
+    &__title {
+        @include text-properties($font-size: 1.125rem, $letter-spacing: 0.075rem);
+        color: var(--main-color);
+    }
+
+    &__text {
+        @include text-properties();
+        color: var(--stone-grey);
+    }
+}
+
+.mobile {
+    display: none;
+}
+
+@media (max-width: 1200px) {
+    .profile {
+        display: none;
+    }
+
+    .mobile {
+        @include grid-container(1fr 1fr, repeat(5, 1fr), 0.625rem 0rem);
+        width: 100%;
+    }
+}

@@ -1,0 +1,36 @@
+:root {
+    --main-background-color: #000003;
+    --main-color: rgb(var(--data-main-color));
+    --main-dark-color: rgba(var(--data-main-color), 0.3);
+    --main-darklight-color: rgba(var(--data-main-color), 0.8);
+    --main-text-color: rgb(255, 255, 255);
+
+    --data-main-color: 232, 74, 74;
+
+    --background-gradient: linear-gradient(
+        90deg,
+        rgba(var(--data-main-color), 0) 0%,
+        rgba(var(--data-main-color), 0.17) 51.94%,
+        rgba(var(--data-main-color), 0) 100%
+    );
+
+    --dark-grey: #7a7a7a;
+    --stone-grey: #b2b7ba;
+
+    --dark-border: #262626;
+    --dark-light-border: #333;
+    --frame-border-color: rgba(255, 255, 255, 0.1); /*  граница рамок */
+    --modal-filter: brightness(13%);
+    --statistics-text-color: #7dff68;
+
+    --box-shadow: 0px 0px 1.5px var(--main-color);
+    --text-shadow: 0px 0px 1.5px var(--main-color);
+    --text-shadow-black: 0px 0px 0.2px var(--main-background-color);
+    --text-shadow-white: 0px 0px 0.2px var(--main-text-color);
+
+    --clip-path-modal: polygon(0.875rem 0rem, 100% 0rem, 100% 100%, 0% 100%, 0% 0.75rem);
+
+    --height-large: 56rem;
+    --height-medium: 49.75rem;
+    --height-small: 43.5rem;
+}

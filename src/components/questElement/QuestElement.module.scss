@@ -1,0 +1,5 @@
+@import '../../css/mixin.scss';
+
+.quest {
+    @include flex-container(column, $gap: 0.9375rem 0rem);
+}

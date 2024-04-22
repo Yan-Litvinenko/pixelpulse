@@ -1,0 +1,70 @@
+@import '../../css/mixin.scss';
+
+.update {
+    @include grid-container(1fr 1fr, $gap: 0.9375rem);
+    margin-bottom: 3.125rem;
+}
+
+.element {
+    @include flex-container(column, $gap: 0.3125rem 0rem);
+    background-color: var(--dark-border);
+    clip-path: polygon(0.875rem 0.0625rem, 100% 0.0625rem, 100% 100%, 0% 100%, 0% 0.75rem);
+    padding: 0.9375rem;
+    position: relative;
+
+    &::before {
+        background-color: var(--main-background-color);
+        bottom: 0.0625rem;
+        clip-path: polygon(0.875rem 0.0625rem, 100% 0.0625rem, 100% 100%, 0% 100%, 0% 0.75rem);
+        content: '';
+        display: block;
+        left: 0.0625rem;
+        position: absolute;
+        right: 0.0625rem;
+        top: 0.0625rem;
+        z-index: -1;
+    }
+
+    &__title {
+        @include text-properties('Big-Shoulders', 1.125rem, 700);
+        color: var(--main-color);
+    }
+
+    &__text {
+        @include text-properties('Iceland', 0.875rem, 400);
+        color: var(--dark-grey);
+    }
+}
+
+@media (max-width: 1200px) {
+    .update {
+        grid-template-columns: 1fr;
+    }
+
+    .element {
+        padding: 0.9375rem;
+        row-gap: 0.5rem;
+
+        &__title {
+            @include fontSize24px();
+        }
+
+        &__text {
+            @include fontSize20px();
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .element {
+        row-gap: 0.3125rem;
+
+        &__title {
+            @include fontSize18px();
+        }
+
+        &__text {
+            @include fontSize14px();
+        }
+    }
+}

@@ -1,0 +1,55 @@
+@import '../../css/mixin.scss';
+
+.box {
+    display: none;
+    gap: 0px 0.625rem;
+    margin-bottom: 1.25rem;
+    width: 100%;
+
+    &__navigation,
+    &__about {
+        @include button();
+    }
+
+    &__about {
+        background-color: var(--main-background-color);
+        border: 0.0625rem solid var(--dark-border);
+        color: var(--main-color);
+        padding: 0.5rem 0.375rem 0.3125rem 0.375rem;
+    }
+}
+
+@media (hover: hover) {
+    .box {
+        &__navigation:hover {
+            background-color: var(--main-color);
+        }
+        &__about:hover {
+            border: 0.0625rem solid var(--dark-light-border);
+            text-shadow: var(--text-shadow);
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .box {
+        display: flex;
+        margin-top: auto;
+
+        &__navigation,
+        &__about {
+            @include fontSize24px();
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .box {
+        &__navigation,
+        &__about {
+            @include fontSize18px();
+            letter-spacing: 0.075rem;
+            height: auto;
+        }
+    }
+}

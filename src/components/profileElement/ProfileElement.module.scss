@@ -1,0 +1,131 @@
+@import '../../css/mixin.scss';
+
+.profile {
+    &__element {
+        @include flex-container(column, $gap: 0.3125rem 0rem);
+    }
+
+    &__title {
+        @include text-properties($font-size: 0.875rem, $letter-spacing: 0.065625rem);
+    }
+
+    &__text {
+        @include text-properties('Big-Shoulders', 1.125rem, 700, 0.075rem);
+        color: var(--main-color);
+    }
+
+    &__availability,
+    &__social {
+        @include text-properties('Big-Shoulders', 1.125rem, 700, 0.075rem);
+        background-color: var(--main-darklight-color);
+        border: none;
+        color: var(--main-background-color);
+        cursor: pointer;
+        overflow: hidden;
+        padding: 0.4375rem 0rem 0.25rem 0.3125rem;
+        position: relative;
+        text-align: left;
+        text-transform: uppercase;
+        transition: all 0.4s;
+    }
+
+    &__social {
+        background-color: transparent;
+        border: 0.0625rem solid var(--main-color);
+        color: var(--main-color);
+    }
+}
+
+.mobile {
+    &__corporation {
+        grid-column: 1 / -1;
+        grid-row: 2 / 3;
+    }
+
+    &__availability {
+        grid-column: 1 / -1;
+    }
+
+    &__social {
+        grid-column: 1 / -1;
+    }
+}
+
+.bluetooth {
+    @include absolute-position(50%, 0.3125rem);
+    height: 1.5rem;
+    transform: translateY(-50%);
+    width: 1.5rem;
+}
+
+.bluetooth path {
+    transition: all 0.4s;
+}
+
+@media (hover: hover) {
+    .profile__social:hover {
+        box-shadow: var(--box-shadow);
+        text-shadow: var(--text-shadow);
+    }
+
+    .profile__social:hover svg path {
+        filter: drop-shadow(var(--box-shadow));
+    }
+
+    .profile__availability:hover {
+        background-color: var(--main-color);
+    }
+}
+
+@media (max-width: 1200px) {
+    .profile {
+        &__element {
+            gap: 0.325rem 0rem;
+        }
+
+        &__title {
+            @include fontSize20px();
+            letter-spacing: 0.075rem;
+        }
+
+        &__text {
+            @include fontSize24px();
+            letter-spacing: 0.075rem;
+        }
+
+        &__availability,
+        &__social {
+            @include fontSize24px();
+            height: 2.5rem;
+            width: 100%;
+        }
+    }
+
+    .bluetooth {
+        scale: 1.2;
+    }
+}
+
+@media (max-width: 768px) {
+    .profile {
+        &__element {
+            gap: 0.3125rem 0rem;
+        }
+
+        &__title {
+            @include fontSize14px();
+        }
+
+        &__text {
+            @include fontSize18px();
+            letter-spacing: 0.075rem;
+        }
+
+        &__availability,
+        &__social {
+            @include fontSize18px();
+            letter-spacing: 0.075rem;
+            height: auto;
+        }
+    }
+}

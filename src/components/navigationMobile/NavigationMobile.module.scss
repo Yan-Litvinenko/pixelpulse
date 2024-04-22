@@ -1,0 +1,271 @@
+@import '../../css/mixin.scss';
+
+.box {
+    @include position(fixed, 0.625rem, 0.625rem, 0rem, 0.625rem);
+    @include flex-container(column, $justify-content: space-between);
+    z-index: 10;
+
+    &__inner {
+        @include flex-container(column);
+        background-color: var(--main-background-color);
+        border: 0.0625rem solid var(--dark-border);
+        height: 100%;
+    }
+
+    &__header {
+        @include flex-container($justify-content: space-between, $align-items: center);
+        border-bottom: 0.0625rem solid var(--dark-border);
+    }
+}
+
+.header {
+    @include text-properties('Big-Shoulders', 1.625rem, 700, 0.085rem);
+    padding: 0.625rem 1.25rem;
+}
+
+.statistics {
+    @include text-properties('Big-Shoulders', 1rem, 700, 0.075rem);
+    @include flex-container($gap: 0rem 2.8125rem);
+    color: var(--stone-grey);
+    padding: 0.625rem 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.coins {
+    @include flex-container($align-items: flex-end, $gap: 0rem 0.8125rem);
+
+    &__add_box {
+        position: relative;
+    }
+
+    &__text_box {
+        position: relative;
+        top: 0.1375rem;
+    }
+
+    &__text {
+        @include text-properties('Big-Shoulders', 1.625rem, 700, 0.125rem);
+        color: var(--statistics-text-color);
+    }
+
+    &__btn {
+        @include flex-container($align-items: center, $justify-content: center);
+        background-color: transparent;
+        border: 0.0625rem solid var(--dark-grey);
+        color: var(--main-color);
+        cursor: pointer;
+        font-size: 1.4rem;
+        height: 2rem;
+        padding: 0rem;
+        width: 2rem;
+    }
+
+    &__btn:active {
+        font-size: 1.25rem;
+    }
+
+    &__cross {
+        @include absolute-position(50%, 50%);
+        cursor: pointer;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.level {
+    &__box {
+        @include position($top: 0.2625rem);
+    }
+
+    &__text {
+        @include text-properties('Big-Shoulders', 1.625rem, 700, 0.125rem);
+        color: var(--statistics-text-color);
+    }
+}
+
+.navigation {
+    padding: 0.625rem 1.25rem;
+
+    &__list {
+        @include flex-container(column, $gap: 1.25rem 0rem);
+    }
+}
+
+.settings {
+    @include flex-container(column, $gap: 0.3125rem 0rem);
+    padding: 0.625rem 1.25rem;
+    margin-top: auto;
+}
+
+.audio,
+.visual {
+    @include text-properties('Big-Shoulders', 1.125rem, 700, 0.075rem);
+    @include flex-container($justify-content: space-between, $align-items: center);
+    background-color: transparent;
+    border: none;
+    color: var(--main-color);
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.4s;
+}
+
+.visual {
+    border: 0.0625rem solid var(--dark-border);
+    outline: none;
+    padding-right: 0.3125rem;
+    padding-top: 0.1875rem;
+    line-height: normal;
+}
+
+.visual div {
+    padding: 0.2rem 0.3125rem 0rem 0rem;
+    scale: 1.3;
+}
+
+.visual svg path {
+    transition: all 0.4s;
+}
+
+.audio .checkbox {
+    border: 0.0625rem solid var(--main-color);
+    height: 2.0625rem;
+    position: relative;
+    width: 2.0625rem;
+}
+
+.audio .checkbox::before,
+.audio .checkbox::after {
+    @include absolute-position(44%);
+    background-color: var(--main-color);
+    content: '';
+    height: 0.1875rem;
+    transition: all 0.4s;
+}
+
+.audio .checkbox::before {
+    right: 0.9375rem;
+    top: 55%;
+    transform: rotate(45deg);
+    width: 0.5625rem;
+}
+
+.audio .checkbox::after {
+    right: 0.3125rem;
+    transform: rotate(-48deg);
+    width: 0.9375rem;
+}
+
+.audio .checkbox__deactive::before {
+    right: 0.25rem;
+    top: 45%;
+    transform: rotate(45deg);
+    width: 1.375rem;
+}
+
+.audio .checkbox__deactive::after {
+    right: 0.25rem;
+    transform: rotate(-45deg);
+    width: 1.375rem;
+}
+
+.audio__deactive {
+    opacity: 0.5;
+}
+
+@media (hover: hover) {
+    .audio:hover {
+        text-shadow: var(--text-shadow);
+    }
+
+    .audio:hover .checkbox::before,
+    .audio:hover .checkbox::after {
+        box-shadow: var(--box-shadow);
+    }
+
+    .visual:hover {
+        border-color: var(--main-color);
+        box-shadow: var(--box-shadow);
+        text-shadow: var(--text-shadow);
+    }
+
+    .visual:hover svg path {
+        filter: drop-shadow(var(--box-shadow));
+    }
+}
+
+@media (max-width: 1200px) {
+    .header {
+        @include fontSize32px();
+    }
+
+    .statistics {
+        @include fontSize24px();
+    }
+
+    .coins__text,
+    .level__text {
+        @include fontSize32px();
+    }
+
+    .audio,
+    .visual {
+        @include fontSize24px();
+        padding-right: 0;
+    }
+}
+
+@media (max-height: 815px) {
+    .box {
+        overflow: scroll;
+
+        &__inner {
+            min-height: 800px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        @include fontSize26px();
+    }
+
+    .statistics {
+        @include fontSize18px();
+    }
+
+    .coins__text,
+    .level__text {
+        @include fontSize26px();
+    }
+
+    .audio,
+    .visual {
+        @include fontSize18px();
+    }
+}
+
+@media (max-width: 450px) {
+    .statistics {
+        flex-direction: column;
+        gap: 0.3125rem 0rem;
+    }
+
+    .coins {
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        gap: 0rem 0.3125rem;
+
+        &__add_box {
+            top: 0.35rem;
+        }
+
+        &__btn {
+            border: none;
+            height: 1.75rem;
+            width: 1.75rem;
+        }
+    }
+
+    .visual div {
+        scale: 1.1;
+    }
+}

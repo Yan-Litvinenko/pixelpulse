@@ -1,0 +1,51 @@
+@import '../../css/mixin.scss';
+
+.wrapper {
+    @include grid-container($columns: 12.1875rem minmax(auto, 84rem) 12.1875rem, $gap: 2.1875rem 0.9375rem);
+    margin: 0 auto;
+    padding: 0 4.6875rem;
+    max-width: 118.75rem;
+    transition: all 1.5s;
+
+    &__active_left {
+        transform: perspective(46.875rem) rotateY(-31deg) translateY(-8%) translateZ(-33.75rem);
+    }
+
+    &__active_center {
+        transform: perspective(46.875rem) rotateX(25deg) translateY(-15%) translateZ(-2.5rem);
+    }
+}
+
+.navigation {
+    @include absolute-position($left: 50%, $bottom: 0rem);
+    height: 7.5rem;
+    transform: translate(-50%, 80%);
+
+    &__list {
+        @include flex-container($gap: 0rem 0.9375rem);
+    }
+}
+
+.setting_active {
+    display: flex;
+}
+
+@media (max-width: 1600px) {
+    .wrapper {
+        padding: 0 2.1875rem;
+    }
+}
+
+@media (max-width: 1485px) {
+    .wrapper {
+        grid-template-columns: 10.9375rem minmax(auto, 84rem) 10.9375rem;
+        padding: 0 0.9375rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        grid-template-columns: 0rem minmax(auto, 84rem) 0rem;
+        padding: 0 0.625rem;
+    }
+}

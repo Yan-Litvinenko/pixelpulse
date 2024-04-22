@@ -1,0 +1,76 @@
+@import '../../css/mixin.scss';
+
+.modal {
+    @include modal();
+
+    &__inner {
+        max-width: 29.375rem;
+        width: 100%;
+    }
+
+    &__title {
+        @include modal-title();
+    }
+
+    &__subtitle {
+        @include modal-subtitle();
+    }
+
+    &__line {
+        background-color: var(--main-color);
+        border-radius: 0.3125rem;
+        height: 0.1875rem;
+        margin-bottom: 2.8125rem;
+        width: 100%;
+    }
+
+    &__content {
+        @include flex-container(column, $gap: 1.875rem 0rem);
+    }
+
+    &__item {
+        @include grid-container(8.125rem auto, $gap: 0rem 1.875rem);
+    }
+
+    &__item_title {
+        @include text-properties();
+        color: var(--main-text-color);
+    }
+
+    &__text_box {
+        @include flex-container(column, $gap: 0.9375rem 0rem);
+    }
+
+    &__text {
+        @include text-properties();
+        color: var(--stone-grey);
+    }
+}
+
+@media (max-width: 1700px) {
+    .modal {
+        padding-left: 5.6875rem;
+    }
+}
+
+@media (max-width: 1540px) {
+    .modal {
+        padding-left: 3.6875rem;
+    }
+}
+
+@media (max-width: 1420px) {
+    .modal {
+        padding-left: 1.6875rem;
+    }
+}
+
+@media (max-width: 1280px) {
+    .modal {
+        padding-left: 1rem;
+
+        &__inner {
+            width: 27.375rem;
+        }
+    }
+}

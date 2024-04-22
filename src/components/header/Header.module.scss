@@ -1,0 +1,71 @@
+@import '../../css/mixin.scss';
+
+.header {
+    @include flex-container($align-items: flex-end, $justify-content: space-between);
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+    padding-top: 1.25rem;
+}
+
+.statistics {
+    @include text-properties('Big-Shoulders', 1rem, 700, 0.075rem);
+    @include flex-container($gap: 0rem 2.8125rem);
+    color: var(--stone-grey);
+}
+
+.coins {
+    @include flex-container($align-items: flex-end, $gap: 0rem 0.8125rem);
+
+    &__add_box {
+        position: relative;
+    }
+
+    &__text_box {
+        position: relative;
+        top: 0.1375rem;
+    }
+
+    &__text {
+        @include text-properties('Big-Shoulders', 1.625rem, 700, 0.125rem);
+        color: var(--statistics-text-color);
+    }
+
+    &__btn {
+        @include flex-container($align-items: center, $justify-content: center);
+        background-color: transparent;
+        border: 0.0625rem solid var(--dark-grey);
+        color: var(--main-color);
+        cursor: pointer;
+        font-size: 1.2rem;
+        height: 2rem;
+        padding: 0rem;
+        width: 2rem;
+    }
+
+    &__btn:active {
+        font-size: 1.65rem;
+    }
+
+    &__cross {
+        @include absolute-position(50%, 50%);
+        cursor: pointer;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.level {
+    &__box {
+        @include position($top: 0.2625rem);
+    }
+
+    &__text {
+        @include text-properties('Big-Shoulders', 1.625rem, 700, 0.125rem);
+        color: var(--statistics-text-color);
+    }
+}
+
+@media (max-width: 1200px) {
+    .header {
+        display: none;
+    }
+}

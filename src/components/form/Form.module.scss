@@ -1,0 +1,141 @@
+@import '../../css/mixin.scss';
+
+.form {
+    @include flex-container(column, $gap: 2rem 0rem);
+    border: 0.0625rem solid var(--dark-border);
+    clip-path: var(--clip-path-modal);
+    min-height: 34.375rem;
+    padding: 1.6875rem 2rem 2rem;
+    position: relative;
+    width: 29.375rem;
+}
+
+.label {
+    @include flex-container(column, $gap: 0.75rem 0rem);
+    @include text-properties('Big-Shoulders', 1.125rem, 700, 0.075rem);
+    color: var(--main-color);
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+
+    &__input,
+    &__textarea {
+        @include text-properties('Iceberg');
+        background-color: var(--main-background-color);
+        border: 0.0625rem solid var(--dark-light-border);
+        color: var(--dark-grey);
+        height: 2.8125rem;
+        outline: none;
+        padding: 0 0.9375rem;
+        position: relative;
+        text-transform: uppercase;
+    }
+
+    &__textarea {
+        min-height: 14.8125rem;
+        padding-top: 0.9375rem;
+        resize: none;
+    }
+
+    &__input::placeholder,
+    &__textarea::placeholder {
+        @include text-properties('Iceberg');
+        text-transform: uppercase;
+    }
+
+    &__input:focus,
+    &__textarea:focus {
+        box-shadow: 0 0 0 0.0625rem var(--dark-light-border);
+    }
+}
+
+.border {
+    @include absolute-position(0.125rem, $left: -1.22rem);
+    background-color: var(--dark-border);
+    height: 0.125rem;
+    rotate: -40deg;
+    width: 3.625rem;
+    z-index: 2;
+}
+
+@media (max-width: 1200px) {
+    @media (max-width: 1280px) {
+        .form {
+            width: 27.375rem;
+        }
+    }
+
+    @media (max-width: 1200px) {
+        .border {
+            display: none;
+        }
+    }
+    .form {
+        background-color: var(--main-background-color);
+        border: none;
+        clip-path: none;
+        min-height: auto;
+        padding-bottom: 1rem;
+        width: 100%;
+    }
+
+    .label:has(textarea) {
+        height: 100%;
+    }
+
+    .label {
+        @include fontSize23px();
+        gap: 0.5rem 0rem;
+
+        &__textarea {
+            margin-bottom: 0.6rem;
+            min-height: 19.8125rem;
+        }
+
+        &__input,
+        &__textarea {
+            @include fontSize24px();
+        }
+
+        &__input::placeholder,
+        &__textarea::placeholder {
+            @include fontSize24px();
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .form {
+        min-height: auto;
+        padding: 1.25rem;
+    }
+
+    .label {
+        @include fontSize18px();
+        gap: 0.75rem 0rem;
+
+        &__textarea {
+            min-height: 16.8125rem;
+        }
+
+        &__input {
+            height: 2.8125rem;
+        }
+
+        &__input,
+        &__textarea {
+            @include fontSize14px();
+        }
+
+        &__input::placeholder,
+        &__textarea::placeholder {
+            @include fontSize14px();
+        }
+    }
+}
+
+@media (max-width: 420px) {
+    .form {
+        padding: 0.75rem;
+    }
+}

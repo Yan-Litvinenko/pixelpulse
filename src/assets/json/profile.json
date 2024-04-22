@@ -1,0 +1,50 @@
+[
+    {
+        "adjacent": {
+            "text": "Yan Litvinenko",
+            "type": "text"
+        },
+        "header": {
+            "class": "content__title",
+            "text": "name"
+        }
+    },
+    {
+        "adjacent": {
+            "text": "frontend developer",
+            "type": "text"
+        },
+        "header": {
+            "text": "occupation"
+        }
+    },
+    {
+        "adjacent": {
+            "text": "Absent",
+            "type": "text"
+        },
+        "header": {
+            "text": "corporation"
+        }
+    },
+    {
+        "adjacent": {
+            "image": "hexagon",
+            "text": "open for hire",
+            "type": "button"
+        },
+        "header": {
+            "text": "availability"
+        }
+    },
+    {
+        "adjacent": {
+            "image": "bluetooth",
+            "text": "open connection",
+            "type": "button"
+        },
+        "header": {
+            "text": "social"
+        }
+    }
+]

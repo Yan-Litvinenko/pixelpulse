@@ -1,0 +1,127 @@
+@import '../../css/mixin.scss';
+
+.welcome {
+    @include flex-container($align-items: center, $justify-content: center, $gap: 0rem 5.25rem);
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    min-height: 100vh;
+
+    &__greeting {
+        @include text-properties('Big-Shoulders', 33.625rem, 700, -2rem);
+        color: var(--main-color);
+    }
+
+    &__title {
+        @include text-properties($font-size: 1.438rem, $letter-spacing: 0.125rem);
+        color: var(--main-text-color);
+        margin-bottom: 2.875rem;
+    }
+
+    &__content {
+        max-width: 45.875rem;
+    }
+
+    &__text,
+    &__text_mobile {
+        @include text-properties($font-size: 1.25rem, $letter-spacing: 0.1rem);
+        margin-bottom: 1.875rem;
+    }
+
+    &__text_mobile {
+        display: none;
+    }
+
+    &__btn {
+        @include text-properties('Big-Shoulders', 1.375rem, 700, 0.075rem);
+        background-color: transparent;
+        border: 0.0625rem solid var(--main-color);
+        color: var(--main-color);
+        cursor: pointer;
+        margin-top: 2.375rem;
+        padding: 0.9375rem 3.125rem;
+        text-transform: uppercase;
+        transition: all 0.4s ease;
+    }
+}
+
+@media (hover: hover) {
+    .welcome__btn:hover {
+        box-shadow: var(--box-shadow);
+        text-shadow: var(--text-shadow);
+    }
+}
+
+@media (max-width: 1200px) {
+    .welcome {
+        gap: 0rem 2.25rem;
+        &__title {
+            @include fontSize32px();
+        }
+
+        &__text {
+            @include fontSize26px();
+        }
+    }
+}
+
+@media (max-width: 970px) {
+    .welcome {
+        &__greeting {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .welcome {
+        min-height: auto;
+
+        &__greeting {
+            display: none;
+        }
+
+        &__title {
+            @include fontSize26px();
+            margin-bottom: 1.525rem;
+            text-align: center;
+        }
+
+        &__content {
+            @include flex-container(column);
+            padding: 2.5rem 0px 1.25rem 0px;
+        }
+
+        &__text,
+        &__text_mobile {
+            @include fontSize20px();
+            display: block;
+            margin-bottom: 1.875rem;
+        }
+
+        &__btn {
+            @include fontSize22px();
+            margin-top: 1.25rem;
+        }
+    }
+}
+
+@media (max-width: 420px) {
+    .welcome {
+        &__content {
+            @include flex-container(column);
+        }
+
+        &__text,
+        &__text_mobile {
+            display: block;
+            font-size: 1.25rem;
+            margin-bottom: 1.875rem;
+            text-align: left;
+        }
+
+        &__btn {
+            font-size: 1.25rem;
+            margin-top: 0rem;
+        }
+    }
+}
