@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import scroll from '../utils/scroll';
-import { BooleanState } from '../interfaces/interfaces';
+import { BooleanState } from '../interfaces/interface';
 
 const useCloseModal = (
     place: React.MutableRefObject<HTMLDivElement | null>,
@@ -8,7 +8,7 @@ const useCloseModal = (
     transitionTime: number,
 ) => {
     useEffect(() => {
-        const handleCloseModal = (event: MouseEvent) => {
+        const handleCloseModal = (event: MouseEvent): void => {
             if (event.target === place.current) {
                 if (Array.isArray(setStatus)) {
                     setStatus.forEach((status) => status(false));

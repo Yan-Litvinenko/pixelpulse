@@ -1,5 +1,5 @@
 import React from 'react';
-import { IAppContext } from '../../interfaces/interfaces';
+import { IAppContext } from '../../interfaces/interface';
 import { ContextApp } from '../app/App';
 import Button from '../button/Button';
 import styles from './MobileBoxButton.module.scss';

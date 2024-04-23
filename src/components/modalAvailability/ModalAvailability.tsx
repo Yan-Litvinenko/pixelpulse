@@ -5,7 +5,7 @@ import Cross from '../cross/Cross';
 import Form from '../form/Form';
 import Heading from '../heading/Heading';
 import ModalBoxButton from '../modalBoxButton/ModalBoxButton';
-import { IAppContext } from '../../interfaces/interfaces';
+import { IAppContext } from '../../interfaces/interface';
 import styles from './ModalAvailability.module.scss';
 
 const ModalAvailability = (): React.JSX.Element | null => {

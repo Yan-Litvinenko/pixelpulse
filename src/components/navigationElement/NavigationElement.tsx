@@ -3,7 +3,7 @@ import Heading from '../heading/Heading';
 import Hexagon from '../hexagon/Hexagon';
 import Paragraph from '../paragraph/Paragraph';
 import { ContextApp } from '../app/App';
-import { Page, IAppContext } from '../../interfaces/interfaces';
+import { Page, IAppContext } from '../../interfaces/interface';
 import styles from './NavigationElement.module.scss';
 
 interface INavigationElement {

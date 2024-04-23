@@ -5,9 +5,9 @@ interface IFrame {
     className?: string;
 }
 
-const Frame = (props: IFrame): React.JSX.Element => {
+const Frame = ({ className }: IFrame): React.JSX.Element => {
     return (
-        <div className={props.className}>
+        <div className={className}>
             <FramePart className={styles.top_left} color={'#E84A4A'} path={'M1 9L1 1L9 1'} />
             <FramePart className={styles.top_right} color={'#E84A4A'} path={'M0 1L8 1L8 9'} />
             <FramePart className={styles.bottom_right} color={'#E84A4A'} path={'M8 0L8 8L1.04907e-06 8'} />

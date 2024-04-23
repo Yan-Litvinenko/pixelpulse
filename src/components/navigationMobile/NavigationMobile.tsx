@@ -5,7 +5,7 @@ import Setting from '../setting/Setting';
 import Statistics from '../statistics/Statistics';
 import Navigation from '../navigation/Navigation';
 import MobileBoxButton from '../mobileBoxButton/MobileBoxButton';
-import { IAppContext } from '../../interfaces/interfaces';
+import { IAppContext } from '../../interfaces/interface';
 import { ContextApp } from '../app/App';
 import styles from './NavigationMobile.module.scss';
 

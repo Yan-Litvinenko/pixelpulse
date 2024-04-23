@@ -1,7 +1,7 @@
 import React from 'react';
 import scroll from '../../utils/scroll';
 import { ContextApp } from '../app/App';
-import { IAppContext } from '../../interfaces/interfaces';
+import { IAppContext } from '../../interfaces/interface';
 import styles from './ModalBoxButton.module.scss';
 
 interface IModalBoxButton {

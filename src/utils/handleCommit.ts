@@ -1,7 +1,8 @@
 import getZero from './getZero';
-import { ICommit } from '../interfaces/interfaces';
+import { ICommit } from '../interfaces/interface.github';
+import { ICommitLog } from '../interfaces/interface';
 
-const handleCommit = (commit: ICommit) => {
+const handleCommit = (commit: ICommit): ICommitLog | undefined => {
     if (commit) {
         const date: Date = new Date(commit.committer.date);
         const year: number = date.getFullYear();

@@ -2,7 +2,7 @@ import React from 'react';
 import { ContextApp } from '../app/App';
 import SettingElement from '../settingElement/SettingElement';
 import handleOpenModal from '../../utils/handleOpenModal';
-import { IAppContext } from '../../interfaces/interfaces';
+import { IAppContext } from '../../interfaces/interface';
 
 interface ISetting {
     className: Record<string, string>;
@@ -29,7 +29,7 @@ const Setting = ({ className }: ISetting): React.JSX.Element => {
             />
             <SettingElement
                 className={className.visual}
-                onClick={() => handleOpenModal(contextApp?.setSetting, contextApp?.isMobile!)}
+                onClick={() => handleOpenModal(contextApp?.setSetting, contextApp?.isMedium!)}
                 image="gear"
                 textContent="Visual Settings"
             />

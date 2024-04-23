@@ -1,15 +1,15 @@
 import React from 'react';
 import { ContextApp } from '../app/App';
 import NavigationElement from '../navigationElement/NavigationElement';
-import { IAppContext } from '../../interfaces/interfaces';
+import { IAppContext } from '../../interfaces/interface';
 
 interface INavigation {
     className: Record<string, string> | undefined;
 }
 
-const Navigation = (props: INavigation): React.JSX.Element => {
+const Navigation = ({ className }: INavigation): React.JSX.Element => {
     const contextApp = React.useContext<IAppContext | undefined>(ContextApp)!;
-    const classes: Record<string, string> = props.className !== undefined ? props.className : {};
+    const classes: Record<string, string> = className !== undefined ? className : {};
 
     return (
         <nav className={classes.navigation}>

@@ -4,7 +4,7 @@ import useCloseModal from '../../hooks/useCloseModal';
 import Heading from '../heading/Heading';
 import Paragraph from '../paragraph/Paragraph';
 import { nanoid } from 'nanoid';
-import { IAppContext } from '../../interfaces/interfaces';
+import { IAppContext } from '../../interfaces/interface';
 import credits from '../../assets/json/credits.json';
 import styles from './ModalCredits.module.scss';
 

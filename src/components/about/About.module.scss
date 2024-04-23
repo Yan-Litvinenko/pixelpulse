@@ -68,17 +68,11 @@
 @media (max-width: 1200px) {
     .about {
         @include flex-container(column);
-        border: none;
         grid-column: 1 / -1;
-        grid-row: 1 / -1;
+        grid-row: 2 / 3;
         min-height: auto;
-        padding: 1.5rem 0rem 0rem;
-        min-height: 100vh;
+        padding: 1.5rem 0.625rem 0rem;
         width: 100%;
-
-        &__frame {
-            display: none;
-        }
 
         &__title {
             @include fontSize26px();
@@ -112,13 +106,25 @@
 
 @media (max-width: 768px) {
     .about {
+        border: none;
+        grid-row: 1 / -1;
+        min-height: 100vh;
+
         &__title {
             @include fontSize18px();
             margin-bottom: 2rem;
         }
 
+        &__content {
+            margin-bottom: 5rem;
+        }
+
         &__text_content {
             gap: 2rem 0rem;
+        }
+
+        &__frame {
+            display: none;
         }
     }
 }

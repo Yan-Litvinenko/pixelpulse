@@ -79,25 +79,47 @@
 
 @media (max-width: 1200px) {
     .profile {
-        &__element {
-            gap: 0.325rem 0rem;
-        }
-
         &__title {
-            @include fontSize20px();
-            letter-spacing: 0.075rem;
+            @include fontSize16px();
         }
 
         &__text {
-            @include fontSize24px();
-            letter-spacing: 0.075rem;
+            @include fontSize20px();
         }
 
-        &__availability,
-        &__social {
-            @include fontSize24px();
-            height: 2.5rem;
-            width: 100%;
+        &__element {
+            justify-content: end;
+        }
+
+        &__availability {
+            padding: 0.1875rem 0.3125rem 0.0975rem 0.3125rem;
+        }
+
+        &__element:nth-child(3) {
+            // occupation
+            grid-column: 2 / 3;
+            grid-row: 2 / 3;
+            margin-bottom: 1.45rem;
+        }
+
+        &__element:nth-child(4) {
+            // corporation
+            grid-column: 3 / 4;
+            grid-row: 1 / 2;
+        }
+
+        &__element:nth-child(5) {
+            // availability
+            grid-column: 3 / 4;
+            grid-row: 2 / 3;
+            margin-bottom: 1.45rem;
+        }
+
+        &__element:nth-child(6) {
+            // socail
+            grid-column: 4 / 5;
+            grid-row: 2 / 3;
+            margin-bottom: 1.45rem;
         }
     }
 
@@ -106,26 +128,78 @@
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 978px) {
     .profile {
-        &__element {
-            gap: 0.3125rem 0rem;
-        }
-
         &__title {
             @include fontSize14px();
         }
 
         &__text {
             @include fontSize18px();
-            letter-spacing: 0.075rem;
         }
 
-        &__availability,
-        &__social {
-            @include fontSize18px();
-            letter-spacing: 0.075rem;
-            height: auto;
+        &__element {
+            justify-content: end;
+        }
+
+        &__availability {
+            padding: 0.1875rem 0.3125rem 0.0975rem 0.3125rem;
+        }
+
+        &__element:nth-child(3) {
+            // occupation
+            margin-bottom: 1.65rem;
+        }
+
+        &__element:nth-child(5) {
+            // availability
+            margin-bottom: 1.65rem;
+        }
+
+        &__element:nth-child(6) {
+            // socail
+            margin-bottom: 1.65rem;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .profile {
+        &__element {
+            justify-content: start;
+        }
+
+        &__element:nth-child(2) {
+            // name
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+        }
+
+        &__element:nth-child(3) {
+            // name
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+            margin-bottom: 0;
+        }
+
+        &__element:nth-child(4) {
+            // corporation
+            grid-column: 1 / -1;
+            grid-row: 2 / 3;
+        }
+
+        &__element:nth-child(5) {
+            // availability
+            grid-column: 1 / -1;
+            grid-row: 3 / 4;
+            margin-bottom: 0;
+        }
+
+        &__element:nth-child(6) {
+            // social
+            grid-column: 1 / -1;
+            grid-row: 4 / 5;
+            margin-bottom: 0;
         }
     }
 }
