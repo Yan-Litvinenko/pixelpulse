@@ -44,8 +44,18 @@
 }
 
 @media (max-width: 1200px) {
+    .wrapper {
+        grid-template-rows: repeat(4, auto);
+    }
+
     .navigation {
         display: none;
+    }
+}
+
+@media (max-width: 978px) {
+    .wrapper {
+        row-gap: 1.5625rem;
     }
 }
 

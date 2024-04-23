@@ -1,5 +1,5 @@
 import React from 'react';
-import { IAppContext } from '../../interfaces/interfaces';
+import { IAppContext } from '../../interfaces/interface';
 import { ContextApp } from '../app/App';
 import { useContext } from 'react';
 import Button from '../button/Button';

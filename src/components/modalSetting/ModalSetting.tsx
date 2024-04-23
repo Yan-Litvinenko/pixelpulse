@@ -8,7 +8,7 @@ import ModalBoxButton from '../modalBoxButton/ModalBoxButton';
 import Paragraph from '../paragraph/Paragraph';
 import Range from '../range/Range';
 import { ContextApp } from '../app/App';
-import { IAppContext } from '../../interfaces/interfaces';
+import { IAppContext } from '../../interfaces/interface';
 import styles from './ModalSetting.module.scss';
 
 const ModalSetting = (): React.JSX.Element => {

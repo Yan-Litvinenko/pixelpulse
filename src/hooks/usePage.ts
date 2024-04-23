@@ -6,7 +6,7 @@ import Creations from '../components/creations/Creations';
 import Games from '../components/games/Games';
 import Logs from '../components/logs/Logs';
 import Welcome from '../components/welcome/Welocme';
-import { Page } from '../interfaces/interfaces';
+import { Page } from '../interfaces/interface';
 
 type PageComponent = () => JSX.Element;
 

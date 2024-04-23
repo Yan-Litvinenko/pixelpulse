@@ -1,40 +1,3 @@
-type Page = 'welcome' | 'beginning' | 'about' | 'logs' | 'achievements' | 'creations' | 'games';
-
-interface Settings {
-    [key: string]: boolean;
-}
-
-interface SettingContext {
-    settingStatuses: Settings;
-    setSettingStatuses: React.Dispatch<React.SetStateAction<Settings>>;
-}
-
-type BooleanState = React.Dispatch<React.SetStateAction<boolean>>;
-
-type IAppContext = {
-    TRANSITION_TIME: number;
-    setSocial: BooleanState;
-    setAvailability: BooleanState;
-    setCredits: BooleanState;
-    setSetting: BooleanState;
-    setPage: (page: Page) => void;
-    setMusic: BooleanState;
-    setSounds: BooleanState;
-    setNavigationMobile: BooleanState;
-    isMobile: boolean;
-    music: boolean;
-    navigationMobile: boolean;
-    page: Page;
-    sounds: boolean;
-    styles: Record<string, string>;
-};
-
-interface GetWrapperClass {
-    effects: boolean[];
-    settingState: boolean;
-    isMobile: boolean;
-}
-
 interface IUser {
     avatar_url: string;
     events_url: string;
@@ -98,9 +61,4 @@ interface IGithubRespone extends ITree {
     parents: IParents;
 }
 
-interface ICommitLog {
-    message: string;
-    date: string;
-}
-
-export { IAppContext, SettingContext, BooleanState, Page, GetWrapperClass, IGithubRespone, ICommitLog, ICommit };
+export { IGithubRespone, ICommit };

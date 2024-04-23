@@ -1,11 +1,8 @@
 import React from 'react';
-import { ContextApp } from '../app/App';
 import AboutElement from '../aboutElement/AboutElement';
 import Frame from '../frame/Frame';
 import Heading from '../heading/Heading';
-import MobileBoxButton from '../mobileBoxButton/MobileBoxButton';
 import { nanoid } from 'nanoid';
-import { IAppContext } from '../../interfaces/interfaces';
 import human from '../../assets/images/human.jpg';
 import styles from './About.module.scss';
 
@@ -25,8 +22,6 @@ const content = [
 ];
 
 const About = (): React.JSX.Element => {
-    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
-
     return (
         <main className={styles.about}>
             <Frame className={styles.about__frame} />
@@ -42,7 +37,6 @@ const About = (): React.JSX.Element => {
                     <Frame />
                 </div>
             </div>
-            {!contextApp?.navigationMobile ? <MobileBoxButton /> : null}
         </main>
     );
 };

@@ -5,7 +5,7 @@ import Heading from '../heading/Heading';
 import Paragraph from '../paragraph/Paragraph';
 import ProfileElement from '../profileElement/ProfileElement';
 import { nanoid } from 'nanoid';
-import { IAppContext } from '../../interfaces/interfaces';
+import { IAppContext } from '../../interfaces/interface';
 import avatar from '../../assets/images/avatar.png';
 import profileItems from '../../assets/json/profile.json';
 import styles from './Profile.module.scss';
@@ -22,9 +22,7 @@ const Profile = (): React.JSX.Element => {
             </div>
 
             {profileItems.map((item) => {
-                return (
-                    <ProfileElement adjacent={item.adjacent} header={item.header} version="desktop" key={nanoid()} />
-                );
+                return <ProfileElement adjacent={item.adjacent} header={item.header} key={nanoid()} />;
             })}
 
             <div className={styles.motto}>

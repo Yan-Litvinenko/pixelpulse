@@ -3,8 +3,10 @@
 .box {
     display: none;
     gap: 0px 0.625rem;
+    position: relative;
     margin-bottom: 1.25rem;
     width: 100%;
+    z-index: 2;
 
     &__navigation,
     &__about {
@@ -12,7 +14,7 @@
     }
 
     &__about {
-        background-color: var(--main-background-color);
+        background-color: var(--main-background-color) !important;
         border: 0.0625rem solid var(--dark-border);
         color: var(--main-color);
     }
@@ -33,6 +35,8 @@
 @media (max-width: 1200px) {
     .box {
         display: flex;
+        grid-column: 1 / -1;
+        grid-row: 4 / 5;
         margin-top: auto;
 
         &__navigation,

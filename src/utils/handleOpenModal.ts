@@ -1,5 +1,5 @@
 import scroll from './scroll';
-import { BooleanState } from '../interfaces/interfaces';
+import { BooleanState } from '../interfaces/interface';
 
 const handleOpenModal = (setStatusModal: BooleanState | undefined, isMobile: boolean): void => {
     const openModal = (): void => {

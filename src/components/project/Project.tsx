@@ -1,26 +1,26 @@
 import React from 'react';
 import LogsElement from '../logsElement/LogsElement';
+import { handleDate } from '../../utils/handleGithubRequest';
+import { ICommitLog } from '../../interfaces/interface';
 import styles from './Project.module.scss';
-import { IGithubRespone } from '../../interfaces/interfaces';
-import handleCommit from '../../utils/handleCommit';
 
 interface IProject {
-    commits: IGithubRespone[] | undefined;
+    commits: ICommitLog[] | undefined;
 }
 
 const Project = ({ commits }: IProject): React.JSX.Element => {
-    let lastCommit: Record<string, string> | undefined = undefined;
+    let lastDate: string = handleDate(`${new Date()}`);
 
     if (commits) {
-        lastCommit = handleCommit(commits[0].commit);
+        lastDate = commits[0].date;
     }
 
     return (
         <ul className={styles.project}>
             <LogsElement
                 className={styles.project__title}
-                date={lastCommit?.date ? lastCommit.date : ''}
-                textContent={lastCommit?.message ? lastCommit.message : ''}
+                date={lastDate}
+                textContent={'LOG ENTRY: PROJECT DEVELOPMENT UPDATE'}
             />
             <li className={styles.project__item}>
                 LOCATION: <span>Belarus</span>

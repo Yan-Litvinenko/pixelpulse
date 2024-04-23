@@ -4,11 +4,10 @@ import Button from '../button/Button';
 import Heading from '../heading/Heading';
 import Hexagon from '../hexagon/Hexagon';
 import handleOpenModal from '../../utils/handleOpenModal';
-import { IAppContext, BooleanState } from '../../interfaces/interfaces';
+import { IAppContext, BooleanState } from '../../interfaces/interface';
 import styles from './ProfileElement.module.scss';
 
 interface IProfileElement {
-    version: 'mobile' | 'desktop';
     adjacent: {
         image?: string;
         text: string;
@@ -20,23 +19,20 @@ interface IProfileElement {
 }
 
 const ProfileElement = (props: IProfileElement) => {
-    const { version, adjacent, header } = props;
+    const { adjacent, header } = props;
     const contextApp: IAppContext | undefined = React.useContext(ContextApp);
-
+    const image: React.JSX.Element = adjacent.image === 'hexagon' ? <Hexagon /> : <Bluetooth />;
     const setStatusModal: BooleanState | undefined =
         header.text === 'social' ? contextApp?.setSocial : contextApp?.setAvailability;
 
-    const image: React.JSX.Element = adjacent.image === 'hexagon' ? <Hexagon /> : <Bluetooth />;
-    const classElement = `${version === 'mobile' ? styles[`mobile__${header.text}`] : ''} ${styles.profile__element}`;
-
     return (
-        <div className={classElement}>
+        <div className={styles.profile__element}>
             <Heading className={`${styles.profile__title}`} level={'3'} textContent={header.text} />
             {adjacent.type === 'button' ? (
                 <Button
                     className={styles['profile__' + header.text]}
                     image={() => image}
-                    onClick={() => handleOpenModal(setStatusModal, contextApp?.isMobile!)}
+                    onClick={() => handleOpenModal(setStatusModal, contextApp?.isMedium!)}
                     textContent={adjacent.text}
                 />
             ) : (

@@ -35,20 +35,13 @@
 
 @media (max-width: 1200px) {
     .logs {
-        background-image: none;
-        border: none;
         grid-column: 1 / -1;
-        grid-row: 1 / -1;
-        padding: 1.5rem 0rem 0rem;
+        grid-row: 2 / 3;
+        padding: 1.5rem 0.625rem 0rem;
 
         &__inner {
             @include flex-container(column);
-            min-height: 100vh;
             max-width: 100%;
-        }
-
-        &__title {
-            @include fontSize24px();
         }
 
         &__frame {
@@ -58,8 +51,16 @@
 }
 
 @media (max-width: 768px) {
-    .logs__title {
-        @include fontSize18px();
-        margin-bottom: 1.5rem;
+    .logs {
+        border: none;
+        grid-row: 1 / -1;
+
+        &__inner {
+            min-height: 100vh;
+        }
+
+        &__title {
+            margin-bottom: 1.5rem;
+        }
     }
 }
