@@ -1,0 +1,68 @@
+@import '../../css/mixin.scss';
+
+.achievements {
+    background-image: var(--background-gradient);
+    border: 0.0625rem solid var(--frame-border-color);
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    min-height: var(--height-large);
+    padding: 2.5rem 0.625rem 0.625rem;
+    position: relative;
+
+    &__title {
+        @include text-properties($font-size: 1.125rem);
+        letter-spacing: 0.075em;
+        text-align: center;
+    }
+}
+
+.progress {
+    @include flex-container(column, $gap: 0.9375rem 0rem);
+    max-width: 11.25rem;
+
+    &__inner {
+        @include flex-container(column);
+        border: 0.0625rem solid var(--frame-border-color);
+        height: 11.25rem;
+        padding: 1.25rem 0rem;
+        position: relative;
+        width: 11.25rem;
+    }
+
+    &__ring {
+        position: relative;
+    }
+
+    &__statistic {
+        @include absolute-position(45%, $left: 50%);
+        @include text-properties('Big-Shoulders', 1.375rem, 700);
+        color: var(--main-color);
+        transform: translate(-50%, -50%);
+    }
+
+    &__name {
+        @include absolute-position($bottom: 1rem, $left: 50%);
+        @include text-properties('Iceberg', 0.75rem, 400);
+        color: var(--dark-grey);
+        transform: translateX(-50%);
+    }
+
+    &__text {
+        @include text-properties();
+        color: var(--dark-grey);
+    }
+
+    &__button {
+        @include button();
+        background-color: transparent;
+        border: 0.0625rem solid var(--main-color);
+        color: var(--main-color);
+    }
+}
+
+@media (hover: hover) {
+    .progress__button:hover {
+        box-shadow: var(--box-shadow);
+        text-shadow: var(--text-shadow);
+    }
+}

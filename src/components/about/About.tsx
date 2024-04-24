@@ -24,7 +24,7 @@ const content = [
 const About = (): React.JSX.Element => {
     return (
         <main className={styles.about}>
-            <Frame className={styles.about__frame} />
+            <Frame />
             <Heading className={styles.about__title} level="2" textContent="who is Yan Litvinenko" />
             <div className={styles.about__content}>
                 <div className={styles.about__text_content}>
