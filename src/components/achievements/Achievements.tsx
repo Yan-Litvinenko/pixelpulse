@@ -1,9 +1,11 @@
 import React from 'react';
-import Button from '../button/Button';
+import AchievementsAchieve from '../achievementsAchieve/AchievementsAchieve';
+import AchievementsProgress from '../achievementsProgress/AchievementsProgress';
+import AchievementsLabel from '../achievementsLabel/AchievementsLabel';
 import Frame from '../frame/Frame';
 import Heading from '../heading/Heading';
-import Paragraph from '../paragraph/Paragraph';
-import ProgressRing from '../progressRing/ProgressRing';
+import { Rarity } from '../../interfaces/interface';
+import achievements from '../../assets/json/achievements.json';
 import styles from './Achievements.module.scss';
 
 const Achievements = (): React.JSX.Element => {
@@ -11,24 +13,71 @@ const Achievements = (): React.JSX.Element => {
         <main className={styles.achievements}>
             <Frame />
             <Heading className={styles.achievements__title} level="2" textContent="achievements" />
-            <div className={styles.progress}>
-                <div className={styles.progress__inner}>
-                    <ProgressRing />
-                    <span className={styles.progress__statistic}>13/22</span>
-                    <span className={styles.progress__name}>progress</span>
+            <div className={styles.achievements__content}>
+                <AchievementsProgress />
+
+                <div className={styles.achievements__achievements}>
+                    {achieved() ? (
+                        <div className={styles.achieved}>
+                            <span className={styles.achieved__title}>achieved:</span>
+                            <div className={styles.achieved__achievements}>
+                                {achievements.map((achieve) => {
+                                    if (achieve.status === 'achieved') {
+                                        return (
+                                            <AchievementsAchieve
+                                                date={achieve.date}
+                                                description={achieve.description}
+                                                rarity={achieve.rarity as Rarity}
+                                                status={achieve.status}
+                                                title={achieve.title}
+                                            />
+                                        );
+                                    }
+                                })}
+                            </div>
+                        </div>
+                    ) : null}
+
+                    {ongoing() ? (
+                        <div className={styles.ongoing}>
+                            <span className={styles.ongoing__title}>to be achieved:</span>
+                            <div className={styles.ongoing__achievements}>
+                                {achievements.map((achieve) => {
+                                    if (achieve.status === 'in progress') {
+                                        return (
+                                            <AchievementsAchieve
+                                                date={achieve.date}
+                                                description={achieve.description}
+                                                rarity={achieve.rarity as Rarity}
+                                                status={achieve.status}
+                                                title={achieve.title}
+                                            />
+                                        );
+                                    }
+                                })}
+                            </div>
+                        </div>
+                    ) : null}
                 </div>
-                <Paragraph
-                    className={styles.progress__text}
-                    textContent="I have created a set of achievements for myself and I use this page to track them."
-                />
-                <Paragraph
-                    className={styles.progress__text}
-                    textContent="If you want to give me a challenge and rate it, please feel free to submit it with the button below!"
-                />
-                <Button className={styles.progress__button} textContent="Challenge me" onClick={() => {}} />
+
+                <div className={styles.switchers}>
+                    <AchievementsLabel id="achieved" textContent="achieved" />
+                    <AchievementsLabel id="inProgress" textContent="in progress" />
+                    <AchievementsLabel id="all" textContent="all" />
+                </div>
             </div>
         </main>
     );
 };
+
+function achieved(): boolean {
+    const hasAchieved = achievements.find((achieve) => achieve.status === 'achieved');
+    return !!hasAchieved;
+}
+
+function ongoing() {
+    const hasOngoing = achievements.find((achieve) => achieve.status === 'in progress');
+    return !!hasOngoing;
+}
 
 export default Achievements;

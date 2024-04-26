@@ -12,57 +12,46 @@
     &__title {
         @include text-properties($font-size: 1.125rem);
         letter-spacing: 0.075em;
+        margin-bottom: 0.625rem;
         text-align: center;
     }
-}
 
-.progress {
-    @include flex-container(column, $gap: 0.9375rem 0rem);
-    max-width: 11.25rem;
-
-    &__inner {
-        @include flex-container(column);
-        border: 0.0625rem solid var(--frame-border-color);
-        height: 11.25rem;
-        padding: 1.25rem 0rem;
-        position: relative;
-        width: 11.25rem;
+    &__content {
+        @include grid-container(1fr 2fr 1fr, 2.2rem repeat(3, auto), $gap: 0rem 1.25rem);
     }
 
-    &__ring {
-        position: relative;
-    }
-
-    &__statistic {
-        @include absolute-position(45%, $left: 50%);
-        @include text-properties('Big-Shoulders', 1.375rem, 700);
-        color: var(--main-color);
-        transform: translate(-50%, -50%);
-    }
-
-    &__name {
-        @include absolute-position($bottom: 1rem, $left: 50%);
-        @include text-properties('Iceberg', 0.75rem, 400);
-        color: var(--dark-grey);
-        transform: translateX(-50%);
-    }
-
-    &__text {
-        @include text-properties();
-        color: var(--dark-grey);
-    }
-
-    &__button {
-        @include button();
-        background-color: transparent;
-        border: 0.0625rem solid var(--main-color);
-        color: var(--main-color);
+    &__achievements {
+        @include flex-container(column, $gap: 3.75rem 0rem);
+        grid-column: 2 / 3;
+        grid-row: 1 / -1;
     }
 }
 
-@media (hover: hover) {
-    .progress__button:hover {
-        box-shadow: var(--box-shadow);
-        text-shadow: var(--text-shadow);
+.achieved {
+    &__title {
+        display: block;
+        margin-bottom: 1.125rem;
     }
+
+    &__achievements {
+        @include flex-container(column, $gap: 1.25rem 0rem);
+    }
+}
+
+.ongoing {
+    &__title {
+        display: block;
+        margin-bottom: 1.125rem;
+    }
+
+    &__achievements {
+        @include flex-container(column, $gap: 1.25rem 0rem);
+    }
+}
+
+.switchers {
+    @include flex-container(column, $gap: 0.625rem 0rem);
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+    padding-top: 0.25rem;
 }

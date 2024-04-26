@@ -1,7 +1,7 @@
 import React from 'react';
 import useLocalTime from '../../hooks/useLocalTime';
-import Statistics from '../statistics/Statistics';
-import Time from '../time/Time';
+import HeaderStatistics from '../headerStatistics/HeaderStatistics';
+import HeaderTime from '../headerTime/HeaderTime';
 import styles from './Header.module.scss';
 
 const Header = (): React.JSX.Element => {
@@ -9,8 +9,8 @@ const Header = (): React.JSX.Element => {
 
     return (
         <header className={styles.header}>
-            <Statistics className={styles} />
-            <Time time={localTime} />
+            <HeaderStatistics className={styles} />
+            <HeaderTime time={localTime} />
         </header>
     );
 };

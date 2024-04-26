@@ -5,7 +5,7 @@ interface IStatistics {
     className: Record<string, string>;
 }
 
-const Statistics = ({ className }: IStatistics): React.JSX.Element => {
+const HeaderStatistics = ({ className }: IStatistics): React.JSX.Element => {
     return (
         <div className={className.statistics}>
             <div className={className.level__box}>
@@ -24,4 +24,4 @@ const Statistics = ({ className }: IStatistics): React.JSX.Element => {
     );
 };
 
-export default Statistics;
+export default HeaderStatistics;

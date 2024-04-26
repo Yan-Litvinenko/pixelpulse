@@ -36,4 +36,6 @@ interface ICommitLog {
     date: string;
 }
 
-export { IAppContext, SettingContext, BooleanState, Page, ICommitLog };
+type Rarity = 'legendary' | 'epic' | 'rare' | 'unusual';
+
+export { IAppContext, SettingContext, BooleanState, Page, ICommitLog, Rarity };

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import Cross from '../cross/Cross';
 import Heading from '../heading/Heading';
 import Setting from '../setting/Setting';
-import Statistics from '../statistics/Statistics';
+import HeaderStatistics from '../headerStatistics/HeaderStatistics';
 import Navigation from '../navigation/Navigation';
 import MobileBoxButton from '../mobileBoxButton/MobileBoxButton';
 import { IAppContext } from '../../interfaces/interface';
@@ -19,7 +19,7 @@ const NavigationMobile = (): React.JSX.Element => {
                     <Heading className={styles.header} level={'2'} textContent={'Navigation'} />
                     <Cross setModalState={() => contextApp?.setNavigationMobile(false)} />
                 </div>
-                <Statistics className={styles} />
+                <HeaderStatistics className={styles} />
                 <Navigation className={styles} />
                 <Setting className={styles} />
             </div>

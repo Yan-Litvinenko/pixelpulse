@@ -1,7 +1,11 @@
 import React from 'react';
 import styles from './ProgressRing.module.scss';
 
-const ProgressRing = (): React.JSX.Element => {
+interface IProgressRing {
+    percent: number;
+}
+
+const ProgressRing = ({ percent }: IProgressRing): React.JSX.Element => {
     const square: number = 148;
     const border: number = 14;
     const CYX: number = square / 2;
@@ -12,7 +16,7 @@ const ProgressRing = (): React.JSX.Element => {
         <svg className={styles.ring} width={square} height={square}>
             <circle
                 style={{
-                    strokeDashoffset: `${circumference - (60 / 100) * circumference}`,
+                    strokeDashoffset: `${circumference - (percent / 100) * circumference}`,
                     strokeDasharray: `${circumference} ${circumference}`,
                 }}
                 className={styles.ring__circle}

@@ -2,13 +2,13 @@ import React from 'react';
 import LogsElement from '../logsElement/LogsElement';
 import { handleDate } from '../../utils/handleGithubRequest';
 import { ICommitLog } from '../../interfaces/interface';
-import styles from './Project.module.scss';
+import styles from './LogsProject.module.scss';
 
 interface IProject {
     commits: ICommitLog[] | undefined;
 }
 
-const Project = ({ commits }: IProject): React.JSX.Element => {
+const LogsProject = ({ commits }: IProject): React.JSX.Element => {
     let lastDate: string = handleDate(`${new Date()}`);
 
     if (commits) {
@@ -32,4 +32,4 @@ const Project = ({ commits }: IProject): React.JSX.Element => {
     );
 };
 
-export default Project;
+export default LogsProject;

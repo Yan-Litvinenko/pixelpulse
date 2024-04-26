@@ -3,9 +3,9 @@ import Heading from '../heading/Heading';
 import Paragraph from '../paragraph/Paragraph';
 import { nanoid } from 'nanoid';
 import updateData from '../../assets/json/update.json';
-import styles from './Update.module.scss';
+import styles from './LogsUpdate.module.scss';
 
-const Update = (): React.JSX.Element => {
+const LogsUpdate = (): React.JSX.Element => {
     return (
         <div className={styles.update}>
             {updateData.map((element) => {
@@ -21,4 +21,4 @@ const Update = (): React.JSX.Element => {
     );
 };
 
-export default Update;
+export default LogsUpdate;

@@ -1,0 +1,165 @@
+@import '../../css/mixin.scss';
+
+.box_image {
+    @include flex-container(column, $justify-content: center, $gap: 0.625rem 0rem);
+    border-right: 0.0625rem solid #1d1d20;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+
+    &__image {
+        padding: 0.5rem 0.9375rem 0rem;
+    }
+
+    &__rarity {
+        @include text-properties();
+        color: #000;
+        padding: 0.145rem 0.125rem 0.1rem;
+        text-align: center;
+    }
+}
+
+.achieve {
+    @include grid-container(1fr 3fr);
+    width: 100%;
+
+    &__inner {
+        @include grid-container(1fr 3fr, 1fr);
+        border: 0.0625rem solid var(--dark-light-border);
+        clip-path: var(--clip-path-modal);
+        grid-column: 1 / -1;
+        grid-row: 1 / 2;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+    }
+
+    &__content {
+        @include flex-container(column, $gap: 0.3125rem 0rem);
+        grid-column: 2 / 3;
+        width: 100%;
+    }
+
+    &__title {
+        @include text-properties('Big-Shoulders', 1.125rem, 700);
+        color: var(--main-color);
+        padding: 1.25rem 1.25rem 0rem;
+    }
+
+    &__description {
+        @include text-properties();
+        color: var(--dark-grey);
+        padding: 0rem 1.25rem;
+    }
+
+    &__date {
+        @include text-properties($font-size: 0.75rem);
+        color: var(--main-text-color);
+        margin-top: auto;
+        padding: 0.25rem 1.25rem 0.1875rem;
+    }
+}
+
+.ongoing_status {
+    opacity: 0.5;
+}
+
+.achieve_legendary .achieve__inner {
+    background: linear-gradient(90deg, rgba(var(--legendary), 0) 50%, rgba(var(--legendary), 0.14) 100%);
+    border: 1px solid rgb(74, 129, 56);
+}
+
+.achieve_legendary .achieve__inner::before {
+    background-color: rgb(74, 129, 56);
+    content: '';
+    height: 0.5rem;
+    left: -1rem;
+    position: absolute;
+    top: 0.1875rem;
+    transform: rotate(-40deg);
+    width: 2rem;
+}
+
+.achieve_epic .achieve__inner::before,
+.achieve_rare .achieve__inner::before,
+.achieve_unusual .achieve__inner::before {
+    background-color: var(--dark-light-border);
+    content: '';
+    height: 0.5rem;
+    left: -1rem;
+    position: absolute;
+    top: 0.1875rem;
+    transform: rotate(-40deg);
+    width: 2rem;
+}
+
+.achieve_legendary .achieve__date {
+    background: linear-gradient(90deg, rgba(var(--legendary), 0) 20%, rgba(var(--legendary), 0.14) 100%);
+}
+
+.achieve_legendary .achieve__title {
+    color: rgb(var(--legendary));
+}
+
+.achieve_legendary .box_image__rarity {
+    background-color: rgb(var(--legendary));
+    position: relative;
+}
+
+.achieve_legendary .box_image__rarity::before {
+    background-color: rgb(var(--legendary));
+    box-shadow: 0rem 0rem 0.875rem 0rem #7dff68;
+    content: '';
+    display: block;
+    filter: blur(0.25rem);
+    inset: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+.achieve_epic .achieve__inner {
+    background: linear-gradient(90deg, rgba(var(--epic), 0) 50%, rgba(var(--epic), 0.14) 100%);
+}
+
+.achieve_epic .achieve__date {
+    background: linear-gradient(90deg, rgba(var(--epic), 0) 20%, rgba(var(--epic), 0.14) 100%);
+}
+
+.achieve_epic .achieve__title {
+    color: rgb(var(--epic));
+}
+
+.achieve_epic .box_image__rarity {
+    background-color: rgb(var(--epic));
+}
+
+.achieve_rare .achieve__inner {
+    background: linear-gradient(90deg, rgba(var(--rare), 0) 50%, rgba(var(--rare), 0.14) 100%);
+}
+
+.achieve_rare .achieve__date {
+    background: linear-gradient(90deg, rgba(var(--rare), 0) 20%, rgba(var(--rare), 0.14) 100%);
+}
+
+.achieve_rare .achieve__title {
+    color: rgb(var(--rare));
+}
+
+.achieve_rare .box_image__rarity {
+    background-color: rgb(var(--rare));
+}
+
+.achieve_unusual .achieve__inner {
+    background: linear-gradient(90deg, rgba(var(--unusual), 0) 50%, rgba(var(--unusual), 0.14) 100%);
+}
+
+.achieve_unusual .achieve__date {
+    background: linear-gradient(90deg, rgba(var(--unusual), 0) 20%, rgba(var(--unusual), 0.14) 100%);
+}
+
+.achieve_unusual .achieve__title {
+    color: rgb(var(--unusual));
+}
+
+.achieve_unusual .box_image__rarity {
+    background-color: rgb(var(--unusual));
+}

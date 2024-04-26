@@ -1,0 +1,30 @@
+[
+    {
+        "date": "ongoing",
+        "description": "Get level 80",
+        "rarity": "legendary",
+        "status": "in progress",
+        "title": "80 level"
+    },
+    {
+        "date": "ongoing",
+        "description": "Get level 60",
+        "rarity": "epic",
+        "status": "in progress",
+        "title": "60 level"
+    },
+    {
+        "date": "ongoing",
+        "description": "Get level 40",
+        "rarity": "rare",
+        "status": "in progress",
+        "title": "40 level"
+    },
+    {
+        "date": "2024.04.25",
+        "description": "Get level 20",
+        "rarity": "unusual",
+        "status": "achieved",
+        "title": "Get level 20"
+    }
+]

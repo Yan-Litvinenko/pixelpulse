@@ -1,14 +1,14 @@
 import React from 'react';
 import LogsElement from '../logsElement/LogsElement';
 import { ICommitLog } from '../../interfaces/interface';
-import styles from './OldLogs.module.scss';
+import styles from './LogsOld.module.scss';
 import { nanoid } from 'nanoid';
 
 interface IOldLogs {
     commits: ICommitLog[] | undefined;
 }
 
-const OldLogs = ({ commits }: IOldLogs): React.JSX.Element => {
+const LogsOld = ({ commits }: IOldLogs): React.JSX.Element => {
     return (
         <div>
             <span className={styles.title}>older logs:</span>
@@ -21,4 +21,4 @@ const OldLogs = ({ commits }: IOldLogs): React.JSX.Element => {
     );
 };
 
-export default OldLogs;
+export default LogsOld;

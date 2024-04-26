@@ -4,13 +4,13 @@ import Button from '../button/Button';
 import handleOpenModal from '../../utils/handleOpenModal';
 import getZero from '../../utils/getZero';
 import { IAppContext } from '../../interfaces/interface';
-import styles from './Time.module.scss';
+import styles from './HeaderTime.module.scss';
 
 interface ITime {
     time: Date;
 }
 
-const Time = ({ time }: ITime): React.JSX.Element => {
+const HeaderTime = ({ time }: ITime): React.JSX.Element => {
     const contextApp: IAppContext | undefined = React.useContext(ContextApp);
 
     return (
@@ -32,4 +32,4 @@ const Time = ({ time }: ITime): React.JSX.Element => {
     );
 };
 
-export default Time;
+export default HeaderTime;

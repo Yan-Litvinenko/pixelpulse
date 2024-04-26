@@ -2,9 +2,9 @@ import React, { useContext } from 'react';
 import { ContextApp } from '../app/App';
 import Frame from '../frame/Frame';
 import Heading from '../heading/Heading';
-import OldLogs from '../oldLogs/OldLogs';
-import Project from '../project/Project';
-import Update from '../update/Update';
+import LogsOld from '../logsOld/LogsOld';
+import LogsProject from '../logsProject/LogsProject';
+import LogsUpdate from '../logsUpdate/LogsUpdate';
 import { IAppContext } from '../../interfaces/interface';
 import styles from './Logs.module.scss';
 
@@ -16,9 +16,9 @@ const Logs = (): React.JSX.Element => {
             <Frame className={styles.logs__frame} />
             <div className={styles.logs__inner}>
                 <Heading className={styles.logs__title} level="2" textContent="data log dump initialized." />
-                <Project commits={contextApp?.commits} />
-                <Update />
-                <OldLogs commits={contextApp?.commits} />
+                <LogsProject commits={contextApp?.commits} />
+                <LogsUpdate />
+                <LogsOld commits={contextApp?.commits} />
             </div>
         </main>
     );
