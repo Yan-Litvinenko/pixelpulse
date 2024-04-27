@@ -9,6 +9,7 @@
         @include flex-container(column);
         background-color: var(--main-background-color);
         border: 0.0625rem solid var(--dark-border);
+        margin-bottom: 0.625rem;
         height: 100%;
     }
 
@@ -94,6 +95,7 @@
     @include flex-container(column, $gap: 0.3125rem 0rem);
     padding: 0.625rem 1.25rem;
     margin-top: auto;
+    margin-bottom: 1.25rem;
 }
 
 .audio,

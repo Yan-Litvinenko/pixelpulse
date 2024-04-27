@@ -8,6 +8,7 @@ import ModalAvailability from '../modalAvailability/ModalAvailability';
 import ModalCredits from '../modalCredits/ModalCredits';
 import ModalSetting from '../modalSetting/ModalSetting';
 import ModalSocial from '../modalSocial/ModalSocial';
+import NavigationMobile from '../navigationMobile/NavigationMobile';
 import handleWrapperClassName from '../../utils/handleWrapperClassName';
 import { IAppContext, Page } from '../../interfaces/interface';
 import styles from './App.module.scss';
@@ -69,6 +70,7 @@ const App = (): React.JSX.Element => {
                 {social ? <ModalSocial /> : null}
                 {credits ? <ModalCredits /> : null}
                 {setting ? <ModalSetting /> : null}
+                {navigationMobile && (isMedium || isLarge) ? <NavigationMobile /> : null}
             </ContextApp.Provider>
         </>
     );
