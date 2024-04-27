@@ -3,9 +3,9 @@
 .hexagon {
     @include absolute-position(50%, -1.125rem);
     transform: translateY(-50%);
-    transition: all 0.4s;
+    transition: filter var(--transition-element);
 }
 
 .hexagon polygon {
-    transition: all 0.4s;
+    transition: filter var(--transition-element);
 }

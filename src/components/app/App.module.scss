@@ -3,9 +3,26 @@
 .wrapper {
     @include grid-container($columns: 12.1875rem minmax(auto, 84rem) 12.1875rem, $gap: 2.1875rem 0.9375rem);
     margin: 0 auto;
-    padding: 0 4.6875rem;
     max-width: 118.75rem;
+    padding: 0 4.6875rem;
+    position: relative;
     transition: transform var(--transition-wrapper);
+
+    &::before {
+        background: linear-gradient(
+            232deg,
+            rgba(var(--data-main-color), 0.33) 0%,
+            rgba(var(--data-main-color), 0) 34.83%
+        );
+        content: '';
+        display: block;
+        height: 309px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 583px;
+        z-index: -1;
+    }
 
     &__active_left {
         transform: perspective(46.875rem) rotateY(-31deg) translateY(-8%) translateZ(-33.75rem);
@@ -46,6 +63,22 @@
 @media (max-width: 1200px) {
     .wrapper {
         grid-template-rows: repeat(4, auto);
+
+        &::after {
+            background: linear-gradient(
+                45deg,
+                rgba(var(--data-main-color), 0.33) 0%,
+                rgba(var(--data-main-color), 0) 34.83%
+            );
+            bottom: 0px;
+            content: '';
+            display: block;
+            height: 309px;
+            left: 0px;
+            position: absolute;
+            width: 320px;
+            z-index: -1;
+        }
     }
 
     .navigation {

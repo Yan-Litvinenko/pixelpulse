@@ -1,6 +1,5 @@
 import React from 'react';
 import { ContextApp } from '../app/App';
-import DecorativeCorner from '../decorativeCorner/DecorativeCorner';
 import Header from '../header/Header';
 import MobileBoxButton from '../mobileBoxButton/MobileBoxButton';
 import Navigation from '../navigation/Navigation';
@@ -30,7 +29,6 @@ const Layout = (): React.JSX.Element => {
 
     return (
         <>
-            <DecorativeCorner />
             <Header />
             <Navigation className={contextApp?.styles} />
             <Profile />
@@ -42,7 +40,6 @@ const Layout = (): React.JSX.Element => {
 function large() {
     return (
         <>
-            <DecorativeCorner />
             <Header />
             <Profile />
             <MobileBoxButton />
@@ -54,7 +51,6 @@ function medium(context: IAppContext) {
     if (context.page !== 'beginning') {
         return (
             <>
-                <DecorativeCorner />
                 <MobileBoxButton />
             </>
         );
@@ -62,7 +58,6 @@ function medium(context: IAppContext) {
 
     return (
         <>
-            <DecorativeCorner />
             <Profile />
             <MobileBoxButton />
         </>

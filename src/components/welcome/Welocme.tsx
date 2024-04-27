@@ -3,7 +3,6 @@ import { IAppContext } from '../../interfaces/interface';
 import { ContextApp } from '../app/App';
 import { useContext } from 'react';
 import Button from '../button/Button';
-import DecorativeCorner from '../decorativeCorner/DecorativeCorner';
 import Heading from '../heading/Heading';
 import Paragraph from '../paragraph/Paragraph';
 import styles from './Welcome.module.scss';
@@ -18,7 +17,6 @@ const Welcome = (): React.JSX.Element => {
 
     return (
         <div className={styles.welcome}>
-            <DecorativeCorner />
             <Heading className={styles.welcome__greeting} level={'2'} textContent="HI!" />
             <div className={styles.welcome__content}>
                 <Heading className={styles.welcome__title} level={'1'} textContent="Welcome to by personal website" />
