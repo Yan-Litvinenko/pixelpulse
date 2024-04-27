@@ -70,7 +70,10 @@
     cursor: pointer;
     padding: 0.375rem 0.3125rem 0.3125rem 0.3125rem;
     text-transform: uppercase;
-    transition: all 0.4s;
+    transition:
+        background-color var(--transition-element),
+        border var(--transition-element),
+        text-shadow var(--transition-element);
     width: 100%;
 }
 

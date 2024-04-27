@@ -11,7 +11,7 @@
         overflow: hidden;
         padding: 0.25rem 0.4375rem;
         position: relative;
-        transition: all 0.4s;
+        transition: background-color var(--transition-element);
     }
 
     &__title_active {

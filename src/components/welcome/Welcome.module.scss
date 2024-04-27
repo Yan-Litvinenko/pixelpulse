@@ -40,7 +40,9 @@
         margin-top: 2.375rem;
         padding: 0.9375rem 3.125rem;
         text-transform: uppercase;
-        transition: all 0.4s ease;
+        transition:
+            box-shadow var(--transition-element),
+            text-shadow var(--transition-element);
     }
 }
 

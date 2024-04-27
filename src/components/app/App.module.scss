@@ -5,7 +5,7 @@
     margin: 0 auto;
     padding: 0 4.6875rem;
     max-width: 118.75rem;
-    transition: all 1.5s;
+    transition: transform var(--transition-wrapper);
 
     &__active_left {
         transform: perspective(46.875rem) rotateY(-31deg) translateY(-8%) translateZ(-33.75rem);

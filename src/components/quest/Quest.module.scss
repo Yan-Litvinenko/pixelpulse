@@ -69,7 +69,11 @@
     cursor: pointer;
     padding: 0rem 0rem 0.125rem 0.6rem;
     text-transform: uppercase;
-    transition: all 0.4s;
+    transition:
+        border-color var(--transition-element),
+        box-shadow var(--transition-element),
+        text-shadow var(--transition-element),
+        filter var(--transition-element);
 }
 
 .visual {
@@ -80,7 +84,7 @@
 }
 
 .visual svg path {
-    transition: all 0.4s;
+    transition: filter var(--transition-element);
 }
 
 .audio .checkbox {
@@ -96,7 +100,7 @@
     background-color: var(--main-color);
     content: '';
     height: 0.1875rem;
-    transition: all 0.4s;
+    transition: box-shadow var(--transition-element);
 }
 
 .audio .checkbox::before {

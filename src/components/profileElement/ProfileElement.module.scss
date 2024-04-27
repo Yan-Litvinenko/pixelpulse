@@ -26,7 +26,11 @@
         position: relative;
         text-align: left;
         text-transform: uppercase;
-        transition: all 0.4s;
+        transition:
+            background-color var(--transition-element),
+            box-shadow var(--transition-element),
+            filter var(--transition-element),
+            text-shadow var(--transition-element);
     }
 
     &__social {
@@ -59,7 +63,7 @@
 }
 
 .bluetooth path {
-    transition: all 0.4s;
+    transition: filter var(--transition-element);
 }
 
 @media (hover: hover) {
@@ -157,7 +161,7 @@
         }
 
         &__element:nth-child(6) {
-            // socail
+            // social
             margin-bottom: 1.65rem;
         }
     }
