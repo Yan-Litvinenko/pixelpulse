@@ -32,7 +32,7 @@ const ProfileElement = (props: IProfileElement) => {
                 <Button
                     className={styles['profile__' + header.text]}
                     image={() => image}
-                    onClick={() => handleOpenModal(setStatusModal, contextApp?.isMedium!)}
+                    onClick={() => handleOpenModal(setStatusModal)}
                     textContent={adjacent.text}
                 />
             ) : (

@@ -29,7 +29,10 @@ const Setting = ({ className }: ISetting): React.JSX.Element => {
             />
             <SettingElement
                 className={className.visual}
-                onClick={() => handleOpenModal(contextApp?.setSetting, contextApp?.isMedium!)}
+                onClick={() => {
+                    contextApp?.setNavigationMobile(false);
+                    handleOpenModal(contextApp?.setSetting);
+                }}
                 image="gear"
                 textContent="Visual Settings"
             />

@@ -25,10 +25,15 @@ const ModalBoxButton = (props: IModalBoxButton): React.JSX.Element => {
     };
 
     React.useEffect(() => {
-        setTimeout(() => {
+        if (contextApp?.isLarge || contextApp?.isMedium) {
             window.addEventListener('keydown', handleEscapeKey);
             modalEscape.current?.addEventListener('click', handleEscape);
-        }, contextApp?.TRANSITION_TIME);
+        } else {
+            setTimeout(() => {
+                window.addEventListener('keydown', handleEscapeKey);
+                modalEscape.current?.addEventListener('click', handleEscape);
+            }, contextApp?.TRANSITION_TIME);
+        }
 
         return () => {
             window.removeEventListener('keydown', handleEscapeKey);

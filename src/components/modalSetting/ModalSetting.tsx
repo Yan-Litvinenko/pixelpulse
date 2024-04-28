@@ -15,6 +15,11 @@ const ModalSetting = (): React.JSX.Element => {
     const contextApp: IAppContext | undefined = React.useContext(ContextApp);
     const modal = React.useRef<HTMLDivElement | null>(null);
 
+    const handleCrossModal = () => {
+        contextApp?.setNavigationMobile(true);
+        contextApp?.setSetting(false);
+    };
+
     if (contextApp) {
         useCloseModal(modal, contextApp.setSetting, contextApp.TRANSITION_TIME);
     }
@@ -24,7 +29,7 @@ const ModalSetting = (): React.JSX.Element => {
             <div className={styles.modal__inner}>
                 <div className={styles.modal__box_title}>
                     <Heading className={styles.modal__title} level="3" textContent="visual configurator" />
-                    <Cross setModalState={() => contextApp?.setNavigationMobile(false)} />
+                    <Cross setModalState={handleCrossModal} />
                 </div>
                 <Heading className={styles.modal__subtitle} level="4" textContent="apply what works best for you" />
 

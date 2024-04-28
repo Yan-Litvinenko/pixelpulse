@@ -17,7 +17,7 @@ const HeaderTime = ({ time }: ITime): React.JSX.Element => {
         <div className={styles.time}>
             <Button
                 className={styles.time__credits}
-                onClick={() => handleOpenModal(contextApp?.setCredits, contextApp?.isMedium!)}
+                onClick={() => handleOpenModal(contextApp?.setCredits)}
                 textContent="Credits"
             />
             <div className={styles.server}>

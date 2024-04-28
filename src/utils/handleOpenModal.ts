@@ -1,7 +1,7 @@
 import scroll from './scroll';
 import { BooleanState } from '../interfaces/interface';
 
-const handleOpenModal = (setStatusModal: BooleanState | undefined, isMobile: boolean): void => {
+const handleOpenModal = (setStatusModal: BooleanState | undefined): void => {
     const openModal = (): void => {
         if (setStatusModal) {
             setStatusModal(true);
@@ -11,13 +11,12 @@ const handleOpenModal = (setStatusModal: BooleanState | undefined, isMobile: boo
         window.removeEventListener('scrollend', openModal);
     };
 
-    if (!isMobile) {
-        if (window.scrollY !== 0) {
-            window.addEventListener('scrollend', openModal);
-            scroll.moveTop();
-            return;
-        }
+    if (window.scrollY !== 0) {
+        window.addEventListener('scrollend', openModal);
+        scroll.moveTop();
+        return;
     }
+
     openModal();
 };
 
