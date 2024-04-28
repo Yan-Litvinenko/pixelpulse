@@ -201,22 +201,8 @@
 }
 
 @media (max-width: 1200px) {
-    .header {
-        @include fontSize32px();
-    }
-
-    .statistics {
-        @include fontSize24px();
-    }
-
-    .coins__text,
-    .level__text {
-        @include fontSize32px();
-    }
-
     .audio,
     .visual {
-        @include fontSize24px();
         padding-right: 0;
     }
 }
@@ -228,26 +214,6 @@
         &__inner {
             min-height: 800px;
         }
-    }
-}
-
-@media (max-width: 768px) {
-    .header {
-        @include fontSize26px();
-    }
-
-    .statistics {
-        @include fontSize18px();
-    }
-
-    .coins__text,
-    .level__text {
-        @include fontSize26px();
-    }
-
-    .audio,
-    .visual {
-        @include fontSize18px();
     }
 }
 

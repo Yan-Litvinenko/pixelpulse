@@ -96,11 +96,16 @@
 
 .audio .checkbox::before,
 .audio .checkbox::after {
-    @include absolute-position(44%);
+    @include absolute-position(44.2%);
     background-color: var(--main-color);
     content: '';
     height: 0.1875rem;
-    transition: box-shadow var(--transition-element);
+    transition:
+        box-shadow var(--transition-element),
+        transform var(--transition-element),
+        top var(--transition-element),
+        right var(--transition-element),
+        width var(--transition-element);
 }
 
 .audio .checkbox::before {
@@ -112,7 +117,7 @@
 
 .audio .checkbox::after {
     right: 0.3125rem;
-    transform: rotate(-48deg);
+    transform: rotate(-46deg);
     width: 0.9375rem;
 }
 
