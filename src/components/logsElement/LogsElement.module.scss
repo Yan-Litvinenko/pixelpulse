@@ -2,7 +2,7 @@
 
 .element {
     @include fontSize18px();
-    @include grid-container(6fr 1fr, $justify-content: space-between, $align-items: center);
+    @include grid-container(6fr 1fr, $justify-content: space-between, $align-items: center, $gap: 0 0.3125rem);
     border: 1px solid var(--main-color);
     color: var(--main-color);
     font-family: 'Big-Shoulders';

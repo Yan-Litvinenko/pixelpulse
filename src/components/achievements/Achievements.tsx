@@ -4,6 +4,7 @@ import AchievementsProgress from '../achievementsProgress/AchievementsProgress';
 import AchievementsLabel from '../achievementsLabel/AchievementsLabel';
 import Frame from '../frame/Frame';
 import Heading from '../heading/Heading';
+import { nanoid } from 'nanoid';
 import { Rarity } from '../../interfaces/interface';
 import achievements from '../../assets/json/achievements.json';
 import styles from './Achievements.module.scss';
@@ -25,6 +26,7 @@ const Achievements = (): React.JSX.Element => {
                                     if (achieve.status === 'achieved') {
                                         return (
                                             <AchievementsAchieve
+                                                key={nanoid()}
                                                 date={achieve.date}
                                                 description={achieve.description}
                                                 rarity={achieve.rarity as Rarity}

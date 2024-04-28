@@ -2,14 +2,14 @@
 
 .update {
     @include grid-container(1fr 1fr, $gap: 0.9375rem);
-    margin-bottom: 3.125rem;
+    margin-bottom: 3.5rem;
 }
 
 .element {
     @include flex-container(column, $gap: 0.3125rem 0rem);
     background-color: var(--dark-border);
     clip-path: polygon(0.875rem 0.0625rem, 100% 0.0625rem, 100% 100%, 0% 100%, 0% 0.75rem);
-    padding: 0.9375rem;
+    padding: 0.9375rem 0.9375rem 0.625rem;
     position: relative;
 
     &::before {
@@ -33,6 +33,34 @@
     &__text {
         @include text-properties('Iceland', 0.875rem, 400);
         color: var(--dark-grey);
+    }
+
+    &__text_clip {
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        display: -webkit-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &__expend {
+        @include text-properties($font-size: 0.875rem);
+        align-self: flex-start;
+        background-color: transparent;
+        border: none;
+        color: var(--main-color);
+        cursor: pointer;
+        justify-self: flex-end;
+        max-width: 4rem;
+        padding: 0;
+        text-transform: uppercase;
+        transition: text-shadow var(--transition-element);
+    }
+}
+
+@media (hover: hover) {
+    .element__expend:hover {
+        text-shadow: var(--text-shadow);
     }
 }
 

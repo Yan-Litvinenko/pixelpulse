@@ -3,6 +3,7 @@ import Heading from '../heading/Heading';
 import Hexagon from '../hexagon/Hexagon';
 import Paragraph from '../paragraph/Paragraph';
 import { ContextApp } from '../app/App';
+import scroll from '../../utils/scroll';
 import { Page, IAppContext } from '../../interfaces/interface';
 import styles from './NavigationElement.module.scss';
 
@@ -21,6 +22,7 @@ const NavigationElement = ({ textContent, activeElement }: INavigationElement): 
         if (contextApp.page !== textContent) {
             contextApp.setPage(textContent);
             contextApp.setNavigationMobile(false);
+            scroll.on();
         }
     };
 
