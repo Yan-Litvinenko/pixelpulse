@@ -5,6 +5,7 @@
     border-right: 0.0625rem solid #1d1d20;
     grid-column: 1 / 2;
     grid-row: 1 / 2;
+    max-width: 7rem;
 
     &__image {
         padding: 0.5rem 0.9375rem 0rem;
@@ -162,4 +163,41 @@
 
 .achieve_unusual .box_image__rarity {
     background-color: rgb(var(--unusual));
+}
+
+@media (max-width: 1300px) {
+    .achieve__inner {
+        @include grid-container(1fr 2.7fr, 1fr);
+    }
+}
+
+@media (max-width: 420px) {
+    .box_image {
+        width: 5.625rem;
+
+        &__image {
+            margin-top: auto;
+        }
+
+        &__rarity {
+            @include fontSize14px();
+            margin-top: auto;
+        }
+    }
+
+    .achieve {
+        &__inner {
+            @include grid-container(1fr 2.4fr, 1fr);
+        }
+
+        &__title {
+            @include fontSize16px();
+            padding: 1rem 1rem 0rem;
+        }
+
+        &__description {
+            @include fontSize12px();
+            padding: 1rem 1rem 0rem;
+        }
+    }
 }

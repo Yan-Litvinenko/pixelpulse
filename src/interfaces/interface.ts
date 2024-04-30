@@ -37,5 +37,6 @@ interface ICommitLog {
 }
 
 type Rarity = 'legendary' | 'epic' | 'rare' | 'unusual';
+type SwitchAchieved = 'all' | 'achieved' | 'inProgress';
 
-export { IAppContext, SettingContext, BooleanState, Page, ICommitLog, Rarity };
+export { IAppContext, SettingContext, BooleanState, Page, ICommitLog, Rarity, SwitchAchieved };

@@ -106,6 +106,7 @@
 
 @media (max-width: 768px) {
     .about {
+        background-image: none;
         border: none;
         grid-row: 1 / -1;
         min-height: 100vh;

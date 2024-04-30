@@ -37,3 +37,7 @@
 .label__input:checked + .label__checkbox::after {
     display: block;
 }
+
+.label__input:checked ~ .label__text {
+    text-shadow: var(--text-shadow);
+}

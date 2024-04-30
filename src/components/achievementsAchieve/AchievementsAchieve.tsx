@@ -16,18 +16,12 @@ interface IAchievementsAchieve {
     status: 'achieved' | 'in progress';
 }
 
-const isActive = (status: string | 'ongoing'): string => {
-    if (status === 'in progress') {
-        return styles.ongoing_status;
-    }
-
-    return '';
-};
-
 const AchievementsAchieve = (props: IAchievementsAchieve): React.JSX.Element => {
     const rarity = { legendary, epic, rare, unusual };
     return (
-        <div className={`${styles.achieve}  ${styles[`achieve_${props.rarity}`]} ${isActive(props.status)}`}>
+        <div
+            className={`${styles.achieve}  ${styles[`achieve_${props.rarity}`]} ${props.status === 'in progress' ? styles.ongoing_status : ''}`}
+        >
             <div className={styles.box_image}>
                 <img className={styles.box_image__image} src={rarity[props.rarity]} alt="achieve" />
                 <span className={styles.box_image__rarity}>{props.rarity}</span>

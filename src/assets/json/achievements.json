@@ -25,6 +25,20 @@
         "description": "Get level 20",
         "rarity": "unusual",
         "status": "achieved",
-        "title": "Get level 20"
+        "title": "20 level"
+    },
+    {
+        "date": "2023.07.20",
+        "description": "Use pixel-perfect approach",
+        "rarity": "unusual",
+        "status": "achieved",
+        "title": "pixel-perfect perfectionist"
+    },
+    {
+        "date": "2023.05.15",
+        "description": "Explore the emmet utility",
+        "rarity": "unusual",
+        "status": "achieved",
+        "title": "speed-demon"
     }
 ]

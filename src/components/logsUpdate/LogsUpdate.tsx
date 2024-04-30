@@ -1,71 +1,42 @@
 import React from 'react';
+import useLogsUpdate from '../../hooks/useLogsUpdate';
 import Button from '../button/Button';
 import Heading from '../heading/Heading';
 import { nanoid } from 'nanoid';
-import updateData from '../../assets/json/update.json';
 import styles from './LogsUpdate.module.scss';
 
+const update = [
+    {
+        title: 'project update',
+        text: 'The development team has been working tirelessly on the latest iteration of the project. Significant progress has been made in the areas of neural interface integration, machine learning algorithms, and quantum computing. of neural interface integration, machine learning algorithms, and quantum computing',
+    },
+    {
+        title: 'Challenges',
+        text: ' system crashes, hardware malfunctions, and unanticipated compatibility issues',
+    },
+    {
+        title: 'NEXT STEPS',
+        text: 'The development team has been working tirelessly on the latest iteration of the project. Significant progress has been made in the areas of neural interface integration, machine learning algorithms, and quantum computing.',
+    },
+    {
+        title: 'CONCLUSION',
+        text: 'The development of advanced neural interfaces and machine learning algorithms',
+    },
+];
+
 const LogsUpdate = (): React.JSX.Element => {
-    const [expandStates, setExpandStates] = React.useState<boolean[]>(updateData.map(() => false));
-    const [clippedIndexes, setClippedIndexes] = React.useState<number[]>([]);
-    const textRefs = React.useRef<(HTMLParagraphElement | null)[]>([]);
-
-    const handleExpand = (index: number): void => {
-        if (expandStates[index]) {
-            textRefs.current[index]?.classList.add(styles.element__text_clip);
-            setExpandStates((prev) => [...prev, (prev[index] = false)]);
-        } else {
-            textRefs.current[index]?.classList.remove(styles.element__text_clip);
-            setExpandStates((prev) => [...prev, (prev[index] = true)]);
-        }
-
-        // if (expandStates[index]) {
-        //     // setExpandStates((prev) => [...prev.map((item, i) => (i === index ? !item : item))]);
-        // } else {
-        //     textRefs.current[index]?.classList.add(styles.element__text_clip);
-        //     // setExpandStates((prev) => [...prev.map((item, i) => (i === index ? !item : item))]);
-        // }
-    };
-
-    const handleResize = (): void => {
-        const newClippedIndexes: number[] = [];
-
-        textRefs.current.forEach((textElement, index) => {
-            if (textElement) {
-                textElement.classList.remove(styles.element__text_clip);
-                const rect: DOMRect = textElement.getBoundingClientRect();
-
-                if (rect.height > 61) {
-                    newClippedIndexes.push(index);
-                }
-            }
+    const [expandStates, clippedIndexes, setExpandStates, textRefs] = useLogsUpdate(update, styles.element__text_clip);
+    const handleExpand = React.useCallback((index: number): void => {
+        return setExpandStates((prevStates) => {
+            const newStates: boolean[] = [...prevStates];
+            newStates[index] = !prevStates[index];
+            return newStates;
         });
-
-        setClippedIndexes(newClippedIndexes);
-    };
-
-    React.useEffect(() => {
-        const observer: ResizeObserver = new ResizeObserver(handleResize);
-
-        window.addEventListener('resize', handleResize);
-
-        textRefs.current.forEach((textElement) => {
-            if (textElement) {
-                observer.observe(textElement);
-            }
-        });
-
-        handleResize();
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-            observer.disconnect();
-        };
     }, []);
 
     return (
         <div className={styles.update}>
-            {updateData.map((element, index) => {
+            {update.map((element, index) => {
                 return (
                     <div className={styles.element} key={nanoid()}>
                         <div className={styles.border}></div>

@@ -9,3 +9,9 @@
         transform: rotate(90deg) scaleX(-1);
     }
 }
+
+@media (max-width: 768px) {
+    .ring {
+        display: none;
+    }
+}
