@@ -83,40 +83,13 @@
             border-bottom: 0.0625rem solid var(--dark-border);
             padding: 0rem 2rem 1rem;
         }
-    }
-}
 
-@media (max-width: 768px) {
-    .modal {
-        left: 0.625rem;
-        padding: 0rem;
-        right: 0.625rem;
-        top: 0.625rem;
-
-        &__inner {
-            padding-top: 0.625rem;
-        }
-
-        &__title {
-            padding: 0rem 1.25rem;
-            margin-bottom: 0.625rem;
-        }
-
-        &__subtitle {
-            padding: 0rem 1.25rem 1rem;
-            margin: 0;
-        }
-    }
-}
-
-@media (max-width: 420px) {
-    .modal {
-        &__title {
-            padding: 0rem 0.75rem;
-        }
-
-        &__subtitle {
-            padding: 0rem 0.75rem 1rem;
+        &__content {
+            background-color: var(--main-background-color);
+            border: none;
+            clip-path: none;
+            height: 100%;
+            width: 100%;
         }
     }
 }

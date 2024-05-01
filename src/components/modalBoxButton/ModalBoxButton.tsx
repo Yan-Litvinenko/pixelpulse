@@ -17,6 +17,7 @@ const ModalBoxButton = (props: IModalBoxButton): React.JSX.Element => {
         contextApp?.setAvailability(false);
         contextApp?.setSocial(false);
         contextApp?.setSetting(false);
+        contextApp?.setChallenge(false);
         scroll.on();
     };
 

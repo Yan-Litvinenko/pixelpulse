@@ -21,6 +21,7 @@ type IAppContext = {
     setMusic: BooleanState;
     setSounds: BooleanState;
     setNavigationMobile: BooleanState;
+    setChallenge: BooleanState;
     commits: ICommitLog[] | undefined;
     isMedium: boolean;
     isLarge: boolean;

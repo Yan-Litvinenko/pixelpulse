@@ -53,7 +53,7 @@ const handleGithubRequest = async (): Promise<ICommitLog[] | undefined> => {
         const data: IGithubRespone[] | undefined = await githubAPI();
         if (!data) return;
 
-        return handleCommit(data.slice(0, 5));
+        return handleCommit(data.slice(0, 7));
     } catch (error) {
         console.error('Error fetching data:', error);
         throw new Error('Failed to fetch data');

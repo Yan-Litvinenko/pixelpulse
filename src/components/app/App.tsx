@@ -8,9 +8,10 @@ import ModalAvailability from '../modalAvailability/ModalAvailability';
 import ModalCredits from '../modalCredits/ModalCredits';
 import ModalSetting from '../modalSetting/ModalSetting';
 import ModalSocial from '../modalSocial/ModalSocial';
+import ModalChallenge from '../modalChallenge/ModalChallenge';
 import NavigationMobile from '../navigationMobile/NavigationMobile';
 import handleWrapperClassName from '../../utils/handleWrapperClassName';
-import { IAppContext, Page, ICommitLog } from '../../interfaces/interface';
+import { IAppContext, Page } from '../../interfaces/interface';
 import styles from './App.module.scss';
 
 const ContextApp = React.createContext<IAppContext | undefined>(undefined);
@@ -26,6 +27,7 @@ const App = (): React.JSX.Element => {
     const [credits, setCredits] = React.useState<boolean>(false);
     const [setting, setSetting] = React.useState<boolean>(false);
     const [social, setSocial] = React.useState<boolean>(false);
+    const [challenge, setChallenge] = React.useState<boolean>(false);
     const [sounds, setSounds] = useLocalStorage(true, 'sounds');
     const [music, setMusic] = useLocalStorage(true, 'music');
     const [navigationMobile, setNavigationMobile] = React.useState<boolean>(false);
@@ -36,6 +38,7 @@ const App = (): React.JSX.Element => {
                 value={{
                     TRANSITION_TIME,
                     setAvailability,
+                    setChallenge,
                     setCredits,
                     setMusic,
                     setNavigationMobile,
@@ -56,7 +59,7 @@ const App = (): React.JSX.Element => {
             >
                 <div
                     className={handleWrapperClassName({
-                        effects: [social, availability, credits],
+                        effects: [social, availability, credits, challenge],
                         settingState: setting,
                         isMedium: isMedium,
                         isLarge: isLarge,
@@ -71,6 +74,7 @@ const App = (): React.JSX.Element => {
                 {social ? <ModalSocial /> : null}
                 {credits ? <ModalCredits /> : null}
                 {setting ? <ModalSetting /> : null}
+                {challenge ? <ModalChallenge /> : null}
                 {navigationMobile && (isMedium || isLarge) ? <NavigationMobile /> : null}
             </ContextApp.Provider>
         </>
