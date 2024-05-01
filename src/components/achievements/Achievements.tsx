@@ -17,6 +17,13 @@ interface IAchieve {
     title: string;
 }
 
+const levelRarity: Record<string, number> = {
+    unusual: 1,
+    rare: 2,
+    epic: 3,
+    legendary: 4,
+};
+
 const Achievements = (): React.JSX.Element => {
     const [checked, setChecked] = React.useState<SwitchAchieved>('all');
 
@@ -24,7 +31,20 @@ const Achievements = (): React.JSX.Element => {
         setChecked(event.target.value as SwitchAchieved);
     };
 
-    const filteredAchievements: IAchieve[] = achievements.filter((achieve) => {
+    const sortAchievements: IAchieve[] = achievements.sort((a, b) => {
+        const A: number = levelRarity[a.rarity];
+        const B: number = levelRarity[b.rarity];
+
+        if (A > B) {
+            return 1;
+        } else if (A < B) {
+            return -1;
+        } else {
+            return 0;
+        }
+    });
+
+    const filteredAchievements: IAchieve[] = sortAchievements.filter((achieve) => {
         if (checked === 'all') return true;
         if (checked === 'achieved') return achieve.status === 'achieved';
         if (checked === 'inProgress') return achieve.status === 'in progress';
@@ -70,6 +90,13 @@ const Achievements = (): React.JSX.Element => {
 
                 <div className={styles.switchers}>
                     <AchievementsLabel
+                        checked={checked === 'all'}
+                        id="all"
+                        onChange={handleChange}
+                        textContent="all"
+                        value={'all'}
+                    />
+                    <AchievementsLabel
                         id="achieved"
                         onChange={handleChange}
                         textContent="achieved"
@@ -82,13 +109,6 @@ const Achievements = (): React.JSX.Element => {
                         textContent="in progress"
                         value={'inProgress'}
                         checked={checked === 'inProgress'}
-                    />
-                    <AchievementsLabel
-                        checked={checked === 'all'}
-                        id="all"
-                        onChange={handleChange}
-                        textContent="all"
-                        value={'all'}
                     />
                 </div>
             </div>

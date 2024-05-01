@@ -122,6 +122,8 @@
             grid-column: 1 / -1;
             grid-row: 2 / 3;
             height: auto;
+            max-height: 55rem;
+            overflow-y: auto;
         }
 
         &__content {

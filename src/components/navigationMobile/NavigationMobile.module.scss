@@ -144,9 +144,11 @@
     content: '';
     height: 0.1875rem;
     transition:
-        border var(--transition-element),
         box-shadow var(--transition-element),
-        text-shadow var(--transition-element);
+        transform var(--transition-element),
+        top var(--transition-element),
+        right var(--transition-element),
+        width var(--transition-element);
 }
 
 .audio .checkbox::before {

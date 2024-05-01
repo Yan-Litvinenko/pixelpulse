@@ -18,6 +18,9 @@ const Logs = (): React.JSX.Element => {
                 <Heading className={styles.logs__title} level="2" textContent="data log dump initialized." />
                 <LogsProject commits={contextApp?.commits} />
                 <LogsUpdate />
+                <a className={styles.logs__github} href="https://github.com/Darth-VaderX" target="_blank">
+                    github.com
+                </a>
                 <LogsOld commits={contextApp?.commits} />
             </div>
         </main>
