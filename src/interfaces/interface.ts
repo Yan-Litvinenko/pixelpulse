@@ -24,6 +24,7 @@ type IAppContext = {
     commits: ICommitLog[] | undefined;
     isMedium: boolean;
     isLarge: boolean;
+    isLoadingGithub: boolean;
     music: boolean;
     navigationMobile: boolean;
     page: Page;

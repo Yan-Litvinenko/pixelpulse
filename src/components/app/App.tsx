@@ -10,7 +10,7 @@ import ModalSetting from '../modalSetting/ModalSetting';
 import ModalSocial from '../modalSocial/ModalSocial';
 import NavigationMobile from '../navigationMobile/NavigationMobile';
 import handleWrapperClassName from '../../utils/handleWrapperClassName';
-import { IAppContext, Page } from '../../interfaces/interface';
+import { IAppContext, Page, ICommitLog } from '../../interfaces/interface';
 import styles from './App.module.scss';
 
 const ContextApp = React.createContext<IAppContext | undefined>(undefined);
@@ -20,7 +20,7 @@ const App = (): React.JSX.Element => {
     const isMedium: boolean = useMediaQuery({ maxWidth: 768 });
     const isLarge: boolean = useMediaQuery({ maxWidth: 1200 });
 
-    const [commits] = useGithubApi();
+    const [commits, isLoadingGithub] = useGithubApi();
     const [PageComponent, page, setPage] = usePage('welcome');
     const [availability, setAvailability] = React.useState<boolean>(false);
     const [credits, setCredits] = React.useState<boolean>(false);
@@ -45,6 +45,7 @@ const App = (): React.JSX.Element => {
                     setSounds,
                     commits,
                     isLarge,
+                    isLoadingGithub,
                     isMedium,
                     music,
                     navigationMobile,

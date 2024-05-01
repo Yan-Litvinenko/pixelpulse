@@ -84,22 +84,11 @@
     }
 
     .label {
-        @include fontSize23px();
         gap: 0.5rem 0rem;
 
         &__textarea {
             margin-bottom: 0.6rem;
             min-height: 19.8125rem;
-        }
-
-        &__input,
-        &__textarea {
-            @include fontSize24px();
-        }
-
-        &__input::placeholder,
-        &__textarea::placeholder {
-            @include fontSize24px();
         }
     }
 }
@@ -111,7 +100,6 @@
     }
 
     .label {
-        @include fontSize18px();
         gap: 0.75rem 0rem;
 
         &__textarea {
@@ -120,16 +108,6 @@
 
         &__input {
             height: 2.8125rem;
-        }
-
-        &__input,
-        &__textarea {
-            @include fontSize14px();
-        }
-
-        &__input::placeholder,
-        &__textarea::placeholder {
-            @include fontSize14px();
         }
     }
 }

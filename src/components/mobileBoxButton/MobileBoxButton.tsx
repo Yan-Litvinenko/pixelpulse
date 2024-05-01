@@ -14,9 +14,11 @@ const MobileBoxButton = (): React.JSX.Element => {
         }
     };
     const handleAboutClick = (): void => {
-        contextApp?.setPage('about');
-        contextApp?.setNavigationMobile(false);
-        scroll.on();
+        if (contextApp?.page !== 'about') {
+            contextApp?.setPage('about');
+            contextApp?.setNavigationMobile(false);
+            scroll.on();
+        }
     };
 
     return (

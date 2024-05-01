@@ -1,8 +1,11 @@
 @import '../../css/mixin.scss';
 
 .box {
-    @include position(fixed, 0.625rem, 0.625rem, 0rem, 0.625rem);
     @include flex-container(column, $justify-content: space-between);
+    background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.6) 60%, rgba(0, 0, 0, 0));
+    position: fixed;
+    inset: 0;
+    padding: 0.625rem;
     z-index: 10;
 
     &__inner {
@@ -211,7 +214,12 @@
 
 @media (max-height: 815px) {
     .box {
-        overflow: scroll;
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+        }
 
         &__inner {
             min-height: 800px;

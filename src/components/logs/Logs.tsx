@@ -5,11 +5,23 @@ import Heading from '../heading/Heading';
 import LogsOld from '../logsOld/LogsOld';
 import LogsProject from '../logsProject/LogsProject';
 import LogsUpdate from '../logsUpdate/LogsUpdate';
-import { IAppContext } from '../../interfaces/interface';
+import { IAppContext, ICommitLog } from '../../interfaces/interface';
 import styles from './Logs.module.scss';
 
 const Logs = (): React.JSX.Element => {
     const contextApp: IAppContext | undefined = useContext(ContextApp);
+
+    const getCommits = (): ICommitLog[] | undefined => {
+        if (!contextApp) {
+            return;
+        }
+
+        if (contextApp.isLoadingGithub) {
+            return Array.from({ length: 5 }).fill({ message: 'loading', date: 'loading' }) as ICommitLog[];
+        }
+
+        return contextApp.commits as ICommitLog[];
+    };
 
     return (
         <main className={styles.logs}>
@@ -21,7 +33,7 @@ const Logs = (): React.JSX.Element => {
                 <a className={styles.logs__github} href="https://github.com/Darth-VaderX" target="_blank">
                     github.com
                 </a>
-                <LogsOld commits={contextApp?.commits} />
+                <LogsOld commits={getCommits()} />
             </div>
         </main>
     );

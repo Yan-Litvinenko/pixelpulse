@@ -71,7 +71,7 @@
         grid-column: 1 / -1;
         grid-row: 2 / 3;
         height: auto;
-        min-height: 100vh;
+        min-height: auto;
         padding: 1.5rem 0.625rem 0rem;
         width: 100%;
 
@@ -89,18 +89,14 @@
     }
 
     .box_image {
-        height: 50rem;
+        height: 34rem;
     }
 }
 
 @media (max-width: 976px) {
     .about__text_content {
-        gap: 3rem 0rem;
         width: 100%;
-    }
-
-    .box_image {
-        display: none;
+        max-width: 25rem;
     }
 }
 

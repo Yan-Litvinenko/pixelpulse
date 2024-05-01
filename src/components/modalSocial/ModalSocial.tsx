@@ -22,7 +22,7 @@ const ModalSocial = (): React.JSX.Element | null => {
                 <div className={styles.modal__inner}>
                     <div className={styles.modal__box_title}>
                         <Heading className={styles.modal__title} level="3" textContent={'connect with me'} />
-                        <Cross setModalState={() => contextApp.setSocial(false)} />
+                        <Cross setModalState={() => contextApp.setSocial(false)} scrollStatus="on" />
                     </div>
                     <Heading
                         className={styles.modal__subtitle}

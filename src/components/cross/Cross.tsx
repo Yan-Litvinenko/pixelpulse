@@ -5,13 +5,20 @@ import styles from './Cross.module.scss';
 
 interface ICross {
     setModalState: BooleanState;
+    scrollStatus: 'on' | 'off';
 }
 
-const Cross = ({ setModalState }: ICross): React.JSX.Element => {
+const Cross = ({ setModalState, scrollStatus }: ICross): React.JSX.Element => {
     const handleCross = () => {
         setModalState(false);
-        scroll.on();
+
+        if (scrollStatus === 'off') {
+            scroll.off();
+        } else {
+            scroll.on();
+        }
     };
+
     return (
         <div className={styles.cross_box} onClick={handleCross}>
             <svg
