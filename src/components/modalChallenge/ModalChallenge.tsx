@@ -26,7 +26,7 @@ const ModalChallenge = () => {
                     </div>
                     <Heading className={styles.modal__subtitle} level="4" textContent={'Offer me a challenge!'} />
                     <FormChallenge />
-                    <ModalBoxButton textEnter={'send [enter]'} textEsc={'discard [esc]'} />
+                    <ModalBoxButton textEnter={'send [enter]'} textEsc={'discard [esc]'} submit="challenge" />
                 </div>
             </div>
         </>

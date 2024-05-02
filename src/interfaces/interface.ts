@@ -13,19 +13,23 @@ type BooleanState = React.Dispatch<React.SetStateAction<boolean>>;
 
 type IAppContext = {
     TRANSITION_TIME: number;
-    setSocial: BooleanState;
     setAvailability: BooleanState;
-    setCredits: BooleanState;
-    setSetting: BooleanState;
-    setPage: (page: Page) => void;
-    setMusic: BooleanState;
-    setSounds: BooleanState;
-    setNavigationMobile: BooleanState;
     setChallenge: BooleanState;
+    setContactFormData: React.Dispatch<React.SetStateAction<IContactFormData>>;
+    setCredits: BooleanState;
+    setMusic: BooleanState;
+    setNavigationMobile: BooleanState;
+    setPage: (page: Page) => void;
+    setSetting: BooleanState;
+    setSocial: BooleanState;
+    setSounds: BooleanState;
+    setFormError: React.Dispatch<React.SetStateAction<IFormError>>;
     commits: ICommitLog[] | undefined;
-    isMedium: boolean;
+    contactFormData: IContactFormData;
+    formError: IFormError;
     isLarge: boolean;
     isLoadingGithub: boolean;
+    isMedium: boolean;
     music: boolean;
     navigationMobile: boolean;
     page: Page;
@@ -38,7 +42,19 @@ interface ICommitLog {
     date: string;
 }
 
-type Rarity = 'legendary' | 'epic' | 'rare' | 'unusual';
-type SwitchAchieved = 'all' | 'achieved' | 'inProgress';
+interface IContactFormData {
+    name: string;
+    email: string;
+    message: string;
+}
 
-export { IAppContext, SettingContext, BooleanState, Page, ICommitLog, Rarity, SwitchAchieved };
+interface IContactForm {
+    contactFormData: IContactFormData;
+    setContactFormData: React.Dispatch<React.SetStateAction<IContactFormData>>;
+}
+
+interface IFormError {
+    [key: string]: string;
+}
+
+export { BooleanState, IAppContext, ICommitLog, IContactForm, IContactFormData, Page, SettingContext, IFormError };

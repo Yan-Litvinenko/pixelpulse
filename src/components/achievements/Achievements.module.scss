@@ -35,28 +35,6 @@
     }
 }
 
-.achieved {
-    &__title {
-        display: block;
-        margin-bottom: 1.125rem;
-    }
-
-    &__achievements {
-        @include flex-container(column, $gap: 1.25rem 0rem);
-    }
-}
-
-.ongoing {
-    &__title {
-        display: block;
-        margin-bottom: 1.125rem;
-    }
-
-    &__achievements {
-        @include flex-container(column, $gap: 1.25rem 0rem);
-    }
-}
-
 .switchers {
     @include flex-container(column, $gap: 0.625rem 0rem);
     grid-column: 3 / 4;

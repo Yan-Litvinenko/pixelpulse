@@ -11,7 +11,7 @@ import ModalSocial from '../modalSocial/ModalSocial';
 import ModalChallenge from '../modalChallenge/ModalChallenge';
 import NavigationMobile from '../navigationMobile/NavigationMobile';
 import handleWrapperClassName from '../../utils/handleWrapperClassName';
-import { IAppContext, Page } from '../../interfaces/interface';
+import { IAppContext, Page, IContactFormData, IFormError } from '../../interfaces/interface';
 import styles from './App.module.scss';
 
 const ContextApp = React.createContext<IAppContext | undefined>(undefined);
@@ -31,6 +31,12 @@ const App = (): React.JSX.Element => {
     const [sounds, setSounds] = useLocalStorage(true, 'sounds');
     const [music, setMusic] = useLocalStorage(true, 'music');
     const [navigationMobile, setNavigationMobile] = React.useState<boolean>(false);
+    const [formError, setFormError] = React.useState<IFormError>({});
+    const [contactFormData, setContactFormData] = React.useState<IContactFormData>({
+        name: '',
+        email: '',
+        message: '',
+    });
 
     return (
         <>
@@ -39,7 +45,9 @@ const App = (): React.JSX.Element => {
                     TRANSITION_TIME,
                     setAvailability,
                     setChallenge,
+                    setContactFormData,
                     setCredits,
+                    setFormError,
                     setMusic,
                     setNavigationMobile,
                     setPage,
@@ -47,6 +55,8 @@ const App = (): React.JSX.Element => {
                     setSocial,
                     setSounds,
                     commits,
+                    contactFormData,
+                    formError,
                     isLarge,
                     isLoadingGithub,
                     isMedium,

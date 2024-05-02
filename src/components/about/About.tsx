@@ -6,7 +6,7 @@ import { nanoid } from 'nanoid';
 import human from '../../assets/images/human.jpg';
 import styles from './About.module.scss';
 
-const content = [
+const content: Record<string, string>[] = [
     {
         title: 'The short introduction of my life',
         text: "I have always been fascinated by the endless possibilities of the internet and the ways it can be leveraged to make our lives better. I decided to pursue a career in web engineering to help build innovative and impactful web-based solutions that can solve complex problems and make a difference in people's lives.",

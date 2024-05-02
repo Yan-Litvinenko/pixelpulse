@@ -10,11 +10,23 @@ const FormChallenge = (): React.JSX.Element => {
         <>
             <form className={styles.form}>
                 <SelectChallenge />
-                <FormLabel textContent={'Title of achievement'} placeholder={'"The Smell of Money"'} child={'input'} />
                 <FormLabel
-                    textContent={'achievement description'}
-                    placeholder={'To get the achievement...'}
+                    child={'input'}
+                    name="title"
+                    placeholder={'"The Smell of Money"'}
+                    textContent={'Title of achievement'}
+                    value=""
+                    onChange={() => {}}
+                    error={''}
+                />
+                <FormLabel
                     child={'textarea'}
+                    name="description"
+                    placeholder={'To get the achievement...'}
+                    textContent={'achievement description'}
+                    value=""
+                    onChange={() => {}}
+                    error={''}
                 />
                 <ClipPathBorder className={styles.border} />
                 <ModalBackground />

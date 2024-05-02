@@ -30,7 +30,7 @@ const ModalSocial = (): React.JSX.Element | null => {
                         textContent={'wanna chat? Or just share something cool?'}
                     />
                     <Form />
-                    <ModalBoxButton textEnter={'send message [enter]'} textEsc={'discard [esc]'} />
+                    <ModalBoxButton textEnter={'send message [enter]'} textEsc={'discard [esc]'} submit="contact" />
                 </div>
             </div>
         </>

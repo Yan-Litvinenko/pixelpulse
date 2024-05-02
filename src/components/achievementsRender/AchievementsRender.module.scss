@@ -1,0 +1,23 @@
+@import '../../css/mixin.scss';
+
+.ongoing {
+    &__title {
+        display: block;
+        margin-bottom: 1.125rem;
+    }
+
+    &__achievements {
+        @include flex-container(column, $gap: 1.25rem 0rem);
+    }
+}
+
+.achieved {
+    &__title {
+        display: block;
+        margin-bottom: 1.125rem;
+    }
+
+    &__achievements {
+        @include flex-container(column, $gap: 1.25rem 0rem);
+    }
+}

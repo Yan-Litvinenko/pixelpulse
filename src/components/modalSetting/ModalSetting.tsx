@@ -51,7 +51,7 @@ const ModalSetting = (): React.JSX.Element => {
                     </div>
                 </div>
 
-                <ModalBoxButton textEnter="write to disk [enter]" textEsc="discard [esc]" />
+                <ModalBoxButton textEnter="write to disk [enter]" textEsc="discard [esc]" submit="setting" />
             </div>
         </div>
     );

@@ -39,6 +39,20 @@
     }
 }
 
+.error_input,
+.error_textarea {
+    @include text-properties($font-size: 0.75rem);
+    bottom: -21px;
+    color: var(--dark-grey);
+    left: 0;
+    position: absolute;
+    z-index: 3;
+}
+
+.error_textarea {
+    bottom: -2.0625rem;
+}
+
 @media (max-width: 1200px) {
     .label:has(textarea) {
         height: 100%;
@@ -51,6 +65,10 @@
             margin-bottom: 0.6rem;
             min-height: 19.8125rem;
         }
+    }
+
+    .error_textarea {
+        bottom: -0.75rem;
     }
 }
 

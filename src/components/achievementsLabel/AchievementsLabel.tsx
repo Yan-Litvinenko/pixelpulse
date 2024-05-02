@@ -1,5 +1,5 @@
 import React from 'react';
-import { SwitchAchieved } from '../../interfaces/interface';
+import { SwitchAchieved } from '../../interfaces/interface.achievements';
 import styles from './AchievementsLabel.module.scss';
 
 interface IAchievementsLabel {

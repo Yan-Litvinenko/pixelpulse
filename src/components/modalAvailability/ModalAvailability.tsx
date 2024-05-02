@@ -30,7 +30,7 @@ const ModalAvailability = (): React.JSX.Element | null => {
                         textContent={'I would love to hear about your projects!'}
                     />
                     <Form />
-                    <ModalBoxButton textEnter={'send message [enter]'} textEsc={'discard [esc]'} />
+                    <ModalBoxButton textEnter={'send message [enter]'} textEsc={'discard [esc]'} submit={'contact'} />
                 </div>
             </div>
         </>

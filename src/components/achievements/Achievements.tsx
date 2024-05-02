@@ -1,80 +1,17 @@
 import React from 'react';
-import AchievementsAchieve from '../achievementsAchieve/AchievementsAchieve';
-import AchievementsProgress from '../achievementsProgress/AchievementsProgress';
 import AchievementsLabel from '../achievementsLabel/AchievementsLabel';
+import AchievementsProgress from '../achievementsProgress/AchievementsProgress';
+import AchievementsRender from '../achievementsRender/AchievementsRender';
 import Frame from '../frame/Frame';
 import Heading from '../heading/Heading';
-import { nanoid } from 'nanoid';
-import { Rarity, SwitchAchieved } from '../../interfaces/interface';
-import achievements from '../../assets/json/achievements.json';
+import { SwitchAchieved } from '../../interfaces/interface.achievements';
 import styles from './Achievements.module.scss';
 
-interface IAchieve {
-    date: string;
-    description: string;
-    rarity: string;
-    status: string;
-    title: string;
-}
-
-const levelRarity: Record<string, number> = {
-    unusual: 1,
-    rare: 2,
-    epic: 3,
-    legendary: 4,
-};
-
 const Achievements = (): React.JSX.Element => {
-    const [checked, setChecked] = React.useState<SwitchAchieved>('all');
+    const [switchStatus, setSwitchStatus] = React.useState<SwitchAchieved>('all');
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-        setChecked(event.target.value as SwitchAchieved);
-    };
-
-    const sortAchievements: IAchieve[] = achievements.sort((a, b) => {
-        const A: number = levelRarity[a.rarity];
-        const B: number = levelRarity[b.rarity];
-
-        if (A > B) {
-            return 1;
-        } else if (A < B) {
-            return -1;
-        } else {
-            return 0;
-        }
-    });
-
-    const filteredAchievements: IAchieve[] = sortAchievements.filter((achieve) => {
-        if (checked === 'all') return true;
-        if (checked === 'achieved') return achieve.status === 'achieved';
-        if (checked === 'inProgress') return achieve.status === 'in progress';
-        return false;
-    });
-
-    const renderAchievements = (status: string): React.ReactElement | null => {
-        const filtered: IAchieve[] = filteredAchievements.filter((achieve) => achieve.status === status);
-        const classPrefix: 'achieved' | 'ongoing' = status === 'achieved' ? 'achieved' : 'ongoing';
-        if (filtered.length === 0) return null;
-
-        return (
-            <div className={styles[classPrefix]}>
-                <span className={styles[`${classPrefix}__title`]}>
-                    {status === 'achieved' ? 'achieved:' : 'to be achieved:'}
-                </span>
-                <div className={styles[`${classPrefix}__achievements`]}>
-                    {filtered.map((achieve) => (
-                        <AchievementsAchieve
-                            key={nanoid()}
-                            date={achieve.date}
-                            description={achieve.description}
-                            rarity={achieve.rarity as Rarity}
-                            status={achieve.status as 'achieved' | 'in progress'}
-                            title={achieve.title}
-                        />
-                    ))}
-                </div>
-            </div>
-        );
+        setSwitchStatus(event.target.value as SwitchAchieved);
     };
 
     return (
@@ -84,31 +21,31 @@ const Achievements = (): React.JSX.Element => {
             <div className={styles.achievements__content}>
                 <AchievementsProgress />
                 <div className={styles.achievements__achievements}>
-                    {renderAchievements('achieved')}
-                    {renderAchievements('in progress')}
+                    <AchievementsRender prefix={'achieved'} switchStatus={switchStatus} />
+                    <AchievementsRender prefix={'in progress'} switchStatus={switchStatus} />
                 </div>
 
                 <div className={styles.switchers}>
                     <AchievementsLabel
-                        checked={checked === 'all'}
+                        checked={switchStatus === 'all'}
                         id="all"
                         onChange={handleChange}
                         textContent="all"
                         value={'all'}
                     />
                     <AchievementsLabel
+                        checked={switchStatus === 'achieved'}
                         id="achieved"
                         onChange={handleChange}
                         textContent="achieved"
                         value={'achieved'}
-                        checked={checked === 'achieved'}
                     />
                     <AchievementsLabel
+                        checked={switchStatus === 'inProgress'}
                         id="inProgress"
                         onChange={handleChange}
                         textContent="in progress"
                         value={'inProgress'}
-                        checked={checked === 'inProgress'}
                     />
                 </div>
             </div>
