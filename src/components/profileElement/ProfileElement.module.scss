@@ -83,14 +83,6 @@
 
 @media (max-width: 1200px) {
     .profile {
-        &__title {
-            @include fontSize16px();
-        }
-
-        &__text {
-            @include fontSize20px();
-        }
-
         &__element {
             justify-content: end;
         }
@@ -134,14 +126,6 @@
 
 @media (max-width: 978px) {
     .profile {
-        &__title {
-            @include fontSize14px();
-        }
-
-        &__text {
-            @include fontSize18px();
-        }
-
         &__element {
             justify-content: end;
         }

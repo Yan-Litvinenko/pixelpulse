@@ -18,31 +18,3 @@
         color: var(--dark-grey);
     }
 }
-
-@media (max-width: 1200px) {
-    .project {
-        row-gap: 0.4rem;
-
-        &__title {
-            @include fontSize24px();
-        }
-
-        &__item {
-            @include fontSize22px();
-        }
-    }
-}
-
-@media (max-width: 768px) {
-    .project {
-        row-gap: 0.3125rem;
-
-        &__title {
-            @include fontSize18px();
-        }
-
-        &__item {
-            @include fontSize16px();
-        }
-    }
-}

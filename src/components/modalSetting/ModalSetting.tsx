@@ -11,13 +11,15 @@ import { ContextApp } from '../app/App';
 import { IAppContext } from '../../interfaces/interface';
 import styles from './ModalSetting.module.scss';
 
-const ModalSetting = (): React.JSX.Element => {
+const ModalSetting = (): React.JSX.Element | null => {
     const contextApp: IAppContext | undefined = React.useContext(ContextApp);
     const modal = React.useRef<HTMLDivElement | null>(null);
 
-    const handleCrossModal = () => {
-        contextApp?.setNavigationMobile(true);
-        contextApp?.setSetting(false);
+    if (!contextApp) return null;
+
+    const handleCrossModal = (): void => {
+        contextApp.setNavigationMobile(true);
+        contextApp.setSetting(false);
     };
 
     if (contextApp) {
@@ -29,7 +31,7 @@ const ModalSetting = (): React.JSX.Element => {
             <div className={styles.modal__inner}>
                 <div className={styles.modal__box_title}>
                     <Heading className={styles.modal__title} level="3" textContent="visual configurator" />
-                    <Cross setModalState={handleCrossModal} />
+                    <Cross setModalState={handleCrossModal} scrollStatus="off" />
                 </div>
                 <Heading className={styles.modal__subtitle} level="4" textContent="apply what works best for you" />
 
@@ -51,7 +53,12 @@ const ModalSetting = (): React.JSX.Element => {
                     </div>
                 </div>
 
-                <ModalBoxButton textEnter="write to disk [enter]" textEsc="discard [esc]" />
+                <ModalBoxButton
+                    textEnter="write to disk [enter]"
+                    textEsc="discard [esc]"
+                    submit="setting"
+                    setModalStatus={contextApp?.setSetting}
+                />
             </div>
         </div>
     );

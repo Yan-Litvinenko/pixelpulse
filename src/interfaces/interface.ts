@@ -1,3 +1,5 @@
+import { IContactFormData, IContactFieldsStatus, IFormError } from './interface.form';
+
 type Page = 'welcome' | 'beginning' | 'about' | 'logs' | 'achievements' | 'creations' | 'games';
 
 interface Settings {
@@ -13,17 +15,25 @@ type BooleanState = React.Dispatch<React.SetStateAction<boolean>>;
 
 type IAppContext = {
     TRANSITION_TIME: number;
-    setSocial: BooleanState;
     setAvailability: BooleanState;
+    setChallenge: BooleanState;
+    setContactFieldsStatus: React.Dispatch<React.SetStateAction<IContactFieldsStatus>>;
+    setContactFormData: React.Dispatch<React.SetStateAction<IContactFormData>>;
+    setContactFormError: React.Dispatch<React.SetStateAction<IFormError>>;
     setCredits: BooleanState;
-    setSetting: BooleanState;
-    setPage: (page: Page) => void;
     setMusic: BooleanState;
-    setSounds: BooleanState;
     setNavigationMobile: BooleanState;
+    setPage: (page: Page) => void;
+    setSetting: BooleanState;
+    setSocial: BooleanState;
+    setSounds: BooleanState;
     commits: ICommitLog[] | undefined;
-    isMedium: boolean;
+    contactFieldsStatus: IContactFieldsStatus;
+    contactFormData: IContactFormData;
+    contactFormError: IFormError;
     isLarge: boolean;
+    isLoadingGithub: boolean;
+    isMedium: boolean;
     music: boolean;
     navigationMobile: boolean;
     page: Page;
@@ -36,6 +46,4 @@ interface ICommitLog {
     date: string;
 }
 
-type Rarity = 'legendary' | 'epic' | 'rare' | 'unusual';
-
-export { IAppContext, SettingContext, BooleanState, Page, ICommitLog, Rarity };
+export { BooleanState, IAppContext, ICommitLog, Page, SettingContext };

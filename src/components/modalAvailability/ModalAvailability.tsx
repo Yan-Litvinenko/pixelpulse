@@ -22,7 +22,7 @@ const ModalAvailability = (): React.JSX.Element | null => {
                 <div className={styles.modal__inner}>
                     <div className={styles.modal__box_title}>
                         <Heading className={styles.modal__title} level="3" textContent={'open for hire'} />
-                        <Cross setModalState={() => contextApp.setAvailability(false)} />
+                        <Cross setModalState={contextApp.setAvailability} scrollStatus="on" />
                     </div>
                     <Heading
                         className={styles.modal__subtitle}
@@ -30,7 +30,12 @@ const ModalAvailability = (): React.JSX.Element | null => {
                         textContent={'I would love to hear about your projects!'}
                     />
                     <Form />
-                    <ModalBoxButton textEnter={'send message [enter]'} textEsc={'discard [esc]'} />
+                    <ModalBoxButton
+                        textEnter={'send message [enter]'}
+                        textEsc={'discard [esc]'}
+                        submit={'contact'}
+                        setModalStatus={contextApp.setAvailability}
+                    />
                 </div>
             </div>
         </>

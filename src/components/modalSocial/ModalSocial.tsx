@@ -14,7 +14,7 @@ const ModalSocial = (): React.JSX.Element | null => {
 
     if (!contextApp) return null;
 
-    useCloseModal(modal, [contextApp.setSocial, contextApp.setAvailability], contextApp.TRANSITION_TIME);
+    useCloseModal(modal, contextApp.setSocial, contextApp.TRANSITION_TIME);
 
     return (
         <>
@@ -22,7 +22,7 @@ const ModalSocial = (): React.JSX.Element | null => {
                 <div className={styles.modal__inner}>
                     <div className={styles.modal__box_title}>
                         <Heading className={styles.modal__title} level="3" textContent={'connect with me'} />
-                        <Cross setModalState={() => contextApp.setSocial(false)} />
+                        <Cross setModalState={() => contextApp.setSocial(false)} scrollStatus="on" />
                     </div>
                     <Heading
                         className={styles.modal__subtitle}
@@ -30,7 +30,12 @@ const ModalSocial = (): React.JSX.Element | null => {
                         textContent={'wanna chat? Or just share something cool?'}
                     />
                     <Form />
-                    <ModalBoxButton textEnter={'send message [enter]'} textEsc={'discard [esc]'} />
+                    <ModalBoxButton
+                        textEnter={'send message [enter]'}
+                        textEsc={'discard [esc]'}
+                        submit="contact"
+                        setModalStatus={contextApp.setSocial}
+                    />
                 </div>
             </div>
         </>

@@ -5,14 +5,14 @@
     border: 0.0625rem solid var(--frame-border-color);
     grid-column: 2 / 3;
     grid-row: 2 / 3;
-    min-height: var(--height-large);
+    height: var(--height-large);
     padding: 2.5rem 0.625rem 0.625rem;
     position: relative;
 
     &__title {
         @include text-properties($font-size: 1.125rem);
         letter-spacing: 0.075em;
-        margin-bottom: 0.625rem;
+        margin-bottom: 1.625rem;
         text-align: center;
     }
 
@@ -24,28 +24,14 @@
         @include flex-container(column, $gap: 3.75rem 0rem);
         grid-column: 2 / 3;
         grid-row: 1 / -1;
-    }
-}
+        height: calc(var(--height-large) - 9.375rem);
+        margin-bottom: 3.125rem;
+        overflow-y: auto;
 
-.achieved {
-    &__title {
-        display: block;
-        margin-bottom: 1.125rem;
-    }
-
-    &__achievements {
-        @include flex-container(column, $gap: 1.25rem 0rem);
-    }
-}
-
-.ongoing {
-    &__title {
-        display: block;
-        margin-bottom: 1.125rem;
-    }
-
-    &__achievements {
-        @include flex-container(column, $gap: 1.25rem 0rem);
+        &::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+        }
     }
 }
 
@@ -54,4 +40,93 @@
     grid-column: 3 / 4;
     grid-row: 2 / 3;
     padding-top: 0.25rem;
+}
+
+@media (max-width: 1700px) {
+    .achievements {
+        height: var(--height-medium);
+
+        &__achievements {
+            height: calc(var(--height-medium) - 9.375rem);
+        }
+    }
+}
+
+@media (max-width: 1380px) {
+    .achievements {
+        height: var(--height-small);
+
+        &__achievements {
+            height: calc(var(--height-small) - 9.375rem);
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .achievements {
+        grid-column: 1 / -1;
+        grid-row: 2 / 3;
+        height: auto;
+        min-height: 100vh;
+    }
+}
+
+@media (max-width: 914px) {
+    .achievements__content {
+        grid-template-columns: max-content 2fr max-content;
+    }
+}
+
+@media (max-width: 768px) {
+    .frame {
+        display: none;
+    }
+
+    .switchers {
+        align-self: end;
+        column-gap: 0.3125rem;
+        flex-direction: row;
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+    }
+
+    .achievements {
+        background-image: none;
+        border: none;
+        grid-row: 1 / -1;
+        padding: 1.5rem 0.625rem 0rem;
+
+        &__achievements {
+            grid-column: 1 / -1;
+            grid-row: 2 / 3;
+            height: auto;
+            max-height: 55rem;
+            overflow-y: auto;
+        }
+
+        &__content {
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: max-content 1fr;
+            margin-bottom: 5rem;
+            row-gap: 2rem;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .switchers {
+        grid-column: 1 / -1;
+        justify-content: space-around;
+    }
+
+    .achievements {
+        &__achievements {
+            grid-row: 2 / 3;
+            margin-bottom: 1.125rem;
+        }
+
+        &__content {
+            grid-template-rows: max-content max-content 1fr;
+        }
+    }
 }

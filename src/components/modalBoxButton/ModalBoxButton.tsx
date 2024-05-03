@@ -1,52 +1,45 @@
 import React from 'react';
-import scroll from '../../utils/scroll';
 import { ContextApp } from '../app/App';
-import { IAppContext } from '../../interfaces/interface';
+import useCloseButtonModal from '../../hooks/useCloseButtonModal';
+import useEnterButtonModal from '../../hooks/useEnterButtonModal';
+import { BooleanState, IAppContext } from '../../interfaces/interface';
 import styles from './ModalBoxButton.module.scss';
 
 interface IModalBoxButton {
+    setModalStatus: BooleanState;
+    submit: 'contact' | 'challenge' | 'setting';
     textEnter: string;
     textEsc: string;
 }
 
-const ModalBoxButton = (props: IModalBoxButton): React.JSX.Element => {
+const ModalBoxButton = (props: IModalBoxButton): React.JSX.Element | null => {
     const contextApp: IAppContext | undefined = React.useContext(ContextApp);
-    const modalEscape = React.useRef<null | HTMLButtonElement>(null);
+    const buttonEscape = React.useRef<null | HTMLButtonElement>(null);
 
-    const handleEscape = (): void => {
-        contextApp?.setAvailability(false);
-        contextApp?.setSocial(false);
-        contextApp?.setSetting(false);
-        scroll.on();
-    };
+    if (!contextApp) return null;
 
-    const handleEscapeKey = (event: KeyboardEvent): void => {
-        if (event.key === 'Escape') handleEscape();
-    };
+    useCloseButtonModal(buttonEscape, props.setModalStatus);
 
-    React.useEffect(() => {
-        if (contextApp?.isLarge || contextApp?.isMedium) {
-            window.addEventListener('keydown', handleEscapeKey);
-            modalEscape.current?.addEventListener('click', handleEscape);
-        } else {
-            setTimeout(() => {
-                window.addEventListener('keydown', handleEscapeKey);
-                modalEscape.current?.addEventListener('click', handleEscape);
-            }, contextApp?.TRANSITION_TIME);
+    const handleEnter = (): void => {
+        if (contextApp) {
+            switch (props.submit) {
+                case 'contact':
+                    useEnterButtonModal();
+                    break;
+                case 'challenge':
+                    break;
+                case 'setting':
+                    break;
+            }
         }
-
-        return () => {
-            window.removeEventListener('keydown', handleEscapeKey);
-            modalEscape.current?.removeEventListener('click', handleEscape);
-        };
-    });
+    };
 
     return (
         <div className={styles.box}>
-            <button className={styles.box__enter} onClick={() => {}}>
+            <button className={styles.box__enter} type="button" onClick={handleEnter}>
                 {props.textEnter}
             </button>
-            <button className={styles.box__esc} ref={modalEscape}>
+            <button className={styles.box__esc} type="button" ref={buttonEscape}>
                 {props.textEsc}
             </button>
         </div>

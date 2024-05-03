@@ -71,12 +71,11 @@
         grid-column: 1 / -1;
         grid-row: 2 / 3;
         height: auto;
-        min-height: 100vh;
+        min-height: auto;
         padding: 1.5rem 0.625rem 0rem;
         width: 100%;
 
         &__title {
-            @include fontSize26px();
             margin-bottom: 2.5rem;
         }
 
@@ -90,29 +89,25 @@
     }
 
     .box_image {
-        height: 50rem;
+        height: 34rem;
     }
 }
 
 @media (max-width: 976px) {
     .about__text_content {
-        gap: 3rem 0rem;
         width: 100%;
-    }
-
-    .box_image {
-        display: none;
+        max-width: 25rem;
     }
 }
 
 @media (max-width: 768px) {
     .about {
+        background-image: none;
         border: none;
         grid-row: 1 / -1;
         min-height: 100vh;
 
         &__title {
-            @include fontSize18px();
             margin-bottom: 2rem;
         }
 

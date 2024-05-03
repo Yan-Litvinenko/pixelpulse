@@ -34,7 +34,11 @@ const usePage = (initValue: Page): [component: PageComponent, Page, (page: Page)
         }
     }, [value]);
 
-    const setPage = useCallback((page: Page) => setValue(page), []);
+    const setPage = useCallback((page: Page) => {
+        if (page !== value) {
+            setValue(page);
+        }
+    }, []);
 
     return [getPageComponent(), value, setPage];
 };

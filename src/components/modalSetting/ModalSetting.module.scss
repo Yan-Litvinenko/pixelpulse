@@ -72,20 +72,26 @@
 
 @media (max-height: 890px) {
     .modal__inner {
-        overflow-y: scroll;
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+        }
     }
 }
 
 @media (max-width: 1200px) {
     .modal {
-        inset: 1rem 1rem auto;
-        padding: 0rem;
+        background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.6) 60%, rgba(0, 0, 0, 0));
+        inset: 0;
+        padding: 0.625rem;
 
         &__inner {
             @include flex-container(column);
             background-color: var(--main-background-color);
             border: 0.0625rem solid var(--dark-border);
-            height: 96vh;
+            height: 98vh;
             max-width: none;
             padding-top: 1rem;
             width: 100%;
@@ -96,25 +102,17 @@
         }
 
         &__title {
-            @include fontSize26px();
             margin-bottom: 0.625rem;
             padding: 0rem 2rem;
         }
 
         &__subtitle {
             border-bottom: 0.0625rem solid var(--dark-border);
-            font-size: 1.425rem;
-            letter-spacing: 0.06rem;
-            line-height: 1.425rem;
             padding: 0rem 2rem 1rem;
         }
 
         &__content {
             border: none;
-        }
-
-        &__warning_text {
-            @include fontSize18px();
         }
     }
 
@@ -130,7 +128,6 @@
         }
 
         &__subtitle {
-            @include fontSize16px();
             padding: 0rem 1.25rem 1.25rem;
         }
 
@@ -140,10 +137,6 @@
 
         &__setting {
             margin-bottom: 2rem;
-        }
-
-        &__warning_text {
-            @include fontSize16px();
         }
     }
 }

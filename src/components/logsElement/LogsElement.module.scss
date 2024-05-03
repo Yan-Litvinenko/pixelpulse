@@ -17,15 +17,3 @@
         text-align: right;
     }
 }
-
-@media (max-width: 1200px) {
-    .element {
-        @include fontSize24px();
-    }
-}
-
-@media (max-width: 768px) {
-    .element {
-        @include fontSize18px();
-    }
-}

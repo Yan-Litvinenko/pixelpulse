@@ -53,3 +53,33 @@
         text-shadow: var(--text-shadow);
     }
 }
+
+@media (max-width: 768px) {
+    .progress {
+        flex-direction: row;
+        grid-column: 2 / -1;
+        grid-row: 1 / 2;
+
+        &__inner {
+            display: none;
+        }
+
+        &__text {
+            display: none;
+        }
+
+        &__name {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .progress {
+        grid-column: 1 / -1;
+        grid-row: 3 / 4;
+        justify-self: start;
+        max-width: 100%;
+        width: 100%;
+    }
+}

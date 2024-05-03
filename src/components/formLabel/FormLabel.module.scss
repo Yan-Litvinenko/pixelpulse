@@ -37,6 +37,24 @@
     &__textarea:focus {
         box-shadow: 0 0 0 0.0625rem var(--dark-light-border);
     }
+
+    &__field_error {
+        border: 0.0625rem solid var(--main-color);
+    }
+}
+
+.error_input,
+.error_textarea {
+    @include text-properties($font-size: 0.75rem);
+    bottom: -21px;
+    color: var(--dark-grey);
+    left: 0;
+    position: absolute;
+    z-index: 3;
+}
+
+.error_textarea {
+    bottom: -2.0625rem;
 }
 
 @media (max-width: 1200px) {
@@ -45,29 +63,21 @@
     }
 
     .label {
-        @include fontSize23px();
         gap: 0.5rem 0rem;
 
         &__textarea {
             margin-bottom: 0.6rem;
             min-height: 19.8125rem;
         }
+    }
 
-        &__input,
-        &__textarea {
-            @include fontSize24px();
-        }
-
-        &__input::placeholder,
-        &__textarea::placeholder {
-            @include fontSize24px();
-        }
+    .error_textarea {
+        bottom: -0.75rem;
     }
 }
 
 @media (max-width: 768px) {
     .label {
-        @include fontSize18px();
         gap: 0.75rem 0rem;
 
         &__textarea {
@@ -76,16 +86,6 @@
 
         &__input {
             height: 2.8125rem;
-        }
-
-        &__input,
-        &__textarea {
-            @include fontSize14px();
-        }
-
-        &__input::placeholder,
-        &__textarea::placeholder {
-            @include fontSize14px();
         }
     }
 }

@@ -30,30 +30,33 @@ const handleDate = (date: string): string => {
     return `${year}.${month}.${day}`;
 };
 
-const handleCommit = (commits: IGithubRespone[] | undefined): ICommitLog[] => {
-    if (commits) {
-        return commits.map((commit) => {
-            return {
-                message: commit.commit.message,
-                date: handleDate(commit.commit.committer.date),
-            };
-        });
+const handleCommit = (commits: IGithubRespone[] | undefined): ICommitLog[] | undefined => {
+    if (!commits) {
+        return;
     }
 
-    return Array.from({ length: 5 }).fill({ message: 'error loading', date: `${new Date()}` }) as ICommitLog[];
+    return commits.map((commit) => {
+        return {
+            message: commit.commit.message,
+            date: handleDate(commit.commit.committer.date),
+        };
+    });
 };
 
 const handleGithubRequest = async (): Promise<ICommitLog[] | undefined> => {
-    if (ACCESS_TOKEN && URL) {
-        try {
-            const data: IGithubRespone[] | undefined = await githubAPI();
+    if (!ACCESS_TOKEN || !URL) {
+        console.error('Access token or URL is undefined');
+        return;
+    }
 
-            return handleCommit(data?.slice(0, 5));
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-    } else {
-        console.error('Access token is undefined');
+    try {
+        const data: IGithubRespone[] | undefined = await githubAPI();
+        if (!data) return;
+
+        return handleCommit(data.slice(0, 7));
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        throw new Error('Failed to fetch data');
     }
 };
 

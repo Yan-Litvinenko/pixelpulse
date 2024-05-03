@@ -39,7 +39,6 @@
 
         &__enter,
         &__esc {
-            font-size: 1.525rem;
             height: 2.8125rem;
             margin-top: 0rem;
             width: 100%;
@@ -54,7 +53,6 @@
 
         &__enter,
         &__esc {
-            @include fontSize18px();
             height: auto;
         }
     }

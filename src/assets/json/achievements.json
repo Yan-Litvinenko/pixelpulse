@@ -25,6 +25,104 @@
         "description": "Get level 20",
         "rarity": "unusual",
         "status": "achieved",
-        "title": "Get level 20"
+        "title": "20 level"
+    },
+    {
+        "date": "2023.07.20",
+        "description": "Use pixel-perfect approach",
+        "rarity": "unusual",
+        "status": "achieved",
+        "title": "perfectionist"
+    },
+    {
+        "date": "2023.05.15",
+        "description": "Explore the emmet utility",
+        "rarity": "unusual",
+        "status": "achieved",
+        "title": "speed-demon"
+    },
+    {
+        "date": "2023.05.20",
+        "description": "Explore any methodology",
+        "rarity": "rare",
+        "status": "achieved",
+        "title": "Learning is light!"
+    },
+    {
+        "date": "ongoing",
+        "description": "Release personal website",
+        "rarity": "epic",
+        "status": "in progress",
+        "title": "Surefooted"
+    },
+    {
+        "date": "ongoing",
+        "description": "learn backend development",
+        "rarity": "epic",
+        "status": "in progress",
+        "title": "Dual Specialization"
+    },
+    {
+        "date": "ongoing",
+        "description": "get a junior position",
+        "rarity": "rare",
+        "status": "in progress",
+        "title": "journeyman frontend developer"
+    },
+    {
+        "date": "ongoing",
+        "description": "get a middle position",
+        "rarity": "epic",
+        "status": "in progress",
+        "title": "expert frontend developer"
+    },
+    {
+        "date": "ongoing",
+        "description": "get a senior position",
+        "rarity": "legendary",
+        "status": "in progress",
+        "title": "grand master frontend developer"
+    },
+    {
+        "date": "ongoing",
+        "description": "get a job in IT",
+        "rarity": "epic",
+        "status": "in progress",
+        "title": "Got My Mind On My Money"
+    },
+    {
+        "date": "2024.02.12",
+        "description": "learn typescript",
+        "rarity": "rare",
+        "status": "achieved",
+        "title": "Time for a Leash"
+    },
+    {
+        "date": "2024.04.03",
+        "description": "learn react",
+        "rarity": "rare",
+        "status": "achieved",
+        "title": "Not gonna get us!"
+    },
+    {
+        "date": "2024.01.23",
+        "description": "Learn webpack",
+        "rarity": "epic",
+        "status": "achieved",
+        "title": "Tools of the Trade"
+    },
+    {
+        "date": "2023.10.30",
+        "description": "Learn gulp",
+        "rarity": "rare",
+        "status": "achieved",
+        "title": "Tools of the Trade"
+    },
+    {
+        "date": "ongoing",
+        "description": "Learn vite",
+        "rarity": "epic",
+        "status": "in progress",
+        "title": "Tools of the Trade"
     }
 ]

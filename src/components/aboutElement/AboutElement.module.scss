@@ -35,13 +35,11 @@
         row-gap: 0.625rem;
 
         &__title {
-            @include fontSize20px();
             max-width: 14.25rem;
             text-align: left;
         }
 
         &__text {
-            @include fontSize24px();
             max-width: 36.5rem;
         }
     }
@@ -58,18 +56,6 @@
 
         &__text {
             max-width: 100%;
-        }
-    }
-}
-
-@media (max-width: 768px) {
-    .item {
-        &__title {
-            @include fontSize14px();
-        }
-
-        &__text {
-            @include fontSize18px();
         }
     }
 }

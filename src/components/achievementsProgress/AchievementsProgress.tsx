@@ -1,8 +1,11 @@
 import React from 'react';
+import { ContextApp } from '../app/App';
 import Button from '../button/Button';
 import Paragraph from '../paragraph/Paragraph';
 import ProgressRing from '../progressRing/ProgressRing';
+import handleOpenModal from '../../utils/handleOpenModal';
 import achievements from '../../assets/json/achievements.json';
+import { IAppContext } from '../../interfaces/interface';
 import styles from './AchievementsProgress.module.scss';
 
 const achievedCount = (): number => {
@@ -15,6 +18,7 @@ const achievedCount = (): number => {
 };
 
 const AchievementsProgress = (): React.JSX.Element => {
+    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
     const countAchievements: number = achievements.length;
     const countAchieved: number = achievedCount();
     const percent: number = (countAchieved * 100) / countAchievements;
@@ -36,7 +40,11 @@ const AchievementsProgress = (): React.JSX.Element => {
                 className={styles.progress__text}
                 textContent="If you want to give me a challenge and rate it, please feel free to submit it with the button below!"
             />
-            <Button className={styles.progress__button} textContent="Challenge me" onClick={() => {}} />
+            <Button
+                className={styles.progress__button}
+                textContent="Challenge me"
+                onClick={() => handleOpenModal(contextApp?.setChallenge)}
+            />
         </div>
     );
 };
