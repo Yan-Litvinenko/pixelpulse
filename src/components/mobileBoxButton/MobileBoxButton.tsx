@@ -8,6 +8,7 @@ import styles from './MobileBoxButton.module.scss';
 
 const MobileBoxButton = (): React.JSX.Element => {
     const contextApp = React.useContext<IAppContext | undefined>(ContextApp);
+
     const handleNavigationClick = (): void => {
         if (contextApp) {
             handleOpenModal(contextApp?.setNavigationMobile);

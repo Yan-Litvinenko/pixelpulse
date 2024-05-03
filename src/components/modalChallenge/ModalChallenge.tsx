@@ -26,7 +26,12 @@ const ModalChallenge = () => {
                     </div>
                     <Heading className={styles.modal__subtitle} level="4" textContent={'Offer me a challenge!'} />
                     <FormChallenge />
-                    <ModalBoxButton textEnter={'send [enter]'} textEsc={'discard [esc]'} submit="challenge" />
+                    <ModalBoxButton
+                        textEnter={'send [enter]'}
+                        textEsc={'discard [esc]'}
+                        submit="challenge"
+                        setModalStatus={contextApp.setChallenge}
+                    />
                 </div>
             </div>
         </>

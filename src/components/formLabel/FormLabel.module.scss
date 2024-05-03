@@ -37,6 +37,10 @@
     &__textarea:focus {
         box-shadow: 0 0 0 0.0625rem var(--dark-light-border);
     }
+
+    &__field_error {
+        border: 0.0625rem solid var(--main-color);
+    }
 }
 
 .error_input,

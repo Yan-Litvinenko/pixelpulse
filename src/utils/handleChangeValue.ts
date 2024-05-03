@@ -1,43 +1,38 @@
-export const handleChangeName = (name: string): string => {
-    if (!name.trim()) {
-        return '';
-    } else if (name.length < 2 || name.length > 20) {
-        return 'The name should be between 2 and 20 characters long';
-    } else if (/[\d!@#$%^&*()_+=[\]{};':"\\|,.<>/?~]/.test(name)) {
-        return 'The name cannot contain numbers or special characters';
-    } else {
-        return '';
-    }
-};
+export const handleChangeError = (field: string, value: string) => {
+    if (field === 'name') {
+        if ((value.length < 2 && value.length > 0) || value.length > 20) {
+            return 'The name should be between 2 and 20 characters long';
+        }
+        if (/[\d!@#$%^&*()_+=[\]{};':"\\|,.<>/?~]/.test(value)) {
+            return 'The name cannot contain numbers or special characters';
+        }
 
-export const handleChangeEmail = (email: string): string => {
-    if (!email.trim()) {
         return '';
     }
 
-    const emailRegex: RegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (field === 'email') {
+        const emailRegex: RegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!emailRegex.test(email)) {
-        return 'Please enter a valid email address';
-    }
-
-    return '';
-};
-
-export const handleChangeMessage = (message: string): string => {
-    if (!message.trim()) {
+        if (!value.trim().length) {
+            return '';
+        }
+        if (!emailRegex.test(value)) {
+            return 'Please enter a valid email address';
+        }
         return '';
     }
 
-    if (message.length < 10 && message.length >= 1) {
-        return 'Your message is too short, please enter at least 10 characters';
+    if (field === 'message') {
+        if (!field.trim().length) {
+            return '';
+        } else if (value.length < 10 && value.length >= 1) {
+            return 'Your message is too short, please enter at least 10 characters';
+        } else if (value.length > 1000) {
+            return 'Your message is too long, please enter no more than 1000 characters';
+        } else {
+            return '';
+        }
     }
-
-    if (message.length > 1000) {
-        return 'Your message is too long, please enter no more than 1000 characters';
-    }
-
-    return '';
 };
 
 export const handleEmptyField = (str: string): string => {

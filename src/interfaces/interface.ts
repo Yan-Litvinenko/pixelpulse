@@ -23,10 +23,12 @@ type IAppContext = {
     setSetting: BooleanState;
     setSocial: BooleanState;
     setSounds: BooleanState;
-    setFormError: React.Dispatch<React.SetStateAction<IFormError>>;
+    setContactFormError: React.Dispatch<React.SetStateAction<IFormError>>;
+    setContactFieldsStatus: React.Dispatch<React.SetStateAction<IContactFieldsStatus>>;
     commits: ICommitLog[] | undefined;
     contactFormData: IContactFormData;
-    formError: IFormError;
+    contactFormError: IFormError;
+    contactFieldsStatus: IContactFieldsStatus;
     isLarge: boolean;
     isLoadingGithub: boolean;
     isMedium: boolean;
@@ -53,8 +55,25 @@ interface IContactForm {
     setContactFormData: React.Dispatch<React.SetStateAction<IContactFormData>>;
 }
 
-interface IFormError {
+interface IContactFieldsStatus {
+    name: boolean;
+    email: boolean;
+    message: boolean;
+    [key: string]: boolean;
+}
+
+interface IFormError extends IContactFormData {
     [key: string]: string;
 }
 
-export { BooleanState, IAppContext, ICommitLog, IContactForm, IContactFormData, Page, SettingContext, IFormError };
+export {
+    BooleanState,
+    IAppContext,
+    ICommitLog,
+    IContactForm,
+    IContactFormData,
+    Page,
+    SettingContext,
+    IFormError,
+    IContactFieldsStatus,
+};

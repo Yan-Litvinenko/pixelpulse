@@ -11,13 +11,15 @@ import { ContextApp } from '../app/App';
 import { IAppContext } from '../../interfaces/interface';
 import styles from './ModalSetting.module.scss';
 
-const ModalSetting = (): React.JSX.Element => {
+const ModalSetting = (): React.JSX.Element | null => {
     const contextApp: IAppContext | undefined = React.useContext(ContextApp);
     const modal = React.useRef<HTMLDivElement | null>(null);
 
+    if (!contextApp) return null;
+
     const handleCrossModal = (): void => {
-        contextApp?.setNavigationMobile(true);
-        contextApp?.setSetting(false);
+        contextApp.setNavigationMobile(true);
+        contextApp.setSetting(false);
     };
 
     if (contextApp) {
@@ -51,7 +53,12 @@ const ModalSetting = (): React.JSX.Element => {
                     </div>
                 </div>
 
-                <ModalBoxButton textEnter="write to disk [enter]" textEsc="discard [esc]" submit="setting" />
+                <ModalBoxButton
+                    textEnter="write to disk [enter]"
+                    textEsc="discard [esc]"
+                    submit="setting"
+                    setModalStatus={contextApp?.setSetting}
+                />
             </div>
         </div>
     );

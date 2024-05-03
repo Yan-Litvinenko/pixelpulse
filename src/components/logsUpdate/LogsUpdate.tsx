@@ -5,7 +5,7 @@ import Heading from '../heading/Heading';
 import { nanoid } from 'nanoid';
 import styles from './LogsUpdate.module.scss';
 
-const update = [
+const update: Record<string, string>[] = [
     {
         title: 'project update',
         text: 'The development team has been working tirelessly on the latest iteration of the project. Significant progress has been made in the areas of neural interface integration, machine learning algorithms, and quantum computing. of neural interface integration, machine learning algorithms, and quantum computing',

@@ -5,20 +5,20 @@ import { BooleanState } from '../interfaces/interface';
 
 const useCloseModal = (
     place: React.MutableRefObject<HTMLDivElement | null>,
-    setStatus: BooleanState | BooleanState[],
+    setModalStatus: BooleanState | BooleanState[],
     transitionTime: number,
 ) => {
-    const contexApp = React.useContext(ContextApp);
+    const contextApp = React.useContext(ContextApp);
 
     React.useEffect(() => {
         const handleCloseModal = (event: MouseEvent): void => {
             if (event.target === place.current) {
-                if (Array.isArray(setStatus)) {
-                    setStatus.forEach((status) => status(false));
+                if (Array.isArray(setModalStatus)) {
+                    setModalStatus.forEach((status) => status(false));
                 } else {
-                    setStatus(false);
+                    setModalStatus(false);
                 }
-                contexApp?.setContactFormData({ name: '', email: '', message: '' });
+                contextApp?.setContactFormData({ name: '', email: '', message: '' });
                 scroll.on();
             }
         };

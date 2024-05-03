@@ -1,47 +1,52 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
 import { IContactFormData } from '../../interfaces/interface';
+import { Name } from '../../interfaces/interface.form';
 import styles from './FormLabel.module.scss';
-import { ContextApp } from '../app/App';
-
-type Name = 'name' | 'email' | 'message' | 'title' | 'description';
 
 interface ILabel {
     child: 'input' | 'textarea';
+    error: string;
     name: Name;
     onChange: (key: keyof IContactFormData, value: string) => void;
     placeholder: string;
     textContent: string;
     value: string;
-    error: string;
+    fieldStatus?: boolean;
 }
 
 function FormLabel(props: ILabel): React.JSX.Element {
-    const contextApp = React.useContext(ContextApp);
     const id: string = nanoid();
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
         props.onChange(props.name as keyof IContactFormData, event.target.value);
+    };
 
-        if (props.error !== '') {
-            contextApp?.setFormError((prev) => {
-                return { ...prev, [props.name]: props.error };
-            });
+    const getClassNameError = (child: 'input' | 'textarea'): string => {
+        if (child === 'input') {
+            return styles.error_input;
         } else {
-            contextApp?.setFormError((prev) => {
-                delete prev[props.name];
-                return { ...prev };
-            });
+            return styles.error_textarea;
         }
+    };
+
+    const getFieldClassName = (initClass: string): string => {
+        const classes: string[] = [initClass];
+
+        if (!props.fieldStatus) {
+            classes.push(styles.label__field_error);
+        }
+
+        return classes.join(' ');
     };
 
     return (
         <label className={styles.label} htmlFor={id}>
             {props.textContent}
-            <span className={props.child === 'input' ? styles.error_input : styles.error_textarea}>{props.error}</span>
+            <span className={getClassNameError(props.child)}>{props.error}</span>
             {props.child === 'input' ? (
                 <input
-                    className={styles.label__input}
+                    className={getFieldClassName(styles.label__input)}
                     id={id}
                     onChange={handleChange}
                     placeholder={props.placeholder}
@@ -50,7 +55,7 @@ function FormLabel(props: ILabel): React.JSX.Element {
                 />
             ) : (
                 <textarea
-                    className={styles.label__textarea}
+                    className={getFieldClassName(styles.label__textarea)}
                     id={id}
                     onChange={handleChange}
                     placeholder={props.placeholder}

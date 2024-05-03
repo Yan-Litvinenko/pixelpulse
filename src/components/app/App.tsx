@@ -31,7 +31,9 @@ const App = (): React.JSX.Element => {
     const [sounds, setSounds] = useLocalStorage(true, 'sounds');
     const [music, setMusic] = useLocalStorage(true, 'music');
     const [navigationMobile, setNavigationMobile] = React.useState<boolean>(false);
-    const [formError, setFormError] = React.useState<IFormError>({});
+
+    const [contactFieldsStatus, setContactFieldsStatus] = React.useState({ name: true, email: true, message: true });
+    const [contactFormError, setContactFormError] = React.useState<IFormError>({ name: '', email: '', message: '' });
     const [contactFormData, setContactFormData] = React.useState<IContactFormData>({
         name: '',
         email: '',
@@ -46,8 +48,9 @@ const App = (): React.JSX.Element => {
                     setAvailability,
                     setChallenge,
                     setContactFormData,
+                    setContactFieldsStatus,
                     setCredits,
-                    setFormError,
+                    setContactFormError,
                     setMusic,
                     setNavigationMobile,
                     setPage,
@@ -56,7 +59,8 @@ const App = (): React.JSX.Element => {
                     setSounds,
                     commits,
                     contactFormData,
-                    formError,
+                    contactFormError,
+                    contactFieldsStatus,
                     isLarge,
                     isLoadingGithub,
                     isMedium,
