@@ -1,7 +1,8 @@
 import React from 'react';
 import { ContextApp } from '../components/app/App';
 import scroll from '../utils/scroll';
-import { BooleanState, IAppContext, IContactFieldsStatus } from '../interfaces/interface';
+import { BooleanState, IAppContext } from '../interfaces/interface';
+import { IContactFieldsStatus } from '../interfaces/interface.form';
 
 const useCloseButtonModal = (
     button: React.MutableRefObject<HTMLButtonElement | null>,

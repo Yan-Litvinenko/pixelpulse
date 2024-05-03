@@ -1,3 +1,5 @@
+import { IContactFormData, IContactFieldsStatus, IFormError } from './interface.form';
+
 type Page = 'welcome' | 'beginning' | 'about' | 'logs' | 'achievements' | 'creations' | 'games';
 
 interface Settings {
@@ -15,7 +17,9 @@ type IAppContext = {
     TRANSITION_TIME: number;
     setAvailability: BooleanState;
     setChallenge: BooleanState;
+    setContactFieldsStatus: React.Dispatch<React.SetStateAction<IContactFieldsStatus>>;
     setContactFormData: React.Dispatch<React.SetStateAction<IContactFormData>>;
+    setContactFormError: React.Dispatch<React.SetStateAction<IFormError>>;
     setCredits: BooleanState;
     setMusic: BooleanState;
     setNavigationMobile: BooleanState;
@@ -23,12 +27,10 @@ type IAppContext = {
     setSetting: BooleanState;
     setSocial: BooleanState;
     setSounds: BooleanState;
-    setContactFormError: React.Dispatch<React.SetStateAction<IFormError>>;
-    setContactFieldsStatus: React.Dispatch<React.SetStateAction<IContactFieldsStatus>>;
     commits: ICommitLog[] | undefined;
+    contactFieldsStatus: IContactFieldsStatus;
     contactFormData: IContactFormData;
     contactFormError: IFormError;
-    contactFieldsStatus: IContactFieldsStatus;
     isLarge: boolean;
     isLoadingGithub: boolean;
     isMedium: boolean;
@@ -44,36 +46,4 @@ interface ICommitLog {
     date: string;
 }
 
-interface IContactFormData {
-    name: string;
-    email: string;
-    message: string;
-}
-
-interface IContactForm {
-    contactFormData: IContactFormData;
-    setContactFormData: React.Dispatch<React.SetStateAction<IContactFormData>>;
-}
-
-interface IContactFieldsStatus {
-    name: boolean;
-    email: boolean;
-    message: boolean;
-    [key: string]: boolean;
-}
-
-interface IFormError extends IContactFormData {
-    [key: string]: string;
-}
-
-export {
-    BooleanState,
-    IAppContext,
-    ICommitLog,
-    IContactForm,
-    IContactFormData,
-    Page,
-    SettingContext,
-    IFormError,
-    IContactFieldsStatus,
-};
+export { BooleanState, IAppContext, ICommitLog, Page, SettingContext };
