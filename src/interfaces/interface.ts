@@ -1,5 +1,3 @@
-import { IContactFormData, IContactFieldsStatus, IFormError } from './interface.form';
-
 type Page = 'welcome' | 'beginning' | 'about' | 'logs' | 'achievements' | 'creations' | 'games';
 
 interface Settings {
@@ -17,9 +15,6 @@ type IAppContext = {
     TRANSITION_TIME: number;
     setAvailability: BooleanState;
     setChallenge: BooleanState;
-    setContactFieldsStatus: React.Dispatch<React.SetStateAction<IContactFieldsStatus>>;
-    setContactFormData: React.Dispatch<React.SetStateAction<IContactFormData>>;
-    setContactFormError: React.Dispatch<React.SetStateAction<IFormError>>;
     setCredits: BooleanState;
     setMusic: BooleanState;
     setNavigationMobile: BooleanState;
@@ -28,9 +23,6 @@ type IAppContext = {
     setSocial: BooleanState;
     setSounds: BooleanState;
     commits: ICommitLog[] | undefined;
-    contactFieldsStatus: IContactFieldsStatus;
-    contactFormData: IContactFormData;
-    contactFormError: IFormError;
     isLarge: boolean;
     isLoadingGithub: boolean;
     isMedium: boolean;

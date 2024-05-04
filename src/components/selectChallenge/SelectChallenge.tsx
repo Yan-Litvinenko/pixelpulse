@@ -1,20 +1,34 @@
 import React from 'react';
+import { UseFormRegister, FieldValues } from 'react-hook-form';
 import Heading from '../heading/Heading';
 import { nanoid } from 'nanoid';
+import { Rarity } from '../../interfaces/interface.achievements';
 import styles from './SelectChallenge.module.scss';
 
-type Rarity = 'unusual' | 'rare' | 'epic' | 'legendary';
+interface ISelectChallenge {
+    register: UseFormRegister<FieldValues>;
+    selectValue: Rarity;
+    setSelectValue: React.Dispatch<React.SetStateAction<Rarity>>;
+}
 
 const rarity: Rarity[] = ['unusual', 'rare', 'epic', 'legendary'];
 
-const SelectChallenge = (): React.JSX.Element => {
+const SelectChallenge = (props: ISelectChallenge): React.JSX.Element => {
     const [isOpen, setIsOpen] = React.useState<boolean>(false);
-    const [selectValue, setSelectValue] = React.useState<Rarity>('unusual');
 
     const handleSelectClick = (): void => setIsOpen(!isOpen);
     const handleOptionClick = (value: Rarity) => {
-        setSelectValue(value);
+        props.setSelectValue(value);
         setIsOpen(false);
+        props.register('rarity', { value: value });
+    };
+
+    const selectClassName = (initClass: string): string => {
+        if (isOpen) {
+            return `${initClass} ${styles.select_deactive}`;
+        }
+
+        return initClass;
     };
 
     return (
@@ -23,8 +37,8 @@ const SelectChallenge = (): React.JSX.Element => {
                 <h3 className={styles.title} onClick={handleSelectClick}>
                     achievement rarity
                 </h3>
-                <div className={styles.select} onClick={handleSelectClick}>
-                    <Heading className="" level="4" textContent={selectValue} />
+                <div className={selectClassName(styles.select)} onClick={handleSelectClick}>
+                    <Heading className="" level="4" textContent={props.selectValue} />
                     {isOpen ? (
                         <div className={styles.select__content}>
                             {isOpen &&

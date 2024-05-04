@@ -56,7 +56,7 @@ const ModalSetting = (): React.JSX.Element | null => {
                 <ModalBoxButton
                     textEnter="write to disk [enter]"
                     textEsc="discard [esc]"
-                    submit="setting"
+                    typeEnter="submit"
                     setModalStatus={contextApp?.setSetting}
                 />
             </div>

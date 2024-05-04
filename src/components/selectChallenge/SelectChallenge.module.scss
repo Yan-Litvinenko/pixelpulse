@@ -24,6 +24,26 @@
     text-transform: uppercase;
     z-index: 3;
 
+    &::before,
+    &::after {
+        background-color: var(--main-color);
+        cursor: pointer;
+        content: '';
+        display: block;
+        height: 0.1875rem;
+        position: absolute;
+        right: 1.25rem;
+        top: 50%;
+        transform: rotate(50deg);
+        transition: transform var(--transition-element);
+        width: 1rem;
+    }
+
+    &::after {
+        right: 0.625rem;
+        transform: rotate(-50deg);
+    }
+
     &__content {
         @include flex-container(column, $gap: 0.3125rem 0rem);
         background-color: var(--main-background-color);
@@ -38,6 +58,14 @@
     &__option {
         position: relative;
     }
+}
+
+.select_deactive::before {
+    transform: rotate(-50deg);
+}
+
+.select_deactive::after {
+    transform: rotate(50deg);
 }
 
 @media (hover: hover) {

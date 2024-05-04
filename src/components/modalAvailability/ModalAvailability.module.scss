@@ -3,11 +3,6 @@
 .modal {
     @include modal();
 
-    &__inner {
-        @include flex-container(column);
-        position: relative;
-    }
-
     &__box_title {
         @include flex-container($justify-content: space-between);
     }

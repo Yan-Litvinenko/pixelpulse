@@ -1,6 +1,5 @@
 import React from 'react';
 import scroll from '../utils/scroll';
-import { ContextApp } from '../components/app/App';
 import { BooleanState } from '../interfaces/interface';
 
 const useCloseModal = (
@@ -8,8 +7,6 @@ const useCloseModal = (
     setModalStatus: BooleanState | BooleanState[],
     transitionTime: number,
 ) => {
-    const contextApp = React.useContext(ContextApp);
-
     React.useEffect(() => {
         const handleCloseModal = (event: MouseEvent): void => {
             if (event.target === place.current) {
@@ -18,7 +15,6 @@ const useCloseModal = (
                 } else {
                     setModalStatus(false);
                 }
-                contextApp?.setContactFormData({ name: '', email: '', message: '' });
                 scroll.on();
             }
         };
