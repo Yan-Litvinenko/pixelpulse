@@ -1,21 +1,40 @@
 import React from 'react';
 import LogsElement from '../logsElement/LogsElement';
-import { ICommitLog } from '../../interfaces/interface';
+import { ContextApp } from '../app/App';
+import { IAppContext } from '../../interfaces/interface';
 import styles from './LogsOld.module.scss';
 import { nanoid } from 'nanoid';
 
-interface IOldLogs {
-    commits: ICommitLog[] | undefined;
-}
+const LogsOld = (): React.JSX.Element => {
+    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
 
-const LogsOld = ({ commits }: IOldLogs): React.JSX.Element => {
+    if (!contextApp) return <></>;
+
     return (
         <div>
             <span className={styles.title}>older logs:</span>
             <ul className={styles.list}>
-                {commits?.map((item) => {
-                    return <LogsElement key={nanoid()} date={item.date} textContent={item.message} />;
-                })}
+                {contextApp.errorGithub && (
+                    <>
+                        {Array.from({ length: 7 }).map(() => (
+                            <LogsElement key={nanoid()} date="connection error" textContent="connection error" />
+                        ))}
+                    </>
+                )}
+                {contextApp.isLoadingGithub && (
+                    <>
+                        {Array.from({ length: 7 }).map(() => (
+                            <LogsElement key={nanoid()} date="loading" textContent="loading" />
+                        ))}
+                    </>
+                )}
+                {!contextApp.errorGithub && !contextApp.isLoadingGithub && (
+                    <>
+                        {contextApp.commits?.map((item) => (
+                            <LogsElement key={nanoid()} date={item.date} textContent={item.message} />
+                        ))}
+                    </>
+                )}
             </ul>
         </div>
     );

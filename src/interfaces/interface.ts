@@ -23,6 +23,7 @@ type IAppContext = {
     setSocial: BooleanState;
     setSounds: BooleanState;
     commits: ICommitLog[] | undefined;
+    errorGithub: boolean;
     isLarge: boolean;
     isLoadingGithub: boolean;
     isMedium: boolean;

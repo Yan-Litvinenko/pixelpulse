@@ -2,21 +2,24 @@ import React from 'react';
 import { handleGithubRequest } from '../utils/handleGithubRequest';
 import { ICommitLog } from '../interfaces/interface';
 
-const useGithubApi = (): [ICommitLog[] | undefined, boolean] => {
+const useGithubApi = (): [ICommitLog[] | undefined, boolean, boolean] => {
     const [commits, setCommits] = React.useState<ICommitLog[] | undefined>(undefined);
-    const [isLoadingGithub, setIsLoadingGithub] = React.useState<boolean>(false);
+    const [isLoading, setIsLoading] = React.useState<boolean>(false);
+    const [error, setError] = React.useState<boolean>(false);
 
     React.useEffect(() => {
         const fetchCommits = async (): Promise<void> => {
-            setIsLoadingGithub(true);
+            setIsLoading(true);
 
             try {
                 const data: ICommitLog[] | undefined = await handleGithubRequest();
+
                 setCommits(data);
-            } catch (error) {
-                console.error('Error fetching data:', error);
+                setError(false);
+            } catch {
+                setError(true);
             } finally {
-                setIsLoadingGithub(false);
+                setIsLoading(false);
             }
         };
 
@@ -25,7 +28,7 @@ const useGithubApi = (): [ICommitLog[] | undefined, boolean] => {
         }
     }, []);
 
-    return [commits, isLoadingGithub];
+    return [commits, isLoading, error];
 };
 
 export default useGithubApi;
