@@ -1,4 +1,5 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
 import useCloseModal from '../../hooks/useCloseModal';
 import { ContextApp } from '../app/App';
 import Cross from '../cross/Cross';
@@ -14,12 +15,26 @@ const ModalSocial = (): React.JSX.Element | null => {
 
     if (!contextApp) return null;
 
+    const {
+        formState: { errors, isValid },
+        handleSubmit,
+        register,
+        reset,
+    } = useForm({
+        mode: 'onChange',
+    });
+
+    const onSubmit = (data: any): void => {
+        alert(`Всё валидно, отправка на сервер: ${JSON.stringify(data)}`);
+        reset();
+    };
+
     useCloseModal(modal, contextApp.setSocial, contextApp.TRANSITION_TIME);
 
     return (
         <>
             <div className={styles.modal} ref={modal}>
-                <div className={styles.modal__inner}>
+                <form className={styles.modal__inner} onSubmit={handleSubmit(onSubmit)}>
                     <div className={styles.modal__box_title}>
                         <Heading className={styles.modal__title} level="3" textContent={'connect with me'} />
                         <Cross setModalState={() => contextApp.setSocial(false)} scrollStatus="on" />
@@ -29,14 +44,15 @@ const ModalSocial = (): React.JSX.Element | null => {
                         level="4"
                         textContent={'wanna chat? Or just share something cool?'}
                     />
-                    <Form />
+                    <Form register={register} errors={errors} />
                     <ModalBoxButton
                         textEnter={'send message [enter]'}
                         textEsc={'discard [esc]'}
-                        submit="contact"
+                        typeEnter="submit"
                         setModalStatus={contextApp.setSocial}
+                        isValid={isValid}
                     />
-                </div>
+                </form>
             </div>
         </>
     );

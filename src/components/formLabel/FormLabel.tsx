@@ -1,22 +1,25 @@
 import React from 'react';
+import { UseFormRegister, FieldValues, FieldErrors } from 'react-hook-form';
 import { nanoid } from 'nanoid';
-import { IContactFormData } from '../../interfaces/interface.form';
 import { Field } from '../../interfaces/interface.form';
 import styles from './FormLabel.module.scss';
 
 interface ILabel {
     child: 'input' | 'textarea';
-    error: string;
-    fieldStatus?: boolean;
+    errors: FieldErrors<FieldValues>;
+    maxLength: number;
+    minLength: number;
     name: Field;
-    onChange: (key: keyof IContactFormData, value: string) => void;
+    pattern: RegExp;
+    patternMessage: string;
     placeholder: string;
+    register: UseFormRegister<FieldValues>;
     textContent: string;
-    value: string;
 }
 
 function FormLabel(props: ILabel): React.JSX.Element {
     const id: string = nanoid();
+    const errorMessage = props.errors[props.name]?.message as string;
 
     const getClassNameError = (child: 'input' | 'textarea'): string => {
         if (child === 'input') {
@@ -25,35 +28,53 @@ function FormLabel(props: ILabel): React.JSX.Element {
         return styles.error_textarea;
     };
 
-    const getFieldClassName = (initClass: string): string => {
-        const classes: string[] = [initClass];
-
-        if (!props.fieldStatus) {
-            classes.push(styles.label__field_error);
-        }
-
-        return classes.join(' ');
-    };
-
     return (
         <label className={styles.label} htmlFor={id}>
             {props.textContent}
-            <span className={getClassNameError(props.child)}>{props.error}</span>
+            {errorMessage && <span className={getClassNameError(props.child)}>{errorMessage}</span>}
             {props.child === 'input' ? (
                 <input
-                    className={getFieldClassName(styles.label__input)}
+                    className={styles.label__input}
                     id={id}
-                    onChange={() => props.onChange}
                     placeholder={props.placeholder}
                     type="text"
-                    value={props.value}
+                    autoComplete="off"
+                    {...props.register(props.name, {
+                        required: 'This field is required',
+                        minLength: {
+                            value: props.minLength,
+                            message: `the number of characters cannot be less ${props.minLength}`,
+                        },
+                        maxLength: {
+                            value: props.maxLength,
+                            message: `the number of characters cannot be more ${props.maxLength}`,
+                        },
+                        pattern: {
+                            value: props.pattern,
+                            message: props.patternMessage,
+                        },
+                    })}
                 />
             ) : (
                 <textarea
-                    className={getFieldClassName(styles.label__textarea)}
+                    className={styles.label__textarea}
                     id={id}
-                    onChange={() => props.onChange}
                     placeholder={props.placeholder}
+                    {...props.register(props.name, {
+                        required: 'This field is required',
+                        minLength: {
+                            value: props.minLength,
+                            message: `the number of characters cannot be less ${props.minLength}`,
+                        },
+                        maxLength: {
+                            value: props.maxLength,
+                            message: `the number of characters cannot be more ${props.maxLength}`,
+                        },
+                        pattern: {
+                            value: props.pattern,
+                            message: props.patternMessage,
+                        },
+                    })}
                 ></textarea>
             )}
         </label>

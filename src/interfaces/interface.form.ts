@@ -1,25 +1,11 @@
+import { UseFormRegister, FieldValues, FieldErrors } from 'react-hook-form';
+
 type Field = 'name' | 'email' | 'message' | 'title' | 'description';
+type Rarity = 'unusual' | 'rare' | 'epic' | 'legendary';
 
-interface IContactFormData {
-    name: string;
-    email: string;
-    message: string;
+interface IForm {
+    register: UseFormRegister<FieldValues>;
+    errors: FieldErrors<FieldValues>;
 }
 
-interface IContactFieldsStatus {
-    name: boolean;
-    email: boolean;
-    message: boolean;
-    [key: string]: boolean;
-}
-
-interface IFormError extends IContactFormData {
-    [key: string]: string;
-}
-
-interface IContactForm {
-    contactFormData: IContactFormData;
-    setContactFormData: React.Dispatch<React.SetStateAction<IContactFormData>>;
-}
-
-export { Field, IContactForm, IContactFormData, IContactFieldsStatus, IFormError };
+export { Field, IForm, Rarity };

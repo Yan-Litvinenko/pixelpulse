@@ -3,61 +3,58 @@ import { ContextApp } from '../app/App';
 import ClipPathBorder from '../clipPathBorder/ClipPathBorder';
 import FormLabel from '../formLabel/FormLabel';
 import ModalBackground from '../modalBackground/ModalBackground';
-import { handleChangeError } from '../../utils/handleChangeValue';
+import { IForm } from '../../interfaces/interface.form';
 import { IAppContext } from '../../interfaces/interface';
-import { IContactFormData, IFormError } from '../../interfaces/interface.form';
 import styles from './Form.module.scss';
 
-const Form = (): React.JSX.Element | null => {
+const Form = (props: IForm): React.JSX.Element | null => {
     const contextApp: IAppContext | undefined = React.useContext(ContextApp);
 
     if (!contextApp) {
         return null;
     }
 
-    const handleFieldChange = (name: keyof IContactFormData, value: string): void => {
-        const error: string | undefined = handleChangeError(name, value);
-
-        contextApp.setContactFormData((prev) => ({ ...prev, [name]: value }));
-        contextApp.setContactFormError((prev) => ({ ...prev, [name]: error }) as IFormError);
-        contextApp.setContactFieldsStatus((prev) => ({ ...prev, [name]: true }));
-    };
-
     return (
-        <form className={styles.form}>
+        <div className={styles.form}>
             <FormLabel
                 child={'input'}
-                error={contextApp.contactFormError.name}
-                fieldStatus={contextApp?.contactFieldsStatus.name}
+                errors={props.errors}
+                maxLength={20}
+                minLength={2}
                 name="name"
-                onChange={handleFieldChange}
+                pattern={/[A-Za-zА-Яа-яЁё]/}
+                patternMessage={'The name can only contain Russian or Latin alphabet '}
                 placeholder={'your name'}
+                register={props.register}
                 textContent={'How should I call you?'}
-                value={contextApp.contactFormData.name}
             />
             <FormLabel
                 child={'input'}
-                error={contextApp.contactFormError.email}
-                fieldStatus={contextApp?.contactFieldsStatus.email}
+                errors={props.errors}
+                maxLength={50}
+                minLength={3}
                 name="email"
-                onChange={handleFieldChange}
+                pattern={/^[^\s@]+@[^\s@]+\.[^\s@]+$/}
+                patternMessage={'Incorrect email'}
                 placeholder={'your.name@example.com'}
+                register={props.register}
                 textContent={'Sending from'}
-                value={contextApp.contactFormData.email}
             />
             <FormLabel
                 child={'textarea'}
-                error={contextApp?.contactFormError.message}
-                fieldStatus={contextApp?.contactFieldsStatus.message}
+                errors={props.errors}
+                maxLength={1000}
+                minLength={10}
                 name="message"
-                onChange={handleFieldChange}
+                pattern={/^[a-zA-Zа-яА-Я0-9\s.,!?()"'&:;]+$/}
+                patternMessage={`The message may contain letters of the Russian or Latin alphabet, as well as the symbols ".,!?()"'&:;"`}
                 placeholder={'Hi, I write to you about ...'}
+                register={props.register}
                 textContent={'transmitted data'}
-                value={contextApp?.contactFormData.message}
             />
             <ClipPathBorder className={styles.border} />
             <ModalBackground />
-        </form>
+        </div>
     );
 };
 

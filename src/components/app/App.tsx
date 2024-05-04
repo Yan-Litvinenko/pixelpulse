@@ -13,7 +13,6 @@ import ModalSocial from '../modalSocial/ModalSocial';
 import NavigationMobile from '../navigationMobile/NavigationMobile';
 import { IAppContext, Page } from '../../interfaces/interface';
 import styles from './App.module.scss';
-import useFormContact from '../../hooks/useFormContact';
 
 const ContextApp = React.createContext<IAppContext | undefined>(undefined);
 const TRANSITION_TIME: number = 1500;
@@ -33,15 +32,6 @@ const App = (): React.JSX.Element => {
     const [music, setMusic] = useLocalStorage(true, 'music');
     const [navigationMobile, setNavigationMobile] = React.useState<boolean>(false);
 
-    const [
-        contactFieldsStatus,
-        contactFormError,
-        contactFormData,
-        setContactFieldsStatus,
-        setContactFormError,
-        setContactFormData,
-    ] = useFormContact();
-
     return (
         <>
             <ContextApp.Provider
@@ -49,10 +39,7 @@ const App = (): React.JSX.Element => {
                     TRANSITION_TIME,
                     setAvailability,
                     setChallenge,
-                    setContactFormData,
-                    setContactFieldsStatus,
                     setCredits,
-                    setContactFormError,
                     setMusic,
                     setNavigationMobile,
                     setPage,
@@ -60,9 +47,6 @@ const App = (): React.JSX.Element => {
                     setSocial,
                     setSounds,
                     commits,
-                    contactFormData,
-                    contactFormError,
-                    contactFieldsStatus,
                     isLarge,
                     isLoadingGithub,
                     isMedium,
