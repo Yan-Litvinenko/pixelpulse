@@ -13,7 +13,7 @@ const ModalCredits = (): React.JSX.Element => {
     const contextApp: IAppContext | undefined = React.useContext(ContextApp);
 
     if (contextApp) {
-        useCloseModal(modal, contextApp?.setCredits, contextApp?.TRANSITION_TIME);
+        useCloseModal(modal, contextApp?.setCredits, false, false, false);
     }
 
     return (

@@ -1,5 +1,4 @@
 import React from 'react';
-import useCloseKeydownModal from '../../hooks/useCloseKeydownModal';
 import useTelegramApi from '../../hooks/useTelegramApi';
 import useCloseModal from '../../hooks/useCloseModal';
 import { useForm } from 'react-hook-form';
@@ -14,7 +13,7 @@ import { IAppContext } from '../../interfaces/interface';
 import { Rarity } from '../../interfaces/interface.achievements';
 import styles from './ModalChallenge.module.scss';
 
-const ModalChallenge = () => {
+const ModalChallenge = (): React.JSX.Element | null => {
     const contextApp: IAppContext | undefined = React.useContext(ContextApp);
     const modal: React.MutableRefObject<HTMLDivElement | null> = React.useRef(null);
 
@@ -31,7 +30,7 @@ const ModalChallenge = () => {
     });
 
     const [successfully, loading, error, setSuccessfully, setLoading, setError, sendMessage] = useTelegramApi();
-    const closeKeydown: (event: KeyboardEvent) => void = useCloseKeydownModal(contextApp.setAvailability);
+    useCloseModal(modal, contextApp.setChallenge, successfully, loading, error);
 
     const onSubmit = (data: Record<string, string>): void => {
         sendMessage(data, 'Вам бросили вызов!');
@@ -39,15 +38,12 @@ const ModalChallenge = () => {
         reset();
     };
 
-    useCloseModal(modal, contextApp.setChallenge, contextApp.TRANSITION_TIME);
-
     return (
         <>
             <div className={styles.modal} ref={modal}>
                 {loading ? <ModalLoader /> : null}
                 {successfully ? (
                     <ModalSendState
-                        closeKeydown={closeKeydown}
                         setError={setError}
                         setLoading={setLoading}
                         setSuccessfully={setSuccessfully}
@@ -58,7 +54,6 @@ const ModalChallenge = () => {
                 )}
                 {error ? (
                     <ModalSendState
-                        closeKeydown={closeKeydown}
                         setError={setError}
                         setLoading={setLoading}
                         setSuccessfully={setSuccessfully}

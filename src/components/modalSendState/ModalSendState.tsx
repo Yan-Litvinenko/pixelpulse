@@ -6,7 +6,6 @@ import { BooleanState } from '../../interfaces/interface';
 import styles from './ModalSendState.module.scss';
 
 interface IModalSendState {
-    closeKeydown: (event: KeyboardEvent) => void;
     setError: BooleanState;
     setLoading: BooleanState;
     setSuccessfully: BooleanState;
@@ -22,14 +21,6 @@ const ModalSendState = (props: IModalSendState) => {
         props.setLoading(false);
         props.setSuccessfully(false);
     };
-
-    React.useEffect(() => {
-        window.removeEventListener('keydown', props.closeKeydown);
-
-        return () => {
-            window.addEventListener('keydown', props.closeKeydown);
-        };
-    }, []);
 
     return (
         <div className={styles.modal}>

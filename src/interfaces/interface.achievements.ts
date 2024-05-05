@@ -1,7 +1,7 @@
 type Rarity = 'legendary' | 'epic' | 'rare' | 'unusual';
 type SwitchAchieved = 'all' | 'achieved' | 'inProgress';
-type AchieveStatus = 'achieved' | 'ongoin';
-type AchievedPrefix = 'achieved' | 'in progress';
+type AchievedStatus = 'achieved' | 'in progress';
+type AchievedPrefix = 'achieved' | 'ongoing';
 
 interface IAchieve {
     date: string;
@@ -11,4 +11,4 @@ interface IAchieve {
     title: string;
 }
 
-export { Rarity, SwitchAchieved, IAchieve, AchieveStatus, AchievedPrefix };
+export { Rarity, SwitchAchieved, IAchieve, AchievedStatus, AchievedPrefix };

@@ -1,5 +1,4 @@
 import React from 'react';
-import useCloseKeydownModal from '../../hooks/useCloseKeydownModal';
 import useCloseModal from '../../hooks/useCloseModal';
 import useTelegramApi from '../../hooks/useTelegramApi';
 import { useForm } from 'react-hook-form';
@@ -19,6 +18,9 @@ const ModalSocial = (): React.JSX.Element | null => {
 
     if (!contextApp) return null;
 
+    const [successfully, loading, error, setSuccessfully, setLoading, setError, sendMessage] = useTelegramApi();
+    useCloseModal(modal, contextApp.setSocial, successfully, loading, error);
+
     const {
         formState: { errors, isValid },
         handleSubmit,
@@ -28,15 +30,10 @@ const ModalSocial = (): React.JSX.Element | null => {
         mode: 'onChange',
     });
 
-    const [successfully, loading, error, setSuccessfully, setLoading, setError, sendMessage] = useTelegramApi();
-    const closeKeydown: (event: KeyboardEvent) => void = useCloseKeydownModal(contextApp.setAvailability);
-
     const onSubmit = (data: Record<string, string>): void => {
         sendMessage(data, 'Вам отправили сообщение!');
         reset();
     };
-
-    useCloseModal(modal, contextApp.setSocial, contextApp.TRANSITION_TIME);
 
     return (
         <>
@@ -44,30 +41,24 @@ const ModalSocial = (): React.JSX.Element | null => {
                 {loading ? <ModalLoader /> : null}
                 {successfully ? (
                     <ModalSendState
-                        closeKeydown={closeKeydown}
                         setError={setError}
                         setLoading={setLoading}
                         setSuccessfully={setSuccessfully}
                         status={successfully}
                     />
-                ) : (
-                    ''
-                )}
+                ) : null}
                 {error ? (
                     <ModalSendState
-                        closeKeydown={closeKeydown}
                         setError={setError}
                         setLoading={setLoading}
                         setSuccessfully={setSuccessfully}
                         status={error}
                     />
-                ) : (
-                    ''
-                )}
+                ) : null}
                 <form className={styles.modal__inner} onSubmit={handleSubmit(onSubmit)}>
                     <div className={styles.modal__box_title}>
                         <Heading className={styles.modal__title} level="3" textContent={'connect with me'} />
-                        <Cross setModalState={() => contextApp.setSocial(false)} scrollStatus="on" />
+                        <Cross setModalState={contextApp.setSocial} scrollStatus="on" />
                     </div>
                     <Heading
                         className={styles.modal__subtitle}

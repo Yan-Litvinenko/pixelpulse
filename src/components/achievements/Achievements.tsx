@@ -21,8 +21,8 @@ const Achievements = (): React.JSX.Element => {
             <div className={styles.achievements__content}>
                 <AchievementsProgress />
                 <div className={styles.achievements__achievements}>
-                    <AchievementsRender prefix={'achieved'} switchStatus={switchStatus} />
-                    <AchievementsRender prefix={'in progress'} switchStatus={switchStatus} />
+                    <AchievementsRender achieveStatus={'achieved'} prefix={'achieved'} switchStatus={switchStatus} />
+                    <AchievementsRender achieveStatus={'in progress'} prefix={'ongoing'} switchStatus={switchStatus} />
                 </div>
 
                 <div className={styles.switchers}>

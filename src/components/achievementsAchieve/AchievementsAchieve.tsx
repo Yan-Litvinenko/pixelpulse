@@ -5,14 +5,14 @@ import epic from '../../assets/images/epic.png';
 import legendary from '../../assets/images/legendary.png';
 import rare from '../../assets/images/rare.png';
 import unusual from '../../assets/images/unusual.png';
-import { Rarity, AchievedPrefix } from '../../interfaces/interface.achievements';
+import { Rarity, AchievedStatus } from '../../interfaces/interface.achievements';
 import styles from './AchievementsAchieve.module.scss';
 
 interface IAchievementsAchieve {
     date: string;
     description: string;
     rarity: Rarity;
-    status: AchievedPrefix;
+    status: AchievedStatus;
     title: string | 'ongoing';
 }
 

@@ -2,18 +2,25 @@ import React from 'react';
 import AchievementsAchieve from '../achievementsAchieve/AchievementsAchieve';
 import handleSortAchievements from '../../utils/handleSortAchievements';
 import achievements from '../../assets/json/achievements.json';
-import { Rarity, IAchieve, SwitchAchieved, AchievedPrefix } from '../../interfaces/interface.achievements';
 import { nanoid } from 'nanoid';
 import styles from './AchievementsRender.module.scss';
+import {
+    Rarity,
+    IAchieve,
+    SwitchAchieved,
+    AchievedPrefix,
+    AchievedStatus,
+} from '../../interfaces/interface.achievements';
 
 interface IAchievementsRender {
     prefix: AchievedPrefix;
     switchStatus: SwitchAchieved;
+    achieveStatus: AchievedStatus;
 }
 
-const AchievementsRender = ({ prefix, switchStatus }: IAchievementsRender): React.JSX.Element => {
+const AchievementsRender = ({ prefix, switchStatus, achieveStatus }: IAchievementsRender): React.JSX.Element => {
     const filtered: IAchieve[] = handleSortAchievements(achievements, switchStatus).filter(
-        (achieve) => achieve.status === prefix,
+        (achieve) => achieve.status === achieveStatus,
     );
 
     return filtered.length !== 0 ? (
@@ -28,7 +35,7 @@ const AchievementsRender = ({ prefix, switchStatus }: IAchievementsRender): Reac
                         description={achieve.description}
                         key={nanoid()}
                         rarity={achieve.rarity as Rarity}
-                        status={achieve.status as AchievedPrefix}
+                        status={achieve.status as AchievedStatus}
                         title={achieve.title}
                     />
                 ))}

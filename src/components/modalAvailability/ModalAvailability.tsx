@@ -1,5 +1,4 @@
 import React from 'react';
-import useCloseKeydownModal from '../../hooks/useCloseKeydownModal';
 import useCloseModal from '../../hooks/useCloseModal';
 import useTelegramApi from '../../hooks/useTelegramApi';
 import { useForm } from 'react-hook-form';
@@ -20,9 +19,7 @@ const ModalAvailability = (): React.JSX.Element | null => {
     if (!contextApp) return null;
 
     const [successfully, loading, error, setSuccessfully, setLoading, setError, sendMessage] = useTelegramApi();
-    const closeKeydown: (event: KeyboardEvent) => void = useCloseKeydownModal(contextApp.setAvailability);
-
-    useCloseModal(modal, contextApp.setAvailability, contextApp.TRANSITION_TIME);
+    useCloseModal(modal, contextApp.setAvailability, successfully, loading, error);
 
     const {
         formState: { errors, isValid },
@@ -44,26 +41,20 @@ const ModalAvailability = (): React.JSX.Element | null => {
                 {loading ? <ModalLoader /> : null}
                 {successfully ? (
                     <ModalSendState
-                        closeKeydown={closeKeydown}
                         setError={setError}
                         setLoading={setLoading}
                         setSuccessfully={setSuccessfully}
                         status={successfully}
                     />
-                ) : (
-                    ''
-                )}
+                ) : null}
                 {error ? (
                     <ModalSendState
-                        closeKeydown={closeKeydown}
                         setError={setError}
                         setLoading={setLoading}
                         setSuccessfully={setSuccessfully}
                         status={error}
                     />
-                ) : (
-                    ''
-                )}
+                ) : null}
                 <form className={styles.modal__inner} onSubmit={handleSubmit(onSubmit)}>
                     <div className={styles.modal__box_title}>
                         <Heading className={styles.modal__title} level="3" textContent={'open for hire'} />

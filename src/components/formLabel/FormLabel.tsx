@@ -31,7 +31,7 @@ function FormLabel(props: ILabel): React.JSX.Element {
     return (
         <label className={styles.label} htmlFor={id}>
             {props.textContent}
-            {errorMessage && <span className={getClassNameError(props.child)}>{errorMessage}</span>}
+            {errorMessage && <span className={getClassNameError(props.child)}>&#10059; {errorMessage}</span>}
             {props.child === 'input' ? (
                 <input
                     className={styles.label__input}
