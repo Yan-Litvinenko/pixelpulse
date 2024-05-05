@@ -16,23 +16,16 @@ const useCloseButtonModal = (
         }
     };
 
-    const handleEscapeKey = (event: KeyboardEvent): void => {
-        if (event.key === 'Escape') handleCloseModal();
-    };
-
     React.useEffect(() => {
         if (contextApp?.isLarge || contextApp?.isMedium) {
-            window.addEventListener('keydown', handleEscapeKey);
             button.current?.addEventListener('click', handleCloseModal);
         } else {
             setTimeout(() => {
-                window.addEventListener('keydown', handleEscapeKey);
                 button.current?.addEventListener('click', handleCloseModal);
             }, contextApp?.TRANSITION_TIME);
         }
 
         return () => {
-            window.removeEventListener('keydown', handleEscapeKey);
             button.current?.removeEventListener('click', handleCloseModal);
         };
     });

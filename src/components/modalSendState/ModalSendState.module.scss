@@ -1,0 +1,68 @@
+@import '../../css/mixin.scss';
+
+.modal {
+    background-color: rgba(0, 0, 0, 0.5);
+    inset: 0;
+    position: absolute;
+    z-index: 10;
+
+    &__inner {
+        @include flex-container($justify-content: center, $align-items: center);
+        max-width: 29.375rem;
+        height: 100%;
+    }
+
+    &__content {
+        background-color: var(--main-background-color);
+        border: 0.0625rem solid var(--dark-light-border);
+        padding: 0.9375rem;
+        max-width: 20rem;
+    }
+
+    &__title {
+        @include text-properties('Big-Shoulders', 1.125rem, 700);
+        color: var(--main-color);
+        margin-bottom: 0.25rem;
+        text-align: center;
+    }
+
+    &__text {
+        @include text-properties('Iceberg', 0.875rem, 400);
+        color: var(--dark-grey);
+        margin-bottom: 0.75rem;
+    }
+
+    &__button {
+        @include button();
+    }
+}
+
+@media (max-width: 1700px) {
+    .modal {
+        padding-left: 5.6875rem;
+    }
+}
+
+@media (max-width: 1540px) {
+    .modal {
+        padding-left: 3.6875rem;
+    }
+}
+
+@media (max-width: 1420px) {
+    .modal {
+        padding-left: 1.6875rem;
+    }
+}
+
+@media (max-width: 1280px) {
+    .modal {
+        padding-left: 1rem;
+    }
+}
+
+@media (max-width: 1200px) {
+    .modal__inner {
+        max-width: 100%;
+    }
+}

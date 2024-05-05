@@ -3,6 +3,10 @@
 .modal {
     @include modal();
 
+    &__inner {
+        position: relative;
+    }
+
     &__box_title {
         @include flex-container($justify-content: space-between);
     }
