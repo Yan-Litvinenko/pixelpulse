@@ -64,7 +64,7 @@
 
 @mixin button {
     @include text-properties('Big-Shoulders', 1.125rem, 700, 0.075rem);
-    background-color: var(--main-color);
+    background-color: var(--main-darklight-color);
     border: none;
     color: var(--main-background-color);
     cursor: pointer;

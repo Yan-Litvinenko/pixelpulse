@@ -37,6 +37,8 @@ const medium = (context: IAppContext) => {
 const Layout = (): React.JSX.Element => {
     const contextApp = React.useContext<IAppContext | undefined>(ContextApp);
 
+    React.useEffect(() => {}, [contextApp?.page]);
+
     if (contextApp?.page === 'welcome') {
         return <></>;
     }

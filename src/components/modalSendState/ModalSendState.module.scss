@@ -37,6 +37,12 @@
     }
 }
 
+@media (hover: hover) {
+    .modal__button:hover {
+        background-color: var(--main-color);
+    }
+}
+
 @media (max-width: 1700px) {
     .modal {
         padding-left: 5.6875rem;

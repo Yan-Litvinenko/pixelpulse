@@ -8,6 +8,10 @@
         @include button();
     }
 
+    &__enter {
+        background-color: var(--main-darklight-color);
+    }
+
     &__esc {
         background-color: var(--main-background-color);
         border: 0.0625rem solid var(--dark-border);

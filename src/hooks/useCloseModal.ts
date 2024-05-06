@@ -33,10 +33,10 @@ const useCloseModal = (
 
     const addEventListener = (): void => {
         window.addEventListener('keydown', handleKeydownEscape);
-        place.current?.addEventListener('click', handleClickOnTheWindow);
+        place.current?.addEventListener('mousedown', handleClickOnTheWindow);
     };
     const removeEventListener = (): void => {
-        place.current?.removeEventListener('click', handleClickOnTheWindow);
+        place.current?.removeEventListener('mousedown', handleClickOnTheWindow);
         window.removeEventListener('keydown', handleKeydownEscape);
     };
 
