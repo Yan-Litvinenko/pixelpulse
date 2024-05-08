@@ -55,17 +55,6 @@
     }
 }
 
-.bluetooth {
-    @include absolute-position(50%, 0.3125rem);
-    height: 1.5rem;
-    transform: translateY(-50%);
-    width: 1.5rem;
-}
-
-.bluetooth path {
-    transition: filter var(--transition-element);
-}
-
 @media (hover: hover) {
     .profile__social:hover {
         box-shadow: var(--box-shadow);
@@ -117,10 +106,6 @@
             grid-row: 2 / 3;
             margin-bottom: 1.45rem;
         }
-    }
-
-    .bluetooth {
-        scale: 1.2;
     }
 }
 

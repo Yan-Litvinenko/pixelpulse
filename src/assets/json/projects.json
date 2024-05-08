@@ -1,0 +1,16 @@
+[
+    {
+        "name": "landing",
+        "brief": "brief landing",
+        "technologies": ["react"],
+        "about": ["landing about"],
+        "images": ["landing.image-1.jpg", "landing.image-2.jpg"]
+    },
+    {
+        "name": "game",
+        "brief": "brief game",
+        "technologies": ["js"],
+        "about": ["game about"],
+        "images": ["game.image-1.jpg", "game.image-2.jpg"]
+    }
+]

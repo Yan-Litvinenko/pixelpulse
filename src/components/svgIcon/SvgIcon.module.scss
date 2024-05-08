@@ -1,0 +1,35 @@
+@import '../../css/mixin.scss';
+
+.hexagon {
+    @include absolute-position(50%, -1.125rem);
+    transform: translateY(-50%);
+    transition: filter var(--transition-element);
+}
+
+.hexagon polygon {
+    transition: filter var(--transition-element);
+}
+
+.bluetooth {
+    @include absolute-position(50%, 0.3125rem);
+    height: 1.5rem;
+    transform: translateY(-50%);
+    width: 1.5rem;
+}
+
+.bluetooth path {
+    transition: filter var(--transition-element);
+}
+
+.technologies_icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media (max-width: 1200px) {
+    .bluetooth {
+        scale: 1.2;
+    }
+}

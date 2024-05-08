@@ -1,6 +1,6 @@
 import React from 'react';
 import Heading from '../heading/Heading';
-import Hexagon from '../hexagon/Hexagon';
+import { Hexagon } from '../svgIcon/SvgIcon';
 import Paragraph from '../paragraph/Paragraph';
 import { ContextApp } from '../app/App';
 import scroll from '../../utils/scroll';

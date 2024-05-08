@@ -1,0 +1,19 @@
+@import '../../css/mixin.scss';
+
+.about {
+    max-height: 21.875rem;
+    max-width: 20.625rem;
+    overflow: scroll;
+    padding: 0.75rem;
+
+    &__title {
+        @include text-properties();
+        margin-bottom: 0.625rem;
+    }
+
+    &__text_box {
+        @include text-properties();
+        @include flex-container(column, $gap: 0.9375rem 0rem);
+        color: var(--dark-grey);
+    }
+}

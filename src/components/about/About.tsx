@@ -24,7 +24,6 @@ const content: Record<string, string>[] = [
 const About = (): React.JSX.Element => {
     return (
         <main className={styles.about}>
-            <Frame />
             <Heading className={styles.about__title} level="2" textContent="who is Yan Litvinenko" />
             <div className={styles.about__content}>
                 <div className={styles.about__text_content}>
@@ -36,6 +35,7 @@ const About = (): React.JSX.Element => {
                     <img className={styles.about__img} src={human} alt="human" />
                     <Frame />
                 </div>
+                <Frame />
             </div>
         </main>
     );

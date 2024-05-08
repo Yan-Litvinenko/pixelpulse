@@ -1,0 +1,45 @@
+@import '../../css/mixin.scss';
+
+.xplorer {
+    @include text-properties();
+    @include flex-container(column);
+    background-color: var(--main-background-color);
+    border: 0.0625rem solid var(--frame-border-color);
+    position: relative;
+    height: 29rem;
+
+    &__title {
+        background-color: var(--main-dark-color);
+        padding: 0.625rem;
+    }
+
+    &__path {
+        @include text-properties();
+        border-bottom: 0.0625rem solid var(--frame-border-color);
+        border-top: 0.0625rem solid var(--frame-border-color);
+        color: var(--dark-grey);
+        padding: 0.625rem;
+    }
+
+    &__content {
+        @include flex-container(column);
+        margin-bottom: 1.875rem;
+    }
+
+    &__item_project {
+        @include text-properties($font-size: 1rem);
+        color: var(--dark-grey);
+        cursor: pointer;
+        transition:
+            background-color var(--transition-element),
+            color var(--transition-element);
+        padding: 0.625rem;
+    }
+}
+
+@media (hover: hover) {
+    .xplorer__item_project:hover {
+        background-color: var(--main-color);
+        color: var(--main-text-color);
+    }
+}

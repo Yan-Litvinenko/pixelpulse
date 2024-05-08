@@ -1,7 +1,7 @@
 :root {
     --main-background-color: #000003;
     --main-color: rgb(var(--data-main-color));
-    --main-dark-color: rgba(var(--data-main-color), 0.3);
+    --main-dark-color: rgba(var(--data-main-color), 0.2);
     --main-darklight-color: rgba(var(--data-main-color), 0.9);
     --main-text-color: rgb(255, 255, 255);
 
@@ -40,5 +40,5 @@
     --unusual: 93, 226, 106;
 
     --transition-wrapper: 1.5s;
-    --transition-element: 0.4s;
+    --transition-element: 0.2s;
 }

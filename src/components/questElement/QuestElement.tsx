@@ -1,6 +1,6 @@
 import React from 'react';
 import Heading from '../heading/Heading';
-import Hexagon from '../hexagon/Hexagon';
+import { Hexagon } from '../svgIcon/SvgIcon';
 
 interface IQuestElement {
     className: {
