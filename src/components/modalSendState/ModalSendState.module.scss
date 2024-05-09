@@ -27,8 +27,7 @@
     }
 
     &__button {
-        @include button();
-        max-width: 100%;
+        @include button-enter();
     }
 }
 

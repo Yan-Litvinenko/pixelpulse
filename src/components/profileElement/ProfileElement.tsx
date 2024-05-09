@@ -31,9 +31,11 @@ const ProfileElement = (props: IProfileElement) => {
             {adjacent.type === 'button' ? (
                 <Button
                     className={styles['profile__' + header.text]}
+                    delayEvent={false}
+                    handleButton={() => handleOpenModal(setStatusModal)}
                     image={() => image}
-                    onClick={() => handleOpenModal(setStatusModal)}
                     textContent={adjacent.text}
+                    type="button"
                 />
             ) : (
                 <span className={styles.profile__text}>{adjacent.text}</span>

@@ -13,7 +13,13 @@ const HeaderStatistics = ({ className }: IStatistics): React.JSX.Element => {
             </div>
             <div className={className.coins}>
                 <div className={className.coins__add_box}>
-                    <Button className={className.coins__btn} textContent="+" onClick={() => {}} />
+                    <Button
+                        className={className.coins__btn}
+                        delayEvent={false}
+                        handleButton={() => {}}
+                        textContent="+"
+                        type="button"
+                    />
                 </div>
 
                 <div className={className.coins__text_box}>

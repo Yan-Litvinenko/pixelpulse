@@ -9,6 +9,11 @@ import styles from './Welcome.module.scss';
 
 const Welcome = (): React.JSX.Element => {
     const contextApp = useContext<IAppContext | undefined>(ContextApp);
+
+    if (!contextApp) return <></>;
+
+    const handleButton = (): void => contextApp.setPage('beginning');
+
     const texts: Record<string, string> = {
         first: 'I have created this website to feel like a game/sci-fi interface. All text inside tries to reflect this.',
         second: 'You will find ‘achievements’ or ‘quests’ that show the progress in my professional life and are related to what I am working on.',
@@ -25,8 +30,10 @@ const Welcome = (): React.JSX.Element => {
                 <Paragraph className={styles.welcome__text} textContent={texts.second} />
                 <Button
                     className={styles.welcome__btn}
+                    delayEvent={false}
+                    handleButton={handleButton}
                     textContent={'Enter the system'}
-                    onClick={() => contextApp?.setPage('beginning')}
+                    type="button"
                 />
             </div>
         </div>

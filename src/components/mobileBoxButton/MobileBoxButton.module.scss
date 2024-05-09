@@ -8,15 +8,13 @@
     width: 100%;
     z-index: 10;
 
-    &__navigation,
-    &__about {
-        @include button();
+    &__navigation {
+        @include button-enter();
     }
 
     &__about {
-        background-color: var(--main-background-color) !important;
+        @include button-escape();
         border: 0.0625rem solid var(--dark-border);
-        color: var(--main-color);
     }
 }
 

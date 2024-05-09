@@ -1,5 +1,5 @@
 import React from 'react';
-import useCloseModalAndKey from '../../hooks/useCloseModalAndKey';
+import useCloseModal from '../../hooks/useCloseModal';
 import useFormSubmit from '../../hooks/useFormSubmit';
 import { useForm } from 'react-hook-form';
 import { ContextApp } from '../app/App';
@@ -20,8 +20,13 @@ const ModalSocial = (): React.JSX.Element | null => {
 
     const modal: React.MutableRefObject<HTMLDivElement | null> = React.useRef(null);
     const formSubmit: FormSubmit = useFormSubmit('Вам отправили сообщение!');
-
-    useCloseModalAndKey(modal, contextApp.setSocial, formSubmit.successfully, formSubmit.loading, formSubmit.error);
+    const handleCloseButton = useCloseModal(
+        modal,
+        contextApp.setSocial,
+        formSubmit.successfully,
+        formSubmit.loading,
+        formSubmit.error,
+    );
 
     return (
         <>
@@ -55,11 +60,12 @@ const ModalSocial = (): React.JSX.Element | null => {
                     />
                     <Form register={formSubmit.register} errors={formSubmit.errors} />
                     <ModalBoxButton
+                        handleEnter={formSubmit.handleSubmit}
+                        handleEscape={handleCloseButton}
+                        isValid={formSubmit.isValid}
                         textEnter={'send message [enter]'}
                         textEsc={'discard [esc]'}
                         typeEnter="submit"
-                        setModalStatus={contextApp.setSocial}
-                        isValid={formSubmit.isValid}
                     />
                 </form>
             </div>

@@ -17,8 +17,10 @@ const HeaderTime = ({ time }: ITime): React.JSX.Element => {
         <div className={styles.time}>
             <Button
                 className={styles.time__credits}
-                onClick={() => handleOpenModal(contextApp?.setCredits)}
+                delayEvent={false}
+                handleButton={() => handleOpenModal(contextApp?.setCredits)}
                 textContent="Credits"
+                type="button"
             />
             <div className={styles.server}>
                 <span className={styles.server__time_span}>server time:</span> 8:42

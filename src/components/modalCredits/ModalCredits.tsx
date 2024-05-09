@@ -1,6 +1,6 @@
 import React from 'react';
 import { ContextApp } from '../app/App';
-import useCloseModalAndKey from '../../hooks/useCloseModalAndKey';
+import useCloseModal from '../../hooks/useCloseModal';
 import Heading from '../heading/Heading';
 import Paragraph from '../paragraph/Paragraph';
 import { nanoid } from 'nanoid';
@@ -13,7 +13,7 @@ const ModalCredits = (): React.JSX.Element => {
     const contextApp: IAppContext | undefined = React.useContext(ContextApp);
 
     if (contextApp) {
-        useCloseModalAndKey(modal, contextApp?.setCredits, false, false, false);
+        useCloseModal(modal, contextApp?.setCredits, false, false, false);
     }
 
     return (

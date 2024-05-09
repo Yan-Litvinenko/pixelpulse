@@ -50,8 +50,10 @@ const LogsUpdate = (): React.JSX.Element => {
                         {clippedIndexes.includes(index) ? (
                             <Button
                                 className={styles.element__expend}
-                                onClick={() => handleExpand(index)}
+                                delayEvent={false}
+                                handleButton={() => handleExpand(index)}
                                 textContent={expandStates[index] ? '-expand' : '+expand'}
+                                type="button"
                             />
                         ) : null}
                     </div>
