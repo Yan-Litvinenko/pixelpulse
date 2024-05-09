@@ -1,7 +1,5 @@
 import React from 'react';
-import useCloseModal from '../../hooks/useCloseModal';
-import useTelegramApi from '../../hooks/useTelegramApi';
-import { useForm } from 'react-hook-form';
+import useCloseModalAndKey from '../../hooks/useCloseModalAndKey';
 import { ContextApp } from '../app/App';
 import Cross from '../cross/Cross';
 import Form from '../form/Form';
@@ -10,52 +8,47 @@ import ModalBoxButton from '../modalBoxButton/ModalBoxButton';
 import ModalLoader from '../modalLoader/ModalLoader';
 import ModalSendState from '../modalSendState/ModalSendState';
 import { IAppContext } from '../../interfaces/interface';
+import { FormSubmit } from '../../interfaces/interface.form';
 import styles from './ModalAvailability.module.scss';
+import useFormSubmit from '../../hooks/useFormSubmit';
 
 const ModalAvailability = (): React.JSX.Element | null => {
     const contextApp: IAppContext | undefined = React.useContext(ContextApp);
-    const modal: React.MutableRefObject<HTMLDivElement | null> = React.useRef(null);
 
     if (!contextApp) return null;
 
-    const [successfully, loading, error, setSuccessfully, setLoading, setError, sendMessage] = useTelegramApi();
-    useCloseModal(modal, contextApp.setAvailability, successfully, loading, error);
+    const modal: React.MutableRefObject<HTMLDivElement | null> = React.useRef(null);
+    const formSubmit: FormSubmit = useFormSubmit('Вам предложили проект!');
 
-    const {
-        formState: { errors, isValid },
-        handleSubmit,
-        register,
-        reset,
-    } = useForm({
-        mode: 'onChange',
-    });
-
-    const onSubmit = (data: Record<string, string>): void => {
-        sendMessage(data, 'Вам предложили проект!');
-        reset();
-    };
+    useCloseModalAndKey(
+        modal,
+        contextApp.setAvailability,
+        formSubmit.successfully,
+        formSubmit.loading,
+        formSubmit.error,
+    );
 
     return (
         <>
             <div className={styles.modal} ref={modal}>
-                {loading ? <ModalLoader /> : null}
-                {successfully ? (
+                {formSubmit.loading ? <ModalLoader /> : null}
+                {formSubmit.successfully ? (
                     <ModalSendState
-                        setError={setError}
-                        setLoading={setLoading}
-                        setSuccessfully={setSuccessfully}
-                        status={successfully}
+                        setError={formSubmit.setError}
+                        setLoading={formSubmit.setLoading}
+                        setSuccessfully={formSubmit.setSuccessfully}
+                        status={formSubmit.successfully}
                     />
                 ) : null}
-                {error ? (
+                {formSubmit.error ? (
                     <ModalSendState
-                        setError={setError}
-                        setLoading={setLoading}
-                        setSuccessfully={setSuccessfully}
-                        status={error}
+                        setError={formSubmit.setError}
+                        setLoading={formSubmit.setLoading}
+                        setSuccessfully={formSubmit.setSuccessfully}
+                        status={formSubmit.error}
                     />
                 ) : null}
-                <form className={styles.modal__inner} onSubmit={handleSubmit(onSubmit)}>
+                <form className={styles.modal__inner} onSubmit={formSubmit.handleSubmit}>
                     <div className={styles.modal__box_title}>
                         <Heading className={styles.modal__title} level="3" textContent={'open for hire'} />
                         <Cross setModalState={contextApp.setAvailability} scrollStatus="on" />
@@ -65,13 +58,14 @@ const ModalAvailability = (): React.JSX.Element | null => {
                         level="4"
                         textContent={'I would love to hear about your projects!'}
                     />
-                    <Form register={register} errors={errors} />
+                    <Form register={formSubmit.register} errors={formSubmit.errors} />
                     <ModalBoxButton
-                        isValid={isValid}
+                        isValid={formSubmit.isValid}
                         setModalStatus={contextApp.setAvailability}
                         textEnter={'send message [enter]'}
                         textEsc={'discard [esc]'}
                         typeEnter={'submit'}
+                        handleEnter={formSubmit.handleSubmit}
                     />
                 </form>
             </div>

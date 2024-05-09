@@ -1,6 +1,6 @@
 import React from 'react';
-import useCloseModal from '../../hooks/useCloseModal';
-import useTelegramApi from '../../hooks/useTelegramApi';
+import useCloseModalAndKey from '../../hooks/useCloseModalAndKey';
+import useFormSubmit from '../../hooks/useFormSubmit';
 import { useForm } from 'react-hook-form';
 import { ContextApp } from '../app/App';
 import Cross from '../cross/Cross';
@@ -10,52 +10,40 @@ import ModalBoxButton from '../modalBoxButton/ModalBoxButton';
 import ModalLoader from '../modalLoader/ModalLoader';
 import ModalSendState from '../modalSendState/ModalSendState';
 import { IAppContext } from '../../interfaces/interface';
+import { FormSubmit } from '../../interfaces/interface.form';
 import styles from './ModalSocial.module.scss';
 
 const ModalSocial = (): React.JSX.Element | null => {
     const contextApp: IAppContext | undefined = React.useContext(ContextApp);
-    const modal: React.MutableRefObject<HTMLDivElement | null> = React.useRef(null);
 
     if (!contextApp) return null;
 
-    const [successfully, loading, error, setSuccessfully, setLoading, setError, sendMessage] = useTelegramApi();
-    useCloseModal(modal, contextApp.setSocial, successfully, loading, error);
+    const modal: React.MutableRefObject<HTMLDivElement | null> = React.useRef(null);
+    const formSubmit: FormSubmit = useFormSubmit('Вам отправили сообщение!');
 
-    const {
-        formState: { errors, isValid },
-        handleSubmit,
-        register,
-        reset,
-    } = useForm({
-        mode: 'onChange',
-    });
-
-    const onSubmit = (data: Record<string, string>): void => {
-        sendMessage(data, 'Вам отправили сообщение!');
-        reset();
-    };
+    useCloseModalAndKey(modal, contextApp.setSocial, formSubmit.successfully, formSubmit.loading, formSubmit.error);
 
     return (
         <>
             <div className={styles.modal} ref={modal}>
-                {loading ? <ModalLoader /> : null}
-                {successfully ? (
+                {formSubmit.loading ? <ModalLoader /> : null}
+                {formSubmit.successfully ? (
                     <ModalSendState
-                        setError={setError}
-                        setLoading={setLoading}
-                        setSuccessfully={setSuccessfully}
-                        status={successfully}
+                        setError={formSubmit.setError}
+                        setLoading={formSubmit.setLoading}
+                        setSuccessfully={formSubmit.setSuccessfully}
+                        status={formSubmit.successfully}
                     />
                 ) : null}
-                {error ? (
+                {formSubmit.error ? (
                     <ModalSendState
-                        setError={setError}
-                        setLoading={setLoading}
-                        setSuccessfully={setSuccessfully}
-                        status={error}
+                        setError={formSubmit.setError}
+                        setLoading={formSubmit.setLoading}
+                        setSuccessfully={formSubmit.setSuccessfully}
+                        status={formSubmit.error}
                     />
                 ) : null}
-                <form className={styles.modal__inner} onSubmit={handleSubmit(onSubmit)}>
+                <form className={styles.modal__inner} onSubmit={formSubmit.handleSubmit}>
                     <div className={styles.modal__box_title}>
                         <Heading className={styles.modal__title} level="3" textContent={'connect with me'} />
                         <Cross setModalState={contextApp.setSocial} scrollStatus="on" />
@@ -65,13 +53,13 @@ const ModalSocial = (): React.JSX.Element | null => {
                         level="4"
                         textContent={'wanna chat? Or just share something cool?'}
                     />
-                    <Form register={register} errors={errors} />
+                    <Form register={formSubmit.register} errors={formSubmit.errors} />
                     <ModalBoxButton
                         textEnter={'send message [enter]'}
                         textEsc={'discard [esc]'}
                         typeEnter="submit"
                         setModalStatus={contextApp.setSocial}
-                        isValid={isValid}
+                        isValid={formSubmit.isValid}
                     />
                 </form>
             </div>

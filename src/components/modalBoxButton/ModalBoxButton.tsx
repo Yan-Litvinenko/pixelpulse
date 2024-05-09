@@ -1,7 +1,6 @@
 import React from 'react';
-import { ContextApp } from '../app/App';
-import useCloseButtonModal from '../../hooks/useCloseButtonModal';
-import { BooleanState, IAppContext } from '../../interfaces/interface';
+import useCloseModalButton from '../../hooks/useCloseModalButton';
+import { BooleanState } from '../../interfaces/interface';
 import styles from './ModalBoxButton.module.scss';
 
 interface IModalBoxButton {
@@ -10,19 +9,18 @@ interface IModalBoxButton {
     textEnter: string;
     textEsc: string;
     isValid?: boolean;
+    handleEnter?: () => void;
 }
 
 const ModalBoxButton = (props: IModalBoxButton): React.JSX.Element | null => {
-    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
     const buttonEscape = React.useRef<null | HTMLButtonElement>(null);
+    const buttonEnter = React.useRef<null | HTMLButtonElement>(null);
 
-    useCloseButtonModal(buttonEscape, props.setModalStatus);
-
-    if (!contextApp) return null;
+    useCloseModalButton(buttonEscape, props.setModalStatus);
 
     return (
         <div className={styles.box}>
-            <button className={styles.box__enter} type={props.typeEnter} disabled={!props.isValid}>
+            <button className={styles.box__enter} ref={buttonEnter} type={props.typeEnter} disabled={!props.isValid}>
                 {props.textEnter}
             </button>
             <button className={styles.box__esc} ref={buttonEscape} type="button">

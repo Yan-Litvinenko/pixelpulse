@@ -1,6 +1,6 @@
 import React from 'react';
 import useSlider from '../../hooks/useSlider';
-import useCloseModal from '../../hooks/useCloseModal';
+import useCloseModalAndKey from '../../hooks/useCloseModalAndKey';
 import Heading from '../heading/Heading';
 import ModalBoxButton from '../modalBoxButton/ModalBoxButton';
 import { ContextApp } from '../app/App';
@@ -19,7 +19,7 @@ const ModalCreations = (): React.JSX.Element => {
 
     if (!contextApp) return <></>;
 
-    useCloseModal(modal, contextApp.setCreations, false, false, false);
+    useCloseModalAndKey(modal, contextApp.setCreations, false, false, false);
 
     return (
         <div className={styles.modal} ref={modal}>

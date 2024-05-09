@@ -19,21 +19,16 @@
         max-width: 20rem;
     }
 
-    &__title {
-        @include text-properties('Big-Shoulders', 1.125rem, 700);
-        color: var(--main-color);
-        margin-bottom: 0.25rem;
-        text-align: center;
-    }
-
     &__text {
         @include text-properties('Iceberg', 0.875rem, 400);
         color: var(--dark-grey);
         margin-bottom: 0.75rem;
+        text-align: center;
     }
 
     &__button {
         @include button();
+        max-width: 100%;
     }
 }
 

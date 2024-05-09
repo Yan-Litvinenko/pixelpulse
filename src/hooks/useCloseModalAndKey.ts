@@ -3,7 +3,7 @@ import { ContextApp } from '../components/app/App';
 import scroll from '../utils/scroll';
 import { BooleanState, IAppContext } from '../interfaces/interface';
 
-const useCloseModal = (
+const useCloseModalAndKey = (
     place: React.MutableRefObject<HTMLDivElement | null>,
     setModalStatus: BooleanState,
     success: boolean,
@@ -61,4 +61,4 @@ const useCloseModal = (
     }, [success, error, loading]);
 };
 
-export default useCloseModal;
+export default useCloseModalAndKey;

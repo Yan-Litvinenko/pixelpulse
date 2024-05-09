@@ -1,5 +1,5 @@
 import React from 'react';
-import useCloseModal from '../../hooks/useCloseModal';
+import useCloseModalAndKey from '../../hooks/useCloseModalAndKey';
 import ClipPathBorder from '../clipPathBorder/ClipPathBorder';
 import Cross from '../cross/Cross';
 import Heading from '../heading/Heading';
@@ -22,7 +22,7 @@ const ModalSetting = (): React.JSX.Element | null => {
         contextApp.setSetting(false);
     };
 
-    useCloseModal(modal, contextApp.setSetting, false, false, false);
+    useCloseModalAndKey(modal, contextApp.setSetting, false, false, false);
 
     return (
         <div className={styles.modal} ref={modal}>

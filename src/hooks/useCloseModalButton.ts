@@ -3,7 +3,7 @@ import { ContextApp } from '../components/app/App';
 import scroll from '../utils/scroll';
 import { BooleanState, IAppContext } from '../interfaces/interface';
 
-const useCloseButtonModal = (
+const useCloseModalButton = (
     button: React.MutableRefObject<HTMLButtonElement | null>,
     setModalStatus: BooleanState,
 ): void => {
@@ -21,7 +21,6 @@ const useCloseButtonModal = (
             button.current?.addEventListener('click', handleCloseModal);
         } else {
             setTimeout(() => {
-                console.log('можно закрыть по кнопке');
                 button.current?.addEventListener('click', handleCloseModal);
             }, contextApp?.TRANSITION_TIME);
         }
@@ -32,4 +31,4 @@ const useCloseButtonModal = (
     }, []);
 };
 
-export default useCloseButtonModal;
+export default useCloseModalButton;
