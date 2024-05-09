@@ -1,6 +1,6 @@
 import React from 'react';
 import { handleGithubRequest } from '../utils/handleGithubRequest';
-import { ICommitLog } from '../interfaces/interface';
+import { ICommitLog } from '../interfaces/interface.github';
 
 const useGithubApi = (): [ICommitLog[] | undefined, boolean, boolean] => {
     const [commits, setCommits] = React.useState<ICommitLog[] | undefined>(undefined);

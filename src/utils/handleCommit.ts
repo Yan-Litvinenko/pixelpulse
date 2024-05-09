@@ -1,6 +1,5 @@
 import getZero from './getZero';
-import { ICommit } from '../interfaces/interface.github';
-import { ICommitLog } from '../interfaces/interface';
+import { ICommit, ICommitLog } from '../interfaces/interface.github';
 
 const handleCommit = (commit: ICommit): ICommitLog | undefined => {
     if (commit) {

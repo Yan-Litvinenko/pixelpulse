@@ -6,9 +6,9 @@ import { ICreationsBlock } from '../../interfaces/interface.credits';
 import styles from './CreationsDetails.module.scss';
 
 const CreationsDetails = ({
-    projects,
     projectCount,
     projectDefault,
+    projects,
     xplorerState,
 }: ICreationsBlock): React.JSX.Element => {
     const getHexagon = (): React.JSX.Element => <Hexagon />;

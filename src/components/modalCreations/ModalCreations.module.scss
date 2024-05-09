@@ -1,0 +1,95 @@
+@import '../../css/mixin.scss';
+
+.modal {
+    @include flex-container(column, $justify-content: center, $align-items: center);
+    @include position(fixed, 0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+
+    &__header {
+        @include flex-container(column, $gap: 0.5rem 0rem);
+        margin-bottom: 2rem;
+    }
+
+    &__title {
+        @include text-properties('Big-Shoulders', 2.625rem, 700);
+        color: var(--main-color);
+        text-align: center;
+    }
+
+    &__subtitle {
+        @include text-properties();
+        text-align: center;
+    }
+
+    &__content_wrapper {
+        @include flex-container($justify-content: center);
+        height: 100%;
+        margin-bottom: 1.5rem;
+        max-height: 35rem;
+        max-width: 83rem;
+        position: relative;
+        width: 100%;
+    }
+
+    &__content {
+        @include flex-container($justify-content: center);
+        border: 0.0625rem solid var(--frame-border-color);
+        max-width: 73rem;
+        overflow: hidden;
+        width: 100%;
+    }
+
+    &__content_inner {
+        @include flex-container();
+        transition: all 0.5s;
+    }
+
+    &__item {
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+    }
+}
+
+.box_wrapper {
+    max-width: 73rem;
+    position: relative;
+    width: 100%;
+
+    &__count {
+        @include text-properties('Big-Shoulders', 0.875rem, 700);
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.vector {
+    border: 1.25rem solid transparent;
+    box-sizing: content-box;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform-origin: top center;
+    transform: translateY(-50%);
+    transition: filter var(--transition-element);
+
+    &__left {
+        left: 0;
+    }
+
+    &__right {
+        right: 0;
+    }
+
+    &__deactive {
+        cursor: auto;
+        filter: invert(50%);
+    }
+}
+
+.vector:not(.vector__deactive):active {
+    transform: scale(1.1) translateY(-50%);
+}

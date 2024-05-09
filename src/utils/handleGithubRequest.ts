@@ -1,6 +1,6 @@
 import getZero from './getZero';
 import { IGithubRespone } from '../interfaces/interface.github';
-import { ICommitLog } from '../interfaces/interface';
+import { ICommitLog } from '../interfaces/interface.github';
 
 const ACCESS_TOKEN: string | undefined = process.env.REACT_APP_GITHUB_TOKEN;
 const URL: string | undefined = process.env.REACT_APP_GITHUB_URL;

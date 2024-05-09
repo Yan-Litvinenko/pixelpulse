@@ -1,14 +1,14 @@
 interface GetWrapperClass {
-    effects: boolean[];
-    settingState: boolean;
+    effectsLeft: boolean[];
+    effectsCenter: boolean[];
     isMedium: boolean;
     isLarge: boolean;
     stylesWrapper: Record<string, string>;
 }
 
 const getWrapperClass = ({
-    effects,
-    settingState,
+    effectsLeft,
+    effectsCenter,
     isMedium,
     isLarge,
     stylesWrapper: styles,
@@ -16,10 +16,10 @@ const getWrapperClass = ({
     const classes: string[] = [styles.wrapper];
 
     if (!isMedium && !isLarge) {
-        if (effects.some((state) => state)) {
+        if (effectsLeft.some((state) => state)) {
             classes.push(styles.wrapper__active_left);
         }
-        if (settingState) {
+        if (effectsCenter.some((state) => state)) {
             classes.push(styles.wrapper__active_center);
         }
     }

@@ -61,4 +61,9 @@ interface IGithubRespone extends ITree {
     parents: IParents;
 }
 
-export { IGithubRespone, ICommit };
+interface ICommitLog {
+    message: string;
+    date: string;
+}
+
+export { IGithubRespone, ICommit, ICommitLog };

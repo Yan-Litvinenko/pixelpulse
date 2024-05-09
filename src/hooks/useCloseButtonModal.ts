@@ -21,6 +21,7 @@ const useCloseButtonModal = (
             button.current?.addEventListener('click', handleCloseModal);
         } else {
             setTimeout(() => {
+                console.log('можно закрыть по кнопке');
                 button.current?.addEventListener('click', handleCloseModal);
             }, contextApp?.TRANSITION_TIME);
         }
@@ -28,7 +29,7 @@ const useCloseButtonModal = (
         return () => {
             button.current?.removeEventListener('click', handleCloseModal);
         };
-    });
+    }, []);
 };
 
 export default useCloseButtonModal;

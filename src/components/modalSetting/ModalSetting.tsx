@@ -22,7 +22,7 @@ const ModalSetting = (): React.JSX.Element | null => {
         contextApp.setSetting(false);
     };
 
-    useCloseModal(modal, contextApp.setAvailability, false, false, false);
+    useCloseModal(modal, contextApp.setSetting, false, false, false);
 
     return (
         <div className={styles.modal} ref={modal}>

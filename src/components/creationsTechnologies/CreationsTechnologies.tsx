@@ -25,7 +25,7 @@ const CreationsTechnologies = ({
 }: ICreationsBlock): React.JSX.Element => {
     const getHexagon = (): React.JSX.Element => <Hexagon />;
 
-    const renderAboutTechnologies = (technologiesName: string[], className: string) => {
+    const renderAboutTechnologies = (technologiesName: string[], className: string): React.JSX.Element[] => {
         return technologiesName.map((item) => {
             const IconComponent = technologies[item];
             return (

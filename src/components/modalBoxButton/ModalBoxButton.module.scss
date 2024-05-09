@@ -1,15 +1,12 @@
 @import '../../css/mixin.scss';
 
 .box {
-    @include flex-container($gap: 0.96875rem);
+    @include flex-container($justify-content: space-between, $gap: 0.96875rem);
+    width: 100%;
 
     &__enter,
     &__esc {
         @include button();
-    }
-
-    &__enter {
-        background-color: var(--main-darklight-color);
     }
 
     &__esc {
@@ -37,14 +34,15 @@
     .box {
         flex-direction: column;
         gap: 0.625rem 0rem;
-        margin-top: auto;
         margin-bottom: 2rem;
+        margin-top: auto;
         padding: 0rem 2rem;
 
         &__enter,
         &__esc {
             height: 2.8125rem;
             margin-top: 0rem;
+            max-width: 100%;
             width: 100%;
         }
     }

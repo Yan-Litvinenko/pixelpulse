@@ -1,8 +1,7 @@
 import React from 'react';
-import {} from '../interfaces/interface';
+import { ContextApp } from '../components/app/App';
 import scroll from '../utils/scroll';
 import { BooleanState, IAppContext } from '../interfaces/interface';
-import { ContextApp } from '../components/app/App';
 
 const useCloseModal = (
     place: React.MutableRefObject<HTMLDivElement | null>,

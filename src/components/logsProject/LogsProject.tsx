@@ -1,7 +1,7 @@
 import React from 'react';
 import LogsElement from '../logsElement/LogsElement';
 import { handleDate } from '../../utils/handleGithubRequest';
-import { ICommitLog } from '../../interfaces/interface';
+import { ICommitLog } from '../../interfaces/interface.github';
 import styles from './LogsProject.module.scss';
 
 interface IProject {

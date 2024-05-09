@@ -25,7 +25,7 @@ const ModalBoxButton = (props: IModalBoxButton): React.JSX.Element | null => {
             <button className={styles.box__enter} type={props.typeEnter} disabled={!props.isValid}>
                 {props.textEnter}
             </button>
-            <button className={styles.box__esc} type="button" ref={buttonEscape}>
+            <button className={styles.box__esc} ref={buttonEscape} type="button">
                 {props.textEsc}
             </button>
         </div>

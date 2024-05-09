@@ -1,42 +1,33 @@
+import { ICommitLog } from './interface.github';
+
 type Page = 'welcome' | 'beginning' | 'about' | 'logs' | 'achievements' | 'creations' | 'games';
 
-interface Settings {
-    [key: string]: boolean;
-}
-
-interface SettingContext {
-    settingStatuses: Settings;
-    setSettingStatuses: React.Dispatch<React.SetStateAction<Settings>>;
-}
-
 type BooleanState = React.Dispatch<React.SetStateAction<boolean>>;
-
 type IAppContext = {
-    TRANSITION_TIME: number;
-    setAvailability: BooleanState;
-    setChallenge: BooleanState;
-    setCredits: BooleanState;
-    setMusic: BooleanState;
-    setNavigationMobile: BooleanState;
-    setPage: (page: Page) => void;
-    setSetting: BooleanState;
-    setSocial: BooleanState;
-    setSounds: BooleanState;
     commits: ICommitLog[] | undefined;
+    creations: boolean;
     errorGithub: boolean;
     isLarge: boolean;
     isLoadingGithub: boolean;
     isMedium: boolean;
     music: boolean;
     navigationMobile: boolean;
+    projectImages: string[];
     page: Page;
+    setAvailability: BooleanState;
+    setChallenge: BooleanState;
+    setCreations: BooleanState;
+    setCredits: BooleanState;
+    setMusic: BooleanState;
+    setNavigationMobile: BooleanState;
+    setProjectImages: React.Dispatch<React.SetStateAction<string[]>>;
+    setPage: (page: Page) => void;
+    setSetting: BooleanState;
+    setSocial: BooleanState;
+    setSounds: BooleanState;
     sounds: boolean;
     styles: Record<string, string>;
+    TRANSITION_TIME: number;
 };
 
-interface ICommitLog {
-    message: string;
-    date: string;
-}
-
-export { BooleanState, IAppContext, ICommitLog, Page, SettingContext };
+export { BooleanState, IAppContext, Page };

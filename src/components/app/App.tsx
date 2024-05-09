@@ -1,12 +1,13 @@
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
+import handleWrapperClassName from '../../utils/handleWrapperClassName';
 import useGithubApi from '../../hooks/useGithubApi';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import usePage from '../../hooks/usePage';
-import handleWrapperClassName from '../../utils/handleWrapperClassName';
 import Layout from '../layout/Layout';
 import ModalAvailability from '../modalAvailability/ModalAvailability';
 import ModalChallenge from '../modalChallenge/ModalChallenge';
+import ModalCreations from '../modalCreations/ModalCreations';
 import ModalCredits from '../modalCredits/ModalCredits';
 import ModalSetting from '../modalSetting/ModalSetting';
 import ModalSocial from '../modalSocial/ModalSocial';
@@ -28,9 +29,11 @@ const App = (): React.JSX.Element => {
     const [setting, setSetting] = React.useState<boolean>(false);
     const [social, setSocial] = React.useState<boolean>(false);
     const [challenge, setChallenge] = React.useState<boolean>(false);
+    const [creations, setCreations] = React.useState<boolean>(false);
     const [sounds, setSounds] = useLocalStorage(true, 'sounds');
     const [music, setMusic] = useLocalStorage(true, 'music');
     const [navigationMobile, setNavigationMobile] = React.useState<boolean>(false);
+    const [projectImages, setProjectImages] = React.useState<string[]>([]);
 
     return (
         <>
@@ -39,15 +42,19 @@ const App = (): React.JSX.Element => {
                     TRANSITION_TIME,
                     setAvailability,
                     setChallenge,
+                    setCreations,
                     setCredits,
                     setMusic,
                     setNavigationMobile,
                     setPage,
+                    setProjectImages,
                     setSetting,
                     setSocial,
                     setSounds,
                     commits,
+                    creations,
                     errorGithub,
+                    projectImages,
                     isLarge,
                     isLoadingGithub,
                     isMedium,
@@ -60,8 +67,8 @@ const App = (): React.JSX.Element => {
             >
                 <div
                     className={handleWrapperClassName({
-                        effects: [social, availability, credits, challenge],
-                        settingState: setting,
+                        effectsLeft: [social, availability, credits, challenge],
+                        effectsCenter: [setting, creations],
                         isMedium: isMedium,
                         isLarge: isLarge,
                         stylesWrapper: styles,
@@ -72,11 +79,12 @@ const App = (): React.JSX.Element => {
                 </div>
 
                 {availability ? <ModalAvailability /> : null}
-                {social ? <ModalSocial /> : null}
-                {credits ? <ModalCredits /> : null}
-                {setting ? <ModalSetting /> : null}
                 {challenge ? <ModalChallenge /> : null}
+                {creations ? <ModalCreations /> : null}
+                {credits ? <ModalCredits /> : null}
                 {navigationMobile && (isMedium || isLarge) ? <NavigationMobile /> : null}
+                {setting ? <ModalSetting /> : null}
+                {social ? <ModalSocial /> : null}
             </ContextApp.Provider>
         </>
     );
