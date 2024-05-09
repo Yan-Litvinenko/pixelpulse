@@ -1,6 +1,6 @@
 import React from 'react';
 import useSlider from '../../hooks/useSlider';
-import useCloseModalAndKey from '../../hooks/useCloseModalAndKey';
+import useCloseModal from '../../hooks/useCloseModal';
 import Heading from '../heading/Heading';
 import ModalBoxButton from '../modalBoxButton/ModalBoxButton';
 import { ContextApp } from '../app/App';
@@ -19,7 +19,7 @@ const ModalCreations = (): React.JSX.Element => {
 
     if (!contextApp) return <></>;
 
-    useCloseModalAndKey(modal, contextApp.setCreations, false, false, false);
+    useCloseModal(modal, contextApp.setCreations, false, false, false);
 
     return (
         <div className={styles.modal} ref={modal}>
@@ -59,12 +59,6 @@ const ModalCreations = (): React.JSX.Element => {
                 <span className={styles.box_wrapper__count}>
                     {countSlider + 1} of {contextApp.projectImages.length}
                 </span>
-                <ModalBoxButton
-                    setModalStatus={contextApp?.setCreations}
-                    textEnter="view project live"
-                    textEsc="close [esc]"
-                    typeEnter="button"
-                />
             </div>
         </div>
     );

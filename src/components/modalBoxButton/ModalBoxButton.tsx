@@ -1,31 +1,34 @@
 import React from 'react';
-import useCloseModalButton from '../../hooks/useCloseModalButton';
-import { BooleanState } from '../../interfaces/interface';
+import Button from '../button/Button';
 import styles from './ModalBoxButton.module.scss';
 
 interface IModalBoxButton {
-    setModalStatus: BooleanState;
-    typeEnter: 'submit' | 'button';
+    handleEnter: () => void;
+    handleEscape: () => void;
+    isValid?: boolean;
     textEnter: string;
     textEsc: string;
-    isValid?: boolean;
-    handleEnter?: () => void;
+    typeEnter: 'submit' | 'button';
 }
 
 const ModalBoxButton = (props: IModalBoxButton): React.JSX.Element | null => {
-    const buttonEscape = React.useRef<null | HTMLButtonElement>(null);
-    const buttonEnter = React.useRef<null | HTMLButtonElement>(null);
-
-    useCloseModalButton(buttonEscape, props.setModalStatus);
-
     return (
         <div className={styles.box}>
-            <button className={styles.box__enter} ref={buttonEnter} type={props.typeEnter} disabled={!props.isValid}>
-                {props.textEnter}
-            </button>
-            <button className={styles.box__esc} ref={buttonEscape} type="button">
-                {props.textEsc}
-            </button>
+            <Button
+                className={styles.box__enter}
+                delayEvent={true}
+                handleButton={props.handleEnter}
+                isValid={props.isValid && props.isValid}
+                textContent={props.textEnter}
+                type={props.typeEnter}
+            />
+            <Button
+                className={styles.box__esc}
+                delayEvent={true}
+                handleButton={props.handleEscape}
+                textContent={props.textEsc}
+                type="button"
+            />
         </div>
     );
 };

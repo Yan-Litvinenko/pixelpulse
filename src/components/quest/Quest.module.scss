@@ -149,8 +149,7 @@
     }
 
     .visual:hover {
-        border-color: var(--main-color);
-        box-shadow: var(--box-shadow);
+        border: 0.0625rem solid var(--dark-light-border);
         text-shadow: var(--text-shadow);
     }
 

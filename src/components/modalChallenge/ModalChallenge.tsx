@@ -1,6 +1,6 @@
 import React from 'react';
 import useFormSubmit from '../../hooks/useFormSubmit';
-import useCloseModalAndKey from '../../hooks/useCloseModalAndKey';
+import useCloseModal from '../../hooks/useCloseModal';
 import { ContextApp } from '../app/App';
 import Cross from '../cross/Cross';
 import FormChallenge from '../formChallenge/FormChallenge';
@@ -21,8 +21,13 @@ const ModalChallenge = (): React.JSX.Element | null => {
     const [selectValue, setSelectValue] = React.useState<Rarity>('unusual');
     const modal: React.MutableRefObject<HTMLDivElement | null> = React.useRef(null);
     const formSubmit: FormSubmit = useFormSubmit('Вам бросили вызов!');
-
-    useCloseModalAndKey(modal, contextApp.setChallenge, formSubmit.successfully, formSubmit.loading, formSubmit.error);
+    const handleButtonEscape = useCloseModal(
+        modal,
+        contextApp.setChallenge,
+        formSubmit.successfully,
+        formSubmit.loading,
+        formSubmit.error,
+    );
 
     return (
         <>
@@ -61,8 +66,9 @@ const ModalChallenge = (): React.JSX.Element | null => {
                         setSelectValue={setSelectValue}
                     />
                     <ModalBoxButton
+                        handleEnter={formSubmit.handleSubmit}
+                        handleEscape={handleButtonEscape}
                         isValid={formSubmit.isValid}
-                        setModalStatus={contextApp.setChallenge}
                         textEnter={'send challenge [enter]'}
                         textEsc={'discard [esc]'}
                         typeEnter="submit"

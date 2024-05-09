@@ -59,8 +59,10 @@ const Creations = (): React.JSX.Element => {
                     <div className={styles.box_button}>
                         <Button
                             className={styles.box_button__back}
+                            delayEvent={false}
+                            handleButton={() => setXplorerState('projects')}
                             textContent="Back to all projects"
-                            onClick={() => setXplorerState('projects')}
+                            type="button"
                         />
                     </div>
                 </div>

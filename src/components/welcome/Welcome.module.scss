@@ -32,17 +32,11 @@
     }
 
     &__btn {
-        @include text-properties('Big-Shoulders', 1.375rem, 700, 0.075rem);
-        background-color: transparent;
-        border: 0.0625rem solid var(--main-color);
-        color: var(--main-color);
-        cursor: pointer;
-        margin-top: 2.375rem;
-        padding: 0.9375rem 3.125rem;
-        text-transform: uppercase;
-        transition:
-            box-shadow var(--transition-element),
-            text-shadow var(--transition-element);
+        @include button-escape();
+        font-size: 1.375rem;
+        line-height: 1.375rem;
+        max-width: 16.625rem;
+        padding: 0.9375rem 3.125rem 0.875rem 3.125rem;
     }
 }
 
@@ -85,6 +79,7 @@
 
         &__btn {
             margin-top: 1.25rem;
+            max-width: 100%;
         }
     }
 }

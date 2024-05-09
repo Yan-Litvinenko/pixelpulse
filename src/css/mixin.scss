@@ -62,7 +62,23 @@
     left: $left;
 }
 
-@mixin button {
+@mixin button-escape {
+    @include text-properties('Big-Shoulders', 1.125rem, 700, 0.075rem);
+    background-color: var(--main-background-color);
+    border: 0.0625rem solid var(--main-color);
+    color: var(--main-color);
+    cursor: pointer;
+    padding: 0.5rem 0.375rem 0.3125rem 0.375rem;
+    text-transform: uppercase;
+    transition:
+        background-color var(--transition-element),
+        border var(--transition-element),
+        box-shadow var(--transition-element),
+        text-shadow var(--transition-element);
+    width: 100%;
+}
+
+@mixin button-enter {
     @include text-properties('Big-Shoulders', 1.125rem, 700, 0.075rem);
     background-color: var(--main-darklight-color);
     border: none;
@@ -73,8 +89,8 @@
     transition:
         background-color var(--transition-element),
         border var(--transition-element),
+        box-shadow var(--transition-element),
         text-shadow var(--transition-element);
-    max-width: 14.2rem;
     width: 100%;
 }
 

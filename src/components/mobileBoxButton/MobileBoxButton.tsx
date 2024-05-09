@@ -24,8 +24,20 @@ const MobileBoxButton = (): React.JSX.Element => {
 
     return (
         <div className={styles.box}>
-            <Button className={styles.box__navigation} onClick={handleNavigationClick} textContent="navigation" />
-            <Button className={styles.box__about} onClick={handleAboutClick} textContent="about" />
+            <Button
+                className={styles.box__navigation}
+                delayEvent={false}
+                handleButton={handleNavigationClick}
+                textContent="navigation"
+                type="button"
+            />
+            <Button
+                className={styles.box__about}
+                delayEvent={false}
+                handleButton={handleAboutClick}
+                textContent="about"
+                type="button"
+            />
         </div>
     );
 };

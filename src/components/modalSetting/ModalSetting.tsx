@@ -1,5 +1,5 @@
 import React from 'react';
-import useCloseModalAndKey from '../../hooks/useCloseModalAndKey';
+import useCloseModal from '../../hooks/useCloseModal';
 import ClipPathBorder from '../clipPathBorder/ClipPathBorder';
 import Cross from '../cross/Cross';
 import Heading from '../heading/Heading';
@@ -22,7 +22,7 @@ const ModalSetting = (): React.JSX.Element | null => {
         contextApp.setSetting(false);
     };
 
-    useCloseModalAndKey(modal, contextApp.setSetting, false, false, false);
+    const handleButtonEscape = useCloseModal(modal, contextApp.setSetting, false, false, false);
 
     return (
         <div className={styles.modal} ref={modal}>
@@ -52,10 +52,11 @@ const ModalSetting = (): React.JSX.Element | null => {
                 </div>
 
                 <ModalBoxButton
+                    handleEnter={() => {}}
+                    handleEscape={handleButtonEscape}
                     textEnter="write to disk [enter]"
                     textEsc="discard [esc]"
                     typeEnter="submit"
-                    setModalStatus={contextApp?.setSetting}
                 />
             </div>
         </div>

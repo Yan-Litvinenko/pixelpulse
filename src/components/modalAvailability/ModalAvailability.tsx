@@ -1,5 +1,5 @@
 import React from 'react';
-import useCloseModalAndKey from '../../hooks/useCloseModalAndKey';
+import useCloseModal from '../../hooks/useCloseModal';
 import { ContextApp } from '../app/App';
 import Cross from '../cross/Cross';
 import Form from '../form/Form';
@@ -19,8 +19,7 @@ const ModalAvailability = (): React.JSX.Element | null => {
 
     const modal: React.MutableRefObject<HTMLDivElement | null> = React.useRef(null);
     const formSubmit: FormSubmit = useFormSubmit('Вам предложили проект!');
-
-    useCloseModalAndKey(
+    const handleButtonEscape = useCloseModal(
         modal,
         contextApp.setAvailability,
         formSubmit.successfully,
@@ -60,12 +59,12 @@ const ModalAvailability = (): React.JSX.Element | null => {
                     />
                     <Form register={formSubmit.register} errors={formSubmit.errors} />
                     <ModalBoxButton
+                        handleEnter={formSubmit.handleSubmit}
+                        handleEscape={handleButtonEscape}
                         isValid={formSubmit.isValid}
-                        setModalStatus={contextApp.setAvailability}
                         textEnter={'send message [enter]'}
                         textEsc={'discard [esc]'}
                         typeEnter={'submit'}
-                        handleEnter={formSubmit.handleSubmit}
                     />
                 </form>
             </div>

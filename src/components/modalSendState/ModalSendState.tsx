@@ -26,7 +26,13 @@ const ModalSendState = (props: IModalSendState) => {
             <div className={styles.modal__inner}>
                 <div className={styles.modal__content}>
                     <Paragraph className={styles.modal__text} textContent={props.status ? success : error} />
-                    <Button className={styles.modal__button} onClick={handleOK} textContent="ok" />
+                    <Button
+                        className={styles.modal__button}
+                        delayEvent={false}
+                        handleButton={handleOK}
+                        textContent="ok"
+                        type="button"
+                    />
                 </div>
             </div>
         </div>
