@@ -14,6 +14,7 @@ const projectDefault: IProject = {
     about: ['default about'],
     brief: 'CV brief',
     images: [''],
+    link: '',
     name: 'CV',
     technologies: ['react', 'js', 'nodeJS', 'github', 'figma'],
 };
@@ -68,7 +69,7 @@ const Creations = (): React.JSX.Element => {
                 </div>
             </div>
 
-            <Frame />
+            <Frame className={styles.frame} />
         </main>
     );
 };

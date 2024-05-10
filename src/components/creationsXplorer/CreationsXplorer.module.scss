@@ -20,17 +20,4 @@
         color: var(--dark-grey);
         padding: 0.625rem;
     }
-
-    &__content {
-        @include flex-container(column, $flex-wrap: wrap, $gap: 1rem 0rem);
-        height: 100%;
-        padding: 0.875rem 0.625rem 0.75rem;
-        max-height: 25.6rem;
-    }
-
-    &__not_content {
-        align-self: center;
-        justify-self: center;
-        padding-top: 0.625rem;
-    }
 }

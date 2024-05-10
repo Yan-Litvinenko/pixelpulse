@@ -59,13 +59,13 @@
 
 @media (max-width: 1700px) {
     .beginning {
-        height: var(--height-medium);
+        min-height: var(--height-medium);
     }
 }
 
 @media (max-width: 1380px) {
     .beginning {
-        height: var(--height-small);
+        min-height: var(--height-small);
     }
 }
 

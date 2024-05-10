@@ -30,3 +30,21 @@
     height: 0.0625rem;
     margin: 1rem 0rem 0.75rem;
 }
+
+@media (max-width: 1380px) {
+    .details {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .details {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 400px) {
+    .details {
+        padding: 0.35rem;
+    }
+}

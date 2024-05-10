@@ -5,7 +5,7 @@
     border: 0.0625rem solid var(--frame-border-color);
     grid-column: 2 / 3;
     grid-row: 2 / 3;
-    height: var(--height-large);
+    min-height: var(--height-large);
     padding: 2.5rem 0.625rem 0.625rem;
     position: relative;
 
@@ -44,7 +44,7 @@
 
 @media (max-width: 1700px) {
     .achievements {
-        height: var(--height-medium);
+        min-height: var(--height-medium);
 
         &__achievements {
             height: calc(var(--height-medium) - 9.375rem);
@@ -54,7 +54,7 @@
 
 @media (max-width: 1380px) {
     .achievements {
-        height: var(--height-small);
+        min-height: var(--height-small);
 
         &__achievements {
             height: calc(var(--height-small) - 9.375rem);
@@ -66,7 +66,7 @@
     .achievements {
         grid-column: 1 / -1;
         grid-row: 2 / 3;
-        height: auto;
+        min-height: auto;
         min-height: 100vh;
     }
 }

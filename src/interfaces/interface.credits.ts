@@ -1,9 +1,10 @@
 interface IProject {
-    name: string;
-    brief: string;
-    technologies: string[];
     about: string[];
+    brief: string;
     images: string[];
+    link: string;
+    name: string;
+    technologies: string[];
 }
 
 interface ICreationsBlock {

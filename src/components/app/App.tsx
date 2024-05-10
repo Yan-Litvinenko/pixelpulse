@@ -13,6 +13,7 @@ import ModalSetting from '../modalSetting/ModalSetting';
 import ModalSocial from '../modalSocial/ModalSocial';
 import NavigationMobile from '../navigationMobile/NavigationMobile';
 import { IAppContext, Page } from '../../interfaces/interface';
+import { IProject } from '../../interfaces/interface.credits';
 import styles from './App.module.scss';
 
 const ContextApp = React.createContext<IAppContext | undefined>(undefined);
@@ -34,6 +35,7 @@ const App = (): React.JSX.Element => {
     const [music, setMusic] = useLocalStorage(true, 'music');
     const [navigationMobile, setNavigationMobile] = React.useState<boolean>(false);
     const [projectImages, setProjectImages] = React.useState<string[]>([]);
+    const [modalProject, setModalProject] = React.useState<number>(0);
 
     return (
         <>
@@ -44,6 +46,7 @@ const App = (): React.JSX.Element => {
                     setChallenge,
                     setCreations,
                     setCredits,
+                    setModalProject,
                     setMusic,
                     setNavigationMobile,
                     setPage,
@@ -54,13 +57,14 @@ const App = (): React.JSX.Element => {
                     commits,
                     creations,
                     errorGithub,
-                    projectImages,
                     isLarge,
                     isLoadingGithub,
                     isMedium,
+                    modalProject,
                     music,
                     navigationMobile,
                     page,
+                    projectImages,
                     sounds,
                     styles,
                 }}

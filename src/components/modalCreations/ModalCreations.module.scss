@@ -28,6 +28,7 @@
         margin-bottom: 1.5rem;
         max-height: 35rem;
         max-width: 83rem;
+        padding: 0rem 5rem;
         position: relative;
         width: 100%;
     }
@@ -52,17 +53,27 @@
     }
 }
 
-.box_wrapper {
+.button_wrapper {
+    @include flex-container($justify-content: space-between, $align-items: center);
     max-width: 73rem;
     position: relative;
-    width: 100%;
+    width: calc(100% - 10rem);
+
+    &__enter {
+        @include button-enter();
+        display: block;
+        text-align: center;
+        max-width: 14.125rem;
+    }
 
     &__count {
         @include text-properties('Big-Shoulders', 0.875rem, 700);
-        left: 50%;
-        position: absolute;
-        top: 50%;
-        transform: translate(-50%, -50%);
+    }
+
+    &__escape {
+        @include button-escape();
+        border: 0.0625rem solid var(--dark-border);
+        max-width: 14.125rem;
     }
 }
 
@@ -92,4 +103,68 @@
 
 .vector:not(.vector__deactive):active {
     transform: scale(1.1) translateY(-50%);
+}
+
+@media (hover: hover) {
+    .button_wrapper {
+        &__enter:hover {
+            background-color: var(--main-color);
+        }
+
+        &__escape:hover {
+            border: 0.0625rem solid var(--dark-light-border);
+            text-shadow: var(--text-shadow);
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .modal {
+        padding: 0rem 2rem;
+        &__content_wrapper {
+            padding: 0;
+        }
+    }
+
+    .button_wrapper {
+        width: 100%;
+    }
+
+    .vector {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .modal {
+        padding: 0rem 0.625rem;
+
+        &__header {
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .button_wrapper {
+        flex-wrap: wrap;
+        row-gap: 0.625rem;
+
+        &__count {
+            text-align: center;
+            display: block;
+            width: 100%;
+            order: 1;
+        }
+
+        &__enter {
+            max-width: 100%;
+            order: 2;
+        }
+
+        &__escape {
+            max-width: 100%;
+            order: 3;
+        }
+    }
 }

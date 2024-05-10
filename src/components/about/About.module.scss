@@ -36,7 +36,7 @@
 
 @media (max-width: 1700px) {
     .about {
-        height: var(--height-medium);
+        min-height: var(--height-medium);
     }
 
     .box_image {
@@ -46,7 +46,7 @@
 
 @media (max-width: 1380px) {
     .about {
-        height: var(--height-small);
+        min-height: var(--height-small);
         padding: 2.5rem 1.375rem 0rem 0.625rem;
 
         &__title {
@@ -70,7 +70,7 @@
         @include flex-container(column);
         grid-column: 1 / -1;
         grid-row: 2 / 3;
-        height: auto;
+        min-height: auto;
         min-height: auto;
         padding: 1.5rem 0.625rem 0rem;
         width: 100%;

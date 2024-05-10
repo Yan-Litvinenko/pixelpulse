@@ -45,13 +45,13 @@
 
 @media (max-width: 1700px) {
     .logs {
-        height: var(--height-medium);
+        min-height: var(--height-medium);
     }
 }
 
 @media (max-width: 1380px) {
     .logs {
-        height: var(--height-small);
+        min-height: var(--height-small);
     }
 }
 
@@ -60,8 +60,7 @@
         grid-column: 1 / -1;
         grid-row: 2 / 3;
         padding: 1.5rem 0.625rem 0rem;
-        height: auto;
-        min-height: 100vh;
+        min-height: auto;
 
         &__inner {
             @include flex-container(column);

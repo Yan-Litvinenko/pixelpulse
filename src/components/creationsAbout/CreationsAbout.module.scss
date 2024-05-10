@@ -17,3 +17,17 @@
         color: var(--dark-grey);
     }
 }
+
+@media (max-width: 1380px) {
+    .about {
+        grid-column: 2 / 3;
+        grid-row: 1 / -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .about {
+        grid-column: 1 / -1;
+        grid-row: auto;
+    }
+}
