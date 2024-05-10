@@ -21,15 +21,12 @@ const Button = (props: IButton): React.JSX.Element => {
 
     React.useEffect(() => {
         if (contextApp.isLarge || contextApp.isMedium) {
-            console.log('первое условие');
             button.current?.addEventListener('click', props.handleButton);
         } else if (props.delayEvent) {
-            console.log('второе условие');
             setTimeout(() => {
                 button.current?.addEventListener('click', props.handleButton);
             }, contextApp?.TRANSITION_TIME);
         } else {
-            console.log('третье условие');
             button.current?.addEventListener('click', props.handleButton);
         }
 
@@ -39,7 +36,7 @@ const Button = (props: IButton): React.JSX.Element => {
     }, [button]);
 
     return (
-        <button className={props.className} disabled={props.isValid && !props.isValid} type={props.type} ref={button}>
+        <button className={props.className} disabled={props.isValid && props.isValid} type={props.type} ref={button}>
             {props.textContent}
             {props.image && props.image()}
         </button>

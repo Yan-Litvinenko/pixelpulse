@@ -8,19 +8,19 @@ import styles from './LogsUpdate.module.scss';
 const update: Record<string, string>[] = [
     {
         title: 'project update',
-        text: 'The development team has been working tirelessly on the latest iteration of the project. Significant progress has been made in the areas of neural interface integration, machine learning algorithms, and quantum computing. of neural interface integration, machine learning algorithms, and quantum computing',
+        text: "My project is at a very exciting stage of development. I continue to actively work on key aspects and move forward confidently. I'm implementing new ideas and improving current solutions to reach my goals faster and more efficiently. My efforts are focused on enhancing quality and expanding opportunities.",
     },
     {
         title: 'Challenges',
-        text: ' system crashes, hardware malfunctions, and unanticipated compatibility issues',
+        text: 'Like in any ambitious project, I face my own challenges. I confront them openly and concentrate my efforts on solving them. Every challenge is an opportunity to grow and improve. I am confident that with my knowledge and resources, I will overcome all obstacles on the path to success.',
     },
     {
         title: 'NEXT STEPS',
-        text: 'The development team has been working tirelessly on the latest iteration of the project. Significant progress has been made in the areas of neural interface integration, machine learning algorithms, and quantum computing.',
+        text: 'My plans for the near future are ambitious yet realistic. I am focusing on key stages that will lead me to desired outcomes. I plan to intensively develop specific project aspects and implement new strategies to achieve my goals.',
     },
     {
         title: 'CONCLUSION',
-        text: 'The development of advanced neural interfaces and machine learning algorithms',
+        text: 'In conclusion, my project embodies my passion and diligence. I continue to move forward, regardless of any obstacles, and I am confident in a successful outcome. I thank everyone who supports me on this journey. My goal is to create something unique and inspiring, and I will put forth all efforts to achieve it.',
     },
 ];
 

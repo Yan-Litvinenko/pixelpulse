@@ -134,11 +134,13 @@
 @media (max-width: 370px) {
     .beginning {
         &__title {
-            @include fontSize16px();
+            font-size: 1rem;
+            line-height: 1rem;
         }
 
         &__subtitle {
-            @include fontSize12px();
+            font-size: 0.75rem;
+            line-height: 0.75rem;
         }
     }
 }

@@ -10,7 +10,7 @@
     position: relative;
 
     &__inner {
-        margin: 0 auto;
+        margin: 0 auto 3rem;
         max-width: 59.375rem;
     }
 
@@ -52,6 +52,10 @@
 @media (max-width: 1380px) {
     .logs {
         min-height: var(--height-small);
+
+        &__inner {
+            margin-bottom: 4rem;
+        }
     }
 }
 
@@ -65,6 +69,7 @@
         &__inner {
             @include flex-container(column);
             max-width: 100%;
+            margin-bottom: 1.5rem;
         }
 
         &__frame {
@@ -80,6 +85,7 @@
         grid-row: 1 / -1;
 
         &__inner {
+            margin-bottom: 0;
             min-height: 100vh;
         }
 

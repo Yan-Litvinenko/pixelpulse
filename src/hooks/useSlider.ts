@@ -9,6 +9,8 @@ const useSlider = (
 ): number => {
     const contextApp: IAppContext | undefined = React.useContext(ContextApp);
     const [countSlider, setCountSlider] = React.useState<number>(0);
+    let xDown: number = 0;
+    let yDown: number = 0;
 
     if (!contextApp) return 0;
 
@@ -43,26 +45,82 @@ const useSlider = (
         });
     };
 
+    const mouseStart = (event: MouseEvent): void => {
+        xDown = event.clientX;
+        yDown = event.clientY;
+    };
+
+    const mouseMove = (event: MouseEvent) => {
+        if (!xDown || !yDown) return;
+
+        const xUp: number = event.clientX;
+        const yUp: number = event.clientY;
+        const xDiff: number = xDown - xUp;
+        const yDiff: number = yDown - yUp;
+
+        if (Math.abs(xDiff) > Math.abs(yDiff)) {
+            if (xDiff > 0) nextSlide();
+            if (xDiff < 0) prevSlide();
+        }
+
+        xDown = 0;
+        yDown = 0;
+    };
+
+    const touchStart = (event: TouchEvent): void => {
+        xDown = event.touches[0].clientX;
+        yDown = event.touches[0].clientY;
+    };
+
+    const touchMove = (event: TouchEvent): void => {
+        if (!xDown || !yDown) return;
+
+        const xUp: number = event.touches[0].clientX;
+        const yUp: number = event.touches[0].clientY;
+        const xDiff: number = xDown - xUp;
+        const yDiff: number = yDown - yUp;
+
+        if (Math.abs(xDiff) > Math.abs(yDiff)) {
+            if (xDiff > 0) nextSlide();
+            if (xDiff < 0) prevSlide();
+        }
+
+        xDown = 0;
+        yDown = 0;
+    };
+
     React.useEffect(() => {
         const leftElement: HTMLImageElement | null = vectorLeft.current;
         const rightElement: HTMLImageElement | null = vectorRight.current;
-
-        const handleLeftClick = (): void => prevSlide();
-        const handleRightClick = (): void => nextSlide();
+        const sliderElement: HTMLDivElement | null = slider.current;
 
         if (leftElement) {
-            leftElement.addEventListener('click', handleLeftClick);
+            leftElement.addEventListener('click', prevSlide);
         }
         if (rightElement) {
-            rightElement.addEventListener('click', handleRightClick);
+            rightElement.addEventListener('click', nextSlide);
+        }
+
+        if (sliderElement) {
+            sliderElement.addEventListener('touchstart', touchStart);
+            sliderElement.addEventListener('touchmove', touchMove);
+            sliderElement.addEventListener('mousedown', mouseStart);
+            sliderElement.addEventListener('mousemove', mouseMove);
         }
 
         return () => {
             if (leftElement) {
-                leftElement.removeEventListener('click', handleLeftClick);
+                leftElement.removeEventListener('click', prevSlide);
             }
             if (rightElement) {
-                rightElement.removeEventListener('click', handleRightClick);
+                rightElement.removeEventListener('click', nextSlide);
+            }
+
+            if (sliderElement) {
+                sliderElement.removeEventListener('touchstart', touchStart);
+                sliderElement.removeEventListener('touchmove', touchMove);
+                sliderElement.removeEventListener('mousemove', mouseMove);
+                sliderElement.removeEventListener('mousedown', mouseStart);
             }
         };
     }, []);

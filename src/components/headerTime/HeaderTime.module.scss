@@ -2,9 +2,10 @@
 
 .time {
     @include flex-container($align-items: center, $gap: 0rem 1.6875rem);
-    @include fontSize14px();
     color: var(--main-text-color);
+    font-size: 0.875rem;
     letter-spacing: 0.0625rem;
+    line-height: 0.875rem;
 
     &__credits {
         @include text-properties('Iceberg', 0.75rem, 400, 0.0625rem);

@@ -47,6 +47,7 @@ const ModalCreations = (): React.JSX.Element => {
                 <img
                     alt="vector"
                     className={`${styles.vector} ${styles.vector__left} ${countSlider === 0 ? styles.vector__deactive : ''}`}
+                    draggable="false"
                     ref={vectorLeft}
                     src={vectorImageLeft}
                 />
@@ -56,6 +57,7 @@ const ModalCreations = (): React.JSX.Element => {
                             <img
                                 alt={imageName}
                                 className={styles.modal__item}
+                                draggable="false"
                                 key={index}
                                 src={require('../../assets/images/' + imageName)}
                             />
@@ -65,6 +67,7 @@ const ModalCreations = (): React.JSX.Element => {
                 <img
                     alt="vector"
                     className={`${styles.vector} ${styles.vector__right} ${countSlider === contextApp.projectImages.length - 1 ? styles.vector__deactive : ''}`}
+                    draggable="false"
                     ref={vectorRight}
                     src={vectorImageRight}
                 />

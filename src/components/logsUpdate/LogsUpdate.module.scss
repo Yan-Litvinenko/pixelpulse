@@ -11,6 +11,7 @@
     clip-path: polygon(0.875rem 0.0625rem, 100% 0.0625rem, 100% 100%, 0% 100%, 0% 0.75rem);
     padding: 0.9375rem 0.9375rem 0.625rem;
     position: relative;
+    height: max-content;
 
     &::before {
         background-color: var(--main-background-color);

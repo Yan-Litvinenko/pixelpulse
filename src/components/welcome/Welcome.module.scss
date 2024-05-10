@@ -61,11 +61,6 @@
             display: none;
         }
 
-        &__title {
-            text-align: center;
-            margin-bottom: 1.875rem;
-        }
-
         &__content {
             padding: 2.5rem 0px 1.25rem 0px;
         }
@@ -79,6 +74,18 @@
 
         &__btn {
             margin-top: 1.25rem;
+        }
+    }
+}
+
+@media (max-width: 550px) {
+    .welcome {
+        &__title {
+            text-align: center;
+            margin-bottom: 1.875rem;
+        }
+
+        &__btn {
             max-width: 100%;
         }
     }

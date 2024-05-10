@@ -65,13 +65,6 @@
 
 @media (max-width: 1200px) {
     .range {
-        @include fontSize26px();
         gap: 0.7rem 0rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .range {
-        @include fontSize18px();
     }
 }

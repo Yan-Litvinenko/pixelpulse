@@ -21,16 +21,18 @@
     }
 
     &__active_text {
-        @include fontSize14px();
         background-color: var(--main-dark-color);
         color: var(--dark-grey);
         display: block;
+        font-size: 0.875rem;
+        line-height: 0.875rem;
         padding: 0.5rem 0.625rem;
     }
 
     &__title {
-        @include fontSize14px();
+        font-size: 0.875rem;
         letter-spacing: 0.065625rem;
+        line-height: 0.875rem;
         padding-left: 0.5rem;
     }
 
@@ -41,9 +43,10 @@
     }
 
     &__goal_text {
-        @include fontSize14px();
         color: var(--dark-grey);
         display: block;
+        font-size: 0.875rem;
+        line-height: 0.875rem;
         padding-left: 0.5rem;
     }
 

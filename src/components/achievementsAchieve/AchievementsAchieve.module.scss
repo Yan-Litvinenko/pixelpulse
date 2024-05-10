@@ -180,7 +180,8 @@
         }
 
         &__rarity {
-            @include fontSize14px();
+            font-size: 0.875rem;
+            line-height: 0.875rem;
             margin-top: auto;
         }
     }
@@ -191,12 +192,14 @@
         }
 
         &__title {
-            @include fontSize16px();
+            font-size: 1rem;
+            line-height: 1rem;
             padding: 1rem 1rem 0rem;
         }
 
         &__description {
-            @include fontSize12px();
+            font-size: 0.75rem;
+            line-height: 0.75rem;
             padding: 1rem 1rem 0rem;
         }
     }

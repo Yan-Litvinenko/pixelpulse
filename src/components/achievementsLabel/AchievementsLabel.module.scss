@@ -20,6 +20,7 @@
         left: 0;
         position: absolute;
         top: -0.125rem;
+        transition: box-shadow var(transition-element);
         width: 1.125rem;
     }
 
@@ -40,4 +41,14 @@
 
 .label__input:checked ~ .label__text {
     text-shadow: var(--text-shadow);
+}
+
+@media (hover: hover) {
+    .label:hover .label__text {
+        text-shadow: var(--text-shadow);
+    }
+
+    .label:hover .label__checkbox {
+        box-shadow: var(--box-shadow);
+    }
 }

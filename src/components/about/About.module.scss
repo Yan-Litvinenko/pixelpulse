@@ -108,19 +108,25 @@
         min-height: 100vh;
 
         &__title {
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         &__content {
+            display: block;
             margin-bottom: 5rem;
         }
 
         &__text_content {
             gap: 2rem 0rem;
+            max-width: 100%;
         }
 
         &__frame {
             display: none;
         }
+    }
+
+    .box_image {
+        display: none;
     }
 }

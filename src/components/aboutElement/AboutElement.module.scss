@@ -19,11 +19,13 @@
 @media (max-width: 1380px) {
     .item {
         &__title {
-            @include fontSize12px();
+            font-size: 0.75rem;
+            line-height: 0.75rem;
         }
 
         &__text {
-            @include fontSize15px();
+            font-size: 0.9375rem;
+            line-height: 0.9375rem;
             max-width: 16.5rem;
         }
     }
