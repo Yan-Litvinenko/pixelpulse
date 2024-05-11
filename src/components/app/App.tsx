@@ -13,8 +13,9 @@ import ModalSetting from '../modalSetting/ModalSetting';
 import ModalSocial from '../modalSocial/ModalSocial';
 import NavigationMobile from '../navigationMobile/NavigationMobile';
 import { IAppContext, Page } from '../../interfaces/interface';
-import { IProject } from '../../interfaces/interface.credits';
+import mainTheme from '../../assets/audio/main-theme.mp3';
 import styles from './App.module.scss';
+import useMusic from '../../hooks/useMusic';
 
 const ContextApp = React.createContext<IAppContext | undefined>(undefined);
 const TRANSITION_TIME: number = 1500;
@@ -31,11 +32,14 @@ const App = (): React.JSX.Element => {
     const [social, setSocial] = React.useState<boolean>(false);
     const [challenge, setChallenge] = React.useState<boolean>(false);
     const [creations, setCreations] = React.useState<boolean>(false);
-    const [sounds, setSounds] = useLocalStorage(true, 'sounds');
-    const [music, setMusic] = useLocalStorage(true, 'music');
+    const [sounds, setSounds] = useLocalStorage(true, 'cv-sounds');
+    const [music, setMusic] = useLocalStorage(true, 'cv-music');
+    const [changeStateMusic] = useMusic(mainTheme);
     const [navigationMobile, setNavigationMobile] = React.useState<boolean>(false);
     const [projectImages, setProjectImages] = React.useState<string[]>([]);
     const [modalProject, setModalProject] = React.useState<number>(0);
+
+    changeStateMusic(music);
 
     return (
         <>
@@ -54,6 +58,7 @@ const App = (): React.JSX.Element => {
                     setSetting,
                     setSocial,
                     setSounds,
+                    changeStateMusic,
                     commits,
                     creations,
                     errorGithub,

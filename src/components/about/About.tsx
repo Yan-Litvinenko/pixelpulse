@@ -3,7 +3,9 @@ import AboutElement from '../aboutElement/AboutElement';
 import Frame from '../frame/Frame';
 import Heading from '../heading/Heading';
 import { nanoid } from 'nanoid';
-import human from '../../assets/images/human.jpg';
+import humanAvif from '../../assets/images/human.avif';
+import humanWebp from '../../assets/images/human.webp';
+import humanJpg from '../../assets/images/human.jpg';
 import styles from './About.module.scss';
 
 const content: Record<string, string>[] = [
@@ -31,11 +33,13 @@ const About = (): React.JSX.Element => {
                         <AboutElement key={nanoid()} text={item.text} title={item.title} />
                     ))}
                 </div>
-                <div className={styles.box_image}>
-                    <img className={styles.about__img} src={human} alt="human" />
-                    <Frame />
-                </div>
-                <Frame />
+                <picture className={styles.box_image}>
+                    <source srcSet={humanAvif} />
+                    <source srcSet={humanWebp} />
+                    <img className={styles.about__img} src={humanJpg} alt="human" />
+                    <Frame className={styles.frame} />
+                </picture>
+                <Frame className={styles.frame} />
             </div>
         </main>
     );

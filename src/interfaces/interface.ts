@@ -16,6 +16,7 @@ type IAppContext = {
     navigationMobile: boolean;
     page: Page;
     projectImages: string[];
+    changeStateMusic: (state: boolean) => void;
     setAvailability: BooleanState;
     setChallenge: BooleanState;
     setCreations: BooleanState;

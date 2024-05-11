@@ -1,7 +1,9 @@
 import React from 'react';
 import Frame from '../frame/Frame';
 import Heading from '../heading/Heading';
-import whale from '../../assets/images/whale_large.jpg';
+import beginningAvif from '../../assets/images/beginning.avif';
+import beginningWebp from '../../assets/images/beginning.webp';
+import beginningJpg from '../../assets/images/beginning.jpg';
 import styles from './Beginning.module.scss';
 
 const Beginning = (): React.JSX.Element => {
@@ -18,10 +20,12 @@ const Beginning = (): React.JSX.Element => {
                         <Heading className={styles.beginning__title} textContent={title} level="3" />
                         <Heading className={styles.beginning__subtitle} textContent={subtitle} level="4" />
                     </div>
-                    <div className={styles.beginning__background_box}>
+                    <picture className={styles.beginning__background_box}>
                         <Frame className={styles.beginning__background_frame} />
-                        <img className={styles.beginning__background} src={whale} alt={whale} />
-                    </div>
+                        <source srcSet={beginningAvif} />
+                        <source srcSet={beginningWebp} />
+                        <img className={styles.beginning__background} src={beginningJpg} alt={'whale'} />
+                    </picture>
                 </div>
             </main>
         </>

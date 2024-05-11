@@ -138,6 +138,10 @@
 
 @media (max-width: 768px) {
     .profile {
+        &__availability {
+            padding: 0.4375rem 0rem 0.25rem 0.3125rem;
+        }
+
         &__element {
             justify-content: start;
         }

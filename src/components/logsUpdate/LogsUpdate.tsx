@@ -52,7 +52,7 @@ const LogsUpdate = (): React.JSX.Element => {
                                 className={styles.element__expend}
                                 delayEvent={false}
                                 handleButton={() => handleExpand(index)}
-                                textContent={expandStates[index] ? '-expand' : '+expand'}
+                                textContent={expandStates[index] ? '-collapse' : '+expand'}
                                 type="button"
                             />
                         ) : null}

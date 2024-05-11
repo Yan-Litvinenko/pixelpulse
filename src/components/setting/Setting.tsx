@@ -24,7 +24,14 @@ const Setting = ({ className }: ISetting): React.JSX.Element => {
                 audioClassName={`${className.checkbox} ${!contextApp?.music && className.checkbox__deactive}`}
                 className={`${className.audio} ${!contextApp?.music && className.audio__deactive}`}
                 image="status"
-                onClick={() => contextApp?.setMusic((prev) => !prev)}
+                onClick={() => {
+                    contextApp?.setMusic((prev) => {
+                        const changeState: boolean = !prev;
+                        contextApp?.changeStateMusic(changeState);
+
+                        return changeState;
+                    });
+                }}
                 textContent="Music"
             />
             <SettingElement

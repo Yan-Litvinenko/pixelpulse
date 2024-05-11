@@ -31,10 +31,10 @@ const AchievementsAchieve = (props: IAchievementsAchieve): React.JSX.Element => 
 
     return (
         <div className={getAchieveClassName()}>
-            <div className={styles.box_image}>
+            <figure className={styles.box_image}>
                 <img className={styles.box_image__image} src={rarity[props.rarity]} alt="achieve" />
-                <span className={styles.box_image__rarity}>{props.rarity}</span>
-            </div>
+                <figcaption className={styles.box_image__rarity}>{props.rarity}</figcaption>
+            </figure>
 
             <div className={`${styles.achieve__inner}`}>
                 <div className={styles.achieve__content}>
