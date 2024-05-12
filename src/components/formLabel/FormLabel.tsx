@@ -15,10 +15,12 @@ interface ILabel {
     placeholder: string;
     register: UseFormRegister<FieldValues>;
     textContent: string;
+    isFocus?: boolean;
 }
 
 function FormLabel(props: ILabel): React.JSX.Element {
     const id: string = nanoid();
+    const input = React.useRef<null | HTMLInputElement>(null);
     const errorMessage = props.errors[props.name]?.message as string;
 
     const getClassNameError = (child: 'input' | 'textarea'): string => {
@@ -27,6 +29,10 @@ function FormLabel(props: ILabel): React.JSX.Element {
         }
         return styles.error_textarea;
     };
+
+    React.useEffect(() => {
+        if (props.isFocus) input.current?.focus();
+    }, []);
 
     return (
         <label className={styles.label} htmlFor={id}>
@@ -54,6 +60,7 @@ function FormLabel(props: ILabel): React.JSX.Element {
                             message: props.patternMessage,
                         },
                     })}
+                    ref={input}
                 />
             ) : (
                 <textarea

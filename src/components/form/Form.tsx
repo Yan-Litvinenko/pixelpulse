@@ -27,6 +27,7 @@ const Form = (props: IForm): React.JSX.Element | null => {
                 placeholder={'your name'}
                 register={props.register}
                 textContent={'How should I call you?'}
+                isFocus={true}
             />
             <FormLabel
                 child={'input'}
