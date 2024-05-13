@@ -1,4 +1,5 @@
 import React from 'react';
+import useFormSubmit from '../../hooks/useFormSubmit';
 import useCloseModal from '../../hooks/useCloseModal';
 import { ContextApp } from '../app/App';
 import Cross from '../cross/Cross';
@@ -10,7 +11,6 @@ import ModalSendState from '../modalSendState/ModalSendState';
 import { IAppContext } from '../../interfaces/interface';
 import { FormSubmit } from '../../interfaces/interface.form';
 import styles from './ModalAvailability.module.scss';
-import useFormSubmit from '../../hooks/useFormSubmit';
 
 const ModalAvailability = (): React.JSX.Element | null => {
     const contextApp: IAppContext | undefined = React.useContext(ContextApp);

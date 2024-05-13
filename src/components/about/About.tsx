@@ -36,7 +36,7 @@ const About = (): React.JSX.Element => {
                 <picture className={styles.box_image}>
                     <source srcSet={humanAvif} />
                     <source srcSet={humanWebp} />
-                    <img className={styles.about__img} src={humanJpg} alt="human" />
+                    <img className={styles.about__img} src={humanJpg} alt="human" draggable={false} />
                     <Frame className={styles.frame} />
                 </picture>
                 <Frame className={styles.frame} />

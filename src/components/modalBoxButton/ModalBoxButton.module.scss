@@ -8,6 +8,10 @@
         @include button-enter();
     }
 
+    &__enter_deactive {
+        cursor: auto;
+    }
+
     &__esc {
         @include button-escape();
         border: 0.0625rem solid var(--dark-border);
@@ -18,6 +22,10 @@
     .box {
         &__enter:hover {
             background-color: var(--main-color);
+        }
+
+        &__enter_deactive:hover {
+            background-color: var(--main-darklight-color);
         }
 
         &__esc:hover {

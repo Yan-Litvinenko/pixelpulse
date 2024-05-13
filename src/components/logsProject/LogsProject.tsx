@@ -1,19 +1,18 @@
 import React from 'react';
+import { ContextApp } from '../app/App';
+import { IAppContext } from '../../interfaces/interface';
 import LogsElement from '../logsElement/LogsElement';
-import { handleDate } from '../../utils/handleGithubRequest';
-import { ICommitLog } from '../../interfaces/interface.github';
 import styles from './LogsProject.module.scss';
 
-interface IProject {
-    commits: ICommitLog[] | undefined;
-}
+const LogsProject = (): React.JSX.Element => {
+    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
 
-const LogsProject = ({ commits }: IProject): React.JSX.Element => {
-    let lastDate: string = handleDate(`${new Date()}`);
+    if (!contextApp) return <></>;
 
-    if (commits) {
-        lastDate = commits[0].date;
-    }
+    let lastDate: string = 'error connection';
+
+    if (contextApp.isLoadingGithub) lastDate = 'loading';
+    if (contextApp.commits[0]) lastDate = contextApp.commits[0].date;
 
     return (
         <ul className={styles.project}>

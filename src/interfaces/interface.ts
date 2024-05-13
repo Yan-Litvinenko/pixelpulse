@@ -5,7 +5,7 @@ type Page = 'welcome' | 'beginning' | 'about' | 'logs' | 'achievements' | 'creat
 
 type BooleanState = React.Dispatch<React.SetStateAction<boolean>>;
 type IAppContext = {
-    commits: ICommitLog[] | undefined;
+    commits: ICommitLog[];
     creations: boolean;
     errorGithub: boolean;
     isLarge: boolean;

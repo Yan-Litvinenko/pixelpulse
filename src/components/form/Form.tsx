@@ -17,17 +17,17 @@ const Form = (props: IForm): React.JSX.Element | null => {
     return (
         <div className={styles.form}>
             <FormLabel
+                autofocus={true}
                 child={'input'}
                 errors={props.errors}
                 maxLength={20}
                 minLength={2}
                 name="name"
                 pattern={/[A-Za-zА-Яа-яЁё]/}
-                patternMessage={'The name can only contain Russian or Latin alphabet '}
+                patternMessage={'The name can only contain Russian or Latin alphabet'}
                 placeholder={'your name'}
                 register={props.register}
                 textContent={'How should I call you?'}
-                isFocus={true}
             />
             <FormLabel
                 child={'input'}

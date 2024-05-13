@@ -18,7 +18,7 @@ const Profile = (): React.JSX.Element => {
         <aside className={styles.profile}>
             <div className={styles.avatar} onClick={handleClickAvatar}>
                 <Frame className={styles.avatar__frame} />
-                <img src={avatar} alt="avatar" />
+                <img src={avatar} alt="avatar" draggable={false} />
             </div>
 
             {profileItems.map((item) => {

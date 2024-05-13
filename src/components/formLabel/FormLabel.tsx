@@ -15,7 +15,7 @@ interface ILabel {
     placeholder: string;
     register: UseFormRegister<FieldValues>;
     textContent: string;
-    isFocus?: boolean;
+    autofocus?: boolean;
 }
 
 function FormLabel(props: ILabel): React.JSX.Element {
@@ -30,21 +30,18 @@ function FormLabel(props: ILabel): React.JSX.Element {
         return styles.error_textarea;
     };
 
-    React.useEffect(() => {
-        if (props.isFocus) input.current?.focus();
-    }, []);
-
     return (
         <label className={styles.label} htmlFor={id}>
             {props.textContent}
             {errorMessage && <span className={getClassNameError(props.child)}>&#10059; {errorMessage}</span>}
             {props.child === 'input' ? (
                 <input
+                    autoComplete="off"
+                    autoFocus={props.autofocus}
                     className={styles.label__input}
                     id={id}
                     placeholder={props.placeholder}
                     type="text"
-                    autoComplete="off"
                     {...props.register(props.name, {
                         required: 'This field is required',
                         minLength: {
@@ -60,7 +57,6 @@ function FormLabel(props: ILabel): React.JSX.Element {
                             message: props.patternMessage,
                         },
                     })}
-                    ref={input}
                 />
             ) : (
                 <textarea

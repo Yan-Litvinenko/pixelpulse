@@ -9,26 +9,31 @@
     &__greeting {
         @include text-properties('Big-Shoulders', 33.625rem, 700, -2rem);
         color: var(--main-color);
+        user-select: none;
     }
 
     &__title {
         @include text-properties($font-size: 1.438rem, $letter-spacing: 0.125rem);
         color: var(--main-text-color);
+        grid-column: 1 / -1;
+        grid-row: 1 / -1;
         margin-bottom: 2.875rem;
     }
 
     &__content {
         max-width: 45.875rem;
+        position: relative;
     }
 
-    &__text,
-    &__text_mobile {
+    &__item {
+        @include grid-container(1fr, auto);
+    }
+
+    &__text {
         @include text-properties($font-size: 1.25rem, $letter-spacing: 0.1rem);
+        grid-column: 1 / -1;
+        grid-row: 1 / -1;
         margin-bottom: 1.875rem;
-    }
-
-    &__text_mobile {
-        display: none;
     }
 
     &__btn {
@@ -37,12 +42,52 @@
         line-height: 1.375rem;
         max-width: 16.625rem;
         padding: 0.9375rem 3.125rem 0.875rem 3.125rem;
+        position: relative;
+        transition:
+            background-color var(--transition-element),
+            border var(--transition-element),
+            box-shadow var(--transition-element),
+            text-shadow var(--transition-element),
+            opacity var(--transition-element),
+            visibility var(--transition-element);
     }
+}
+
+.skip {
+    @include flex-container($align-items: center);
+    @include text-properties($font-size: 1.25rem, $letter-spacing: 0.1rem);
+    background-color: transparent;
+    border: none;
+    bottom: 0;
+    color: var(--main-color);
+    cursor: pointer;
+    outline: none;
+    position: absolute;
+    right: 0;
+    text-transform: uppercase;
+    transition:
+        text-shadow var(--transition-element),
+        opacity var(--transition-element),
+        visibility var(--transition-element);
+
+    &__quotes {
+        position: relative;
+        top: -1.5px;
+    }
+}
+
+.hidden {
+    opacity: 0;
+    visibility: hidden;
 }
 
 @media (hover: hover) {
     .welcome__btn:hover {
         box-shadow: var(--box-shadow);
+        text-shadow: var(--text-shadow);
+    }
+
+    .skip:hover {
         text-shadow: var(--text-shadow);
     }
 }
@@ -75,6 +120,10 @@
         &__btn {
             margin-top: 1.25rem;
         }
+    }
+
+    .skip {
+        bottom: 85px;
     }
 }
 

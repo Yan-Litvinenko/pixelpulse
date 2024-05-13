@@ -2,7 +2,7 @@
 
 .element {
     @include text-properties('Big-Shoulders', 1.125rem, 700);
-    @include grid-container(6fr 1fr, $justify-content: space-between, $align-items: center, $gap: 0 0.3125rem);
+    @include grid-container(3fr 1fr, $justify-content: space-between, $align-items: center, $gap: 0 0.3125rem);
     border: 0.0625rem solid var(--main-color);
     color: var(--main-color);
     letter-spacing: 0.075rem;

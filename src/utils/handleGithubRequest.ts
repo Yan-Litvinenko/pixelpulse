@@ -5,19 +5,18 @@ import { ICommitLog } from '../interfaces/interface.github';
 const ACCESS_TOKEN: string | undefined = process.env.REACT_APP_GITHUB_TOKEN;
 const URL: string | undefined = process.env.REACT_APP_GITHUB_URL;
 
-const githubAPI = async (): Promise<IGithubRespone[] | undefined> => {
+const githubAPI = async (token: string, url: string): Promise<IGithubRespone[]> => {
     try {
-        if (URL) {
-            const response: Response = await fetch(URL, {
-                headers: {
-                    Authorization: `token ${ACCESS_TOKEN}`,
-                },
-            });
-            const data: IGithubRespone[] = await response.json();
-            return data;
-        }
+        const response: Response = await fetch(url, {
+            headers: {
+                Authorization: `token ${token}`,
+            },
+        });
+        const data: IGithubRespone[] = await response.json();
+        return data;
     } catch (error) {
         console.error('Fetch error:', error);
+        return [];
     }
 };
 
@@ -30,11 +29,7 @@ const handleDate = (date: string): string => {
     return `${year}.${month}.${day}`;
 };
 
-const handleCommit = (commits: IGithubRespone[] | undefined): ICommitLog[] | undefined => {
-    if (!commits) {
-        return;
-    }
-
+const handleCommit = (commits: IGithubRespone[]): ICommitLog[] => {
     return commits.map((commit) => {
         return {
             message: commit.commit.message,
@@ -43,20 +38,18 @@ const handleCommit = (commits: IGithubRespone[] | undefined): ICommitLog[] | und
     });
 };
 
-const handleGithubRequest = async (): Promise<ICommitLog[] | undefined> => {
+const handleGithubRequest = async (): Promise<ICommitLog[]> => {
     if (!ACCESS_TOKEN || !URL) {
         console.error('Access token or URL is undefined');
-        return;
+        return [];
     }
 
     try {
-        const data: IGithubRespone[] | undefined = await githubAPI();
-        if (!data) return;
-
+        const data: IGithubRespone[] = await githubAPI(ACCESS_TOKEN, URL);
         return handleCommit(data.slice(0, 5));
     } catch (error) {
         console.error('Error fetching data:', error);
-        throw new Error('Failed to fetch data');
+        return [];
     }
 };
 

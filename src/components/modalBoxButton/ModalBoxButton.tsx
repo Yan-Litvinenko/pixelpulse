@@ -15,7 +15,7 @@ const ModalBoxButton = (props: IModalBoxButton): React.JSX.Element | null => {
     return (
         <div className={styles.box}>
             <Button
-                className={styles.box__enter}
+                className={`${styles.box__enter} ${!props.isValid ? styles.box__enter_deactive : ''}`}
                 delayEvent={true}
                 handleButton={props.handleEnter}
                 isValid={!props.isValid}

@@ -2,8 +2,8 @@ import React from 'react';
 import { handleGithubRequest } from '../utils/handleGithubRequest';
 import { ICommitLog } from '../interfaces/interface.github';
 
-const useGithubApi = (): [ICommitLog[] | undefined, boolean, boolean] => {
-    const [commits, setCommits] = React.useState<ICommitLog[] | undefined>(undefined);
+const useGithubApi = (): [ICommitLog[], boolean, boolean] => {
+    const [commits, setCommits] = React.useState<ICommitLog[]>([]);
     const [isLoading, setIsLoading] = React.useState<boolean>(false);
     const [error, setError] = React.useState<boolean>(false);
 
@@ -12,19 +12,23 @@ const useGithubApi = (): [ICommitLog[] | undefined, boolean, boolean] => {
             setIsLoading(true);
 
             try {
-                const data: ICommitLog[] | undefined = await handleGithubRequest();
+                const data: ICommitLog[] = await handleGithubRequest();
+
+                if (data.length === 0) setError(true);
 
                 setCommits(data);
                 setError(false);
             } catch {
                 setError(true);
+                setTimeout(fetchCommits, 1000);
             } finally {
                 setIsLoading(false);
             }
         };
 
-        if (!commits) {
+        if (commits.length === 0) {
             fetchCommits();
+            setError(true);
         }
     }, []);
 
