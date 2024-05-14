@@ -23,7 +23,7 @@ module.exports = {
         'comma-spacing': ['error', { before: false, after: true }],
         'object-curly-spacing': ['error', 'always'],
         'comma-dangle': ['error', 'always-multiline'],
-        'lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
+        '@typescript-eslint/lines-between-class-members': 'off',
         'prettier/prettier': [
             'error',
             {

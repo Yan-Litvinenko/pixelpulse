@@ -1,0 +1,47 @@
+@import '../../css/mixin.scss';
+
+.wrapper {
+    @include flex-container(column, $gap: 0.925rem 0rem);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.canvas {
+    border: 0.325rem solid var(--main-color);
+    height: 22.75rem;
+    width: 22.75rem;
+}
+
+.title {
+    @include text-properties('Big-Shoulders', 1.425rem, 700);
+    color: var(--main-color);
+    text-align: center;
+}
+
+.back {
+    @include flex-container($align-items: center);
+    @include text-properties($font-size: 1.125rem, $letter-spacing: 0.1rem);
+    background-color: transparent;
+    border: none;
+    bottom: -2.5rem;
+    color: var(--main-color);
+    cursor: pointer;
+    outline: none;
+    position: absolute;
+    right: 0;
+    text-transform: uppercase;
+    transition: text-shadow var(--transition-element);
+
+    &__quotes {
+        position: relative;
+        top: -1.5px;
+    }
+}
+
+@media (hover: hover) {
+    .back:hover {
+        text-shadow: var(--text-shadow);
+    }
+}
