@@ -33,6 +33,49 @@
     height: 24px;
 }
 
+.joystick_left,
+.joystick_right,
+.joystick_up,
+.joystick_down {
+    cursor: pointer;
+    fill: var(--main-color);
+    height: 4rem;
+    position: absolute;
+    width: 4rem;
+}
+
+.joystick_left:active,
+.joystick_right:active,
+.joystick_up:active,
+.joystick_down:active {
+    height: 4.3rem;
+    width: 4.3rem;
+}
+
+.joystick_down {
+    bottom: -3%;
+    right: 50%;
+    transform: translateX(50%);
+}
+
+.joystick_up {
+    left: 50%;
+    top: -3%;
+    transform: translateX(-50%);
+}
+
+.joystick_right {
+    right: -3%;
+    top: 47.5%;
+    transform: translateY(-50%);
+}
+
+.joystick_left {
+    left: -3%;
+    top: 47.5%;
+    transform: translateY(-50%);
+}
+
 @media (max-width: 1200px) {
     .bluetooth {
         scale: 1.2;

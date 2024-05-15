@@ -14,7 +14,8 @@ class Snake {
     private apple: Coordinates;
     private vectorSnake: Coordinates;
 
-    private score: number;
+    score: number;
+    intervalId: NodeJS.Timeout | null;
 
     constructor(canvas: HTMLCanvasElement) {
         this.canvas = canvas;
@@ -41,6 +42,7 @@ class Snake {
         };
 
         this.score = 0;
+        this.intervalId = null;
     }
 
     private drawGame(): void {
@@ -166,7 +168,7 @@ class Snake {
         this.moveSnake(head);
     }
 
-    addEventListener(event: KeyboardEvent): void {
+    eventKeyboard(event: KeyboardEvent): void {
         if (event.key === 'ArrowUp' && this.vectorSnake.y == 0) {
             this.vectorSnake.x = 0;
             this.vectorSnake.y = -1;
@@ -185,12 +187,27 @@ class Snake {
         }
     }
 
+    setVectorSnake(x: number, y: number, vector: 'x' | 'y'): void {
+        if (vector === 'x') {
+            if (this.vectorSnake.x === 0) {
+                this.vectorSnake.x = x;
+                this.vectorSnake.y = y;
+            }
+        }
+
+        if (vector === 'y') {
+            if (this.vectorSnake.y === 0) {
+                this.vectorSnake.x = x;
+                this.vectorSnake.y = y;
+            }
+        }
+    }
+
     gameLoop(): void {
-        this.updateGame();
-        this.drawGame();
-        setTimeout(() => {
-            this.gameLoop();
-        }, 240);
+        this.intervalId = setInterval(() => {
+            this.updateGame();
+            this.drawGame();
+        }, 220);
     }
 }
 

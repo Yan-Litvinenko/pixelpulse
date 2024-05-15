@@ -14,17 +14,17 @@ const Games = (): React.JSX.Element => {
 
     return (
         <main className={styles.games}>
-            <Frame />
+            <Frame className={styles.frame} />
             <Heading className={styles.games__title} textContent={game} level="2" />
 
             {game === 'mini games' && (
                 <div className={styles.content}>
                     <div className={styles.game_description}>
                         <Paragraph
-                            className=""
+                            className={styles.game_description__text}
                             textContent="Here you will see a few mini games I implemented in React or in Canvas."
                         />
-                        <Paragraph className="" textContent="Have fun!" />
+                        <Paragraph className={styles.game_description__text} textContent="Have fun!" />
                     </div>
 
                     <div className={styles.content__games}>

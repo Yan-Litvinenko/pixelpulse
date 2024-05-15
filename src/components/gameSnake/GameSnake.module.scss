@@ -1,11 +1,9 @@
 @import '../../css/mixin.scss';
 
 .wrapper {
-    @include flex-container(column, $gap: 0.925rem 0rem);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    @include grid-container(1fr, $gap: 0.925rem 0rem);
+    margin: 0 auto;
+    width: max-content;
 }
 
 .canvas {
@@ -17,20 +15,18 @@
 .title {
     @include text-properties('Big-Shoulders', 1.425rem, 700);
     color: var(--main-color);
-    text-align: center;
+    user-select: none;
 }
 
 .back {
-    @include flex-container($align-items: center);
+    @include flex-container($justify-content: flex-end, $align-items: center);
     @include text-properties($font-size: 1.125rem, $letter-spacing: 0.1rem);
+    align-self: flex-end;
     background-color: transparent;
     border: none;
-    bottom: -2.5rem;
     color: var(--main-color);
     cursor: pointer;
     outline: none;
-    position: absolute;
-    right: 0;
     text-transform: uppercase;
     transition: text-shadow var(--transition-element);
 
@@ -43,5 +39,50 @@
 @media (hover: hover) {
     .back:hover {
         text-shadow: var(--text-shadow);
+    }
+}
+
+@media (max-width: 1200px) {
+    .wrapper {
+        grid-template-columns: max-content 1fr;
+        column-gap: 2rem;
+    }
+
+    .canvas {
+        grid-column: 2 / 3;
+    }
+
+    .title {
+        grid-column: 2 / 3;
+    }
+
+    .back {
+        grid-column: 2 / 3;
+    }
+
+    .joystick {
+        align-self: center;
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+        justify-self: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .wrapper {
+        @include flex-container(column, $gap: 0.935rem 0rem);
+        grid-template-columns: 1fr;
+    }
+
+    .joystick {
+        order: 4;
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .canvas {
+        width: 255px;
+        height: 255px;
     }
 }
