@@ -1,14 +1,15 @@
 import { useState, useEffect, Dispatch, SetStateAction } from 'react';
 
-const useLocalStorage = (initValue: boolean, key: string): [boolean, Dispatch<SetStateAction<boolean>>] => {
-    const [value, setValue] = useState<boolean>(() => {
-        const localStorageData: string | null = localStorage.getItem(key);
+const useLocalStorage = <T>(initValue: T, key: string): [T, Dispatch<SetStateAction<T>>] => {
+    const prefix: string = 'yan-litvinenko-cv-';
+    const [value, setValue] = useState<T>(() => {
+        const localStorageData: string | null = localStorage.getItem(prefix + key);
 
         return localStorageData ? JSON.parse(localStorageData) : initValue;
     });
 
     useEffect(() => {
-        localStorage.setItem(key, JSON.stringify(value));
+        localStorage.setItem(prefix + key, JSON.stringify(value));
     }, [key, value]);
 
     return [value, setValue];

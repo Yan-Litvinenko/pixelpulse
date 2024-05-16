@@ -14,10 +14,14 @@ class Snake {
     private apple: Coordinates;
     private vectorSnake: Coordinates;
 
+    private isGameOver: boolean;
+
     score: number;
     intervalId: NodeJS.Timeout | null;
 
     constructor(canvas: HTMLCanvasElement) {
+        const [snake, apple] = this.objectsPosition();
+
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d')!;
 
@@ -26,14 +30,14 @@ class Snake {
 
         this.snake = [
             {
-                x: 10,
-                y: 10,
+                x: snake,
+                y: snake,
             },
         ];
 
         this.apple = {
-            x: 5,
-            y: 5,
+            x: apple,
+            y: apple,
         };
 
         this.vectorSnake = {
@@ -43,6 +47,37 @@ class Snake {
 
         this.score = 0;
         this.intervalId = null;
+
+        this.isGameOver = false;
+    }
+
+    objectsPosition(): [number, number] {
+        const snake: number = this.getRandomInt(8, 15);
+        const apple: number = this.getRandomInt(1, 7);
+
+        return [snake, apple];
+    }
+
+    private restart(): void {
+        const [snake, apple] = this.objectsPosition();
+
+        if (this.intervalId) {
+            clearInterval(this.intervalId);
+        }
+
+        this.snake = [
+            {
+                x: snake,
+                y: snake,
+            },
+        ];
+
+        this.apple = {
+            x: apple,
+            y: apple,
+        };
+
+        this.score = 0;
     }
 
     private drawGame(): void {
@@ -75,7 +110,7 @@ class Snake {
     }
 
     private drawCells(): void {
-        this.ctx.fillStyle = 'rgba(232, 74, 74, 0.4)';
+        this.ctx.fillStyle = 'rgba(232, 74, 74, 0.2)';
 
         for (let x = 0; x < this.cellCount; x++) {
             for (let y = 0; y < this.cellCount; y++) {
@@ -85,8 +120,8 @@ class Snake {
     }
 
     private drawSnake(): void {
-        this.ctx.fillStyle = 'rgb(232, 74, 74)';
-        this.ctx.strokeStyle = 'rgb(232, 74, 74)';
+        this.ctx.fillStyle = 'rgba(232, 74, 74, 0.8)';
+        this.ctx.strokeStyle = 'rgba(232, 74, 74, 0.8)';
 
         this.snake.forEach((snakeItem) => {
             const x: number = snakeItem.x * this.gridSize;
@@ -121,28 +156,32 @@ class Snake {
         for (let i = 1; i < this.snake.length; i++) {
             if (head.x === this.snake[i].x && head.y === this.snake[i].y) {
                 alert('Game Over! You collided with yourself.');
+                this.isGameOver = true;
+                this.restart();
                 return;
             }
         }
     }
 
     private moveSnake(head: Coordinates): void {
-        this.snake.unshift(head);
+        if (!this.isGameOver) {
+            this.snake.unshift(head);
 
-        if (head.x === this.apple.x && head.y === this.apple.y) {
-            let newAppleX: number, newAppleY: number;
+            if (head.x === this.apple.x && head.y === this.apple.y) {
+                let newAppleX: number, newAppleY: number;
 
-            do {
-                newAppleX = Math.floor(Math.random() * this.cellCount);
-                newAppleY = Math.floor(Math.random() * this.cellCount);
-            } while (this.isAppleInsideSnake(newAppleX, newAppleY));
+                do {
+                    newAppleX = Math.floor(Math.random() * this.cellCount);
+                    newAppleY = Math.floor(Math.random() * this.cellCount);
+                } while (this.isAppleInsideSnake(newAppleX, newAppleY));
 
-            this.apple.x = newAppleX;
-            this.apple.y = newAppleY;
+                this.apple.x = newAppleX;
+                this.apple.y = newAppleY;
 
-            this.score += 1;
-        } else {
-            this.snake.pop();
+                this.score += 1;
+            } else {
+                this.snake.pop();
+            }
         }
     }
 
@@ -169,19 +208,24 @@ class Snake {
     }
 
     eventKeyboard(event: KeyboardEvent): void {
-        if (event.key === 'ArrowUp' && this.vectorSnake.y == 0) {
+        if (this.isGameOver) {
+            this.isGameOver = false;
+            this.gameLoop();
+        }
+
+        if ((event.key === 'w' || event.key === 'ц') && this.vectorSnake.y == 0) {
             this.vectorSnake.x = 0;
             this.vectorSnake.y = -1;
         }
-        if (event.key === 'ArrowDown' && this.vectorSnake.y === 0) {
+        if ((event.key === 's' || event.key === 'ы') && this.vectorSnake.y === 0) {
             this.vectorSnake.x = 0;
             this.vectorSnake.y = 1;
         }
-        if (event.key === 'ArrowLeft' && this.vectorSnake.x === 0) {
+        if ((event.key === 'a' || event.key === 'ф') && this.vectorSnake.x === 0) {
             this.vectorSnake.x = -1;
             this.vectorSnake.y = 0;
         }
-        if (event.key === 'ArrowRight' && this.vectorSnake.x === 0) {
+        if ((event.key === 'd' || event.key === 'в') && this.vectorSnake.x === 0) {
             this.vectorSnake.x = 1;
             this.vectorSnake.y = 0;
         }
@@ -201,6 +245,10 @@ class Snake {
                 this.vectorSnake.y = y;
             }
         }
+    }
+
+    private getRandomInt(min: number, max: number): number {
+        return Math.floor(Math.random() * (max - min + 1) + min);
     }
 
     gameLoop(): void {

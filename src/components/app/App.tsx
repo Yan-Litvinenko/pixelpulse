@@ -32,8 +32,8 @@ const App = (): React.JSX.Element => {
     const [social, setSocial] = React.useState<boolean>(false);
     const [challenge, setChallenge] = React.useState<boolean>(false);
     const [creations, setCreations] = React.useState<boolean>(false);
-    const [sounds, setSounds] = useLocalStorage(true, 'cv-sounds');
-    const [music, setMusic] = useLocalStorage(true, 'cv-music');
+    const [sounds, setSounds] = useLocalStorage(true, 'sounds');
+    const [music, setMusic] = useLocalStorage(true, 'music');
     const [changeStateMusic] = useMusic(mainTheme);
     const [navigationMobile, setNavigationMobile] = React.useState<boolean>(false);
     const [projectImages, setProjectImages] = React.useState<string[]>([]);

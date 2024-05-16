@@ -12,7 +12,8 @@
     width: 22.75rem;
 }
 
-.title {
+.score {
+    @include flex-container($justify-content: space-between);
     @include text-properties('Big-Shoulders', 1.425rem, 700);
     color: var(--main-color);
     user-select: none;
@@ -32,7 +33,7 @@
 
     &__quotes {
         position: relative;
-        top: -1.5px;
+        top: -1px;
     }
 }
 
@@ -45,14 +46,14 @@
 @media (max-width: 1200px) {
     .wrapper {
         grid-template-columns: max-content 1fr;
-        column-gap: 2rem;
+        column-gap: 3rem;
     }
 
     .canvas {
         grid-column: 2 / 3;
     }
 
-    .title {
+    .score {
         grid-column: 2 / 3;
     }
 

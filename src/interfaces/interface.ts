@@ -1,4 +1,3 @@
-import { IProject } from './interface.credits';
 import { ICommitLog } from './interface.github';
 
 type Page = 'welcome' | 'beginning' | 'about' | 'logs' | 'achievements' | 'creations' | 'games';
