@@ -6,12 +6,18 @@
     transition: filter var(--transition-element);
 }
 
+.hexagon_border {
+    stroke: var(--main-color);
+}
+
 .hexagon polygon {
     transition: filter var(--transition-element);
 }
 
 .bluetooth {
     @include absolute-position(50%, 0.3125rem);
+    stroke: var(--main-color);
+    fill: var(--main-color);
     height: 1.5rem;
     transform: translateY(-50%);
     width: 1.5rem;
@@ -22,15 +28,21 @@
 }
 
 .technologies_icon {
+    fill: var(--main-color);
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
+.image {
+    fill: var(--main-color);
+}
+
 .folder {
-    width: 24px;
+    fill: var(--main-color);
     height: 24px;
+    width: 24px;
 }
 
 .joystick_left,

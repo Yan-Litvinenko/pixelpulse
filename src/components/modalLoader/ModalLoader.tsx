@@ -7,13 +7,13 @@ const ModalLoader = (): React.JSX.Element => {
         <div className={styles.loader}>
             <div className={styles.loader__inner}>
                 <Triangle
-                    visible={true}
-                    height="80"
-                    width="80"
-                    color="rgb(232, 74, 74)"
                     ariaLabel="triangle-loading"
-                    wrapperStyle={{}}
+                    color=""
+                    height="80"
+                    visible={true}
+                    width="80"
                     wrapperClass={styles.loader__triangle}
+                    wrapperStyle={{}}
                 />
             </div>
         </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { ContextApp } from '../app/App';
-import CreationsXplorerItem from '../CreationsXplorerItem/CreationsXplorerItem';
+import CreationsXplorerItem from '../creationsXplorerItem/CreationsXplorerItem';
 import scroll from '../../utils/scroll';
 import { nanoid } from 'nanoid';
 import { IProject, XplorerState } from '../../interfaces/interface.credits';

@@ -32,6 +32,7 @@
     }
 
     &__background {
+        filter: hue-rotate(var(--data-image-color));
         height: 100%;
         object-fit: cover;
         user-select: none;

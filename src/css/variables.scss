@@ -1,11 +1,15 @@
 :root {
+    --data-hue: 222;
+    --data-saturation: 64;
+    --data-lightness: 64;
+    --data-main-color: var(--data-hue), var(--data-saturation), var(--data-lightness);
+    --data-image-color: 0deg;
+
     --main-background-color: #000003;
     --main-color: rgb(var(--data-main-color));
     --main-dark-color: rgba(var(--data-main-color), 0.2);
     --main-darklight-color: rgba(var(--data-main-color), 0.9);
     --main-text-color: rgb(255, 255, 255);
-
-    --data-main-color: 222, 64, 64;
 
     --background-gradient: linear-gradient(
         90deg,
@@ -15,13 +19,13 @@
     );
 
     --dark-grey: #7a7a7a;
-    --stone-grey: #b2b7ba;
-
     --dark-border: #262626;
     --dark-light-border: #333;
+    --statistics-text-color: #7dff68;
+    --stone-grey: #b2b7ba;
+
     --frame-border-color: rgba(255, 255, 255, 0.1); /*  граница рамок */
     --modal-filter: brightness(13%);
-    --statistics-text-color: #7dff68;
 
     --box-shadow: 0px 0px 1.5px var(--main-color);
     --text-shadow: 0px 0px 1.5px var(--main-color);

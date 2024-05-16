@@ -25,6 +25,7 @@
     }
 
     &__img {
+        filter: hue-rotate(var(--data-image-color));
         height: 100%;
         user-select: none;
         width: 100%;

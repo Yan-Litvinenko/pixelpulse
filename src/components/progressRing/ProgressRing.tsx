@@ -20,7 +20,7 @@ const ProgressRing = ({ percent }: IProgressRing): React.JSX.Element => {
                     strokeDasharray: `${circumference} ${circumference}`,
                 }}
                 className={styles.ring__circle}
-                stroke="#E84A4A"
+                stroke="current-color"
                 strokeWidth={border}
                 cy={CYX}
                 cx={CYX}

@@ -3,15 +3,23 @@ import useRange from '../../hooks/useRange';
 import styles from './Range.module.scss';
 
 interface IRange {
+    changeColorCoordinate: (
+        event: React.ChangeEvent<HTMLInputElement>,
+        variableName: 'hue' | 'saturation' | 'lightness',
+    ) => void;
+    color?: 'hue' | 'saturation' | 'lightness';
+    inputTarget: 'color' | 'size';
     max: number;
     min: number;
     textContent: string;
+    initValue: number;
 }
 
 const Range = (props: IRange): React.JSX.Element | null => {
     const progress: React.MutableRefObject<HTMLDivElement | null> = React.useRef(null);
     const customThumb: React.MutableRefObject<HTMLDivElement | null> = React.useRef(null);
-    const [range, setRange] = useRange(0, progress, customThumb);
+
+    const [rangeElement, setRangeElement] = useRange(props.initValue, progress, customThumb);
 
     return (
         <label className={styles.range}>
@@ -21,9 +29,15 @@ const Range = (props: IRange): React.JSX.Element | null => {
                     className={styles.range__input}
                     max={props.max}
                     min={props.min}
-                    onChange={(event) => setRange(Number(event?.target.value))}
+                    onChange={(event) => {
+                        setRangeElement(Number(event?.target.value));
+
+                        if (props.inputTarget === 'color') {
+                            props.changeColorCoordinate(event, props.color || 'hue');
+                        }
+                    }}
                     type="range"
-                    value={range}
+                    value={rangeElement}
                 />
                 <div className={styles.range__progress} ref={progress}></div>
                 <div className={styles.range__custom_thumb} ref={customThumb}></div>

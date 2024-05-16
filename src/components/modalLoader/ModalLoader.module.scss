@@ -16,6 +16,10 @@
         @include flex-container($justify-content: center, $align-items: center);
         height: 100%;
     }
+
+    &__triangle svg {
+        stroke: var(--main-color);
+    }
 }
 
 @media (max-width: 1700px) {

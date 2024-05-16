@@ -2,6 +2,7 @@
 
 .ring {
     @include absolute-position(45%, $left: 50%);
+    stroke: var(--main-color);
     transform: translate(-50%, -50%);
 
     &__circle {
