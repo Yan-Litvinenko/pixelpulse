@@ -1,6 +1,7 @@
 import React from 'react';
 import useCloseModal from '../../hooks/useCloseModal';
 import ClipPathBorder from '../clipPathBorder/ClipPathBorder';
+import Button from '../button/Button';
 import Cross from '../cross/Cross';
 import Heading from '../heading/Heading';
 import ModalBackground from '../modalBackground/ModalBackground';
@@ -11,6 +12,7 @@ import handleSettingColor from '../../utils/handleSettingColor';
 import handleSaveSetting from '../../utils/handleSaveSettings';
 import handleInitSettingValue from '../../utils/handleInitSettingValue';
 import handleSettingSize from '../../utils/handleSettingSize';
+import handleDefaultSettings from '../../utils/handleDefaultSettings';
 import { Warning } from '../svgIcon/SvgIcon';
 import { ContextApp } from '../app/App';
 import { IAppContext } from '../../interfaces/interface';
@@ -44,37 +46,44 @@ const ModalSetting = (): React.JSX.Element | null => {
                         <Range
                             changeSettingValue={changeSettingValue}
                             color={'hue'}
+                            initValue={handleInitSettingValue('hue')}
                             inputTarget="color"
                             max={100}
                             min={0}
                             textContent="hud hue"
-                            initValue={handleInitSettingValue('hue')}
                         />
                         <Range
                             changeSettingValue={changeSettingValue}
                             color={'saturation'}
+                            initValue={handleInitSettingValue('saturation')}
                             inputTarget="color"
                             max={100}
                             min={0}
                             textContent="hud saturation"
-                            initValue={handleInitSettingValue('saturation')}
                         />
                         <Range
                             changeSettingValue={changeSettingValue}
                             color={'lightness'}
+                            initValue={handleInitSettingValue('lightness')}
                             inputTarget="color"
                             max={100}
                             min={0}
                             textContent="hud lightness"
-                            initValue={handleInitSettingValue('lightness')}
                         />
                         <Range
                             changeSettingValue={handleSettingSize}
+                            initValue={handleInitSettingValue('size')}
                             inputTarget="size"
                             max={100}
                             min={0}
                             textContent="hud size"
-                            initValue={handleInitSettingValue('size')}
+                        />
+                        <Button
+                            className={styles.default_button}
+                            delayEvent={false}
+                            handleButton={handleDefaultSettings}
+                            textContent="default settings"
+                            type="button"
                         />
                         <ClipPathBorder className={styles.border} />
                         <ModalBackground />

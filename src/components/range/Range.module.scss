@@ -2,7 +2,7 @@
 
 .range {
     @include text-properties('Big-Shoulders', 1.125rem, 700, 0.075rem);
-    @include flex-container(column);
+    @include flex-container(column, $gap: 0.3375rem 0rem);
     color: var(--main-color);
     z-index: 2;
 

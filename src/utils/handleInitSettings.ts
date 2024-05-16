@@ -1,4 +1,4 @@
-const handleInitSettings = () => {
+const handleInitSettings = (): void => {
     const hue: string = localStorage.getItem('yan-litvinenko-cv-hue') || '232';
     const saturation: string = localStorage.getItem('yan-litvinenko-cv-saturation') || '64';
     const lightness: string = localStorage.getItem('yan-litvinenko-cv-lightness') || '64';

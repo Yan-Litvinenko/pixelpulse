@@ -29,8 +29,8 @@
     }
 
     &__setting {
-        @include flex-container(column, $gap: 3.125rem 0rem);
-        margin-bottom: 6.125rem;
+        @include flex-container(column, $gap: 1.6rem 0rem);
+        margin-bottom: 1.125rem;
     }
 
     &__line {
@@ -61,6 +61,20 @@
     rotate: -40deg;
     width: 3.625rem;
     z-index: 2;
+}
+
+.default_button {
+    @include button-enter();
+    margin-top: 0.3rem;
+    margin-bottom: 0.8rem;
+    position: relative;
+    z-index: 2;
+}
+
+@media (hover: hover) {
+    .default_button:hover {
+        background-color: var(--main-color);
+    }
 }
 
 @media (max-height: 890px) {
