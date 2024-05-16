@@ -1,4 +1,4 @@
-import scroll from './scroll';
+import scroll from '../classes/Scroll';
 import { BooleanState } from '../interfaces/interface';
 
 const handleOpenModal = (setStatusModal: BooleanState | undefined): void => {

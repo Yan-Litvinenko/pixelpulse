@@ -5,9 +5,7 @@
     @include flex-container($align-items: center, $gap: 0rem 0.75rem);
     color: var(--dark-grey);
     cursor: pointer;
-    transition:
-        background-color var(--transition-element),
-        color var(--transition-element);
+    transition: color var(--transition-element);
 }
 
 .frame {

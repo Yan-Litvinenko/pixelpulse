@@ -16,8 +16,6 @@ const LogsOld = (): React.JSX.Element => {
 
     if (contextApp.isLoadingGithub) message = 'loading';
 
-    console.log(contextApp.isLoadingGithub);
-
     return (
         <div>
             <span className={styles.title}>older logs:</span>

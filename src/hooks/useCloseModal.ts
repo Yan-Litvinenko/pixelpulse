@@ -1,6 +1,6 @@
 import React from 'react';
 import { ContextApp } from '../components/app/App';
-import scroll from '../utils/scroll';
+import scroll from '../classes/Scroll';
 import { BooleanState, IAppContext } from '../interfaces/interface';
 
 const useCloseModal = (

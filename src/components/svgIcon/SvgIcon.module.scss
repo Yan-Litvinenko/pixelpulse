@@ -88,6 +88,14 @@
     transform: translateY(-50%);
 }
 
+.warning {
+    fill: var(--main-color);
+    height: 1.5rem;
+    min-width: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
 @media (max-width: 1200px) {
     .bluetooth {
         scale: 1.2;

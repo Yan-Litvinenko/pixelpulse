@@ -15,7 +15,7 @@ interface IFormChallenge extends IForm {
 const FormChallenge = (props: IFormChallenge): React.JSX.Element => {
     return (
         <>
-            <form className={styles.form}>
+            <div className={styles.form}>
                 <SelectChallenge
                     register={props.register}
                     selectValue={props.selectValue}
@@ -47,7 +47,7 @@ const FormChallenge = (props: IFormChallenge): React.JSX.Element => {
                 />
                 <ClipPathBorder className={styles.border} />
                 <ModalBackground />
-            </form>
+            </div>
         </>
     );
 };

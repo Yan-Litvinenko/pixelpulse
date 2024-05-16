@@ -3,7 +3,7 @@ import { IAppContext } from '../../interfaces/interface';
 import { ContextApp } from '../app/App';
 import Button from '../button/Button';
 import handleOpenModal from '../../utils/handleOpenModal';
-import scroll from '../../utils/scroll';
+import scroll from '../../classes/Scroll';
 import styles from './MobileBoxButton.module.scss';
 
 const MobileBoxButton = (): React.JSX.Element => {

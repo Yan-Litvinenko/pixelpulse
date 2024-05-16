@@ -1,5 +1,5 @@
 import React from 'react';
-import scroll from '../../utils/scroll';
+import scroll from '../../classes/Scroll';
 import { BooleanState } from '../../interfaces/interface';
 import styles from './Cross.module.scss';
 

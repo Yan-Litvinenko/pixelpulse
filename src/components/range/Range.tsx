@@ -3,9 +3,9 @@ import useRange from '../../hooks/useRange';
 import styles from './Range.module.scss';
 
 interface IRange {
-    changeColorCoordinate: (
+    changeSettingValue: (
         event: React.ChangeEvent<HTMLInputElement>,
-        variableName: 'hue' | 'saturation' | 'lightness',
+        variableName: 'hue' | 'saturation' | 'lightness' | 'size',
     ) => void;
     color?: 'hue' | 'saturation' | 'lightness';
     inputTarget: 'color' | 'size';
@@ -21,6 +21,8 @@ const Range = (props: IRange): React.JSX.Element | null => {
 
     const [rangeElement, setRangeElement] = useRange(props.initValue, progress, customThumb);
 
+    console.log(props.inputTarget, props.initValue);
+
     return (
         <label className={styles.range}>
             {props.textContent}
@@ -33,7 +35,11 @@ const Range = (props: IRange): React.JSX.Element | null => {
                         setRangeElement(Number(event?.target.value));
 
                         if (props.inputTarget === 'color') {
-                            props.changeColorCoordinate(event, props.color || 'hue');
+                            props.changeSettingValue(event, props.color || 'hue');
+                        }
+
+                        if (props.inputTarget === 'size') {
+                            props.changeSettingValue(event, 'size');
                         }
                     }}
                     type="range"

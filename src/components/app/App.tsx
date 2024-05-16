@@ -1,6 +1,7 @@
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 import handleWrapperClassName from '../../utils/handleWrapperClassName';
+import handleInitSettings from '../../utils/handleInitSettings';
 import useGithubApi from '../../hooks/useGithubApi';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import usePage from '../../hooks/usePage';
@@ -40,6 +41,7 @@ const App = (): React.JSX.Element => {
     const [modalProject, setModalProject] = React.useState<number>(0);
 
     changeStateMusic(music);
+    handleInitSettings();
 
     return (
         <>

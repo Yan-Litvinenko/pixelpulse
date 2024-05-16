@@ -1,6 +1,6 @@
 import React from 'react';
 import useLocalStorage from '../../hooks/useLocalStorage';
-import Snake from '../../utils/Snake';
+import Snake from '../../classes/Snake';
 import Joystick from '../joystick/Jouystick';
 import styles from './GameSnake.module.scss';
 
