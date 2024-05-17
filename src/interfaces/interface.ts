@@ -13,7 +13,6 @@ type IAppContext = {
     modalProject: number;
     music: boolean;
     navigationMobile: boolean;
-    page: Page;
     projectImages: string[];
     changeStateMusic: (state: boolean) => void;
     handleSoundClick: () => Promise<void> | null;
@@ -25,7 +24,6 @@ type IAppContext = {
     setModalProject: React.Dispatch<React.SetStateAction<number>>;
     setMusic: BooleanState;
     setNavigationMobile: BooleanState;
-    setPage: (page: Page) => void;
     setProjectImages: React.Dispatch<React.SetStateAction<string[]>>;
     setSetting: BooleanState;
     setSocial: BooleanState;

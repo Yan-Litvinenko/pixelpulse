@@ -1,24 +1,21 @@
 import React from 'react';
-import { ContextApp } from '../app/App';
 import NavigationElement from '../navigationElement/NavigationElement';
-import { IAppContext } from '../../interfaces/interface';
 
 interface INavigation {
     className: Record<string, string> | undefined;
 }
 
 const Navigation = ({ className }: INavigation): React.JSX.Element => {
-    const contextApp = React.useContext<IAppContext | undefined>(ContextApp)!;
     const classes: Record<string, string> = className !== undefined ? className : {};
 
     return (
         <nav className={classes.navigation}>
             <ul className={classes.navigation__list}>
-                <NavigationElement activeElement={contextApp?.page || 'welcome'} textContent={'beginning'} />
-                <NavigationElement activeElement={contextApp?.page || 'welcome'} textContent={'logs'} />
-                <NavigationElement activeElement={contextApp?.page || 'welcome'} textContent={'achievements'} />
-                <NavigationElement activeElement={contextApp?.page || 'welcome'} textContent={'creations'} />
-                <NavigationElement activeElement={contextApp?.page || 'welcome'} textContent={'games'} />
+                <NavigationElement textContent={'beginning'} />
+                <NavigationElement textContent={'logs'} />
+                <NavigationElement textContent={'achievements'} />
+                <NavigationElement textContent={'creations'} />
+                <NavigationElement textContent={'games'} />
             </ul>
         </nav>
     );

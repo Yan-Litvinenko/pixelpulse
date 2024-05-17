@@ -1,7 +1,7 @@
 import React from 'react';
 import usePrintedText from '../../hooks/usePrintedText';
 import { ContextApp } from '../app/App';
-import Button from '../button/Button';
+import { Link } from 'react-router-dom';
 import Heading from '../heading/Heading';
 import Paragraph from '../paragraph/Paragraph';
 import { IAppContext } from '../../interfaces/interface';
@@ -33,10 +33,6 @@ const Welcome = (): React.JSX.Element => {
         contextApp.handleSoundClick();
     };
 
-    const handleButton = (): void => {
-        contextApp.setPage('beginning');
-        contextApp.handleSoundClick();
-    };
     const textElementWithAnimation = (currentText: string, condition: boolean) => {
         return `${currentText} ${condition ? '|' : ''}`;
     };
@@ -90,13 +86,13 @@ const Welcome = (): React.JSX.Element => {
                     />
                 </div>
 
-                <Button
+                <Link
                     className={`${styles.welcome__btn} ${skipStatus || text_2.animationEnd ? '' : styles.hidden}`}
-                    delayEvent={false}
-                    handleButton={handleButton}
-                    textContent={'Enter the system'}
-                    type="button"
-                />
+                    onClick={() => contextApp.handleSoundClick()}
+                    to="/beginning"
+                >
+                    Enter the system
+                </Link>
 
                 <button
                     className={`${styles.skip} ${skipStatus || text_1.animationEnd ? styles.hidden : ''}`}

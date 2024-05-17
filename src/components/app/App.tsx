@@ -1,23 +1,37 @@
 import React from 'react';
+
+import { Routes, Route } from 'react-router-dom';
+
 import { useMediaQuery } from 'react-responsive';
+import useGithubApi from '../../hooks/useGithubApi';
+import useLocalStorage from '../../hooks/useLocalStorage';
+import useMusic from '../../hooks/useMusic';
+
 import clickSoundEffect from '../../assets/audio/click.ogg';
-import openModalSoundEffect from '../../assets/audio/open-modal.mp3';
 import handleInitSettings from '../../utils/handleInitSettings';
 import handleWrapperClassName from '../../utils/handleWrapperClassName';
-import Layout from '../layout/Layout';
+import openModalSoundEffect from '../../assets/audio/open-modal.mp3';
+
+import DesktopLayout from '../DesktopLayout/DesktopLayout';
 import ModalAvailability from '../modalAvailability/ModalAvailability';
 import ModalChallenge from '../modalChallenge/ModalChallenge';
 import ModalCreations from '../modalCreations/ModalCreations';
 import ModalCredits from '../modalCredits/ModalCredits';
 import ModalSetting from '../modalSetting/ModalSetting';
 import ModalSocial from '../modalSocial/ModalSocial';
+
+import About from '../about/About';
+import Achievements from '../achievements/Achievements';
+import Beginning from '../beginning/Beginning';
+import Creations from '../creations/Creations';
+import Games from '../games/Games';
+import GameSnake from '../gameSnake/GameSnake';
+import Logs from '../logs/Logs';
 import NavigationMobile from '../navigationMobile/NavigationMobile';
-import useGithubApi from '../../hooks/useGithubApi';
-import useLocalStorage from '../../hooks/useLocalStorage';
-import usePage from '../../hooks/usePage';
-import useMusic from '../../hooks/useMusic';
-import { IAppContext, Page } from '../../interfaces/interface';
+import Welcome from '../welcome/Welocme';
+
 import mainTheme from '../../assets/audio/main-theme.mp3';
+import { IAppContext, Page } from '../../interfaces/interface';
 import styles from './App.module.scss';
 
 const ContextApp = React.createContext<IAppContext | undefined>(undefined);
@@ -28,7 +42,6 @@ const App = (): React.JSX.Element => {
     const isLarge: boolean = useMediaQuery({ maxWidth: 1200 });
 
     const [commits, isLoadingGithub, errorGithub] = useGithubApi();
-    const [PageComponent, page, setPage] = usePage('welcome');
     const [availability, setAvailability] = React.useState<boolean>(false);
     const [credits, setCredits] = React.useState<boolean>(false);
     const [setting, setSetting] = React.useState<boolean>(false);
@@ -63,7 +76,6 @@ const App = (): React.JSX.Element => {
                     setModalProject,
                     setMusic,
                     setNavigationMobile,
-                    setPage,
                     setProjectImages,
                     setSetting,
                     setSocial,
@@ -80,7 +92,6 @@ const App = (): React.JSX.Element => {
                     modalProject,
                     music,
                     navigationMobile,
-                    page,
                     projectImages,
                     sounds,
                     styles,
@@ -95,8 +106,19 @@ const App = (): React.JSX.Element => {
                         stylesWrapper: styles,
                     })}
                 >
-                    <PageComponent />
-                    <Layout />
+                    <Routes>
+                        <Route path="/" element={<Welcome />} />
+                        <Route path="/" element={<DesktopLayout />}>
+                            <Route path="about" element={<About />} />
+                            <Route path="beginning" element={<Beginning />} />
+                            <Route path="logs" element={<Logs />} />
+                            <Route path="achievements" element={<Achievements />} />
+                            <Route path="creations" element={<Creations />} />
+                            <Route path="games/*" element={<Games />}>
+                                <Route path="snake" element={<GameSnake />} />
+                            </Route>
+                        </Route>
+                    </Routes>
                 </div>
 
                 {availability ? <ModalAvailability /> : null}

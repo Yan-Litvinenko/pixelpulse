@@ -10,6 +10,7 @@
     @include flex-container($align-items: center, $justify-content: center);
     border: 0.0625rem solid var(--frame-border-color);
     cursor: pointer;
+    display: block;
     padding: 0.9375rem;
     position: relative;
     user-select: none;

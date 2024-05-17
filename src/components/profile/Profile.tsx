@@ -1,10 +1,11 @@
 import React from 'react';
 import { ContextApp } from '../app/App';
+import { Link } from 'react-router-dom';
+import { nanoid } from 'nanoid';
 import Frame from '../frame/Frame';
 import Heading from '../heading/Heading';
 import Paragraph from '../paragraph/Paragraph';
 import ProfileElement from '../profileElement/ProfileElement';
-import { nanoid } from 'nanoid';
 import { IAppContext } from '../../interfaces/interface';
 import avatar from '../../assets/images/avatar.png';
 import profileItems from '../../assets/json/profile.json';
@@ -13,16 +14,15 @@ import styles from './Profile.module.scss';
 const Profile = (): React.JSX.Element => {
     const contextApp = React.useContext<IAppContext | undefined>(ContextApp);
     const handleClickAvatar = (): void => {
-        contextApp?.setPage('about');
         contextApp?.handleSoundClick();
     };
 
     return (
         <aside className={styles.profile}>
-            <div className={styles.avatar} onClick={handleClickAvatar}>
+            <Link to="about" className={styles.avatar} onClick={handleClickAvatar}>
                 <Frame className={styles.avatar__frame} />
                 <img src={avatar} alt="avatar" draggable={false} />
-            </div>
+            </Link>
 
             {profileItems.map((item) => {
                 return <ProfileElement adjacent={item.adjacent} header={item.header} key={nanoid()} />;
