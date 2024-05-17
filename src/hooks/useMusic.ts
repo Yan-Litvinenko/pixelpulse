@@ -3,7 +3,7 @@ import React from 'react';
 const useMusic = (audio: string) => {
     const [music] = React.useState<HTMLAudioElement>(new Audio(audio));
 
-    music.volume = 0.3;
+    music.volume = 0.5;
 
     const changeStateMusic = (state: boolean): void => {
         if (state) {

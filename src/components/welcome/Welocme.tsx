@@ -30,9 +30,13 @@ const Welcome = (): React.JSX.Element => {
     const skip = () => {
         [...title.timers, ...text_1.timers, ...text_2.timers].forEach((timer) => clearTimeout(timer));
         setSkipStatus(true);
+        contextApp.handleSoundClick();
     };
 
-    const handleButton = (): void => contextApp.setPage('beginning');
+    const handleButton = (): void => {
+        contextApp.setPage('beginning');
+        contextApp.handleSoundClick();
+    };
     const textElementWithAnimation = (currentText: string, condition: boolean) => {
         return `${currentText} ${condition ? '|' : ''}`;
     };

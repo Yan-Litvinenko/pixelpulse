@@ -1,10 +1,8 @@
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
-import handleWrapperClassName from '../../utils/handleWrapperClassName';
+import clickSoundEffect from '../../assets/audio/click.ogg';
 import handleInitSettings from '../../utils/handleInitSettings';
-import useGithubApi from '../../hooks/useGithubApi';
-import useLocalStorage from '../../hooks/useLocalStorage';
-import usePage from '../../hooks/usePage';
+import handleWrapperClassName from '../../utils/handleWrapperClassName';
 import Layout from '../layout/Layout';
 import ModalAvailability from '../modalAvailability/ModalAvailability';
 import ModalChallenge from '../modalChallenge/ModalChallenge';
@@ -13,10 +11,13 @@ import ModalCredits from '../modalCredits/ModalCredits';
 import ModalSetting from '../modalSetting/ModalSetting';
 import ModalSocial from '../modalSocial/ModalSocial';
 import NavigationMobile from '../navigationMobile/NavigationMobile';
+import useGithubApi from '../../hooks/useGithubApi';
+import useLocalStorage from '../../hooks/useLocalStorage';
+import usePage from '../../hooks/usePage';
+import useMusic from '../../hooks/useMusic';
 import { IAppContext, Page } from '../../interfaces/interface';
 import mainTheme from '../../assets/audio/main-theme.mp3';
 import styles from './App.module.scss';
-import useMusic from '../../hooks/useMusic';
 
 const ContextApp = React.createContext<IAppContext | undefined>(undefined);
 const TRANSITION_TIME: number = 1500;
@@ -40,6 +41,10 @@ const App = (): React.JSX.Element => {
     const [projectImages, setProjectImages] = React.useState<string[]>([]);
     const [modalProject, setModalProject] = React.useState<number>(0);
 
+    const clickSound = new Audio(clickSoundEffect);
+
+    const handleSoundClick = () => (sounds ? clickSound.play() : null);
+
     changeStateMusic(music);
     handleInitSettings();
 
@@ -61,6 +66,7 @@ const App = (): React.JSX.Element => {
                     setSocial,
                     setSounds,
                     changeStateMusic,
+                    handleSoundClick,
                     commits,
                     creations,
                     errorGithub,

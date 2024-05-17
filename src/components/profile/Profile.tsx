@@ -12,7 +12,10 @@ import styles from './Profile.module.scss';
 
 const Profile = (): React.JSX.Element => {
     const contextApp = React.useContext<IAppContext | undefined>(ContextApp);
-    const handleClickAvatar = (): void => contextApp?.setPage('about');
+    const handleClickAvatar = (): void => {
+        contextApp?.setPage('about');
+        contextApp?.handleSoundClick();
+    };
 
     return (
         <aside className={styles.profile}>

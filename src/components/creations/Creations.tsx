@@ -3,11 +3,13 @@ import Button from '../button/Button';
 import CreationsAbout from '../creationsAbout/CreationsAbout';
 import CreationsDetails from '../creationsDetails/CreationsDetails';
 import CreationsTechnologies from '../creationsTechnologies/CreationsTechnologies';
+import { ContextApp } from '../app/App';
 import Frame from '../frame/Frame';
 import Heading from '../heading/Heading';
 import Xplorer from '../creationsXplorer/CreationsXplorer';
 import { Triangle } from 'react-loader-spinner';
 import { IProject, XplorerState } from '../../interfaces/interface.credits';
+import { IAppContext } from '../../interfaces/interface';
 import projects from '../../assets/json/projects.json';
 import styles from './Creations.module.scss';
 
@@ -21,6 +23,7 @@ const projectDefault: IProject = {
 };
 
 const Creations = (): React.JSX.Element => {
+    const contextApp = React.useContext(ContextApp);
     const [load, setLoad] = React.useState<boolean>(true);
     const [projectCount, setProjectCount] = React.useState<number>(0);
     const [xplorerState, setXplorerState] = React.useState<XplorerState>('projects');
@@ -79,7 +82,10 @@ const Creations = (): React.JSX.Element => {
                                 <Button
                                     className={styles.box_button__back}
                                     delayEvent={false}
-                                    handleButton={() => setXplorerState('projects')}
+                                    handleButton={() => {
+                                        setXplorerState('projects');
+                                        contextApp?.handleSoundClick();
+                                    }}
                                     textContent="Back to all projects"
                                     type="button"
                                 />

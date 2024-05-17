@@ -1,5 +1,6 @@
 import React from 'react';
 import { ContextApp } from '../components/app/App';
+import closeEffect from '../assets/audio/modal-close.mp3';
 import scroll from '../classes/Scroll';
 import { BooleanState, IAppContext } from '../interfaces/interface';
 
@@ -11,10 +12,13 @@ const useCloseModal = (
     error: boolean,
 ): (() => void) => {
     const contextApp: IAppContext | undefined = React.useContext(ContextApp);
+
     const [mainModal, setMainModal] = React.useState(false);
+    const closeSoundEffect = new Audio(closeEffect);
 
     const handleClose = (): void => {
         setModalStatus(false);
+        closeSoundEffect.play();
         scroll.on();
     };
 

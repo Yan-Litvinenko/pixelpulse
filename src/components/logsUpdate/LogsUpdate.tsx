@@ -1,7 +1,9 @@
 import React from 'react';
 import useLogsUpdate from '../../hooks/useLogsUpdate';
 import Button from '../button/Button';
+import { ContextApp } from '../app/App';
 import Heading from '../heading/Heading';
+import { IAppContext } from '../../interfaces/interface';
 import { nanoid } from 'nanoid';
 import styles from './LogsUpdate.module.scss';
 
@@ -25,6 +27,7 @@ const update: Record<string, string>[] = [
 ];
 
 const LogsUpdate = (): React.JSX.Element => {
+    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
     const [expandStates, clippedIndexes, setExpandStates, textRefs] = useLogsUpdate(update, styles.element__text_clip);
     const handleExpand = React.useCallback((index: number): void => {
         return setExpandStates((prevStates) => {
@@ -51,7 +54,10 @@ const LogsUpdate = (): React.JSX.Element => {
                             <Button
                                 className={styles.element__expend}
                                 delayEvent={false}
-                                handleButton={() => handleExpand(index)}
+                                handleButton={() => {
+                                    handleExpand(index);
+                                    contextApp?.handleSoundClick();
+                                }}
                                 textContent={expandStates[index] ? '-collapse' : '+expand'}
                                 type="button"
                             />

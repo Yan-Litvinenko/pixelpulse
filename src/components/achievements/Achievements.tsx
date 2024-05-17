@@ -7,13 +7,16 @@ import Heading from '../heading/Heading';
 import { Triangle } from 'react-loader-spinner';
 import { SwitchAchieved } from '../../interfaces/interface.achievements';
 import styles from './Achievements.module.scss';
+import { ContextApp } from '../app/App';
 
 const Achievements = (): React.JSX.Element => {
+    const contextApp = React.useContext(ContextApp);
     const [load, setLoad] = React.useState<boolean>(true);
     const [switchStatus, setSwitchStatus] = React.useState<SwitchAchieved>('all');
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
         setSwitchStatus(event.target.value as SwitchAchieved);
+        contextApp?.handleSoundClick();
     };
 
     React.useEffect(() => setLoad(false), []);

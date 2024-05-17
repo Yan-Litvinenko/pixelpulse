@@ -42,6 +42,7 @@
     &__button {
         @include button-escape();
         background-color: transparent;
+        outline: none;
     }
 }
 

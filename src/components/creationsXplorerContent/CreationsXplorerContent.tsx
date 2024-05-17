@@ -29,6 +29,7 @@ const CreationsXplorerContent = ({
         setXplorerState('projectImages');
         contextApp?.setProjectImages(projects[projectCount].images);
         contextApp?.setModalProject(index);
+        contextApp?.handleSoundClick();
     };
 
     return (

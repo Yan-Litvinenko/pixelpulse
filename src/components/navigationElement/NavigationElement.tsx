@@ -22,6 +22,7 @@ const NavigationElement = ({ textContent, activeElement }: INavigationElement): 
         if (contextApp.page !== textContent) {
             contextApp.setPage(textContent);
             contextApp.setNavigationMobile(false);
+            contextApp.handleSoundClick();
             scroll.on();
         }
     };
