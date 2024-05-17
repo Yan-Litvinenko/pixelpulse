@@ -15,14 +15,14 @@
     &__content {
         background-color: var(--main-background-color);
         border: 0.0625rem solid var(--dark-light-border);
-        padding: 0.9375rem;
+        padding: 2.5375rem;
         max-width: 20rem;
     }
 
     &__text {
         @include text-properties('Iceberg', 0.875rem, 400);
         color: var(--dark-grey);
-        margin-bottom: 0.75rem;
+        margin-bottom: 1.2rem;
         text-align: center;
     }
 

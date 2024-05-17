@@ -1,7 +1,7 @@
 import React from 'react';
 import { ContextApp } from '../app/App';
 import CreationsXplorerItem from '../creationsXplorerItem/CreationsXplorerItem';
-import scroll from '../../classes/Scroll';
+import handleOpenModal from '../../utils/handleOpenModal';
 import { nanoid } from 'nanoid';
 import { IProject, XplorerState } from '../../interfaces/interface.credits';
 import { IAppContext } from '../../interfaces/interface';
@@ -31,11 +31,6 @@ const CreationsXplorerContent = ({
         contextApp?.setModalProject(index);
     };
 
-    const handleOpenModal = (): void => {
-        contextApp?.setCreations(true);
-        scroll.off();
-    };
-
     return (
         <>
             <ul className={styles.content}>
@@ -56,7 +51,7 @@ const CreationsXplorerContent = ({
                               <CreationsXplorerItem
                                   image={'image'}
                                   key={nanoid()}
-                                  onClick={handleOpenModal}
+                                  onClick={() => handleOpenModal(contextApp?.setCreations)}
                                   textContent={imageName + '.jpg'}
                               />
                           );

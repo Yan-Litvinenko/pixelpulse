@@ -44,6 +44,7 @@ const ModalSetting = (): React.JSX.Element | null => {
             }, 2000);
         }
     };
+
     const handleButtonEnter = (event: KeyboardEvent): void => {
         if (event.key === 'Enter') {
             handleModifySaveSetting();
