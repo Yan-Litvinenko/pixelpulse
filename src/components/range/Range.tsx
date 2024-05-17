@@ -21,8 +21,6 @@ const Range = (props: IRange): React.JSX.Element | null => {
 
     const [rangeElement, setRangeElement] = useRange(props.initValue, progress, customThumb);
 
-    console.log(props.inputTarget, props.initValue);
-
     return (
         <label className={styles.range}>
             {props.textContent}

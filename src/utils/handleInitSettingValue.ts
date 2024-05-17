@@ -2,7 +2,7 @@ const handleInitSettingValue = (nameInput: 'hue' | 'saturation' | 'lightness' | 
     const value: string | null = localStorage.getItem(`yan-litvinenko-cv-${nameInput}`);
 
     if (nameInput === 'size') {
-        if (value) return ((Number(value.replace(/px/g, '')) - 16) / (32 - 16)) * 100;
+        if (value) return ((Number(value.replace(/px/g, '')) - 16) / (56 - 16)) * 100;
 
         return (
             ((Number(
@@ -12,7 +12,7 @@ const handleInitSettingValue = (nameInput: 'hue' | 'saturation' | 'lightness' | 
                 ),
             ) -
                 16) /
-                (32 - 16)) *
+                (56 - 16)) *
             100
         );
     }

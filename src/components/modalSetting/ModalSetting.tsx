@@ -1,18 +1,18 @@
 import React from 'react';
 import useCloseModal from '../../hooks/useCloseModal';
-import ClipPathBorder from '../clipPathBorder/ClipPathBorder';
 import Button from '../button/Button';
+import ClipPathBorder from '../clipPathBorder/ClipPathBorder';
 import Cross from '../cross/Cross';
 import Heading from '../heading/Heading';
 import ModalBackground from '../modalBackground/ModalBackground';
 import ModalBoxButton from '../modalBoxButton/ModalBoxButton';
 import Paragraph from '../paragraph/Paragraph';
 import Range from '../range/Range';
-import handleSettingColor from '../../utils/handleSettingColor';
-import handleSaveSetting from '../../utils/handleSaveSettings';
-import handleInitSettingValue from '../../utils/handleInitSettingValue';
-import handleSettingSize from '../../utils/handleSettingSize';
 import handleDefaultSettings from '../../utils/handleDefaultSettings';
+import handleInitSettingValue from '../../utils/handleInitSettingValue';
+import handleSaveSetting from '../../utils/handleSaveSettings';
+import handleSettingColor from '../../utils/handleSettingColor';
+import handleSettingSize from '../../utils/handleSettingSize';
 import { Warning } from '../svgIcon/SvgIcon';
 import { ContextApp } from '../app/App';
 import { IAppContext } from '../../interfaces/interface';
@@ -20,17 +20,44 @@ import styles from './ModalSetting.module.scss';
 
 const ModalSetting = (): React.JSX.Element | null => {
     const contextApp: IAppContext | undefined = React.useContext(ContextApp);
-    const modal = React.useRef<HTMLDivElement | null>(null);
 
     if (!contextApp) return null;
 
+    const modal = React.useRef<HTMLDivElement | null>(null);
+    const timer = React.useRef<NodeJS.Timeout | null>(null);
+    const [enterText, setEnterText] = React.useState<string>('write to disk [enter]');
+
+    const handleButtonEscape = useCloseModal(modal, contextApp.setSetting, false, false, false);
     const handleCrossModal = (): void => {
         contextApp.setNavigationMobile(true);
         contextApp.setSetting(false);
     };
 
-    const handleButtonEscape = useCloseModal(modal, contextApp.setSetting, false, false, false);
     const changeSettingValue = handleSettingColor();
+    const handleModifySaveSetting = (): void => {
+        if (enterText === 'write to disk [enter]') {
+            handleSaveSetting();
+            setEnterText('saved!');
+
+            timer.current = setTimeout(() => {
+                setEnterText('write to disk [enter]');
+            }, 2000);
+        }
+    };
+    const handleButtonEnter = (event: KeyboardEvent): void => {
+        if (event.key === 'Enter') {
+            handleModifySaveSetting();
+        }
+    };
+
+    React.useEffect(() => {
+        window.addEventListener('keydown', handleButtonEnter);
+
+        return () => {
+            if (timer.current) clearTimeout(timer.current);
+            window.removeEventListener('keydown', handleButtonEnter);
+        };
+    }, []);
 
     return (
         <div className={styles.modal} ref={modal}>
@@ -99,10 +126,10 @@ const ModalSetting = (): React.JSX.Element | null => {
                 </div>
 
                 <ModalBoxButton
-                    handleEnter={handleSaveSetting}
+                    handleEnter={handleModifySaveSetting}
                     handleEscape={handleButtonEscape}
                     isValid={true}
-                    textEnter="write to disk [enter]"
+                    textEnter={enterText}
                     textEsc="discard [esc]"
                     typeEnter="submit"
                 />
