@@ -17,8 +17,11 @@ const useCloseModal = (
     const closeSoundEffect = new Audio(closeEffect);
 
     const handleClose = (): void => {
+        if (contextApp?.sounds) {
+            closeSoundEffect.play();
+        }
+
         setModalStatus(false);
-        closeSoundEffect.play();
         scroll.on();
     };
 

@@ -38,6 +38,7 @@ const Setting = ({ className }: ISetting): React.JSX.Element => {
                 className={className.visual}
                 onClick={() => {
                     contextApp?.setNavigationMobile(false);
+                    contextApp?.handleSoundOpenModal();
                     handleOpenModal(contextApp?.setSetting);
                 }}
                 image="gear"

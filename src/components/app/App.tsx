@@ -1,6 +1,7 @@
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 import clickSoundEffect from '../../assets/audio/click.ogg';
+import openModalSoundEffect from '../../assets/audio/open-modal.mp3';
 import handleInitSettings from '../../utils/handleInitSettings';
 import handleWrapperClassName from '../../utils/handleWrapperClassName';
 import Layout from '../layout/Layout';
@@ -42,8 +43,10 @@ const App = (): React.JSX.Element => {
     const [modalProject, setModalProject] = React.useState<number>(0);
 
     const clickSound = new Audio(clickSoundEffect);
+    const openModalSound = new Audio(openModalSoundEffect);
 
     const handleSoundClick = () => (sounds ? clickSound.play() : null);
+    const handleSoundOpenModal = () => (sounds ? openModalSound.play() : null);
 
     changeStateMusic(music);
     handleInitSettings();
@@ -67,6 +70,7 @@ const App = (): React.JSX.Element => {
                     setSounds,
                     changeStateMusic,
                     handleSoundClick,
+                    handleSoundOpenModal,
                     commits,
                     creations,
                     errorGithub,

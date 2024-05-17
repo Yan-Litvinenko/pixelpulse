@@ -43,7 +43,10 @@ const AchievementsProgress = (): React.JSX.Element => {
             <Button
                 className={styles.progress__button}
                 delayEvent={false}
-                handleButton={() => handleOpenModal(contextApp?.setChallenge)}
+                handleButton={() => {
+                    handleOpenModal(contextApp?.setChallenge);
+                    contextApp?.handleSoundOpenModal();
+                }}
                 textContent="Challenge me"
                 type="button"
             />

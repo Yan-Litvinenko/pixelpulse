@@ -17,6 +17,7 @@ type IAppContext = {
     projectImages: string[];
     changeStateMusic: (state: boolean) => void;
     handleSoundClick: () => Promise<void> | null;
+    handleSoundOpenModal: () => Promise<void> | null;
     setAvailability: BooleanState;
     setChallenge: BooleanState;
     setCreations: BooleanState;

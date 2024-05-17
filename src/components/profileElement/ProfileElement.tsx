@@ -32,7 +32,10 @@ const ProfileElement = (props: IProfileElement) => {
                 <Button
                     className={styles['profile__' + header.text]}
                     delayEvent={false}
-                    handleButton={() => handleOpenModal(setStatusModal)}
+                    handleButton={() => {
+                        handleOpenModal(setStatusModal);
+                        contextApp?.handleSoundOpenModal();
+                    }}
                     image={() => image}
                     textContent={adjacent.text}
                     type="button"
