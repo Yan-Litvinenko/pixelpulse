@@ -1,7 +1,7 @@
 import React from 'react';
-import { Hexagon, HexagonBorder, ReactIcon, NodeJS, Figma, JS, GitHub } from '../svgIcon/SvgIcon';
 import Heading from '../heading/Heading';
 import { nanoid } from 'nanoid';
+import { Hexagon, HexagonBorder, ReactIcon, NodeJS, Figma, JS, GitHub } from '../svgIcon/SvgIcon';
 import { ICreationsBlock } from '../../interfaces/interface.credits';
 import styles from './CreationsTechnologies.module.scss';
 

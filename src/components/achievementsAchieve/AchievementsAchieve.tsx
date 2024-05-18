@@ -1,10 +1,12 @@
 import React from 'react';
 import Heading from '../heading/Heading';
 import Paragraph from '../paragraph/Paragraph';
+
 import epic from '../../assets/images/epic.png';
 import legendary from '../../assets/images/legendary.png';
 import rare from '../../assets/images/rare.png';
 import unusual from '../../assets/images/unusual.png';
+
 import { Rarity, AchievedStatus } from '../../interfaces/interface.achievements';
 import styles from './AchievementsAchieve.module.scss';
 

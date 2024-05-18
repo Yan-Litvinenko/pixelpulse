@@ -3,9 +3,11 @@ import AboutElement from '../aboutElement/AboutElement';
 import Frame from '../frame/Frame';
 import Heading from '../heading/Heading';
 import { nanoid } from 'nanoid';
+
 import humanAvif from '../../assets/images/human.avif';
 import humanWebp from '../../assets/images/human.webp';
 import humanJpg from '../../assets/images/human.jpg';
+
 import styles from './About.module.scss';
 
 const content: Record<string, string>[] = [

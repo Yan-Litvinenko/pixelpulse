@@ -1,9 +1,9 @@
 import React from 'react';
 import Heading from '../heading/Heading';
 import Paragraph from '../paragraph/Paragraph';
+import { nanoid } from 'nanoid';
 import { ICreationsBlock } from '../../interfaces/interface.credits';
 import styles from './CreationsAbout.module.scss';
-import { nanoid } from 'nanoid';
 
 const renderAboutText = (texts: string[], className: string): React.JSX.Element[] => {
     return texts.map((text) => <Paragraph className={className} textContent={text} key={nanoid()} />);

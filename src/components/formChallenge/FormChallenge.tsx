@@ -1,7 +1,7 @@
 import React from 'react';
 import ClipPathBorder from '../clipPathBorder/ClipPathBorder';
-import ModalBackground from '../modalBackground/ModalBackground';
 import FormLabel from '../formLabel/FormLabel';
+import ModalBackground from '../modalBackground/ModalBackground';
 import SelectChallenge from '../selectChallenge/SelectChallenge';
 import { IForm } from '../../interfaces/interface.form';
 import { Rarity } from '../../interfaces/interface.achievements';

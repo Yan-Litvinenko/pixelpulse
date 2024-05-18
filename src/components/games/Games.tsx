@@ -1,9 +1,9 @@
 import React from 'react';
-import { ContextApp } from '../app/App';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import Frame from '../frame/Frame';
 import Heading from '../heading/Heading';
 import Paragraph from '../paragraph/Paragraph';
+import { ContextApp } from '../app/App';
 import { IAppContext } from '../../interfaces/interface';
 import ArcanoidImg from '../../assets/images/arcanoid.jpg';
 import SnakeImg from '../../assets/images/snake.jpg';

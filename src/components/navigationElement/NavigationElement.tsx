@@ -1,6 +1,6 @@
 import React from 'react';
 import { ContextApp } from '../app/App';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Heading from '../heading/Heading';
 import Paragraph from '../paragraph/Paragraph';
 import scroll from '../../classes/Scroll';
@@ -17,7 +17,7 @@ const NavigationElement = ({ textContent }: INavigationElement): React.JSX.Eleme
 
     if (!contextApp) return null;
 
-    const handleNavigationChange = () => {
+    const handleNavigationChange = (): void => {
         contextApp.setNavigationMobile(false);
         contextApp.handleSoundClick();
         scroll.on();
@@ -25,20 +25,13 @@ const NavigationElement = ({ textContent }: INavigationElement): React.JSX.Eleme
 
     return (
         <li className={styles.item} onClick={handleNavigationChange}>
-            <Link to={textContent}>
-                <Heading
-                    // className={`${styles.item__title} ${isActive ? styles.item__title_active : null}`}
-                    className={styles.item__title}
-                    level="4"
-                    textContent={textContent}
-                    image={() => <Hexagon />}
-                />
+            <NavLink to={textContent} className={({ isActive }) => (isActive ? styles.link_active : '')}>
+                <Heading className={styles.item__title} level="4" textContent={textContent} image={() => <Hexagon />} />
                 <Paragraph
-                    // className={`${styles.item__text} ${isActive ? styles.item__text_active : null}`}
                     className={styles.item__text}
                     textContent="Suscipit est consequatur nemo voluptatem est labore saepe."
                 />
-            </Link>
+            </NavLink>
         </li>
     );
 };

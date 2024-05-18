@@ -29,6 +29,7 @@ const update: Record<string, string>[] = [
 const LogsUpdate = (): React.JSX.Element => {
     const contextApp: IAppContext | undefined = React.useContext(ContextApp);
     const [expandStates, clippedIndexes, setExpandStates, textRefs] = useLogsUpdate(update, styles.element__text_clip);
+
     const handleExpand = React.useCallback((index: number): void => {
         return setExpandStates((prevStates) => {
             const newStates: boolean[] = [...prevStates];

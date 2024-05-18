@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, BrowserRouter, useLocation } from 'react-router-dom';
 
 import { useMediaQuery } from 'react-responsive';
 import useGithubApi from '../../hooks/useGithubApi';
@@ -8,11 +8,11 @@ import useLocalStorage from '../../hooks/useLocalStorage';
 import useMusic from '../../hooks/useMusic';
 
 import clickSoundEffect from '../../assets/audio/click.ogg';
-import handleInitSettings from '../../utils/handleInitSettings';
+import { handleInitSettings } from '../../utils/handleSettings';
 import handleWrapperClassName from '../../utils/handleWrapperClassName';
 import openModalSoundEffect from '../../assets/audio/open-modal.mp3';
 
-import DesktopLayout from '../DesktopLayout/DesktopLayout';
+import Layout from '../layout/Layout';
 import ModalAvailability from '../modalAvailability/ModalAvailability';
 import ModalChallenge from '../modalChallenge/ModalChallenge';
 import ModalCreations from '../modalCreations/ModalCreations';
@@ -20,6 +20,7 @@ import ModalCredits from '../modalCredits/ModalCredits';
 import ModalSetting from '../modalSetting/ModalSetting';
 import ModalSocial from '../modalSocial/ModalSocial';
 
+import { Triangle } from 'react-loader-spinner';
 import About from '../about/About';
 import Achievements from '../achievements/Achievements';
 import Beginning from '../beginning/Beginning';
@@ -41,6 +42,8 @@ const App = (): React.JSX.Element => {
     const isMedium: boolean = useMediaQuery({ maxWidth: 768 });
     const isLarge: boolean = useMediaQuery({ maxWidth: 1200 });
 
+    const location = useLocation();
+    const [loading, setLoading] = React.useState(true);
     const [commits, isLoadingGithub, errorGithub] = useGithubApi();
     const [availability, setAvailability] = React.useState<boolean>(false);
     const [credits, setCredits] = React.useState<boolean>(false);
@@ -55,8 +58,10 @@ const App = (): React.JSX.Element => {
     const [projectImages, setProjectImages] = React.useState<string[]>([]);
     const [modalProject, setModalProject] = React.useState<number>(0);
 
-    const clickSound = new Audio(clickSoundEffect);
-    const openModalSound = new Audio(openModalSoundEffect);
+    const clickSound: HTMLAudioElement = new Audio(clickSoundEffect);
+    const openModalSound: HTMLAudioElement = new Audio(openModalSoundEffect);
+
+    openModalSound.volume = 0.4;
 
     const handleSoundClick = () => (sounds ? clickSound.play() : null);
     const handleSoundOpenModal = () => (sounds ? openModalSound.play() : null);
@@ -64,72 +69,91 @@ const App = (): React.JSX.Element => {
     changeStateMusic(music);
     handleInitSettings();
 
-    return (
-        <>
-            <ContextApp.Provider
-                value={{
-                    TRANSITION_TIME,
-                    setAvailability,
-                    setChallenge,
-                    setCreations,
-                    setCredits,
-                    setModalProject,
-                    setMusic,
-                    setNavigationMobile,
-                    setProjectImages,
-                    setSetting,
-                    setSocial,
-                    setSounds,
-                    changeStateMusic,
-                    handleSoundClick,
-                    handleSoundOpenModal,
-                    commits,
-                    creations,
-                    errorGithub,
-                    isLarge,
-                    isLoadingGithub,
-                    isMedium,
-                    modalProject,
-                    music,
-                    navigationMobile,
-                    projectImages,
-                    sounds,
-                    styles,
-                }}
-            >
-                <div
-                    className={handleWrapperClassName({
-                        effectsLeft: [social, availability, credits, challenge],
-                        effectsCenter: [setting, creations],
-                        isMedium: isMedium,
-                        isLarge: isLarge,
-                        stylesWrapper: styles,
-                    })}
-                >
-                    <Routes>
-                        <Route path="/" element={<Welcome />} />
-                        <Route path="/" element={<DesktopLayout />}>
-                            <Route path="about" element={<About />} />
-                            <Route path="beginning" element={<Beginning />} />
-                            <Route path="logs" element={<Logs />} />
-                            <Route path="achievements" element={<Achievements />} />
-                            <Route path="creations" element={<Creations />} />
-                            <Route path="games/*" element={<Games />}>
-                                <Route path="snake" element={<GameSnake />} />
-                            </Route>
-                        </Route>
-                    </Routes>
-                </div>
+    React.useEffect(() => {
+        setLoading(true);
 
-                {availability ? <ModalAvailability /> : null}
-                {challenge ? <ModalChallenge /> : null}
-                {creations ? <ModalCreations /> : null}
-                {credits ? <ModalCredits /> : null}
-                {navigationMobile && (isMedium || isLarge) ? <NavigationMobile /> : null}
-                {setting ? <ModalSetting /> : null}
-                {social ? <ModalSocial /> : null}
-            </ContextApp.Provider>
-        </>
+        const handlePageLoad = (): void => setLoading(false);
+
+        handlePageLoad();
+
+        return () => setLoading(false);
+    }, [location]);
+
+    return (
+        <ContextApp.Provider
+            value={{
+                TRANSITION_TIME,
+                setAvailability,
+                setChallenge,
+                setCreations,
+                setCredits,
+                setModalProject,
+                setMusic,
+                setNavigationMobile,
+                setProjectImages,
+                setSetting,
+                setSocial,
+                setSounds,
+                changeStateMusic,
+                handleSoundClick,
+                handleSoundOpenModal,
+                commits,
+                creations,
+                errorGithub,
+                isLarge,
+                isLoadingGithub,
+                isMedium,
+                modalProject,
+                music,
+                navigationMobile,
+                projectImages,
+                sounds,
+                styles,
+            }}
+        >
+            <div
+                className={handleWrapperClassName({
+                    effectsLeft: [social, availability, credits, challenge],
+                    effectsCenter: [setting, creations],
+                    isMedium: isMedium,
+                    isLarge: isLarge,
+                    stylesWrapper: styles,
+                })}
+            >
+                {loading ? (
+                    <Triangle
+                        ariaLabel="triangle-loading"
+                        color=""
+                        height="120"
+                        visible={true}
+                        width="120"
+                        wrapperClass={styles.loader}
+                        wrapperStyle={{}}
+                    />
+                ) : null}
+                <Routes>
+                    <Route path="/" element={<Welcome />} />
+                    <Route path="/" element={<Layout />}>
+                        <Route path="about" element={<About />} />
+                        <Route path="beginning" element={<Beginning />} />
+                        <Route path="logs" element={<Logs />} />
+                        <Route path="achievements" element={<Achievements />} />
+                        <Route path="creations" element={<Creations />} />
+                        <Route path="games/*" element={<Games />}>
+                            <Route path="snake" element={<GameSnake />} />
+                        </Route>
+                    </Route>
+                </Routes>
+            </div>
+
+            {availability ? <ModalAvailability /> : null}
+            {challenge ? <ModalChallenge /> : null}
+            {creations ? <ModalCreations /> : null}
+            {credits ? <ModalCredits /> : null}
+            {navigationMobile && (isMedium || isLarge) ? <NavigationMobile /> : null}
+            {setting ? <ModalSetting /> : null}
+            {social ? <ModalSocial /> : null}
+        </ContextApp.Provider>
     );
 };
 

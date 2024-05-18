@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import Snake from '../../classes/Snake';
 import Joystick from '../joystick/Jouystick';
@@ -55,9 +56,9 @@ const GameSnake = (): React.JSX.Element => {
                     <span>best score:{bestScore}</span>
                 </div>
                 <canvas className={styles.canvas} width="300" height="300" ref={canvas}></canvas>
-                <a className={styles.back} href="">
+                <Link className={styles.back} to={'/games'}>
                     back to all games<span className={styles.back__quotes}>&#xBB;</span>
-                </a>
+                </Link>
             </div>
         </>
     );

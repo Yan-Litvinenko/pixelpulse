@@ -1,4 +1,6 @@
 import React from 'react';
+import { nanoid } from 'nanoid';
+import { Page } from '../app/App';
 import NavigationElement from '../navigationElement/NavigationElement';
 
 interface INavigation {
@@ -11,11 +13,9 @@ const Navigation = ({ className }: INavigation): React.JSX.Element => {
     return (
         <nav className={classes.navigation}>
             <ul className={classes.navigation__list}>
-                <NavigationElement textContent={'beginning'} />
-                <NavigationElement textContent={'logs'} />
-                <NavigationElement textContent={'achievements'} />
-                <NavigationElement textContent={'creations'} />
-                <NavigationElement textContent={'games'} />
+                {['beginning', 'logs', 'achievements', 'creations', 'games'].map((page, index) => (
+                    <NavigationElement key={nanoid()} textContent={page as Page} />
+                ))}
             </ul>
         </nav>
     );

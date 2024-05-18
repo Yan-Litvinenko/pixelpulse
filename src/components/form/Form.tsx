@@ -10,9 +10,7 @@ import styles from './Form.module.scss';
 const Form = (props: IForm): React.JSX.Element | null => {
     const contextApp: IAppContext | undefined = React.useContext(ContextApp);
 
-    if (!contextApp) {
-        return null;
-    }
+    if (!contextApp) return null;
 
     return (
         <div className={styles.form}>

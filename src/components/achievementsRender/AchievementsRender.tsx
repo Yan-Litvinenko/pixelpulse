@@ -1,16 +1,11 @@
 import React from 'react';
 import AchievementsAchieve from '../achievementsAchieve/AchievementsAchieve';
 import handleSortAchievements from '../../utils/handleSortAchievements';
-import achievements from '../../assets/json/achievements.json';
 import { nanoid } from 'nanoid';
+import { Rarity, IAchieve } from '../../interfaces/interface.achievements';
+import { SwitchAchieved, AchievedPrefix, AchievedStatus } from '../../interfaces/interface.achievements';
+import achievements from '../../assets/json/achievements.json';
 import styles from './AchievementsRender.module.scss';
-import {
-    Rarity,
-    IAchieve,
-    SwitchAchieved,
-    AchievedPrefix,
-    AchievedStatus,
-} from '../../interfaces/interface.achievements';
 
 interface IAchievementsRender {
     prefix: AchievedPrefix;

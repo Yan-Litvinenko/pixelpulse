@@ -1,9 +1,9 @@
 import React from 'react';
 import { ContextApp } from '../app/App';
 import Button from '../button/Button';
+import handleOpenModal from '../../utils/handleOpenModal';
 import Paragraph from '../paragraph/Paragraph';
 import ProgressRing from '../progressRing/ProgressRing';
-import handleOpenModal from '../../utils/handleOpenModal';
 import achievements from '../../assets/json/achievements.json';
 import { IAppContext } from '../../interfaces/interface';
 import styles from './AchievementsProgress.module.scss';

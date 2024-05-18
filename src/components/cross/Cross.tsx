@@ -9,14 +9,15 @@ interface ICross {
 }
 
 const Cross = ({ setModalState, scrollStatus }: ICross): React.JSX.Element => {
-    const handleCross = () => {
+    const handleCross = (): void => {
         setModalState(false);
 
         if (scrollStatus === 'off') {
             scroll.off();
-        } else {
-            scroll.on();
+            return;
         }
+
+        scroll.on();
     };
 
     return (
