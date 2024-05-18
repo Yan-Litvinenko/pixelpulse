@@ -1,7 +1,8 @@
 @import '../../css/mixin.scss';
 
-.item {
+.link {
     cursor: pointer;
+    display: block;
     width: 10rem;
 
     &__title {
@@ -29,7 +30,13 @@
     }
 }
 
-.link_active .item__title {
+.link_active {
+    user-select: none;
+    cursor: auto;
+    pointer-events: none;
+}
+
+.link_active .link__title {
     @include text-properties('Big-Shoulders', 1.125rem, 700, 0.075rem);
     background-color: var(--main-color);
     border-left: 0.125rem solid var(--main-color);
@@ -39,7 +46,7 @@
     transition: all 0.4s;
 }
 
-.link_active .item__text {
+.link_active .link__text {
     @include text-properties($font-size: 0.4375rem, $letter-spacing: 0.03rem);
     background-color: var(--main-background-color);
     border-left: 0.125rem solid var(--main-color);
@@ -49,13 +56,13 @@
 }
 
 @media (hover: hover) {
-    .item:hover .item__title:not(.item__title_active) {
+    .link:not(.link_active):hover .link__title {
         background-color: var(--dark-light-border);
     }
 }
 
 @media (max-width: 1360px) {
-    .item {
+    .link {
         width: 9rem;
 
         &__title svg {
@@ -69,14 +76,14 @@
 }
 
 @media (max-width: 1280px) {
-    .item {
+    .link {
         width: 8.5rem;
     }
 }
 
 @media (max-width: 1200px) {
     // * элементы списка навигации в мобильной версии
-    .item {
+    .link {
         min-width: 100%;
 
         &__text {

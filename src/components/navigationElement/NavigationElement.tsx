@@ -24,11 +24,14 @@ const NavigationElement = ({ textContent }: INavigationElement): React.JSX.Eleme
     };
 
     return (
-        <li className={styles.item} onClick={handleNavigationChange}>
-            <NavLink to={textContent} className={({ isActive }) => (isActive ? styles.link_active : '')}>
-                <Heading className={styles.item__title} level="4" textContent={textContent} image={() => <Hexagon />} />
+        <li onClick={handleNavigationChange}>
+            <NavLink
+                to={textContent}
+                className={({ isActive }) => (isActive ? `${styles.link_active} ${styles.link}` : styles.link)}
+            >
+                <Heading className={styles.link__title} level="4" textContent={textContent} image={() => <Hexagon />} />
                 <Paragraph
-                    className={styles.item__text}
+                    className={styles.link__text}
                     textContent="Suscipit est consequatur nemo voluptatem est labore saepe."
                 />
             </NavLink>

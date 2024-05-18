@@ -13,7 +13,7 @@ const Navigation = ({ className }: INavigation): React.JSX.Element => {
     return (
         <nav className={classes.navigation}>
             <ul className={classes.navigation__list}>
-                {['beginning', 'logs', 'achievements', 'creations', 'games'].map((page, index) => (
+                {['beginning', 'logs', 'achievements', 'creations', 'games'].map((page) => (
                     <NavigationElement key={nanoid()} textContent={page as Page} />
                 ))}
             </ul>

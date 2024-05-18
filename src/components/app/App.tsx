@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Routes, Route, BrowserRouter, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 
 import { useMediaQuery } from 'react-responsive';
 import useGithubApi from '../../hooks/useGithubApi';
@@ -25,6 +25,7 @@ import About from '../about/About';
 import Achievements from '../achievements/Achievements';
 import Beginning from '../beginning/Beginning';
 import Creations from '../creations/Creations';
+import Error from '../error/Error';
 import Games from '../games/Games';
 import GameSnake from '../gameSnake/GameSnake';
 import Logs from '../logs/Logs';
@@ -142,6 +143,7 @@ const App = (): React.JSX.Element => {
                         <Route path="games/*" element={<Games />}>
                             <Route path="snake" element={<GameSnake />} />
                         </Route>
+                        <Route path="error" element={<Error />} />
                     </Route>
                 </Routes>
             </div>
