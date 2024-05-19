@@ -1,4 +1,5 @@
 import { ICommitLog } from './interface.github';
+import { UseAudioPlayer } from '../hooks/useAudioPlayer';
 
 type Page = 'welcome' | 'beginning' | 'about' | 'logs' | 'achievements' | 'creations' | 'games';
 
@@ -11,12 +12,12 @@ type IAppContext = {
     isLoadingGithub: boolean;
     isMedium: boolean;
     modalProject: number;
+    mainMusic: UseAudioPlayer;
     music: boolean;
     navigationMobile: boolean;
     projectImages: string[];
-    changeStateMusic: (state: boolean) => void;
     handleSoundClick: () => Promise<void> | null;
-    handleSoundOpenModal: () => Promise<void> | null;
+    handleSoundModal: () => Promise<void> | null;
     setAvailability: BooleanState;
     setChallenge: BooleanState;
     setCreations: BooleanState;

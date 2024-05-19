@@ -1,17 +1,23 @@
 import React from 'react';
+import { ContextApp } from '../app/App';
 import { Link } from 'react-router-dom';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import Snake from '../../classes/Snake';
+import snakeTheme from '../../assets/audio/snake.mp3';
+import mainTheme from '../../assets/audio/main-theme.mp3';
 import Joystick from '../joystick/Jouystick';
 import styles from './GameSnake.module.scss';
 
 const GameSnake = (): React.JSX.Element => {
+    const contextApp = React.useContext(ContextApp);
     const [score, setScore] = React.useState(0);
     const [bestScore, setBestScore] = useLocalStorage(0, 'best-score');
     const snake = React.useRef<null | Snake>(null);
     const canvas = React.useRef<HTMLCanvasElement | null>(null);
 
     React.useEffect(() => {
+        contextApp?.mainMusic.selectTrack(snakeTheme);
+
         if (canvas.current) {
             snake.current = new Snake(canvas.current);
         }
@@ -38,6 +44,8 @@ const GameSnake = (): React.JSX.Element => {
         return () => {
             window.removeEventListener('keydown', eventKeyboard);
             clearInterval(snake.current?.intervalId!);
+
+            contextApp?.mainMusic.selectTrack(mainTheme);
         };
     }, []);
 

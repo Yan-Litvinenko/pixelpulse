@@ -17,7 +17,13 @@ const NavigationMobile = (): React.JSX.Element => {
             <div className={styles.box__inner}>
                 <div className={styles.box__header}>
                     <Heading className={styles.header} level={'2'} textContent={'Navigation'} />
-                    <Cross setModalState={() => contextApp?.setNavigationMobile(false)} scrollStatus="on" />
+                    <Cross
+                        setModalState={() => {
+                            contextApp?.setNavigationMobile(false);
+                            contextApp?.handleSoundModal();
+                        }}
+                        scrollStatus="on"
+                    />
                 </div>
                 <HeaderStatistics className={styles} />
                 <Navigation className={styles} />

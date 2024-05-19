@@ -18,7 +18,10 @@ const HeaderTime = ({ time }: ITime): React.JSX.Element => {
             <Button
                 className={styles.time__credits}
                 delayEvent={false}
-                handleButton={() => handleOpenModal(contextApp?.setCredits)}
+                handleButton={() => {
+                    handleOpenModal(contextApp?.setCredits);
+                    contextApp?.handleSoundModal();
+                }}
                 textContent="Credits"
                 type="button"
             />

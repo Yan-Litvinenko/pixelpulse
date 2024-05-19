@@ -1,4 +1,5 @@
 import React from 'react';
+import { ContextApp } from '../app/App';
 import scroll from '../../classes/Scroll';
 import { BooleanState } from '../../interfaces/interface';
 import styles from './Cross.module.scss';
@@ -9,7 +10,10 @@ interface ICross {
 }
 
 const Cross = ({ setModalState, scrollStatus }: ICross): React.JSX.Element => {
+    const contextApp = React.useContext(ContextApp);
+
     const handleCross = (): void => {
+        contextApp?.handleSoundModal();
         setModalState(false);
 
         if (scrollStatus === 'off') {

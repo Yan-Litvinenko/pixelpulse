@@ -34,7 +34,7 @@ const ProfileElement = (props: IProfileElement) => {
                     delayEvent={false}
                     handleButton={() => {
                         handleOpenModal(setStatusModal);
-                        contextApp?.handleSoundOpenModal();
+                        contextApp?.handleSoundModal();
                     }}
                     image={() => image}
                     textContent={adjacent.text}

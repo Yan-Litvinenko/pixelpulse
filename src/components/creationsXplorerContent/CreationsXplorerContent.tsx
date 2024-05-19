@@ -54,7 +54,7 @@ const CreationsXplorerContent = ({
                                   key={nanoid()}
                                   onClick={() => {
                                       handleOpenModal(contextApp?.setCreations);
-                                      contextApp?.handleSoundOpenModal();
+                                      contextApp?.handleSoundModal();
                                   }}
                                   textContent={imageName + '.jpg'}
                               />

@@ -45,7 +45,7 @@ const AchievementsProgress = (): React.JSX.Element => {
                 delayEvent={false}
                 handleButton={() => {
                     handleOpenModal(contextApp?.setChallenge);
-                    contextApp?.handleSoundOpenModal();
+                    contextApp?.handleSoundModal();
                 }}
                 textContent="Challenge me"
                 type="button"

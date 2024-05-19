@@ -3,14 +3,14 @@ import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
 import { useMediaQuery } from 'react-responsive';
+import { useAudioPlayer } from '../../hooks/useAudioPlayer';
 import useGithubApi from '../../hooks/useGithubApi';
 import useLocalStorage from '../../hooks/useLocalStorage';
-import useMusic from '../../hooks/useMusic';
 
 import clickSoundEffect from '../../assets/audio/click.ogg';
 import { handleInitSettings } from '../../utils/handleSettings';
 import handleWrapperClassName from '../../utils/handleWrapperClassName';
-import openModalSoundEffect from '../../assets/audio/open-modal.mp3';
+import ModalSoundEffect from '../../assets/audio/modal.mp3';
 
 import Layout from '../layout/Layout';
 import ModalAvailability from '../modalAvailability/ModalAvailability';
@@ -54,28 +54,26 @@ const App = (): React.JSX.Element => {
     const [creations, setCreations] = React.useState<boolean>(false);
     const [sounds, setSounds] = useLocalStorage(true, 'sounds');
     const [music, setMusic] = useLocalStorage(true, 'music');
-    const [changeStateMusic] = useMusic(mainTheme);
     const [navigationMobile, setNavigationMobile] = React.useState<boolean>(false);
     const [projectImages, setProjectImages] = React.useState<string[]>([]);
     const [modalProject, setModalProject] = React.useState<number>(0);
 
+    const mainMusic = useAudioPlayer(music);
     const clickSound: HTMLAudioElement = new Audio(clickSoundEffect);
-    const openModalSound: HTMLAudioElement = new Audio(openModalSoundEffect);
-
-    openModalSound.volume = 0.4;
+    const modalSound: HTMLAudioElement = new Audio(ModalSoundEffect);
 
     const handleSoundClick = () => (sounds ? clickSound.play() : null);
-    const handleSoundOpenModal = () => (sounds ? openModalSound.play() : null);
+    const handleSoundModal = () => (sounds ? modalSound.play() : null);
 
-    changeStateMusic(music);
     handleInitSettings();
 
     React.useEffect(() => {
         setLoading(true);
 
         const handlePageLoad = (): void => setLoading(false);
-
         handlePageLoad();
+
+        mainMusic.selectTrack(mainTheme);
 
         return () => setLoading(false);
     }, [location]);
@@ -89,21 +87,21 @@ const App = (): React.JSX.Element => {
                 setCreations,
                 setCredits,
                 setModalProject,
-                setMusic,
+                setMusic: setMusic,
                 setNavigationMobile,
                 setProjectImages,
                 setSetting,
                 setSocial,
                 setSounds,
-                changeStateMusic,
                 handleSoundClick,
-                handleSoundOpenModal,
+                handleSoundModal,
                 commits,
                 creations,
                 errorGithub,
                 isLarge,
                 isLoadingGithub,
                 isMedium,
+                mainMusic,
                 modalProject,
                 music,
                 navigationMobile,

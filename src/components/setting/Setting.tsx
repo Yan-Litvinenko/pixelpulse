@@ -27,7 +27,14 @@ const Setting = ({ className }: ISetting): React.JSX.Element => {
                 onClick={() => {
                     contextApp?.setMusic((prev) => {
                         const changeState: boolean = !prev;
-                        contextApp?.changeStateMusic(changeState);
+
+                        if (changeState) {
+                            contextApp?.mainMusic.play().catch((error) => {
+                                console.error('Failed to play music:', error);
+                            });
+                        } else {
+                            contextApp?.mainMusic.pause();
+                        }
 
                         return changeState;
                     });
@@ -38,7 +45,7 @@ const Setting = ({ className }: ISetting): React.JSX.Element => {
                 className={className.visual}
                 onClick={() => {
                     contextApp?.setNavigationMobile(false);
-                    contextApp?.handleSoundOpenModal();
+                    contextApp?.handleSoundModal();
                     handleOpenModal(contextApp?.setSetting);
                 }}
                 image="gear"
