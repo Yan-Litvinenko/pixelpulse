@@ -3,11 +3,8 @@ import AboutElement from '../aboutElement/AboutElement';
 import Frame from '../frame/Frame';
 import Heading from '../heading/Heading';
 import { nanoid } from 'nanoid';
-
-import humanAvif from '../../assets/images/human.avif';
-import humanWebp from '../../assets/images/human.webp';
+import GlitchCanvas from '../glitchImage/GlitchImage';
 import humanJpg from '../../assets/images/human.jpg';
-
 import styles from './About.module.scss';
 
 const content: Record<string, string>[] = [
@@ -35,12 +32,10 @@ const About = (): React.JSX.Element => {
                         <AboutElement key={nanoid()} text={item.text} title={item.title} />
                     ))}
                 </div>
-                <picture className={styles.box_image}>
-                    <source srcSet={humanAvif} />
-                    <source srcSet={humanWebp} />
-                    <img className={styles.about__img} src={humanJpg} alt="human" draggable={false} />
+                <div className={styles.box_image}>
                     <Frame className={styles.frame} />
-                </picture>
+                    <GlitchCanvas className={styles.about__img} imageUrl={humanJpg} minDelay={10000} maxDelay={20000} />
+                </div>
                 <Frame className={styles.frame} />
             </div>
         </main>

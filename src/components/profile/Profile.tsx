@@ -11,6 +11,8 @@ import avatar from '../../assets/images/avatar.png';
 import profileItems from '../../assets/json/profile.json';
 import styles from './Profile.module.scss';
 
+import GlitchCanvas from '../glitchImage/GlitchImage';
+
 const Profile = (): React.JSX.Element => {
     const contextApp = React.useContext<IAppContext | undefined>(ContextApp);
     const handleClickAvatar = (): void => {
@@ -21,7 +23,7 @@ const Profile = (): React.JSX.Element => {
         <aside className={styles.profile}>
             <Link to="about" className={styles.avatar} onClick={handleClickAvatar}>
                 <Frame className={styles.avatar__frame} />
-                <img src={avatar} alt="avatar" draggable={false} />
+                <GlitchCanvas className="" imageUrl={avatar} minDelay={10000} maxDelay={20000} />
             </Link>
 
             {profileItems.map((item) => {

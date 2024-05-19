@@ -16,7 +16,7 @@
     user-select: none;
 }
 
-.avatar img {
+.avatar canvas {
     filter: hue-rotate(var(--data-image-color));
 }
 
