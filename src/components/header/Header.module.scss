@@ -32,13 +32,14 @@
 
     &__btn {
         @include flex-container($align-items: center, $justify-content: center);
-        background-color: transparent;
-        border: 0.0625rem solid var(--dark-grey);
+        background-color: var(--main-background-color);
+        border: 0.0625rem solid var(--dark-light-border);
         color: var(--main-color);
         cursor: pointer;
         font-size: 1.2rem;
         height: 2rem;
         padding: 0rem;
+        position: relative;
         width: 2rem;
     }
 
@@ -53,6 +54,15 @@
     }
 }
 
+.pulse {
+    animation: pulse infinite 1s;
+    background-color: var(--main-color);
+    inset: 0;
+    opacity: 1;
+    position: absolute;
+    z-index: -1;
+}
+
 .level {
     &__box {
         @include position($top: 0.2625rem);
@@ -61,6 +71,24 @@
     &__text {
         @include text-properties('Big-Shoulders', 1.625rem, 700, 0.125rem);
         color: var(--statistics-text-color);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+        scale: 1;
+    }
+
+    100% {
+        opacity: 0;
+        scale: 1.4;
+    }
+}
+
+@media (hover: hover) {
+    .coins__add_box:hover .pulse {
+        animation: none;
     }
 }
 

@@ -155,7 +155,6 @@ class Snake {
     private impactSnake(head: Coordinates): void {
         for (let i = 1; i < this.snake.length; i++) {
             if (head.x === this.snake[i].x && head.y === this.snake[i].y) {
-                alert('Game Over! You collided with yourself.');
                 this.isGameOver = true;
                 this.restart();
                 return;

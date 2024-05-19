@@ -44,6 +44,7 @@ const App = (): React.JSX.Element => {
     const isLarge: boolean = useMediaQuery({ maxWidth: 1200 });
 
     const location = useLocation();
+
     const [loading, setLoading] = React.useState(true);
     const [commits, isLoadingGithub, errorGithub] = useGithubApi();
     const [availability, setAvailability] = React.useState<boolean>(false);
@@ -68,14 +69,10 @@ const App = (): React.JSX.Element => {
     handleInitSettings();
 
     React.useEffect(() => {
-        setLoading(true);
-
-        const handlePageLoad = (): void => setLoading(false);
-        handlePageLoad();
-
         mainMusic.selectTrack(mainTheme);
+        setLoading(false);
 
-        return () => setLoading(false);
+        return () => setLoading(true);
     }, [location]);
 
     return (

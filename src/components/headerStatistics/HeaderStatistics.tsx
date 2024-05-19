@@ -20,6 +20,7 @@ const HeaderStatistics = ({ className }: IStatistics): React.JSX.Element => {
                         textContent="+"
                         type="button"
                     />
+                    <div className={className.pulse}></div>
                 </div>
 
                 <div className={className.coins__text_box}>

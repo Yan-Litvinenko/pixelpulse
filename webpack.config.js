@@ -25,17 +25,6 @@ module.exports = {
             util: false,
         },
     },
-    // для сообщений в тг
-    devServer: {
-        proxy: [
-            {
-                context: ['/api'],
-                target: 'https://api.telegram.org',
-                changeOrigin: true,
-                pathRewrite: { '^/api': '' },
-            },
-        ],
-    },
     module: {
         rules: [
             {
