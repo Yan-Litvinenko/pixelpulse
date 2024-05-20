@@ -14,7 +14,6 @@ const Beginning = (): React.JSX.Element => {
     return (
         <>
             <main className={styles.beginning}>
-                <Frame className={styles.beginning__frame} />
                 <div className={styles.beginning__inner}>
                     <>
                         <div className={styles.beginning__box_title}>

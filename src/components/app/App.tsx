@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import { useMediaQuery } from 'react-responsive';
 import { useAudioPlayer } from '../../hooks/useAudioPlayer';
@@ -12,6 +12,7 @@ import { handleInitSettings } from '../../utils/handleSettings';
 import handleWrapperClassName from '../../utils/handleWrapperClassName';
 import ModalSoundEffect from '../../assets/audio/modal.mp3';
 
+import AnimatedRoutes from '../AnimationRoutes/AnimationRoutes';
 import Layout from '../layout/Layout';
 import ModalAvailability from '../modalAvailability/ModalAvailability';
 import ModalChallenge from '../modalChallenge/ModalChallenge';
@@ -21,16 +22,7 @@ import ModalSetting from '../modalSetting/ModalSetting';
 import ModalSocial from '../modalSocial/ModalSocial';
 
 import { Triangle } from 'react-loader-spinner';
-import About from '../about/About';
-import Achievements from '../achievements/Achievements';
-import Beginning from '../beginning/Beginning';
-import Creations from '../creations/Creations';
-import Error from '../error/Error';
-import Games from '../games/Games';
-import GameSnake from '../gameSnake/GameSnake';
-import Logs from '../logs/Logs';
 import NavigationMobile from '../navigationMobile/NavigationMobile';
-import Welcome from '../welcome/Welocme';
 
 import mainTheme from '../../assets/audio/main-theme.mp3';
 import { IAppContext, Page } from '../../interfaces/interface';
@@ -130,20 +122,10 @@ const App = (): React.JSX.Element => {
                         wrapperStyle={{}}
                     />
                 ) : null}
-                <Routes>
-                    <Route path="/" element={<Welcome />} />
-                    <Route path="/" element={<Layout />}>
-                        <Route path="about" element={<About />} />
-                        <Route path="beginning" element={<Beginning />} />
-                        <Route path="logs" element={<Logs />} />
-                        <Route path="achievements" element={<Achievements />} />
-                        <Route path="creations" element={<Creations />} />
-                        <Route path="games/*" element={<Games />}>
-                            <Route path="snake" element={<GameSnake />} />
-                        </Route>
-                        <Route path="error" element={<Error />} />
-                    </Route>
-                </Routes>
+
+                <Layout>
+                    <AnimatedRoutes />
+                </Layout>
             </div>
 
             {availability ? <ModalAvailability /> : null}

@@ -2,7 +2,6 @@ import React from 'react';
 import AchievementsLabel from '../achievementsLabel/AchievementsLabel';
 import AchievementsProgress from '../achievementsProgress/AchievementsProgress';
 import AchievementsRender from '../achievementsRender/AchievementsRender';
-import Frame from '../frame/Frame';
 import Heading from '../heading/Heading';
 import { ContextApp } from '../app/App';
 import { SwitchAchieved } from '../../interfaces/interface.achievements';
@@ -19,7 +18,6 @@ const Achievements = (): React.JSX.Element => {
 
     return (
         <main className={styles.achievements}>
-            <Frame className={styles.frame} />
             <Heading className={styles.achievements__title} level="2" textContent="achievements" />
             <div className={styles.achievements__content}>
                 <AchievementsProgress />

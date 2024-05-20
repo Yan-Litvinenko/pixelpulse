@@ -4,7 +4,6 @@ import CreationsAbout from '../creationsAbout/CreationsAbout';
 import CreationsDetails from '../creationsDetails/CreationsDetails';
 import CreationsTechnologies from '../creationsTechnologies/CreationsTechnologies';
 import { ContextApp } from '../app/App';
-import Frame from '../frame/Frame';
 import Heading from '../heading/Heading';
 import Xplorer from '../creationsXplorer/CreationsXplorer';
 import { IProject, XplorerState } from '../../interfaces/interface.credits';
@@ -27,8 +26,6 @@ const Creations = (): React.JSX.Element => {
 
     return (
         <main className={styles.creations}>
-            <Frame className={styles.frame} />
-
             <>
                 <Heading className={styles.creations__title} level="2" textContent="creations" />
 

@@ -1,10 +1,6 @@
 @import '../../css/mixin.scss';
 
 .games {
-    background-image: var(--background-gradient);
-    border: 0.0625rem solid var(--frame-border-color);
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
     min-height: var(--height-large);
     padding: 2.5rem 1.5rem 0rem;
     position: relative;
@@ -86,7 +82,6 @@
 
 @media (max-width: 1200px) {
     .games {
-        grid-column: 1 / -1;
         min-height: auto;
         padding: 1.5rem 0.625rem 2rem;
         width: 100%;
@@ -130,13 +125,8 @@
 
 @media (max-width: 768px) {
     .games {
-        background: none;
-        border: none;
-        padding: 0rem 0.625rem 2rem;
-    }
-
-    .frame {
-        display: none;
+        padding: 1.5rem 0.625rem 2rem;
+        min-height: 100vh;
     }
 }
 

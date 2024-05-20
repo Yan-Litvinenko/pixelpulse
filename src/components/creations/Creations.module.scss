@@ -2,10 +2,6 @@
 
 .creations {
     @include flex-container(column, $align-items: center);
-    background-image: var(--background-gradient);
-    border: 0.0625rem solid var(--frame-border-color);
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
     min-height: var(--height-large);
     padding: 2.5rem 1.625rem 0rem 1.625rem;
     position: relative;
@@ -98,7 +94,6 @@
 
 @media (max-width: 1200px) {
     .creations {
-        grid-column: 1 / -1;
         height: auto;
         min-height: 100vh;
         padding: 1.5rem 0.625rem 0rem;
@@ -111,16 +106,11 @@
 
 @media (max-width: 768px) {
     .creations {
-        border: none;
-        grid-row: 1 / -1;
         padding: 2.5rem 0rem 0rem;
+        min-height: 100vh;
     }
 
     .xplorer_block {
         margin-bottom: 5.125rem;
-    }
-
-    .frame {
-        display: none;
     }
 }

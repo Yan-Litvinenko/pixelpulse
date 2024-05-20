@@ -36,7 +36,6 @@ const About = (): React.JSX.Element => {
                     <Frame className={styles.frame} />
                     <GlitchCanvas className={styles.about__img} imageUrl={humanJpg} minDelay={5000} maxDelay={15000} />
                 </div>
-                <Frame className={styles.frame} />
             </div>
         </main>
     );

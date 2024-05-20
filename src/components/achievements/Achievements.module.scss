@@ -1,13 +1,8 @@
 @import '../../css/mixin.scss';
 
 .achievements {
-    background-image: var(--background-gradient);
-    border: 0.0625rem solid var(--frame-border-color);
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
     min-height: var(--height-large);
     padding: 2.5rem 0.625rem 0.625rem;
-    position: relative;
 
     &__title {
         @include text-properties($font-size: 1.125rem);
@@ -74,8 +69,6 @@
 
 @media (max-width: 1200px) {
     .achievements {
-        grid-column: 1 / -1;
-        grid-row: 2 / 3;
         min-height: 100vh;
     }
 }
@@ -87,10 +80,6 @@
 }
 
 @media (max-width: 768px) {
-    .frame {
-        display: none;
-    }
-
     .switchers {
         align-self: end;
         flex-direction: row;
@@ -100,9 +89,6 @@
     }
 
     .achievements {
-        background-image: none;
-        border: none;
-        grid-row: 1 / -1;
         padding: 1.5rem 0.625rem 0rem;
 
         *::-webkit-scrollbar {

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import Frame from '../frame/Frame';
 import Heading from '../heading/Heading';
 import Paragraph from '../paragraph/Paragraph';
 import { ContextApp } from '../app/App';
@@ -15,7 +14,6 @@ const Games = (): React.JSX.Element => {
 
     return (
         <main className={styles.games}>
-            <Frame className={styles.frame} />
             <Heading className={styles.games__title} textContent={'mini games'} level="2" />
 
             {!isGameRoute ? (
