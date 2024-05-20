@@ -97,6 +97,10 @@
         height: auto;
         min-height: 100vh;
         padding: 1.5rem 0.625rem 0rem;
+
+        &__title {
+            margin-bottom: 1.5rem;
+        }
     }
 
     .xplorer_block {
@@ -106,8 +110,12 @@
 
 @media (max-width: 768px) {
     .creations {
-        padding: 2.5rem 0rem 0rem;
+        padding: 1.5rem 0rem 0rem;
         min-height: 100vh;
+
+        &__title {
+            margin-bottom: 0.5rem;
+        }
     }
 
     .xplorer_block {

@@ -28,7 +28,7 @@ const pageTransition = {
     duration: 0.1,
 };
 
-const AnimatedRoutes = () => {
+const AnimatedRoutes = (): React.JSX.Element => {
     const location = useLocation();
 
     return (

@@ -19,7 +19,13 @@ const NavigationElement = ({ textContent }: INavigationElement): React.JSX.Eleme
 
     const handleNavigationChange = (): void => {
         contextApp.setNavigationMobile(false);
-        contextApp.handleSoundClick();
+
+        if (contextApp.isLarge || contextApp.isMedium) {
+            contextApp.handleSoundModal();
+        } else {
+            contextApp.handleSoundClick();
+        }
+
         scroll.on();
     };
 

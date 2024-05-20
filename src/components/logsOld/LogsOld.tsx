@@ -20,7 +20,7 @@ const LogsOld = (): React.JSX.Element => {
         <div>
             <span className={styles.title}>older logs:</span>
             <ul className={styles.list}>
-                {contextApp.errorGithub || contextApp.isLoadingGithub ? (
+                {commits.length === 0 ? (
                     <>
                         {Array.from({ length: 5 }).map(() => (
                             <LogsElement key={nanoid()} date={message} textContent={message} />
@@ -28,6 +28,7 @@ const LogsOld = (): React.JSX.Element => {
                     </>
                 ) : (
                     <>
+                        {console.log('всё ок')}
                         {commits.map((item) => (
                             <LogsElement key={nanoid()} date={item.date} textContent={item.message} />
                         ))}

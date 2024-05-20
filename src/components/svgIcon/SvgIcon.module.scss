@@ -16,7 +16,6 @@
 
 .bluetooth {
     @include absolute-position(50%, 0.3125rem);
-    stroke: var(--main-color);
     fill: var(--main-color);
     height: 1.5rem;
     transform: translateY(-50%);

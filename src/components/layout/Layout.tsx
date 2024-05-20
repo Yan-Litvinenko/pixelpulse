@@ -36,7 +36,7 @@ const Layout = ({ children }: { children: React.JSX.Element }): React.JSX.Elemen
             <Navigation className={contextApp?.styles} />
             <Outlet />
             <Quest />
-            <div className={styles.content}>
+            <div className={`${styles.content} ${location.pathname === '/beginning' ? styles.content_beginning : ''}`}>
                 <Frame className={styles.frame} />
                 {children}
             </div>

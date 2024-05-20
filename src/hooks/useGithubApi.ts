@@ -20,7 +20,7 @@ const useGithubApi = (): [ICommitLog[], boolean, boolean] => {
                 setError(false);
             } catch {
                 setError(true);
-                setTimeout(fetchCommits, 1000);
+                setTimeout(fetchCommits, 5000);
             } finally {
                 setIsLoading(false);
             }
