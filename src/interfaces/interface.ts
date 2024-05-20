@@ -11,8 +11,9 @@ type IAppContext = {
     isLarge: boolean;
     isLoadingGithub: boolean;
     isMedium: boolean;
-    modalProject: number;
+    isPressCoinBtn: boolean;
     mainMusic: UseAudioPlayer;
+    modalProject: number;
     music: boolean;
     navigationMobile: boolean;
     projectImages: string[];
@@ -22,6 +23,7 @@ type IAppContext = {
     setChallenge: BooleanState;
     setCreations: BooleanState;
     setCredits: BooleanState;
+    setIsPressCoinBtn: BooleanState;
     setModalProject: React.Dispatch<React.SetStateAction<number>>;
     setMusic: BooleanState;
     setNavigationMobile: BooleanState;

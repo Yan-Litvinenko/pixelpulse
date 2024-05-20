@@ -45,19 +45,20 @@ const App = (): React.JSX.Element => {
 
     const location = useLocation();
 
-    const [loading, setLoading] = React.useState(true);
     const [commits, isLoadingGithub, errorGithub] = useGithubApi();
     const [availability, setAvailability] = React.useState<boolean>(false);
-    const [credits, setCredits] = React.useState<boolean>(false);
-    const [setting, setSetting] = React.useState<boolean>(false);
-    const [social, setSocial] = React.useState<boolean>(false);
     const [challenge, setChallenge] = React.useState<boolean>(false);
     const [creations, setCreations] = React.useState<boolean>(false);
-    const [sounds, setSounds] = useLocalStorage(true, 'sounds');
-    const [music, setMusic] = useLocalStorage(true, 'music');
+    const [credits, setCredits] = React.useState<boolean>(false);
+    const [isPressCoinBtn, setIsPressCoinBtn] = React.useState(true);
+    const [loading, setLoading] = React.useState(true);
+    const [modalProject, setModalProject] = React.useState<number>(0);
     const [navigationMobile, setNavigationMobile] = React.useState<boolean>(false);
     const [projectImages, setProjectImages] = React.useState<string[]>([]);
-    const [modalProject, setModalProject] = React.useState<number>(0);
+    const [setting, setSetting] = React.useState<boolean>(false);
+    const [social, setSocial] = React.useState<boolean>(false);
+    const [music, setMusic] = useLocalStorage(true, 'music');
+    const [sounds, setSounds] = useLocalStorage(true, 'sounds');
 
     const mainMusic = useAudioPlayer(music);
     const clickSound: HTMLAudioElement = new Audio(clickSoundEffect);
@@ -83,8 +84,9 @@ const App = (): React.JSX.Element => {
                 setChallenge,
                 setCreations,
                 setCredits,
+                setIsPressCoinBtn,
                 setModalProject,
-                setMusic: setMusic,
+                setMusic,
                 setNavigationMobile,
                 setProjectImages,
                 setSetting,
@@ -98,6 +100,7 @@ const App = (): React.JSX.Element => {
                 isLarge,
                 isLoadingGithub,
                 isMedium,
+                isPressCoinBtn,
                 mainMusic,
                 modalProject,
                 music,

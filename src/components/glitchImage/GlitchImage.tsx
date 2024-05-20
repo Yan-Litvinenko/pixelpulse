@@ -1,18 +1,26 @@
 import React from 'react';
+import { ContextApp } from '../app/App';
+import { IAppContext } from '../../interfaces/interface';
+import glitchEffect from '../../assets/audio/glitch.mp3';
 
 interface GlitchCanvasProps {
+    className: string;
     imageUrl: string;
     maxDelay: number;
     minDelay: number;
-    className: string;
 }
 
 const GlitchCanvas: React.FC<GlitchCanvasProps> = ({ imageUrl, className, minDelay, maxDelay }) => {
+    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
     const timer = React.useRef<NodeJS.Timeout | null>(null);
     const canvasRef = React.useRef<HTMLCanvasElement>(null);
     const imgRef = React.useRef<HTMLImageElement>(new Image());
+    const countRender = React.useRef<number>(1);
 
-    const getRandomDealy = () => {
+    const audio: HTMLAudioElement = new Audio(glitchEffect);
+    audio.volume = 0.04;
+
+    const getRandomDealy = (): number => {
         return Math.floor(Math.random() * (maxDelay - minDelay + 1)) + minDelay;
     };
 
@@ -24,16 +32,14 @@ const GlitchCanvas: React.FC<GlitchCanvasProps> = ({ imageUrl, className, minDel
         const img: HTMLImageElement = imgRef.current;
 
         img.src = imageUrl;
-        img.onload = () => {
+        img.onload = (): void => {
             canvas.width = img.width;
             canvas.height = img.height;
             glitchImage();
         };
 
-        const glitchImage = () => {
+        const glitchImage = (): void => {
             if (timer.current) clearTimeout(timer.current);
-
-            const randomDelay: number = getRandomDealy();
 
             for (let i = 0; i < 5; i++) {
                 const x: number = Math.random() * canvas.width;
@@ -78,16 +84,19 @@ const GlitchCanvas: React.FC<GlitchCanvasProps> = ({ imageUrl, className, minDel
             setTimeout(() => {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 ctx.drawImage(img, 0, 0);
+
+                if (countRender.current > 2 && contextApp?.sounds) {
+                    audio.play();
+                }
             }, 100);
 
-            timer.current = setTimeout(glitchImage, randomDelay);
-
-            return () => {
-                if (timer.current) clearTimeout(timer.current);
-            };
+            countRender.current++;
+            timer.current = setTimeout(glitchImage, getRandomDealy());
         };
 
-        requestAnimationFrame(glitchImage);
+        return () => {
+            if (timer.current) clearTimeout(timer.current);
+        };
     }, [imageUrl]);
 
     return <canvas className={className} ref={canvasRef} />;
