@@ -15,10 +15,9 @@ const HeaderStatistics = ({ className }: IStatistics): React.JSX.Element => {
     if (!contextApp) return <></>;
 
     const handleAddCoin = async (): Promise<void> => {
-        try {
-            if (!contextApp.isAddedCoinToday) {
+        if (!contextApp.isAddedCoinToday) {
+            try {
                 const fetchAddCoinStatus: boolean = await requestForServer<boolean>('/add_coin');
-
                 if (fetchAddCoinStatus) {
                     await handleIinitStatistics(
                         contextApp.setLevel,
@@ -26,9 +25,9 @@ const HeaderStatistics = ({ className }: IStatistics): React.JSX.Element => {
                         contextApp.setIsAddedCoinToday,
                     );
                 }
+            } catch (error) {
+                console.error('Failed to add coin:', error);
             }
-        } catch (error) {
-            console.error('Failed to add coin:', error);
         }
     };
 
@@ -40,7 +39,7 @@ const HeaderStatistics = ({ className }: IStatistics): React.JSX.Element => {
             <div className={className.coins}>
                 <div className={className.coins__add_box}>
                     <Button
-                        className={`${className.coins__btn} ${!contextApp?.isAddedCoinToday ? className.coins__btn_pulse : ''}`}
+                        className={`${className.coins__btn} ${!contextApp.isAddedCoinToday ? className.coins__btn_pulse : ''}`}
                         delayEvent={false}
                         handleButton={handleAddCoin}
                         textContent="+"
@@ -48,7 +47,6 @@ const HeaderStatistics = ({ className }: IStatistics): React.JSX.Element => {
                     />
                     {!contextApp.isAddedCoinToday ? <div className={className.pulse}></div> : null}
                 </div>
-
                 <div className={className.coins__text_box}>
                     <span className={className.coins__text}>{contextApp.coins}</span> coins awarded
                 </div>

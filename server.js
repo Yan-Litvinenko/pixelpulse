@@ -1,3 +1,4 @@
+const cron = require('node-cron');
 const express = require('express');
 const path = require('path');
 const app = express();
@@ -7,7 +8,7 @@ const PORT = 8080;
 let LEVEL = 15;
 let COINS = 5;
 
-const ID_USERS = [];
+const ID_USERS = new Map();
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
@@ -21,7 +22,7 @@ app.get('/coins', (req, res) => {
 
 app.get('/status_add_today', (req, res) => {
     const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-    const isPressToday = ID_USERS.includes(ip);
+    const isPressToday = ID_USERS.has(ip);
 
     res.json(isPressToday);
 });
@@ -29,11 +30,14 @@ app.get('/status_add_today', (req, res) => {
 app.get('/add_coin', (req, res) => {
     try {
         const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-        ID_USERS.push(ip);
 
-        COINS += 5;
-
-        res.json(true);
+        if (!ID_USERS.has(ip)) {
+            ID_USERS.set(ip, new Date());
+            COINS += 5;
+            res.json(true);
+        } else {
+            res.json(false);
+        }
     } catch (error) {
         res.json(false);
     }
@@ -41,6 +45,10 @@ app.get('/add_coin', (req, res) => {
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
+
+cron.schedule('0 0 * * *', () => {
+    ID_USERS.clear();
 });
 
 app.listen(PORT, () => {

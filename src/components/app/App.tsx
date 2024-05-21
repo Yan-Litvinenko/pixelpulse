@@ -58,6 +58,7 @@ const App = (): React.JSX.Element => {
     const mainMusic = useAudioPlayer(music);
 
     const [isAddedCoinToday, setIsAddedCoinToday] = React.useState<boolean>(false);
+    console.log('app coin status', isAddedCoinToday);
     const [level, setLevel] = React.useState<number>(1);
     const [coins, setCoins] = React.useState<number>(0);
 
@@ -78,7 +79,7 @@ const App = (): React.JSX.Element => {
 
     React.useEffect(() => {
         handleIinitStatistics(setLevel, setCoins, setIsAddedCoinToday);
-    });
+    }, []);
 
     return (
         <ContextApp.Provider
