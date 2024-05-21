@@ -7,10 +7,7 @@ const requestForServer = async <T>(path: string): Promise<T> => {
         const data = (await response.json()) as T;
         return data;
     } catch (error) {
-        console.error('Fetch error:', error);
-        setTimeout(() => {
-            requestForServer(path);
-        }, 1000);
+        console.error(`Fetch error at ${path}:`, error);
         throw error;
     }
 };

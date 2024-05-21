@@ -3,6 +3,7 @@ import { ContextApp } from '../app/App';
 import { IAppContext } from '../../interfaces/interface';
 import Button from '../button/Button';
 import requestForServer from '../../utils/requestForServer';
+import handleIinitStatistics from '../../utils/handleInitStatistics';
 
 interface IStatistics {
     className: Record<string, string>;
@@ -19,8 +20,11 @@ const HeaderStatistics = ({ className }: IStatistics): React.JSX.Element => {
 
             if (fetchAddCoinStatus) {
                 contextApp.setIsAddedCoinToday(true);
+                await handleIinitStatistics(contextApp.setLevel, contextApp.setCoins, contextApp.setIsAddedCoinToday);
             }
-        } catch (error) {}
+        } catch (error) {
+            console.error('Failed to add coin:', error);
+        }
     };
 
     return (
@@ -33,7 +37,7 @@ const HeaderStatistics = ({ className }: IStatistics): React.JSX.Element => {
                     <Button
                         className={`${className.coins__btn} ${!contextApp?.isAddedCoinToday ? className.coins__btn_pulse : ''}`}
                         delayEvent={false}
-                        handleButton={() => {}}
+                        handleButton={handleAddCoin}
                         textContent="+"
                         type="button"
                     />

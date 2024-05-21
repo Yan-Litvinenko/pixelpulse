@@ -7,9 +7,9 @@ import { useAudioPlayer } from '../../hooks/useAudioPlayer';
 import useGithubApi from '../../hooks/useGithubApi';
 import useLocalStorage from '../../hooks/useLocalStorage';
 
-import requestForServer from '../../utils/requestForServer';
 import { handleInitSettings } from '../../utils/handleSettings';
 import handleWrapperClassName from '../../utils/handleWrapperClassName';
+import handleIinitStatistics from '../../utils/handleInitStatistics';
 
 import AnimatedRoutes from '../AnimationRoutes/AnimationRoutes';
 import Layout from '../layout/Layout';
@@ -53,8 +53,8 @@ const App = (): React.JSX.Element => {
     const [projectImages, setProjectImages] = React.useState<string[]>([]);
     const [modalProject, setModalProject] = React.useState<number>(0);
 
-    const [music, setMusic] = useLocalStorage(true, 'music');
-    const [sounds, setSounds] = useLocalStorage(true, 'sounds');
+    const [music, setMusic] = useLocalStorage<boolean>(true, 'music');
+    const [sounds, setSounds] = useLocalStorage<boolean>(true, 'sounds');
     const mainMusic = useAudioPlayer(music);
 
     const [isAddedCoinToday, setIsAddedCoinToday] = React.useState<boolean>(false);
@@ -77,21 +77,7 @@ const App = (): React.JSX.Element => {
     }, [location]);
 
     React.useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const fetchedLevel = await requestForServer<number>('/level');
-                const fetchedCoins = await requestForServer<number>('/coins');
-                const fetchedAddToday = await requestForServer<boolean>('/status_add_today');
-
-                setLevel(fetchedLevel);
-                setCoins(fetchedCoins);
-                setIsAddedCoinToday(fetchedAddToday);
-            } catch (error) {
-                console.error('Failed to fetch data:', error);
-            }
-        };
-
-        fetchData();
+        handleIinitStatistics(setLevel, setCoins, setIsAddedCoinToday);
     });
 
     return (
