@@ -122,7 +122,7 @@ const AnimatedRoutes = (): React.JSX.Element => {
                     />
                 </Route>
                 <Route
-                    path="error"
+                    path="*"
                     element={
                         <motion.div
                             initial="initial"

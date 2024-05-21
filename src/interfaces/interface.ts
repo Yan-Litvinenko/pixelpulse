@@ -5,13 +5,15 @@ type Page = 'welcome' | 'beginning' | 'about' | 'logs' | 'achievements' | 'creat
 
 type BooleanState = React.Dispatch<React.SetStateAction<boolean>>;
 type IAppContext = {
+    coins: number;
     commits: ICommitLog[];
     creations: boolean;
     errorGithub: boolean;
+    isAddedCoinToday: boolean;
     isLarge: boolean;
     isLoadingGithub: boolean;
     isMedium: boolean;
-    isPressCoinBtn: boolean;
+    level: number;
     mainMusic: UseAudioPlayer;
     modalProject: number;
     music: boolean;
@@ -21,9 +23,11 @@ type IAppContext = {
     handleSoundModal: () => Promise<void> | null;
     setAvailability: BooleanState;
     setChallenge: BooleanState;
+    setCoins: React.Dispatch<React.SetStateAction<number>>;
     setCreations: BooleanState;
     setCredits: BooleanState;
-    setIsPressCoinBtn: BooleanState;
+    setIsAddedCoinToday: BooleanState;
+    setLevel: React.Dispatch<React.SetStateAction<number>>;
     setModalProject: React.Dispatch<React.SetStateAction<number>>;
     setMusic: BooleanState;
     setNavigationMobile: BooleanState;

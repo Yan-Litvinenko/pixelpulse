@@ -7,10 +7,9 @@ import { useAudioPlayer } from '../../hooks/useAudioPlayer';
 import useGithubApi from '../../hooks/useGithubApi';
 import useLocalStorage from '../../hooks/useLocalStorage';
 
-import clickSoundEffect from '../../assets/audio/click.ogg';
+import requestForServer from '../../utils/requestForServer';
 import { handleInitSettings } from '../../utils/handleSettings';
 import handleWrapperClassName from '../../utils/handleWrapperClassName';
-import ModalSoundEffect from '../../assets/audio/modal.mp3';
 
 import AnimatedRoutes from '../AnimationRoutes/AnimationRoutes';
 import Layout from '../layout/Layout';
@@ -25,6 +24,8 @@ import { Triangle } from 'react-loader-spinner';
 import NavigationMobile from '../navigationMobile/NavigationMobile';
 
 import mainTheme from '../../assets/audio/main-theme.mp3';
+import ModalSoundEffect from '../../assets/audio/modal.mp3';
+import clickSoundEffect from '../../assets/audio/click.ogg';
 import { IAppContext, Page } from '../../interfaces/interface';
 import styles from './App.module.scss';
 
@@ -38,21 +39,28 @@ const App = (): React.JSX.Element => {
     const location = useLocation();
 
     const [commits, isLoadingGithub, errorGithub] = useGithubApi();
+
     const [availability, setAvailability] = React.useState<boolean>(false);
     const [challenge, setChallenge] = React.useState<boolean>(false);
     const [creations, setCreations] = React.useState<boolean>(false);
     const [credits, setCredits] = React.useState<boolean>(false);
-    const [isPressCoinBtn, setIsPressCoinBtn] = React.useState(true);
-    const [loading, setLoading] = React.useState(true);
-    const [modalProject, setModalProject] = React.useState<number>(0);
     const [navigationMobile, setNavigationMobile] = React.useState<boolean>(false);
-    const [projectImages, setProjectImages] = React.useState<string[]>([]);
     const [setting, setSetting] = React.useState<boolean>(false);
     const [social, setSocial] = React.useState<boolean>(false);
+
+    const [loading, setLoading] = React.useState(true);
+
+    const [projectImages, setProjectImages] = React.useState<string[]>([]);
+    const [modalProject, setModalProject] = React.useState<number>(0);
+
     const [music, setMusic] = useLocalStorage(true, 'music');
     const [sounds, setSounds] = useLocalStorage(true, 'sounds');
-
     const mainMusic = useAudioPlayer(music);
+
+    const [isAddedCoinToday, setIsAddedCoinToday] = React.useState<boolean>(false);
+    const [level, setLevel] = React.useState<number>(1);
+    const [coins, setCoins] = React.useState<number>(1);
+
     const clickSound: HTMLAudioElement = new Audio(clickSoundEffect);
     const modalSound: HTMLAudioElement = new Audio(ModalSoundEffect);
 
@@ -68,15 +76,35 @@ const App = (): React.JSX.Element => {
         return () => setLoading(true);
     }, [location]);
 
+    React.useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const fetchedLevel = await requestForServer<number>('/level');
+                const fetchedCoins = await requestForServer<number>('/coins');
+                const fetchedAddToday = await requestForServer<boolean>('/status_add_today');
+
+                setLevel(fetchedLevel);
+                setCoins(fetchedCoins);
+                setIsAddedCoinToday(fetchedAddToday);
+            } catch (error) {
+                console.error('Failed to fetch data:', error);
+            }
+        };
+
+        fetchData();
+    });
+
     return (
         <ContextApp.Provider
             value={{
                 TRANSITION_TIME,
                 setAvailability,
                 setChallenge,
+                setCoins,
                 setCreations,
                 setCredits,
-                setIsPressCoinBtn,
+                setIsAddedCoinToday,
+                setLevel,
                 setModalProject,
                 setMusic,
                 setNavigationMobile,
@@ -86,13 +114,15 @@ const App = (): React.JSX.Element => {
                 setSounds,
                 handleSoundClick,
                 handleSoundModal,
+                coins,
                 commits,
                 creations,
                 errorGithub,
+                isAddedCoinToday,
                 isLarge,
                 isLoadingGithub,
                 isMedium,
-                isPressCoinBtn,
+                level,
                 mainMusic,
                 modalProject,
                 music,
