@@ -6,7 +6,8 @@ const PORT = 8080;
 
 let LEVEL = 15;
 let COINS = 5;
-let isAddToday = false;
+
+const ID_USERS = [];
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
@@ -19,13 +20,19 @@ app.get('/coins', (req, res) => {
 });
 
 app.get('/status_add_today', (req, res) => {
-    res.json(isAddToday);
+    const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+    const isPressToday = ID_USERS.includes(ip);
+
+    res.json(isPressToday);
 });
 
 app.get('/add_coin', (req, res) => {
     try {
+        const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+        ID_USERS.push(ip);
+
         COINS += 5;
-        isAddToday = true;
+
         res.json(true);
     } catch (error) {
         res.json(false);

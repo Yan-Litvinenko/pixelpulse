@@ -14,13 +14,18 @@ const HeaderStatistics = ({ className }: IStatistics): React.JSX.Element => {
 
     if (!contextApp) return <></>;
 
-    const handleAddCoin = async () => {
+    const handleAddCoin = async (): Promise<void> => {
         try {
-            const fetchAddCoinStatus = await requestForServer<boolean>('/add_coin');
+            if (!contextApp.isAddedCoinToday) {
+                const fetchAddCoinStatus: boolean = await requestForServer<boolean>('/add_coin');
 
-            if (fetchAddCoinStatus) {
-                contextApp.setIsAddedCoinToday(true);
-                await handleIinitStatistics(contextApp.setLevel, contextApp.setCoins, contextApp.setIsAddedCoinToday);
+                if (fetchAddCoinStatus) {
+                    await handleIinitStatistics(
+                        contextApp.setLevel,
+                        contextApp.setCoins,
+                        contextApp.setIsAddedCoinToday,
+                    );
+                }
             }
         } catch (error) {
             console.error('Failed to add coin:', error);

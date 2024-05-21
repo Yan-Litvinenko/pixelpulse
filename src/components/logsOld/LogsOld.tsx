@@ -28,7 +28,6 @@ const LogsOld = (): React.JSX.Element => {
                     </>
                 ) : (
                     <>
-                        {console.log('всё ок')}
                         {commits.map((item) => (
                             <LogsElement key={nanoid()} date={item.date} textContent={item.message} />
                         ))}

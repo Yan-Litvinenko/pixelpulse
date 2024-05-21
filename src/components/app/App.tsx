@@ -48,7 +48,7 @@ const App = (): React.JSX.Element => {
     const [setting, setSetting] = React.useState<boolean>(false);
     const [social, setSocial] = React.useState<boolean>(false);
 
-    const [loading, setLoading] = React.useState(true);
+    const [loading, setLoading] = React.useState<boolean>(true);
 
     const [projectImages, setProjectImages] = React.useState<string[]>([]);
     const [modalProject, setModalProject] = React.useState<number>(0);
@@ -59,7 +59,7 @@ const App = (): React.JSX.Element => {
 
     const [isAddedCoinToday, setIsAddedCoinToday] = React.useState<boolean>(false);
     const [level, setLevel] = React.useState<number>(1);
-    const [coins, setCoins] = React.useState<number>(1);
+    const [coins, setCoins] = React.useState<number>(0);
 
     const clickSound: HTMLAudioElement = new Audio(clickSoundEffect);
     const modalSound: HTMLAudioElement = new Audio(ModalSoundEffect);
