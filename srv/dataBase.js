@@ -90,4 +90,11 @@ class DataBase {
     }
 }
 
-module.exports = DataBase;
+const dataBase = new DataBase({
+    host: 'localhost',
+    user: 'root',
+    password: 'ewqAg6xBAs.rDVPs',
+    database: 'cv',
+});
+
+module.exports = dataBase;

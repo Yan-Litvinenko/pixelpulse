@@ -4,22 +4,24 @@ import Button from '../button/Button';
 import handleOpenModal from '../../utils/handleOpenModal';
 import Paragraph from '../paragraph/Paragraph';
 import ProgressRing from '../progressRing/ProgressRing';
-import achievements from '../../assets/json/achievements.json';
 import { IAppContext } from '../../interfaces/interface';
 import styles from './AchievementsProgress.module.scss';
 
-const achievedCount = (): number => {
-    return achievements.reduce((acc, achieve) => {
-        if (achieve.status === 'achieved') {
-            return acc + 1;
-        }
-        return acc;
-    }, 0);
-};
-
 const AchievementsProgress = (): React.JSX.Element => {
     const contextApp: IAppContext | undefined = React.useContext(ContextApp);
-    const countAchievements: number = achievements.length;
+
+    if (!contextApp) return <></>;
+
+    const achievedCount = (): number => {
+        return contextApp.achievements.reduce((acc, achieve) => {
+            if (achieve.status === 'achieved') {
+                return acc + 1;
+            }
+            return acc;
+        }, 0);
+    };
+
+    const countAchievements: number = contextApp.achievements.length;
     const countAchieved: number = achievedCount();
     const percent: number = (countAchieved * 100) / countAchievements;
 
