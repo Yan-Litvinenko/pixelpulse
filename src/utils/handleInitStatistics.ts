@@ -1,13 +1,13 @@
 import requestForServer from './requestForServer';
 
 const handleIinitStatistics = async (
-    setLevel: (value: React.SetStateAction<number>) => void,
-    setCoins: (value: React.SetStateAction<number>) => void,
+    setLevel: (value: React.SetStateAction<string>) => void,
+    setCoins: (value: React.SetStateAction<string>) => void,
     setIsAddedCoinToday: (value: React.SetStateAction<boolean>) => void,
 ) => {
     try {
-        const fetchedLevel = await requestForServer<number>('/level');
-        const fetchedCoins = await requestForServer<number>('/coins');
+        const fetchedLevel = await requestForServer<string>('/level');
+        const fetchedCoins = await requestForServer<string>('/coins');
         const fetchedAddToday = await requestForServer<boolean>('/status_add_today');
 
         setLevel(fetchedLevel);

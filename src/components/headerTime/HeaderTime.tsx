@@ -1,17 +1,17 @@
 import React from 'react';
 import { ContextApp } from '../app/App';
 import Button from '../button/Button';
-import handleOpenModal from '../../utils/handleOpenModal';
 import getZero from '../../utils/getZero';
+import handleOpenModal from '../../utils/handleOpenModal';
+import useLocalTime from '../../hooks/useLocalTime';
+import useServerTime from '../../hooks/useServerTime';
 import { IAppContext } from '../../interfaces/interface';
 import styles from './HeaderTime.module.scss';
 
-interface ITime {
-    time: Date;
-}
-
-const HeaderTime = ({ time }: ITime): React.JSX.Element => {
+const HeaderTime = (): React.JSX.Element => {
     const contextApp: IAppContext | undefined = React.useContext(ContextApp);
+    const [localTime] = useLocalTime();
+    const [serverTime] = useServerTime();
 
     return (
         <div className={styles.time}>
@@ -26,12 +26,13 @@ const HeaderTime = ({ time }: ITime): React.JSX.Element => {
                 type="button"
             />
             <div className={styles.server}>
-                <span className={styles.server__time_span}>server time:</span> 8:42
+                <span className={styles.server__time_span}>server time:</span>{' '}
+                {`${serverTime.getHours()}:${getZero(serverTime.getMinutes())}`}
             </div>
 
             <div className={styles.local}>
                 <span className={styles.local__time_span}>local time:</span>{' '}
-                {`${time.getHours()}:${getZero(time.getMinutes())}`}
+                {`${localTime.getHours()}:${getZero(localTime.getMinutes())}`}
             </div>
         </div>
     );

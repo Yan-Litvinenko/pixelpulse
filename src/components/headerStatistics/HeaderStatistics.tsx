@@ -4,6 +4,7 @@ import { IAppContext } from '../../interfaces/interface';
 import Button from '../button/Button';
 import requestForServer from '../../utils/requestForServer';
 import handleIinitStatistics from '../../utils/handleInitStatistics';
+import fetchAchievements from '../../utils/fetchAchievements';
 
 interface IStatistics {
     className: Record<string, string>;
@@ -18,12 +19,15 @@ const HeaderStatistics = ({ className }: IStatistics): React.JSX.Element => {
         if (!contextApp.isAddedCoinToday) {
             try {
                 const fetchAddCoinStatus: boolean = await requestForServer<boolean>('/add_coin');
+
                 if (fetchAddCoinStatus) {
                     await handleIinitStatistics(
                         contextApp.setLevel,
                         contextApp.setCoins,
                         contextApp.setIsAddedCoinToday,
                     );
+
+                    fetchAchievements().then((data) => contextApp.setAchievements(data));
                 }
             } catch (error) {
                 console.error('Failed to add coin:', error);

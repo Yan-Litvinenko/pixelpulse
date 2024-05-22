@@ -2,6 +2,7 @@
     "name": "webpack-typescript-react",
     "version": "1.0.0",
     "description": "app",
+    "type": "commonjs",
     "main": "index.js",
     "scripts": {
         "start-srv": "nodemon server",
@@ -58,6 +59,7 @@
         "@types/react": "^18.2.73",
         "@types/react-dom": "^18.2.23",
         "framer-motion": "^11.2.4",
+        "mysql2": "^3.9.7",
         "nanoid": "^5.0.7",
         "node-cron": "^3.0.3",
         "react": "^18.2.0",

@@ -7,9 +7,11 @@ import { useAudioPlayer } from '../../hooks/useAudioPlayer';
 import useGithubApi from '../../hooks/useGithubApi';
 import useLocalStorage from '../../hooks/useLocalStorage';
 
+import fetchAchievements from '../../utils/fetchAchievements';
 import { handleInitSettings } from '../../utils/handleSettings';
-import handleWrapperClassName from '../../utils/handleWrapperClassName';
 import handleIinitStatistics from '../../utils/handleInitStatistics';
+import handleWrapperClassName from '../../utils/handleWrapperClassName';
+import updateUsersStatistic from '../../utils/updateUsersStatistic';
 
 import AnimatedRoutes from '../AnimationRoutes/AnimationRoutes';
 import Layout from '../layout/Layout';
@@ -26,6 +28,7 @@ import NavigationMobile from '../navigationMobile/NavigationMobile';
 import mainTheme from '../../assets/audio/main-theme.mp3';
 import ModalSoundEffect from '../../assets/audio/modal.mp3';
 import clickSoundEffect from '../../assets/audio/click.ogg';
+import { IAchieve } from '../../interfaces/interface.achievements';
 import { IAppContext, Page } from '../../interfaces/interface';
 import styles from './App.module.scss';
 
@@ -36,10 +39,11 @@ const App = (): React.JSX.Element => {
     const isMedium: boolean = useMediaQuery({ maxWidth: 768 });
     const isLarge: boolean = useMediaQuery({ maxWidth: 1200 });
 
+    const connection = React.useRef<boolean>(false);
     const location = useLocation();
 
     const [commits, isLoadingGithub, errorGithub] = useGithubApi();
-
+    const [achievements, setAchievements] = React.useState<IAchieve[]>([]);
     const [availability, setAvailability] = React.useState<boolean>(false);
     const [challenge, setChallenge] = React.useState<boolean>(false);
     const [creations, setCreations] = React.useState<boolean>(false);
@@ -57,10 +61,9 @@ const App = (): React.JSX.Element => {
     const [sounds, setSounds] = useLocalStorage<boolean>(true, 'sounds');
     const mainMusic = useAudioPlayer(music);
 
-    const [isAddedCoinToday, setIsAddedCoinToday] = React.useState<boolean>(false);
-    console.log('app coin status', isAddedCoinToday);
-    const [level, setLevel] = React.useState<number>(1);
-    const [coins, setCoins] = React.useState<number>(0);
+    const [isAddedCoinToday, setIsAddedCoinToday] = React.useState<boolean>(true);
+    const [level, setLevel] = React.useState<string>('??');
+    const [coins, setCoins] = React.useState<string>('??');
 
     const clickSound: HTMLAudioElement = new Audio(clickSoundEffect);
     const modalSound: HTMLAudioElement = new Audio(ModalSoundEffect);
@@ -78,6 +81,13 @@ const App = (): React.JSX.Element => {
     }, [location]);
 
     React.useEffect(() => {
+        if (!connection.current) {
+            updateUsersStatistic();
+            connection.current = true;
+
+            fetchAchievements().then((data) => setAchievements(data));
+        }
+
         handleIinitStatistics(setLevel, setCoins, setIsAddedCoinToday);
     }, []);
 
@@ -85,6 +95,7 @@ const App = (): React.JSX.Element => {
         <ContextApp.Provider
             value={{
                 TRANSITION_TIME,
+                setAchievements,
                 setAvailability,
                 setChallenge,
                 setCoins,
@@ -101,6 +112,7 @@ const App = (): React.JSX.Element => {
                 setSounds,
                 handleSoundClick,
                 handleSoundModal,
+                achievements,
                 coins,
                 commits,
                 creations,

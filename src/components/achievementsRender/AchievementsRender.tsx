@@ -1,10 +1,11 @@
 import React from 'react';
 import AchievementsAchieve from '../achievementsAchieve/AchievementsAchieve';
 import handleSortAchievements from '../../utils/handleSortAchievements';
+import { ContextApp } from '../app/App';
+import { IAppContext } from '../../interfaces/interface';
 import { nanoid } from 'nanoid';
 import { Rarity, IAchieve } from '../../interfaces/interface.achievements';
 import { SwitchAchieved, AchievedPrefix, AchievedStatus } from '../../interfaces/interface.achievements';
-import achievements from '../../assets/json/achievements.json';
 import styles from './AchievementsRender.module.scss';
 
 interface IAchievementsRender {
@@ -14,7 +15,11 @@ interface IAchievementsRender {
 }
 
 const AchievementsRender = ({ prefix, switchStatus, achieveStatus }: IAchievementsRender): React.JSX.Element => {
-    const filtered: IAchieve[] = handleSortAchievements(achievements, switchStatus).filter(
+    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
+
+    if (!contextApp) return <></>;
+
+    const filtered: IAchieve[] = handleSortAchievements(contextApp.achievements, switchStatus).filter(
         (achieve) => achieve.status === achieveStatus,
     );
 
