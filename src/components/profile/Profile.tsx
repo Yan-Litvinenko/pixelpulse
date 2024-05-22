@@ -32,10 +32,7 @@ const Profile = (): React.JSX.Element => {
 
             <div className={styles.motto}>
                 <Heading className={styles.motto__title} level={'3'} textContent="motto:" />
-                <Paragraph
-                    className={styles.motto__text}
-                    textContent={'Saepe omnis neque numquam recusandae laudantium.'}
-                />
+                <Paragraph className={styles.motto__text} textContent={'Bonum modulum est, quod connecti potest.'} />
             </div>
         </aside>
     );

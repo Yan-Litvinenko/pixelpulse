@@ -32,6 +32,12 @@
         width: max-content;
     }
 
+    &__item_deactive {
+        cursor: auto;
+        opacity: 0.5;
+        user-select: none;
+    }
+
     &__item img {
         filter: hue-rotate(var(--data-image-color));
     }
@@ -60,6 +66,10 @@
 @media (hover: hover) {
     .content__item:hover .content__title {
         text-shadow: var(--text-shadow);
+    }
+
+    .content__item_deactive:hover .content__title {
+        text-shadow: none;
     }
 }
 

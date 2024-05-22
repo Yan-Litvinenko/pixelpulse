@@ -27,7 +27,7 @@ const Games = (): React.JSX.Element => {
                     </div>
 
                     <div className={styles.content__games}>
-                        <figure className={styles.content__item}>
+                        <figure className={`${styles.content__item} ${styles.content__item_deactive}`}>
                             <img src={ArcanoidImg} alt="Arcanoid" draggable={false} />
                             <figcaption className={styles.content__description}>
                                 <Heading className={styles.content__title} textContent="arcanoid" level="3" />

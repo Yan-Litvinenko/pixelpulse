@@ -10,19 +10,19 @@ import styles from './LogsUpdate.module.scss';
 const update: Record<string, string>[] = [
     {
         title: 'project update',
-        text: "My project is at a very exciting stage of development. I continue to actively work on key aspects and move forward confidently. I'm implementing new ideas and improving current solutions to reach my goals faster and more efficiently. My efforts are focused on enhancing quality and expanding opportunities.",
+        text: 'I continue to actively work to improve quality and expand capabilities. We are constantly working to improve code readability/structure/performance',
     },
     {
         title: 'Challenges',
-        text: 'Like in any ambitious project, I face my own challenges. I confront them openly and concentrate my efforts on solving them. Every challenge is an opportunity to grow and improve. I am confident that with my knowledge and resources, I will overcome all obstacles on the path to success.',
+        text: 'I AM CONFIDENT THAT WITH MY KNOWLEDGE AND RESOURCES I WILL OVERCOME ALL OBSTACLES ON THE PATH TO SUCCESS. I BELIEVE THAT EVERY CHALLENGE IS AN OPPORTUNITY TO GROW AND IMPROVE.',
     },
     {
         title: 'NEXT STEPS',
-        text: 'My plans for the near future are ambitious yet realistic. I am focusing on key stages that will lead me to desired outcomes. I plan to intensively develop specific project aspects and implement new strategies to achieve my goals.',
+        text: 'Creation of 3D animations and mini-games. Adding more flexible settings. Creating and adding pet projects that will tell about my skills.',
     },
     {
         title: 'CONCLUSION',
-        text: 'In conclusion, my project embodies my passion and diligence. I continue to move forward, regardless of any obstacles, and I am confident in a successful outcome. I thank everyone who supports me on this journey. My goal is to create something unique and inspiring, and I will put forth all efforts to achieve it.',
+        text: 'IN CONCLUSION, I WOULD LIKE TO SAY THAT MY PROJECT REPRESENTS MY PASSION AND DILIGENCE. I AM EXCITED TO SEE THE IMPACT IT WILL HAVE AND AM COMMITTED TO CONTINUING TO STRIVE FOR EXCELLENCE.',
     },
 ];
 

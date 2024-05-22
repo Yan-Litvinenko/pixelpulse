@@ -1,8 +1,7 @@
 import React from 'react';
 import Frame from '../frame/Frame';
 import Heading from '../heading/Heading';
-import beginningAvif from '../../assets/images/beginning.avif';
-import beginningWebp from '../../assets/images/beginning.webp';
+import GlitchCanvas from '../glitchImage/GlitchImage';
 import beginningJpg from '../../assets/images/beginning.jpg';
 import styles from './Beginning.module.scss';
 
@@ -22,13 +21,11 @@ const Beginning = (): React.JSX.Element => {
                         </div>
                         <picture className={styles.beginning__background_box}>
                             <Frame className={styles.beginning__background_frame} />
-                            <source srcSet={beginningAvif} />
-                            <source srcSet={beginningWebp} />
-                            <img
-                                alt={'whale'}
+                            <GlitchCanvas
                                 className={styles.beginning__background}
-                                draggable={false}
-                                src={beginningJpg}
+                                imageUrl={beginningJpg}
+                                minDelay={15000}
+                                maxDelay={30000}
                             />
                         </picture>
                     </>

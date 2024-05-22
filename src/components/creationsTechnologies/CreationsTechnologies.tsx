@@ -1,7 +1,16 @@
 import React from 'react';
 import Heading from '../heading/Heading';
 import { nanoid } from 'nanoid';
-import { Hexagon, HexagonBorder, ReactIcon, NodeJS, Figma, JS, GitHub } from '../svgIcon/SvgIcon';
+import {
+    Hexagon,
+    HexagonBorder,
+    ReactIcon,
+    NodeJS,
+    Figma,
+    JS,
+    GitHub,
+    Wordpress as Wordpress,
+} from '../svgIcon/SvgIcon';
 import { ICreationsBlock } from '../../interfaces/interface.credits';
 import styles from './CreationsTechnologies.module.scss';
 
@@ -15,6 +24,7 @@ const technologies: Technologies = {
     js: JS,
     nodeJS: NodeJS,
     react: ReactIcon,
+    wordpress: Wordpress,
 };
 
 const CreationsTechnologies = ({
