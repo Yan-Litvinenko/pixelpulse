@@ -34,7 +34,7 @@ exports.addCoin = async (req, res) => {
 
             let COINS = await dataBase.getDataAdminTable('coins');
 
-            COINS += 1500;
+            COINS += 5;
 
             const LEVEL = dataBase.levelUp(COINS);
 
