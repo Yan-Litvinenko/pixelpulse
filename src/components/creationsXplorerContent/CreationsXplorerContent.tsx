@@ -47,12 +47,13 @@ const CreationsXplorerContent = ({
                               />
                           );
                       })
-                    : projects[projectCount].images.map((imageName) => {
+                    : projects[projectCount].images.map((imageName, index) => {
                           return (
                               <CreationsXplorerItem
                                   image={'image'}
                                   key={nanoid()}
                                   onClick={() => {
+                                      contextApp?.setModalProject(index);
                                       handleOpenModal(contextApp?.setCreations);
                                       contextApp?.handleSoundModal();
                                   }}

@@ -40,7 +40,11 @@ const ModalCreations = (): React.JSX.Element => {
         <div className={styles.modal} ref={modal}>
             <div className={styles.modal__header}>
                 <Heading className={styles.modal__subtitle} level="3" textContent="previewing images from" />
-                <Heading className={styles.modal__title} level="2" textContent="portfolio design" />
+                <Heading
+                    className={styles.modal__title}
+                    level="2"
+                    textContent={projects[contextApp.modalProject].name}
+                />
             </div>
 
             <div className={styles.modal__content_wrapper}>

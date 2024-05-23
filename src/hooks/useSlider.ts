@@ -8,11 +8,13 @@ const useSlider = (
     vectorRight: React.MutableRefObject<HTMLImageElement | null>,
 ): number => {
     const contextApp: IAppContext | undefined = React.useContext(ContextApp);
-    const [countSlider, setCountSlider] = React.useState<number>(0);
-    let xDown: number = 0;
-    let yDown: number = 0;
 
     if (!contextApp) return 0;
+
+    const [countSlider, setCountSlider] = React.useState<number>(contextApp.modalProject);
+
+    let xDown: number = 0;
+    let yDown: number = 0;
 
     const rollSlider = (content: HTMLDivElement | null, counter: number): void => {
         if (content) {
@@ -23,7 +25,7 @@ const useSlider = (
         }
     };
 
-    const nextSlide = () => {
+    const nextSlide = (): void => {
         setCountSlider((prev) => {
             const count: number = prev + 1;
 
@@ -34,7 +36,7 @@ const useSlider = (
         });
     };
 
-    const prevSlide = () => {
+    const prevSlide = (): void => {
         setCountSlider((prev) => {
             const count: number = prev - 1;
 
@@ -50,7 +52,7 @@ const useSlider = (
         yDown = event.clientY;
     };
 
-    const mouseMove = (event: MouseEvent) => {
+    const mouseMove = (event: MouseEvent): void => {
         if (!xDown || !yDown) return;
 
         const xUp: number = event.clientX;
@@ -106,6 +108,7 @@ const useSlider = (
             sliderElement.addEventListener('touchmove', touchMove);
             sliderElement.addEventListener('mousedown', mouseStart);
             sliderElement.addEventListener('mousemove', mouseMove);
+            sliderElement.style.transform = `translateX(-${contextApp.modalProject}00%)`;
         }
 
         return () => {
