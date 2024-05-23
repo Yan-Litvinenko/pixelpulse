@@ -17,8 +17,8 @@ const SettingElement = (props: ISetting): React.JSX.Element => {
             <div className={props.audioClassName}>
                 {isGear && (
                     <svg
-                        width="24"
-                        height="24"
+                        width="1.5rem"
+                        height="1.5rem"
                         viewBox="0 0 24 24"
                         fill="current-color"
                         xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +28,7 @@ const SettingElement = (props: ISetting): React.JSX.Element => {
                             fill="current-color"
                         />
                         <clipPath id="clip0_1_69">
-                            <rect width="24" height="24" fill="white" />
+                            <rect width="1.5rem" height="1.5rem" fill="white" />
                         </clipPath>
                     </svg>
                 )}

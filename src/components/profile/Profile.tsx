@@ -23,7 +23,7 @@ const Profile = (): React.JSX.Element => {
         <aside className={styles.profile}>
             <Link to="about" className={styles.avatar} onClick={handleClickAvatar}>
                 <Frame className={styles.avatar__frame} />
-                <GlitchCanvas className="" imageUrl={avatar} minDelay={15000} maxDelay={30000} />
+                <GlitchCanvas className={styles.canvas} imageUrl={avatar} minDelay={15000} maxDelay={30000} />
             </Link>
 
             {profileItems.map((item) => {

@@ -3,7 +3,7 @@ import styles from './SvgIcon.module.scss';
 
 export const Hexagon = (): React.JSX.Element => {
     return (
-        <svg className={styles.hexagon} width="70" height="70" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 70 70" className={styles.hexagon} width="70" height="70" xmlns="http://www.w3.org/2000/svg">
             <polygon
                 fill="none"
                 id="svg_1"
@@ -62,10 +62,10 @@ export const ReactIcon = (): React.JSX.Element => {
     return (
         <svg
             className={styles.technologies_icon}
-            width="20"
-            height="19"
-            viewBox="0 0 20 19"
             fill="none"
+            height="1.1875rem"
+            viewBox="0 0 20 19"
+            width="1.25rem"
             xmlns="http://www.w3.org/2000/svg"
         >
             <path
@@ -80,10 +80,10 @@ export const NodeJS = (): React.JSX.Element => {
     return (
         <svg
             className={styles.technologies_icon}
-            width="18"
-            height="21"
-            viewBox="0 0 18 21"
             fill="none"
+            height="1.3125rem"
+            viewBox="0 0 18 21"
+            width="1.125rem"
             xmlns="http://www.w3.org/2000/svg"
         >
             <path
@@ -98,10 +98,10 @@ export const Figma = (): React.JSX.Element => {
     return (
         <svg
             className={styles.technologies_icon}
-            width="15"
-            height="21"
-            viewBox="0 0 15 21"
             fill="none"
+            height="1.3125rem"
+            viewBox="0 0 15 21"
+            width="0.9375rem"
             xmlns="http://www.w3.org/2000/svg"
         >
             <path
@@ -116,10 +116,10 @@ export const JS = (): React.JSX.Element => {
     return (
         <svg
             className={styles.technologies_icon}
-            width="18"
-            height="19"
-            viewBox="0 0 18 19"
             fill="current-color"
+            height="1.1875rem"
+            viewBox="0 0 18 19"
+            width="1.125rem"
             xmlns="http://www.w3.org/2000/svg"
         >
             <path
@@ -135,16 +135,13 @@ export const Wordpress = () => {
         <svg
             className={styles.technologies_icon}
             fill="current-color"
-            version="1.1"
-            id="Capa_1"
-            width={'1.125rem'}
-            hanging={'1.125rem'}
+            width="1.125rem"
+            hanging="1.125rem"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 96.24 96.24"
         >
-            <g>
-                <path
-                    d="M48.122,0C21.587,0,0.001,21.585,0.001,48.118c0,26.535,21.587,48.122,48.12,48.122c26.532,0,48.117-21.587,48.117-48.122
+            <path
+                d="M48.122,0C21.587,0,0.001,21.585,0.001,48.118c0,26.535,21.587,48.122,48.12,48.122c26.532,0,48.117-21.587,48.117-48.122
                 C96.239,21.586,74.654,0,48.122,0z M4.857,48.118c0-6.271,1.345-12.227,3.746-17.606l20.638,56.544
                 C14.81,80.042,4.857,65.243,4.857,48.118z M48.122,91.385c-4.247,0-8.346-0.623-12.222-1.763L48.88,51.903l13.301,36.433
                 c0.086,0.215,0.191,0.411,0.308,0.596C57.992,90.514,53.16,91.385,48.122,91.385z M54.083,27.834
@@ -156,8 +153,7 @@ export const Wordpress = () => {
                 c1.647,2.882,3.567,6.585,3.567,11.932c0,3.704-1.422,8-3.293,13.986l-4.315,14.421L54.083,27.834z M69.871,85.516l13.215-38.208
                 c2.471-6.171,3.29-11.106,3.29-15.497c0-1.591-0.104-3.07-0.292-4.449c3.38,6.163,5.303,13.236,5.301,20.758
                 C91.384,64.08,82.732,78.016,69.871,85.516z"
-                />
-            </g>
+            />
         </svg>
     );
 };
@@ -167,9 +163,9 @@ export const GitHub = (): React.JSX.Element => {
         <svg
             className={styles.technologies_icon}
             fill="none"
-            height="17"
+            height="1.0625rem"
             viewBox="0 0 20 17"
-            width="20"
+            width="1.25rem"
             xmlns="http://www.w3.org/2000/svg"
         >
             <path
@@ -184,8 +180,8 @@ export const Image = (): React.JSX.Element => {
     return (
         <svg
             className={styles.image}
-            width="24"
-            height="24"
+            width="1.5rem"
+            height="1.5rem"
             viewBox="0 0 24 24"
             fill="current-color"
             xmlns="http://www.w3.org/2000/svg"
@@ -195,7 +191,7 @@ export const Image = (): React.JSX.Element => {
                 fill="current-color"
             />
             <clipPath id="clip0_1_804">
-                <rect width="24" height="24" fill="white" />
+                <rect width="1.5rem" height="1.5rem" fill="white" />
             </clipPath>
         </svg>
     );
@@ -205,9 +201,9 @@ export const Folder = (): React.JSX.Element => {
     return (
         <svg
             className={styles.folder}
-            height="100px"
+            height="6.5rem"
             viewBox="-909 226 100 100"
-            width="100px"
+            width="6.5rem"
             xmlns="http://www.w3.org/2000/svg"
         >
             <path
@@ -227,10 +223,10 @@ export const JoystickLeft = ({ left }: { left: () => void }): React.JSX.Element 
         <svg
             className={styles.joystick_left}
             fill="currentColor"
-            height="16"
+            height="1rem"
             onClick={left}
             viewBox="0 0 16 16"
-            width="16"
+            width="1rem"
             xmlns="http://www.w3.org/2000/svg"
         >
             <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
@@ -243,10 +239,10 @@ export const JoystickRight = ({ right }: { right: () => void }): React.JSX.Eleme
         <svg
             className={styles.joystick_right}
             fill="currentColor"
-            height="16"
+            height="1rem"
             onClick={right}
             viewBox="0 0 16 16"
-            width="16"
+            width="1rem"
             xmlns="http://www.w3.org/2000/svg"
         >
             <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
@@ -259,10 +255,10 @@ export const JoystickDown = ({ down }: { down: () => void }): React.JSX.Element 
         <svg
             className={styles.joystick_down}
             fill="currentColor"
-            height="16"
+            height="1rem"
             onClick={down}
             viewBox="0 0 16 16"
-            width="16"
+            width="1rem"
             xmlns="http://www.w3.org/2000/svg"
         >
             <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
@@ -275,10 +271,10 @@ export const JoystickUp = ({ up }: { up: () => void }): React.JSX.Element => {
         <svg
             className={styles.joystick_up}
             fill="currentColor"
-            height="16"
+            height="1rem"
             onClick={up}
             viewBox="0 0 16 16"
-            width="16"
+            width="1rem"
             xmlns="http://www.w3.org/2000/svg"
         >
             <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z" />
@@ -291,9 +287,9 @@ export const Warning = (): React.JSX.Element => {
         <svg
             className={styles.warning}
             fill="none"
-            height="24"
+            height="1.5rem"
             viewBox="0 0 24 24"
-            width="24"
+            width="1.5rem"
             xmlns="http://www.w3.org/2000/svg"
         >
             <path
@@ -301,7 +297,7 @@ export const Warning = (): React.JSX.Element => {
                 fill="current-color"
             />
             <clipPath id="clip0_1_1768">
-                <rect width="24" height="24" fill="white" />
+                <rect width="1.5rem" height="1.5rem" fill="white" />
             </clipPath>
         </svg>
     );

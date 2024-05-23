@@ -1,9 +1,11 @@
 @import '../../css/mixin.scss';
 
 .hexagon {
-    @include absolute-position(50%, -1.125rem);
+    @include absolute-position(46%, -1.125rem);
+    height: 4.375rem;
     transform: translateY(-50%);
     transition: filter var(--transition-element);
+    width: 4.375rem;
 }
 
 .hexagon_border {

@@ -13,7 +13,7 @@ const ProgressRing = ({ percent }: IProgressRing): React.JSX.Element => {
     const circumference: number = 2 * Math.PI * radius;
 
     return (
-        <svg className={styles.ring} width={square} height={square}>
+        <svg className={styles.ring} width={square} height={square} viewBox={`0 0 ${square} ${square}`}>
             <circle
                 style={{
                     strokeDashoffset: `${circumference - (percent / 100) * circumference}`,

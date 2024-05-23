@@ -13,10 +13,10 @@
 }
 
 .content {
-    @include grid-container(minmax(14.25rem, 1fr) 1fr minmax(0rem, 1fr));
+    @include grid-container(minmax(14.25rem, 1fr) auto minmax(0rem, 1fr));
 
     &__games {
-        @include grid-container(1fr 1fr, $gap: 2rem 1rem);
+        @include grid-container(14.25rem 14.25rem, $gap: 2rem 1rem);
     }
 
     &__title {
@@ -29,7 +29,8 @@
     &__item {
         @include flex-container(column, $gap: 0.4rem 0rem);
         cursor: pointer;
-        width: max-content;
+        width: 100%;
+        max-width: 14.125rem;
     }
 
     &__item_deactive {
@@ -40,6 +41,8 @@
 
     &__item img {
         filter: hue-rotate(var(--data-image-color));
+        height: 100%;
+        width: 100%;
     }
 
     &__description {
@@ -125,6 +128,7 @@
 
         &__games {
             grid-column: 1 / -1;
+            justify-content: center;
         }
 
         &__item:nth-child(odd) {
