@@ -1,5 +1,6 @@
 import React from 'react';
 import useCloseModal from '../../hooks/useCloseModal';
+import useModalSettings from '../../hooks/useModalSettings';
 import Button from '../button/Button';
 import ClipPathBorder from '../clipPathBorder/ClipPathBorder';
 import Cross from '../cross/Cross';
@@ -8,8 +9,6 @@ import ModalBackground from '../modalBackground/ModalBackground';
 import ModalBoxButton from '../modalBoxButton/ModalBoxButton';
 import Paragraph from '../paragraph/Paragraph';
 import Range from '../range/Range';
-import { handleDefaultSettings, handleInitSettingValue, handleSaveSetting } from '../../utils/handleSettings';
-import { handleSettingColor, handleSettingSize } from '../../utils/handleSettings';
 import { Warning } from '../svgIcon/SvgIcon';
 import { ContextApp } from '../app/App';
 import { IAppContext } from '../../interfaces/interface';
@@ -21,41 +20,14 @@ const ModalSetting = (): React.JSX.Element | null => {
     if (!contextApp) return null;
 
     const modal = React.useRef<HTMLDivElement | null>(null);
-    const timer = React.useRef<NodeJS.Timeout | null>(null);
-    const [enterText, setEnterText] = React.useState<string>('write to disk [enter]');
+    const { enterText, settings, handleResetSettings, handleModifySaveSetting, changeSettingValue } =
+        useModalSettings();
 
     const handleButtonEscape = useCloseModal(modal, contextApp.setSetting, false, false, false);
     const handleCrossModal = (): void => {
         contextApp.setNavigationMobile(true);
         contextApp.setSetting(false);
     };
-
-    const changeSettingValue = handleSettingColor();
-    const handleModifySaveSetting = (): void => {
-        if (enterText === 'write to disk [enter]') {
-            handleSaveSetting();
-            setEnterText('saved!');
-
-            timer.current = setTimeout(() => {
-                setEnterText('write to disk [enter]');
-            }, 2000);
-        }
-    };
-
-    const handleButtonEnter = (event: KeyboardEvent): void => {
-        if (event.key === 'Enter') {
-            handleModifySaveSetting();
-        }
-    };
-
-    React.useEffect(() => {
-        window.addEventListener('keydown', handleButtonEnter);
-
-        return () => {
-            if (timer.current) clearTimeout(timer.current);
-            window.removeEventListener('keydown', handleButtonEnter);
-        };
-    }, []);
 
     return (
         <div className={styles.modal} ref={modal}>
@@ -71,7 +43,7 @@ const ModalSetting = (): React.JSX.Element | null => {
                         <Range
                             changeSettingValue={changeSettingValue}
                             color={'hue'}
-                            initValue={handleInitSettingValue('hue')}
+                            initValue={settings.hue}
                             inputTarget="color"
                             max={100}
                             min={0}
@@ -80,7 +52,7 @@ const ModalSetting = (): React.JSX.Element | null => {
                         <Range
                             changeSettingValue={changeSettingValue}
                             color={'saturation'}
-                            initValue={handleInitSettingValue('saturation')}
+                            initValue={settings.saturation}
                             inputTarget="color"
                             max={100}
                             min={0}
@@ -89,15 +61,15 @@ const ModalSetting = (): React.JSX.Element | null => {
                         <Range
                             changeSettingValue={changeSettingValue}
                             color={'lightness'}
-                            initValue={handleInitSettingValue('lightness')}
+                            initValue={settings.lightness}
                             inputTarget="color"
                             max={100}
                             min={0}
                             textContent="hud lightness"
                         />
                         <Range
-                            changeSettingValue={handleSettingSize}
-                            initValue={handleInitSettingValue('size')}
+                            changeSettingValue={changeSettingValue}
+                            initValue={settings.size}
                             inputTarget="size"
                             max={100}
                             min={0}
@@ -106,7 +78,7 @@ const ModalSetting = (): React.JSX.Element | null => {
                         <Button
                             className={styles.default_button}
                             delayEvent={false}
-                            handleButton={handleDefaultSettings}
+                            handleButton={handleResetSettings}
                             textContent="default settings"
                             type="button"
                         />

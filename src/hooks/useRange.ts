@@ -1,13 +1,13 @@
-import { useEffect, useState, Dispatch, SetStateAction } from 'react';
+import React from 'react';
 
 const useRange = (
     initValue: number,
     progress: React.MutableRefObject<HTMLDivElement | null>,
     thumb: React.MutableRefObject<HTMLDivElement | null>,
-): [number, Dispatch<SetStateAction<number>>] => {
-    const [value, setValue] = useState<number>(initValue);
+): [number, React.Dispatch<React.SetStateAction<number>>] => {
+    const [value, setValue] = React.useState<number>(initValue);
 
-    useEffect(() => {
+    React.useEffect(() => {
         if (progress.current && thumb.current) {
             progress.current.style.width = value + '%';
             thumb.current.style.left = value + '%';
