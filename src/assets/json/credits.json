@@ -9,15 +9,14 @@
     },
     {
         "title": "visual assets",
-        "text": [
-            "homepage view, achievements by midjourney",
-            "icons from remixicons and fontawesome",
-            "hexagons by Yan Litvinenko"
-        ]
+        "text": ["homepage view, achievements by midjourney", "hexagons by Yan Litvinenko"]
     },
     {
         "title": "audio effects",
-        "text": "all audio effects by zvukipro.com"
+        "text": [
+            "the sound of a modal window opening and the sound of “noise” taken from the site zvukipro.com",
+            "click sound from world of warcraft"
+        ]
     },
     {
         "title": "music",

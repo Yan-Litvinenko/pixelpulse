@@ -1,7 +1,7 @@
 @import '../../css/mixin.scss';
 
 .games {
-    min-height: var(--height-large);
+    height: var(--height-large);
     padding: 2.5rem 1.5rem 0rem;
     position: relative;
 
@@ -78,13 +78,13 @@
 
 @media (max-width: 1700px) {
     .games {
-        min-height: var(--height-medium);
+        height: var(--height-medium);
     }
 }
 
 @media (max-width: 1380px) {
     .games {
-        min-height: var(--height-small);
+        height: auto;
         padding: 2.5rem 1.375rem 0rem;
 
         &__title {
@@ -95,7 +95,6 @@
 
 @media (max-width: 1200px) {
     .games {
-        min-height: auto;
         padding: 1.5rem 0.625rem 2rem;
         width: 100%;
 

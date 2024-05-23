@@ -11,11 +11,13 @@ import projects from '../../assets/json/projects.json';
 import styles from './Creations.module.scss';
 
 const projectDefault: IProject = {
-    about: ['default about'],
-    brief: 'CV brief',
+    about: [
+        'The site design is made in the style of a computer game. It describes my achievements and skills, information about my life and goals.',
+    ],
+    brief: 'reflects growth in educational or professional achievements',
     images: [''],
     link: '',
-    name: 'CV',
+    name: 'web-portfolio',
     technologies: ['react', 'js', 'nodeJS', 'github', 'figma'],
 };
 

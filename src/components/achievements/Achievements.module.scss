@@ -1,7 +1,7 @@
 @import '../../css/mixin.scss';
 
 .achievements {
-    min-height: var(--height-large);
+    height: var(--height-large);
     padding: 2.5rem 0.625rem 0.625rem;
 
     &__title {
@@ -49,7 +49,7 @@
 
 @media (max-width: 1700px) {
     .achievements {
-        min-height: var(--height-medium);
+        height: var(--height-medium);
 
         &__achievements {
             height: calc(var(--height-medium) - 9.375rem);
@@ -59,17 +59,11 @@
 
 @media (max-width: 1380px) {
     .achievements {
-        min-height: var(--height-small);
+        height: auto;
 
         &__achievements {
             height: calc(var(--height-small) - 9.375rem);
         }
-    }
-}
-
-@media (max-width: 1200px) {
-    .achievements {
-        min-height: 100vh;
     }
 }
 

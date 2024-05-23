@@ -2,7 +2,7 @@
 
 .beginning {
     @include flex-container();
-    min-height: var(--height-large);
+    height: var(--height-large);
     position: relative;
 
     &::after {
@@ -62,21 +62,19 @@
 
 @media (max-width: 1700px) {
     .beginning {
-        min-height: var(--height-medium);
+        height: var(--height-medium);
     }
 }
 
 @media (max-width: 1380px) {
     .beginning {
-        min-height: var(--height-small);
+        height: auto;
     }
 }
 
 @media (max-width: 1200px) {
     .beginning {
         @include flex-container(column);
-        min-height: auto;
-        height: auto;
 
         &::after {
             display: none;

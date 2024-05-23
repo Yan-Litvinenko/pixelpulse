@@ -10,15 +10,15 @@ import styles from './About.module.scss';
 const content: Record<string, string>[] = [
     {
         title: 'The short introduction of my life',
-        text: "I have always been fascinated by the endless possibilities of the internet and the ways it can be leveraged to make our lives better. I decided to pursue a career in web engineering to help build innovative and impactful web-based solutions that can solve complex problems and make a difference in people's lives.",
+        text: 'For the past one and a half years, I have been diving into the world of front-end development. My journey began with JavaScript and quickly expanded to include React and TypeScript. I have always been passionate about creating smooth and interactive user experiences.',
     },
     {
         title: 'Career and development',
-        text: 'Throughout my career, I have worked with a wide range of technologies, from front-end frameworks like React and Angular to back-end frameworks like Node.js and Django. I am passionate about staying up-to-date with the latest industry trends and tools and continually learning new skills to improve my craft.',
+        text: 'During my learning journey, I have also dabbled a bit in back-end technologies, gaining some experience with Node.js and MySQL. While I enjoy front-end development, I am eager to deepen my knowledge of back-end development, particularly with Node.js and databases like MySQL and MongoDB. I believe that understanding the full stack will make me a more versatile and effective developer.',
     },
     {
         title: 'More can be added in the left side for summary',
-        text: 'As a web engineer, my top priority is to ensure the reliability, scalability, and security of the web applications I develop. I enjoy collaborating with cross-functional teams and working closely with clients to understand their needs and provide them with the best possible solutions.',
+        text: 'My goal is to become a well-rounded full-stack developer. I want to build applications that are not only visually appealing and user-friendly but also robust and efficient on the server side. I am committed to continuous learning and excited to see where this journey takes me.',
     },
 ];
 
@@ -34,7 +34,7 @@ const About = (): React.JSX.Element => {
                 </div>
                 <div className={styles.box_image}>
                     <Frame className={styles.frame} />
-                    <GlitchCanvas className={styles.about__img} imageUrl={humanJpg} minDelay={5000} maxDelay={10000} />
+                    <GlitchCanvas className={styles.about__img} imageUrl={humanJpg} minDelay={7000} maxDelay={15000} />
                 </div>
             </div>
         </main>

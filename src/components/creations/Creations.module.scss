@@ -2,7 +2,7 @@
 
 .creations {
     @include flex-container(column, $align-items: center);
-    min-height: var(--height-large);
+    height: var(--height-large);
     padding: 2.5rem 1.625rem 0rem 1.625rem;
     position: relative;
 
@@ -67,13 +67,14 @@
 
 @media (max-width: 1700px) {
     .creations {
-        min-height: var(--height-medium);
+        height: var(--height-medium);
     }
 }
 
 @media (max-width: 1380px) {
     .creations {
-        min-height: var(--height-small);
+        height: auto;
+        min-height: 100vh;
 
         &__inner {
             flex-direction: column;
@@ -94,8 +95,6 @@
 
 @media (max-width: 1200px) {
     .creations {
-        height: auto;
-        min-height: 100vh;
         padding: 1.5rem 0.625rem 0rem;
 
         &__title {

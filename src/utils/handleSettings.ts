@@ -19,6 +19,12 @@ export const handleDefaultSettings = (): void => {
     const imageColor: string = '0deg';
     const size: string = '16px';
 
+    localStorage.setItem('yan-litvinenko-cv-hue', hue);
+    localStorage.setItem('yan-litvinenko-cv-saturation', saturation);
+    localStorage.setItem('yan-litvinenko-cv-lightness', lightness);
+    localStorage.setItem('yan-litvinenko-cv-image-color', imageColor);
+    localStorage.setItem('yan-litvinenko-cv-size', size);
+
     document.documentElement.style.setProperty('--data-hue', hue);
     document.documentElement.style.setProperty('--data-saturation', saturation);
     document.documentElement.style.setProperty('--data-lightness', lightness);
