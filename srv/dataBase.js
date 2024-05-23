@@ -8,9 +8,9 @@ class DataBase {
     async connect() {
         try {
             this.db = await mysql.createConnection(this.config);
-            console.log('Подключение к базе данных успешно.');
+            console.log('Database connection successful!');
         } catch (error) {
-            console.error('Ошибка подключения к базе данных:', error);
+            console.error('Error connecting to database:', error);
             throw error;
         }
     }
@@ -24,7 +24,7 @@ class DataBase {
             }
             return null;
         } catch (error) {
-            console.error('Ошибка выполнения запроса:', error);
+            console.error('Request execution error:', error);
             return null;
         }
     }
@@ -34,7 +34,7 @@ class DataBase {
             await this.db.execute(`UPDATE admin SET ${columnName} = ?`, [value]);
             return true;
         } catch (error) {
-            console.error('Ошибка выполнения запроса:', error);
+            console.error('Request execution error:', error);
             return false;
         }
     }

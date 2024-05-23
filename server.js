@@ -44,6 +44,6 @@ const PORT = 8080;
             console.log(`Server is running on http://localhost:${PORT}`);
         });
     } catch (error) {
-        console.error('Ошибка подключения к базе данных:', error);
+        console.error('Error connecting to database:', error);
     }
 })();
