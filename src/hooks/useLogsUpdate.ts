@@ -14,13 +14,14 @@ const useLogsUpdate = (update: Record<string, string>[], classRemove: string): R
 
     const handleResize = React.useCallback((): void => {
         const newClippedIndexes: number[] = [];
+        const px = 3.8125 * Number(getComputedStyle(document.documentElement).getPropertyValue('--size'));
 
         textRefs.current.forEach((textElement, index) => {
             if (textElement) {
                 textElement.classList.remove(classRemove);
                 const rect: DOMRect = textElement.getBoundingClientRect();
 
-                if (rect.height > 61) {
+                if (rect.height > px) {
                     newClippedIndexes.push(index);
                 }
             }
