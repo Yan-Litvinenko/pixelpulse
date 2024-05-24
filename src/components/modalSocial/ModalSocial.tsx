@@ -1,7 +1,6 @@
 import React from 'react';
 import useCloseModal from '../../hooks/useCloseModal';
 import useFormSubmit from '../../hooks/useFormSubmit';
-import { useForm } from 'react-hook-form';
 import { ContextApp } from '../app/App';
 import Cross from '../cross/Cross';
 import Form from '../form/Form';

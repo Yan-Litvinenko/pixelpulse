@@ -31,13 +31,6 @@ const GlitchCanvas: React.FC<GlitchCanvasProps> = ({ imageUrl, className, minDel
         if (!ctx) return;
         const img: HTMLImageElement = imgRef.current;
 
-        img.src = imageUrl;
-        img.onload = (): void => {
-            canvas.width = img.width;
-            canvas.height = img.height;
-            glitchImage();
-        };
-
         const glitchImage = (): void => {
             if (timer.current) clearTimeout(timer.current);
 
@@ -92,6 +85,13 @@ const GlitchCanvas: React.FC<GlitchCanvasProps> = ({ imageUrl, className, minDel
 
             countRender.current++;
             timer.current = setTimeout(glitchImage, getRandomDealy());
+        };
+
+        img.src = imageUrl;
+        img.onload = (): void => {
+            canvas.width = img.width;
+            canvas.height = img.height;
+            glitchImage();
         };
 
         return () => {

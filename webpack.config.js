@@ -83,7 +83,6 @@ module.exports = {
 function optimization() {
     const config = {
         splitChunks: {
-            // избежание дублирования кода
             chunks: 'all',
         },
     };

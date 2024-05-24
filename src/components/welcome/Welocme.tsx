@@ -20,15 +20,15 @@ const Welcome = (): React.JSX.Element => {
 
     const [skipStatus, setSkipStatus] = React.useState<boolean>(false);
 
-    const delayText_1: number = textForPrint.title.length * 50;
-    const delayText_2: number = (textForPrint.title.length + textForPrint.text_1.length) * 50;
+    const delayTextOne: number = textForPrint.title.length * 50;
+    const delayTextTwo: number = (textForPrint.title.length + textForPrint.text_1.length) * 50;
 
     const title = usePrintedText(textForPrint.title, 0);
-    const text_1 = usePrintedText(textForPrint.text_1, delayText_1);
-    const text_2 = usePrintedText(textForPrint.text_2, delayText_2);
+    const textOne = usePrintedText(textForPrint.text_1, delayTextOne);
+    const textTwo = usePrintedText(textForPrint.text_2, delayTextTwo);
 
     const skip = () => {
-        [...title.timers, ...text_1.timers, ...text_2.timers].forEach((timer) => clearTimeout(timer));
+        [...title.timers, ...textOne.timers, ...textTwo.timers].forEach((timer) => clearTimeout(timer));
         setSkipStatus(true);
         contextApp.handleSoundClick();
     };
@@ -66,7 +66,7 @@ const Welcome = (): React.JSX.Element => {
                         textContent={
                             skipStatus
                                 ? textForPrint.text_1
-                                : textElementWithAnimation(text_1.text, !text_1.animationEnd && title.animationEnd)
+                                : textElementWithAnimation(textOne.text, !textOne.animationEnd && title.animationEnd)
                         }
                     />
                 </div>
@@ -81,13 +81,13 @@ const Welcome = (): React.JSX.Element => {
                         textContent={
                             skipStatus
                                 ? textForPrint.text_2
-                                : textElementWithAnimation(text_2.text, !text_2.animationEnd && text_1.animationEnd)
+                                : textElementWithAnimation(textTwo.text, !textTwo.animationEnd && textOne.animationEnd)
                         }
                     />
                 </div>
 
                 <Link
-                    className={`${styles.welcome__btn} ${skipStatus || text_2.animationEnd ? '' : styles.hidden}`}
+                    className={`${styles.welcome__btn} ${skipStatus || textTwo.animationEnd ? '' : styles.hidden}`}
                     onClick={() => contextApp.handleSoundClick()}
                     to="/beginning"
                 >
@@ -95,7 +95,7 @@ const Welcome = (): React.JSX.Element => {
                 </Link>
 
                 <button
-                    className={`${styles.skip} ${skipStatus || text_1.animationEnd ? styles.hidden : ''}`}
+                    className={`${styles.skip} ${skipStatus || textOne.animationEnd ? styles.hidden : ''}`}
                     onClick={skip}
                 >
                     skip animation<span className={styles.skip__quotes}>&#xBB;</span>
