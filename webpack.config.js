@@ -6,6 +6,7 @@ const TerserWebpackPlugin = require('terser-webpack-plugin');
 const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const DotenvWebpackPlugin = require('dotenv-webpack');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
@@ -67,7 +68,7 @@ module.exports = {
                 type: 'asset/resource',
             },
             {
-                test: /\.(png|jpg|jpeg|svg|avif|webp$)/,
+                test: /\.(png|jpg|jpeg|svg|avif|webp|ico$)/,
                 type: 'asset/resource',
             },
             {
@@ -100,6 +101,23 @@ function addPlugins() {
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './src/index.html'),
             filename: 'index.html',
+        }),
+        new FaviconsWebpackPlugin({
+            logo: './src/assets/images/favicon.png',
+            cache: true,
+            inject: true,
+            favicons: {
+                icons: {
+                    android: true,
+                    appleIcon: true,
+                    favicons: true,
+                    windows: false,
+                    yandex: false,
+                    firefox: false,
+                    coast: false,
+                    appleStartup: false,
+                },
+            },
         }),
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
