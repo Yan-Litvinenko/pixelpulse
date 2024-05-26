@@ -176,6 +176,41 @@ export const GitHub = (): React.JSX.Element => {
     );
 };
 
+export const Html = () => {
+    return (
+        <svg
+            className={styles.technologies_icon}
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 50 50"
+            width="1.5625rem"
+            height="1.5625rem"
+        >
+            <path d="M 9 7 L 12 41 L 26 45 L 40 41 C 41 29.667 42 18.333 43 7 L 9 7 z M 11.183594 9 L 40.816406 9 L 38.128906 39.455078 L 26 42.919922 L 13.871094 39.455078 L 11.183594 9 z M 18.550781 15 L 17.589844 27 L 30.580078 27 L 30.169922 32 L 26 32.619141 L 21.880859 32 L 21.699219 30 L 17.839844 30 L 18.230469 35 L 25.990234 37 L 33.759766 35 L 34.75 23 L 22.089844 23 L 22.410156 19 L 30.769531 19 L 31 21 L 34.699219 21 L 34 15 L 18.550781 15 z" />
+        </svg>
+    );
+};
+
+export const Warning = (): React.JSX.Element => {
+    return (
+        <svg
+            className={styles.warning}
+            fill="none"
+            height="1.5rem"
+            viewBox="0 0 24 24"
+            width="1.5rem"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                d="M12 22C6.477 22 2 17.523 2 12C2 6.477 6.477 2 12 2C17.523 2 22 6.477 22 12C22 17.523 17.523 22 12 22ZM12 20C14.1217 20 16.1566 19.1571 17.6569 17.6569C19.1571 16.1566 20 14.1217 20 12C20 9.87827 19.1571 7.84344 17.6569 6.34315C16.1566 4.84285 14.1217 4 12 4C9.87827 4 7.84344 4.84285 6.34315 6.34315C4.84285 7.84344 4 9.87827 4 12C4 14.1217 4.84285 16.1566 6.34315 17.6569C7.84344 19.1571 9.87827 20 12 20ZM11 15H13V17H11V15ZM11 7H13V13H11V7Z"
+                fill="current-color"
+            />
+            <clipPath id="clip0_1_1768">
+                <rect width="1.5rem" height="1.5rem" fill="white" />
+            </clipPath>
+        </svg>
+    );
+};
+
 export const Image = (): React.JSX.Element => {
     return (
         <svg
@@ -278,27 +313,6 @@ export const JoystickUp = ({ up }: { up: () => void }): React.JSX.Element => {
             xmlns="http://www.w3.org/2000/svg"
         >
             <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z" />
-        </svg>
-    );
-};
-
-export const Warning = (): React.JSX.Element => {
-    return (
-        <svg
-            className={styles.warning}
-            fill="none"
-            height="1.5rem"
-            viewBox="0 0 24 24"
-            width="1.5rem"
-            xmlns="http://www.w3.org/2000/svg"
-        >
-            <path
-                d="M12 22C6.477 22 2 17.523 2 12C2 6.477 6.477 2 12 2C17.523 2 22 6.477 22 12C22 17.523 17.523 22 12 22ZM12 20C14.1217 20 16.1566 19.1571 17.6569 17.6569C19.1571 16.1566 20 14.1217 20 12C20 9.87827 19.1571 7.84344 17.6569 6.34315C16.1566 4.84285 14.1217 4 12 4C9.87827 4 7.84344 4.84285 6.34315 6.34315C4.84285 7.84344 4 9.87827 4 12C4 14.1217 4.84285 16.1566 6.34315 17.6569C7.84344 19.1571 9.87827 20 12 20ZM11 15H13V17H11V15ZM11 7H13V13H11V7Z"
-                fill="current-color"
-            />
-            <clipPath id="clip0_1_1768">
-                <rect width="1.5rem" height="1.5rem" fill="white" />
-            </clipPath>
         </svg>
     );
 };
