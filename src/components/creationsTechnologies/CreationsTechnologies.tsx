@@ -12,6 +12,10 @@ import {
     Wordpress,
     Html,
     Sass,
+    Ts,
+    Webpack,
+    Gulp,
+    MySql,
 } from '../svgIcon/SvgIcon';
 import { ICreationsBlock } from '../../interfaces/interface.credits';
 import styles from './CreationsTechnologies.module.scss';
@@ -29,6 +33,10 @@ const technologies: Technologies = {
     wordpress: Wordpress,
     html: Html,
     sass: Sass,
+    ts: Ts,
+    webpack: Webpack,
+    gulp: Gulp,
+    mysql: MySql,
 };
 
 const CreationsTechnologies = ({

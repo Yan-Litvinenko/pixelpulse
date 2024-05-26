@@ -2,7 +2,7 @@
     {
         "name": "landing",
         "brief": "brief landing",
-        "technologies": ["react", "wordpress", "html", "sass"],
+        "technologies": ["ts", "webpack", "gulp", "mysql"],
         "about": ["landing about"],
         "images": ["project1.png", "project2.png"],
         "link": "https://www.google.ru/?hl=ru"
