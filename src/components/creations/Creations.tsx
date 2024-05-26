@@ -18,7 +18,7 @@ const projectDefault: IProject = {
     images: [''],
     link: '',
     name: 'web-portfolio',
-    technologies: ['react', 'js', 'nodeJS', 'github', 'figma'],
+    technologies: ['webpack', 'ts', 'react', 'nodeJS', 'mysql'],
 };
 
 const Creations = (): React.JSX.Element => {

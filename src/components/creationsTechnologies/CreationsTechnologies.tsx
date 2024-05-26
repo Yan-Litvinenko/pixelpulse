@@ -1,22 +1,8 @@
 import React from 'react';
 import Heading from '../heading/Heading';
 import { nanoid } from 'nanoid';
-import {
-    Hexagon,
-    HexagonBorder,
-    ReactIcon,
-    NodeJS,
-    Figma,
-    JS,
-    GitHub,
-    Wordpress,
-    Html,
-    Sass,
-    Ts,
-    Webpack,
-    Gulp,
-    MySql,
-} from '../svgIcon/SvgIcon';
+import { Figma, GitHub, Gulp, Hexagon, HexagonBorder, Html, JS } from '../svgIcon/SvgIcon';
+import { MySql, NodeJS, ReactIcon, Sass, Ts, Webpack, Wordpress } from '../svgIcon/SvgIcon';
 import { ICreationsBlock } from '../../interfaces/interface.credits';
 import styles from './CreationsTechnologies.module.scss';
 
