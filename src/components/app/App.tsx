@@ -56,6 +56,7 @@ const App = (): React.JSX.Element => {
 
     const [projectImages, setProjectImages] = React.useState<string[]>([]);
     const [modalProject, setModalProject] = React.useState<number>(0);
+    const [modalProjectImage, setModalProjectImage] = React.useState<number>(0);
 
     const [music, setMusic] = useLocalStorage<boolean>(true, 'music');
     const [sounds, setSounds] = useLocalStorage<boolean>(true, 'sounds');
@@ -95,6 +96,8 @@ const App = (): React.JSX.Element => {
         <ContextApp.Provider
             value={{
                 TRANSITION_TIME,
+                handleSoundClick,
+                handleSoundModal,
                 setAchievements,
                 setAvailability,
                 setChallenge,
@@ -104,14 +107,13 @@ const App = (): React.JSX.Element => {
                 setIsAddedCoinToday,
                 setLevel,
                 setModalProject,
+                setModalProjectImage,
                 setMusic,
                 setNavigationMobile,
                 setProjectImages,
                 setSetting,
                 setSocial,
                 setSounds,
-                handleSoundClick,
-                handleSoundModal,
                 achievements,
                 coins,
                 commits,
@@ -124,6 +126,7 @@ const App = (): React.JSX.Element => {
                 level,
                 mainMusic,
                 modalProject,
+                modalProjectImage,
                 music,
                 navigationMobile,
                 projectImages,

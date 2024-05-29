@@ -8,26 +8,23 @@ import { IAppContext } from '../../interfaces/interface';
 import styles from './CreationsXplorerContent.module.scss';
 
 interface ICreationsXplorerContent {
-    projectCount: number;
     projects: IProject[];
-    setProjectCount: React.Dispatch<React.SetStateAction<number>>;
     setXplorerState: React.Dispatch<React.SetStateAction<XplorerState>>;
     xplorerState: XplorerState;
 }
 
 const CreationsXplorerContent = ({
-    projectCount,
     projects,
-    setProjectCount,
     setXplorerState,
     xplorerState,
 }: ICreationsXplorerContent): React.JSX.Element => {
     const contextApp: IAppContext | undefined = React.useContext(ContextApp);
 
+    if (!contextApp) return <></>;
+
     const handleChangeProject = (index: number): void => {
-        setProjectCount(index);
         setXplorerState('projectImages');
-        contextApp?.setProjectImages(projects[projectCount].images);
+        contextApp?.setProjectImages(projects[contextApp.modalProjectImage].images);
         contextApp?.setModalProject(index);
         contextApp?.handleSoundClick();
     };
@@ -47,17 +44,17 @@ const CreationsXplorerContent = ({
                               />
                           );
                       })
-                    : projects[projectCount].images.map((imageName, index) => {
+                    : projects[contextApp.modalProject].images.map((imageName, index) => {
                           return (
                               <CreationsXplorerItem
                                   image={'image'}
                                   key={nanoid()}
                                   onClick={() => {
-                                      contextApp?.setModalProject(index);
                                       handleOpenModal(contextApp?.setCreations);
+                                      contextApp?.setModalProjectImage(index);
                                       contextApp?.handleSoundModal();
                                   }}
-                                  textContent={imageName + '.jpg'}
+                                  textContent={imageName}
                               />
                           );
                       })}

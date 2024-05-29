@@ -1,18 +1,12 @@
 [
     {
-        "name": "landing",
-        "brief": "brief landing",
-        "technologies": ["ts", "webpack", "gulp", "mysql"],
-        "about": ["landing about"],
-        "images": ["project1.png", "project2.png"],
-        "link": "https://www.google.ru/?hl=ru"
-    },
-    {
-        "name": "game",
-        "brief": "brief game",
-        "technologies": ["js"],
-        "about": ["game about"],
-        "images": ["project1.png", "project2.png"],
-        "link": "https://www.google.ru/?hl=ru"
+        "name": "coffee-house",
+        "brief": "popular destination for coffee lovers",
+        "technologies": ["github", "figma", "gulp", "sass", "js"],
+        "about": [
+            "The site is adapted for screens with a size of at least 320px. has a modern design and attractive visual effects. The following tools were used during development: gulp 4, prettier, eslint."
+        ],
+        "images": ["CH_header.jpg", "CH_mobile-app.jpg", "CH_footer.jpg", "CH_menu.jpg", "CH_menu-modal.jpg"],
+        "link": "/"
     }
 ]

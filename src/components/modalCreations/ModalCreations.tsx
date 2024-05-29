@@ -22,6 +22,8 @@ const ModalCreations = (): React.JSX.Element => {
     const countSlider = useSlider(slider, vectorLeft, vectorRight);
     const handleCloseModal = useCloseModal(modal, contextApp.setCreations, false, false, false);
 
+    console.log(contextApp.modalProject);
+
     const handleEnter = (event: KeyboardEvent): void => {
         if (event.key === 'Enter') {
             window.open(projects[contextApp.modalProject].link, '_blank');

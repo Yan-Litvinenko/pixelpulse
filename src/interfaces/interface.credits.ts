@@ -9,7 +9,6 @@ interface IProject {
 
 interface ICreationsBlock {
     projects: IProject[];
-    projectCount: number;
     projectDefault: IProject;
     xplorerState: XplorerState;
 }

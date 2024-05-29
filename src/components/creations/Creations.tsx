@@ -23,7 +23,6 @@ const projectDefault: IProject = {
 
 const Creations = (): React.JSX.Element => {
     const contextApp = React.useContext(ContextApp);
-    const [projectCount, setProjectCount] = React.useState<number>(0);
     const [xplorerState, setXplorerState] = React.useState<XplorerState>('projects');
 
     return (
@@ -34,19 +33,16 @@ const Creations = (): React.JSX.Element => {
                 <div className={styles.creations__inner}>
                     <div className={styles.creations__details_block}>
                         <CreationsDetails
-                            projectCount={projectCount}
                             projectDefault={projectDefault}
                             projects={projects}
                             xplorerState={xplorerState}
                         />
                         <CreationsTechnologies
-                            projectCount={projectCount}
                             projectDefault={projectDefault}
                             projects={projects}
                             xplorerState={xplorerState}
                         />
                         <CreationsAbout
-                            projectCount={projectCount}
                             projectDefault={projectDefault}
                             projects={projects}
                             xplorerState={xplorerState}
@@ -54,13 +50,7 @@ const Creations = (): React.JSX.Element => {
                     </div>
 
                     <div className={styles.xplorer_block}>
-                        <Xplorer
-                            projectCount={projectCount}
-                            projects={projects}
-                            setProjectCount={setProjectCount}
-                            setXplorerState={setXplorerState}
-                            xplorerState={xplorerState}
-                        />
+                        <Xplorer projects={projects} setXplorerState={setXplorerState} xplorerState={xplorerState} />
                         <div className={styles.box_button}>
                             <Button
                                 className={styles.box_button__back}

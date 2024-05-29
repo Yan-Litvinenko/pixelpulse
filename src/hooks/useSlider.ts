@@ -11,7 +11,7 @@ const useSlider = (
 
     if (!contextApp) return 0;
 
-    const [countSlider, setCountSlider] = React.useState<number>(contextApp.modalProject);
+    const [countSlider, setCountSlider] = React.useState<number>(contextApp.modalProjectImage);
 
     let xDown: number = 0;
     let yDown: number = 0;
@@ -108,7 +108,7 @@ const useSlider = (
             sliderElement.addEventListener('touchmove', touchMove);
             sliderElement.addEventListener('mousedown', mouseStart);
             sliderElement.addEventListener('mousemove', mouseMove);
-            sliderElement.style.transform = `translateX(-${contextApp.modalProject}00%)`;
+            sliderElement.style.transform = `translateX(-${contextApp.modalProjectImage}00%)`;
         }
 
         return () => {
