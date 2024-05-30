@@ -24,7 +24,7 @@ const CreationsXplorerContent = ({
 
     const handleChangeProject = (index: number): void => {
         setXplorerState('projectImages');
-        contextApp?.setProjectImages(projects[contextApp.modalProjectImage].images);
+        contextApp?.setProjectImages(projects[contextApp.modalProject].images);
         contextApp?.setModalProject(index);
         contextApp?.handleSoundClick();
     };

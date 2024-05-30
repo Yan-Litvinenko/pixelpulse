@@ -22,8 +22,6 @@ const ModalCreations = (): React.JSX.Element => {
     const countSlider = useSlider(slider, vectorLeft, vectorRight);
     const handleCloseModal = useCloseModal(modal, contextApp.setCreations, false, false, false);
 
-    console.log(contextApp.modalProject);
-
     const handleEnter = (event: KeyboardEvent): void => {
         if (event.key === 'Enter') {
             window.open(projects[contextApp.modalProject].link, '_blank');
@@ -59,15 +57,26 @@ const ModalCreations = (): React.JSX.Element => {
                 />
                 <div className={styles.modal__content}>
                     <div className={styles.modal__content_inner} ref={slider}>
-                        {contextApp.projectImages.map((imageName, index) => (
-                            <img
-                                alt={imageName}
-                                className={styles.modal__item}
-                                draggable="false"
-                                key={index}
-                                src={require('../../assets/images/' + imageName)}
-                            />
-                        ))}
+                        {contextApp.projectImages.map((imageName, index) => {
+                            return (
+                                <div className={styles.modal__item}>
+                                    <img
+                                        alt={imageName}
+                                        className={styles.modal__item_img}
+                                        draggable="false"
+                                        key={index}
+                                        src={require('../../assets/images/' + imageName)}
+                                    />
+                                    <img
+                                        alt={imageName}
+                                        className={styles.modal__item_bg}
+                                        draggable="false"
+                                        key={index}
+                                        src={require('../../assets/images/' + imageName)}
+                                    />
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
                 <img
