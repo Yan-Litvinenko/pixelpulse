@@ -47,12 +47,6 @@ const ModalAvailability = (): React.JSX.Element | null => {
                         status={formSubmit.error}
                     />
                 ) : null}
-                <ModalSendState
-                    setError={formSubmit.setError}
-                    setLoading={formSubmit.setLoading}
-                    setSuccessfully={formSubmit.setSuccessfully}
-                    status={formSubmit.successfully}
-                />
                 <form className={styles.modal__inner} onSubmit={formSubmit.handleSubmit}>
                     <div className={styles.modal__box_title}>
                         <Heading className={styles.modal__title} level="3" textContent={'open for hire'} />
