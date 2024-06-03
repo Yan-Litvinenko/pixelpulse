@@ -130,6 +130,7 @@
 }
 
 .visual svg path {
+    fill: var(--main-color);
     transition: filter var(--transition-element);
 }
 
