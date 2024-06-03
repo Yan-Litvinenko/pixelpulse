@@ -27,8 +27,10 @@ const GlitchCanvas: React.FC<GlitchCanvasProps> = ({ imageUrl, className, minDel
     React.useEffect(() => {
         const canvas: HTMLCanvasElement | null = canvasRef.current;
         if (!canvas) return;
+
         const ctx: CanvasRenderingContext2D | null = canvas.getContext('2d');
         if (!ctx) return;
+
         const img: HTMLImageElement = imgRef.current;
 
         const glitchImage = (): void => {

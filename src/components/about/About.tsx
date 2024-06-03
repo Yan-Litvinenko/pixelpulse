@@ -1,5 +1,7 @@
 import React from 'react';
 import AboutElement from '../aboutElement/AboutElement';
+import { ContextApp } from '../app/App';
+import { IAppContext } from '../../interfaces/interface';
 import Frame from '../frame/Frame';
 import Heading from '../heading/Heading';
 import { nanoid } from 'nanoid';
@@ -23,6 +25,8 @@ const content: Record<string, string>[] = [
 ];
 
 const About = (): React.JSX.Element => {
+    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
+
     return (
         <main className={styles.about}>
             <Heading className={styles.about__title} level="2" textContent="who is Yan Litvinenko" />
@@ -32,10 +36,17 @@ const About = (): React.JSX.Element => {
                         <AboutElement key={nanoid()} text={item.text} title={item.title} />
                     ))}
                 </div>
-                <div className={styles.box_image}>
-                    <Frame className={styles.frame} />
-                    <GlitchCanvas className={styles.about__img} imageUrl={humanJpg} minDelay={7000} maxDelay={15000} />
-                </div>
+                {contextApp?.isMedium ? null : (
+                    <div className={styles.box_image}>
+                        <Frame className={styles.frame} />
+                        <GlitchCanvas
+                            className={styles.about__img}
+                            imageUrl={humanJpg}
+                            minDelay={7000}
+                            maxDelay={15000}
+                        />
+                    </div>
+                )}
             </div>
         </main>
     );

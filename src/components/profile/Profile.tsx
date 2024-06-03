@@ -21,10 +21,12 @@ const Profile = (): React.JSX.Element => {
 
     return (
         <aside className={styles.profile}>
-            <Link to="about" className={styles.avatar} onClick={handleClickAvatar}>
-                <Frame className={styles.avatar__frame} />
-                <GlitchCanvas className={styles.canvas} imageUrl={avatar} minDelay={20000} maxDelay={40000} />
-            </Link>
+            {contextApp?.isMedium ? null : (
+                <Link to="about" className={styles.avatar} onClick={handleClickAvatar}>
+                    <Frame className={styles.avatar__frame} />
+                    <GlitchCanvas className={styles.canvas} imageUrl={avatar} minDelay={20000} maxDelay={40000} />
+                </Link>
+            )}
 
             {profileItems.map((item) => {
                 return <ProfileElement adjacent={item.adjacent} header={item.header} key={nanoid()} />;
