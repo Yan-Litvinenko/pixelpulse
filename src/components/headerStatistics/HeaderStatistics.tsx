@@ -43,13 +43,15 @@ const HeaderStatistics = ({ className }: IStatistics): React.JSX.Element => {
             <div className={className.coins}>
                 <div className={className.coins__add_box}>
                     <Button
-                        className={`${className.coins__btn} ${!contextApp.isAddedCoinToday ? className.coins__btn_pulse : ''}`}
+                        // className={`${className.coins__btn} ${!contextApp.isAddedCoinToday ? className.coins__btn_pulse : ''}`}
+                        className={`${className.coins__btn} ${className.coins__btn_pulse}`}
                         delayEvent={false}
                         handleButton={handleAddCoin}
                         textContent="+"
                         type="button"
                     />
-                    {!contextApp.isAddedCoinToday ? <div className={className.pulse}></div> : null}
+                    {/* {!contextApp.isAddedCoinToday ? : null} */}
+                    <div className={className.pulse}></div>
                 </div>
                 <div className={className.coins__text_box}>
                     <span className={className.coins__text}>{contextApp.coins}</span> coins awarded

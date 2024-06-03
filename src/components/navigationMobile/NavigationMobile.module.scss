@@ -54,18 +54,26 @@
 
     &__btn {
         @include flex-container($align-items: center, $justify-content: center);
-        background-color: transparent;
-        border: 0.0625rem solid var(--dark-grey);
+        background-color: var(--main-background-color);
+        border: 0.0625rem solid var(--dark-light-border);
         color: var(--main-color);
-        cursor: pointer;
-        font-size: 1.4rem;
+        cursor: auto;
+        font-size: 1.2rem;
         height: 2rem;
         padding: 0rem;
+        position: relative;
+        user-select: none;
         width: 2rem;
+        z-index: 2;
     }
 
-    &__btn:active {
-        font-size: 1.25rem;
+    &__btn_pulse {
+        cursor: pointer;
+        user-select: auto;
+    }
+
+    &__btn_pulse:active {
+        font-size: 1.65rem;
     }
 
     &__cross {
@@ -73,6 +81,15 @@
         cursor: pointer;
         transform: translate(-50%, -50%);
     }
+}
+
+.pulse {
+    animation: pulse infinite 1s;
+    background-color: var(--main-color);
+    inset: 0;
+    opacity: 1;
+    position: absolute;
+    z-index: 1;
 }
 
 .level {
@@ -185,7 +202,23 @@
     opacity: 0.5;
 }
 
+@keyframes pulse {
+    0% {
+        opacity: 1;
+        scale: 1;
+    }
+
+    100% {
+        opacity: 0;
+        scale: 1.4;
+    }
+}
+
 @media (hover: hover) {
+    .coins__add_box:hover .pulse {
+        animation: none;
+    }
+
     .audio:hover {
         text-shadow: var(--text-shadow);
     }
@@ -238,16 +271,6 @@
         flex-direction: row-reverse;
         justify-content: flex-end;
         gap: 0rem 0.3125rem;
-
-        &__add_box {
-            top: 0.35rem;
-        }
-
-        &__btn {
-            border: none;
-            height: 1.75rem;
-            width: 1.75rem;
-        }
     }
 
     .visual div {
