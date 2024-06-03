@@ -33,7 +33,7 @@ const Form = (props: IForm): React.JSX.Element | null => {
                 maxLength={50}
                 minLength={3}
                 name="email"
-                pattern={/^[^\s@]+@[^\s@]+\.[^\s@]+$/}
+                pattern={/\w+@[a-z]{2,}\.[a-z]{2,}$/}
                 patternMessage={'Incorrect email'}
                 placeholder={'your.name@example.com'}
                 register={props.register}

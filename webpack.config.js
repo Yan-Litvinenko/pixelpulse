@@ -106,6 +106,7 @@ function addPlugins() {
             cache: true,
             inject: true,
             favicons: {
+                background: '#000',
                 icons: {
                     android: true,
                     appleIcon: true,

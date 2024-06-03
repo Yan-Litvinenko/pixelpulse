@@ -38,63 +38,76 @@ const ModalCreations = (): React.JSX.Element => {
 
     return (
         <div className={styles.modal} ref={modal}>
-            <div className={styles.modal__header}>
-                <Heading className={styles.modal__subtitle} level="3" textContent="previewing images from" />
-                <Heading
-                    className={styles.modal__title}
-                    level="2"
-                    textContent={projects[contextApp.modalProject].name}
-                />
-            </div>
-
-            <div className={styles.modal__content_wrapper}>
-                <img
-                    alt="vector"
-                    className={`${styles.vector} ${styles.vector__left} ${countSlider === 0 ? styles.vector__deactive : ''}`}
-                    draggable="false"
-                    ref={vectorLeft}
-                    src={vectorImageLeft}
-                />
-                <div className={styles.modal__content}>
-                    <div className={styles.modal__content_inner} ref={slider}>
-                        {contextApp.projectImages.map((imageName, index) => (
-                            <img
-                                alt={imageName}
-                                className={styles.modal__item}
-                                draggable="false"
-                                key={index}
-                                src={require('../../assets/images/' + imageName)}
-                            />
-                        ))}
-                    </div>
+            <div className={styles.modal__inner}>
+                <div className={styles.modal__header}>
+                    <Heading className={styles.modal__subtitle} level="3" textContent="previewing images from" />
+                    <Heading
+                        className={styles.modal__title}
+                        level="2"
+                        textContent={projects[contextApp.modalProject].name}
+                    />
                 </div>
-                <img
-                    alt="vector"
-                    className={`${styles.vector} ${styles.vector__right} ${countSlider === contextApp.projectImages.length - 1 ? styles.vector__deactive : ''}`}
-                    draggable="false"
-                    ref={vectorRight}
-                    src={vectorImageRight}
-                />
-            </div>
 
-            <div className={styles.button_wrapper}>
-                <a
-                    className={styles.button_wrapper__enter}
-                    href={projects[contextApp.modalProject].link}
-                    target="_blank"
-                >
-                    view project live
-                </a>
-                <span className={styles.button_wrapper__count}>
-                    {countSlider + 1} of {contextApp.projectImages.length}
-                </span>
-                <Button
-                    className={styles.button_wrapper__escape}
-                    delayEvent={true}
-                    handleButton={handleCloseModal}
-                    textContent={'CLOSE [esc]'}
-                    type="button"
-                />
+                <div className={styles.modal__content_wrapper}>
+                    <img
+                        alt="vector"
+                        className={`${styles.vector} ${styles.vector__left} ${countSlider === 0 ? styles.vector__deactive : ''}`}
+                        draggable="false"
+                        ref={vectorLeft}
+                        src={vectorImageLeft}
+                    />
+                    <div className={styles.modal__content}>
+                        <div className={styles.modal__content_inner} ref={slider}>
+                            {contextApp.projectImages.map((imageName, index) => {
+                                return (
+                                    <div className={styles.modal__item}>
+                                        <img
+                                            alt={imageName}
+                                            className={styles.modal__item_img}
+                                            draggable="false"
+                                            key={index}
+                                            src={require('../../assets/images/' + imageName)}
+                                        />
+                                        <img
+                                            alt={imageName}
+                                            className={styles.modal__item_bg}
+                                            draggable="false"
+                                            key={index}
+                                            src={require('../../assets/images/' + imageName)}
+                                        />
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                    <img
+                        alt="vector"
+                        className={`${styles.vector} ${styles.vector__right} ${countSlider === contextApp.projectImages.length - 1 ? styles.vector__deactive : ''}`}
+                        draggable="false"
+                        ref={vectorRight}
+                        src={vectorImageRight}
+                    />
+                </div>
+
+                <div className={styles.button_wrapper}>
+                    <a
+                        className={styles.button_wrapper__enter}
+                        href={projects[contextApp.modalProject].link}
+                        target="_blank"
+                    >
+                        view project live
+                    </a>
+                    <span className={styles.button_wrapper__count}>
+                        {countSlider + 1} of {contextApp.projectImages.length}
+                    </span>
+                    <Button
+                        className={styles.button_wrapper__escape}
+                        delayEvent={true}
+                        handleButton={handleCloseModal}
+                        textContent={'CLOSE [esc]'}
+                        type="button"
+                    />
+                </div>
             </div>
         </div>
     );

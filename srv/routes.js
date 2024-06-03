@@ -78,7 +78,7 @@ exports.getAchievements = async (req, res) => {
 
 exports.getServerTime = (req, res) => {
     try {
-        const serverTime = getCurrentServerTime();
+        const serverTime = new Date();
         res.json({ serverTime });
     } catch (error) {
         res.status(500).json({ error: 'Internal Server Error' });

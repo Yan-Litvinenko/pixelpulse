@@ -12,7 +12,7 @@ const CreationsXplorerItem = ({ image, textContent, onClick }: ICreationsXplorer
     return (
         <li className={styles.item} onClick={onClick}>
             <div className={styles.frame}>{image === 'image' ? <Image /> : <Folder />}</div>
-            {textContent}
+            {image === 'image' ? textContent.slice(5) : textContent}
         </li>
     );
 };

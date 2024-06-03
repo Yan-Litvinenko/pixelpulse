@@ -18,6 +18,7 @@ type IAppContext = {
     level: string;
     mainMusic: UseAudioPlayer;
     modalProject: number;
+    modalProjectImage: number;
     music: boolean;
     navigationMobile: boolean;
     projectImages: string[];
@@ -32,6 +33,7 @@ type IAppContext = {
     setIsAddedCoinToday: BooleanState;
     setLevel: React.Dispatch<React.SetStateAction<string>>;
     setModalProject: React.Dispatch<React.SetStateAction<number>>;
+    setModalProjectImage: React.Dispatch<React.SetStateAction<number>>;
     setMusic: BooleanState;
     setNavigationMobile: BooleanState;
     setProjectImages: React.Dispatch<React.SetStateAction<string[]>>;

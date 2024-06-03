@@ -5,7 +5,7 @@ const useServerTime = (): Date[] => {
     const [valueDate, setValueDate] = React.useState(`${new Date()}`);
     const [serverTime, setServerTime] = React.useState(new Date(valueDate));
 
-    const tick = (): void => setServerTime(new Date());
+    const tick = (): void => setServerTime(new Date(valueDate));
 
     React.useEffect(() => {
         fetchServerTime().then((data) => setValueDate(`${new Date(data)}`));

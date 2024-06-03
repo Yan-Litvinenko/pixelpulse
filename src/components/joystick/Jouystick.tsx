@@ -11,13 +11,39 @@ interface IJouystick {
 }
 
 const Joystick = (props: IJouystick): React.JSX.Element => {
+    const vibrate = () => {
+        if (navigator.vibrate) {
+            navigator.vibrate(50);
+        }
+    };
+
+    const down = () => {
+        props.down();
+        vibrate();
+    };
+
+    const left = () => {
+        props.left();
+        vibrate();
+    };
+
+    const right = () => {
+        props.right();
+        vibrate();
+    };
+
+    const up = () => {
+        props.up();
+        vibrate();
+    };
+
     return (
         <>
             <div className={`${styles.circle} ${props.className}`}>
-                <JoystickDown down={props.down} />
-                <JoystickLeft left={props.left} />
-                <JoystickRight right={props.right} />
-                <JoystickUp up={props.up} />
+                <JoystickDown down={down} />
+                <JoystickLeft left={left} />
+                <JoystickRight right={right} />
+                <JoystickUp up={up} />
             </div>
         </>
     );
