@@ -4,6 +4,7 @@ import { ContextApp } from '../app/App';
 import { Link } from 'react-router-dom';
 import Heading from '../heading/Heading';
 import Paragraph from '../paragraph/Paragraph';
+import audioKeyboardPress from '../../assets/audio/pressKeyboard.mp3';
 import { IAppContext } from '../../interfaces/interface';
 import styles from './Welcome.module.scss';
 
@@ -18,7 +19,10 @@ const Welcome = (): React.JSX.Element => {
 
     if (!contextApp) return <></>;
 
+    const audioKeyboard = React.useRef(new Audio(audioKeyboardPress));
+
     const [skipStatus, setSkipStatus] = React.useState<boolean>(false);
+    const [audioKeyboardStatus, setAudioKeyboardStatus] = React.useState(contextApp.sounds ? true : false);
 
     const delayTextOne: number = textForPrint.title.length * 50;
     const delayTextTwo: number = (textForPrint.title.length + textForPrint.text_1.length) * 50;
@@ -30,12 +34,37 @@ const Welcome = (): React.JSX.Element => {
     const skip = () => {
         [...title.timers, ...textOne.timers, ...textTwo.timers].forEach((timer) => clearTimeout(timer));
         setSkipStatus(true);
+        setAudioKeyboardStatus(false);
+        audioKeyboard.current.pause();
         contextApp.handleSoundClick();
     };
 
     const textElementWithAnimation = (currentText: string, condition: boolean) => {
         return `${currentText} ${condition ? '|' : ''}`;
     };
+
+    const handleAudioKeyboard = () => {
+        if (audioKeyboardStatus) {
+            audioKeyboard.current.play();
+        }
+    };
+
+    React.useEffect(() => {
+        window.addEventListener('click', handleAudioKeyboard);
+
+        return () => {
+            window.removeEventListener('click', handleAudioKeyboard);
+            audioKeyboard.current.pause();
+        };
+    }, [audioKeyboardStatus]);
+
+    React.useEffect(() => {
+        const changeStatus = setTimeout(() => {
+            setAudioKeyboardStatus(false);
+        }, 13000);
+
+        return () => clearTimeout(changeStatus);
+    }, []);
 
     return (
         <div className={styles.welcome}>

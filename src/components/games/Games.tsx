@@ -5,6 +5,7 @@ import Paragraph from '../paragraph/Paragraph';
 import { ContextApp } from '../app/App';
 import { IAppContext } from '../../interfaces/interface';
 import ArcanoidImg from '../../assets/images/arcanoid.jpg';
+import MarioImg from '../../assets/images/mario.jpg';
 import SnakeImg from '../../assets/images/snake.jpg';
 import styles from './Games.module.scss';
 
@@ -27,14 +28,6 @@ const Games = (): React.JSX.Element => {
                     </div>
 
                     <div className={styles.content__games}>
-                        <figure className={`${styles.content__item} ${styles.content__item_deactive}`}>
-                            <img src={ArcanoidImg} alt="Arcanoid" draggable={false} />
-                            <figcaption className={styles.content__description}>
-                                <Heading className={styles.content__title} textContent="arcanoid" level="3" />
-                                <Paragraph className={styles.content__text} textContent="destroy the bricks game" />
-                            </figcaption>
-                        </figure>
-
                         <Link to={'/games/snake'} onClick={() => contextApp?.handleSoundClick()}>
                             <figure className={styles.content__item}>
                                 <img src={SnakeImg} alt="Snake" draggable={false} />
@@ -44,6 +37,22 @@ const Games = (): React.JSX.Element => {
                                 </figcaption>
                             </figure>
                         </Link>
+
+                        <figure className={`${styles.content__item} ${styles.content__item_deactive}`}>
+                            <img src={MarioImg} alt="Mario" draggable={false} />
+                            <figcaption className={styles.content__description}>
+                                <Heading className={styles.content__title} textContent="dr mario" level="3" />
+                                <Paragraph className={styles.content__text} textContent="a dr. mario clone" />
+                            </figcaption>
+                        </figure>
+
+                        <figure className={`${styles.content__item} ${styles.content__item_deactive}`}>
+                            <img src={ArcanoidImg} alt="Arcanoid" draggable={false} />
+                            <figcaption className={styles.content__description}>
+                                <Heading className={styles.content__title} textContent="arcanoid" level="3" />
+                                <Paragraph className={styles.content__text} textContent="destroy the bricks game" />
+                            </figcaption>
+                        </figure>
                     </div>
                 </div>
             ) : (
