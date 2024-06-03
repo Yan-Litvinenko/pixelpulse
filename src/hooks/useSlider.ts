@@ -1,6 +1,7 @@
 import React from 'react';
 import { ContextApp } from '../components/app/App';
 import { IAppContext } from '../interfaces/interface';
+import soundClick from '../assets/audio/click.ogg';
 
 const useSlider = (
     slider: React.MutableRefObject<HTMLDivElement | null>,
@@ -8,6 +9,7 @@ const useSlider = (
     vectorRight: React.MutableRefObject<HTMLImageElement | null>,
 ): number => {
     const contextApp: IAppContext | undefined = React.useContext(ContextApp);
+    const audio = new Audio(soundClick);
 
     if (!contextApp) return 0;
 
@@ -21,6 +23,10 @@ const useSlider = (
             const transformValue: string = `translateX(-${counter}00%)`;
             if (content.style.transform !== transformValue) {
                 content.style.transform = transformValue;
+            }
+
+            if (contextApp.sounds) {
+                audio.play();
             }
         }
     };
