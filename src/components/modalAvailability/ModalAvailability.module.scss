@@ -20,20 +20,17 @@
     }
 }
 
-@media (max-height: 890px) {
-    .modal__inner {
-        overflow-y: auto;
-
+@media (max-height: 700px) {
+    .modal {
         &::-webkit-scrollbar {
             width: 0;
             height: 0;
         }
-    }
-}
 
-@media (max-height: 890px) {
-    .modal__inner {
-        overflow-y: scroll;
+        &__inner {
+            min-height: max-content;
+            overflow: auto;
+        }
     }
 }
 
@@ -70,7 +67,7 @@
         &__inner {
             background-color: var(--main-background-color);
             border: 0.0625rem solid var(--dark-border);
-            height: 96vh;
+            height: 98vh;
             padding-top: 1rem;
             width: 100%;
 
@@ -102,6 +99,10 @@
 
 @media (max-width: 768px) {
     .modal {
+        &__inner {
+            padding-top: 0.625rem;
+        }
+
         &__title {
             padding: 0rem 1.25rem;
             margin-bottom: 0.625rem;

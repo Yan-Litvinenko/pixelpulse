@@ -77,13 +77,16 @@
     }
 }
 
-@media (max-height: 890px) {
-    .modal__inner {
-        overflow-y: auto;
-
+@media (max-height: 700px) {
+    .modal {
         &::-webkit-scrollbar {
             width: 0;
             height: 0;
+        }
+
+        &__inner {
+            min-height: max-content;
+            overflow: auto;
         }
     }
 }
@@ -98,7 +101,7 @@
             @include flex-container(column);
             background-color: var(--main-background-color);
             border: 0.0625rem solid var(--dark-border);
-            height: 96vh;
+            height: 98vh;
             max-width: none;
             padding-top: 1rem;
             width: 100%;
