@@ -4,7 +4,7 @@
         "brief": "popular destination for coffee lovers",
         "technologies": ["github", "figma", "gulp", "sass", "js"],
         "about": [
-            "The site is adapted for screens with a size of at least 320px. has a modern design and attractive visual effects. The following tools were used during development: gulp 4, prettier, eslint."
+            "The site is adapted for screens of at least 320px. has a modern design and attractive visual effects. Used in development: gulp 4, prettier, eslint."
         ],
         "images": ["CFHS_about-1.jpg", "CFHS_about-2.jpg", "CFHS_mobile-app.jpg"],
         "link": "/"

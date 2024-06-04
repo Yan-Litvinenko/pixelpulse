@@ -17,7 +17,7 @@ const projectDefault: IProject = {
     brief: 'reflects growth in educational or professional achievements',
     images: [''],
     link: '',
-    name: 'web-portfolio',
+    name: 'pixelpulse',
     technologies: ['webpack', 'ts', 'react', 'nodeJS', 'mysql'],
 };
 

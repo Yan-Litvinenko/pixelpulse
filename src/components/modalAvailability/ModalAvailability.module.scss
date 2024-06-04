@@ -22,6 +22,17 @@
 
 @media (max-height: 890px) {
     .modal__inner {
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+        }
+    }
+}
+
+@media (max-height: 890px) {
+    .modal__inner {
         overflow-y: scroll;
     }
 }
@@ -59,7 +70,7 @@
         &__inner {
             background-color: var(--main-background-color);
             border: 0.0625rem solid var(--dark-border);
-            height: 98vh;
+            height: 96vh;
             padding-top: 1rem;
             width: 100%;
 
@@ -91,16 +102,6 @@
 
 @media (max-width: 768px) {
     .modal {
-        bottom: 0.625rem;
-        left: 0.625rem;
-        padding: 0rem;
-        right: 0.625rem;
-        top: 0.625rem;
-
-        &__inner {
-            padding-top: 0.625rem;
-        }
-
         &__title {
             padding: 0rem 1.25rem;
             margin-bottom: 0.625rem;
