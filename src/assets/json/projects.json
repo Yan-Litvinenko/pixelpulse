@@ -5,6 +5,6 @@
         "technologies": ["github", "figma", "gulp", "sass", "js"],
         "about": ["Coffee House is a two-page adaptive project with attractive visual effects."],
         "images": ["CFHS_about-1.jpg", "CFHS_about-2.jpg", "CFHS_mobile-app.jpg"],
-        "link": "/"
+        "link": "https://darth-vaderx.github.io/coffee-house/"
     }
 ]
