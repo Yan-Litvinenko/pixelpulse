@@ -43,7 +43,7 @@ const useCloseModal = (
 
     React.useEffect(() => {
         if (contextApp?.isLarge || contextApp?.isMedium) {
-            window.addEventListener('keydown', handleKeydownEscape);
+            window.addEventListener('click', handleClickOnTheWindow);
         } else {
             if (!mainModal) {
                 setTimeout(() => {

@@ -21,9 +21,18 @@
     }
 }
 
-@media (max-height: 890px) {
-    .modal__inner {
-        overflow-y: scroll;
+@media (max-height: 760px) {
+    .modal {
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+        }
+
+        &__inner {
+            overflow: auto;
+        }
     }
 }
 
@@ -58,20 +67,14 @@
 @media (max-width: 1200px) {
     .modal {
         background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.6) 60%, rgba(0, 0, 0, 0));
-        inset: 0;
         padding: 0.625rem;
 
         &__inner {
             background-color: var(--main-background-color);
             border: 0.0625rem solid var(--dark-border);
-            height: 98vh;
+            height: 100%;
             padding-top: 1rem;
             width: 100%;
-
-            &::-webkit-scrollbar {
-                width: 0;
-                height: 0;
-            }
         }
 
         &__title {
@@ -96,12 +99,6 @@
 
 @media (max-width: 768px) {
     .modal {
-        bottom: 0.625rem;
-        left: 0.625rem;
-        padding: 0rem;
-        right: 0.625rem;
-        top: 0.625rem;
-
         &__inner {
             padding-top: 0.625rem;
         }
