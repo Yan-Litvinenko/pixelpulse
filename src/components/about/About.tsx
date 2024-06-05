@@ -12,11 +12,11 @@ import styles from './About.module.scss';
 const content: Record<string, string>[] = [
     {
         title: 'The short introduction of my life',
-        text: 'For the past one and a half years, I have been diving into the world of front-end development. My journey began with JavaScript and quickly expanded to include React and TypeScript. I have always been passionate about creating smooth and interactive user experiences.',
+        text: 'for the last half of the year i have been immersed in the world of frontend development. my journey started with javascript. soon i started learning react and typescript. i have always been interested in creating a user-friendly and interactive user interface.',
     },
     {
         title: 'Career and development',
-        text: 'During my learning journey, I have also dabbled a bit in back-end technologies, gaining some experience with Node.js and MySQL. While I enjoy front-end development, I am eager to deepen my knowledge of back-end development, particularly with Node.js and databases like MySQL and MongoDB. I believe that understanding the full stack will make me a more versatile and effective developer.',
+        text: 'although i like front end development, i am looking to depend my knowledge in backend development, especially with node.js and databases such as mysql and mongodb. i believe understanding the full stack will make me a more versatile and effective developer.',
     },
     {
         title: 'More can be added in the left side for summary',

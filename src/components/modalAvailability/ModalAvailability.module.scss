@@ -4,6 +4,7 @@
     @include modal();
 
     &__inner {
+        @include flex-container(column);
         position: relative;
     }
 
@@ -17,20 +18,6 @@
 
     &__subtitle {
         @include modal-subtitle();
-    }
-}
-
-@media (max-height: 700px) {
-    .modal {
-        &::-webkit-scrollbar {
-            width: 0;
-            height: 0;
-        }
-
-        &__inner {
-            min-height: max-content;
-            overflow: auto;
-        }
     }
 }
 
@@ -58,23 +45,32 @@
     }
 }
 
+@media (max-height: 760px) {
+    .modal {
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+        }
+
+        &__inner {
+            overflow: auto;
+        }
+    }
+}
+
 @media (max-width: 1200px) {
     .modal {
         background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.6) 60%, rgba(0, 0, 0, 0));
-        inset: 0;
         padding: 0.625rem;
 
         &__inner {
             background-color: var(--main-background-color);
             border: 0.0625rem solid var(--dark-border);
-            height: 98vh;
+            height: 100%;
             padding-top: 1rem;
             width: 100%;
-
-            &::-webkit-scrollbar {
-                width: 0;
-                height: 0;
-            }
         }
 
         &__title {

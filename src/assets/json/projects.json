@@ -3,9 +3,7 @@
         "name": "coffee-house",
         "brief": "popular destination for coffee lovers",
         "technologies": ["github", "figma", "gulp", "sass", "js"],
-        "about": [
-            "The site is adapted for screens of at least 320px. has a modern design and attractive visual effects. Used in development: gulp 4, prettier, eslint."
-        ],
+        "about": ["Coffee House is a two-page adaptive project with attractive visual effects."],
         "images": ["CFHS_about-1.jpg", "CFHS_about-2.jpg", "CFHS_mobile-app.jpg"],
         "link": "/"
     }

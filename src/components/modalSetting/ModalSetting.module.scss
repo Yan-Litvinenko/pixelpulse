@@ -77,15 +77,16 @@
     }
 }
 
-@media (max-height: 700px) {
+@media (max-height: 760px) {
     .modal {
+        overflow-y: auto;
+
         &::-webkit-scrollbar {
             width: 0;
             height: 0;
         }
 
         &__inner {
-            min-height: max-content;
             overflow: auto;
         }
     }
@@ -94,15 +95,13 @@
 @media (max-width: 1200px) {
     .modal {
         background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.6) 60%, rgba(0, 0, 0, 0));
-        inset: 0;
         padding: 0.625rem;
 
         &__inner {
             @include flex-container(column);
             background-color: var(--main-background-color);
             border: 0.0625rem solid var(--dark-border);
-            height: 98vh;
-            max-width: none;
+            height: 100%;
             padding-top: 1rem;
             width: 100%;
         }
