@@ -19,7 +19,7 @@ const GlitchCanvas: React.FC<GlitchCanvasProps> = ({ imageUrl, className, minDel
     const countRender = React.useRef<number>(1);
 
     const audio: HTMLAudioElement = new Audio(glitchEffect);
-    audio.volume = 0.04;
+    audio.volume = 0.1;
 
     const getRandomDealy = (): number => {
         return Math.floor(Math.random() * (maxDelay - minDelay + 1)) + minDelay;
