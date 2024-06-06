@@ -12,13 +12,14 @@ interface GlitchCanvasProps {
 
 const GlitchCanvas: React.FC<GlitchCanvasProps> = ({ imageUrl, className, minDelay, maxDelay }) => {
     const contextApp: IAppContext | undefined = React.useContext(ContextApp);
+    const [isCanvasLoaded, setIsCanvasLoaded] = React.useState(false);
     const timer = React.useRef<NodeJS.Timeout | null>(null);
     const canvasRef = React.useRef<HTMLCanvasElement>(null);
     const imgRef = React.useRef<HTMLImageElement>(new Image());
     const countRender = React.useRef<number>(1);
 
     const audio: HTMLAudioElement = new Audio(glitchEffect);
-    audio.volume = 0.04;
+    audio.volume = 0.1;
 
     const getRandomDealy = (): number => {
         return Math.floor(Math.random() * (maxDelay - minDelay + 1)) + minDelay;
@@ -93,6 +94,7 @@ const GlitchCanvas: React.FC<GlitchCanvasProps> = ({ imageUrl, className, minDel
         img.onload = (): void => {
             canvas.width = img.width;
             canvas.height = img.height;
+            setIsCanvasLoaded(true);
             glitchImage();
         };
 
@@ -101,7 +103,12 @@ const GlitchCanvas: React.FC<GlitchCanvasProps> = ({ imageUrl, className, minDel
         };
     }, [imageUrl]);
 
-    return <canvas className={className} ref={canvasRef} />;
+    return (
+        <>
+            {!isCanvasLoaded && <img className={className} src={imageUrl} alt={imageUrl} />}
+            <canvas className={className} ref={canvasRef} />
+        </>
+    );
 };
 
 export default GlitchCanvas;

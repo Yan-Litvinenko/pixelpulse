@@ -6,6 +6,7 @@ exports.getLevel = async (req, res) => {
         const LEVEL = await dataBase.getDataAdminTable('level');
         res.json(LEVEL);
     } catch (error) {
+        console.error('Error fetching level data:', error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
 };
@@ -15,6 +16,7 @@ exports.getCoins = async (req, res) => {
         const COINS = await dataBase.getDataAdminTable('coins');
         res.json(COINS);
     } catch (error) {
+        console.error('Error fetching coins data:', error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
 };
@@ -79,7 +81,7 @@ exports.getAchievements = async (req, res) => {
 exports.getServerTime = (req, res) => {
     try {
         const serverTime = new Date();
-        res.json({ serverTime });
+        res.json({ serverTime: serverTime.toISOString() });
     } catch (error) {
         res.status(500).json({ error: 'Internal Server Error' });
     }

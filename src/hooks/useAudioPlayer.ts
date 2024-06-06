@@ -14,7 +14,7 @@ const useAudioPlayer = (initStatus: boolean): UseAudioPlayer => {
 
     React.useEffect(() => {
         const audio = audioRef.current;
-        audio.volume = 0.5;
+        audio.volume = 0.2;
 
         const handlePlay = () => setIsPlaying(true);
         const handlePause = () => setIsPlaying(false);

@@ -18,6 +18,7 @@
     }
 
     &__background_box {
+        display: grid;
         position: relative;
         height: 100%;
         width: 100%;
@@ -28,6 +29,8 @@
     }
 
     &__background {
+        grid-column: 1 / -1;
+        grid-row: 1 / -1;
         filter: hue-rotate(var(--data-image-color));
         height: 100%;
         object-fit: cover;
