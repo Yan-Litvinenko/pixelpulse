@@ -1,8 +1,8 @@
-const cron = require('node-cron');
-const dataBase = require('./srv/dataBase.js');
+const http = require('http');
 const express = require('express');
 const path = require('path');
-
+const cron = require('node-cron');
+const dataBase = require('./srv/dataBase.js');
 const usersBase = require('./srv/usersBase.js');
 const {
     getLevel,
@@ -12,10 +12,11 @@ const {
     updateUsersStatistic,
     getAchievements,
     getServerTime,
+    previewImage,
 } = require('./srv/routes.js');
 
 const app = express();
-const PORT = 8080;
+const PORT = 3000;
 
 (async () => {
     try {
@@ -30,6 +31,7 @@ const PORT = 8080;
         app.get('/update_users_statistic', updateUsersStatistic);
         app.get('/getAchievements', getAchievements);
         app.get('/server-time', getServerTime);
+        app.get('/preview.jpg', previewImage);
 
         app.get('*', (_, res) => {
             res.sendFile(path.join(__dirname, 'dist', 'index.html'));
@@ -40,8 +42,10 @@ const PORT = 8080;
             console.log('Clean users');
         });
 
-        app.listen(PORT, () => {
-            console.log(`Server is running on http://localhost:${PORT}`);
+        const httpServer = http.createServer(app);
+
+        httpServer.listen(PORT, () => {
+            console.log(`HTTP Server is running on http://localhost:${PORT}`);
         });
     } catch (error) {
         console.error('Error connecting to database:', error);

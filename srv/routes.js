@@ -1,3 +1,4 @@
+const path = require('path');
 const dataBase = require('./dataBase.js');
 const usersBase = require('./usersBase.js');
 
@@ -85,4 +86,14 @@ exports.getServerTime = (req, res) => {
     } catch (error) {
         res.status(500).json({ error: 'Internal Server Error' });
     }
+};
+
+exports.previewImage = (req, res) => {
+    const imagePath = path.join(__dirname, '..', 'preview.jpg');
+    res.sendFile(imagePath, (err) => {
+        if (err) {
+            console.error('Error sending image:', err);
+            res.status(500).json({ error: 'Internal Server Error', message: err.message });
+        }
+    });
 };
