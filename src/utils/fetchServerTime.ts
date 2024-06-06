@@ -1,13 +1,17 @@
+interface ServerTimeResponse {
+    serverTime: string;
+}
+
 const fetchServerTime = async (): Promise<Date> => {
     try {
-        const response: Response = await fetch('http://localhost:8080/server-time');
+        const response: Response = await fetch('/server-time');
 
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
 
-        const data: string = await response.json();
-        const serverTimeUTC = new Date(data);
+        const data: ServerTimeResponse = await response.json();
+        const serverTimeUTC = new Date(data.serverTime);
 
         return serverTimeUTC;
     } catch (error) {

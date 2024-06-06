@@ -42,6 +42,7 @@
         border: 0.0625rem solid var(--frame-border-color);
         max-width: 73rem;
         overflow: hidden;
+        user-select: none;
         width: 100%;
     }
 

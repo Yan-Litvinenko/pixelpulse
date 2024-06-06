@@ -22,23 +22,24 @@
     &__img {
         filter: hue-rotate(var(--data-image-color));
         height: 100%;
+        height: 38rem;
         user-select: none;
         width: 100%;
     }
 }
 
 .box_image {
+    display: grid;
     position: relative;
-    height: 38rem;
 }
 
 @media (max-width: 1700px) {
     .about {
         height: var(--height-medium);
-    }
 
-    .box_image {
-        height: 34rem;
+        &__img {
+            height: 34rem;
+        }
     }
 }
 
@@ -58,6 +59,10 @@
 
         &__text_content {
             row-gap: 1.5rem;
+        }
+
+        &__img {
+            height: 32rem;
         }
     }
 }
@@ -79,10 +84,6 @@
         &__text_content {
             width: max-content;
         }
-    }
-
-    .box_image {
-        height: 34rem;
     }
 }
 
