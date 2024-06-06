@@ -71,13 +71,14 @@
 
 @media (max-width: 1380px) {
     .beginning {
-        height: auto;
+        height: var(--height-small);
     }
 }
 
 @media (max-width: 1200px) {
     .beginning {
         @include flex-container(column);
+        height: auto;
 
         &::after {
             display: none;

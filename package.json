@@ -1,9 +1,10 @@
 {
-    "name": "pixelpulse",
-    "version": "1.0.0",
     "description": "app",
-    "type": "commonjs",
+    "homepage": "/",
     "main": "index.js",
+    "name": "pixelpulse",
+    "type": "commonjs",
+    "version": "1.0.0",
     "scripts": {
         "start-srv": "nodemon server",
         "dev": "cross-env NODE_ENV=development webpack --mode development",

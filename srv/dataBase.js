@@ -91,10 +91,11 @@ class DataBase {
 }
 
 const dataBase = new DataBase({
-    host: 'localhost',
-    user: 'root',
-    password: 'ewqAg6xBAs.rDVPs',
-    database: 'cv',
+    host: '',
+    port: 3306,
+    user: '',
+    password: '',
+    database: '',
 });
 
 module.exports = dataBase;
