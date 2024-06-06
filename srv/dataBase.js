@@ -91,11 +91,11 @@ class DataBase {
 }
 
 const dataBase = new DataBase({
-    host: '78.140.252.41',
+    host: '',
     port: 3306,
-    user: 'root',
-    password: 'cfvceyu301',
-    database: 'pixelpulse',
+    user: '',
+    password: '',
+    database: '',
 });
 
 module.exports = dataBase;

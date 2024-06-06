@@ -11,7 +11,7 @@ import styles from './HeaderTime.module.scss';
 const HeaderTime = (): React.JSX.Element => {
     const contextApp: IAppContext | undefined = React.useContext(ContextApp);
     const [localTime] = useLocalTime();
-    const [serverTime] = useServerTime();
+    const serverTime = useServerTime();
 
     return (
         <div className={styles.time}>
