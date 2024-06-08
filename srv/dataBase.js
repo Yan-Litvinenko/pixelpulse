@@ -83,7 +83,7 @@ class DataBase {
 
     levelUp(countCoins) {
         if (countCoins > 75) {
-            return Math.floor(countCoins / 75);
+            return Math.ceil(countCoins / 75);
         }
 
         return 1;
