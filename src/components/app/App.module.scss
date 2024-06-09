@@ -24,11 +24,11 @@
     }
 
     &__active_left {
-        transform: perspective(46.875rem) rotateY(-31deg) translateY(-8%) translateZ(-33.75rem);
+        transform: perspective(46.875rem) rotateY(-31deg) translateY(-3rem) translateZ(-33.75rem);
     }
 
     &__active_center {
-        transform: perspective(46.875rem) rotateX(25deg) translateY(-15%) translateZ(-2.5rem);
+        transform: perspective(46.875rem) rotateX(25deg) translateY(-12rem) translateZ(-2.5rem);
     }
 }
 
