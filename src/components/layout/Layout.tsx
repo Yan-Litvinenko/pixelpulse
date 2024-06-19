@@ -14,6 +14,18 @@ const Layout = ({ children }: { children: React.JSX.Element }): React.JSX.Elemen
     const contextApp = React.useContext<IAppContext | undefined>(ContextApp);
     const location = useLocation();
 
+    React.useEffect(() => {
+        const path: string[] = location.pathname.split('/');
+        const lastField: string = path[path.length - 1];
+
+        if (lastField.length) {
+            const transformTitle: string = lastField[0].toLocaleUpperCase() + lastField.slice(1);
+            document.title = transformTitle;
+        } else {
+            document.title = 'Welcome';
+        }
+    }, [location.pathname]);
+
     if (location.pathname === '/') {
         return <>{children}</>;
     }

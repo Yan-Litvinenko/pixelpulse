@@ -14,7 +14,7 @@ const Logs = (): React.JSX.Element => {
         <main className={styles.logs}>
             <>
                 <div className={styles.logs__inner}>
-                    <Heading className={styles.logs__title} level="2" textContent="data log dump initialized." />
+                    <Heading className={styles.logs__title} level="2" textContent="data log dump initialized" />
                     <LogsProject />
                     <LogsUpdate />
                     <a
