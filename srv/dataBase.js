@@ -44,24 +44,6 @@ class DataBase {
         }
     }
 
-    async updateUserTable(ip) {
-        try {
-            await this.connect();
-            const [rows] = await this.db.query(`SELECT COUNT(*) AS count FROM users WHERE ip_address = ?`, [ip]);
-            const hasInDataBase = rows[0].count > 0;
-
-            if (hasInDataBase) {
-                const query = `UPDATE users SET login_count = login_count + 1, last_login = CURRENT_TIMESTAMP WHERE ip_address = ?`;
-                await this.db.execute(query, [ip]);
-            } else {
-                const query = `INSERT INTO users (ip_address, login_count, last_login) VALUES (?, ?, CURRENT_TIMESTAMP)`;
-                await this.db.execute(query, [ip, 1]);
-            }
-        } catch (error) {
-            console.error('Request execution error:', error);
-        }
-    }
-
     async getAchievements() {
         try {
             await this.connect();
@@ -103,12 +85,6 @@ class DataBase {
     }
 }
 
-const dataBase = new DataBase({
-    host: '',
-    port: 3306,
-    user: '',
-    password: '',
-    database: '',
-});
+const dataBase = new DataBase({});
 
 module.exports = dataBase;

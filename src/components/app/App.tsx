@@ -11,7 +11,6 @@ import fetchAchievements from '../../utils/fetchAchievements';
 import { handleInitSettings } from '../../utils/handleSettings';
 import handleIinitStatistics from '../../utils/handleInitStatistics';
 import handleWrapperClassName from '../../utils/handleWrapperClassName';
-import updateUsersStatistic from '../../utils/updateUsersStatistic';
 
 import AnimatedRoutes from '../AnimationRoutes/AnimationRoutes';
 import Layout from '../layout/Layout';
@@ -83,7 +82,6 @@ const App = (): React.JSX.Element => {
 
     React.useEffect(() => {
         if (!connection.current) {
-            updateUsersStatistic();
             connection.current = true;
 
             fetchAchievements().then((data) => setAchievements(data));

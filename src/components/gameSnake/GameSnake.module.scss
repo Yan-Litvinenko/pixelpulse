@@ -9,6 +9,7 @@
 .canvas {
     border: 0.325rem solid var(--main-color);
     height: 22.75rem;
+    margin-bottom: 25px;
     width: 22.75rem;
 }
 
@@ -17,6 +18,8 @@
     @include text-properties('Big-Shoulders', 1.425rem, 700);
     color: var(--main-color);
     user-select: none;
+    margin-bottom: 10px;
+    width: 100%;
 }
 
 .back {
@@ -46,6 +49,7 @@
 @media (max-width: 1200px) {
     .canvas {
         order: 2;
+        margin-bottom: 15px;
     }
 
     .score {
@@ -64,7 +68,7 @@
 
 @media (max-width: 600px) {
     .wrapper {
-        @include flex-container(column, $gap: 0.935rem 0rem);
+        @include flex-container(column, $gap: 0.935rem 0rem, $align-items: center);
     }
 
     .joystick {

@@ -60,18 +60,6 @@ exports.addCoin = async (req, res) => {
     }
 };
 
-exports.updateUsersStatistic = async (req, res) => {
-    try {
-        const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-        await dataBase.updateUserTable(ip);
-        res.status(200).json({ success: true });
-        console.log(`User: ${ip} visiting site`);
-    } catch (error) {
-        console.error('Error updating user statistics in the database:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
-};
-
 exports.getAchievements = async (req, res) => {
     try {
         const achievements = await dataBase.getAchievements();
