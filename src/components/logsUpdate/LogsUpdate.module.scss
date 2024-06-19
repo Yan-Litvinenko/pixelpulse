@@ -12,7 +12,6 @@
     height: max-content;
     padding: 0.9375rem 0.9375rem 0.625rem;
     position: relative;
-    min-height: 100%;
     z-index: 2;
 
     &::before {
@@ -58,6 +57,11 @@
         text-transform: uppercase;
         transition: text-shadow var(--transition-element);
     }
+
+    &__expend_deactive {
+        color: rgb(var(--data-main-color), 0.5);
+        cursor: auto;
+    }
 }
 
 .element:has(.element__text_clip) {
@@ -67,6 +71,10 @@
 @media (hover: hover) {
     .element__expend:hover {
         text-shadow: var(--text-shadow);
+    }
+
+    .element__expend_deactive:hover {
+        text-shadow: none;
     }
 }
 

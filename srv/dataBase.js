@@ -85,6 +85,12 @@ class DataBase {
     }
 }
 
-const dataBase = new DataBase({});
+const dataBase = new DataBase({
+    host: '78.140.252.41',
+    port: 3306,
+    user: 'root',
+    password: 'cfvceyu301',
+    database: 'pixelpulse',
+});
 
 module.exports = dataBase;

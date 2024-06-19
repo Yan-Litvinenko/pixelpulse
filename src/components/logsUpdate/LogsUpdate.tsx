@@ -38,6 +38,11 @@ const LogsUpdate = (): React.JSX.Element => {
         });
     }, []);
 
+    const handleButton = (index: number): void => {
+        handleExpand(index);
+        contextApp?.handleSoundClick();
+    };
+
     return (
         <div className={styles.update}>
             {update.map((element, index) => {
@@ -51,18 +56,28 @@ const LogsUpdate = (): React.JSX.Element => {
                         >
                             {element.text}
                         </p>
-                        {clippedIndexes.includes(index) ? (
+
+                        {contextApp?.isLarge ? (
+                            clippedIndexes.includes(index) ? (
+                                <Button
+                                    className={`${styles.element__expend}
+                             ${clippedIndexes.includes(index) ? null : styles.element__expend_deactive}`}
+                                    delayEvent={false}
+                                    handleButton={clippedIndexes.includes(index) ? () => handleButton(index) : () => {}}
+                                    textContent={expandStates[index] ? '-collapse' : '+expand'}
+                                    type="button"
+                                />
+                            ) : null
+                        ) : (
                             <Button
-                                className={styles.element__expend}
+                                className={`${styles.element__expend}
+                         ${clippedIndexes.includes(index) ? null : styles.element__expend_deactive}`}
                                 delayEvent={false}
-                                handleButton={() => {
-                                    handleExpand(index);
-                                    contextApp?.handleSoundClick();
-                                }}
+                                handleButton={clippedIndexes.includes(index) ? () => handleButton(index) : () => {}}
                                 textContent={expandStates[index] ? '-collapse' : '+expand'}
                                 type="button"
                             />
-                        ) : null}
+                        )}
                     </div>
                 );
             })}
