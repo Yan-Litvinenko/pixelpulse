@@ -30,7 +30,6 @@ const useLogsUpdate = (update: Record<string, string>[], classRemove: string): R
             }
         });
 
-        console.log('update array indexes:', newClippedIndexes);
         setClippedIndexes(newClippedIndexes);
     }, []);
 

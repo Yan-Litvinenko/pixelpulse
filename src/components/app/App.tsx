@@ -38,7 +38,6 @@ const App = (): React.JSX.Element => {
     const isMedium: boolean = useMediaQuery({ maxWidth: 768 });
     const isLarge: boolean = useMediaQuery({ maxWidth: 1200 });
 
-    const connection = React.useRef<boolean>(false);
     const location = useLocation();
 
     const [commits, isLoadingGithub, errorGithub] = useGithubApi();
@@ -81,11 +80,8 @@ const App = (): React.JSX.Element => {
     }, [location]);
 
     React.useEffect(() => {
-        if (!connection.current) {
-            connection.current = true;
-
-            fetchAchievements().then((data) => setAchievements(data));
-        }
+        fetchAchievements().then((data) => setAchievements(data));
+        fetch('/visit');
 
         handleIinitStatistics(setLevel, setCoins, setIsAddedCoinToday);
     }, []);

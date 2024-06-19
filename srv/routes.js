@@ -5,6 +5,7 @@ const usersBase = require('./usersBase.js');
 exports.getLevel = async (req, res) => {
     try {
         const LEVEL = await dataBase.getDataAdminTable('level');
+
         res.json(LEVEL);
     } catch (error) {
         console.error('Error fetching level data:', error);
@@ -87,4 +88,9 @@ exports.previewImage = (req, res) => {
             res.status(500).json({ error: 'Internal Server Error', message: err.message });
         }
     });
+};
+
+exports.visit = (req, res) => {
+    const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+    console.log(`User ${ip} visited site!`);
 };

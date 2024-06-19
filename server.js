@@ -12,6 +12,7 @@ const {
     getAchievements,
     getServerTime,
     previewImage,
+    visit,
 } = require('./srv/routes.js');
 
 const app = express();
@@ -30,6 +31,7 @@ const PORT = 3000;
         app.get('/getAchievements', getAchievements);
         app.get('/server-time', getServerTime);
         app.get('/preview.jpg', previewImage);
+        app.get('/visit', visit);
 
         app.get('*', (_, res) => {
             res.sendFile(path.join(__dirname, 'dist', 'index.html'));
