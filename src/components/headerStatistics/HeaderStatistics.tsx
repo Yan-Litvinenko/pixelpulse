@@ -1,10 +1,10 @@
 import React from 'react';
 import { ContextApp } from '../app/App';
-import { IAppContext } from '../../interfaces/interface';
 import Button from '../button/Button';
 import requestForServer from '../../utils/requestForServer';
-import handleIinitStatistics from '../../utils/handleInitStatistics';
 import fetchAchievements from '../../utils/fetchAchievements';
+import { IAppContext } from '../../interfaces/interface';
+import { IAchieve } from '../../interfaces/interface.achievements';
 
 interface IStatistics {
     className: Record<string, string>;
@@ -16,22 +16,34 @@ const HeaderStatistics = ({ className }: IStatistics): React.JSX.Element => {
     if (!contextApp) return <></>;
 
     const handleAddCoin = async (): Promise<void> => {
-        if (!contextApp.isAddedCoinToday) {
-            try {
-                const fetchAddCoinStatus: boolean = await requestForServer<boolean>('/add_coin');
+        try {
+            const fetchAddToday: boolean = await requestForServer<boolean>('/status_add_today');
+            const fetchAddCoinStatus: boolean = await requestForServer<boolean>('/add_coin');
 
-                if (fetchAddCoinStatus) {
-                    await handleIinitStatistics(
-                        contextApp.setLevel,
-                        contextApp.setCoins,
-                        contextApp.setIsAddedCoinToday,
-                    );
+            if (fetchAddCoinStatus && !fetchAddToday) {
+                const updateStatistics = async () => {
+                    try {
+                        const fetchedLevel: string = await requestForServer<string>('/level');
+                        const fetchedCoins: string = await requestForServer<string>('/coins');
+                        const fetchedAddToday: boolean = await requestForServer<boolean>('/status_add_today');
 
-                    fetchAchievements().then((data) => contextApp.setAchievements(data));
-                }
-            } catch (error) {
-                console.error('Failed to add coin:', error);
+                        contextApp.setLevel(fetchedLevel);
+                        contextApp.setCoins(fetchedCoins);
+                        contextApp.setIsAddedCoinToday(fetchedAddToday);
+                    } catch (error) {
+                        console.error('Failed to fetch data:', error);
+                    }
+                };
+
+                await updateStatistics();
+
+                const achievements: IAchieve[] = await fetchAchievements();
+                contextApp.setAchievements(achievements);
+            } else {
+                console.log('Coin addition was not successful.');
             }
+        } catch (error) {
+            console.error('Failed to add coin:', error);
         }
     };
 

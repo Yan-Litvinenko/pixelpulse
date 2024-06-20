@@ -53,6 +53,7 @@ exports.addCoin = async (req, res) => {
 
             console.log(`User ${ip} added coins`);
         } else {
+            console.log(`User ${ip} was unable to add coins`);
             res.json(false);
         }
     } catch (error) {

@@ -9,8 +9,8 @@ import useLocalStorage from '../../hooks/useLocalStorage';
 
 import fetchAchievements from '../../utils/fetchAchievements';
 import { handleInitSettings } from '../../utils/handleSettings';
-import handleIinitStatistics from '../../utils/handleInitStatistics';
 import handleWrapperClassName from '../../utils/handleWrapperClassName';
+import requestForServer from '../../utils/requestForServer';
 
 import AnimatedRoutes from '../AnimationRoutes/AnimationRoutes';
 import Layout from '../layout/Layout';
@@ -82,9 +82,25 @@ const App = (): React.JSX.Element => {
     React.useEffect(() => {
         fetchAchievements().then((data) => setAchievements(data));
         fetch('/visit');
-
-        handleIinitStatistics(setLevel, setCoins, setIsAddedCoinToday);
     }, []);
+
+    React.useEffect(() => {
+        const initStatistics = async () => {
+            try {
+                const fetchedLevel: string = await requestForServer<string>('/level');
+                const fetchedCoins: string = await requestForServer<string>('/coins');
+                const fetchedAddToday: boolean = await requestForServer<boolean>('/status_add_today');
+
+                setIsAddedCoinToday(fetchedAddToday);
+                setLevel(fetchedLevel);
+                setCoins(fetchedCoins);
+            } catch (error) {
+                console.error('Failed to fetch level and coins:', error);
+            }
+        };
+
+        initStatistics();
+    }, [level, coins]);
 
     return (
         <ContextApp.Provider
