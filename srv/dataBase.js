@@ -87,7 +87,7 @@ class DataBase {
 
 const dataBase = new DataBase({
     host: '',
-    port: '',
+    port: 3306,
     user: '',
     password: '',
     database: '',

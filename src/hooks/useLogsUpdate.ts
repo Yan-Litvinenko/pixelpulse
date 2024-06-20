@@ -31,12 +31,10 @@ const useLogsUpdate = (update: Record<string, string>[], classRemove: string): R
         });
 
         setClippedIndexes(newClippedIndexes);
-    }, []);
+    }, [classRemove]);
 
     React.useEffect(() => {
         const observer: ResizeObserver = new ResizeObserver(handleResize);
-
-        window.addEventListener('resize', handleResize);
 
         textRefs.current.forEach((textElement) => {
             if (textElement) {
@@ -47,10 +45,9 @@ const useLogsUpdate = (update: Record<string, string>[], classRemove: string): R
         handleResize();
 
         return () => {
-            window.removeEventListener('resize', handleResize);
             observer.disconnect();
         };
-    }, []);
+    }, [handleResize]);
 
     return [expandStates, clippedIndexes, setExpandStates, textRefs];
 };
