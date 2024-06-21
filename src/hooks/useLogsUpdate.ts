@@ -12,7 +12,7 @@ const useLogsUpdate = (update: Record<string, string>[], classRemove: string): R
     const [clippedIndexes, setClippedIndexes] = React.useState<number[]>([]);
     const textRefs = React.useRef<(HTMLParagraphElement | null)[]>([]);
 
-    const handleResize = React.useCallback((): void => {
+    const handleResize = () => {
         const newClippedIndexes: number[] = [];
         const sizePx: number = Number(
             getComputedStyle(document.documentElement).getPropertyValue('--size').replace('px', ''),
@@ -31,7 +31,7 @@ const useLogsUpdate = (update: Record<string, string>[], classRemove: string): R
         });
 
         setClippedIndexes(newClippedIndexes);
-    }, [classRemove]);
+    };
 
     React.useEffect(() => {
         const observer: ResizeObserver = new ResizeObserver(handleResize);
@@ -42,12 +42,17 @@ const useLogsUpdate = (update: Record<string, string>[], classRemove: string): R
             }
         });
 
+        const handleWindowResize = () => handleResize();
+
+        window.addEventListener('resize', handleWindowResize);
+
         handleResize();
 
         return () => {
             observer.disconnect();
+            window.removeEventListener('resize', handleWindowResize);
         };
-    }, [handleResize]);
+    }, []);
 
     return [expandStates, clippedIndexes, setExpandStates, textRefs];
 };
