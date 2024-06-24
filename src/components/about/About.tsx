@@ -38,14 +38,12 @@ const About = (): React.JSX.Element => {
                     ))}
                 </div>
                 {contextApp?.isMedium ? null : (
-                    <div className={styles.box_image}>
+                    <picture className={styles.box_image}>
                         <Frame className={styles.frame} />
-                        <picture>
-                            <source srcSet={humanAvif} />
-                            <source srcSet={humanWebp} />
-                            <img src={humanJpg} alt="human" className={styles.about__img} />
-                        </picture>
-                    </div>
+                        <source srcSet={humanAvif} />
+                        <source srcSet={humanWebp} />
+                        <img src={humanJpg} alt="human" className={styles.about__img} />
+                    </picture>
                 )}
             </div>
         </main>
