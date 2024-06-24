@@ -45,12 +45,12 @@ const useLogsUpdate = (update: Record<string, string>[], classRemove: string): R
         const handleWindowResize = () => handleResize();
 
         window.addEventListener('resize', handleWindowResize);
-
-        handleResize();
+        window.addEventListener('load', handleWindowResize);
 
         return () => {
             observer.disconnect();
             window.removeEventListener('resize', handleWindowResize);
+            window.removeEventListener('load', handleWindowResize);
         };
     }, []);
 

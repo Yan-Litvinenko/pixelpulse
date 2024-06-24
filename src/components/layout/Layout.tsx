@@ -22,7 +22,7 @@ const Layout = ({ children }: { children: React.JSX.Element }): React.JSX.Elemen
             const transformTitle: string = lastField[0].toLocaleUpperCase() + lastField.slice(1);
             document.title = transformTitle;
         } else {
-            document.title = 'Welcome';
+            document.title = 'Web Portfolio';
         }
     }, [location.pathname]);
 

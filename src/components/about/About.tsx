@@ -5,7 +5,8 @@ import { IAppContext } from '../../interfaces/interface';
 import Frame from '../frame/Frame';
 import Heading from '../heading/Heading';
 import { nanoid } from 'nanoid';
-import GlitchCanvas from '../glitchImage/GlitchImage';
+import humanAvif from '../../assets/images/human.avif';
+import humanWebp from '../../assets/images/human.webp';
 import humanJpg from '../../assets/images/human.jpg';
 import styles from './About.module.scss';
 
@@ -39,12 +40,11 @@ const About = (): React.JSX.Element => {
                 {contextApp?.isMedium ? null : (
                     <div className={styles.box_image}>
                         <Frame className={styles.frame} />
-                        <GlitchCanvas
-                            className={styles.about__img}
-                            imageUrl={humanJpg}
-                            minDelay={7000}
-                            maxDelay={15000}
-                        />
+                        <picture>
+                            <source srcSet={humanAvif} />
+                            <source srcSet={humanWebp} />
+                            <img src={humanJpg} alt="human" className={styles.about__img} />
+                        </picture>
                     </div>
                 )}
             </div>
