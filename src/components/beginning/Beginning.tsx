@@ -22,11 +22,9 @@ const Beginning = (): React.JSX.Element => {
                         </div>
                         <picture className={styles.beginning__background_box}>
                             <Frame className={styles.beginning__background_frame} />
-                            <picture>
-                                <source srcSet={beginningAvif} />
-                                <source srcSet={beginningWebp} />
-                                <img className={styles.beginning__background} src={beginningJpg} alt="background" />
-                            </picture>
+                            <source srcSet={beginningAvif} />
+                            <source srcSet={beginningWebp} />
+                            <img className={styles.beginning__background} src={beginningJpg} alt="background" />
                         </picture>
                     </>
                 </div>
