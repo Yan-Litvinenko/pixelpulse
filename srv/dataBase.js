@@ -1,3 +1,4 @@
+require('dotenv').config();
 const mysql = require('mysql2/promise');
 
 class DataBase {
@@ -85,12 +86,14 @@ class DataBase {
     }
 }
 
+console.log(process.env.DATA_BASE_HOST);
+
 const dataBase = new DataBase({
-    host: '',
-    port: 3306,
-    user: '',
-    password: '',
-    database: '',
+    host: process.env.DATA_BASE_HOST,
+    port: process.env.DATA_BASE_PORT,
+    user: process.env.DATA_BASE_USER,
+    password: process.env.DATA_BASE_PASSWORD,
+    database: process.env.DATA_BASE_NAME,
 });
 
 module.exports = dataBase;

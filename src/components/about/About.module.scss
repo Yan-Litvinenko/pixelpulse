@@ -31,6 +31,8 @@
     display: grid;
     position: relative;
     height: max-content;
+    width: 100%;
+    max-width: 22.1875rem;
 }
 
 @media (max-width: 1700px) {

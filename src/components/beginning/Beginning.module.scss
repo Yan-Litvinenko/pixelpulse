@@ -15,6 +15,7 @@
     &__inner {
         @include flex-container($justify-content: center, $align-items: center);
         position: relative;
+        width: 100%;
     }
 
     &__background_box {
