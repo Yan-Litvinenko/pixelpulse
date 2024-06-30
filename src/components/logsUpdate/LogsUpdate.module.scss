@@ -83,3 +83,9 @@
         grid-template-columns: 1fr;
     }
 }
+
+@media (max-width: 350px) {
+    .update__element {
+        width: calc(100vw - 2.5rem);
+    }
+}

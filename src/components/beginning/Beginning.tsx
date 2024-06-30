@@ -24,7 +24,12 @@ const Beginning = (): React.JSX.Element => {
                             <Frame className={styles.beginning__background_frame} />
                             <source srcSet={beginningAvif} />
                             <source srcSet={beginningWebp} />
-                            <img className={styles.beginning__background} src={beginningJpg} alt="background" />
+                            <img
+                                className={styles.beginning__background}
+                                src={beginningJpg}
+                                loading="lazy"
+                                alt="background"
+                            />
                         </picture>
                     </>
                 </div>

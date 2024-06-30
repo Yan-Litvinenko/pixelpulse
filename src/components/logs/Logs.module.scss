@@ -22,12 +22,12 @@
         display: block;
         margin: 0 auto 1.125rem;
         max-width: 12.5rem;
-        min-width: 12.5rem;
         padding: 0.3375rem 0.825rem 0.25rem 0.825rem;
         text-align: center;
         transition:
             box-shadow var(--transition-element),
             text-shadow var(--transition-element);
+        width: 100%;
     }
 }
 
