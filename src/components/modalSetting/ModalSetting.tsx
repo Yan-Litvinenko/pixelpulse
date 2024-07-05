@@ -47,7 +47,7 @@ const ModalSetting = (): React.JSX.Element | null => {
                             inputTarget="color"
                             max={100}
                             min={0}
-                            textContent="hud hue"
+                            textContent="hud color"
                         />
                         <Range
                             changeSettingValue={changeSettingValue}
@@ -72,7 +72,7 @@ const ModalSetting = (): React.JSX.Element | null => {
                         <Warning />
                         <Paragraph
                             className={styles.modal__warning_text}
-                            textContent="The configuration data is stored in your browser. If you login from a different browser or machine, your settings will not apply."
+                            textContent="The configuration data is stored in your browser. If you login from a different browser or machine, your settings will not apply. Resizing works on screens wider than 1950px"
                         />
                     </div>
                 </div>
