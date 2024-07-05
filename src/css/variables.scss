@@ -1,23 +1,23 @@
 :root {
     --size: 16px;
 
-    --data-hue: 222;
-    --data-saturation: 64;
-    --data-lightness: 64;
+    --data-hue: 0;
+    --data-saturation: 71%;
+    --data-lightness: 56%;
     --data-main-color: var(--data-hue), var(--data-saturation), var(--data-lightness);
     --data-image-color: 0deg;
 
     --main-background-color: #000003;
-    --main-color: rgb(var(--data-main-color));
-    --main-dark-color: rgba(var(--data-main-color), 0.2);
-    --main-darklight-color: rgba(var(--data-main-color), 0.9);
+    --main-color: hsl(var(--data-main-color));
+    --main-dark-color: hsla(var(--data-main-color), 0.2);
+    --main-darklight-color: hsla(var(--data-main-color), 0.9);
     --main-text-color: rgb(255, 255, 255);
 
     --background-gradient: linear-gradient(
         90deg,
-        rgba(var(--data-main-color), 0) 0%,
-        rgba(var(--data-main-color), 0.17) 51.94%,
-        rgba(var(--data-main-color), 0) 100%
+        hsla(var(--data-main-color), 0) 0%,
+        hsla(var(--data-main-color), 0.17) 51.94%,
+        hsla(var(--data-main-color), 0) 100%
     );
 
     --dark-grey: #7a7a7a;

@@ -51,24 +51,6 @@ const ModalSetting = (): React.JSX.Element | null => {
                         />
                         <Range
                             changeSettingValue={changeSettingValue}
-                            color={'saturation'}
-                            initValue={settings.saturation}
-                            inputTarget="color"
-                            max={100}
-                            min={0}
-                            textContent="hud saturation"
-                        />
-                        <Range
-                            changeSettingValue={changeSettingValue}
-                            color={'lightness'}
-                            initValue={settings.lightness}
-                            inputTarget="color"
-                            max={100}
-                            min={0}
-                            textContent="hud lightness"
-                        />
-                        <Range
-                            changeSettingValue={changeSettingValue}
                             initValue={settings.size}
                             inputTarget="size"
                             max={100}

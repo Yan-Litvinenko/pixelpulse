@@ -11,8 +11,6 @@ const useModalSettings = () => {
     const [enterText, setEnterText] = React.useState<string>('write to disk [enter]');
     const [settings, setSettings] = React.useState({
         hue: handleInitSettingValue('hue'),
-        saturation: handleInitSettingValue('saturation'),
-        lightness: handleInitSettingValue('lightness'),
         size: handleInitSettingValue('size'),
     });
 
@@ -51,8 +49,6 @@ const useModalSettings = () => {
         handleDefaultSettings();
         setSettings({
             hue: handleInitSettingValue('hue'),
-            saturation: handleInitSettingValue('saturation'),
-            lightness: handleInitSettingValue('lightness'),
             size: handleInitSettingValue('size'),
         });
     }, []);
@@ -66,7 +62,7 @@ const useModalSettings = () => {
             if (variableName === 'size') {
                 handleSettingSize(event);
             } else {
-                handleSettingColor()(event, variableName);
+                handleSettingColor(event);
             }
         },
         [],

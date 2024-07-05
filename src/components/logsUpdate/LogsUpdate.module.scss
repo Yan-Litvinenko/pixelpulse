@@ -59,7 +59,7 @@
     }
 
     &__expend_deactive {
-        color: rgb(var(--data-main-color), 0.5);
+        color: hsla(var(--data-main-color), 0.5);
         cursor: auto;
     }
 }

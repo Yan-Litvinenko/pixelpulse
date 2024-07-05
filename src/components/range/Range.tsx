@@ -3,11 +3,8 @@ import useRange from '../../hooks/useRange';
 import styles from './Range.module.scss';
 
 interface IRange {
-    changeSettingValue: (
-        event: React.ChangeEvent<HTMLInputElement>,
-        variableName: 'hue' | 'saturation' | 'lightness' | 'size',
-    ) => void;
-    color?: 'hue' | 'saturation' | 'lightness';
+    changeSettingValue: (event: React.ChangeEvent<HTMLInputElement>, variableName: 'hue' | 'size') => void;
+    color?: 'hue';
     inputTarget: 'color' | 'size';
     max: number;
     min: number;
