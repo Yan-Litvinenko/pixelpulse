@@ -2,8 +2,7 @@ import React from 'react';
 import { ContextApp } from '../app/App';
 import Button from '../button/Button';
 import handleOpenModal from '../../utils/handleOpenModal';
-import Paragraph from '../paragraph/Paragraph';
-import ProgressRing from '../progressRing/ProgressRing';
+import AchievementsProgressRing from '../achievementsProgressRing/AchievementsProgressRing';
 import { IAppContext } from '../../interfaces/interface';
 import styles from './AchievementsProgress.module.scss';
 
@@ -21,27 +20,28 @@ const AchievementsProgress = (): React.JSX.Element => {
         }, 0);
     };
 
-    const countAchievements: number = contextApp.achievements.length;
-    const countAchieved: number = achievedCount();
-    const percent: number = (countAchieved * 100) / countAchievements;
+    const allAchievements: number = contextApp.achievements.length;
+    const achievementsAchieved: number = achievedCount();
+    const percent: number = (achievementsAchieved * 100) / allAchievements;
 
     return (
         <div className={styles.progress}>
             <div className={styles.progress__inner}>
-                <ProgressRing percent={percent} />
+                <AchievementsProgressRing percent={percent} />
+
                 <span className={styles.progress__statistic}>
-                    {countAchieved}/{countAchievements}
+                    {achievementsAchieved}/{allAchievements}
                 </span>
                 <span className={styles.progress__name}>progress</span>
             </div>
-            <Paragraph
-                className={styles.progress__text}
-                textContent="I have created a set of achievements for myself and I use this page to track them."
-            />
-            <Paragraph
-                className={styles.progress__text}
-                textContent="If you want to give me a challenge and rate it, please feel free to submit it with the button below!"
-            />
+
+            <p className={styles.progress__text}>
+                I have created a set of achievements for myself and I use this page to track them.
+            </p>
+            <p className={styles.progress__text}>
+                If you want to give me a challenge and rate it, please feel free to submit it with the button below!
+            </p>
+
             <Button
                 className={styles.progress__button}
                 delayEvent={false}

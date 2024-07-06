@@ -1,6 +1,10 @@
-import { IAchieve, SwitchAchieved } from '../interfaces/interface.achievements';
+import { IAchieve, ToggleStatus } from '../interfaces/interface.achievements';
 
-const handleSortAchievements = (achievements: IAchieve[], checkedStatus: SwitchAchieved): IAchieve[] => {
+const handleSortAchievements = (
+    achievements: IAchieve[],
+    checkedStatus: ToggleStatus,
+    forWhatAchievements: 'achieved' | 'in progress',
+): IAchieve[] => {
     const levelRarity: Record<string, number> = {
         unusual: 1,
         rare: 2,
@@ -28,7 +32,7 @@ const handleSortAchievements = (achievements: IAchieve[], checkedStatus: SwitchA
         return false;
     });
 
-    return filteredAchievements;
+    return filteredAchievements.filter((achieve) => achieve.status === forWhatAchievements);
 };
 
 export default handleSortAchievements;
