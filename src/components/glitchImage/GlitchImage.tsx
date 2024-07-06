@@ -10,9 +10,10 @@ interface GlitchCanvasProps {
     minDelay: number;
 }
 
-const GlitchCanvas: React.FC<GlitchCanvasProps> = ({ imageUrl, className, minDelay, maxDelay }) => {
+const GlitchImage: React.FC<GlitchCanvasProps> = ({ imageUrl, className, minDelay, maxDelay }) => {
     const contextApp: IAppContext | undefined = React.useContext(ContextApp);
     const [isCanvasLoaded, setIsCanvasLoaded] = React.useState(false);
+    const actualSoundState = React.useRef<boolean | undefined>(contextApp?.sounds);
     const timer = React.useRef<NodeJS.Timeout | null>(null);
     const canvasRef = React.useRef<HTMLCanvasElement>(null);
     const imgRef = React.useRef<HTMLImageElement>(new Image());
@@ -81,7 +82,7 @@ const GlitchCanvas: React.FC<GlitchCanvasProps> = ({ imageUrl, className, minDel
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 ctx.drawImage(img, 0, 0);
 
-                if (countRender.current > 2 && contextApp?.sounds) {
+                if (countRender.current > 2 && actualSoundState.current) {
                     audio.play();
                 }
             }, 100);
@@ -103,6 +104,10 @@ const GlitchCanvas: React.FC<GlitchCanvasProps> = ({ imageUrl, className, minDel
         };
     }, [imageUrl]);
 
+    React.useEffect(() => {
+        actualSoundState.current = contextApp?.sounds;
+    }, [contextApp?.sounds]);
+
     return (
         <>
             {!isCanvasLoaded && <img className={className} src={imageUrl} alt={imageUrl} />}
@@ -111,4 +116,4 @@ const GlitchCanvas: React.FC<GlitchCanvasProps> = ({ imageUrl, className, minDel
     );
 };
 
-export default GlitchCanvas;
+export default GlitchImage;
