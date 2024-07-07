@@ -4,9 +4,8 @@ import CreationsAbout from '../creationsAbout/CreationsAbout';
 import CreationsDetails from '../creationsDetails/CreationsDetails';
 import CreationsTechnologies from '../creationsTechnologies/CreationsTechnologies';
 import { ContextApp } from '../app/App';
-import Heading from '../heading/Heading';
 import Xplorer from '../creationsXplorer/CreationsXplorer';
-import { IProject, XplorerState } from '../../interfaces/interface.credits';
+import { IProject, XplorerState } from '../../interfaces/interface.creations';
 import projects from '../../assets/json/projects.json';
 import styles from './Creations.module.scss';
 
@@ -23,27 +22,30 @@ const projectDefault: IProject = {
 
 const Creations = (): React.JSX.Element => {
     const contextApp = React.useContext(ContextApp);
+
+    if (!contextApp) return <></>;
+
     const [xplorerState, setXplorerState] = React.useState<XplorerState>('projects');
 
     return (
         <main className={styles.creations}>
             <>
-                <Heading className={styles.creations__title} level="2" textContent="creations" />
+                <h2 className={styles.creations__title}>creations</h2>
 
                 <div className={styles.creations__inner}>
                     <div className={styles.creations__details_block}>
                         <CreationsDetails
-                            projectDefault={projectDefault}
+                            projectDefaultData={projectDefault}
                             projects={projects}
                             xplorerState={xplorerState}
                         />
                         <CreationsTechnologies
-                            projectDefault={projectDefault}
+                            projectDefaultData={projectDefault}
                             projects={projects}
                             xplorerState={xplorerState}
                         />
                         <CreationsAbout
-                            projectDefault={projectDefault}
+                            projectDefaultData={projectDefault}
                             projects={projects}
                             xplorerState={xplorerState}
                         />
@@ -51,13 +53,14 @@ const Creations = (): React.JSX.Element => {
 
                     <div className={styles.xplorer_block}>
                         <Xplorer projects={projects} setXplorerState={setXplorerState} xplorerState={xplorerState} />
+
                         <div className={styles.box_button}>
                             <Button
                                 className={styles.box_button__back}
                                 delayEvent={false}
                                 handleButton={() => {
                                     setXplorerState('projects');
-                                    contextApp?.handleSoundClick();
+                                    contextApp.handleSoundClick();
                                 }}
                                 textContent="Back to all projects"
                                 type="button"

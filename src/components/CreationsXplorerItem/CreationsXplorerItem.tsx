@@ -1,14 +1,11 @@
 import React from 'react';
 import { Image, Folder } from '../svgIcon/SvgIcon';
+import { ICreationsXplorerItem } from '../../interfaces/interface.creations';
 import styles from './CreationsXplorerItem.module.scss';
 
-interface ICreationsXplorerItem {
-    image: 'image' | 'folder';
-    onClick: () => void;
-    textContent: string;
-}
+const CreationsXplorerItem = (props: ICreationsXplorerItem) => {
+    const { image, textContent, onClick } = props;
 
-const CreationsXplorerItem = ({ image, textContent, onClick }: ICreationsXplorerItem) => {
     return (
         <li className={styles.item} onClick={onClick}>
             <div className={styles.frame}>{image === 'image' ? <Image /> : <Folder />}</div>
