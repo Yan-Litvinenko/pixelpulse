@@ -22,4 +22,18 @@ interface FormSubmit {
     handleSubmit: (e?: React.BaseSyntheticEvent<object, any, any> | undefined) => Promise<void>;
 }
 
-export { Field, IForm, Rarity, FormSubmit };
+interface ILabel {
+    autofocus?: boolean;
+    child: 'input' | 'textarea';
+    errors: FieldErrors<FieldValues>;
+    maxLength: number;
+    minLength: number;
+    name: Field;
+    pattern: RegExp;
+    patternMessage: string;
+    placeholder: string;
+    register: UseFormRegister<FieldValues>;
+    textContent: string;
+}
+
+export { Field, IForm, Rarity, FormSubmit, ILabel };

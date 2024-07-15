@@ -1,13 +1,10 @@
 import React from 'react';
+import { IFrame } from '../../interfaces/interface.component';
 import styles from './Frame.module.scss';
 
-interface IFrame {
-    className?: string;
-}
-
-const Frame = ({ className }: IFrame): React.JSX.Element => {
+const Frame = (props: IFrame): React.JSX.Element => {
     return (
-        <div className={className}>
+        <div className={props.className}>
             <svg
                 className={styles.top_left}
                 fill="none"

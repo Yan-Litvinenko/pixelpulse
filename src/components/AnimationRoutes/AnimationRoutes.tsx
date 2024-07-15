@@ -6,7 +6,7 @@ import About from '../about/About';
 import Achievements from '../achievements/Achievements';
 import Beginning from '../beginning/Beginning';
 import Creations from '../creations/Creations';
-import Error from '../error/Error';
+import ErrorPage from '../errorPage/ErrorPage';
 import Games from '../games/Games';
 import GameSnake from '../gameSnake/GameSnake';
 import Logs from '../logs/Logs';
@@ -131,7 +131,7 @@ const AnimatedRoutes = (): React.JSX.Element => {
                             variants={pageVariants}
                             transition={pageTransition}
                         >
-                            <Error />
+                            <ErrorPage />
                         </motion.div>
                     }
                 />

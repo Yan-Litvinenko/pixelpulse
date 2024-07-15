@@ -1,44 +1,36 @@
 import React from 'react';
 import { ContextApp } from '../app/App';
 import { IAppContext } from '../../interfaces/interface';
-
-interface IButton {
-    className: string;
-    delayEvent: boolean;
-    handleButton: () => void;
-    image?: () => React.ReactNode;
-    isValid?: boolean;
-    textContent: string;
-    type: 'submit' | 'button';
-}
+import { IButton } from '../../interfaces/interface.component';
 
 const Button = (props: IButton): React.JSX.Element => {
     const contextApp: IAppContext | undefined = React.useContext(ContextApp);
 
     if (!contextApp) return <></>;
 
+    const { handleButton, delayEvent, className, textContent, isValid, type, image } = props;
     const button = React.useRef<null | HTMLButtonElement>(null);
 
     React.useEffect(() => {
         if (contextApp.isLarge || contextApp.isMedium) {
-            button.current?.addEventListener('click', props.handleButton);
-        } else if (props.delayEvent) {
+            button.current?.addEventListener('click', handleButton);
+        } else if (delayEvent) {
             setTimeout(() => {
-                button.current?.addEventListener('click', props.handleButton);
-            }, contextApp?.TRANSITION_TIME);
+                button.current?.addEventListener('click', handleButton);
+            }, contextApp.TRANSITION_TIME);
         } else {
-            button.current?.addEventListener('click', props.handleButton);
+            button.current?.addEventListener('click', handleButton);
         }
 
         return () => {
-            button.current?.removeEventListener('click', props.handleButton);
+            button.current?.removeEventListener('click', handleButton);
         };
     }, [button]);
 
     return (
-        <button className={props.className} disabled={props.isValid && props.isValid} type={props.type} ref={button}>
-            {props.textContent}
-            {props.image && props.image()}
+        <button className={className} disabled={isValid && isValid} type={type} ref={button}>
+            {textContent}
+            {image && image()}
         </button>
     );
 };

@@ -3,7 +3,7 @@ import { Image, Folder } from '../svgIcon/SvgIcon';
 import { ICreationsXplorerItem } from '../../interfaces/interface.creations';
 import styles from './CreationsXplorerItem.module.scss';
 
-const CreationsXplorerItem = (props: ICreationsXplorerItem) => {
+const CreationsXplorerItem = (props: ICreationsXplorerItem): React.JSX.Element => {
     const { image, textContent, onClick } = props;
 
     return (

@@ -1,10 +1,8 @@
 import React from 'react';
-
 import epic from '../../assets/images/epic.png';
 import legendary from '../../assets/images/legendary.png';
 import rare from '../../assets/images/rare.png';
 import unusual from '../../assets/images/unusual.png';
-
 import { IAchievementsAchieve } from '../../interfaces/interface.achievements';
 import styles from './AchievementsAchieve.module.scss';
 

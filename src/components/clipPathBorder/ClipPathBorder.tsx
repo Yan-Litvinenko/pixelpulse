@@ -1,5 +1,8 @@
 import React from 'react';
+import { IClipPathBorder } from '../../interfaces/interface.component';
 
-const ClipPathBorder = ({ className }: { className: string }): React.JSX.Element => <div className={className}></div>;
+const ClipPathBorder = (props: IClipPathBorder): React.JSX.Element => {
+    return <div className={props.className}></div>;
+};
 
 export default ClipPathBorder;
