@@ -10,10 +10,11 @@ const CreationsAbout = (props: ICreationsBlock): React.JSX.Element => {
 
     if (!contextApp) return <></>;
 
+    const { modalProject } = contextApp;
     const { projectDefaultData, projects, xplorerState } = props;
 
     const texts: string[] =
-        xplorerState === 'projects' ? projectDefaultData.about : projects[contextApp.modalProject]?.about || [];
+        xplorerState === 'projects' ? projectDefaultData.about : projects[modalProject]?.about || [];
 
     return (
         <div className={styles.about}>

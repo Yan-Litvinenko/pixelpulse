@@ -12,11 +12,13 @@ const Achievements = (): React.JSX.Element => {
 
     if (!contextApp) return <></>;
 
+    const { handleSoundClick } = contextApp;
+
     const [achievementFilter, setAchievementFilter] = React.useState<ToggleStatus>('all');
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
         setAchievementFilter(event.target.value as ToggleStatus);
-        contextApp?.handleSoundClick();
+        handleSoundClick();
     };
 
     return (

@@ -12,19 +12,21 @@ const CreationsXplorerContent = (props: IXplorer): React.JSX.Element => {
 
     if (!contextApp) return <></>;
 
+    const { setProjectImages, setModalProject, handleSoundClick, setModalProjectImage, handleSoundModal } = contextApp;
+    const { modalProject } = contextApp;
     const { projects, setXplorerState, xplorerState } = props;
 
-    const handleProjectClick = (projectIndex: number): void => {
+    const projectClick = (projectIndex: number): void => {
         setXplorerState('projectImages');
-        contextApp.setProjectImages(projects[projectIndex].images);
-        contextApp.setModalProject(projectIndex);
-        contextApp.handleSoundClick();
+        setProjectImages(projects[projectIndex].images);
+        setModalProject(projectIndex);
+        handleSoundClick();
     };
 
-    const handleImageClick = (imageIndex: number): void => {
+    const imageClick = (imageIndex: number): void => {
         handleOpenModal(contextApp.setCreations);
-        contextApp.setModalProjectImage(imageIndex);
-        contextApp.handleSoundModal();
+        setModalProjectImage(imageIndex);
+        handleSoundModal();
     };
 
     return (
@@ -36,15 +38,15 @@ const CreationsXplorerContent = (props: IXplorer): React.JSX.Element => {
                           <CreationsXplorerItem
                               image="folder"
                               key={nanoid()}
-                              onClick={() => handleProjectClick(index)}
+                              onClick={() => projectClick(index)}
                               textContent={project.name}
                           />
                       ))
-                    : projects[contextApp.modalProject].images.map((imageName, index) => (
+                    : projects[modalProject].images.map((imageName, index) => (
                           <CreationsXplorerItem
                               image="image"
                               key={nanoid()}
-                              onClick={() => handleImageClick(index)}
+                              onClick={() => imageClick(index)}
                               textContent={imageName}
                           />
                       ))}

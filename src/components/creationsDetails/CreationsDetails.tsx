@@ -10,6 +10,7 @@ const CreationsDetails = (props: ICreationsBlock): React.JSX.Element => {
 
     if (!contextApp) return <></>;
 
+    const { modalProject } = contextApp;
     const { projectDefaultData, projects, xplorerState } = props;
 
     return (
@@ -20,14 +21,14 @@ const CreationsDetails = (props: ICreationsBlock): React.JSX.Element => {
             </h3>
             <h4 className={styles.details__subtitle}>project name</h4>
             <span className={styles.details__text}>
-                {xplorerState === 'projects' ? projectDefaultData.name : projects[contextApp.modalProject].name}
+                {xplorerState === 'projects' ? projectDefaultData.name : projects[modalProject].name}
             </span>
 
             <div className={styles.decorative_line}></div>
 
             <h4 className={styles.details__subtitle}>brief</h4>
             <p className={styles.details__text}>
-                {xplorerState === 'projects' ? projectDefaultData.brief : projects[contextApp.modalProject].brief}
+                {xplorerState === 'projects' ? projectDefaultData.brief : projects[modalProject].brief}
             </p>
         </div>
     );

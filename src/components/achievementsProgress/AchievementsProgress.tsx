@@ -11,8 +11,10 @@ const AchievementsProgress = (): React.JSX.Element => {
 
     if (!contextApp) return <></>;
 
+    const { achievements, handleSoundModal, setChallenge } = contextApp;
+
     const achievedCount = (): number => {
-        return contextApp.achievements.reduce((acc, achieve) => {
+        return achievements.reduce((acc, achieve) => {
             if (achieve.status === 'achieved') {
                 return acc + 1;
             }
@@ -20,7 +22,7 @@ const AchievementsProgress = (): React.JSX.Element => {
         }, 0);
     };
 
-    const allAchievements: number = contextApp.achievements.length;
+    const allAchievements: number = achievements.length;
     const achievementsAchieved: number = achievedCount();
     const percent: number = (achievementsAchieved * 100) / allAchievements;
 
@@ -46,8 +48,8 @@ const AchievementsProgress = (): React.JSX.Element => {
                 className={styles.progress__button}
                 delayEvent={false}
                 handleButton={() => {
-                    handleOpenModal(contextApp?.setChallenge);
-                    contextApp?.handleSoundModal();
+                    handleOpenModal(setChallenge);
+                    handleSoundModal();
                 }}
                 textContent="Challenge me"
                 type="button"

@@ -1,6 +1,5 @@
 import React from 'react';
 import { ContextApp } from '../app/App';
-import Heading from '../heading/Heading';
 import LogsOld from '../logsOld/LogsOld';
 import LogsProject from '../logsProject/LogsProject';
 import LogsUpdate from '../logsUpdate/LogsUpdate';
@@ -14,7 +13,7 @@ const Logs = (): React.JSX.Element => {
         <main className={styles.logs}>
             <>
                 <div className={styles.logs__inner}>
-                    <Heading className={styles.logs__title} level="2" textContent="data log dump initialized" />
+                    <h2 className={styles.logs__title}>data log dump initialized</h2>
                     <LogsProject />
                     <LogsUpdate />
                     <a

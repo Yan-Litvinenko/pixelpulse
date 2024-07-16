@@ -13,10 +13,11 @@ const AchievementsBlock = (props: IAchievementsBlock): React.JSX.Element => {
 
     if (!contextApp) return <></>;
 
+    const { achievements } = contextApp;
     const { forWhatAchievements, prefixForClassName, toggleStatus } = props;
 
     const achievementsInTheBlock: IAchieve[] = sortAndFilterAchievements(
-        contextApp.achievements,
+        achievements,
         toggleStatus,
         forWhatAchievements,
     );

@@ -25,6 +25,7 @@ const Creations = (): React.JSX.Element => {
 
     if (!contextApp) return <></>;
 
+    const { handleSoundClick } = contextApp;
     const [xplorerState, setXplorerState] = React.useState<XplorerState>('projects');
 
     return (
@@ -60,7 +61,7 @@ const Creations = (): React.JSX.Element => {
                                 delayEvent={false}
                                 handleButton={() => {
                                     setXplorerState('projects');
-                                    contextApp.handleSoundClick();
+                                    handleSoundClick();
                                 }}
                                 textContent="Back to all projects"
                                 type="button"

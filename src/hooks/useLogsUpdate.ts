@@ -7,12 +7,12 @@ type ReturnUseLogsUpdate = [
     React.MutableRefObject<(HTMLParagraphElement | null)[]>,
 ];
 
-const useLogsUpdate = (update: Record<string, string>[], classRemove: string): ReturnUseLogsUpdate => {
+const useLogsUpdate = (update: Record<string, string>[], classForRemove: string): ReturnUseLogsUpdate => {
     const [expandStates, setExpandStates] = React.useState<boolean[]>(update.map(() => false));
     const [clippedIndexes, setClippedIndexes] = React.useState<number[]>([]);
     const textRefs = React.useRef<(HTMLParagraphElement | null)[]>([]);
 
-    const handleResize = () => {
+    const handleResize = (): void => {
         const newClippedIndexes: number[] = [];
         const sizePx: number = Number(
             getComputedStyle(document.documentElement).getPropertyValue('--size').replace('px', ''),
@@ -21,7 +21,8 @@ const useLogsUpdate = (update: Record<string, string>[], classRemove: string): R
 
         textRefs.current.forEach((textElement, index) => {
             if (textElement) {
-                textElement.classList.remove(classRemove);
+                textElement.classList.remove(classForRemove);
+
                 const rect: DOMRect = textElement.getBoundingClientRect();
 
                 if (rect.height / sizePx > maxRemHeight) {
@@ -37,20 +38,16 @@ const useLogsUpdate = (update: Record<string, string>[], classRemove: string): R
         const observer: ResizeObserver = new ResizeObserver(handleResize);
 
         textRefs.current.forEach((textElement) => {
-            if (textElement) {
-                observer.observe(textElement);
-            }
+            if (textElement) observer.observe(textElement);
         });
 
-        const handleWindowResize = () => handleResize();
-
-        window.addEventListener('resize', handleWindowResize);
-        window.addEventListener('load', handleWindowResize);
+        window.addEventListener('resize', handleResize);
+        window.addEventListener('load', handleResize);
 
         return () => {
             observer.disconnect();
-            window.removeEventListener('resize', handleWindowResize);
-            window.removeEventListener('load', handleWindowResize);
+            window.removeEventListener('resize', handleResize);
+            window.removeEventListener('load', handleResize);
         };
     }, []);
 

@@ -13,6 +13,8 @@ const About = (): React.JSX.Element => {
 
     if (!contextApp) return <></>;
 
+    const { isMedium } = contextApp;
+
     return (
         <main className={styles.about}>
             <h2 className={styles.about__title}>who is Yan Litvinenko</h2>
@@ -39,7 +41,7 @@ const About = (): React.JSX.Element => {
                     />
                 </div>
 
-                {contextApp.isMedium ? null : (
+                {isMedium ? null : (
                     <picture className={styles.box_image}>
                         <Frame className={styles.frame} />
 

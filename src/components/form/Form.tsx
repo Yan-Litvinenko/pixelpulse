@@ -12,12 +12,13 @@ const Form = (props: IForm): React.JSX.Element => {
 
     if (!contextApp) return <></>;
 
+    const { isLarge } = contextApp;
     const { errors, register } = props;
 
     return (
         <div className={styles.form}>
             <FormLabel
-                autofocus={!contextApp.isLarge ? true : false}
+                autofocus={!isLarge ? true : false}
                 child={'input'}
                 errors={errors}
                 maxLength={20}

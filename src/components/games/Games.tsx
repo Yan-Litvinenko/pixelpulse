@@ -12,6 +12,7 @@ const Games = (): React.JSX.Element => {
 
     if (!contextApp) return <></>;
 
+    const { handleSoundClick } = contextApp;
     const isGameRoute: boolean = useLocation().pathname.includes('/games/');
 
     return (
@@ -28,7 +29,7 @@ const Games = (): React.JSX.Element => {
                     </div>
 
                     <div className={styles.content__games}>
-                        <Link to={'/games/snake'} onClick={() => contextApp.handleSoundClick()}>
+                        <Link to={'/games/snake'} onClick={handleSoundClick}>
                             <figure className={styles.content__item}>
                                 <img src={SnakeImg} alt="Snake" draggable={false} />
                                 <figcaption className={styles.content__description}>

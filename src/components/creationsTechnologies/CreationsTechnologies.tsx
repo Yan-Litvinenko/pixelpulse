@@ -11,6 +11,7 @@ const CreationsTechnologies = (props: ICreationsBlock): React.JSX.Element => {
 
     if (!contextApp) return <></>;
 
+    const { modalProject } = contextApp;
     const { projectDefaultData, projects, xplorerState } = props;
 
     return (
@@ -24,7 +25,7 @@ const CreationsTechnologies = (props: ICreationsBlock): React.JSX.Element => {
                     names={
                         xplorerState === 'projects'
                             ? projectDefaultData.technologies
-                            : projects[contextApp.modalProject].technologies
+                            : projects[modalProject].technologies
                     }
                 />
             </div>

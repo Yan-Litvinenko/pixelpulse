@@ -11,6 +11,18 @@ interface IClipPathBorder {
     className: string;
 }
 
+interface IStatistics {
+    className: Record<string, string>;
+}
+
+interface IJouystick {
+    className: string;
+    down: () => void;
+    left: () => void;
+    right: () => void;
+    up: () => void;
+}
+
 interface IButton {
     className: string;
     delayEvent: boolean;
@@ -21,4 +33,10 @@ interface IButton {
     type: 'submit' | 'button';
 }
 
-export { ICross, IFrame, IClipPathBorder, IButton };
+interface ILogsElement {
+    className: string;
+    date: string | undefined;
+    textContent: string;
+}
+
+export { ICross, IFrame, IClipPathBorder, IButton, IStatistics, IJouystick, ILogsElement };

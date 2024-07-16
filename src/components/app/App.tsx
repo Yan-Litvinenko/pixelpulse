@@ -10,7 +10,7 @@ import useLocalStorage from '../../hooks/useLocalStorage';
 import fetchAchievements from '../../utils/fetchAchievements';
 import { handleInitSettings } from '../../utils/handleSettings';
 import handleWrapperClassName from '../../utils/handleWrapperClassName';
-import requestForServer from '../../utils/requestForServer';
+import requestToTheServer from '../../utils/requestToTheServer';
 
 import AnimatedRoutes from '../AnimationRoutes/AnimationRoutes';
 import Layout from '../layout/Layout';
@@ -87,9 +87,9 @@ const App = (): React.JSX.Element => {
     React.useEffect(() => {
         const initStatistics = async () => {
             try {
-                const fetchedLevel: string = await requestForServer<string>('/level');
-                const fetchedCoins: string = await requestForServer<string>('/coins');
-                const fetchedAddToday: boolean = await requestForServer<boolean>('/status_add_today');
+                const fetchedLevel: string = await requestToTheServer<string>('/level');
+                const fetchedCoins: string = await requestToTheServer<string>('/coins');
+                const fetchedAddToday: boolean = await requestToTheServer<boolean>('/status_add_today');
 
                 setIsAddedCoinToday(fetchedAddToday);
                 setLevel(fetchedLevel);

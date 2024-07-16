@@ -3,22 +3,25 @@ import { ContextApp } from '../app/App';
 import { IAppContext } from '../../interfaces/interface';
 import LogsElement from '../logsElement/LogsElement';
 import styles from './LogsProject.module.scss';
+import useStatusData from '../../hooks/useStatusData';
 
 const LogsProject = (): React.JSX.Element => {
     const contextApp: IAppContext | undefined = React.useContext(ContextApp);
 
     if (!contextApp) return <></>;
 
-    let lastDate: string = 'error connection';
-
-    if (contextApp.isLoadingGithub) lastDate = 'loading';
-    if (contextApp.commits[0]) lastDate = contextApp.commits[0].date;
+    const { isLoadingGithub, errorGithub } = contextApp;
+    const { message } = useStatusData({
+        error: errorGithub,
+        load: isLoadingGithub,
+        successMessage: contextApp.commits.length ? contextApp.commits[0].date : '',
+    });
 
     return (
         <ul className={styles.project}>
             <LogsElement
                 className={styles.project__title}
-                date={lastDate}
+                date={message}
                 textContent={'LOG ENTRY: PROJECT DEVELOPMENT UPDATE'}
             />
             <li className={styles.project__item}>

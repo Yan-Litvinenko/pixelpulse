@@ -11,8 +11,9 @@ const Xplorer = (props: IXplorer): React.JSX.Element => {
 
     if (!contextApp) return <></>;
 
+    const { modalProject } = contextApp;
     const { projects, setXplorerState, xplorerState } = props;
-    const path: string = `location: /projects${xplorerState === 'projectImages' ? '/' + projects[contextApp.modalProject].name : ''}`;
+    const path: string = `location: /projects${xplorerState === 'projectImages' ? '/' + projects[modalProject].name : ''}`;
 
     return (
         <div className={styles.xplorer}>

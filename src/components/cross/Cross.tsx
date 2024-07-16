@@ -10,10 +10,11 @@ const Cross = (props: ICross): React.JSX.Element => {
 
     if (!contextApp) return <></>;
 
+    const { handleSoundModal } = contextApp;
     const { setModalState, scrollStatus } = props;
 
     const handleClick = (): void => {
-        contextApp.handleSoundModal();
+        handleSoundModal();
         setModalState(false);
 
         if (scrollStatus === 'off') scroll.off();

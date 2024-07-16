@@ -20,7 +20,8 @@ const technologies: Technologies = {
     wordpress: Wordpress,
 };
 
-const CreationsTechnologiesContent = ({ names }: ICreationsTechnologiesItem): React.JSX.Element => {
+const CreationsTechnologiesContent = (props: ICreationsTechnologiesItem): React.JSX.Element => {
+    const { names } = props;
     return (
         <div className={styles.content}>
             {names.map((item) => {

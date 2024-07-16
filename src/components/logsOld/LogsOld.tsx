@@ -1,9 +1,9 @@
 import React from 'react';
+import useStatusData from '../../hooks/useStatusData';
 import LogsElement from '../logsElement/LogsElement';
 import { nanoid } from 'nanoid';
 import { ContextApp } from '../app/App';
 import { IAppContext } from '../../interfaces/interface';
-import { ICommitLog } from '../../interfaces/interface.github';
 import styles from './LogsOld.module.scss';
 
 const LogsOld = (): React.JSX.Element => {
@@ -11,10 +11,8 @@ const LogsOld = (): React.JSX.Element => {
 
     if (!contextApp) return <></>;
 
-    let message = 'connection error';
-    let commits: ICommitLog[] = contextApp.commits;
-
-    if (contextApp.isLoadingGithub) message = 'loading';
+    const { errorGithub, isLoadingGithub, commits } = contextApp;
+    const { message } = useStatusData({ error: errorGithub, load: isLoadingGithub, successMessage: '' });
 
     return (
         <div>
@@ -23,13 +21,13 @@ const LogsOld = (): React.JSX.Element => {
                 {commits.length === 0 ? (
                     <>
                         {Array.from({ length: 5 }).map(() => (
-                            <LogsElement key={nanoid()} date={message} textContent={message} />
+                            <LogsElement key={nanoid()} className={''} date={message} textContent={message} />
                         ))}
                     </>
                 ) : (
                     <>
                         {commits.map((item) => (
-                            <LogsElement key={nanoid()} date={item.date} textContent={item.message} />
+                            <LogsElement key={nanoid()} className={''} date={item.date} textContent={item.message} />
                         ))}
                     </>
                 )}

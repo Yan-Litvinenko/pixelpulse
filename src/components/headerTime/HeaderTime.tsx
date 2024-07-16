@@ -10,6 +10,10 @@ import styles from './HeaderTime.module.scss';
 
 const HeaderTime = (): React.JSX.Element => {
     const contextApp: IAppContext | undefined = React.useContext(ContextApp);
+
+    if (!contextApp) return <></>;
+
+    const { handleSoundModal, setCredits } = contextApp;
     const [localTime] = useLocalTime();
     const serverTime = useServerTime();
 
@@ -19,8 +23,8 @@ const HeaderTime = (): React.JSX.Element => {
                 className={styles.time__credits}
                 delayEvent={false}
                 handleButton={() => {
-                    handleOpenModal(contextApp?.setCredits);
-                    contextApp?.handleSoundModal();
+                    handleOpenModal(setCredits);
+                    handleSoundModal();
                 }}
                 textContent="Credits"
                 type="button"

@@ -8,11 +8,12 @@ const Button = (props: IButton): React.JSX.Element => {
 
     if (!contextApp) return <></>;
 
+    const { isLarge, isMedium } = contextApp;
     const { handleButton, delayEvent, className, textContent, isValid, type, image } = props;
     const button = React.useRef<null | HTMLButtonElement>(null);
 
     React.useEffect(() => {
-        if (contextApp.isLarge || contextApp.isMedium) {
+        if (isLarge || isMedium) {
             button.current?.addEventListener('click', handleButton);
         } else if (delayEvent) {
             setTimeout(() => {

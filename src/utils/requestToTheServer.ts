@@ -1,4 +1,4 @@
-const requestForServer = async <T>(path: string): Promise<T> => {
+const requestToTheServer = async <T>(path: string): Promise<T> => {
     try {
         const response: Response = await fetch(path);
         if (!response.ok) {
@@ -12,4 +12,4 @@ const requestForServer = async <T>(path: string): Promise<T> => {
     }
 };
 
-export default requestForServer;
+export default requestToTheServer;

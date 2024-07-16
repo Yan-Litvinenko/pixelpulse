@@ -2,7 +2,6 @@ import React from 'react';
 import useLogsUpdate from '../../hooks/useLogsUpdate';
 import Button from '../button/Button';
 import { ContextApp } from '../app/App';
-import Heading from '../heading/Heading';
 import { IAppContext } from '../../interfaces/interface';
 import { nanoid } from 'nanoid';
 import styles from './LogsUpdate.module.scss';
@@ -28,19 +27,20 @@ const update: Record<string, string>[] = [
 
 const LogsUpdate = (): React.JSX.Element => {
     const contextApp: IAppContext | undefined = React.useContext(ContextApp);
+
+    if (!contextApp) return <></>;
+
+    const { handleSoundClick, isLarge } = contextApp;
+
     const [expandStates, clippedIndexes, setExpandStates, textRefs] = useLogsUpdate(update, styles.element__text_clip);
 
-    const handleExpand = React.useCallback((index: number): void => {
-        return setExpandStates((prevStates) => {
+    const detail = (index: number): void => {
+        setExpandStates((prevStates) => {
             const newStates: boolean[] = [...prevStates];
             newStates[index] = !prevStates[index];
             return newStates;
         });
-    }, []);
-
-    const handleButton = (index: number): void => {
-        handleExpand(index);
-        contextApp?.handleSoundClick();
+        handleSoundClick();
     };
 
     return (
@@ -49,7 +49,7 @@ const LogsUpdate = (): React.JSX.Element => {
                 return (
                     <div className={styles.element} key={nanoid()}>
                         <div className={styles.border}></div>
-                        <Heading className={styles.element__title} level="3" textContent={element.title} />
+                        <h3 className={styles.element__title}>{element.title}</h3>
                         <p
                             className={`${styles.element__text} ${expandStates[index] ? '' : styles.element__text_clip}`}
                             ref={(el) => (textRefs.current[index] = el)}
@@ -57,13 +57,13 @@ const LogsUpdate = (): React.JSX.Element => {
                             {element.text}
                         </p>
 
-                        {contextApp?.isLarge ? (
+                        {isLarge ? (
                             clippedIndexes.includes(index) ? (
                                 <Button
                                     className={`${styles.element__expend}
                              ${clippedIndexes.includes(index) ? null : styles.element__expend_deactive}`}
                                     delayEvent={false}
-                                    handleButton={clippedIndexes.includes(index) ? () => handleButton(index) : () => {}}
+                                    handleButton={clippedIndexes.includes(index) ? () => detail(index) : () => {}}
                                     textContent={expandStates[index] ? '-collapse' : '+expand'}
                                     type="button"
                                 />
@@ -73,7 +73,7 @@ const LogsUpdate = (): React.JSX.Element => {
                                 className={`${styles.element__expend}
                          ${clippedIndexes.includes(index) ? null : styles.element__expend_deactive}`}
                                 delayEvent={false}
-                                handleButton={clippedIndexes.includes(index) ? () => handleButton(index) : () => {}}
+                                handleButton={clippedIndexes.includes(index) ? () => detail(index) : () => {}}
                                 textContent={expandStates[index] ? '-collapse' : '+expand'}
                                 type="button"
                             />
