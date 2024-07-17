@@ -10,15 +10,18 @@ import styles from './MobileBoxButton.module.scss';
 const MobileBoxButton = (): React.JSX.Element => {
     const contextApp = React.useContext<IAppContext | undefined>(ContextApp);
 
-    const handleNavigationClick = (): void => {
-        if (contextApp) {
-            contextApp?.handleSoundModal();
-            handleOpenModal(contextApp?.setNavigationMobile);
-        }
+    if (!contextApp) return <></>;
+
+    const { handleSoundModal, setNavigationMobile, handleSoundClick } = contextApp;
+
+    const navigationClick = (): void => {
+        handleSoundModal();
+        handleOpenModal(setNavigationMobile);
     };
-    const handleAboutClick = (): void => {
-        contextApp?.setNavigationMobile(false);
-        contextApp?.handleSoundClick();
+
+    const aboutClick = (): void => {
+        setNavigationMobile(false);
+        handleSoundClick();
         scroll.on();
     };
 
@@ -27,11 +30,11 @@ const MobileBoxButton = (): React.JSX.Element => {
             <Button
                 className={styles.box__navigation}
                 delayEvent={false}
-                handleButton={handleNavigationClick}
+                handleButton={navigationClick}
                 textContent="navigation"
                 type="button"
             />
-            <Link to={'about'} className={styles.box__about} onClick={handleAboutClick}>
+            <Link to={'about'} className={styles.box__about} onClick={aboutClick}>
                 about
             </Link>
         </div>

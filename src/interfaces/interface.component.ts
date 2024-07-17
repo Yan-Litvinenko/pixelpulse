@@ -39,4 +39,36 @@ interface ILogsElement {
     textContent: string;
 }
 
-export { ICross, IFrame, IClipPathBorder, IButton, IStatistics, IJouystick, ILogsElement };
+interface IModalBoxButton {
+    handleEnter: () => void;
+    handleEscape: () => void;
+    isValid?: boolean;
+    textEnter: string;
+    textEsc: string;
+    typeEnter: 'submit' | 'button';
+}
+
+interface ICreditItem {
+    title: string;
+    text: string | string[];
+}
+
+interface IModalSendState {
+    setError: React.Dispatch<React.SetStateAction<boolean>>;
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+    setSuccessfully: React.Dispatch<React.SetStateAction<boolean>>;
+    status: boolean;
+}
+
+export {
+    ICross,
+    IFrame,
+    IClipPathBorder,
+    IButton,
+    IStatistics,
+    IJouystick,
+    ILogsElement,
+    IModalBoxButton,
+    ICreditItem,
+    IModalSendState,
+};

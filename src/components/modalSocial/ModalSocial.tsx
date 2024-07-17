@@ -12,16 +12,17 @@ import { IAppContext } from '../../interfaces/interface';
 import { FormSubmit } from '../../interfaces/interface.form';
 import styles from './ModalSocial.module.scss';
 
-const ModalSocial = (): React.JSX.Element | null => {
+const ModalSocial = (): React.JSX.Element => {
     const contextApp: IAppContext | undefined = React.useContext(ContextApp);
 
-    if (!contextApp) return null;
+    if (!contextApp) return <></>;
 
+    const { setSocial } = contextApp;
     const modal: React.MutableRefObject<HTMLDivElement | null> = React.useRef(null);
     const formSubmit: FormSubmit = useFormSubmit('Вам отправили сообщение!');
     const handleCloseButton = useCloseModal(
         modal,
-        contextApp.setSocial,
+        setSocial,
         formSubmit.successfully,
         formSubmit.loading,
         formSubmit.error,
@@ -50,7 +51,7 @@ const ModalSocial = (): React.JSX.Element | null => {
                 <form className={styles.modal__inner} onSubmit={formSubmit.handleSubmit}>
                     <div className={styles.modal__box_title}>
                         <Heading className={styles.modal__title} level="3" textContent={'connect with me'} />
-                        <Cross setModalState={contextApp.setSocial} scrollStatus="on" />
+                        <Cross setModalState={setSocial} scrollStatus="on" />
                     </div>
                     <Heading
                         className={styles.modal__subtitle}

@@ -36,15 +36,6 @@
         @include text-properties();
         color: var(--main-text-color);
     }
-
-    &__text_box {
-        @include flex-container(column, $gap: 0.9375rem 0rem);
-    }
-
-    &__text {
-        @include text-properties();
-        color: var(--stone-grey);
-    }
 }
 
 @media (max-width: 1700px) {

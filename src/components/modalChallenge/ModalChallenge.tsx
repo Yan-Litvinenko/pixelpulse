@@ -4,7 +4,6 @@ import useCloseModal from '../../hooks/useCloseModal';
 import { ContextApp } from '../app/App';
 import Cross from '../cross/Cross';
 import FormChallenge from '../formChallenge/FormChallenge';
-import Heading from '../heading/Heading';
 import ModalBoxButton from '../modalBoxButton/ModalBoxButton';
 import ModalLoader from '../modalLoader/ModalLoader';
 import ModalSendState from '../modalSendState/ModalSendState';
@@ -13,17 +12,19 @@ import { FormSubmit } from '../../interfaces/interface.form';
 import { Rarity } from '../../interfaces/interface.achievements';
 import styles from './ModalChallenge.module.scss';
 
-const ModalChallenge = (): React.JSX.Element | null => {
+const ModalChallenge = (): React.JSX.Element => {
     const contextApp: IAppContext | undefined = React.useContext(ContextApp);
 
-    if (!contextApp) return null;
+    if (!contextApp) return <></>;
+
+    const { setChallenge } = contextApp;
 
     const [selectValue, setSelectValue] = React.useState<Rarity>('unusual');
     const modal: React.MutableRefObject<HTMLDivElement | null> = React.useRef(null);
     const formSubmit: FormSubmit = useFormSubmit('Вам бросили вызов!');
-    const handleButtonEscape = useCloseModal(
+    const buttonEscape = useCloseModal(
         modal,
-        contextApp.setChallenge,
+        setChallenge,
         formSubmit.successfully,
         formSubmit.loading,
         formSubmit.error,
@@ -55,10 +56,10 @@ const ModalChallenge = (): React.JSX.Element | null => {
                 )}
                 <form className={styles.modal__inner} onSubmit={formSubmit.handleSubmit}>
                     <div className={styles.modal__box_title}>
-                        <Heading className={styles.modal__title} level="3" textContent={'challenge me'} />
-                        <Cross setModalState={() => contextApp?.setChallenge(false)} scrollStatus="on" />
+                        <h3 className={styles.modal__title}>challenge me</h3>
+                        <Cross setModalState={() => setChallenge(false)} scrollStatus="on" />
                     </div>
-                    <Heading className={styles.modal__subtitle} level="4" textContent={'Offer me a challenge!'} />
+                    <h4 className={styles.modal__subtitle}>Offer me a challenge!</h4>
                     <FormChallenge
                         register={formSubmit.register}
                         errors={formSubmit.errors}
@@ -67,7 +68,7 @@ const ModalChallenge = (): React.JSX.Element | null => {
                     />
                     <ModalBoxButton
                         handleEnter={formSubmit.handleSubmit}
-                        handleEscape={handleButtonEscape}
+                        handleEscape={buttonEscape}
                         isValid={formSubmit.isValid}
                         textEnter={'send challenge [enter]'}
                         textEsc={'discard [esc]'}
