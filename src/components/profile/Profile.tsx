@@ -3,8 +3,6 @@ import { ContextApp } from '../app/App';
 import { Link } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import Frame from '../frame/Frame';
-import Heading from '../heading/Heading';
-import Paragraph from '../paragraph/Paragraph';
 import ProfileElement from '../profileElement/ProfileElement';
 import { IAppContext } from '../../interfaces/interface';
 import avatar from '../../assets/images/avatar.png';
@@ -15,14 +13,17 @@ import GlitchImage from '../glitchImage/GlitchImage';
 
 const Profile = (): React.JSX.Element => {
     const contextApp = React.useContext<IAppContext | undefined>(ContextApp);
-    const handleClickAvatar = (): void => {
-        contextApp?.handleSoundClick();
-    };
+
+    if (!contextApp) return <></>;
+
+    const { handleSoundClick, isMedium } = contextApp;
+
+    const clickAvatar = (): Promise<void> | null => handleSoundClick();
 
     return (
         <aside className={styles.profile}>
-            {contextApp?.isMedium ? null : (
-                <Link to="about" className={styles.avatar} onClick={handleClickAvatar}>
+            {isMedium ? null : (
+                <Link to="about" className={styles.avatar} onClick={clickAvatar}>
                     <Frame className={styles.avatar__frame} />
                     <GlitchImage className={styles.canvas} imageUrl={avatar} minDelay={20000} maxDelay={40000} />
                 </Link>
@@ -33,8 +34,8 @@ const Profile = (): React.JSX.Element => {
             })}
 
             <div className={styles.motto}>
-                <Heading className={styles.motto__title} level={'3'} textContent="motto:" />
-                <Paragraph className={styles.motto__text} textContent={'Bonum modulum est, quod connecti potest.'} />
+                <h3 className={styles.motto__title}>motto:</h3>
+                <p className={styles.motto__text}>Bonum modulum est, quod connecti potest.</p>
             </div>
         </aside>
     );

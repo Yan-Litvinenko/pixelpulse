@@ -1,3 +1,7 @@
+import { Page } from './interface';
+import { UseFormRegister, FieldValues } from 'react-hook-form';
+import { Rarity } from './interface.achievements';
+
 interface ICross {
     setModalState: React.Dispatch<React.SetStateAction<boolean>>;
     scrollStatus: 'on' | 'off';
@@ -60,6 +64,67 @@ interface IModalSendState {
     status: boolean;
 }
 
+interface ILayout {
+    children: React.JSX.Element;
+}
+
+interface INavigation {
+    styles: Record<string, string>;
+}
+
+interface INavigationElement {
+    pageName: Page;
+}
+
+interface IProfileElement {
+    adjacent: {
+        image?: string;
+        text: string;
+        type: string;
+    };
+    header: {
+        text: string;
+    };
+}
+
+interface IQuestElement {
+    className: {
+        header: string;
+        text: string;
+    };
+    hexagon: boolean;
+    text: string;
+    textTitle: string;
+}
+
+interface IRange {
+    changeSettingValue: (event: React.ChangeEvent<HTMLInputElement>, variableName: 'hue' | 'size') => void;
+    color?: 'hue';
+    inputTarget: 'color' | 'size';
+    max: number;
+    min: number;
+    textContent: string;
+    initValue: number;
+}
+
+interface ISelectChallenge {
+    register: UseFormRegister<FieldValues>;
+    selectValue: Rarity;
+    setSelectValue: React.Dispatch<React.SetStateAction<Rarity>>;
+}
+
+interface ISetting {
+    className: Record<string, string>;
+}
+
+interface ISettingElement {
+    audioClassName?: string;
+    className: string;
+    image: string;
+    onClick?: () => void;
+    textContent: string;
+}
+
 export {
     ICross,
     IFrame,
@@ -71,4 +136,13 @@ export {
     IModalBoxButton,
     ICreditItem,
     IModalSendState,
+    ILayout,
+    INavigation,
+    INavigationElement,
+    IProfileElement,
+    IQuestElement,
+    IRange,
+    ISelectChallenge,
+    ISetting,
+    ISettingElement,
 };

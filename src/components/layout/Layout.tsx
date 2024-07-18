@@ -8,10 +8,16 @@ import MobileBoxButton from '../mobileBoxButton/MobileBoxButton';
 import Profile from '../profile/Profile';
 import Quest from '../quest/Quest';
 import { IAppContext } from '../../interfaces/interface';
-import styles from './Layout.module.scss';
+import { ILayout } from '../../interfaces/interface.component';
+import stylesLayout from './Layout.module.scss';
 
-const Layout = ({ children }: { children: React.JSX.Element }): React.JSX.Element => {
+const Layout = (props: ILayout): React.JSX.Element => {
     const contextApp = React.useContext<IAppContext | undefined>(ContextApp);
+
+    if (!contextApp) return <></>;
+
+    const { children } = props;
+    const { isMedium, isLarge, styles } = contextApp;
     const location = useLocation();
 
     React.useEffect(() => {
@@ -31,7 +37,7 @@ const Layout = ({ children }: { children: React.JSX.Element }): React.JSX.Elemen
     }
 
     const addProfile = (): React.JSX.Element | null => {
-        if ((contextApp?.isLarge || contextApp?.isMedium) && location.pathname !== '/beginning') {
+        if ((isLarge || isMedium) && location.pathname !== '/beginning') {
             return null;
         }
 
@@ -45,15 +51,17 @@ const Layout = ({ children }: { children: React.JSX.Element }): React.JSX.Elemen
     return (
         <>
             <Header />
-            <Navigation className={contextApp?.styles} />
+            <Navigation styles={styles} />
             <Outlet />
             <Quest />
-            <div className={`${styles.content} ${location.pathname === '/beginning' ? styles.content_beginning : ''}`}>
-                <Frame className={styles.frame} />
+            <div
+                className={`${stylesLayout.content} ${location.pathname === '/beginning' ? stylesLayout.content_beginning : ''}`}
+            >
+                <Frame className={stylesLayout.frame} />
                 {children}
             </div>
             {addProfile()}
-            {contextApp?.isLarge || contextApp?.isMedium ? <MobileBoxButton /> : null}
+            {isLarge || isMedium ? <MobileBoxButton /> : null}
         </>
     );
 };

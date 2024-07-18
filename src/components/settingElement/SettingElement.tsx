@@ -1,20 +1,14 @@
 import React from 'react';
+import { ISettingElement } from '../../interfaces/interface.component';
 
-interface ISetting {
-    audioClassName?: string;
-    className: string;
-    image: string;
-    onClick?: () => void;
-    textContent: string;
-}
-
-const SettingElement = (props: ISetting): React.JSX.Element => {
-    const isGear: boolean = props.image === 'gear';
+const SettingElement = (props: ISettingElement): React.JSX.Element => {
+    const { image, onClick, className, audioClassName, textContent } = props;
+    const isGear: boolean = image === 'gear';
 
     return (
-        <button className={props.className} onClick={() => props.onClick && props.onClick()}>
-            {props.textContent}
-            <div className={props.audioClassName}>
+        <button className={className} onClick={() => onClick && onClick()}>
+            {textContent}
+            <div className={audioClassName}>
                 {isGear && (
                     <svg
                         width="1.5rem"

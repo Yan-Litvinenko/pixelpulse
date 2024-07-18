@@ -2,19 +2,16 @@ import React from 'react';
 import { nanoid } from 'nanoid';
 import { Page } from '../app/App';
 import NavigationElement from '../navigationElement/NavigationElement';
+import { INavigation } from '../../interfaces/interface.component';
 
-interface INavigation {
-    className: Record<string, string> | undefined;
-}
-
-const Navigation = ({ className }: INavigation): React.JSX.Element => {
-    const classes: Record<string, string> = className !== undefined ? className : {};
+const Navigation = (props: INavigation): React.JSX.Element => {
+    const { styles } = props;
 
     return (
-        <nav className={classes.navigation}>
-            <ul className={classes.navigation__list}>
+        <nav className={styles.navigation}>
+            <ul className={styles.navigation__list}>
                 {['beginning', 'logs', 'achievements', 'creations', 'games'].map((page) => (
-                    <NavigationElement key={nanoid()} textContent={page as Page} />
+                    <NavigationElement key={nanoid()} pageName={page as Page} />
                 ))}
             </ul>
         </nav>

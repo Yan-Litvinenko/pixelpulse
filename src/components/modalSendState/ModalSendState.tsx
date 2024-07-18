@@ -1,5 +1,4 @@
 import React from 'react';
-import Paragraph from '../paragraph/Paragraph';
 import Button from '../button/Button';
 import { IModalSendState } from '../../interfaces/interface.component';
 import styles from './ModalSendState.module.scss';
@@ -20,7 +19,7 @@ const ModalSendState = (props: IModalSendState): React.JSX.Element => {
         <div className={styles.modal}>
             <div className={styles.modal__inner}>
                 <div className={styles.modal__content}>
-                    <Paragraph className={styles.modal__text} textContent={status ? success : error} />
+                    <p className={styles.modal__text}>{status ? success : error} </p>
                     <Button
                         className={styles.modal__button}
                         delayEvent={false}

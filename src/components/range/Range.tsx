@@ -1,45 +1,33 @@
 import React from 'react';
 import useRange from '../../hooks/useRange';
+import { IRange } from '../../interfaces/interface.component';
 import styles from './Range.module.scss';
 
-interface IRange {
-    changeSettingValue: (event: React.ChangeEvent<HTMLInputElement>, variableName: 'hue' | 'size') => void;
-    color?: 'hue';
-    inputTarget: 'color' | 'size';
-    max: number;
-    min: number;
-    textContent: string;
-    initValue: number;
-}
+const Range = (props: IRange): React.JSX.Element => {
+    const { initValue, changeSettingValue, textContent, min, max, inputTarget } = props;
 
-const Range = (props: IRange): React.JSX.Element | null => {
     const progress: React.MutableRefObject<HTMLDivElement | null> = React.useRef(null);
     const customThumb: React.MutableRefObject<HTMLDivElement | null> = React.useRef(null);
 
-    const [rangeElement, setRangeElement] = useRange(props.initValue, progress, customThumb);
+    const [rangeElement, setRangeElement] = useRange(initValue, progress, customThumb);
 
     React.useEffect(() => {
-        setRangeElement(props.initValue);
-    }, [props.initValue]);
+        setRangeElement(initValue);
+    }, [initValue]);
 
     return (
         <label className={styles.range}>
-            {props.textContent}
+            {textContent}
             <div className={styles.range__box}>
                 <input
                     className={styles.range__input}
-                    max={props.max}
-                    min={props.min}
+                    max={max}
+                    min={min}
                     onChange={(event) => {
                         setRangeElement(Number(event?.target.value));
 
-                        if (props.inputTarget === 'color') {
-                            props.changeSettingValue(event, props.color || 'hue');
-                        }
-
-                        if (props.inputTarget === 'size') {
-                            props.changeSettingValue(event, 'size');
-                        }
+                        if (inputTarget === 'color') changeSettingValue(event, props.color || 'hue');
+                        if (inputTarget === 'size') changeSettingValue(event, 'size');
                     }}
                     type="range"
                     value={rangeElement}

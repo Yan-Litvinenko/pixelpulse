@@ -2,8 +2,6 @@ import React from 'react';
 import usePrintedText from '../../hooks/usePrintedText';
 import { ContextApp } from '../app/App';
 import { Link } from 'react-router-dom';
-import Heading from '../heading/Heading';
-import Paragraph from '../paragraph/Paragraph';
 import audioKeyboardPress from '../../assets/audio/pressKeyboard.mp3';
 import { IAppContext } from '../../interfaces/interface';
 import styles from './Welcome.module.scss';
@@ -19,6 +17,8 @@ const Welcome = (): React.JSX.Element => {
 
     if (!contextApp) return <></>;
 
+    const { handleSoundClick } = contextApp;
+
     const audioKeyboard = React.useRef(new Audio(audioKeyboardPress));
 
     const [skipStatus, setSkipStatus] = React.useState<boolean>(false);
@@ -31,19 +31,19 @@ const Welcome = (): React.JSX.Element => {
     const textOne = usePrintedText(textForPrint.text_1, delayTextOne);
     const textTwo = usePrintedText(textForPrint.text_2, delayTextTwo);
 
-    const skip = () => {
+    const skip = (): void => {
         [...title.timers, ...textOne.timers, ...textTwo.timers].forEach((timer) => clearTimeout(timer));
         setSkipStatus(true);
         setAudioKeyboardStatus(false);
         audioKeyboard.current.pause();
-        contextApp.handleSoundClick();
+        handleSoundClick();
     };
 
-    const textElementWithAnimation = (currentText: string, condition: boolean) => {
+    const textElementWithAnimation = (currentText: string, condition: boolean): string => {
         return `${currentText} ${condition ? '|' : ''}`;
     };
 
-    const handleAudioKeyboard = () => {
+    const handleAudioKeyboard = (): void => {
         if (audioKeyboardStatus) {
             audioKeyboard.current.play();
         }
@@ -68,56 +68,36 @@ const Welcome = (): React.JSX.Element => {
 
     return (
         <div className={styles.welcome}>
-            <Heading className={styles.welcome__greeting} level={'2'} textContent="HI!" />
+            <h2 className={styles.welcome__greeting}>HI!</h2>
             <div className={styles.welcome__content}>
                 <div className={styles.welcome__item}>
-                    <Heading
-                        className={`${styles.welcome__title} ${styles.hidden}`}
-                        level={'1'}
-                        textContent={textForPrint.title}
-                    />
-                    <Heading
-                        className={styles.welcome__title}
-                        level={'1'}
-                        textContent={
-                            skipStatus ? textForPrint.title : textElementWithAnimation(title.text, !title.animationEnd)
-                        }
-                    />
+                    <h1 className={`${styles.welcome__title} ${styles.hidden}`}>{textForPrint.title}</h1>
+                    <h1 className={styles.welcome__title}>
+                        {skipStatus ? textForPrint.title : textElementWithAnimation(title.text, !title.animationEnd)}
+                    </h1>
                 </div>
 
                 <div className={styles.welcome__item}>
-                    <Paragraph
-                        className={`${styles.welcome__text} ${styles.hidden}`}
-                        textContent={textForPrint.text_1}
-                    />
-                    <Paragraph
-                        className={styles.welcome__text}
-                        textContent={
-                            skipStatus
-                                ? textForPrint.text_1
-                                : textElementWithAnimation(textOne.text, !textOne.animationEnd && title.animationEnd)
-                        }
-                    />
+                    <p className={`${styles.welcome__text} ${styles.hidden}`}>{textForPrint.text_1}</p>
+                    <p className={styles.welcome__text}>
+                        {skipStatus
+                            ? textForPrint.text_1
+                            : textElementWithAnimation(textOne.text, !textOne.animationEnd && title.animationEnd)}
+                    </p>
                 </div>
 
                 <div className={styles.welcome__item}>
-                    <Paragraph
-                        className={`${styles.welcome__text} ${styles.hidden}`}
-                        textContent={textForPrint.text_2}
-                    />
-                    <Paragraph
-                        className={styles.welcome__text}
-                        textContent={
-                            skipStatus
-                                ? textForPrint.text_2
-                                : textElementWithAnimation(textTwo.text, !textTwo.animationEnd && textOne.animationEnd)
-                        }
-                    />
+                    <p className={`${styles.welcome__text} ${styles.hidden}`}>{textForPrint.text_2}</p>
+                    <p className={styles.welcome__text}>
+                        {skipStatus
+                            ? textForPrint.text_2
+                            : textElementWithAnimation(textTwo.text, !textTwo.animationEnd && textOne.animationEnd)}
+                    </p>
                 </div>
 
                 <Link
                     className={`${styles.welcome__btn} ${skipStatus || textTwo.animationEnd ? '' : styles.hidden}`}
-                    onClick={() => contextApp.handleSoundClick()}
+                    onClick={() => handleSoundClick()}
                     to="/beginning"
                 >
                     Enter the system

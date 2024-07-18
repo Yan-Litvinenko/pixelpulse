@@ -4,7 +4,6 @@ import useFormSubmit from '../../hooks/useFormSubmit';
 import { ContextApp } from '../app/App';
 import Cross from '../cross/Cross';
 import Form from '../form/Form';
-import Heading from '../heading/Heading';
 import ModalBoxButton from '../modalBoxButton/ModalBoxButton';
 import ModalLoader from '../modalLoader/ModalLoader';
 import ModalSendState from '../modalSendState/ModalSendState';
@@ -50,14 +49,10 @@ const ModalSocial = (): React.JSX.Element => {
                 ) : null}
                 <form className={styles.modal__inner} onSubmit={formSubmit.handleSubmit}>
                     <div className={styles.modal__box_title}>
-                        <Heading className={styles.modal__title} level="3" textContent={'connect with me'} />
+                        <h3 className={styles.modal__title}>connect with me</h3>
                         <Cross setModalState={setSocial} scrollStatus="on" />
                     </div>
-                    <Heading
-                        className={styles.modal__subtitle}
-                        level="4"
-                        textContent={'wanna chat? Or just share something cool?'}
-                    />
+                    <h4 className={styles.modal__subtitle}>wanna chat? Or just share something cool?</h4>
                     <Form register={formSubmit.register} errors={formSubmit.errors} />
                     <ModalBoxButton
                         handleEnter={formSubmit.handleSubmit}

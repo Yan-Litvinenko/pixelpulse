@@ -1,28 +1,14 @@
 import React from 'react';
-import Heading from '../heading/Heading';
 import { Hexagon } from '../svgIcon/SvgIcon';
-
-interface IQuestElement {
-    className: {
-        header: string;
-        text: string;
-    };
-    hexagon: boolean;
-    text: string;
-    textTitle: string;
-}
-
-const getHexagon = (): React.JSX.Element => <Hexagon />;
+import { IQuestElement } from '../../interfaces/interface.component';
 
 const QuestElement = (props: IQuestElement): React.JSX.Element => {
     return (
         <div>
-            <Heading
-                className={props.className.header}
-                level={'3'}
-                textContent={props.textTitle}
-                image={props.hexagon ? getHexagon : undefined}
-            />
+            <h3 className={props.className.header}>
+                {props.textTitle}
+                {props.hexagon ? <Hexagon /> : null}
+            </h3>
             <span className={props.className.text}>{props.text}</span>
         </div>
     );
