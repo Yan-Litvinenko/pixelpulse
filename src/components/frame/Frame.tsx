@@ -53,4 +53,4 @@ const Frame = (props: IFrame): React.JSX.Element => {
     );
 };
 
-export default Frame;
+export { Frame };

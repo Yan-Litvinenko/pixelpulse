@@ -1,19 +1,14 @@
 import React from 'react';
-import AboutElement from '../aboutElement/AboutElement';
-import { ContextApp } from '../app/App';
-import { IAppContext } from '../../interfaces/interface';
-import Frame from '../frame/Frame';
+import { useMediaQuery } from 'react-responsive';
+import { AboutElement } from '../aboutElement/AboutElement';
+import { Frame } from '../frame/Frame';
 import humanAvif from '../../assets/images/human.avif';
 import humanWebp from '../../assets/images/human.webp';
 import humanJpg from '../../assets/images/human.jpg';
 import styles from './About.module.scss';
 
 const About = (): React.JSX.Element => {
-    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
-
-    if (!contextApp) return <></>;
-
-    const { isMedium } = contextApp;
+    const isMobile: boolean = useMediaQuery({ maxWidth: 768 });
 
     return (
         <main className={styles.about}>
@@ -41,7 +36,7 @@ const About = (): React.JSX.Element => {
                     />
                 </div>
 
-                {isMedium ? null : (
+                {isMobile ? null : (
                     <picture className={styles.box_image}>
                         <Frame className={styles.frame} />
 

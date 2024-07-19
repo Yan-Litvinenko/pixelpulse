@@ -2,6 +2,11 @@ import { Page } from './interface';
 import { UseFormRegister, FieldValues } from 'react-hook-form';
 import { Rarity } from './interface.achievements';
 
+interface IAboutElement {
+    title: string;
+    text: string;
+}
+
 interface ICross {
     setModalState: React.Dispatch<React.SetStateAction<boolean>>;
     scrollStatus: 'on' | 'off';
@@ -126,6 +131,7 @@ interface ISettingElement {
 }
 
 export {
+    IAboutElement,
     ICross,
     IFrame,
     IClipPathBorder,

@@ -1,10 +1,6 @@
 import React from 'react';
+import { IAboutElement } from '../../interfaces/interface.component';
 import styles from './AboutElement.module.scss';
-
-interface IAboutElement {
-    title: string;
-    text: string;
-}
 
 const AboutElement = (props: IAboutElement): React.JSX.Element => {
     const { title, text } = props;
@@ -17,4 +13,4 @@ const AboutElement = (props: IAboutElement): React.JSX.Element => {
     );
 };
 
-export default AboutElement;
+export { AboutElement };

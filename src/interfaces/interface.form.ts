@@ -19,7 +19,7 @@ interface FormSubmit {
     setError: BooleanState;
     setLoading: BooleanState;
     setSuccessfully: BooleanState;
-    handleSubmit: (e?: React.BaseSyntheticEvent<object, any, any> | undefined) => Promise<void>;
+    handleSubmit: (e?: React.BaseSyntheticEvent) => Promise<void>;
 }
 
 interface ILabel {

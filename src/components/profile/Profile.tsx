@@ -2,7 +2,7 @@ import React from 'react';
 import { ContextApp } from '../app/App';
 import { Link } from 'react-router-dom';
 import { nanoid } from 'nanoid';
-import Frame from '../frame/Frame';
+import { Frame } from '../frame/Frame';
 import ProfileElement from '../profileElement/ProfileElement';
 import { IAppContext } from '../../interfaces/interface';
 import avatar from '../../assets/images/avatar.png';
