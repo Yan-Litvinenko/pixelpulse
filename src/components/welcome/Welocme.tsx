@@ -1,9 +1,9 @@
 import React from 'react';
 import usePrintedText from '../../hooks/usePrintedText';
 import { ContextApp } from '../app/App';
+import { IContextApp } from '../../interfaces/interface';
 import { Link } from 'react-router-dom';
 import audioKeyboardPress from '../../assets/audio/pressKeyboard.mp3';
-import { IAppContext } from '../../interfaces/interface';
 import styles from './Welcome.module.scss';
 
 const textForPrint: Record<string, string> = {
@@ -13,16 +13,16 @@ const textForPrint: Record<string, string> = {
 };
 
 const Welcome = (): React.JSX.Element => {
-    const contextApp = React.useContext<IAppContext | undefined>(ContextApp);
+    const contextApp = React.useContext<IContextApp | null>(ContextApp);
 
     if (!contextApp) return <></>;
 
-    const { handleSoundClick } = contextApp;
+    const { handleSoundClick, sounds } = contextApp;
 
     const audioKeyboard = React.useRef(new Audio(audioKeyboardPress));
 
     const [skipStatus, setSkipStatus] = React.useState<boolean>(false);
-    const [audioKeyboardStatus, setAudioKeyboardStatus] = React.useState(contextApp.sounds ? true : false);
+    const [audioKeyboardStatus, setAudioKeyboardStatus] = React.useState(sounds ? true : false);
 
     const delayTextOne: number = textForPrint.title.length * 50;
     const delayTextTwo: number = (textForPrint.title.length + textForPrint.text_1.length) * 50;

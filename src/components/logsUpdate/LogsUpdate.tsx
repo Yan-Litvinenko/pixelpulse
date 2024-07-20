@@ -2,7 +2,7 @@ import React from 'react';
 import useLogsUpdate from '../../hooks/useLogsUpdate';
 import Button from '../button/Button';
 import { ContextApp } from '../app/App';
-import { IAppContext } from '../../interfaces/interface';
+import { IContextApp } from '../../interfaces/interface';
 import { nanoid } from 'nanoid';
 import styles from './LogsUpdate.module.scss';
 
@@ -26,7 +26,7 @@ const update: Record<string, string>[] = [
 ];
 
 const LogsUpdate = (): React.JSX.Element => {
-    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
+    const contextApp: IContextApp | null = React.useContext(ContextApp);
 
     if (!contextApp) return <></>;
 

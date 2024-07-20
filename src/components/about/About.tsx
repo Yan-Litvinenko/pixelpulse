@@ -2,13 +2,19 @@ import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { AboutElement } from '../aboutElement/AboutElement';
 import { Frame } from '../frame/Frame';
+import { ContextApp } from '../app/App';
+import { IContextApp } from '../../interfaces/interface';
 import humanAvif from '../../assets/images/human.avif';
 import humanWebp from '../../assets/images/human.webp';
 import humanJpg from '../../assets/images/human.jpg';
 import styles from './About.module.scss';
 
 const About = (): React.JSX.Element => {
-    const isMobile: boolean = useMediaQuery({ maxWidth: 768 });
+    const contextApp: IContextApp | null = React.useContext(ContextApp);
+
+    if (!contextApp) return <></>;
+
+    const { isMedium } = contextApp;
 
     return (
         <main className={styles.about}>
@@ -36,7 +42,7 @@ const About = (): React.JSX.Element => {
                     />
                 </div>
 
-                {isMobile ? null : (
+                {isMedium ? null : (
                     <picture className={styles.box_image}>
                         <Frame className={styles.frame} />
 

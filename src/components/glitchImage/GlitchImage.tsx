@@ -1,6 +1,6 @@
 import React from 'react';
 import { ContextApp } from '../app/App';
-import { IAppContext } from '../../interfaces/interface';
+import { IContextApp } from '../../interfaces/interface';
 import glitchEffect from '../../assets/audio/glitch.mp3';
 
 interface GlitchCanvasProps {
@@ -11,7 +11,7 @@ interface GlitchCanvasProps {
 }
 
 const GlitchImage: React.FC<GlitchCanvasProps> = ({ imageUrl, className, minDelay, maxDelay }) => {
-    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
+    const contextApp: IContextApp | null = React.useContext(ContextApp);
     const [isCanvasLoaded, setIsCanvasLoaded] = React.useState(false);
     const actualSoundState = React.useRef<boolean | undefined>(contextApp?.sounds);
     const timer = React.useRef<NodeJS.Timeout | null>(null);

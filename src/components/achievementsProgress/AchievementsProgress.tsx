@@ -1,13 +1,13 @@
 import React from 'react';
-import { ContextApp } from '../app/App';
 import Button from '../button/Button';
 import handleOpenModal from '../../utils/handleOpenModal';
 import AchievementsProgressRing from '../achievementsProgressRing/AchievementsProgressRing';
-import { IAppContext } from '../../interfaces/interface';
+import { ContextApp } from '../app/App';
+import { IContextApp } from '../../interfaces/interface';
 import styles from './AchievementsProgress.module.scss';
 
 const AchievementsProgress = (): React.JSX.Element => {
-    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
+    const contextApp: IContextApp | null = React.useContext(ContextApp);
 
     if (!contextApp) return <></>;
 

@@ -1,20 +1,20 @@
 import React from 'react';
 import { ContextApp } from '../app/App';
-import { IAppContext } from '../../interfaces/interface';
+import { IContextApp } from '../../interfaces/interface';
 import LogsElement from '../logsElement/LogsElement';
 import styles from './LogsProject.module.scss';
 import useStatusData from '../../hooks/useStatusData';
 
 const LogsProject = (): React.JSX.Element => {
-    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
+    const contextApp: IContextApp | null = React.useContext(ContextApp);
 
     if (!contextApp) return <></>;
 
-    const { isLoadingGithub, errorGithub } = contextApp;
+    const { isLoadingGithub, errorGithub, commits } = contextApp;
     const { message } = useStatusData({
         error: errorGithub,
         load: isLoadingGithub,
-        successMessage: contextApp.commits.length ? contextApp.commits[0].date : '',
+        successMessage: commits.length ? commits[0].date : '',
     });
 
     return (

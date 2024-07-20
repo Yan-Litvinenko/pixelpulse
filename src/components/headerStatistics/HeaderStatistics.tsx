@@ -1,12 +1,12 @@
 import React from 'react';
 import Button from '../button/Button';
 import { ContextApp } from '../app/App';
-import { IAppContext } from '../../interfaces/interface';
+import { IContextApp } from '../../interfaces/interface';
 import { IStatistics } from '../../interfaces/interface.component';
 import addCoin from '../../utils/addCoin';
 
 const HeaderStatistics = (props: IStatistics): React.JSX.Element => {
-    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
+    const contextApp: IContextApp | null = React.useContext(ContextApp);
 
     if (!contextApp) return <></>;
 

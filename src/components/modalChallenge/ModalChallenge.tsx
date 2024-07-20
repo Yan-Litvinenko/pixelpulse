@@ -2,18 +2,18 @@ import React from 'react';
 import useFormSubmit from '../../hooks/useFormSubmit';
 import useCloseModal from '../../hooks/useCloseModal';
 import { ContextApp } from '../app/App';
+import { IContextApp } from '../../interfaces/interface';
 import Cross from '../cross/Cross';
 import FormChallenge from '../formChallenge/FormChallenge';
 import ModalBoxButton from '../modalBoxButton/ModalBoxButton';
 import ModalLoader from '../modalLoader/ModalLoader';
 import ModalSendState from '../modalSendState/ModalSendState';
-import { IAppContext } from '../../interfaces/interface';
 import { FormSubmit } from '../../interfaces/interface.form';
 import { Rarity } from '../../interfaces/interface.achievements';
 import styles from './ModalChallenge.module.scss';
 
 const ModalChallenge = (): React.JSX.Element => {
-    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
+    const contextApp: IContextApp | null = React.useContext(ContextApp);
 
     if (!contextApp) return <></>;
 

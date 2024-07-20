@@ -3,14 +3,14 @@ import useSlider from '../../hooks/useSlider';
 import useCloseModal from '../../hooks/useCloseModal';
 import Button from '../button/Button';
 import { ContextApp } from '../app/App';
-import { IAppContext } from '../../interfaces/interface';
+import { IContextApp } from '../../interfaces/interface';
 import vectorImageRight from '../../assets/images/vector-right.svg';
 import vectorImageLeft from '../../assets/images/vector-left.svg';
 import projects from '../../assets/json/projects.json';
 import styles from './ModalCreations.module.scss';
 
 const ModalCreations = (): React.JSX.Element => {
-    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
+    const contextApp: IContextApp | null = React.useContext(ContextApp);
 
     if (!contextApp) return <></>;
 

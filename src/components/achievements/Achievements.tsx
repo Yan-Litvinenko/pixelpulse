@@ -3,12 +3,12 @@ import AchievementsToggle from '../achievementsToggle/AchievementsToggle';
 import AchievementsProgress from '../achievementsProgress/AchievementsProgress';
 import AchievementsBlock from '../achievementsBlock/AchievementsBlock';
 import { ContextApp } from '../app/App';
-import { IAppContext } from '../../interfaces/interface';
+import { IContextApp } from '../../interfaces/interface';
 import { ToggleStatus } from '../../interfaces/interface.achievements';
 import styles from './Achievements.module.scss';
 
 const Achievements = (): React.JSX.Element => {
-    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
+    const contextApp: IContextApp | null = React.useContext(ContextApp);
 
     if (!contextApp) return <></>;
 

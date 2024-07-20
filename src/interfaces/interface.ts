@@ -5,7 +5,7 @@ import { UseAudioPlayer } from '../hooks/useAudioPlayer';
 type Page = 'welcome' | 'beginning' | 'about' | 'logs' | 'achievements' | 'creations' | 'games';
 
 type BooleanState = React.Dispatch<React.SetStateAction<boolean>>;
-type IAppContext = {
+type IContextApp = {
     achievements: IAchieve[];
     coins: string;
     commits: ICommitLog[];
@@ -45,4 +45,4 @@ type IAppContext = {
     TRANSITION_TIME: number;
 };
 
-export { BooleanState, IAppContext, Page };
+export { BooleanState, IContextApp, Page };

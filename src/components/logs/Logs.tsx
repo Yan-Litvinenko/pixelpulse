@@ -1,13 +1,13 @@
 import React from 'react';
-import { ContextApp } from '../app/App';
 import LogsOld from '../logsOld/LogsOld';
 import LogsProject from '../logsProject/LogsProject';
 import LogsUpdate from '../logsUpdate/LogsUpdate';
-import { IAppContext } from '../../interfaces/interface';
+import { ContextApp } from '../app/App';
+import { IContextApp } from '../../interfaces/interface';
 import styles from './Logs.module.scss';
 
 const Logs = (): React.JSX.Element => {
-    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
+    const contextApp: IContextApp | null = React.useContext(ContextApp);
 
     return (
         <main className={styles.logs}>

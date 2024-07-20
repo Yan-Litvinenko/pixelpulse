@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { useLocation } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import { useMediaQuery } from 'react-responsive';
 import { useAudioPlayer } from '../../hooks/useAudioPlayer';
@@ -12,7 +13,6 @@ import { handleInitSettings } from '../../utils/handleSettings';
 import handleWrapperClassName from '../../utils/handleWrapperClassName';
 import requestToTheServer from '../../utils/requestToTheServer';
 
-import AnimatedRoutes from '../AnimationRoutes/AnimationRoutes';
 import Layout from '../layout/Layout';
 import ModalAvailability from '../modalAvailability/ModalAvailability';
 import ModalChallenge from '../modalChallenge/ModalChallenge';
@@ -28,10 +28,10 @@ import mainTheme from '../../assets/audio/main-theme.mp3';
 import ModalSoundEffect from '../../assets/audio/modal.mp3';
 import clickSoundEffect from '../../assets/audio/click.ogg';
 import { IAchieve } from '../../interfaces/interface.achievements';
-import { IAppContext, Page } from '../../interfaces/interface';
+import { IContextApp, Page } from '../../interfaces/interface';
 import styles from './App.module.scss';
 
-const ContextApp = React.createContext<IAppContext | undefined>(undefined);
+const ContextApp = React.createContext<IContextApp | null>(null);
 const TRANSITION_TIME: number = 1500;
 
 const App = (): React.JSX.Element => {
@@ -165,9 +165,7 @@ const App = (): React.JSX.Element => {
                     />
                 ) : null}
 
-                <Layout>
-                    <AnimatedRoutes />
-                </Layout>
+                <Layout />
             </div>
 
             {availability ? <ModalAvailability /> : null}

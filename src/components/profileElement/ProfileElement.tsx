@@ -1,21 +1,22 @@
 import React from 'react';
 import { ContextApp } from '../app/App';
+import { IContextApp } from '../../interfaces/interface';
 import Button from '../button/Button';
 import handleOpenModal from '../../utils/handleOpenModal';
 import { Bluetooth, Hexagon } from '../svgIcon/SvgIcon';
-import { IAppContext, BooleanState } from '../../interfaces/interface';
 import { IProfileElement } from '../../interfaces/interface.component';
 import styles from './ProfileElement.module.scss';
 
 const ProfileElement = (props: IProfileElement): React.JSX.Element => {
-    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
+    const contextApp: IContextApp | null = React.useContext(ContextApp);
 
     if (!contextApp) return <></>;
 
     const { adjacent, header } = props;
     const { setSocial, setAvailability, handleSoundModal } = contextApp;
     const image: React.JSX.Element = adjacent.image === 'hexagon' ? <Hexagon /> : <Bluetooth />;
-    const setStatusModal: BooleanState | undefined = header.text === 'social' ? setSocial : setAvailability;
+    const setStatusModal: React.Dispatch<React.SetStateAction<boolean>> | undefined =
+        header.text === 'social' ? setSocial : setAvailability;
 
     return (
         <div className={styles.profile__element}>

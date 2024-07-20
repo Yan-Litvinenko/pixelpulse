@@ -1,6 +1,6 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
-import { Page } from '../app/App';
+import { Page } from '../../interfaces/interface';
 import NavigationElement from '../navigationElement/NavigationElement';
 import { INavigation } from '../../interfaces/interface.component';
 

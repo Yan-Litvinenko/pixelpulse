@@ -3,12 +3,12 @@ import ClipPathBorder from '../clipPathBorder/ClipPathBorder';
 import FormLabel from '../formLabel/FormLabel';
 import ModalBackground from '../modalBackground/ModalBackground';
 import { ContextApp } from '../app/App';
-import { IAppContext } from '../../interfaces/interface';
+import { IContextApp } from '../../interfaces/interface';
 import { IForm } from '../../interfaces/interface.form';
 import styles from './Form.module.scss';
 
 const Form = (props: IForm): React.JSX.Element => {
-    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
+    const contextApp: IContextApp | null = React.useContext(ContextApp);
 
     if (!contextApp) return <></>;
 

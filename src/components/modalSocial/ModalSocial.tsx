@@ -2,17 +2,17 @@ import React from 'react';
 import useCloseModal from '../../hooks/useCloseModal';
 import useFormSubmit from '../../hooks/useFormSubmit';
 import { ContextApp } from '../app/App';
+import { IContextApp } from '../../interfaces/interface';
 import Cross from '../cross/Cross';
 import Form from '../form/Form';
 import ModalBoxButton from '../modalBoxButton/ModalBoxButton';
 import ModalLoader from '../modalLoader/ModalLoader';
 import ModalSendState from '../modalSendState/ModalSendState';
-import { IAppContext } from '../../interfaces/interface';
 import { FormSubmit } from '../../interfaces/interface.form';
 import styles from './ModalSocial.module.scss';
 
 const ModalSocial = (): React.JSX.Element => {
-    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
+    const contextApp: IContextApp | null = React.useContext(ContextApp);
 
     if (!contextApp) return <></>;
 

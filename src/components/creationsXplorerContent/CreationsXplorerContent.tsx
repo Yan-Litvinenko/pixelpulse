@@ -1,18 +1,25 @@
 import React from 'react';
 import CreationsXplorerItem from '../CreationsXplorerItem/CreationsXplorerItem';
 import handleOpenModal from '../../utils/handleOpenModal';
-import { ContextApp } from '../app/App';
 import { nanoid } from 'nanoid';
 import { IXplorer } from '../../interfaces/interface.creations';
-import { IAppContext } from '../../interfaces/interface';
+import { ContextApp } from '../app/App';
+import { IContextApp } from '../../interfaces/interface';
 import styles from './CreationsXplorerContent.module.scss';
 
 const CreationsXplorerContent = (props: IXplorer): React.JSX.Element => {
-    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
+    const contextApp: IContextApp | null = React.useContext(ContextApp);
 
     if (!contextApp) return <></>;
 
-    const { setProjectImages, setModalProject, handleSoundClick, setModalProjectImage, handleSoundModal } = contextApp;
+    const {
+        setProjectImages,
+        setModalProject,
+        handleSoundClick,
+        setModalProjectImage,
+        handleSoundModal,
+        setCreations,
+    } = contextApp;
     const { modalProject } = contextApp;
     const { projects, setXplorerState, xplorerState } = props;
 
@@ -24,7 +31,7 @@ const CreationsXplorerContent = (props: IXplorer): React.JSX.Element => {
     };
 
     const imageClick = (imageIndex: number): void => {
-        handleOpenModal(contextApp.setCreations);
+        handleOpenModal(setCreations);
         setModalProjectImage(imageIndex);
         handleSoundModal();
     };

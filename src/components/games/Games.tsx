@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { ContextApp } from '../app/App';
-import { IAppContext } from '../../interfaces/interface';
+import { IContextApp } from '../../interfaces/interface';
 import ArcanoidImg from '../../assets/images/arcanoid.jpg';
 import MarioImg from '../../assets/images/mario.jpg';
 import SnakeImg from '../../assets/images/snake.jpg';
 import styles from './Games.module.scss';
 
 const Games = (): React.JSX.Element => {
-    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
+    const contextApp: IContextApp | null = React.useContext(ContextApp);
 
     if (!contextApp) return <></>;
 

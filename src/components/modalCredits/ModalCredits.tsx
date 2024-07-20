@@ -1,14 +1,14 @@
 import React from 'react';
 import { ContextApp } from '../app/App';
+import { IContextApp } from '../../interfaces/interface';
 import useCloseModal from '../../hooks/useCloseModal';
 import ModalCreditsElement from '../modalCreditsElement/ModalCreditsElement';
 import { nanoid } from 'nanoid';
-import { IAppContext } from '../../interfaces/interface';
 import credits from '../../assets/json/credits.json';
 import styles from './ModalCredits.module.scss';
 
 const ModalCredits = (): React.JSX.Element => {
-    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
+    const contextApp: IContextApp | null = React.useContext(ContextApp);
 
     if (!contextApp) return <></>;
 

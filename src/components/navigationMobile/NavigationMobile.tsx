@@ -4,12 +4,12 @@ import Setting from '../setting/Setting';
 import HeaderStatistics from '../headerStatistics/HeaderStatistics';
 import Navigation from '../navigation/Navigation';
 import MobileBoxButton from '../mobileBoxButton/MobileBoxButton';
-import { IAppContext } from '../../interfaces/interface';
 import { ContextApp } from '../app/App';
+import { IContextApp } from '../../interfaces/interface';
 import styles from './NavigationMobile.module.scss';
 
 const NavigationMobile = (): React.JSX.Element => {
-    const contextApp = useContext<IAppContext | undefined>(ContextApp);
+    const contextApp = useContext<IContextApp | null>(ContextApp);
 
     if (!contextApp) return <></>;
 

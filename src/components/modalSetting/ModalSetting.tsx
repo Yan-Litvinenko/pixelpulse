@@ -9,11 +9,11 @@ import ModalBoxButton from '../modalBoxButton/ModalBoxButton';
 import Range from '../range/Range';
 import { Warning } from '../svgIcon/SvgIcon';
 import { ContextApp } from '../app/App';
-import { IAppContext } from '../../interfaces/interface';
+import { IContextApp } from '../../interfaces/interface';
 import styles from './ModalSetting.module.scss';
 
 const ModalSetting = (): React.JSX.Element => {
-    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
+    const contextApp: IContextApp | null = React.useContext(ContextApp);
 
     if (!contextApp) return <></>;
 

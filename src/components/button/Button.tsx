@@ -1,14 +1,14 @@
 import React from 'react';
 import { ContextApp } from '../app/App';
-import { IAppContext } from '../../interfaces/interface';
+import { IContextApp } from '../../interfaces/interface';
 import { IButton } from '../../interfaces/interface.component';
 
 const Button = (props: IButton): React.JSX.Element => {
-    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
+    const contextApp: IContextApp | null = React.useContext(ContextApp);
 
     if (!contextApp) return <></>;
 
-    const { isLarge, isMedium } = contextApp;
+    const { isLarge, isMedium, TRANSITION_TIME } = contextApp;
     const { handleButton, delayEvent, className, textContent, isValid, type, image } = props;
     const button = React.useRef<null | HTMLButtonElement>(null);
 
@@ -18,7 +18,7 @@ const Button = (props: IButton): React.JSX.Element => {
         } else if (delayEvent) {
             setTimeout(() => {
                 button.current?.addEventListener('click', handleButton);
-            }, contextApp.TRANSITION_TIME);
+            }, TRANSITION_TIME);
         } else {
             button.current?.addEventListener('click', handleButton);
         }

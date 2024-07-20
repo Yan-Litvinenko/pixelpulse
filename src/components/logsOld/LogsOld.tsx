@@ -3,11 +3,11 @@ import useStatusData from '../../hooks/useStatusData';
 import LogsElement from '../logsElement/LogsElement';
 import { nanoid } from 'nanoid';
 import { ContextApp } from '../app/App';
-import { IAppContext } from '../../interfaces/interface';
+import { IContextApp } from '../../interfaces/interface';
 import styles from './LogsOld.module.scss';
 
 const LogsOld = (): React.JSX.Element => {
-    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
+    const contextApp: IContextApp | null = React.useContext(ContextApp);
 
     if (!contextApp) return <></>;
 

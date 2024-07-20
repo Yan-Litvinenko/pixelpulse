@@ -1,12 +1,12 @@
 import React from 'react';
 import { ContextApp } from '../app/App';
-import { IAppContext } from '../../interfaces/interface';
+import { IContextApp } from '../../interfaces/interface';
 import { IModalBoxButton } from '../../interfaces/interface.component';
 import Button from '../button/Button';
 import styles from './ModalBoxButton.module.scss';
 
 const ModalBoxButton = (props: IModalBoxButton): React.JSX.Element => {
-    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
+    const contextApp: IContextApp | null = React.useContext(ContextApp);
 
     if (!contextApp) return <></>;
 

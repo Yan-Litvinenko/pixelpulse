@@ -1,15 +1,15 @@
 import React from 'react';
 import { ContextApp } from '../app/App';
+import { IContextApp } from '../../interfaces/interface';
 import Button from '../button/Button';
 import getZero from '../../utils/getZero';
 import handleOpenModal from '../../utils/handleOpenModal';
 import useLocalTime from '../../hooks/useLocalTime';
 import useServerTime from '../../hooks/useServerTime';
-import { IAppContext } from '../../interfaces/interface';
 import styles from './HeaderTime.module.scss';
 
 const HeaderTime = (): React.JSX.Element => {
-    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
+    const contextApp: IContextApp | null = React.useContext(ContextApp);
 
     if (!contextApp) return <></>;
 

@@ -1,16 +1,16 @@
 import React from 'react';
 import { Hexagon } from '../svgIcon/SvgIcon';
 import { ContextApp } from '../app/App';
-import { IAppContext } from '../../interfaces/interface';
+import { IContextApp } from '../../interfaces/interface';
 import { ICreationsBlock } from '../../interfaces/interface.creations';
 import styles from './CreationsDetails.module.scss';
 
 const CreationsDetails = (props: ICreationsBlock): React.JSX.Element => {
-    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
+    const contextLayContextApp: IContextApp | null = React.useContext(ContextApp);
 
-    if (!contextApp) return <></>;
+    if (!contextLayContextApp) return <></>;
 
-    const { modalProject } = contextApp;
+    const { modalProject } = contextLayContextApp;
     const { projectDefaultData, projects, xplorerState } = props;
 
     return (

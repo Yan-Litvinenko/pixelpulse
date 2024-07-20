@@ -1,12 +1,12 @@
 import React from 'react';
 import { ContextApp } from '../app/App';
+import { IContextApp } from '../../interfaces/interface';
 import SettingElement from '../settingElement/SettingElement';
 import handleOpenModal from '../../utils/handleOpenModal';
-import { IAppContext } from '../../interfaces/interface';
 import { ISetting } from '../../interfaces/interface.component';
 
 const Setting = (props: ISetting): React.JSX.Element => {
-    const contextApp = React.useContext<IAppContext | undefined>(ContextApp);
+    const contextApp = React.useContext<IContextApp | null>(ContextApp);
 
     if (!contextApp) return <></>;
 
@@ -25,7 +25,7 @@ const Setting = (props: ISetting): React.JSX.Element => {
             />
             <SettingElement
                 audioClassName={`${className.checkbox} ${!music && className.checkbox__deactive}`}
-                className={`${className.audio} ${!contextApp?.music && className.audio__deactive}`}
+                className={`${className.audio} ${!music && className.audio__deactive}`}
                 image="status"
                 onClick={() => {
                     setMusic((prev) => {

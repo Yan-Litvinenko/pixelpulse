@@ -1,6 +1,6 @@
 import React from 'react';
-import { IAppContext } from '../../interfaces/interface';
 import { ContextApp } from '../app/App';
+import { IContextApp } from '../../interfaces/interface';
 import { Link } from 'react-router-dom';
 import Button from '../button/Button';
 import handleOpenModal from '../../utils/handleOpenModal';
@@ -8,7 +8,7 @@ import scroll from '../../classes/Scroll';
 import styles from './MobileBoxButton.module.scss';
 
 const MobileBoxButton = (): React.JSX.Element => {
-    const contextApp = React.useContext<IAppContext | undefined>(ContextApp);
+    const contextApp = React.useContext<IContextApp | null>(ContextApp);
 
     if (!contextApp) return <></>;
 
