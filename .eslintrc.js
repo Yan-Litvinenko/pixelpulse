@@ -27,7 +27,7 @@ module.exports = {
         'no-debugger': 'off',
         'no-use-before-define': 'off',
         'object-curly-spacing': ['error', 'always'],
-        // 'react-compiler/react-compiler': 'error',
+        'react-compiler/react-compiler': 'error',
         'react-hooks/exhaustive-deps': 'off',
         'react-hooks/rules-of-hooks': 'off',
         'react/jsx-uses-react': 'error',

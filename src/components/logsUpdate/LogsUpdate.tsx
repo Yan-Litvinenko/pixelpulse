@@ -25,7 +25,7 @@ const update: Record<string, string>[] = [
 
 const LogsUpdate = (): React.JSX.Element => {
     const { handleSoundClick, isLarge } = useAppContext();
-    const [expandStates, clippedIndexes, setExpandStates, textRefs] = useLogsUpdate(update, styles.element__text_clip);
+    const [expandStates, clippedIndexes, setExpandStates, setRef] = useLogsUpdate(update, styles.element__text_clip);
 
     const detail = (index: number): void => {
         setExpandStates((prevStates) => {
@@ -47,7 +47,7 @@ const LogsUpdate = (): React.JSX.Element => {
                         <h2 className={styles.element__title}>{element.title}</h2>
                         <p
                             className={`${styles.element__text} ${expandStates[index] ? '' : styles.element__text_clip}`}
-                            ref={(element) => (textRefs.current[index] = element)}
+                            ref={(item) => setRef(item, index)}
                         >
                             {element.text}
                         </p>
@@ -60,8 +60,7 @@ const LogsUpdate = (): React.JSX.Element => {
                             ) : null
                         ) : (
                             <button
-                                className={`${styles.element__expend}
-                            ${isClipped ? null : styles.element__expend_deactive}`}
+                                className={`${styles.element__expend} ${isClipped ? null : styles.element__expend_deactive}`}
                                 onClick={isClipped ? () => detail(index) : undefined}
                                 type="button"
                             >

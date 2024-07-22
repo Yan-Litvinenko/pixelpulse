@@ -5,7 +5,7 @@ type UseLogsUpdate = [
     boolean[],
     number[],
     React.Dispatch<React.SetStateAction<boolean[]>>,
-    React.MutableRefObject<(HTMLParagraphElement | null)[]>,
+    (element: HTMLParagraphElement | null, index: number) => void,
 ];
 
 const useLogsUpdate = (update: Record<string, string>[], classForRemove: string): UseLogsUpdate => {
@@ -13,7 +13,7 @@ const useLogsUpdate = (update: Record<string, string>[], classForRemove: string)
     const [clippedIndexes, setClippedIndexes] = React.useState<number[]>([]);
     const textRefs = React.useRef<(HTMLParagraphElement | null)[]>([]);
 
-    const handleResize = debounce((): void => {
+    const calculateClippedIndexes = React.useCallback(() => {
         const newClippedIndexes: number[] = [];
         const sizePx: number = Number(
             getComputedStyle(document.documentElement).getPropertyValue('--size').replace('px', ''),
@@ -33,10 +33,12 @@ const useLogsUpdate = (update: Record<string, string>[], classForRemove: string)
         });
 
         setClippedIndexes(newClippedIndexes);
-    }, 10);
+    }, [classForRemove]);
+
+    const handleResize = debounce(calculateClippedIndexes, 10);
 
     React.useEffect(() => {
-        const observer: ResizeObserver = new ResizeObserver(handleResize);
+        const observer = new ResizeObserver(() => handleResize());
 
         textRefs.current.forEach((textElement) => {
             if (textElement) observer.observe(textElement);
@@ -52,7 +54,11 @@ const useLogsUpdate = (update: Record<string, string>[], classForRemove: string)
         };
     }, []);
 
-    return [expandStates, clippedIndexes, setExpandStates, textRefs];
+    const setRef = React.useCallback((element: HTMLParagraphElement | null, index: number): void => {
+        if (element) textRefs.current[index] = element;
+    }, []);
+
+    return [expandStates, clippedIndexes, setExpandStates, setRef];
 };
 
 export { useLogsUpdate };
