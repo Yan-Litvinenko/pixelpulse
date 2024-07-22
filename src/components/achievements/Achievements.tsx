@@ -23,7 +23,7 @@ const Achievements = (): React.JSX.Element => {
 
     return (
         <main className={styles.achievements}>
-            <h2 className={styles.achievements__title}>achievements</h2>
+            <h1 className={styles.achievements__title}>achievements</h1>
 
             <div className={styles.achievements__content}>
                 <AchievementsProgress />

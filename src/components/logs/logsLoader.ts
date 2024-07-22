@@ -29,18 +29,18 @@ const getLastUpdate = (githubCommits: IGithubRespone[]): string => {
     return transformCommitDate(githubCommits[0].commit.committer.date);
 };
 
-const getLoadingCommits = (): ICommitTransform[] => {
+const getReplacementCommits = (status: 'loading' | 'error loading'): ICommitTransform[] => {
     return Array.from({ length: 5 }).map(() => {
         return {
-            message: 'loading',
-            date: 'loading',
+            message: status,
+            date: status,
         };
     });
 };
 
 const getCommits = async (): Promise<IGithubRespone[]> => {
     if (!ACCESS_TOKEN || !URL) {
-        throw new Error(`Token or url is not defined. URL: ${URL}, TOKEN: ${ACCESS_TOKEN}`);
+        throw new Error(`Github token or url is not defined. URL: ${URL}, TOKEN: ${ACCESS_TOKEN}`);
     }
 
     const queryForGithub: Response = await fetch(URL, {
@@ -58,4 +58,4 @@ const logsLoader = () => {
     });
 };
 
-export { logsLoader, transformCommits, getLastUpdate, getLoadingCommits };
+export { logsLoader, transformCommits, getLastUpdate, getReplacementCommits };

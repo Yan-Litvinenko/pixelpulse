@@ -71,4 +71,4 @@ interface IParents extends ITree {
     html_url: string;
 }
 
-export { IGithubRespone, ICommit, ICommitTransform, ILogsLoader };
+export { IGithubRespone, ICommit, ICommitTransform, ILogsLoader, IUser, IParents };

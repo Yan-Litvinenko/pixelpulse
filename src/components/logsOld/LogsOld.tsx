@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { Await, useLoaderData } from 'react-router-dom';
-import { getLoadingCommits, transformCommits } from '../logs/logsLoader';
+import { getReplacementCommits, transformCommits } from '../logs/logsLoader';
 import { IGithubRespone } from '../../interfaces/interface.github';
 import { LogsElement } from '../logsElement/LogsElement';
 import { nanoid } from 'nanoid';
@@ -14,21 +14,31 @@ const LogsOld = (): React.JSX.Element => {
             <span className={styles.title}>older logs:</span>
             <ul className={styles.list}>
                 <Suspense
-                    fallback={getLoadingCommits().map((item) => (
+                    fallback={getReplacementCommits('loading').map((item) => (
                         <LogsElement key={nanoid()} className={''} date={item.date} textContent={item.message} />
                     ))}
                 >
                     <Await resolve={githubCommits}>
-                        {(resolveCommits) =>
-                            transformCommits(resolveCommits as IGithubRespone[]).map((commit) => (
+                        {(resolveCommits) => {
+                            if (resolveCommits.status === '404') {
+                                return getReplacementCommits('error loading').map((commit) => (
+                                    <LogsElement
+                                        key={nanoid()}
+                                        className={''}
+                                        date={commit.date}
+                                        textContent={commit.message}
+                                    />
+                                ));
+                            }
+                            return transformCommits(resolveCommits as IGithubRespone[]).map((commit) => (
                                 <LogsElement
                                     key={nanoid()}
                                     className={''}
                                     date={commit.date}
                                     textContent={commit.message}
                                 />
-                            ))
-                        }
+                            ));
+                        }}
                     </Await>
                 </Suspense>
             </ul>

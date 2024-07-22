@@ -20,13 +20,24 @@ const LogsProject = (): React.JSX.Element => {
                 }
             >
                 <Await resolve={githubCommits}>
-                    {(resolveGithubCommits) => (
-                        <LogsElement
-                            className={styles.project__title}
-                            date={getLastUpdate(resolveGithubCommits)}
-                            textContent={'LOG ENTRY: PROJECT DEVELOPMENT UPDATE'}
-                        />
-                    )}
+                    {(resolveGithubCommits) => {
+                        if (resolveGithubCommits.status === '404') {
+                            return (
+                                <LogsElement
+                                    className={styles.project__title}
+                                    date={'error loading'}
+                                    textContent={'LOG ENTRY: PROJECT DEVELOPMENT UPDATE'}
+                                />
+                            );
+                        }
+                        return (
+                            <LogsElement
+                                className={styles.project__title}
+                                date={getLastUpdate(resolveGithubCommits)}
+                                textContent={'LOG ENTRY: PROJECT DEVELOPMENT UPDATE'}
+                            />
+                        );
+                    }}
                 </Await>
             </Suspense>
             <li className={styles.project__item}>
