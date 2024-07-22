@@ -1,3 +1,33 @@
+interface IGithubRespone extends ITree {
+    author: IUser;
+    comments_url: string;
+    commit: ICommit;
+    committer: IUser;
+    html_url: string;
+    node_id: string;
+    parents: IParents;
+}
+
+interface ICommit {
+    author: IAuthor;
+    comment_count: number;
+    committer: IAuthor;
+    message: string;
+    tree: ITree;
+    url: string;
+    verification: IVerification;
+}
+
+interface ICommitTransform {
+    message: string;
+    date: string;
+}
+
+interface ILogsLoader {
+    commits: ICommitTransform[];
+    lastUpdate: string;
+}
+
 interface IUser {
     avatar_url: string;
     events_url: string;
@@ -37,33 +67,8 @@ interface IVerification {
     verified: false;
 }
 
-interface ICommit {
-    author: IAuthor;
-    comment_count: number;
-    committer: IAuthor;
-    message: string;
-    tree: ITree;
-    url: string;
-    verification: IVerification;
-}
-
 interface IParents extends ITree {
     html_url: string;
 }
 
-interface IGithubRespone extends ITree {
-    author: IUser;
-    comments_url: string;
-    commit: ICommit;
-    committer: IUser;
-    html_url: string;
-    node_id: string;
-    parents: IParents;
-}
-
-interface ICommitLog {
-    message: string;
-    date: string;
-}
-
-export { IGithubRespone, ICommit, ICommitLog };
+export { IGithubRespone, ICommit, ICommitTransform, ILogsLoader };

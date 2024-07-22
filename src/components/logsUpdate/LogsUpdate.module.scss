@@ -35,12 +35,14 @@
     &__text {
         @include text-properties('Iceland', 0.875rem, 400);
         color: var(--dark-grey);
+        min-height: 2.8475rem;
     }
 
     &__text_clip {
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 3;
         display: -webkit-box;
+        line-clamp: 3;
         overflow: hidden;
         text-overflow: ellipsis;
     }
@@ -81,6 +83,10 @@
 @media (max-width: 1200px) {
     .update {
         grid-template-columns: 1fr;
+    }
+
+    .element__text {
+        min-height: auto;
     }
 }
 

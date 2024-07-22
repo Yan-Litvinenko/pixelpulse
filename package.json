@@ -66,6 +66,7 @@
         "webpack-dev-server": "^5.0.4"
     },
     "dependencies": {
+        "@remix-run/router": "^1.18.0",
         "@types/react": "^18.2.73",
         "@types/react-dom": "^18.2.23",
         "framer-motion": "^11.2.4",

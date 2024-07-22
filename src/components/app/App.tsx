@@ -1,11 +1,9 @@
 import React from 'react';
 
-import { Outlet, useLocation } from 'react-router-dom';
-import { AnimatePresence, motion } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
 
 import { useMediaQuery } from 'react-responsive';
 import { useAudioPlayer } from '../../hooks/useAudioPlayer';
-import useGithubApi from '../../hooks/useGithubApi';
 import useLocalStorage from '../../hooks/useLocalStorage';
 
 import fetchAchievements from '../../utils/fetchAchievements';
@@ -40,7 +38,6 @@ const App = (): React.JSX.Element => {
 
     const location = useLocation();
 
-    const [commits, isLoadingGithub, errorGithub] = useGithubApi();
     const [achievements, setAchievements] = React.useState<IAchieve[]>([]);
     const [availability, setAvailability] = React.useState<boolean>(false);
     const [challenge, setChallenge] = React.useState<boolean>(false);
@@ -69,7 +66,6 @@ const App = (): React.JSX.Element => {
 
     const handleSoundClick = () => (sounds ? clickSound.play() : null);
     const handleSoundModal = () => (sounds ? modalSound.play() : null);
-
     handleInitSettings();
 
     React.useEffect(() => {
@@ -126,12 +122,9 @@ const App = (): React.JSX.Element => {
                 setSounds,
                 achievements,
                 coins,
-                commits,
                 creations,
-                errorGithub,
                 isAddedCoinToday,
                 isLarge,
-                isLoadingGithub,
                 isMedium,
                 level,
                 mainMusic,

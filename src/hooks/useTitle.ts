@@ -9,8 +9,7 @@ const useTitle = (): void => {
         const path: string[] = location.pathname.split('/');
         const title: string = path[path.length - 1];
 
-        if (title.length) document.title = transformTitle(title);
-        if (!title.length) document.title = 'Welcome';
+        document.title = title.length ? transformTitle(title) : 'Welcome';
     }, [location.pathname]);
 };
 

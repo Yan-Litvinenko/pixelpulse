@@ -2,7 +2,7 @@ import React from 'react';
 import { ContextApp } from '../app/App';
 import { IContextApp } from '../../interfaces/interface';
 import Button from '../button/Button';
-import getZero from '../../utils/getZero';
+import { getZero } from '../../utils/getZero';
 import handleOpenModal from '../../utils/handleOpenModal';
 import useLocalTime from '../../hooks/useLocalTime';
 import useServerTime from '../../hooks/useServerTime';
@@ -15,7 +15,7 @@ const HeaderTime = (): React.JSX.Element => {
 
     const { handleSoundModal, setCredits } = contextApp;
     const [localTime] = useLocalTime();
-    const serverTime = useServerTime();
+    // const serverTime = useServerTime();
 
     return (
         <div className={styles.time}>
@@ -31,7 +31,7 @@ const HeaderTime = (): React.JSX.Element => {
             />
             <div className={styles.server}>
                 <span className={styles.server__time_span}>server time:</span>{' '}
-                {`${serverTime.getHours()}:${getZero(serverTime.getMinutes())}`}
+                {/* {`${serverTime.getHours()}:${getZero(serverTime.getMinutes())}`} */}
             </div>
 
             <div className={styles.local}>

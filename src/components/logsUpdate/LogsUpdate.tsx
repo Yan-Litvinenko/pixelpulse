@@ -1,37 +1,30 @@
 import React from 'react';
-import useLogsUpdate from '../../hooks/useLogsUpdate';
-import Button from '../button/Button';
-import { ContextApp } from '../app/App';
-import { IContextApp } from '../../interfaces/interface';
 import { nanoid } from 'nanoid';
+import { useAppContext } from '../../hooks/useAppContext';
+import { useLogsUpdate } from '../../hooks/useLogsUpdate';
 import styles from './LogsUpdate.module.scss';
 
 const update: Record<string, string>[] = [
     {
         title: 'project update',
-        text: 'I continue to actively work to improve quality and expand capabilities. We are constantly working to improve code readability/structure/performance',
+        text: 'I continue to actively work to improve quality and expand capabilities. I constantly working to improve code readability/structure/performance.',
     },
     {
         title: 'Challenges',
-        text: 'I AM CONFIDENT THAT WITH MY KNOWLEDGE AND RESOURCES I WILL OVERCOME ALL OBSTACLES ON THE PATH TO SUCCESS. I BELIEVE THAT EVERY CHALLENGE IS AN OPPORTUNITY TO GROW AND IMPROVE.',
+        text: 'Maximum test coverage of the application, as well as integration with Redux.',
     },
     {
-        title: 'NEXT STEPS',
+        title: 'Next steps',
         text: 'Creation of 3D animations and mini-games. Adding more flexible settings. Creating and adding pet projects that will tell about my skills.',
     },
     {
-        title: 'CONCLUSION',
-        text: 'IN CONCLUSION, I WOULD LIKE TO SAY THAT MY PROJECT REPRESENTS MY PASSION AND DILIGENCE. I AM EXCITED TO SEE THE IMPACT IT WILL HAVE AND AM COMMITTED TO CONTINUING TO STRIVE FOR EXCELLENCE.',
+        title: 'Conclusion',
+        text: 'In conclusion, i would like to say that my project represents my passion and diligence. I am excited to see the impact it will have and am committed to continuing to strive for excellence.',
     },
 ];
 
 const LogsUpdate = (): React.JSX.Element => {
-    const contextApp: IContextApp | null = React.useContext(ContextApp);
-
-    if (!contextApp) return <></>;
-
-    const { handleSoundClick, isLarge } = contextApp;
-
+    const { handleSoundClick, isLarge } = useAppContext();
     const [expandStates, clippedIndexes, setExpandStates, textRefs] = useLogsUpdate(update, styles.element__text_clip);
 
     const detail = (index: number): void => {
@@ -46,37 +39,34 @@ const LogsUpdate = (): React.JSX.Element => {
     return (
         <div className={styles.update}>
             {update.map((element, index) => {
+                const isClipped: boolean = clippedIndexes.includes(index);
+
                 return (
                     <div className={styles.element} key={nanoid()}>
                         <div className={styles.border}></div>
-                        <h3 className={styles.element__title}>{element.title}</h3>
+                        <h2 className={styles.element__title}>{element.title}</h2>
                         <p
                             className={`${styles.element__text} ${expandStates[index] ? '' : styles.element__text_clip}`}
-                            ref={(el) => (textRefs.current[index] = el)}
+                            ref={(element) => (textRefs.current[index] = element)}
                         >
                             {element.text}
                         </p>
 
                         {isLarge ? (
-                            clippedIndexes.includes(index) ? (
-                                <Button
-                                    className={`${styles.element__expend}
-                             ${clippedIndexes.includes(index) ? null : styles.element__expend_deactive}`}
-                                    delayEvent={false}
-                                    handleButton={clippedIndexes.includes(index) ? () => detail(index) : () => {}}
-                                    textContent={expandStates[index] ? '-collapse' : '+expand'}
-                                    type="button"
-                                />
+                            isClipped ? (
+                                <button className={styles.element__expend} type="button" onClick={() => detail(index)}>
+                                    {expandStates[index] ? '-collapse' : '+expand'}
+                                </button>
                             ) : null
                         ) : (
-                            <Button
+                            <button
                                 className={`${styles.element__expend}
-                         ${clippedIndexes.includes(index) ? null : styles.element__expend_deactive}`}
-                                delayEvent={false}
-                                handleButton={clippedIndexes.includes(index) ? () => detail(index) : () => {}}
-                                textContent={expandStates[index] ? '-collapse' : '+expand'}
+                            ${isClipped ? null : styles.element__expend_deactive}`}
+                                onClick={isClipped ? () => detail(index) : undefined}
                                 type="button"
-                            />
+                            >
+                                {expandStates[index] ? '-collapse' : '+expand'}
+                            </button>
                         )}
                     </div>
                 );
@@ -85,4 +75,4 @@ const LogsUpdate = (): React.JSX.Element => {
     );
 };
 
-export default LogsUpdate;
+export { LogsUpdate };

@@ -31,6 +31,18 @@
     }
 }
 
+@media (max-width: 1200px) {
+    .title {
+        margin-bottom: 0.4125rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .list {
+        margin-bottom: 2rem;
+    }
+}
+
 @media (hover: hover) {
     .logs__github:hover {
         box-shadow: var(--box-shadow);

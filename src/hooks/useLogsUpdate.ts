@@ -1,18 +1,19 @@
 import React from 'react';
+import { debounce } from '../utils/debounce';
 
-type ReturnUseLogsUpdate = [
+type UseLogsUpdate = [
     boolean[],
     number[],
     React.Dispatch<React.SetStateAction<boolean[]>>,
     React.MutableRefObject<(HTMLParagraphElement | null)[]>,
 ];
 
-const useLogsUpdate = (update: Record<string, string>[], classForRemove: string): ReturnUseLogsUpdate => {
+const useLogsUpdate = (update: Record<string, string>[], classForRemove: string): UseLogsUpdate => {
     const [expandStates, setExpandStates] = React.useState<boolean[]>(update.map(() => false));
     const [clippedIndexes, setClippedIndexes] = React.useState<number[]>([]);
     const textRefs = React.useRef<(HTMLParagraphElement | null)[]>([]);
 
-    const handleResize = (): void => {
+    const handleResize = debounce((): void => {
         const newClippedIndexes: number[] = [];
         const sizePx: number = Number(
             getComputedStyle(document.documentElement).getPropertyValue('--size').replace('px', ''),
@@ -32,7 +33,7 @@ const useLogsUpdate = (update: Record<string, string>[], classForRemove: string)
         });
 
         setClippedIndexes(newClippedIndexes);
-    };
+    }, 10);
 
     React.useEffect(() => {
         const observer: ResizeObserver = new ResizeObserver(handleResize);
@@ -54,4 +55,4 @@ const useLogsUpdate = (update: Record<string, string>[], classForRemove: string)
     return [expandStates, clippedIndexes, setExpandStates, textRefs];
 };
 
-export default useLogsUpdate;
+export { useLogsUpdate };

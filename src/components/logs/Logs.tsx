@@ -1,29 +1,31 @@
 import React from 'react';
-import LogsOld from '../logsOld/LogsOld';
-import LogsProject from '../logsProject/LogsProject';
-import LogsUpdate from '../logsUpdate/LogsUpdate';
-import { ContextApp } from '../app/App';
-import { IContextApp } from '../../interfaces/interface';
+import { LogsOld } from '../logsOld/LogsOld';
+import { LogsProject } from '../logsProject/LogsProject';
+import { LogsUpdate } from '../logsUpdate/LogsUpdate';
+import { useAppContext } from '../../hooks/useAppContext';
 import styles from './Logs.module.scss';
 
 const Logs = (): React.JSX.Element => {
-    const contextApp: IContextApp | null = React.useContext(ContextApp);
+    const { handleSoundClick } = useAppContext();
 
     return (
         <main className={styles.logs}>
             <>
                 <div className={styles.logs__inner}>
-                    <h2 className={styles.logs__title}>data log dump initialized</h2>
+                    <h1 className={styles.logs__title}>data log dump initialized</h1>
+
                     <LogsProject />
                     <LogsUpdate />
+
                     <a
                         className={styles.logs__github}
                         href="https://github.com/Darth-VaderX"
-                        onClick={() => contextApp?.handleSoundClick()}
+                        onClick={handleSoundClick}
                         target="_blank"
                     >
                         github.com
                     </a>
+
                     <LogsOld />
                 </div>
             </>
@@ -31,4 +33,4 @@ const Logs = (): React.JSX.Element => {
     );
 };
 
-export default Logs;
+export { Logs };

@@ -1,5 +1,5 @@
 import { IAchieve } from './interface.achievements';
-import { ICommitLog } from './interface.github';
+import { ICommitTransform } from './interface.github';
 import { UseAudioPlayer } from '../hooks/useAudioPlayer';
 
 type Page = 'welcome' | 'beginning' | 'about' | 'logs' | 'achievements' | 'creations' | 'games';
@@ -8,12 +8,9 @@ type BooleanState = React.Dispatch<React.SetStateAction<boolean>>;
 type IContextApp = {
     achievements: IAchieve[];
     coins: string;
-    commits: ICommitLog[];
     creations: boolean;
-    errorGithub: boolean;
     isAddedCoinToday: boolean;
     isLarge: boolean;
-    isLoadingGithub: boolean;
     isMedium: boolean;
     level: string;
     mainMusic: UseAudioPlayer;
