@@ -1,8 +1,8 @@
 import { About } from './components/about/About';
 import { Achievements } from './components/achievements/Achievements';
-import { AchievementsError } from './components/achievementsError/AchievementsError';
 import { achievementsLoader } from './components/achievements/achievementsLoader';
 import { App } from './components/app/App';
+import { appLoader } from './components/app/appLoader';
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 import { Logs } from './components/logs/Logs';
 import { logsLoader } from './components/logs/logsLoader';
@@ -19,16 +19,11 @@ import './css/index.scss';
 const root: ReactDOM.Root = ReactDOM.createRoot(document.getElementById('root')!);
 const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route path="/" element={<App />}>
+        <Route path="/" element={<App />} loader={appLoader}>
             <Route path="/" element={<Welcome />} />
             <Route path="beginning" element={<Beginning />} />
             <Route path="logs" element={<Logs />} loader={logsLoader} />
-            <Route
-                path="achievements"
-                element={<Achievements />}
-                loader={achievementsLoader}
-                errorElement={<AchievementsError />}
-            />
+            <Route path="achievements" element={<Achievements />} loader={achievementsLoader} />
             <Route path="creations" element={<Creations />} />
             <Route path="about" element={<About />} />
             <Route path="games" element={<Games />}>

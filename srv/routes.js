@@ -2,34 +2,36 @@ const path = require('path');
 const dataBase = require('./dataBase.js');
 const usersBase = require('./usersBase.js');
 
-exports.getLevel = async (req, res) => {
+exports.getLevel = async (req, res, next) => {
     try {
         const LEVEL = await dataBase.getDataAdminTable('level');
 
         res.json(LEVEL);
     } catch (error) {
-        console.error('Error fetching level data:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        next(error);
     }
 };
 
-exports.getCoins = async (req, res) => {
+exports.getCoins = async (req, res, next) => {
     try {
         const COINS = await dataBase.getDataAdminTable('coins');
         res.json(COINS);
     } catch (error) {
-        console.error('Error fetching coins data:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        next(error);
     }
 };
 
-exports.getStatusAddToday = (req, res) => {
-    const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-    const isPressToday = usersBase.has(ip);
-    res.json(isPressToday);
+exports.getStatusAddToday = (req, res, next) => {
+    try {
+        const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+        const isPressToday = usersBase.has(ip);
+        res.json(isPressToday);
+    } catch (error) {
+        next(error);
+    }
 };
 
-exports.addCoin = async (req, res) => {
+exports.addCoin = async (req, res, next) => {
     try {
         const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
 
@@ -57,27 +59,25 @@ exports.addCoin = async (req, res) => {
             res.json(false);
         }
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        next(error);
     }
 };
 
-exports.getAchievements = async (req, res) => {
+exports.getAchievements = async (req, res, next) => {
     try {
         const achievements = await dataBase.getAchievements();
         res.json(achievements);
     } catch (error) {
-        console.error('Error getting achievements from database:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        next(error);
     }
 };
 
-exports.getServerTime = (req, res) => {
+exports.getServerTime = (req, res, next) => {
     try {
         const serverTime = new Date();
         res.json({ serverTime: serverTime.toISOString() });
     } catch (error) {
-        res.status(500).json({ error: 'Internal Server Error' });
+        next(error);
     }
 };
 

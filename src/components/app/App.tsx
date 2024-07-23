@@ -8,7 +8,6 @@ import useLocalStorage from '../../hooks/useLocalStorage';
 
 import { handleInitSettings } from '../../utils/handleSettings';
 import handleWrapperClassName from '../../utils/handleWrapperClassName';
-import requestToTheServer from '../../utils/requestToTheServer';
 
 import Layout from '../layout/Layout';
 import ModalAvailability from '../modalAvailability/ModalAvailability';
@@ -54,10 +53,6 @@ const App = (): React.JSX.Element => {
     const [sounds, setSounds] = useLocalStorage<boolean>(true, 'sounds');
     const mainMusic = useAudioPlayer(music);
 
-    const [isAddedCoinToday, setIsAddedCoinToday] = React.useState<boolean>(true);
-    const [level, setLevel] = React.useState<string>('??');
-    const [coins, setCoins] = React.useState<string>('??');
-
     const clickSound: HTMLAudioElement = new Audio(clickSoundEffect);
     const modalSound: HTMLAudioElement = new Audio(ModalSoundEffect);
 
@@ -72,28 +67,6 @@ const App = (): React.JSX.Element => {
         return () => setLoading(true);
     }, [location]);
 
-    React.useEffect(() => {
-        fetch('/visit');
-    }, []);
-
-    React.useEffect(() => {
-        const initStatistics = async () => {
-            try {
-                const fetchedLevel: string = await requestToTheServer<string>('/level');
-                const fetchedCoins: string = await requestToTheServer<string>('/coins');
-                const fetchedAddToday: boolean = await requestToTheServer<boolean>('/status_add_today');
-
-                setIsAddedCoinToday(fetchedAddToday);
-                setLevel(fetchedLevel);
-                setCoins(fetchedCoins);
-            } catch (error) {
-                console.error('Failed to fetch level and coins:', error);
-            }
-        };
-
-        initStatistics();
-    }, [level, coins]);
-
     return (
         <ContextApp.Provider
             value={{
@@ -102,11 +75,8 @@ const App = (): React.JSX.Element => {
                 handleSoundModal,
                 setAvailability,
                 setChallenge,
-                setCoins,
                 setCreations,
                 setCredits,
-                setIsAddedCoinToday,
-                setLevel,
                 setModalProject,
                 setModalProjectImage,
                 setMusic,
@@ -115,12 +85,9 @@ const App = (): React.JSX.Element => {
                 setSetting,
                 setSocial,
                 setSounds,
-                coins,
                 creations,
-                isAddedCoinToday,
                 isLarge,
                 isMedium,
-                level,
                 mainMusic,
                 modalProject,
                 modalProjectImage,

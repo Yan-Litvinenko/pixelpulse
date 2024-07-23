@@ -131,8 +131,10 @@
 
     .achievements {
         &__achievements {
-            grid-row: 2 / 3;
             gap: 2.75rem 0rem;
+            grid-row: 2 / 3;
+            height: calc(100vh - 235px);
+            padding: 1.5rem 0rem 0rem;
         }
 
         &__content {

@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import { AchievementsBlock } from '../achievementsBlock/AchievementsBlock';
 import { achievementsFilter, achievementsSort } from './achievementsLoader';
 import { AchievementsProgress } from '../achievementsProgress/AchievementsProgress';
+import { AchievementsError } from '../achievementsError/AchievementsError';
 import { AchievementsToggle } from '../achievementsToggle/AchievementsToggle';
 import { Await, useLoaderData } from 'react-router-dom';
 import { IAchieve, ToggleStatus } from '../../interfaces/interface.achievements';
@@ -42,6 +43,9 @@ const Achievements = (): React.JSX.Element => {
                     >
                         <Await resolve={achievements}>
                             {(resolveAchievements) => {
+                                if (resolveAchievements.status === '404') {
+                                    return <AchievementsError />;
+                                }
                                 return (
                                     <>
                                         <AchievementsBlock

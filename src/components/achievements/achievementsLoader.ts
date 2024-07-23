@@ -2,9 +2,7 @@ import { defer } from 'react-router-dom';
 import { IAchieve, ToggleStatus } from '../../interfaces/interface.achievements';
 
 const getAchievements = async (): Promise<IAchieve[]> => {
-    const query: Response = await fetch('getAchievements');
-
-    if (!query.ok) throw new Error('Error loading achievements');
+    const query: Response = await fetch('/api/getAchievements');
 
     return query.json();
 };

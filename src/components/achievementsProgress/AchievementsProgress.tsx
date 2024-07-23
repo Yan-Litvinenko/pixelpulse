@@ -26,6 +26,14 @@ const AchievementsProgress = (): React.JSX.Element => {
                 >
                     <Await resolve={achievements}>
                         {(resolveAchievements) => {
+                            if (resolveAchievements.status === '404') {
+                                return (
+                                    <>
+                                        <AchievementsProgressRing percent={100} />
+                                        <span className={styles.progress__statistic}>0/0</span>
+                                    </>
+                                );
+                            }
                             const allAchievements: number = resolveAchievements.length;
                             const achievementsAchieved: number = achievedCount(resolveAchievements);
                             const percent: number = (achievementsAchieved * 100) / allAchievements;
