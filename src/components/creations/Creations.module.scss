@@ -73,8 +73,8 @@
 
 @media (max-width: 1380px) {
     .creations {
-        height: auto;
-        min-height: 100vh;
+        height: var(--height-small);
+        overflow-y: scroll;
 
         &__inner {
             flex-direction: column;
@@ -96,6 +96,7 @@
 @media (max-width: 1200px) {
     .creations {
         padding: 1.5rem 0.625rem 0rem;
+        height: auto;
 
         &__title {
             margin-bottom: 1.5rem;

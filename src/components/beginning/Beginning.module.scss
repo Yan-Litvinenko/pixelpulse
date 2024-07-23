@@ -76,7 +76,7 @@
 
 @media (max-width: 1380px) {
     .beginning {
-        height: var(--height-small);
+        height: calc(var(--height-small) + 1rem); // 1rem padding на других страницах
     }
 }
 

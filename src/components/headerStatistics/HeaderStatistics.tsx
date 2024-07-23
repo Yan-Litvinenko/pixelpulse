@@ -10,7 +10,7 @@ const HeaderStatistics = (props: IStatistics): React.JSX.Element => {
 
     if (!contextApp) return <></>;
 
-    const { level, isAddedCoinToday, coins, setCoins, setLevel, setAchievements, setIsAddedCoinToday } = contextApp;
+    const { level, isAddedCoinToday, coins, setCoins, setLevel, setIsAddedCoinToday } = contextApp;
     const { className } = props;
 
     return (
@@ -27,7 +27,7 @@ const HeaderStatistics = (props: IStatistics): React.JSX.Element => {
                             addCoin({
                                 setCoins,
                                 setLevel,
-                                setAchievements,
+                                // setAchievements,
                                 setIsAddedCoinToday,
                             })
                         }

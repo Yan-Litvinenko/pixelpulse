@@ -19,9 +19,8 @@ interface IAchievementsToggle {
 }
 
 interface IAchievementsBlock {
-    forWhatAchievements: 'achieved' | 'in progress';
     prefixForClassName: 'achieved' | 'ongoing';
-    toggleStatus: ToggleStatus;
+    achievements: IAchieve[];
 }
 
 interface IAchievementsAchieve {

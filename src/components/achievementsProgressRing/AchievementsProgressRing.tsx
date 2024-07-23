@@ -28,4 +28,4 @@ const AchievementsProgressRing = ({ percent }: IAchievementsProgressRing): React
     );
 };
 
-export default AchievementsProgressRing;
+export { AchievementsProgressRing };

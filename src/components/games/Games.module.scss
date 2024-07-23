@@ -84,7 +84,7 @@
 
 @media (max-width: 1380px) {
     .games {
-        height: auto;
+        height: var(--height-small);
         padding: 2.5rem 1.375rem 0rem;
 
         &__title {
@@ -95,6 +95,7 @@
 
 @media (max-width: 1200px) {
     .games {
+        height: auto;
         padding: 1.5rem 0.625rem 2rem;
         width: 100%;
 
@@ -163,6 +164,7 @@
 @media (max-width: 370px) {
     .content {
         &__games {
+            justify-items: center;
             width: 100%;
         }
 

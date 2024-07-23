@@ -1,39 +1,47 @@
-import React from 'react';
-import Button from '../button/Button';
+import React, { Suspense } from 'react';
+import { AchievementsProgressRing } from '../achievementsProgressRing/AchievementsProgressRing';
+import { Await, useLoaderData } from 'react-router-dom';
+import { IAchieve } from '../../interfaces/interface.achievements';
+import { useAppContext } from '../../hooks/useAppContext';
 import handleOpenModal from '../../utils/handleOpenModal';
-import AchievementsProgressRing from '../achievementsProgressRing/AchievementsProgressRing';
-import { ContextApp } from '../app/App';
-import { IContextApp } from '../../interfaces/interface';
 import styles from './AchievementsProgress.module.scss';
 
 const AchievementsProgress = (): React.JSX.Element => {
-    const contextApp: IContextApp | null = React.useContext(ContextApp);
+    const { handleSoundModal, setChallenge } = useAppContext();
+    const { achievements } = useLoaderData() as { achievements: IAchieve[] };
 
-    if (!contextApp) return <></>;
-
-    const { achievements, handleSoundModal, setChallenge } = contextApp;
-
-    const achievedCount = (): number => {
-        return achievements.reduce((acc, achieve) => {
-            if (achieve.status === 'achieved') {
-                return acc + 1;
-            }
-            return acc;
-        }, 0);
-    };
-
-    const allAchievements: number = achievements.length;
-    const achievementsAchieved: number = achievedCount();
-    const percent: number = (achievementsAchieved * 100) / allAchievements;
+    const achievedCount = (allAchievements: IAchieve[]): number =>
+        allAchievements.reduce((acc, { status }) => acc + (status === 'achieved' ? 1 : 0), 0);
 
     return (
         <div className={styles.progress}>
             <div className={styles.progress__inner}>
-                <AchievementsProgressRing percent={percent} />
+                <Suspense
+                    fallback={
+                        <>
+                            <AchievementsProgressRing percent={100} />
+                            <span className={styles.progress__statistic}>0/0</span>
+                        </>
+                    }
+                >
+                    <Await resolve={achievements}>
+                        {(resolveAchievements) => {
+                            const allAchievements: number = resolveAchievements.length;
+                            const achievementsAchieved: number = achievedCount(resolveAchievements);
+                            const percent: number = (achievementsAchieved * 100) / allAchievements;
 
-                <span className={styles.progress__statistic}>
-                    {achievementsAchieved}/{allAchievements}
-                </span>
+                            return (
+                                <>
+                                    <AchievementsProgressRing percent={percent} />
+                                    <span className={styles.progress__statistic}>
+                                        {achievementsAchieved}/{allAchievements}
+                                    </span>
+                                </>
+                            );
+                        }}
+                    </Await>
+                </Suspense>
+
                 <span className={styles.progress__name}>progress</span>
             </div>
 
@@ -44,18 +52,18 @@ const AchievementsProgress = (): React.JSX.Element => {
                 If you want to give me a challenge and rate it, please feel free to submit it with the button below!
             </p>
 
-            <Button
+            <button
                 className={styles.progress__button}
-                delayEvent={false}
-                handleButton={() => {
+                onClick={() => {
                     handleOpenModal(setChallenge);
                     handleSoundModal();
                 }}
-                textContent="Challenge me"
                 type="button"
-            />
+            >
+                Challenge me
+            </button>
         </div>
     );
 };
 
-export default AchievementsProgress;
+export { AchievementsProgress };

@@ -11,11 +11,11 @@ const Beginning = (): React.JSX.Element => {
                 <div className={styles.beginning__inner}>
                     <>
                         <div className={styles.beginning__box_title}>
-                            <h2 className={styles.beginning__title}>
+                            <h1 className={styles.beginning__title}>
                                 swimming through a vast network of interconnected devices and servers, spreading joy and
                                 whimsy to users across the globe
-                            </h2>
-                            <h3 className={styles.beginning__subtitle}>Artwork generated with midjourney</h3>
+                            </h1>
+                            <h2 className={styles.beginning__subtitle}>Artwork generated with midjourney</h2>
                         </div>
                         <picture className={styles.beginning__background_box}>
                             <GlitchImage
@@ -33,4 +33,4 @@ const Beginning = (): React.JSX.Element => {
     );
 };
 
-export default Beginning;
+export { Beginning };

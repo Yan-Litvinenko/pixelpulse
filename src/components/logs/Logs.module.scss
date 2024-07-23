@@ -31,18 +31,6 @@
     }
 }
 
-@media (max-width: 1200px) {
-    .title {
-        margin-bottom: 0.4125rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .list {
-        margin-bottom: 2rem;
-    }
-}
-
 @media (hover: hover) {
     .logs__github:hover {
         box-shadow: var(--box-shadow);
@@ -58,10 +46,11 @@
 
 @media (max-width: 1380px) {
     .logs {
-        height: auto;
+        height: var(--height-small);
+        overflow-y: scroll;
 
         &__inner {
-            margin-bottom: 4rem;
+            margin-bottom: 0rem;
         }
     }
 }
@@ -69,6 +58,8 @@
 @media (max-width: 1200px) {
     .logs {
         padding: 1.5rem 0.625rem 0rem;
+        height: auto;
+        overflow-y: auto;
 
         &__inner {
             @include flex-container(column);
@@ -76,17 +67,24 @@
             margin-bottom: 1.5rem;
         }
     }
+
+    .title {
+        margin-bottom: 0.4125rem;
+    }
 }
 
 @media (max-width: 768px) {
     .logs {
         &__inner {
             margin-bottom: 0;
-            min-height: 100vh;
         }
 
         &__title {
             margin-bottom: 1.5rem;
         }
+    }
+
+    .list {
+        margin-bottom: 2rem;
     }
 }

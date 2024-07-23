@@ -1,14 +1,16 @@
+import { About } from './components/about/About';
+import { Achievements } from './components/achievements/Achievements';
+import { AchievementsError } from './components/achievementsError/AchievementsError';
+import { achievementsLoader } from './components/achievements/achievementsLoader';
 import { App } from './components/app/App';
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
-import About from './components/about/About';
-import Achievements from './components/achievements/Achievements';
-import Beginning from './components/beginning/Beginning';
+import { Logs } from './components/logs/Logs';
+import { logsLoader } from './components/logs/logsLoader';
+import { Beginning } from './components/beginning/Beginning';
 import Creations from './components/creations/Creations';
 import ErrorPage from './components/errorPage/ErrorPage';
 import Games from './components/games/Games';
 import GameSnake from './components/gameSnake/GameSnake';
-import { Logs } from './components/logs/Logs';
-import { logsLoader } from './components/logs/logsLoader';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Welcome from './components/welcome/Welocme';
@@ -21,7 +23,12 @@ const router = createBrowserRouter(
             <Route path="/" element={<Welcome />} />
             <Route path="beginning" element={<Beginning />} />
             <Route path="logs" element={<Logs />} loader={logsLoader} />
-            <Route path="achievements" element={<Achievements />} />
+            <Route
+                path="achievements"
+                element={<Achievements />}
+                loader={achievementsLoader}
+                errorElement={<AchievementsError />}
+            />
             <Route path="creations" element={<Creations />} />
             <Route path="about" element={<About />} />
             <Route path="games" element={<Games />}>
@@ -34,6 +41,6 @@ const router = createBrowserRouter(
 
 root.render(
     <React.StrictMode>
-        <RouterProvider router={router} />;
+        <RouterProvider router={router} />
     </React.StrictMode>,
 );

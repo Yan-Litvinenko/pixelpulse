@@ -6,7 +6,6 @@ import { useMediaQuery } from 'react-responsive';
 import { useAudioPlayer } from '../../hooks/useAudioPlayer';
 import useLocalStorage from '../../hooks/useLocalStorage';
 
-import fetchAchievements from '../../utils/fetchAchievements';
 import { handleInitSettings } from '../../utils/handleSettings';
 import handleWrapperClassName from '../../utils/handleWrapperClassName';
 import requestToTheServer from '../../utils/requestToTheServer';
@@ -25,7 +24,6 @@ import NavigationMobile from '../navigationMobile/NavigationMobile';
 import mainTheme from '../../assets/audio/main-theme.mp3';
 import ModalSoundEffect from '../../assets/audio/modal.mp3';
 import clickSoundEffect from '../../assets/audio/click.ogg';
-import { IAchieve } from '../../interfaces/interface.achievements';
 import { IContextApp, Page } from '../../interfaces/interface';
 import styles from './App.module.scss';
 
@@ -38,7 +36,6 @@ const App = (): React.JSX.Element => {
 
     const location = useLocation();
 
-    const [achievements, setAchievements] = React.useState<IAchieve[]>([]);
     const [availability, setAvailability] = React.useState<boolean>(false);
     const [challenge, setChallenge] = React.useState<boolean>(false);
     const [creations, setCreations] = React.useState<boolean>(false);
@@ -76,7 +73,6 @@ const App = (): React.JSX.Element => {
     }, [location]);
 
     React.useEffect(() => {
-        fetchAchievements().then((data) => setAchievements(data));
         fetch('/visit');
     }, []);
 
@@ -104,7 +100,6 @@ const App = (): React.JSX.Element => {
                 TRANSITION_TIME,
                 handleSoundClick,
                 handleSoundModal,
-                setAchievements,
                 setAvailability,
                 setChallenge,
                 setCoins,
@@ -120,7 +115,6 @@ const App = (): React.JSX.Element => {
                 setSetting,
                 setSocial,
                 setSounds,
-                achievements,
                 coins,
                 creations,
                 isAddedCoinToday,

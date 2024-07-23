@@ -1,12 +1,9 @@
-import { IAchieve } from './interface.achievements';
-import { ICommitTransform } from './interface.github';
 import { UseAudioPlayer } from '../hooks/useAudioPlayer';
 
 type Page = 'welcome' | 'beginning' | 'about' | 'logs' | 'achievements' | 'creations' | 'games';
 
 type BooleanState = React.Dispatch<React.SetStateAction<boolean>>;
 type IContextApp = {
-    achievements: IAchieve[];
     coins: string;
     creations: boolean;
     isAddedCoinToday: boolean;
@@ -21,7 +18,6 @@ type IContextApp = {
     projectImages: string[];
     handleSoundClick: () => Promise<void> | null;
     handleSoundModal: () => Promise<void> | null;
-    setAchievements: React.Dispatch<React.SetStateAction<IAchieve[]>>;
     setAvailability: BooleanState;
     setChallenge: BooleanState;
     setCoins: React.Dispatch<React.SetStateAction<string>>;

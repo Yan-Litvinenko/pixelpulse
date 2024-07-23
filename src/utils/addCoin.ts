@@ -1,12 +1,10 @@
 import requestToTheServer from './requestToTheServer';
-import fetchAchievements from './fetchAchievements';
-import { IAchieve } from '../interfaces/interface.achievements';
 
 interface IAddCoin {
     setLevel: React.Dispatch<React.SetStateAction<string>>;
     setCoins: React.Dispatch<React.SetStateAction<string>>;
     setIsAddedCoinToday: React.Dispatch<React.SetStateAction<boolean>>;
-    setAchievements: React.Dispatch<React.SetStateAction<IAchieve[]>>;
+    // setAchievements: React.Dispatch<React.SetStateAction<IAchieve[]>>;
 }
 
 const addCoin = async (setState: IAddCoin): Promise<void> => {
@@ -31,8 +29,8 @@ const addCoin = async (setState: IAddCoin): Promise<void> => {
 
             await updateStatistics();
 
-            const achievements: IAchieve[] = await fetchAchievements();
-            setState.setAchievements(achievements);
+            // const achievements: IAchieve[] = await fetchAchievements();
+            // setState.setAchievements(achievements);
         } else {
             console.error('Coin addition was not successful.');
         }

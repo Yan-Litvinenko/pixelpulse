@@ -76,6 +76,12 @@
     }
 }
 
+@media (max-width: 1380px) {
+    .navigation {
+        transform: translate(-50%, 95%);
+    }
+}
+
 @media (max-width: 1200px) {
     .wrapper {
         grid-template-rows: repeat(4, auto);

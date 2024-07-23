@@ -5,7 +5,6 @@ import Button from '../button/Button';
 import { getZero } from '../../utils/getZero';
 import handleOpenModal from '../../utils/handleOpenModal';
 import useLocalTime from '../../hooks/useLocalTime';
-import useServerTime from '../../hooks/useServerTime';
 import styles from './HeaderTime.module.scss';
 
 const HeaderTime = (): React.JSX.Element => {

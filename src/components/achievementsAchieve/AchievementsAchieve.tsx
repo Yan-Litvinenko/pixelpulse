@@ -1,9 +1,9 @@
 import React from 'react';
+import { IAchievementsAchieve } from '../../interfaces/interface.achievements';
 import epic from '../../assets/images/epic.png';
 import legendary from '../../assets/images/legendary.png';
 import rare from '../../assets/images/rare.png';
 import unusual from '../../assets/images/unusual.png';
-import { IAchievementsAchieve } from '../../interfaces/interface.achievements';
 import styles from './AchievementsAchieve.module.scss';
 
 const AchievementsAchieve = (props: IAchievementsAchieve): React.JSX.Element => {
@@ -29,4 +29,4 @@ const AchievementsAchieve = (props: IAchievementsAchieve): React.JSX.Element => 
     );
 };
 
-export default AchievementsAchieve;
+export { AchievementsAchieve };

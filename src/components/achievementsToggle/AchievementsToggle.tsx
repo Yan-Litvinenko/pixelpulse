@@ -2,7 +2,7 @@ import React from 'react';
 import { IAchievementsToggle } from '../../interfaces/interface.achievements';
 import styles from './AchievementsToggle.module.scss';
 
-const AchievementsLabel = (props: IAchievementsToggle): React.JSX.Element => {
+const AchievementsToggle = (props: IAchievementsToggle): React.JSX.Element => {
     const { checked, id, onChange, textContent, value } = props;
 
     return (
@@ -22,4 +22,4 @@ const AchievementsLabel = (props: IAchievementsToggle): React.JSX.Element => {
     );
 };
 
-export default AchievementsLabel;
+export { AchievementsToggle };
