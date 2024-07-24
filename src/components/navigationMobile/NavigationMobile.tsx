@@ -1,19 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Cross from '../cross/Cross';
 import Setting from '../setting/Setting';
-import HeaderStatistics from '../headerStatistics/HeaderStatistics';
+import { HeaderStatistics } from '../headerStatistics/HeaderStatistics';
+import { useAppContext } from '../../hooks/useAppContext';
 import Navigation from '../navigation/Navigation';
 import MobileBoxButton from '../mobileBoxButton/MobileBoxButton';
-import { ContextApp } from '../app/App';
-import { IContextApp } from '../../interfaces/interface';
 import styles from './NavigationMobile.module.scss';
 
 const NavigationMobile = (): React.JSX.Element => {
-    const contextApp = useContext<IContextApp | null>(ContextApp);
-
-    if (!contextApp) return <></>;
-
-    const { setNavigationMobile, handleSoundModal } = contextApp;
+    const { setNavigationMobile, handleSoundModal } = useAppContext();
 
     return (
         <div className={styles.box}>
@@ -28,7 +23,7 @@ const NavigationMobile = (): React.JSX.Element => {
                         scrollStatus="on"
                     />
                 </div>
-                <HeaderStatistics className={styles} />
+                <HeaderStatistics styles={styles} />
                 <Navigation styles={styles} />
                 <Setting className={styles} />
             </div>

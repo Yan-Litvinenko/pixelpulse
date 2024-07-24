@@ -1,7 +1,6 @@
 import React from 'react';
-import { ContextApp } from '../app/App';
-import { IContextApp } from '../../interfaces/interface';
 import { Link } from 'react-router-dom';
+import { useAppContext } from '../../hooks/useAppContext';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import Snake from '../../classes/Snake';
 import snakeTheme from '../../assets/audio/snake.mp3';
@@ -10,11 +9,7 @@ import Joystick from '../joystick/Jouystick';
 import styles from './GameSnake.module.scss';
 
 const GameSnake = (): React.JSX.Element => {
-    const contextApp = React.useContext(ContextApp);
-
-    if (!contextApp) return <></>;
-
-    const { mainMusic } = contextApp;
+    const { mainMusic } = useAppContext();
 
     const [score, setScore] = React.useState(0);
     const [bestScore, setBestScore] = useLocalStorage(0, 'best-score');

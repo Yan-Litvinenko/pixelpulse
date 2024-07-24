@@ -1,11 +1,12 @@
 import React, { Suspense } from 'react';
 import { AchievementsBlock } from '../achievementsBlock/AchievementsBlock';
+import { AchievementsError } from '../achievementsError/AchievementsError';
 import { achievementsFilter, achievementsSort } from './achievementsLoader';
 import { AchievementsProgress } from '../achievementsProgress/AchievementsProgress';
-import { AchievementsError } from '../achievementsError/AchievementsError';
 import { AchievementsToggle } from '../achievementsToggle/AchievementsToggle';
 import { Await, useLoaderData } from 'react-router-dom';
 import { IAchieve, ToggleStatus } from '../../interfaces/interface.achievements';
+import { ResolveError } from '../../interfaces/interface.loader';
 import { Triangle } from 'react-loader-spinner';
 import { useAppContext } from '../../hooks/useAppContext';
 import styles from './Achievements.module.scss';
@@ -42,8 +43,8 @@ const Achievements = (): React.JSX.Element => {
                         }
                     >
                         <Await resolve={achievements}>
-                            {(resolveAchievements) => {
-                                if (resolveAchievements.status === '404') {
+                            {(resolveAchievements: ResolveError | IAchieve[]) => {
+                                if ((resolveAchievements as ResolveError).status === '404') {
                                     return <AchievementsError />;
                                 }
                                 return (
@@ -51,13 +52,21 @@ const Achievements = (): React.JSX.Element => {
                                         <AchievementsBlock
                                             prefixForClassName={'achieved'}
                                             achievements={achievementsSort(
-                                                achievementsFilter(resolveAchievements, filterStatus, 'achieved'),
+                                                achievementsFilter(
+                                                    resolveAchievements as IAchieve[],
+                                                    filterStatus,
+                                                    'achieved',
+                                                ),
                                             )}
                                         />
                                         <AchievementsBlock
                                             prefixForClassName={'ongoing'}
                                             achievements={achievementsSort(
-                                                achievementsFilter(resolveAchievements, filterStatus, 'in progress'),
+                                                achievementsFilter(
+                                                    resolveAchievements as IAchieve[],
+                                                    filterStatus,
+                                                    'in progress',
+                                                ),
                                             )}
                                         />
                                     </>

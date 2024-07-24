@@ -5,12 +5,14 @@
     grid-column: 1 / -1;
     grid-row: 1 / 2;
     padding-top: 1.25rem;
+    min-height: 3.25rem;
 }
 
 .statistics {
     @include text-properties('Big-Shoulders', 1rem, 700, 0.075rem);
-    @include flex-container($gap: 0rem 2.8125rem);
+    @include flex-container($align-items: flex-end, $gap: 0rem 2.8125rem);
     color: var(--stone-grey);
+    position: relative;
 }
 
 .coins {
@@ -72,11 +74,45 @@
 .level {
     &__box {
         @include position($top: 0.2625rem);
+        @include grid-container($columns: auto auto, $align-items: center, $gap: 0rem 0.4125rem);
     }
 
     &__text {
         @include text-properties('Big-Shoulders', 1.625rem, 700, 0.125rem);
         color: var(--statistics-text-color);
+        position: relative;
+    }
+}
+
+.loader {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(110%, -67%);
+    z-index: 20;
+
+    & polygon {
+        stroke-width: 2;
+    }
+
+    & svg {
+        stroke: var(--main-color);
+    }
+}
+
+.error {
+    animation: text-blink 0.01s steps(2) infinite;
+    color: var(--main-color);
+    position: relative;
+}
+
+@keyframes text-blink {
+    from,
+    to {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
     }
 }
 

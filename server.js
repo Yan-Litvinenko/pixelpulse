@@ -24,9 +24,9 @@ const PORT = 3000;
 
         app.use(express.static(path.join(__dirname, 'dist')));
 
-        app.get('/level', getLevel);
-        app.get('/coins', getCoins);
-        app.get('/status_add_today', getStatusAddToday);
+        app.get('/api/getLevel', getLevel);
+        app.get('/api/getCoins', getCoins);
+        app.get('/api/getStatusAddToday', getStatusAddToday);
         app.get('/add_coin', addCoin);
         app.get('/api/getAchievements', getAchievements);
         app.get('/server-time', getServerTime);

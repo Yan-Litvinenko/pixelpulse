@@ -3,6 +3,7 @@ import { Await, useLoaderData } from 'react-router-dom';
 import { getLastUpdate } from '../logs/logsLoader';
 import { IGithubRespone } from '../../interfaces/interface.github';
 import { LogsElement } from '../logsElement/LogsElement';
+import { ResolveError } from '../../interfaces/interface.loader';
 import styles from './LogsProject.module.scss';
 
 const LogsProject = (): React.JSX.Element => {
@@ -20,8 +21,8 @@ const LogsProject = (): React.JSX.Element => {
                 }
             >
                 <Await resolve={githubCommits}>
-                    {(resolveGithubCommits) => {
-                        if (resolveGithubCommits.status === '404') {
+                    {(resolveGithubCommits: ResolveError | IGithubRespone[]) => {
+                        if ((resolveGithubCommits as ResolveError).status === '404') {
                             return (
                                 <LogsElement
                                     className={styles.project__title}
@@ -33,7 +34,7 @@ const LogsProject = (): React.JSX.Element => {
                         return (
                             <LogsElement
                                 className={styles.project__title}
-                                date={getLastUpdate(resolveGithubCommits)}
+                                date={getLastUpdate(resolveGithubCommits as IGithubRespone[])}
                                 textContent={'LOG ENTRY: PROJECT DEVELOPMENT UPDATE'}
                             />
                         );

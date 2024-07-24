@@ -1,7 +1,7 @@
 import { Frame } from '../frame/Frame';
 import { Outlet, useLocation } from 'react-router-dom';
 import { SmoothTransition } from '../../hoc/SmoothTransition';
-import Header from '../header/Header';
+import { Header } from '../header/Header';
 import { useTitle } from '../../hooks/useTitle';
 import { useAppContext } from '../../hooks/useAppContext';
 import MobileBoxButton from '../mobileBoxButton/MobileBoxButton';
@@ -42,4 +42,4 @@ const Layout = (): React.JSX.Element => {
     );
 };
 
-export default Layout;
+export { Layout };

@@ -5,17 +5,17 @@ const addVisitInConsole = async (): Promise<void> => {
 };
 
 const getCoinAdditionStatus = async (): Promise<boolean> => {
-    const query = await fetch('/status_add_today');
+    const query = await fetch('/api/getStatusAddToday');
     return query.json();
 };
 
 const getCoins = async (): Promise<string> => {
-    const query = await fetch('/getCoins');
+    const query = await fetch('/api/getCoins');
     return query.json();
 };
 
 const getLevel = async (): Promise<string> => {
-    const query = await fetch('/getLevel');
+    const query = await fetch('/api/getLevel');
     return query.json();
 };
 

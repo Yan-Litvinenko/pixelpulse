@@ -9,7 +9,7 @@ import useLocalStorage from '../../hooks/useLocalStorage';
 import { handleInitSettings } from '../../utils/handleSettings';
 import handleWrapperClassName from '../../utils/handleWrapperClassName';
 
-import Layout from '../layout/Layout';
+import { Layout } from '../layout/Layout';
 import ModalAvailability from '../modalAvailability/ModalAvailability';
 import ModalChallenge from '../modalChallenge/ModalChallenge';
 import ModalCreations from '../modalCreations/ModalCreations';
@@ -23,7 +23,7 @@ import NavigationMobile from '../navigationMobile/NavigationMobile';
 import mainTheme from '../../assets/audio/main-theme.mp3';
 import ModalSoundEffect from '../../assets/audio/modal.mp3';
 import clickSoundEffect from '../../assets/audio/click.ogg';
-import { IContextApp, Page } from '../../interfaces/interface';
+import { IContextApp } from '../../interfaces/interface';
 import styles from './App.module.scss';
 
 const ContextApp = React.createContext<IContextApp | null>(null);
@@ -133,4 +133,4 @@ const App = (): React.JSX.Element => {
     );
 };
 
-export { App, ContextApp, Page };
+export { App, ContextApp };

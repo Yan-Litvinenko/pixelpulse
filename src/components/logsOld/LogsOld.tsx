@@ -4,10 +4,11 @@ import { getReplacementCommits, transformCommits } from '../logs/logsLoader';
 import { IGithubRespone } from '../../interfaces/interface.github';
 import { LogsElement } from '../logsElement/LogsElement';
 import { nanoid } from 'nanoid';
+import { ResolveError } from '../../interfaces/interface.loader';
 import styles from './LogsOld.module.scss';
 
 const LogsOld = (): React.JSX.Element => {
-    const { githubCommits } = useLoaderData() as { githubCommits: IGithubRespone[] };
+    const { githubCommits } = useLoaderData() as { githubCommits: IGithubRespone[] | ResolveError };
 
     return (
         <div>
@@ -19,8 +20,8 @@ const LogsOld = (): React.JSX.Element => {
                     ))}
                 >
                     <Await resolve={githubCommits}>
-                        {(resolveCommits) => {
-                            if (resolveCommits.status === '404') {
+                        {(resolveCommits: ResolveError | IGithubRespone[]) => {
+                            if ((resolveCommits as ResolveError).status === '404') {
                                 return getReplacementCommits('error loading').map((commit) => (
                                     <LogsElement
                                         key={nanoid()}

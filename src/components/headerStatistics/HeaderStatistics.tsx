@@ -1,47 +1,72 @@
 import React, { Suspense } from 'react';
-import { useLoaderData, Await } from 'react-router-dom';
+import { IAppDataLoader, ResolveAppLoader, ResolveError } from '../../interfaces/interface.loader';
 import { IStatistics } from '../../interfaces/interface.component';
+import { Triangle } from 'react-loader-spinner';
+import { useMatches, Await } from 'react-router-dom';
 
 const HeaderStatistics = (props: IStatistics): React.JSX.Element => {
-    const { className } = props;
-    const { level, coins, coinAdditionStatus } = useLoaderData() as {
-        level: string;
-        coins: string;
-        coinAdditionStatus: boolean;
-    };
+    const { styles } = props; /* Классы передаются т.к. компонент в 2 местах по разному расположен */
+    const matches = useMatches();
+    const appDataLoader = matches.find((match) => match.id === 'app')?.data as IAppDataLoader;
+    const { level, coins, coinAdditionStatus } = appDataLoader;
 
     return (
-        <div className={className.statistics}>
-            <div className={className.level__box}>
-                <Suspense
-                    fallback={
-                        <>
-                            <span className={className.level__text}>loading</span>
-                        </>
-                    }
-                >
-                    <Await resolve={level}>
-                        <span className={className.level__text}>{level}</span> level
-                    </Await>
-                </Suspense>
-            </div>
-            <div className={className.coins}>
-                <div className={className.coins__add_box}>
-                    <button
-                        className={`${className.coins__btn} ${!coinAdditionStatus ? className.coins__btn_pulse : ''}`}
-                        type="button"
-                    >
-                        +
-                    </button>
+        <div className={styles.statistics}>
+            <Suspense
+                fallback={
+                    <>
+                        loading statistics
+                        <Triangle
+                            ariaLabel="triangle-loading"
+                            color=""
+                            height="32"
+                            visible={true}
+                            width="32"
+                            wrapperClass={styles.loader}
+                            wrapperStyle={{}}
+                        />
+                    </>
+                }
+            >
+                <Await resolve={Promise.all([level, coins, coinAdditionStatus])}>
+                    {([resolveLevel, resolveCoins, resolveCoinAdditionStatus]: ResolveAppLoader) => {
+                        if (
+                            (resolveLevel as ResolveError).status === '404' ||
+                            (resolveCoins as ResolveError).status === '404' ||
+                            (resolveCoinAdditionStatus as ResolveError).status === '404'
+                        ) {
+                            return <span className={styles.error}>Error loading statistics</span>;
+                        }
 
-                    {!coinAdditionStatus ? <div className={className.pulse}></div> : null}
-                </div>
-                <div className={className.coins__text_box}>
-                    <span className={className.coins__text}>{coins}</span> coins awarded
-                </div>
-            </div>
+                        return (
+                            <>
+                                <div className={styles.level__box}>
+                                    <span className={styles.level__text}>{resolveLevel as string}</span> level
+                                </div>
+                                <div className={styles.coins}>
+                                    <div className={styles.coins__add_box}>
+                                        <button
+                                            type="button"
+                                            className={`${styles.coins__btn} ${!(resolveCoinAdditionStatus as boolean) ? styles.coins__btn_pulse : ''}`}
+                                        >
+                                            +
+                                        </button>
+                                        {!(resolveCoinAdditionStatus as boolean) ? (
+                                            <div className={styles.pulse}></div>
+                                        ) : null}
+                                    </div>
+                                    <div className={styles.coins__text_box}>
+                                        <span className={styles.coins__text}>{resolveCoins as string}</span> coins
+                                        awarded
+                                    </div>
+                                </div>
+                            </>
+                        );
+                    }}
+                </Await>
+            </Suspense>
         </div>
     );
 };
 
-export default HeaderStatistics;
+export { HeaderStatistics };

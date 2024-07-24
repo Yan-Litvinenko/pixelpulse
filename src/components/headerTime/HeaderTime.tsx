@@ -1,18 +1,13 @@
 import React from 'react';
-import { ContextApp } from '../app/App';
-import { IContextApp } from '../../interfaces/interface';
-import Button from '../button/Button';
 import { getZero } from '../../utils/getZero';
+import Button from '../button/Button';
 import handleOpenModal from '../../utils/handleOpenModal';
 import useLocalTime from '../../hooks/useLocalTime';
 import styles from './HeaderTime.module.scss';
+import { useAppContext } from '../../hooks/useAppContext';
 
 const HeaderTime = (): React.JSX.Element => {
-    const contextApp: IContextApp | null = React.useContext(ContextApp);
-
-    if (!contextApp) return <></>;
-
-    const { handleSoundModal, setCredits } = contextApp;
+    const { handleSoundModal, setCredits } = useAppContext();
     const [localTime] = useLocalTime();
     // const serverTime = useServerTime();
 
@@ -41,4 +36,4 @@ const HeaderTime = (): React.JSX.Element => {
     );
 };
 
-export default HeaderTime;
+export { HeaderTime };

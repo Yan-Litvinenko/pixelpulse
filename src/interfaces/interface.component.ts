@@ -21,7 +21,7 @@ interface IClipPathBorder {
 }
 
 interface IStatistics {
-    className: Record<string, string>;
+    styles: Record<string, string>;
 }
 
 interface IJouystick {

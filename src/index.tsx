@@ -19,7 +19,7 @@ import './css/index.scss';
 const root: ReactDOM.Root = ReactDOM.createRoot(document.getElementById('root')!);
 const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route path="/" element={<App />} loader={appLoader}>
+        <Route id="app" path="/" element={<App />} loader={appLoader}>
             <Route path="/" element={<Welcome />} />
             <Route path="beginning" element={<Beginning />} />
             <Route path="logs" element={<Logs />} loader={logsLoader} />
