@@ -1,15 +1,22 @@
 import React from 'react';
-import { getZero } from '../../utils/getZero';
 import Button from '../button/Button';
 import handleOpenModal from '../../utils/handleOpenModal';
-import useLocalTime from '../../hooks/useLocalTime';
-import styles from './HeaderTime.module.scss';
+import { useTime } from '../../hooks/useTime';
 import { useAppContext } from '../../hooks/useAppContext';
+import styles from './HeaderTime.module.scss';
 
 const HeaderTime = (): React.JSX.Element => {
     const { handleSoundModal, setCredits } = useAppContext();
-    const [localTime] = useLocalTime();
-    // const serverTime = useServerTime();
+    const [localHours, localMinutes] = useTime(new Date().getTime());
+    const [serverHours, serverMinutes, updateTime] = useTime(new Date().getTime());
+
+    React.useEffect(() => {
+        (async () => {
+            const response: Response = await fetch('/api/server-time');
+            const serverTime = await response.json();
+            updateTime(serverTime);
+        })();
+    }, []);
 
     return (
         <div className={styles.time}>
@@ -24,13 +31,11 @@ const HeaderTime = (): React.JSX.Element => {
                 type="button"
             />
             <div className={styles.server}>
-                <span className={styles.server__time_span}>server time:</span>{' '}
-                {/* {`${serverTime.getHours()}:${getZero(serverTime.getMinutes())}`} */}
+                <span className={styles.server__time_span}>server time:</span> {`${serverHours}:${serverMinutes}`}
             </div>
 
             <div className={styles.local}>
-                <span className={styles.local__time_span}>local time:</span>{' '}
-                {`${localTime.getHours()}:${getZero(localTime.getMinutes())}`}
+                <span className={styles.local__time_span}>local time:</span> {`${localHours}:${localMinutes}`}
             </div>
         </div>
     );

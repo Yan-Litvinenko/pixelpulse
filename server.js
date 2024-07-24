@@ -29,7 +29,7 @@ const PORT = 3000;
         app.get('/api/getStatusAddToday', getStatusAddToday);
         app.get('/add_coin', addCoin);
         app.get('/api/getAchievements', getAchievements);
-        app.get('/server-time', getServerTime);
+        app.get('/api/server-time', getServerTime);
         app.get('/preview.jpg', previewImage);
         app.get('/visit', visit);
 

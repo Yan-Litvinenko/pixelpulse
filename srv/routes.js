@@ -75,7 +75,7 @@ exports.getAchievements = async (req, res, next) => {
 exports.getServerTime = (req, res, next) => {
     try {
         const serverTime = new Date();
-        res.json({ serverTime: serverTime.toISOString() });
+        res.json(serverTime.toISOString());
     } catch (error) {
         next(error);
     }

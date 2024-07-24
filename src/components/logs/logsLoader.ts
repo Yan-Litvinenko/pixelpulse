@@ -43,13 +43,13 @@ const getCommits = async (): Promise<IGithubRespone[]> => {
         throw new Error(`Github token or url is not defined. URL: ${URL}, TOKEN: ${ACCESS_TOKEN}`);
     }
 
-    const queryForGithub: Response = await fetch(URL, {
+    const responseForGithub: Response = await fetch(URL, {
         headers: {
             Authorization: `token ${ACCESS_TOKEN}`,
         },
     });
 
-    return queryForGithub.json();
+    return responseForGithub.json();
 };
 
 const logsLoader = () => {

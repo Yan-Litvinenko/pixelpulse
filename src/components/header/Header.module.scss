@@ -17,19 +17,21 @@
 
 .coins {
     @include flex-container($align-items: flex-end, $gap: 0rem 0.8125rem);
+    position: relative;
+    top: 0.3125rem;
 
     &__add_box {
         position: relative;
     }
 
     &__text_box {
-        position: relative;
-        top: 0.1375rem;
+        @include grid-container($columns: auto auto, $align-items: end, $gap: 0rem 0.4125rem);
     }
 
     &__text {
         @include text-properties('Big-Shoulders', 1.625rem, 700, 0.125rem);
         color: var(--statistics-text-color);
+        line-height: 1.5rem;
     }
 
     &__btn {
@@ -44,6 +46,11 @@
         position: relative;
         user-select: none;
         width: 2rem;
+    }
+
+    &__btn_deactive {
+        user-select: none;
+        z-index: -1;
     }
 
     &__btn_pulse {
@@ -74,45 +81,24 @@
 .level {
     &__box {
         @include position($top: 0.2625rem);
-        @include grid-container($columns: auto auto, $align-items: center, $gap: 0rem 0.4125rem);
+        @include grid-container($columns: auto auto, $align-items: end, $gap: 0rem 0.4125rem);
     }
 
     &__text {
         @include text-properties('Big-Shoulders', 1.625rem, 700, 0.125rem);
         color: var(--statistics-text-color);
         position: relative;
+        line-height: 1.5rem;
     }
 }
 
 .loader {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translate(110%, -67%);
-    z-index: 20;
-
     & polygon {
         stroke-width: 2;
     }
 
     & svg {
         stroke: var(--main-color);
-    }
-}
-
-.error {
-    animation: text-blink 0.01s steps(2) infinite;
-    color: var(--main-color);
-    position: relative;
-}
-
-@keyframes text-blink {
-    from,
-    to {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.5;
     }
 }
 

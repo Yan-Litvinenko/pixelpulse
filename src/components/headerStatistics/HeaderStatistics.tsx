@@ -15,16 +15,37 @@ const HeaderStatistics = (props: IStatistics): React.JSX.Element => {
             <Suspense
                 fallback={
                     <>
-                        loading statistics
-                        <Triangle
-                            ariaLabel="triangle-loading"
-                            color=""
-                            height="32"
-                            visible={true}
-                            width="32"
-                            wrapperClass={styles.loader}
-                            wrapperStyle={{}}
-                        />
+                        <div className={styles.level__box}>
+                            <Triangle
+                                ariaLabel="triangle-loading"
+                                color=""
+                                height="32"
+                                visible={true}
+                                width="32"
+                                wrapperClass={styles.loader}
+                                wrapperStyle={{}}
+                            />
+                            <span>level</span>
+                        </div>
+                        <div className={styles.coins}>
+                            <div className={styles.coins__add_box}>
+                                <button type="button" className={`${styles.coins__btn} ${styles.coins__btn_deactive}`}>
+                                    +
+                                </button>
+                            </div>
+                            <div className={styles.coins__text_box}>
+                                <Triangle
+                                    ariaLabel="triangle-loading"
+                                    color=""
+                                    height="32"
+                                    visible={true}
+                                    width="32"
+                                    wrapperClass={styles.loader}
+                                    wrapperStyle={{}}
+                                />
+                                <span>coins awarded</span>
+                            </div>
+                        </div>
                     </>
                 }
             >
@@ -35,13 +56,35 @@ const HeaderStatistics = (props: IStatistics): React.JSX.Element => {
                             (resolveCoins as ResolveError).status === '404' ||
                             (resolveCoinAdditionStatus as ResolveError).status === '404'
                         ) {
-                            return <span className={styles.error}>Error loading statistics</span>;
+                            return (
+                                <>
+                                    <div className={styles.level__box}>
+                                        <span className={styles.level__text}>Error</span>
+                                        <span>level</span>
+                                    </div>
+                                    <div className={styles.coins}>
+                                        <div className={styles.coins__add_box}>
+                                            <button
+                                                type="button"
+                                                className={`${styles.coins__btn} ${styles.coins__btn_deactive}`}
+                                            >
+                                                +
+                                            </button>
+                                        </div>
+                                        <div className={styles.coins__text_box}>
+                                            <span className={styles.coins__text}>Error</span>
+                                            <span>coins awarded</span>
+                                        </div>
+                                    </div>
+                                </>
+                            );
                         }
 
                         return (
                             <>
                                 <div className={styles.level__box}>
-                                    <span className={styles.level__text}>{resolveLevel as string}</span> level
+                                    <span className={styles.level__text}>{resolveLevel as string}</span>
+                                    <span>level</span>
                                 </div>
                                 <div className={styles.coins}>
                                     <div className={styles.coins__add_box}>
@@ -56,8 +99,8 @@ const HeaderStatistics = (props: IStatistics): React.JSX.Element => {
                                         ) : null}
                                     </div>
                                     <div className={styles.coins__text_box}>
-                                        <span className={styles.coins__text}>{resolveCoins as string}</span> coins
-                                        awarded
+                                        <span className={styles.coins__text}>{resolveCoins as string}</span>
+                                        <span>coins awarded</span>
                                     </div>
                                 </div>
                             </>
