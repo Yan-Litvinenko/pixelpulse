@@ -15,12 +15,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Welcome from './components/welcome/Welocme';
 import './css/index.scss';
+import { appAction } from './components/app/appAction';
 
 const root: ReactDOM.Root = ReactDOM.createRoot(document.getElementById('root')!);
 const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route id="app" path="/" element={<App />} loader={appLoader}>
-            <Route path="/" element={<Welcome />} />
+        <Route id="app" path="/" element={<App />} loader={appLoader} action={appAction}>
+            <Route index element={<Welcome />} />
             <Route path="beginning" element={<Beginning />} />
             <Route path="logs" element={<Logs />} loader={logsLoader} />
             <Route path="achievements" element={<Achievements />} loader={achievementsLoader} />

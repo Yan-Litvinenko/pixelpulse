@@ -27,11 +27,11 @@ const PORT = 3000;
         app.get('/api/getLevel', getLevel);
         app.get('/api/getCoins', getCoins);
         app.get('/api/getStatusAddToday', getStatusAddToday);
-        app.get('/add_coin', addCoin);
         app.get('/api/getAchievements', getAchievements);
-        app.get('/api/server-time', getServerTime);
+        app.get('/api/serverTime', getServerTime);
         app.get('/preview.jpg', previewImage);
         app.get('/visit', visit);
+        app.post('/addCoin', addCoin);
 
         app.use('/api/*', (req, res) => {
             res.status(404).json({ status: '404', message: 'Error receiving data' });

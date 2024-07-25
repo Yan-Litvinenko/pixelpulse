@@ -41,6 +41,8 @@ class RouterHash {
         const hash: string | null = localStorage.getItem(this.KEYS[key]);
         const updateData: string = JSON.stringify(data);
 
+        console.log(`updateHash: hash:${hash}, updateHash: ${updateData}`);
+
         if (hash !== updateData) localStorage.setItem(this.KEYS[key], updateData);
     }
 

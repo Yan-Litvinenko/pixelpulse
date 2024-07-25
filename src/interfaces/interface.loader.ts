@@ -15,6 +15,13 @@ interface ResolveError {
     message: string;
 }
 
+interface IAddCoinResult {
+    level: number;
+    coins: number;
+    status: boolean;
+    coinAdditionStatus: boolean;
+}
+
 type ResolveAppLoader = [string | ResolveError, string | ResolveError, boolean | ResolveError];
 
-export { IAppDataLoader, ResolveAppLoader, ResolveError };
+export { IAppDataLoader, ResolveAppLoader, ResolveError, IAddCoinResult };

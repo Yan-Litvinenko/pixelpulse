@@ -51,7 +51,12 @@ exports.addCoin = async (req, res, next) => {
                 await dataBase.achievedLevelAchieve(LEVEL);
             }
 
-            res.json(true);
+            res.json({
+                level: LEVEL,
+                coins: COINS,
+                status: true,
+                coinAdditionStatus: true,
+            });
 
             console.log(`User ${ip} added coins`);
         } else {

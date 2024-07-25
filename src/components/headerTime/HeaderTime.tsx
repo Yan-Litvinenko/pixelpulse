@@ -12,7 +12,7 @@ const HeaderTime = (): React.JSX.Element => {
 
     React.useEffect(() => {
         (async () => {
-            const response: Response = await fetch('/api/server-time');
+            const response: Response = await fetch('/api/serverTime');
             const serverTime = await response.json();
             updateTime(serverTime);
         })();
