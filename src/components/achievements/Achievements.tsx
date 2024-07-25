@@ -47,6 +47,7 @@ const Achievements = (): React.JSX.Element => {
                                 if ((resolveAchievements as ResolveError).status === '404') {
                                     return <AchievementsError />;
                                 }
+
                                 return (
                                     <>
                                         <AchievementsBlock

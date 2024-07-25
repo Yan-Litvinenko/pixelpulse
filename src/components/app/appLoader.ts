@@ -1,4 +1,5 @@
 import { defer } from 'react-router-dom';
+import { routerHash } from '../../classes/RouterHash';
 
 const addVisitInConsole = async (): Promise<void> => {
     await fetch('/visit');
@@ -20,12 +21,14 @@ const getLevel = async (): Promise<string> => {
 };
 
 const appLoader = () => {
-    return defer({
-        level: getLevel(),
-        coins: getCoins(),
-        coinAdditionStatus: getCoinAdditionStatus(),
+    const load = {
+        level: routerHash.has('level') ? routerHash.dehash('level') : getLevel(),
+        coins: routerHash.has('coins') ? routerHash.dehash('coins') : getCoins(),
+        coinAdditionStatus: routerHash.has('addStatus') ? routerHash.dehash('addStatus') : getCoinAdditionStatus(),
         visitInConsole: addVisitInConsole(),
-    });
+    };
+
+    return defer(load);
 };
 
 export { appLoader };

@@ -1,6 +1,7 @@
 import { UseAudioPlayer } from '../hooks/useAudioPlayer';
 
 type Page = 'welcome' | 'beginning' | 'about' | 'logs' | 'achievements' | 'creations' | 'games';
+type HashKey = 'level' | 'coins' | 'addStatus';
 
 type BooleanState = React.Dispatch<React.SetStateAction<boolean>>;
 type IContextApp = {
@@ -32,4 +33,4 @@ type IContextApp = {
     TRANSITION_TIME: number;
 };
 
-export { BooleanState, IContextApp, Page };
+export { BooleanState, IContextApp, Page, HashKey };

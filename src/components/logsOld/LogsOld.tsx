@@ -31,6 +31,7 @@ const LogsOld = (): React.JSX.Element => {
                                     />
                                 ));
                             }
+
                             return transformCommits(resolveCommits as IGithubRespone[]).map((commit) => (
                                 <LogsElement
                                     key={nanoid()}

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAppContext } from '../../hooks/useAppContext';
 import useLocalStorage from '../../hooks/useLocalStorage';
-import Snake from '../../classes/Snake';
+import { Snake } from '../../classes/Snake';
 import snakeTheme from '../../assets/audio/snake.mp3';
 import mainTheme from '../../assets/audio/main-theme.mp3';
 import Joystick from '../joystick/Jouystick';

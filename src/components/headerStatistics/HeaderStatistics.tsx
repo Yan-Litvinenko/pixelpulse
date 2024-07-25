@@ -1,8 +1,10 @@
 import React, { Suspense } from 'react';
 import { IAppDataLoader, ResolveAppLoader, ResolveError } from '../../interfaces/interface.loader';
 import { IStatistics } from '../../interfaces/interface.component';
-import { Triangle } from 'react-loader-spinner';
+import { HeaderStatisticError } from './HeaderStatisticsError';
 import { useMatches, Await } from 'react-router-dom';
+import { HeaderStatisticsFallback } from './HeaderStatisticFallback';
+import { routerHash } from '../../classes/RouterHash';
 
 const HeaderStatistics = (props: IStatistics): React.JSX.Element => {
     const { styles } = props; /* Классы передаются т.к. компонент в 2 местах по разному расположен */
@@ -12,43 +14,7 @@ const HeaderStatistics = (props: IStatistics): React.JSX.Element => {
 
     return (
         <div className={styles.statistics}>
-            <Suspense
-                fallback={
-                    <>
-                        <div className={styles.level__box}>
-                            <Triangle
-                                ariaLabel="triangle-loading"
-                                color=""
-                                height="32"
-                                visible={true}
-                                width="32"
-                                wrapperClass={styles.loader}
-                                wrapperStyle={{}}
-                            />
-                            <span>level</span>
-                        </div>
-                        <div className={styles.coins}>
-                            <div className={styles.coins__add_box}>
-                                <button type="button" className={`${styles.coins__btn} ${styles.coins__btn_deactive}`}>
-                                    +
-                                </button>
-                            </div>
-                            <div className={styles.coins__text_box}>
-                                <Triangle
-                                    ariaLabel="triangle-loading"
-                                    color=""
-                                    height="32"
-                                    visible={true}
-                                    width="32"
-                                    wrapperClass={styles.loader}
-                                    wrapperStyle={{}}
-                                />
-                                <span>coins awarded</span>
-                            </div>
-                        </div>
-                    </>
-                }
-            >
+            <Suspense fallback={<HeaderStatisticsFallback styles={styles} />}>
                 <Await resolve={Promise.all([level, coins, coinAdditionStatus])}>
                     {([resolveLevel, resolveCoins, resolveCoinAdditionStatus]: ResolveAppLoader) => {
                         if (
@@ -56,29 +22,12 @@ const HeaderStatistics = (props: IStatistics): React.JSX.Element => {
                             (resolveCoins as ResolveError).status === '404' ||
                             (resolveCoinAdditionStatus as ResolveError).status === '404'
                         ) {
-                            return (
-                                <>
-                                    <div className={styles.level__box}>
-                                        <span className={styles.level__text}>Error</span>
-                                        <span>level</span>
-                                    </div>
-                                    <div className={styles.coins}>
-                                        <div className={styles.coins__add_box}>
-                                            <button
-                                                type="button"
-                                                className={`${styles.coins__btn} ${styles.coins__btn_deactive}`}
-                                            >
-                                                +
-                                            </button>
-                                        </div>
-                                        <div className={styles.coins__text_box}>
-                                            <span className={styles.coins__text}>Error</span>
-                                            <span>coins awarded</span>
-                                        </div>
-                                    </div>
-                                </>
-                            );
+                            return <HeaderStatisticError styles={styles} />;
                         }
+
+                        routerHash.updateHash('level', resolveLevel);
+                        routerHash.updateHash('coins', resolveCoins);
+                        routerHash.updateHash('addStatus', resolveCoinAdditionStatus);
 
                         return (
                             <>

@@ -3,7 +3,6 @@ import { IAchieve, ToggleStatus } from '../../interfaces/interface.achievements'
 
 const getAchievements = async (): Promise<IAchieve[]> => {
     const response: Response = await fetch('/api/getAchievements');
-
     return response.json();
 };
 

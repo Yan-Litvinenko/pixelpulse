@@ -31,6 +31,7 @@ const LogsProject = (): React.JSX.Element => {
                                 />
                             );
                         }
+
                         return (
                             <LogsElement
                                 className={styles.project__title}
