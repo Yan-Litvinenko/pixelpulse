@@ -1,66 +1,55 @@
-import React, { Suspense } from 'react';
-import { IAddCoinResult, IAppDataLoader, ResolveAppLoader, ResolveError } from '../../interfaces/interface.loader';
+import React from 'react';
 import { IStatistics } from '../../interfaces/interface.component';
-import { HeaderStatisticError } from './HeaderStatisticsError';
-import { Await, useFetcher, useLoaderData } from 'react-router-dom';
+import { useAppContext } from '../../hooks/useAppContext';
 import { HeaderStatisticsFallback } from './HeaderStatisticFallback';
-import { routerHash } from '../../classes/RouterHash';
 
 const HeaderStatistics = (props: IStatistics): React.JSX.Element => {
-    const { styles } = props; /* Классы передаются т.к. компонент в 2 местах по разному расположен */
-    const load = useLoaderData() as IAppDataLoader;
-    const fetcher = useFetcher<IAddCoinResult>();
-    const loadData = fetcher.data || load;
+    const { styles } = props;
+    const { headerStatistic } = useAppContext();
+    const { level, coins, addStatus, isLoad, addCoin } = headerStatistic;
 
     return (
         <div className={styles.statistics}>
-            <Suspense fallback={<HeaderStatisticsFallback styles={styles} />}>
-                <Await resolve={Promise.all([loadData.level, loadData.coins, loadData.coinAdditionStatus])}>
-                    {([resolveLevel, resolveCoins, resolveCoinAdditionStatus]: ResolveAppLoader) => {
-                        if (
-                            (resolveLevel as ResolveError).status === '404' ||
-                            (resolveCoins as ResolveError).status === '404' ||
-                            (resolveCoinAdditionStatus as ResolveError).status === '404'
-                        ) {
-                            return <HeaderStatisticError styles={styles} />;
-                        }
+            {isLoad ? (
+                <HeaderStatisticsFallback styles={styles} />
+            ) : (
+                <>
+                    <div className={styles.level__box}>
+                        {!level && !isLoad ? (
+                            <span className={styles.level__text}>Error</span>
+                        ) : (
+                            <span className={styles.level__text}>{level}</span>
+                        )}
+                        <span>level</span>
+                    </div>
+                    <div className={styles.coins}>
+                        <form className={styles.coins__add_box}>
+                            <button
+                                className={`${styles.coins__btn} ${!addStatus ? styles.coins__btn_pulse : styles.coins__btn_deactive}`}
+                                type="button"
+                                onClick={addCoin}
+                            >
+                                +
+                            </button>
+                            {!addStatus ? <div className={styles.pulse}></div> : null}
+                        </form>
+                    </div>
+                    <div className={styles.coins__text_box}>
+                        {!coins && !isLoad ? (
+                            <span className={styles.coins__text}>Error</span>
+                        ) : (
+                            <span className={styles.coins__text}>{coins}</span>
+                        )}
 
-                        routerHash.updateHash('level', resolveLevel);
-                        routerHash.updateHash('coins', resolveCoins);
-                        routerHash.updateHash('addStatus', resolveCoinAdditionStatus);
-
-                        return (
-                            <>
-                                <div className={styles.level__box}>
-                                    <span className={styles.level__text}>{resolveLevel as string}</span>
-                                    <span>level</span>
-                                </div>
-                                <div className={styles.coins}>
-                                    <fetcher.Form className={styles.coins__add_box} action="/" method="post">
-                                        <button
-                                            className={`${styles.coins__btn} ${!(resolveCoinAdditionStatus as boolean) ? styles.coins__btn_pulse : styles.coins__btn_deactive}`}
-                                            name="intent"
-                                            type="submit"
-                                            value={'coin'}
-                                        >
-                                            +
-                                        </button>
-                                        {!(resolveCoinAdditionStatus as boolean) ? (
-                                            <div className={styles.pulse}></div>
-                                        ) : null}
-                                    </fetcher.Form>
-                                    <div className={styles.coins__text_box}>
-                                        <span className={styles.coins__text}>{resolveCoins as string}</span>
-                                        <span>coins awarded</span>
-                                    </div>
-                                </div>
-                            </>
-                        );
-                    }}
-                </Await>
-            </Suspense>
+                        <span>coins awarded</span>
+                    </div>
+                </>
+            )}
         </div>
     );
 };
 
 export { HeaderStatistics };
+
+{
+}

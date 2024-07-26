@@ -1,4 +1,5 @@
 import { UseAudioPlayer } from '../hooks/useAudioPlayer';
+import { IUseHeaderStatistic } from '../hooks/useHeaderStatistics';
 
 type Page = 'welcome' | 'beginning' | 'about' | 'logs' | 'achievements' | 'creations' | 'games';
 type HashKey = 'level' | 'coins' | 'addStatus';
@@ -11,6 +12,7 @@ type IContextApp = {
     mainMusic: UseAudioPlayer;
     modalProject: number;
     modalProjectImage: number;
+    headerStatistic: IUseHeaderStatistic;
     music: boolean;
     navigationMobile: boolean;
     projectImages: string[];
@@ -33,4 +35,11 @@ type IContextApp = {
     TRANSITION_TIME: number;
 };
 
-export { BooleanState, IContextApp, Page, HashKey };
+interface IAddCoinResult {
+    level: number;
+    coins: number;
+    addStatus: boolean;
+    isLoad: boolean;
+}
+
+export { BooleanState, IContextApp, Page, HashKey, IAddCoinResult };

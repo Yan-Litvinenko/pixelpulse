@@ -2,7 +2,6 @@ import { About } from './components/about/About';
 import { Achievements } from './components/achievements/Achievements';
 import { achievementsLoader } from './components/achievements/achievementsLoader';
 import { App } from './components/app/App';
-import { appLoader } from './components/app/appLoader';
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 import { Logs } from './components/logs/Logs';
 import { logsLoader } from './components/logs/logsLoader';
@@ -15,12 +14,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Welcome from './components/welcome/Welocme';
 import './css/index.scss';
-import { appAction } from './components/app/appAction';
 
 const root: ReactDOM.Root = ReactDOM.createRoot(document.getElementById('root')!);
 const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route id="app" path="/" element={<App />} loader={appLoader} action={appAction}>
+        <Route id="app" path="/" element={<App />}>
             <Route index element={<Welcome />} />
             <Route path="beginning" element={<Beginning />} />
             <Route path="logs" element={<Logs />} loader={logsLoader} />

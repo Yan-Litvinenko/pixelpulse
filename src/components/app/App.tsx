@@ -25,6 +25,7 @@ import ModalSoundEffect from '../../assets/audio/modal.mp3';
 import clickSoundEffect from '../../assets/audio/click.ogg';
 import { IContextApp } from '../../interfaces/interface';
 import styles from './App.module.scss';
+import { IUseHeaderStatistic, useHeaderStatistic } from '../../hooks/useHeaderStatistics';
 
 const ContextApp = React.createContext<IContextApp | null>(null);
 const TRANSITION_TIME: number = 1500;
@@ -34,6 +35,8 @@ const App = (): React.JSX.Element => {
     const isLarge: boolean = useMediaQuery({ maxWidth: 1200 });
 
     const location = useLocation();
+
+    const headerStatistic: IUseHeaderStatistic = useHeaderStatistic();
 
     const [availability, setAvailability] = React.useState<boolean>(false);
     const [challenge, setChallenge] = React.useState<boolean>(false);
@@ -85,6 +88,7 @@ const App = (): React.JSX.Element => {
                 setSetting,
                 setSocial,
                 setSounds,
+                headerStatistic,
                 creations,
                 isLarge,
                 isMedium,
