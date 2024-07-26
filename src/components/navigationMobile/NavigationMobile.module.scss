@@ -29,7 +29,7 @@
 
 .statistics {
     @include text-properties('Big-Shoulders', 1rem, 700, 0.075rem);
-    @include flex-container($gap: 0rem 2.8125rem);
+    @include flex-container($align-items: flex-end);
     color: var(--stone-grey);
     padding: 0.625rem 1.25rem;
     margin-bottom: 1rem;
@@ -38,6 +38,7 @@
 .coins {
     @include position($top: 0.1625rem);
     @include grid-container($columns: auto auto, $align-items: end, $align-content: end, $gap: 0rem 0.4125rem);
+    margin-right: 0.8125rem;
 
     &__add_box {
         position: relative;
@@ -46,7 +47,7 @@
     &__text_box {
         @include grid-container($columns: auto auto, $align-items: baseline, $gap: 0rem 0.4125rem);
         position: relative;
-        top: 0.1375rem;
+        top: 0.27rem;
     }
 
     &__text {
@@ -103,6 +104,7 @@
     &__box {
         @include position($top: 0.2625rem);
         @include grid-container($columns: auto auto, $align-items: baseline, $align-content: end, $gap: 0rem 0.4125rem);
+        margin-right: 2.8125rem;
     }
 
     &__text {
@@ -283,8 +285,12 @@
 }
 
 @media (max-width: 450px) {
+    .level__box {
+        width: 100%;
+    }
+
     .statistics {
-        flex-direction: column;
+        flex-wrap: wrap;
         gap: 0.3125rem 0rem;
     }
 
@@ -292,6 +298,13 @@
         flex-direction: row-reverse;
         justify-content: flex-end;
         gap: 0rem 0.3125rem;
+        order: 3;
+        margin-right: 0;
+
+        &__text_box {
+            order: 2;
+            margin-right: 0.8125rem;
+        }
     }
 
     .visual div {

@@ -10,15 +10,14 @@
 
 .statistics {
     @include text-properties('Big-Shoulders', 1rem, 700, 0.075rem);
-    @include flex-container($align-items: flex-end, $gap: 0rem 2.8125rem);
+    @include flex-container($align-items: flex-end);
     color: var(--stone-grey);
     position: relative;
 }
 
 .coins {
     @include flex-container($align-items: flex-end, $gap: 0rem 0.8125rem);
-    position: relative;
-    top: 0.3125rem;
+    margin-right: 0.8125rem;
 
     &__add_box {
         position: relative;
@@ -65,6 +64,7 @@
         @include absolute-position(50%, 50%);
         cursor: pointer;
         transform: translate(-50%, -50%);
+        margin-right: 0.8125rem;
     }
 }
 
@@ -79,8 +79,8 @@
 
 .level {
     &__box {
-        @include position($top: 0.2625rem);
         @include grid-container($columns: auto auto, $align-items: end, $gap: 0rem 0.4125rem);
+        margin-right: 2.8125rem;
     }
 
     &__text {

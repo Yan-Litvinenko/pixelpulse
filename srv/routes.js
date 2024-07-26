@@ -54,8 +54,7 @@ exports.addCoin = async (req, res, next) => {
             res.json({
                 level: LEVEL,
                 coins: COINS,
-                status: true,
-                coinAdditionStatus: true,
+                addStatus: true,
             });
 
             console.log(`User ${ip} added coins`);
