@@ -1,26 +1,14 @@
 import React from 'react';
-import CreationsXplorerItem from '../CreationsXplorerItem/CreationsXplorerItem';
-import handleOpenModal from '../../utils/handleOpenModal';
-import { nanoid } from 'nanoid';
 import { IXplorer } from '../../interfaces/interface.creations';
-import { ContextApp } from '../app/App';
-import { IContextApp } from '../../interfaces/interface';
+import { nanoid } from 'nanoid';
+import { useAppContext } from '../../hooks/useAppContext';
+import { useModal } from '../../hooks/useModal';
+import CreationsXplorerItem from '../CreationsXplorerItem/CreationsXplorerItem';
 import styles from './CreationsXplorerContent.module.scss';
 
 const CreationsXplorerContent = (props: IXplorer): React.JSX.Element => {
-    const contextApp: IContextApp | null = React.useContext(ContextApp);
-
-    if (!contextApp) return <></>;
-
-    const {
-        setProjectImages,
-        setModalProject,
-        handleSoundClick,
-        setModalProjectImage,
-        handleSoundModal,
-        setCreations,
-    } = contextApp;
-    const { modalProject } = contextApp;
+    const { setProjectImages, setModalProject, handleSoundClick, setModalProjectImage, modalProject } = useAppContext();
+    const { openModal } = useModal('creations');
     const { projects, setXplorerState, xplorerState } = props;
 
     const projectClick = (projectIndex: number): void => {
@@ -31,9 +19,8 @@ const CreationsXplorerContent = (props: IXplorer): React.JSX.Element => {
     };
 
     const imageClick = (imageIndex: number): void => {
-        handleOpenModal(setCreations);
+        openModal();
         setModalProjectImage(imageIndex);
-        handleSoundModal();
     };
 
     return (

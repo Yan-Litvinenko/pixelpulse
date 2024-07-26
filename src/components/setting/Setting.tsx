@@ -1,17 +1,12 @@
 import React from 'react';
-import { ContextApp } from '../app/App';
-import { IContextApp } from '../../interfaces/interface';
-import SettingElement from '../settingElement/SettingElement';
-import handleOpenModal from '../../utils/handleOpenModal';
 import { ISetting } from '../../interfaces/interface.component';
+import { useAppContext } from '../../hooks/useAppContext';
+import { useModal } from '../../hooks/useModal';
+import SettingElement from '../settingElement/SettingElement';
 
 const Setting = (props: ISetting): React.JSX.Element => {
-    const contextApp = React.useContext<IContextApp | null>(ContextApp);
-
-    if (!contextApp) return <></>;
-
-    const { sounds, setSounds, music, setMusic, mainMusic, setNavigationMobile, handleSoundModal, setSetting } =
-        contextApp;
+    const { sounds, setSounds, music, setMusic, mainMusic, setNavigationMobile } = useAppContext();
+    const { openModal } = useModal('setting');
     const { className } = props;
 
     return (
@@ -48,8 +43,7 @@ const Setting = (props: ISetting): React.JSX.Element => {
                 className={className.visual}
                 onClick={() => {
                     setNavigationMobile(false);
-                    handleSoundModal();
-                    handleOpenModal(setSetting);
+                    openModal();
                 }}
                 image="gear"
                 textContent="Visual Settings"

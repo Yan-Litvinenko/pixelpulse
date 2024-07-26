@@ -3,9 +3,7 @@ import { IUseHeaderStatistic } from '../hooks/useHeaderStatistics';
 import { UseAudioPlayer } from '../hooks/useAudioPlayer';
 
 type Page = 'welcome' | 'beginning' | 'about' | 'logs' | 'achievements' | 'creations' | 'games';
-type HashKey = 'level' | 'coins' | 'addStatus';
 
-type BooleanState = React.Dispatch<React.SetStateAction<boolean>>;
 type IContextApp = {
     achievements: IUseAchievements;
     creations: boolean;
@@ -19,19 +17,18 @@ type IContextApp = {
     navigationMobile: boolean;
     projectImages: string[];
     handleSoundClick: () => Promise<void> | null;
-    handleSoundModal: () => Promise<void> | null;
-    setAvailability: BooleanState;
-    setChallenge: BooleanState;
-    setCreations: BooleanState;
-    setCredits: BooleanState;
+    setAvailability: React.Dispatch<React.SetStateAction<boolean>>;
+    setChallenge: React.Dispatch<React.SetStateAction<boolean>>;
+    setCreations: React.Dispatch<React.SetStateAction<boolean>>;
+    setCredits: React.Dispatch<React.SetStateAction<boolean>>;
     setModalProject: React.Dispatch<React.SetStateAction<number>>;
     setModalProjectImage: React.Dispatch<React.SetStateAction<number>>;
-    setMusic: BooleanState;
-    setNavigationMobile: BooleanState;
+    setMusic: React.Dispatch<React.SetStateAction<boolean>>;
+    setNavigationMobile: React.Dispatch<React.SetStateAction<boolean>>;
     setProjectImages: React.Dispatch<React.SetStateAction<string[]>>;
-    setSetting: BooleanState;
-    setSocial: BooleanState;
-    setSounds: BooleanState;
+    setSetting: React.Dispatch<React.SetStateAction<boolean>>;
+    setSocial: React.Dispatch<React.SetStateAction<boolean>>;
+    setSounds: React.Dispatch<React.SetStateAction<boolean>>;
     sounds: boolean;
     styles: Record<string, string>;
     TRANSITION_TIME: number;
@@ -44,4 +41,9 @@ interface IAddCoinResult {
     isLoad: boolean;
 }
 
-export { BooleanState, IContextApp, Page, HashKey, IAddCoinResult };
+interface ResolveError {
+    status: string;
+    message: string;
+}
+
+export { IContextApp, Page, IAddCoinResult, ResolveError };

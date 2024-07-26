@@ -1,6 +1,4 @@
 import { UseFormRegister, FieldValues, FieldErrors } from 'react-hook-form';
-import { BooleanState } from '../interfaces/interface';
-
 type Field = 'name' | 'email' | 'message' | 'title' | 'description';
 type Rarity = 'unusual' | 'rare' | 'epic' | 'legendary';
 
@@ -16,9 +14,9 @@ interface FormSubmit {
     loading: boolean;
     register: UseFormRegister<FieldValues>;
     successfully: boolean;
-    setError: BooleanState;
-    setLoading: BooleanState;
-    setSuccessfully: BooleanState;
+    setError: React.Dispatch<React.SetStateAction<boolean>>;
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+    setSuccessfully: React.Dispatch<React.SetStateAction<boolean>>;
     handleSubmit: (e?: React.BaseSyntheticEvent) => Promise<void>;
 }
 

@@ -17,11 +17,10 @@ import ModalCredits from '../modalCredits/ModalCredits';
 import ModalSetting from '../modalSetting/ModalSetting';
 import ModalSocial from '../modalSocial/ModalSocial';
 
-import { Triangle } from 'react-loader-spinner';
 import NavigationMobile from '../navigationMobile/NavigationMobile';
 
 import mainTheme from '../../assets/audio/main-theme.mp3';
-import ModalSoundEffect from '../../assets/audio/modal.mp3';
+
 import clickSoundEffect from '../../assets/audio/click.ogg';
 import { IContextApp } from '../../interfaces/interface';
 import styles from './App.module.scss';
@@ -48,8 +47,6 @@ const App = (): React.JSX.Element => {
     const [setting, setSetting] = React.useState<boolean>(false);
     const [social, setSocial] = React.useState<boolean>(false);
 
-    const [loading, setLoading] = React.useState<boolean>(true);
-
     const [projectImages, setProjectImages] = React.useState<string[]>([]);
     const [modalProject, setModalProject] = React.useState<number>(0);
     const [modalProjectImage, setModalProjectImage] = React.useState<number>(0);
@@ -59,17 +56,13 @@ const App = (): React.JSX.Element => {
     const mainMusic = useAudioPlayer(music);
 
     const clickSound: HTMLAudioElement = new Audio(clickSoundEffect);
-    const modalSound: HTMLAudioElement = new Audio(ModalSoundEffect);
 
     const handleSoundClick = () => (sounds ? clickSound.play() : null);
-    const handleSoundModal = () => (sounds ? modalSound.play() : null);
+
     handleInitSettings();
 
     React.useEffect(() => {
         mainMusic.selectTrack(mainTheme);
-        setLoading(false);
-
-        return () => setLoading(true);
     }, [location]);
 
     return (
@@ -77,7 +70,6 @@ const App = (): React.JSX.Element => {
             value={{
                 TRANSITION_TIME,
                 handleSoundClick,
-                handleSoundModal,
                 setAvailability,
                 setChallenge,
                 setCreations,
@@ -114,18 +106,6 @@ const App = (): React.JSX.Element => {
                     stylesWrapper: styles,
                 })}
             >
-                {loading ? (
-                    <Triangle
-                        ariaLabel="triangle-loading"
-                        color=""
-                        height="120"
-                        visible={true}
-                        width="120"
-                        wrapperClass={styles.loader}
-                        wrapperStyle={{}}
-                    />
-                ) : null}
-
                 <Layout />
             </div>
 

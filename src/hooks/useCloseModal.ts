@@ -2,11 +2,10 @@ import React from 'react';
 import { ContextApp } from '../components/app/App';
 import { IContextApp } from '../interfaces/interface';
 import { scroll } from '../classes/Scroll';
-import { BooleanState } from '../interfaces/interface';
 
 const useCloseModal = (
     place: React.MutableRefObject<HTMLDivElement | null>,
-    setModalStatus: BooleanState,
+    setModalStatus: React.Dispatch<React.SetStateAction<boolean>>,
     success: boolean,
     loading: boolean,
     error: boolean,
@@ -16,7 +15,6 @@ const useCloseModal = (
     const [mainModal, setMainModal] = React.useState(false);
 
     const handleClose = (): void => {
-        contextApp?.handleSoundModal();
         setModalStatus(false);
         scroll.on();
     };

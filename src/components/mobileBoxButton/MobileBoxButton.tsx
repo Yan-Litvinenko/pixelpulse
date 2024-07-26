@@ -1,23 +1,14 @@
 import React from 'react';
-import { ContextApp } from '../app/App';
-import { IContextApp } from '../../interfaces/interface';
+import { useAppContext } from '../../hooks/useAppContext';
 import { Link } from 'react-router-dom';
+import { useModal } from '../../hooks/useModal';
 import Button from '../button/Button';
-import handleOpenModal from '../../utils/handleOpenModal';
 import { scroll } from '../../classes/Scroll';
 import styles from './MobileBoxButton.module.scss';
 
 const MobileBoxButton = (): React.JSX.Element => {
-    const contextApp = React.useContext<IContextApp | null>(ContextApp);
-
-    if (!contextApp) return <></>;
-
-    const { handleSoundModal, setNavigationMobile, handleSoundClick } = contextApp;
-
-    const navigationClick = (): void => {
-        handleSoundModal();
-        handleOpenModal(setNavigationMobile);
-    };
+    const { setNavigationMobile, handleSoundClick } = useAppContext();
+    const { openModal } = useModal('navigationMobile');
 
     const aboutClick = (): void => {
         setNavigationMobile(false);
@@ -30,7 +21,7 @@ const MobileBoxButton = (): React.JSX.Element => {
             <Button
                 className={styles.box__navigation}
                 delayEvent={false}
-                handleButton={navigationClick}
+                handleButton={openModal}
                 textContent="navigation"
                 type="button"
             />

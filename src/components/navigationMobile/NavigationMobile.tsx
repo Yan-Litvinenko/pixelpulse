@@ -1,27 +1,21 @@
 import React from 'react';
-import Cross from '../cross/Cross';
-import Setting from '../setting/Setting';
 import { HeaderStatistics } from '../headerStatistics/HeaderStatistics';
-import { useAppContext } from '../../hooks/useAppContext';
-import Navigation from '../navigation/Navigation';
+import { useModal } from '../../hooks/useModal';
+import Cross from '../cross/Cross';
 import MobileBoxButton from '../mobileBoxButton/MobileBoxButton';
+import Navigation from '../navigation/Navigation';
+import Setting from '../setting/Setting';
 import styles from './NavigationMobile.module.scss';
 
 const NavigationMobile = (): React.JSX.Element => {
-    const { setNavigationMobile, handleSoundModal } = useAppContext();
+    const { openModal } = useModal('navigationMobile');
 
     return (
         <div className={styles.box}>
             <div className={styles.box__inner}>
                 <div className={styles.box__header}>
                     <h2 className={styles.header}>Navigation</h2>
-                    <Cross
-                        setModalState={() => {
-                            setNavigationMobile(false);
-                            handleSoundModal();
-                        }}
-                        scrollStatus="on"
-                    />
+                    <Cross setModalState={openModal} scrollStatus="on" />
                 </div>
                 <HeaderStatistics styles={styles} />
                 <Navigation styles={styles} />

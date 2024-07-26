@@ -1,12 +1,10 @@
 import React from 'react';
-import Button from '../button/Button';
-import handleOpenModal from '../../utils/handleOpenModal';
+import { useModal } from '../../hooks/useModal';
 import { useTime } from '../../hooks/useTime';
-import { useAppContext } from '../../hooks/useAppContext';
 import styles from './HeaderTime.module.scss';
 
 const HeaderTime = (): React.JSX.Element => {
-    const { handleSoundModal, setCredits } = useAppContext();
+    const { openModal } = useModal('credits');
     const [localHours, localMinutes] = useTime(new Date().getTime());
     const [serverHours, serverMinutes, updateTime] = useTime(new Date().getTime());
 
@@ -20,16 +18,9 @@ const HeaderTime = (): React.JSX.Element => {
 
     return (
         <div className={styles.time}>
-            <Button
-                className={styles.time__credits}
-                delayEvent={false}
-                handleButton={() => {
-                    handleOpenModal(setCredits);
-                    handleSoundModal();
-                }}
-                textContent="Credits"
-                type="button"
-            />
+            <button className={styles.time__credits} onClick={openModal} type="button">
+                Credits
+            </button>
             <div className={styles.server}>
                 <span className={styles.server__time_span}>server time:</span> {`${serverHours}:${serverMinutes}`}
             </div>
