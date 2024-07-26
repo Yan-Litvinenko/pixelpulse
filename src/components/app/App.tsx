@@ -26,6 +26,7 @@ import clickSoundEffect from '../../assets/audio/click.ogg';
 import { IContextApp } from '../../interfaces/interface';
 import styles from './App.module.scss';
 import { IUseHeaderStatistic, useHeaderStatistic } from '../../hooks/useHeaderStatistics';
+import { IUseAchievements, useAchievements } from '../../hooks/useAchievements';
 
 const ContextApp = React.createContext<IContextApp | null>(null);
 const TRANSITION_TIME: number = 1500;
@@ -37,6 +38,7 @@ const App = (): React.JSX.Element => {
     const location = useLocation();
 
     const headerStatistic: IUseHeaderStatistic = useHeaderStatistic();
+    const achievements: IUseAchievements = useAchievements(headerStatistic.level);
 
     const [availability, setAvailability] = React.useState<boolean>(false);
     const [challenge, setChallenge] = React.useState<boolean>(false);
@@ -88,6 +90,7 @@ const App = (): React.JSX.Element => {
                 setSetting,
                 setSocial,
                 setSounds,
+                achievements,
                 headerStatistic,
                 creations,
                 isLarge,

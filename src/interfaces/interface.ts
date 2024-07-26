@@ -1,11 +1,13 @@
-import { UseAudioPlayer } from '../hooks/useAudioPlayer';
+import { IUseAchievements } from '../hooks/useAchievements';
 import { IUseHeaderStatistic } from '../hooks/useHeaderStatistics';
+import { UseAudioPlayer } from '../hooks/useAudioPlayer';
 
 type Page = 'welcome' | 'beginning' | 'about' | 'logs' | 'achievements' | 'creations' | 'games';
 type HashKey = 'level' | 'coins' | 'addStatus';
 
 type BooleanState = React.Dispatch<React.SetStateAction<boolean>>;
 type IContextApp = {
+    achievements: IUseAchievements;
     creations: boolean;
     isLarge: boolean;
     isMedium: boolean;

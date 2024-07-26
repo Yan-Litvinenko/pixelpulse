@@ -1,6 +1,5 @@
 import { About } from './components/about/About';
 import { Achievements } from './components/achievements/Achievements';
-import { achievementsLoader } from './components/achievements/achievementsLoader';
 import { App } from './components/app/App';
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 import { Logs } from './components/logs/Logs';
@@ -22,7 +21,7 @@ const router = createBrowserRouter(
             <Route index element={<Welcome />} />
             <Route path="beginning" element={<Beginning />} />
             <Route path="logs" element={<Logs />} loader={logsLoader} />
-            <Route path="achievements" element={<Achievements />} loader={achievementsLoader} />
+            <Route path="achievements" element={<Achievements />} />
             <Route path="creations" element={<Creations />} />
             <Route path="about" element={<About />} />
             <Route path="games" element={<Games />}>

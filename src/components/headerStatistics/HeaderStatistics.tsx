@@ -6,7 +6,7 @@ import { HeaderStatisticsFallback } from './HeaderStatisticFallback';
 const HeaderStatistics = (props: IStatistics): React.JSX.Element => {
     const { styles } = props;
     const { headerStatistic } = useAppContext();
-    const { level, coins, addStatus, isLoad, addCoin } = headerStatistic;
+    const { level, coins, addStatus, isLoad, isError, addCoin } = headerStatistic;
 
     return (
         <div className={styles.statistics}>
@@ -15,7 +15,7 @@ const HeaderStatistics = (props: IStatistics): React.JSX.Element => {
             ) : (
                 <>
                     <div className={styles.level__box}>
-                        {!level && !isLoad ? (
+                        {isError ? (
                             <span className={styles.level__text}>Error</span>
                         ) : (
                             <span className={styles.level__text}>{level}</span>
@@ -35,7 +35,7 @@ const HeaderStatistics = (props: IStatistics): React.JSX.Element => {
                         </form>
                     </div>
                     <div className={styles.coins__text_box}>
-                        {!coins && !isLoad ? (
+                        {isError ? (
                             <span className={styles.coins__text}>Error</span>
                         ) : (
                             <span className={styles.coins__text}>{coins}</span>
