@@ -1,32 +1,32 @@
 import React from 'react';
-import { IXplorer } from '../../interfaces/interface.creations';
+import { CreationsXplorerItem } from '../CreationsXplorerItem/CreationsXplorerItem';
+import { ICreationsXplorer } from '../../interfaces/interface.creations';
 import { nanoid } from 'nanoid';
 import { useAppContext } from '../../hooks/useAppContext';
-import { CreationsXplorerItem } from '../CreationsXplorerItem/CreationsXplorerItem';
 import styles from './CreationsXplorerContent.module.scss';
 
-const CreationsXplorerContent = (props: IXplorer): React.JSX.Element => {
-    const { setProjectImages, setModalProject, handleSoundClick, setModalProjectImage, modalProject, creations } =
+const CreationsXplorerContent = (props: ICreationsXplorer): React.JSX.Element => {
+    const { setProjectImages, handleSoundClick, creations, targetProject, setTargetImage, setTargetProject } =
         useAppContext();
-    const { projects, setXplorerState, xplorerState } = props;
+    const { projects, xplorerLocation, setXplorerLocation } = props;
 
     const projectClick = (projectIndex: number): void => {
-        setXplorerState('projectImages');
+        setXplorerLocation('projectImages');
         setProjectImages(projects[projectIndex].images);
-        setModalProject(projectIndex);
+        setTargetProject(projectIndex);
         handleSoundClick();
     };
 
     const imageClick = (imageIndex: number): void => {
         creations.openModal();
-        setModalProjectImage(imageIndex);
+        setTargetImage(imageIndex);
     };
 
     return (
         <>
             <ul className={styles.content}>
                 {projects.length === 0 ? <span className={styles.not_content}>No projects have been added</span> : null}
-                {xplorerState === 'projects'
+                {xplorerLocation === 'projects'
                     ? projects.map((project, index) => (
                           <CreationsXplorerItem
                               image="folder"
@@ -35,7 +35,7 @@ const CreationsXplorerContent = (props: IXplorer): React.JSX.Element => {
                               textContent={project.name}
                           />
                       ))
-                    : projects[modalProject].images.map((imageName, index) => (
+                    : projects[targetProject].images.map((imageName, index) => (
                           <CreationsXplorerItem
                               image="image"
                               key={nanoid()}
@@ -48,4 +48,4 @@ const CreationsXplorerContent = (props: IXplorer): React.JSX.Element => {
     );
 };
 
-export default CreationsXplorerContent;
+export { CreationsXplorerContent };

@@ -6,8 +6,8 @@ import { ICreationsBlock } from '../../interfaces/interface.creations';
 import styles from './CreationsTechnologies.module.scss';
 
 const CreationsTechnologies = (props: ICreationsBlock): React.JSX.Element => {
-    const { modalProject } = useAppContext();
-    const { projectDefaultData, projects, xplorerState } = props;
+    const { targetProject } = useAppContext();
+    const { projectDefault, projects, xplorerLocation } = props;
 
     return (
         <div className={styles.technologies}>
@@ -18,9 +18,9 @@ const CreationsTechnologies = (props: ICreationsBlock): React.JSX.Element => {
             <div>
                 <CreationsTechnologiesContent
                     names={
-                        xplorerState === 'projects'
-                            ? projectDefaultData.technologies
-                            : projects[modalProject].technologies
+                        xplorerLocation === 'projects'
+                            ? projectDefault.technologies
+                            : projects[targetProject].technologies
                     }
                 />
             </div>

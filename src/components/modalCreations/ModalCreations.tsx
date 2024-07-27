@@ -7,7 +7,7 @@ import projects from '../../assets/json/projects.json';
 import styles from './ModalCreations.module.scss';
 
 const ModalCreations = (): React.JSX.Element => {
-    const { modalProject, projectImages, creations } = useAppContext();
+    const { targetProject, projectImages, creations } = useAppContext();
     const slider = React.useRef<HTMLDivElement | null>(null);
     const vectorLeft = React.useRef<HTMLImageElement | null>(null);
     const vectorRight = React.useRef<HTMLImageElement | null>(null);
@@ -15,7 +15,7 @@ const ModalCreations = (): React.JSX.Element => {
 
     const enter = (event: KeyboardEvent): void => {
         if (event.key === 'Enter') {
-            window.open(projects[modalProject].link, '_blank');
+            window.open(projects[targetProject].link, '_blank');
         }
     };
 
@@ -30,7 +30,7 @@ const ModalCreations = (): React.JSX.Element => {
             <div className={styles.modal__inner} onClick={creations.stopPropagation}>
                 <div className={styles.modal__header}>
                     <h3 className={styles.modal__subtitle}>previewing images from</h3>
-                    <h2 className={styles.modal__title}>{projects[modalProject].name}</h2>
+                    <h2 className={styles.modal__title}>{projects[targetProject].name}</h2>
                 </div>
 
                 <div className={styles.modal__content_wrapper}>
@@ -75,7 +75,7 @@ const ModalCreations = (): React.JSX.Element => {
                 </div>
 
                 <div className={styles.button_wrapper}>
-                    <a className={styles.button_wrapper__enter} href={projects[modalProject].link} target="_blank">
+                    <a className={styles.button_wrapper__enter} href={projects[targetProject].link} target="_blank">
                         view project live
                     </a>
                     <span className={styles.button_wrapper__count}>

@@ -1,12 +1,12 @@
 import React from 'react';
 import { Hexagon } from '../svgIcon/SvgIcon';
-import { useAppContext } from '../../hooks/useAppContext';
 import { ICreationsBlock } from '../../interfaces/interface.creations';
+import { useAppContext } from '../../hooks/useAppContext';
 import styles from './CreationsDetails.module.scss';
 
 const CreationsDetails = (props: ICreationsBlock): React.JSX.Element => {
-    const { modalProject } = useAppContext();
-    const { projectDefaultData, projects, xplorerState } = props;
+    const { targetProject } = useAppContext();
+    const { projectDefault, projects, xplorerLocation } = props;
 
     return (
         <div className={styles.details}>
@@ -16,14 +16,14 @@ const CreationsDetails = (props: ICreationsBlock): React.JSX.Element => {
             </h3>
             <h4 className={styles.details__subtitle}>project name</h4>
             <span className={styles.details__text}>
-                {xplorerState === 'projects' ? projectDefaultData.name : projects[modalProject].name}
+                {xplorerLocation === 'projects' ? projectDefault.name : projects[targetProject].name}
             </span>
 
             <div className={styles.decorative_line}></div>
 
             <h4 className={styles.details__subtitle}>brief</h4>
             <p className={styles.details__text}>
-                {xplorerState === 'projects' ? projectDefaultData.brief : projects[modalProject].brief}
+                {xplorerLocation === 'projects' ? projectDefault.brief : projects[targetProject].brief}
             </p>
         </div>
     );

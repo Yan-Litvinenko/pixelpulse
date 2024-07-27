@@ -2,7 +2,7 @@ import React from 'react';
 import { nanoid } from 'nanoid';
 import { Figma, GitHub, Gulp, HexagonBorder, Html, JS } from '../svgIcon/SvgIcon';
 import { MySql, NodeJS, ReactIcon, Sass, Ts, Webpack, Wordpress } from '../svgIcon/SvgIcon';
-import { Technologies, ICreationsTechnologiesItem } from '../../interfaces/interface.creations';
+import { Technologies, ICreationsTechnologiesContent } from '../../interfaces/interface.creations';
 import styles from './CreationsTechnologiesContent.module.scss';
 
 const technologies: Technologies = {
@@ -20,7 +20,7 @@ const technologies: Technologies = {
     wordpress: Wordpress,
 };
 
-const CreationsTechnologiesContent = (props: ICreationsTechnologiesItem): React.JSX.Element => {
+const CreationsTechnologiesContent = (props: ICreationsTechnologiesContent): React.JSX.Element => {
     const { names } = props;
     return (
         <div className={styles.content}>

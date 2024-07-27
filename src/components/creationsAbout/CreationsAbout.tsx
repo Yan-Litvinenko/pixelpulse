@@ -1,14 +1,14 @@
 import React from 'react';
+import { ICreationsBlock } from '../../interfaces/interface.creations';
 import { nanoid } from 'nanoid';
 import { useAppContext } from '../../hooks/useAppContext';
-import { ICreationsBlock } from '../../interfaces/interface.creations';
 import styles from './CreationsAbout.module.scss';
 
 const CreationsAbout = (props: ICreationsBlock): React.JSX.Element => {
-    const { modalProject } = useAppContext();
-    const { projectDefaultData, projects, xplorerState } = props;
+    const { targetProject } = useAppContext();
+    const { projectDefault, projects, xplorerLocation } = props;
 
-    const texts: string[] = xplorerState === 'projects' ? projectDefaultData.about : projects[modalProject].about || [];
+    const texts: string[] = xplorerLocation === 'projects' ? projectDefault.about : projects[targetProject].about || [];
 
     return (
         <div className={styles.about}>

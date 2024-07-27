@@ -15,8 +15,6 @@ type IContextApp = {
     isLarge: boolean;
     isMedium: boolean;
     mainMusic: UseAudioPlayer;
-    modalProject: number;
-    modalProjectImage: number;
     music: boolean;
     navigationMobile: IUseModal;
     projectImages: string[];
@@ -24,10 +22,12 @@ type IContextApp = {
     social: IUseModal;
     sounds: boolean;
     styles: Record<string, string>;
+    targetImage: number;
+    targetProject: number;
     TRANSITION_TIME: number;
+    setTargetImage: React.Dispatch<React.SetStateAction<number>>;
+    setTargetProject: React.Dispatch<React.SetStateAction<number>>;
     handleSoundClick: () => Promise<void> | null;
-    setModalProject: React.Dispatch<React.SetStateAction<number>>;
-    setModalProjectImage: React.Dispatch<React.SetStateAction<number>>;
     setMusic: React.Dispatch<React.SetStateAction<boolean>>;
     setProjectImages: React.Dispatch<React.SetStateAction<string[]>>;
     setSounds: React.Dispatch<React.SetStateAction<boolean>>;
