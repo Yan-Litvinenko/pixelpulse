@@ -1,17 +1,12 @@
 import React from 'react';
-import CreationsTechnologiesContent from '../creationsTechnologiesContent/CreationsTechnologiesContent';
-import { ContextApp } from '../app/App';
-import { IContextApp } from '../../interfaces/interface';
+import { CreationsTechnologiesContent } from '../creationsTechnologiesContent/CreationsTechnologiesContent';
 import { Hexagon } from '../svgIcon/SvgIcon';
+import { useAppContext } from '../../hooks/useAppContext';
 import { ICreationsBlock } from '../../interfaces/interface.creations';
 import styles from './CreationsTechnologies.module.scss';
 
 const CreationsTechnologies = (props: ICreationsBlock): React.JSX.Element => {
-    const contextLayContextApp: IContextApp | null = React.useContext(ContextApp);
-
-    if (!contextLayContextApp) return <></>;
-
-    const { modalProject } = contextLayContextApp;
+    const { modalProject } = useAppContext();
     const { projectDefaultData, projects, xplorerState } = props;
 
     return (
@@ -33,4 +28,4 @@ const CreationsTechnologies = (props: ICreationsBlock): React.JSX.Element => {
     );
 };
 
-export default CreationsTechnologies;
+export { CreationsTechnologies };

@@ -109,13 +109,16 @@
         }
 
         &__achievements {
+            gap: 2.75rem 0rem;
             grid-column: 1 / -1;
             grid-row: 2 / 3;
+            height: calc(100vh - 235px);
+            padding: 0.6rem 0rem 0rem;
         }
 
         &__content {
             grid-template-columns: 2fr 1fr;
-            grid-template-rows: max-content max-content;
+            grid-template-rows: max-content max-content max-content;
             row-gap: 1.5rem;
             min-height: calc(100vh - 9.375rem);
         }
@@ -130,15 +133,7 @@
     }
 
     .achievements {
-        &__achievements {
-            gap: 2.75rem 0rem;
-            grid-row: 2 / 3;
-            height: calc(100vh - 235px);
-            padding: 1.5rem 0rem 0rem;
-        }
-
         &__content {
-            grid-template-rows: max-content max-content max-content;
             row-gap: 1rem;
         }
     }

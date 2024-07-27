@@ -3,15 +3,16 @@ import { Hexagon } from '../svgIcon/SvgIcon';
 import { IQuestElement } from '../../interfaces/interface.component';
 
 const QuestElement = (props: IQuestElement): React.JSX.Element => {
+    const { text, textTitle, hexagon, className } = props;
     return (
         <div>
-            <h3 className={props.className.header}>
-                {props.textTitle}
-                {props.hexagon ? <Hexagon /> : null}
+            <h3 className={className.header}>
+                {textTitle}
+                {hexagon ? <Hexagon /> : null}
             </h3>
-            <span className={props.className.text}>{props.text}</span>
+            <span className={className.text}>{text}</span>
         </div>
     );
 };
 
-export default QuestElement;
+export { QuestElement };

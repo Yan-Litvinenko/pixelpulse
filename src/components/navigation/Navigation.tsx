@@ -1,8 +1,8 @@
 import React from 'react';
-import { nanoid } from 'nanoid';
-import { Page } from '../../interfaces/interface';
-import NavigationElement from '../navigationElement/NavigationElement';
 import { INavigation } from '../../interfaces/interface.component';
+import { nanoid } from 'nanoid';
+import { NavigationElement } from '../navigationElement/NavigationElement';
+import { Page } from '../../interfaces/interface';
 
 const Navigation = (props: INavigation): React.JSX.Element => {
     const { styles } = props;
@@ -18,4 +18,4 @@ const Navigation = (props: INavigation): React.JSX.Element => {
     );
 };
 
-export default Navigation;
+export { Navigation };

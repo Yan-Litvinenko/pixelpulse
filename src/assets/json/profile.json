@@ -7,7 +7,9 @@
         "header": {
             "class": "content__title",
             "text": "name"
-        }
+        },
+        "classRoot": "name",
+        "modal": "null"
     },
     {
         "adjacent": {
@@ -16,7 +18,9 @@
         },
         "header": {
             "text": "occupation"
-        }
+        },
+        "classRoot": "occupation",
+        "modal": "null"
     },
     {
         "adjacent": {
@@ -25,7 +29,9 @@
         },
         "header": {
             "text": "corporation"
-        }
+        },
+        "classRoot": "corporation",
+        "modal": "null"
     },
     {
         "adjacent": {
@@ -35,7 +41,9 @@
         },
         "header": {
             "text": "availability"
-        }
+        },
+        "classRoot": "availability",
+        "modal": "availability"
     },
     {
         "adjacent": {
@@ -45,6 +53,8 @@
         },
         "header": {
             "text": "social"
-        }
+        },
+        "classRoot": "social",
+        "modal": "social"
     }
 ]

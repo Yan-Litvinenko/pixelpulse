@@ -137,4 +137,4 @@ const useSlider = (
     return countSlider;
 };
 
-export default useSlider;
+export { useSlider };

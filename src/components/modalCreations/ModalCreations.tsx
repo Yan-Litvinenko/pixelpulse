@@ -1,5 +1,5 @@
 import React from 'react';
-import useSlider from '../../hooks/useSlider';
+import { useSlider } from '../../hooks/useSlider';
 import { useAppContext } from '../../hooks/useAppContext';
 import vectorImageRight from '../../assets/images/vector-right.svg';
 import vectorImageLeft from '../../assets/images/vector-left.svg';
@@ -90,4 +90,4 @@ const ModalCreations = (): React.JSX.Element => {
     );
 };
 
-export default ModalCreations;
+export { ModalCreations };

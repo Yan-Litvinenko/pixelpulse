@@ -1,10 +1,10 @@
 import React from 'react';
+import { Cross } from '../cross/Cross';
 import { HeaderStatistics } from '../headerStatistics/HeaderStatistics';
+import { MobileBoxButton } from '../mobileBoxButton/MobileBoxButton';
+import { Navigation } from '../navigation/Navigation';
+import { Setting } from '../setting/Setting';
 import { useAppContext } from '../../hooks/useAppContext';
-import Cross from '../cross/Cross';
-import MobileBoxButton from '../mobileBoxButton/MobileBoxButton';
-import Navigation from '../navigation/Navigation';
-import Setting from '../setting/Setting';
 import styles from './NavigationMobile.module.scss';
 
 const NavigationMobile = (): React.JSX.Element => {
@@ -26,4 +26,4 @@ const NavigationMobile = (): React.JSX.Element => {
     );
 };
 
-export default NavigationMobile;
+export { NavigationMobile };

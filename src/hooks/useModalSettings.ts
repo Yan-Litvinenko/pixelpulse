@@ -77,4 +77,4 @@ const useModalSettings = () => {
     };
 };
 
-export default useModalSettings;
+export { useModalSettings };

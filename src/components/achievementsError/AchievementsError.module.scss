@@ -11,6 +11,7 @@
     }
 
     &__item span {
+        color: var(--main-color);
         cursor: pointer;
         text-decoration: underline;
         transition: var(--transition-element);

@@ -1,7 +1,7 @@
 import React from 'react';
-import CreationsAbout from '../creationsAbout/CreationsAbout';
-import CreationsDetails from '../creationsDetails/CreationsDetails';
-import CreationsTechnologies from '../creationsTechnologies/CreationsTechnologies';
+import { CreationsAbout } from '../creationsAbout/CreationsAbout';
+import { CreationsDetails } from '../creationsDetails/CreationsDetails';
+import { CreationsTechnologies } from '../creationsTechnologies/CreationsTechnologies';
 import Xplorer from '../creationsXplorer/CreationsXplorer';
 import { useAppContext } from '../../hooks/useAppContext';
 import { IProject, XplorerState } from '../../interfaces/interface.creations';
@@ -69,4 +69,4 @@ const Creations = (): React.JSX.Element => {
     );
 };
 
-export default Creations;
+export { Creations };

@@ -1,18 +1,13 @@
 import React from 'react';
-import ClipPathBorder from '../clipPathBorder/ClipPathBorder';
-import FormLabel from '../formLabel/FormLabel';
-import ModalBackground from '../modalBackground/ModalBackground';
-import { ContextApp } from '../app/App';
-import { IContextApp } from '../../interfaces/interface';
+import { useAppContext } from '../../hooks/useAppContext';
+import { ClipPathBorder } from '../clipPathBorder/ClipPathBorder';
+import { FormLabel } from '../formLabel/FormLabel';
+import { ModalBackground } from '../modalBackground/ModalBackground';
 import { IForm } from '../../interfaces/interface.form';
 import styles from './Form.module.scss';
 
 const Form = (props: IForm): React.JSX.Element => {
-    const contextApp: IContextApp | null = React.useContext(ContextApp);
-
-    if (!contextApp) return <></>;
-
-    const { isLarge } = contextApp;
+    const { isLarge } = useAppContext();
     const { errors, register } = props;
 
     return (
@@ -60,4 +55,4 @@ const Form = (props: IForm): React.JSX.Element => {
     );
 };
 
-export default Form;
+export { Form };

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Hexagon } from '../svgIcon/SvgIcon';
+import { INavigationElement } from '../../interfaces/interface.component';
 import { NavLink } from 'react-router-dom';
 import { scroll } from '../../classes/Scroll';
 import { useAppContext } from '../../hooks/useAppContext';
-import { INavigationElement } from '../../interfaces/interface.component';
 import styles from './NavigationElement.module.scss';
 
 const NavigationElement = (props: INavigationElement): React.JSX.Element => {
@@ -36,4 +36,4 @@ const NavigationElement = (props: INavigationElement): React.JSX.Element => {
     );
 };
 
-export default NavigationElement;
+export { NavigationElement };

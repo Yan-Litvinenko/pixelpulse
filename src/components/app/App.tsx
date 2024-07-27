@@ -10,14 +10,14 @@ import { handleInitSettings } from '../../utils/handleSettings';
 import handleWrapperClassName from '../../utils/handleWrapperClassName';
 
 import { Layout } from '../layout/Layout';
-import ModalAvailability from '../modalAvailability/ModalAvailability';
-import ModalChallenge from '../modalChallenge/ModalChallenge';
-import ModalCreations from '../modalCreations/ModalCreations';
-import ModalCredits from '../modalCredits/ModalCredits';
-import ModalSetting from '../modalSetting/ModalSetting';
-import ModalSocial from '../modalSocial/ModalSocial';
+import { ModalAvailability } from '../modalAvailability/ModalAvailability';
+import { ModalChallenge } from '../modalChallenge/ModalChallenge';
+import { ModalCreations } from '../modalCreations/ModalCreations';
+import { ModalCredits } from '../modalCredits/ModalCredits';
+import { ModalSetting } from '../modalSetting/ModalSetting';
+import { ModalSocial } from '../modalSocial/ModalSocial';
 
-import NavigationMobile from '../navigationMobile/NavigationMobile';
+import { NavigationMobile } from '../navigationMobile/NavigationMobile';
 
 import mainTheme from '../../assets/audio/main-theme.mp3';
 

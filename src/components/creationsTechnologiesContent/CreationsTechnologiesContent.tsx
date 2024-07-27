@@ -38,4 +38,4 @@ const CreationsTechnologiesContent = (props: ICreationsTechnologiesItem): React.
     );
 };
 
-export default CreationsTechnologiesContent;
+export { CreationsTechnologiesContent };

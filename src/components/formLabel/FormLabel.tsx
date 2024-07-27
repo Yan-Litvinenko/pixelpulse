@@ -68,4 +68,4 @@ const FormLabel = (props: ILabel): React.JSX.Element => {
     );
 };
 
-export default FormLabel;
+export { FormLabel };

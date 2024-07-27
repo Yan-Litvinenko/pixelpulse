@@ -2,7 +2,7 @@ import React from 'react';
 import { IXplorer } from '../../interfaces/interface.creations';
 import { nanoid } from 'nanoid';
 import { useAppContext } from '../../hooks/useAppContext';
-import CreationsXplorerItem from '../CreationsXplorerItem/CreationsXplorerItem';
+import { CreationsXplorerItem } from '../CreationsXplorerItem/CreationsXplorerItem';
 import styles from './CreationsXplorerContent.module.scss';
 
 const CreationsXplorerContent = (props: IXplorer): React.JSX.Element => {

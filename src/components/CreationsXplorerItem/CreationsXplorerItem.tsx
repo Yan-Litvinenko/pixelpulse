@@ -14,4 +14,4 @@ const CreationsXplorerItem = (props: ICreationsXplorerItem): React.JSX.Element =
     );
 };
 
-export default CreationsXplorerItem;
+export { CreationsXplorerItem };

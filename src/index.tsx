@@ -5,8 +5,8 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import { Logs } from './components/logs/Logs';
 import { logsLoader } from './components/logs/logsLoader';
 import { Beginning } from './components/beginning/Beginning';
-import Creations from './components/creations/Creations';
-import ErrorPage from './components/errorPage/ErrorPage';
+import { Creations } from './components/creations/Creations';
+import { ErrorPage } from './components/errorPage/ErrorPage';
 import Games from './components/games/Games';
 import GameSnake from './components/gameSnake/GameSnake';
 import React from 'react';

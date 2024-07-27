@@ -31,16 +31,6 @@ interface IJouystick {
     up: () => void;
 }
 
-interface IButton {
-    className: string;
-    delayEvent: boolean;
-    handleButton: () => void;
-    image?: () => React.ReactNode;
-    isValid?: boolean;
-    textContent: string;
-    type: 'submit' | 'button';
-}
-
 interface ILogsElement {
     className: string;
     date: string | undefined;
@@ -89,6 +79,8 @@ interface IProfileElement {
     header: {
         text: string;
     };
+    classRoot: string;
+    modal: null | 'availability' | 'social';
 }
 
 interface IQuestElement {
@@ -131,17 +123,15 @@ interface ISettingElement {
 
 export {
     IAboutElement,
+    IClipPathBorder,
+    ICreditItem,
     ICross,
     IFrame,
-    IClipPathBorder,
-    IButton,
-    IStatistics,
     IJouystick,
+    ILayout,
     ILogsElement,
     IModalBoxButton,
-    ICreditItem,
     IModalSendState,
-    ILayout,
     INavigation,
     INavigationElement,
     IProfileElement,
@@ -150,4 +140,5 @@ export {
     ISelectChallenge,
     ISetting,
     ISettingElement,
+    IStatistics,
 };

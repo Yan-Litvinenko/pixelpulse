@@ -1,5 +1,5 @@
 import React from 'react';
-import ModalCreditsElement from '../modalCreditsElement/ModalCreditsElement';
+import { ModalCreditsElement } from '../modalCreditsElement/ModalCreditsElement';
 import { nanoid } from 'nanoid';
 import { useAppContext } from '../../hooks/useAppContext';
 import creditsJson from '../../assets/json/credits.json';
@@ -24,4 +24,4 @@ const ModalCredits = (): React.JSX.Element => {
     );
 };
 
-export default ModalCredits;
+export { ModalCredits };

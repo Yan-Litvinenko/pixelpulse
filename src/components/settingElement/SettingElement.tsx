@@ -31,4 +31,4 @@ const SettingElement = (props: ISettingElement): React.JSX.Element => {
     );
 };
 
-export default SettingElement;
+export { SettingElement };

@@ -1,19 +1,20 @@
 import React from 'react';
 import { Bluetooth, Hexagon } from '../svgIcon/SvgIcon';
 import { IProfileElement } from '../../interfaces/interface.component';
-import styles from './ProfileElement.module.scss';
 import { useAppContext } from '../../hooks/useAppContext';
+import styles from './ProfileElement.module.scss';
 
 const ProfileElement = (props: IProfileElement): React.JSX.Element => {
-    const { adjacent, header } = props;
     const { social, availability } = useAppContext();
-    const openModal = header.text === 'social' ? social.openModal : availability.openModal;
+    const { adjacent, header, classRoot, modal } = props;
+
+    const openModal = modal === 'social' ? social.openModal : availability.openModal;
 
     return (
         <div className={styles.profile__element}>
             <h3 className={`${styles.profile__title}`}>{header.text}</h3>
             {adjacent.type === 'button' ? (
-                <button className={styles['profile__' + header.text]} onClick={openModal} type="button">
+                <button className={styles['profile__' + classRoot]} onClick={openModal} type="button">
                     {adjacent.text}
                     {adjacent.image === 'hexagon' ? <Hexagon /> : <Bluetooth />}
                 </button>
@@ -24,4 +25,4 @@ const ProfileElement = (props: IProfileElement): React.JSX.Element => {
     );
 };
 
-export default ProfileElement;
+export { ProfileElement };

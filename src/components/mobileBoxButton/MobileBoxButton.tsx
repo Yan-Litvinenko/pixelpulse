@@ -5,11 +5,10 @@ import { scroll } from '../../classes/Scroll';
 import styles from './MobileBoxButton.module.scss';
 
 const MobileBoxButton = (): React.JSX.Element => {
-    const { navigationMobile, handleSoundClick } = useAppContext();
+    const { navigationMobile } = useAppContext();
 
     const aboutClick = (): void => {
         navigationMobile.closeModal();
-        handleSoundClick();
         scroll.on();
     };
 
@@ -25,4 +24,4 @@ const MobileBoxButton = (): React.JSX.Element => {
     );
 };
 
-export default MobileBoxButton;
+export { MobileBoxButton };

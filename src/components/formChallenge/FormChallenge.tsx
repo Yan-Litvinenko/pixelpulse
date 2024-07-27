@@ -1,10 +1,10 @@
 import React from 'react';
-import ClipPathBorder from '../clipPathBorder/ClipPathBorder';
-import FormLabel from '../formLabel/FormLabel';
-import ModalBackground from '../modalBackground/ModalBackground';
-import SelectChallenge from '../selectChallenge/SelectChallenge';
+import { ClipPathBorder } from '../clipPathBorder/ClipPathBorder';
+import { FormLabel } from '../formLabel/FormLabel';
 import { IForm } from '../../interfaces/interface.form';
+import { ModalBackground } from '../modalBackground/ModalBackground';
 import { Rarity } from '../../interfaces/interface.achievements';
+import { SelectChallenge } from '../selectChallenge/SelectChallenge';
 import styles from './FormChallenge.module.scss';
 
 interface IFormChallenge extends IForm {
@@ -50,4 +50,4 @@ const FormChallenge = (props: IFormChallenge): React.JSX.Element => {
     );
 };
 
-export default FormChallenge;
+export { FormChallenge };

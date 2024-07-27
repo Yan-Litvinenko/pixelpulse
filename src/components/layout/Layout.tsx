@@ -1,14 +1,14 @@
-import { Frame } from '../frame/Frame';
-import { Outlet, useLocation } from 'react-router-dom';
-import { SmoothTransition } from '../../hoc/SmoothTransition';
-import { Header } from '../header/Header';
-import { useTitle } from '../../hooks/useTitle';
-import { useAppContext } from '../../hooks/useAppContext';
-import MobileBoxButton from '../mobileBoxButton/MobileBoxButton';
-import Navigation from '../navigation/Navigation';
-import Profile from '../profile/Profile';
-import Quest from '../quest/Quest';
 import React from 'react';
+import { Frame } from '../frame/Frame';
+import { Header } from '../header/Header';
+import { MobileBoxButton } from '../mobileBoxButton/MobileBoxButton';
+import { Navigation } from '../navigation/Navigation';
+import { Outlet, useLocation } from 'react-router-dom';
+import { Profile } from '../profile/Profile';
+import { Quest } from '../quest/Quest';
+import { SmoothTransition } from '../../hoc/SmoothTransition';
+import { useAppContext } from '../../hooks/useAppContext';
+import { useTitle } from '../../hooks/useTitle';
 import stylesLayout from './Layout.module.scss';
 
 const Layout = (): React.JSX.Element => {

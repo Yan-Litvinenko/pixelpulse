@@ -1,19 +1,19 @@
 import React from 'react';
+import { ClipPathBorder } from '../clipPathBorder/ClipPathBorder';
+import { Cross } from '../cross/Cross';
+import { ModalBackground } from '../modalBackground/ModalBackground';
+import { ModalBoxButton } from '../modalBoxButton/ModalBoxButton';
 import { useAppContext } from '../../hooks/useAppContext';
-import useModalSettings from '../../hooks/useModalSettings';
-import ClipPathBorder from '../clipPathBorder/ClipPathBorder';
-import Cross from '../cross/Cross';
-import ModalBackground from '../modalBackground/ModalBackground';
-import ModalBoxButton from '../modalBoxButton/ModalBoxButton';
-import Range from '../range/Range';
+import { useModalSettings } from '../../hooks/useModalSettings';
 import { Warning } from '../svgIcon/SvgIcon';
+import Range from '../range/Range';
 import styles from './ModalSetting.module.scss';
 
 const ModalSetting = (): React.JSX.Element => {
+    const { setting } = useAppContext();
     const { enterText, settings, handleResetSettings, handleModifySaveSetting, changeSettingValue } =
         useModalSettings();
 
-    const { setting } = useAppContext();
     return (
         <div className={styles.modal} onClick={setting.closeModal}>
             <div className={styles.modal__inner} onClick={setting.stopPropagation}>
@@ -71,4 +71,4 @@ const ModalSetting = (): React.JSX.Element => {
     );
 };
 
-export default ModalSetting;
+export { ModalSetting };

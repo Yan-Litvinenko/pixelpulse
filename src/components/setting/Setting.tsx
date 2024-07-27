@@ -1,7 +1,7 @@
 import React from 'react';
 import { ISetting } from '../../interfaces/interface.component';
+import { SettingElement } from '../settingElement/SettingElement';
 import { useAppContext } from '../../hooks/useAppContext';
-import SettingElement from '../settingElement/SettingElement';
 
 const Setting = (props: ISetting): React.JSX.Element => {
     const { sounds, setSounds, music, setMusic, mainMusic, navigationMobile, setting } = useAppContext();
@@ -50,4 +50,4 @@ const Setting = (props: ISetting): React.JSX.Element => {
     );
 };
 
-export default Setting;
+export { Setting };

@@ -45,4 +45,4 @@ const SelectChallenge = (props: ISelectChallenge): React.JSX.Element => {
     );
 };
 
-export default SelectChallenge;
+export { SelectChallenge };

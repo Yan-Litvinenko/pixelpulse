@@ -1,6 +1,6 @@
 import React from 'react';
-import QuestElement from '../questElement/QuestElement';
-import Setting from '../setting/Setting';
+import { QuestElement } from '../questElement/QuestElement';
+import { Setting } from '../setting/Setting';
 import styles from './Quest.module.scss';
 
 const Quest = (): React.JSX.Element => {
@@ -31,4 +31,4 @@ const Quest = (): React.JSX.Element => {
     );
 };
 
-export default Quest;
+export { Quest };

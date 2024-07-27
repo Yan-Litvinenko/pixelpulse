@@ -18,4 +18,4 @@ const ErrorPage = (): React.JSX.Element => {
     );
 };
 
-export default ErrorPage;
+export { ErrorPage };

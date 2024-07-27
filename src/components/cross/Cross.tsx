@@ -27,4 +27,4 @@ const Cross = (props: ICross): React.JSX.Element => {
     );
 };
 
-export default Cross;
+export { Cross };

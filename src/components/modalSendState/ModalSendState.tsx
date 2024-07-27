@@ -28,4 +28,4 @@ const ModalSendState = (props: IModalSendState): React.JSX.Element => {
     );
 };
 
-export default ModalSendState;
+export { ModalSendState };

@@ -25,4 +25,4 @@ const ModalCreditsElement = (props: ICreditItem): React.ReactElement => {
     );
 };
 
-export default ModalCreditsElement;
+export { ModalCreditsElement };

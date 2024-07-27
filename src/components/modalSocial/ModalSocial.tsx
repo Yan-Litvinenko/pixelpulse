@@ -1,11 +1,11 @@
 import React from 'react';
-import { useFormSubmit, UseFormSubmit } from '../../hooks/useFormSubmit';
-import Cross from '../cross/Cross';
-import Form from '../form/Form';
-import ModalBoxButton from '../modalBoxButton/ModalBoxButton';
-import ModalLoader from '../modalLoader/ModalLoader';
-import ModalSendState from '../modalSendState/ModalSendState';
+import { Cross } from '../cross/Cross';
+import { Form } from '../form/Form';
+import { ModalBoxButton } from '../modalBoxButton/ModalBoxButton';
+import { ModalLoader } from '../modalLoader/ModalLoader';
+import { ModalSendState } from '../modalSendState/ModalSendState';
 import { useAppContext } from '../../hooks/useAppContext';
+import { useFormSubmit, UseFormSubmit } from '../../hooks/useFormSubmit';
 import styles from './ModalSocial.module.scss';
 
 const ModalSocial = (): React.JSX.Element => {
@@ -61,4 +61,4 @@ const ModalSocial = (): React.JSX.Element => {
     );
 };
 
-export default ModalSocial;
+export { ModalSocial };

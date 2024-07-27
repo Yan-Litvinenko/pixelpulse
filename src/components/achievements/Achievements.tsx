@@ -21,7 +21,7 @@ const Achievements = (): React.JSX.Element => {
 
     return (
         <main className={styles.achievements}>
-            <h1 className={styles.achievements__title}>achievements</h1>
+            <h1 className={styles.achievements__title}>{isError ? 'Error achievements loading' : 'Achievements'}</h1>
 
             <div className={styles.achievements__content}>
                 <AchievementsProgress />

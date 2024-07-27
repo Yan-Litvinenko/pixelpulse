@@ -27,4 +27,4 @@ const ModalBoxButton = (props: IModalBoxButton): React.JSX.Element => {
     );
 };
 
-export default ModalBoxButton;
+export { ModalBoxButton };

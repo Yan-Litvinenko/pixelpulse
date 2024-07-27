@@ -1,11 +1,11 @@
 import React from 'react';
-import Cross from '../cross/Cross';
-import FormChallenge from '../formChallenge/FormChallenge';
-import ModalBoxButton from '../modalBoxButton/ModalBoxButton';
-import ModalLoader from '../modalLoader/ModalLoader';
-import ModalSendState from '../modalSendState/ModalSendState';
-import { UseFormSubmit, useFormSubmit } from '../../hooks/useFormSubmit';
+import { Cross } from '../cross/Cross';
+import { FormChallenge } from '../formChallenge/FormChallenge';
+import { ModalBoxButton } from '../modalBoxButton/ModalBoxButton';
+import { ModalLoader } from '../modalLoader/ModalLoader';
+import { ModalSendState } from '../modalSendState/ModalSendState';
 import { useAppContext } from '../../hooks/useAppContext';
+import { UseFormSubmit, useFormSubmit } from '../../hooks/useFormSubmit';
 import { Rarity } from '../../interfaces/interface.achievements';
 import styles from './ModalChallenge.module.scss';
 
@@ -72,4 +72,4 @@ const ModalChallenge = (): React.JSX.Element => {
     );
 };
 
-export default ModalChallenge;
+export { ModalChallenge };
