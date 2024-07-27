@@ -1,3 +1,8 @@
+type XplorerLocation = 'projects' | 'projectImages';
+type Technologies = {
+    [key: string]: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+};
+
 interface IProject {
     about: string[];
     brief: string;
@@ -7,13 +12,16 @@ interface IProject {
     technologies: string[];
 }
 
-interface ICreations {
+interface ICreationsBlock {
+    projectDefault: IProject;
     projects: IProject[];
-    xplorerState: XplorerState;
+    xplorerLocation: XplorerLocation;
 }
 
-interface ICreationsTechnologiesItem {
-    names: string[];
+interface ICreationsXplorer {
+    projects: IProject[];
+    setXplorerLocation: React.Dispatch<React.SetStateAction<XplorerLocation>>;
+    xplorerLocation: XplorerLocation;
 }
 
 interface ICreationsXplorerItem {
@@ -22,25 +30,16 @@ interface ICreationsXplorerItem {
     textContent: string;
 }
 
-interface ICreationsBlock extends ICreations {
-    projectDefaultData: IProject;
+interface ICreationsTechnologiesContent {
+    names: string[];
 }
-
-interface IXplorer extends ICreations {
-    setXplorerState: React.Dispatch<React.SetStateAction<XplorerState>>;
-}
-
-type XplorerState = 'projects' | 'projectImages';
-type Technologies = {
-    [key: string]: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
-};
 
 export {
     ICreationsBlock,
-    ICreationsTechnologiesItem,
+    ICreationsTechnologiesContent,
+    ICreationsXplorer,
     ICreationsXplorerItem,
     IProject,
-    IXplorer,
     Technologies,
-    XplorerState,
+    XplorerLocation,
 };

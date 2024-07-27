@@ -52,8 +52,8 @@ const App = (): React.JSX.Element => {
     const social = useModal(sounds);
 
     const [projectImages, setProjectImages] = React.useState<string[]>([]);
-    const [modalProject, setModalProject] = React.useState<number>(0);
-    const [modalProjectImage, setModalProjectImage] = React.useState<number>(0);
+    const [targetProject, setTargetProject] = React.useState<number>(0);
+    const [targetImage, setTargetImage] = React.useState<number>(0);
 
     const mainMusic = useAudioPlayer(music);
 
@@ -72,8 +72,8 @@ const App = (): React.JSX.Element => {
             value={{
                 TRANSITION_TIME,
                 handleSoundClick,
-                setModalProject,
-                setModalProjectImage,
+                setTargetProject,
+                setTargetImage,
                 setMusic,
                 setProjectImages,
                 setSounds,
@@ -88,8 +88,8 @@ const App = (): React.JSX.Element => {
                 isLarge,
                 isMedium,
                 mainMusic,
-                modalProject,
-                modalProjectImage,
+                targetImage,
+                targetProject,
                 music,
                 navigationMobile,
                 projectImages,
