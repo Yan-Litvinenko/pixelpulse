@@ -7,19 +7,6 @@ interface IForm {
     errors: FieldErrors<FieldValues>;
 }
 
-interface FormSubmit {
-    error: boolean;
-    errors: FieldErrors<FieldValues>;
-    isValid: boolean;
-    loading: boolean;
-    register: UseFormRegister<FieldValues>;
-    successfully: boolean;
-    setError: React.Dispatch<React.SetStateAction<boolean>>;
-    setLoading: React.Dispatch<React.SetStateAction<boolean>>;
-    setSuccessfully: React.Dispatch<React.SetStateAction<boolean>>;
-    handleSubmit: (e?: React.BaseSyntheticEvent) => Promise<void>;
-}
-
 interface ILabel {
     autofocus?: boolean;
     child: 'input' | 'textarea';
@@ -34,4 +21,4 @@ interface ILabel {
     textContent: string;
 }
 
-export { Field, IForm, Rarity, FormSubmit, ILabel };
+export { Field, IForm, Rarity, ILabel };

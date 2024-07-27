@@ -1,68 +1,67 @@
 import React from 'react';
-import useFormSubmit from '../../hooks/useFormSubmit';
 import Cross from '../cross/Cross';
 import FormChallenge from '../formChallenge/FormChallenge';
 import ModalBoxButton from '../modalBoxButton/ModalBoxButton';
 import ModalLoader from '../modalLoader/ModalLoader';
 import ModalSendState from '../modalSendState/ModalSendState';
+import { UseFormSubmit, useFormSubmit } from '../../hooks/useFormSubmit';
 import { useAppContext } from '../../hooks/useAppContext';
-import { FormSubmit } from '../../interfaces/interface.form';
 import { Rarity } from '../../interfaces/interface.achievements';
 import styles from './ModalChallenge.module.scss';
 
 const ModalChallenge = (): React.JSX.Element => {
     const [selectValue, setSelectValue] = React.useState<Rarity>('unusual');
-    const formSubmit: FormSubmit = useFormSubmit('Вам бросили вызов!');
+    const formSubmit: UseFormSubmit = useFormSubmit('Вам предложили проект!');
+
+    const { successfullyTelegram, errorTelegram, loadingTelegram } = formSubmit;
+    const { registerForm, handleSubmitForm, isValidForm, errorForm } = formSubmit;
+    const { setErrorTelegram, setLoadingTelegram, setSuccessfullyTelegram } = formSubmit;
     const { challenge } = useAppContext();
 
     React.useEffect(() => {
-        challenge.setStatusForm(formSubmit.error || formSubmit.loading || formSubmit.successfully ? true : false);
-    }, [formSubmit.error, formSubmit.loading, formSubmit.successfully]);
+        challenge.setStatusForm(errorTelegram || loadingTelegram || successfullyTelegram ? true : false);
+    }, [errorTelegram, loadingTelegram, successfullyTelegram]);
 
     return (
         <>
             <div className={styles.modal} onClick={challenge.closeModal}>
-                {formSubmit.loading ? <ModalLoader /> : null}
-                {formSubmit.successfully ? (
+                {loadingTelegram ? <ModalLoader /> : null}
+                {successfullyTelegram ? (
                     <ModalSendState
-                        setError={formSubmit.setError}
-                        setLoading={formSubmit.setLoading}
-                        setSuccessfully={formSubmit.setSuccessfully}
-                        status={formSubmit.successfully}
+                        setError={setErrorTelegram}
+                        setLoading={setLoadingTelegram}
+                        setSuccessfully={setSuccessfullyTelegram}
+                        status={successfullyTelegram}
                     />
                 ) : (
                     ''
                 )}
-                {formSubmit.error ? (
+                {errorTelegram ? (
                     <ModalSendState
-                        setError={formSubmit.setError}
-                        setLoading={formSubmit.setLoading}
-                        setSuccessfully={formSubmit.setSuccessfully}
-                        status={formSubmit.error}
+                        setError={setErrorTelegram}
+                        setLoading={setLoadingTelegram}
+                        setSuccessfully={setSuccessfullyTelegram}
+                        status={errorTelegram}
                     />
                 ) : (
                     ''
                 )}
-                <form
-                    className={styles.modal__inner}
-                    onSubmit={formSubmit.handleSubmit}
-                    onClick={challenge.stopPropagation}
-                >
+                <form className={styles.modal__inner} onSubmit={handleSubmitForm} onClick={challenge.stopPropagation}>
                     <div className={styles.modal__box_title}>
                         <h3 className={styles.modal__title}>challenge me</h3>
                         <Cross handler={challenge.closeModal} />
                     </div>
                     <h4 className={styles.modal__subtitle}>Offer me a challenge!</h4>
                     <FormChallenge
-                        register={formSubmit.register}
-                        errors={formSubmit.errors}
+                        register={registerForm}
+                        errors={errorForm}
                         selectValue={selectValue}
                         setSelectValue={setSelectValue}
                     />
                     <ModalBoxButton
-                        handleEnter={formSubmit.handleSubmit}
+                        handleEnter={handleSubmitForm}
                         handleEscape={challenge.closeModal}
-                        isValid={formSubmit.isValid}
+                        isValid={isValidForm}
                         textEnter={'send challenge [enter]'}
                         textEsc={'discard [esc]'}
                         typeEnter="submit"

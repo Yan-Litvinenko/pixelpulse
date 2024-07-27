@@ -1,45 +1,48 @@
 import React from 'react';
-import useFormSubmit from '../../hooks/useFormSubmit';
+import { useFormSubmit, UseFormSubmit } from '../../hooks/useFormSubmit';
 import Cross from '../cross/Cross';
 import Form from '../form/Form';
 import ModalBoxButton from '../modalBoxButton/ModalBoxButton';
 import ModalLoader from '../modalLoader/ModalLoader';
 import ModalSendState from '../modalSendState/ModalSendState';
-import { FormSubmit } from '../../interfaces/interface.form';
 import { useAppContext } from '../../hooks/useAppContext';
 import styles from './ModalAvailability.module.scss';
 
-const ModalAvailability = (): React.JSX.Element | null => {
-    const formSubmit: FormSubmit = useFormSubmit('Вам предложили проект!');
+const ModalAvailability = (): React.JSX.Element => {
     const { availability } = useAppContext();
+    const formSubmit: UseFormSubmit = useFormSubmit('Вам предложили проект!');
+
+    const { successfullyTelegram, errorTelegram, loadingTelegram } = formSubmit;
+    const { registerForm, handleSubmitForm, isValidForm, errorForm } = formSubmit;
+    const { setErrorTelegram, setLoadingTelegram, setSuccessfullyTelegram } = formSubmit;
 
     React.useEffect(() => {
-        availability.setStatusForm(formSubmit.error || formSubmit.loading || formSubmit.successfully ? true : false);
-    }, [formSubmit.error, formSubmit.loading, formSubmit.successfully]);
+        availability.setStatusForm(errorTelegram || loadingTelegram || successfullyTelegram ? true : false);
+    }, [errorTelegram, loadingTelegram, successfullyTelegram]);
 
     return (
         <>
             <div className={styles.modal} onClick={availability.closeModal}>
-                {formSubmit.loading ? <ModalLoader /> : null}
-                {formSubmit.successfully ? (
+                {loadingTelegram ? <ModalLoader /> : null}
+                {successfullyTelegram ? (
                     <ModalSendState
-                        setError={formSubmit.setError}
-                        setLoading={formSubmit.setLoading}
-                        setSuccessfully={formSubmit.setSuccessfully}
-                        status={formSubmit.successfully}
+                        setError={setErrorTelegram}
+                        setLoading={setLoadingTelegram}
+                        setSuccessfully={setSuccessfullyTelegram}
+                        status={successfullyTelegram}
                     />
                 ) : null}
-                {formSubmit.error ? (
+                {errorTelegram ? (
                     <ModalSendState
-                        setError={formSubmit.setError}
-                        setLoading={formSubmit.setLoading}
-                        setSuccessfully={formSubmit.setSuccessfully}
-                        status={formSubmit.error}
+                        setError={setErrorTelegram}
+                        setLoading={setLoadingTelegram}
+                        setSuccessfully={setSuccessfullyTelegram}
+                        status={errorTelegram}
                     />
                 ) : null}
                 <form
                     className={styles.modal__inner}
-                    onSubmit={formSubmit.handleSubmit}
+                    onSubmit={handleSubmitForm}
                     onClick={availability.stopPropagation}
                 >
                     <div className={styles.modal__box_title}>
@@ -47,11 +50,11 @@ const ModalAvailability = (): React.JSX.Element | null => {
                         <Cross handler={availability.closeModal} />
                     </div>
                     <h4 className={styles.modal__subtitle}>I would love to hear about your projects!</h4>
-                    <Form register={formSubmit.register} errors={formSubmit.errors} />
+                    <Form register={registerForm} errors={errorForm} />
                     <ModalBoxButton
-                        handleEnter={formSubmit.handleSubmit}
+                        handleEnter={handleSubmitForm}
                         handleEscape={availability.closeModal}
-                        isValid={formSubmit.isValid}
+                        isValid={isValidForm}
                         textEnter={'send message [enter]'}
                         textEsc={'discard [esc]'}
                         typeEnter={'submit'}
