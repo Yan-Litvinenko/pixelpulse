@@ -31,7 +31,7 @@ const HeaderStatistics = (props: IStatistics): React.JSX.Element => {
                             >
                                 +
                             </button>
-                            {!addStatus ? <div className={styles.pulse}></div> : null}
+                            {!isError ? !addStatus ? <div className={styles.pulse}></div> : null : null}
                         </form>
                     </div>
                     <div className={styles.coins__text_box}>

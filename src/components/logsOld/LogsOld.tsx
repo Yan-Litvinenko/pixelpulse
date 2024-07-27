@@ -4,7 +4,7 @@ import { getReplacementCommits, transformCommits } from '../logs/logsLoader';
 import { IGithubRespone } from '../../interfaces/interface.github';
 import { LogsElement } from '../logsElement/LogsElement';
 import { nanoid } from 'nanoid';
-import { ResolveError } from '../../interfaces/interface.loader';
+import { ResolveError } from '../../interfaces/interface';
 import styles from './LogsOld.module.scss';
 
 const LogsOld = (): React.JSX.Element => {

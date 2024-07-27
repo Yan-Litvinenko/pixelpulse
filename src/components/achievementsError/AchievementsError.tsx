@@ -3,9 +3,7 @@ import { useAppContext } from '../../hooks/useAppContext';
 import styles from './AchievementsError.module.scss';
 
 const AchievementsError = (): React.JSX.Element => {
-    const { setSocial } = useAppContext();
-
-    const contactWithTheDeveloper = () => setSocial(true);
+    const { social } = useAppContext();
 
     return (
         <ul className={styles.error}>
@@ -18,7 +16,7 @@ const AchievementsError = (): React.JSX.Element => {
             <li className={styles.error__item}>If you are using a VPN, try disabling it and reloading the page.</li>
             <li className={styles.error__item}>Clear your browser's cache and cookies, then try reloading the page.</li>
             <li className={styles.error__item}>
-                If the error persists, please write to <span onClick={contactWithTheDeveloper}>me</span>
+                If the error persists, please write to <span onClick={social.openModal}>me</span>
             </li>
         </ul>
     );

@@ -1,11 +1,10 @@
 import React from 'react';
 import { AchievementsProgressRing } from '../achievementsProgressRing/AchievementsProgressRing';
 import { useAppContext } from '../../hooks/useAppContext';
-import handleOpenModal from '../../utils/handleOpenModal';
 import styles from './AchievementsProgress.module.scss';
 
 const AchievementsProgress = (): React.JSX.Element => {
-    const { handleSoundModal, setChallenge, achievements } = useAppContext();
+    const { achievements, challenge } = useAppContext();
     const { isLoad, isError, amountAchieved, amountAchievements, percent } = achievements;
 
     return (
@@ -35,14 +34,7 @@ const AchievementsProgress = (): React.JSX.Element => {
                 If you want to give me a challenge and rate it, please feel free to submit it with the button below!
             </p>
 
-            <button
-                className={styles.progress__button}
-                onClick={() => {
-                    handleOpenModal(setChallenge);
-                    handleSoundModal();
-                }}
-                type="button"
-            >
+            <button className={styles.progress__button} onClick={challenge.openModal} type="button">
                 Challenge me
             </button>
         </div>

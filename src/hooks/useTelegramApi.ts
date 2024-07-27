@@ -1,5 +1,4 @@
 import React from 'react';
-import { BooleanState } from '../interfaces/interface';
 
 const TOKEN: string | undefined = process.env.REACT_APP_TELEGRAM_TOKEN;
 const CHAT_ID: string | undefined = process.env.REACT_APP_TELEGRAM_CHAT;
@@ -8,9 +7,9 @@ const useTelegramApi = (): [
     boolean,
     boolean,
     boolean,
-    BooleanState,
-    BooleanState,
-    BooleanState,
+    React.Dispatch<React.SetStateAction<boolean>>,
+    React.Dispatch<React.SetStateAction<boolean>>,
+    React.Dispatch<React.SetStateAction<boolean>>,
     (data: Record<string, string>, windowName: string) => Promise<void>,
 ] => {
     const [successfully, setSuccessfully] = React.useState<boolean>(false);

@@ -1,38 +1,22 @@
 import React from 'react';
-import { ContextApp } from '../app/App';
-import { IContextApp } from '../../interfaces/interface';
-import Button from '../button/Button';
-import handleOpenModal from '../../utils/handleOpenModal';
 import { Bluetooth, Hexagon } from '../svgIcon/SvgIcon';
 import { IProfileElement } from '../../interfaces/interface.component';
 import styles from './ProfileElement.module.scss';
+import { useAppContext } from '../../hooks/useAppContext';
 
 const ProfileElement = (props: IProfileElement): React.JSX.Element => {
-    const contextApp: IContextApp | null = React.useContext(ContextApp);
-
-    if (!contextApp) return <></>;
-
     const { adjacent, header } = props;
-    const { setSocial, setAvailability, handleSoundModal } = contextApp;
-    const image: React.JSX.Element = adjacent.image === 'hexagon' ? <Hexagon /> : <Bluetooth />;
-    const setStatusModal: React.Dispatch<React.SetStateAction<boolean>> | undefined =
-        header.text === 'social' ? setSocial : setAvailability;
+    const { social, availability } = useAppContext();
+    const openModal = header.text === 'social' ? social.openModal : availability.openModal;
 
     return (
         <div className={styles.profile__element}>
             <h3 className={`${styles.profile__title}`}>{header.text}</h3>
             {adjacent.type === 'button' ? (
-                <Button
-                    className={styles['profile__' + header.text]}
-                    delayEvent={false}
-                    handleButton={() => {
-                        handleOpenModal(setStatusModal);
-                        handleSoundModal();
-                    }}
-                    image={() => image}
-                    textContent={adjacent.text}
-                    type="button"
-                />
+                <button className={styles['profile__' + header.text]} onClick={openModal} type="button">
+                    {adjacent.text}
+                    {adjacent.image === 'hexagon' ? <Hexagon /> : <Bluetooth />}
+                </button>
             ) : (
                 <span className={styles.profile__text}>{adjacent.text}</span>
             )}

@@ -8,8 +8,7 @@ interface IAboutElement {
 }
 
 interface ICross {
-    setModalState: React.Dispatch<React.SetStateAction<boolean>>;
-    scrollStatus: 'on' | 'off';
+    handler: () => void;
 }
 
 interface IFrame {

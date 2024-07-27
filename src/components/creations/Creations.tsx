@@ -1,10 +1,9 @@
 import React from 'react';
-import Button from '../button/Button';
 import CreationsAbout from '../creationsAbout/CreationsAbout';
 import CreationsDetails from '../creationsDetails/CreationsDetails';
 import CreationsTechnologies from '../creationsTechnologies/CreationsTechnologies';
-import { ContextApp } from '../app/App';
 import Xplorer from '../creationsXplorer/CreationsXplorer';
+import { useAppContext } from '../../hooks/useAppContext';
 import { IProject, XplorerState } from '../../interfaces/interface.creations';
 import projects from '../../assets/json/projects.json';
 import styles from './Creations.module.scss';
@@ -21,11 +20,7 @@ const projectDefault: IProject = {
 };
 
 const Creations = (): React.JSX.Element => {
-    const contextApp = React.useContext(ContextApp);
-
-    if (!contextApp) return <></>;
-
-    const { handleSoundClick } = contextApp;
+    const { handleSoundClick } = useAppContext();
     const [xplorerState, setXplorerState] = React.useState<XplorerState>('projects');
 
     return (
@@ -56,16 +51,16 @@ const Creations = (): React.JSX.Element => {
                         <Xplorer projects={projects} setXplorerState={setXplorerState} xplorerState={xplorerState} />
 
                         <div className={styles.box_button}>
-                            <Button
+                            <button
                                 className={styles.box_button__back}
-                                delayEvent={false}
-                                handleButton={() => {
+                                onClick={() => {
                                     setXplorerState('projects');
                                     handleSoundClick();
                                 }}
-                                textContent="Back to all projects"
                                 type="button"
-                            />
+                            >
+                                Back to all projects
+                            </button>
                         </div>
                     </div>
                 </div>

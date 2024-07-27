@@ -1,38 +1,28 @@
 import React from 'react';
-import { ContextApp } from '../app/App';
-import { IContextApp } from '../../interfaces/interface';
+import { useAppContext } from '../../hooks/useAppContext';
 import { IModalBoxButton } from '../../interfaces/interface.component';
-import Button from '../button/Button';
 import styles from './ModalBoxButton.module.scss';
 
 const ModalBoxButton = (props: IModalBoxButton): React.JSX.Element => {
-    const contextApp: IContextApp | null = React.useContext(ContextApp);
-
-    if (!contextApp) return <></>;
-
     const { handleEnter, isValid, textEnter, typeEnter, handleEscape, textEsc } = props;
-    const { handleSoundClick } = contextApp;
+    const { handleSoundClick } = useAppContext();
 
     return (
         <div className={styles.box}>
-            <Button
+            <button
                 className={`${styles.box__enter} ${!props.isValid ? styles.box__enter_deactive : ''}`}
-                delayEvent={true}
-                handleButton={() => {
+                onClick={() => {
                     handleEnter();
                     handleSoundClick();
                 }}
-                isValid={!isValid}
-                textContent={textEnter}
+                disabled={!isValid}
                 type={typeEnter}
-            />
-            <Button
-                className={styles.box__esc}
-                delayEvent={true}
-                handleButton={handleEscape}
-                textContent={textEsc}
-                type="button"
-            />
+            >
+                {textEnter}
+            </button>
+            <button className={styles.box__esc} onClick={handleEscape} type="button">
+                {textEsc}
+            </button>
         </div>
     );
 };
