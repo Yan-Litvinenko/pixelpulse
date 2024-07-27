@@ -1,38 +1,27 @@
 import React from 'react';
 import useFormSubmit from '../../hooks/useFormSubmit';
-import useCloseModal from '../../hooks/useCloseModal';
-import { ContextApp } from '../app/App';
-import { IContextApp } from '../../interfaces/interface';
 import Cross from '../cross/Cross';
 import FormChallenge from '../formChallenge/FormChallenge';
 import ModalBoxButton from '../modalBoxButton/ModalBoxButton';
 import ModalLoader from '../modalLoader/ModalLoader';
 import ModalSendState from '../modalSendState/ModalSendState';
+import { useAppContext } from '../../hooks/useAppContext';
 import { FormSubmit } from '../../interfaces/interface.form';
 import { Rarity } from '../../interfaces/interface.achievements';
 import styles from './ModalChallenge.module.scss';
 
 const ModalChallenge = (): React.JSX.Element => {
-    const contextApp: IContextApp | null = React.useContext(ContextApp);
-
-    if (!contextApp) return <></>;
-
-    const { setChallenge } = contextApp;
-
     const [selectValue, setSelectValue] = React.useState<Rarity>('unusual');
-    const modal: React.MutableRefObject<HTMLDivElement | null> = React.useRef(null);
     const formSubmit: FormSubmit = useFormSubmit('Вам бросили вызов!');
-    const buttonEscape = useCloseModal(
-        modal,
-        setChallenge,
-        formSubmit.successfully,
-        formSubmit.loading,
-        formSubmit.error,
-    );
+    const { challenge } = useAppContext();
+
+    React.useEffect(() => {
+        challenge.setStatusForm(formSubmit.error || formSubmit.loading || formSubmit.successfully ? true : false);
+    }, [formSubmit.error, formSubmit.loading, formSubmit.successfully]);
 
     return (
         <>
-            <div className={styles.modal} ref={modal}>
+            <div className={styles.modal} onClick={challenge.closeModal}>
                 {formSubmit.loading ? <ModalLoader /> : null}
                 {formSubmit.successfully ? (
                     <ModalSendState
@@ -54,10 +43,14 @@ const ModalChallenge = (): React.JSX.Element => {
                 ) : (
                     ''
                 )}
-                <form className={styles.modal__inner} onSubmit={formSubmit.handleSubmit}>
+                <form
+                    className={styles.modal__inner}
+                    onSubmit={formSubmit.handleSubmit}
+                    onClick={challenge.stopPropagation}
+                >
                     <div className={styles.modal__box_title}>
                         <h3 className={styles.modal__title}>challenge me</h3>
-                        <Cross setModalState={() => setChallenge(false)} scrollStatus="on" />
+                        <Cross handler={challenge.closeModal} />
                     </div>
                     <h4 className={styles.modal__subtitle}>Offer me a challenge!</h4>
                     <FormChallenge
@@ -68,7 +61,7 @@ const ModalChallenge = (): React.JSX.Element => {
                     />
                     <ModalBoxButton
                         handleEnter={formSubmit.handleSubmit}
-                        handleEscape={buttonEscape}
+                        handleEscape={challenge.closeModal}
                         isValid={formSubmit.isValid}
                         textEnter={'send challenge [enter]'}
                         textEsc={'discard [esc]'}

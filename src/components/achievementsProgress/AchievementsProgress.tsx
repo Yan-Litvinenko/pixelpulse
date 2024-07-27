@@ -1,13 +1,11 @@
 import React from 'react';
 import { AchievementsProgressRing } from '../achievementsProgressRing/AchievementsProgressRing';
 import { useAppContext } from '../../hooks/useAppContext';
-import { useModal } from '../../hooks/useModal';
 import styles from './AchievementsProgress.module.scss';
 
 const AchievementsProgress = (): React.JSX.Element => {
-    const { achievements } = useAppContext();
+    const { achievements, challenge } = useAppContext();
     const { isLoad, isError, amountAchieved, amountAchievements, percent } = achievements;
-    const { openModal } = useModal('challenge');
 
     return (
         <div className={styles.progress}>
@@ -36,7 +34,7 @@ const AchievementsProgress = (): React.JSX.Element => {
                 If you want to give me a challenge and rate it, please feel free to submit it with the button below!
             </p>
 
-            <button className={styles.progress__button} onClick={openModal} type="button">
+            <button className={styles.progress__button} onClick={challenge.openModal} type="button">
                 Challenge me
             </button>
         </div>

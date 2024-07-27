@@ -7,14 +7,13 @@ import { INavigationElement } from '../../interfaces/interface.component';
 import styles from './NavigationElement.module.scss';
 
 const NavigationElement = (props: INavigationElement): React.JSX.Element => {
-    const { isLarge, isMedium, handleSoundClick, setNavigationMobile } = useAppContext();
+    const { isLarge, isMedium, handleSoundClick, navigationMobile } = useAppContext();
     const { pageName } = props;
 
     const switchPage = (): void => {
-        setNavigationMobile(false);
+        navigationMobile.closeModal();
 
-        if (isLarge || isMedium) {
-        } else {
+        if (!isLarge && !isMedium) {
             handleSoundClick();
         }
 

@@ -1,60 +1,77 @@
 import React from 'react';
+import { useMediaQuery } from 'react-responsive';
 import { scroll } from '../classes/Scroll';
-import { useAppContext } from './useAppContext';
 import soundEffect from '../assets/audio/modal.mp3';
 
-type Modal = 'credits' | 'creations' | 'availability' | 'social' | 'setting' | 'challenge' | 'navigationMobile';
 interface IUseModal {
+    statusModal: boolean;
     openModal: () => void;
+    closeModal: () => void;
+    stopPropagation: <T>(event: React.MouseEvent<T>) => void;
+    setStatusForm: (value: boolean) => void;
 }
 
 const modalSound: HTMLAudioElement = new Audio(soundEffect);
 
-const useModal = (modal: Modal): IUseModal => {
-    const {
-        sounds,
-        setCredits,
-        setAvailability,
-        setSocial,
-        setSetting,
-        setChallenge,
-        setNavigationMobile,
-        setCreations,
-    } = useAppContext();
+const openSoundEffect = (soundsStatus: boolean): Promise<void> | undefined =>
+    soundsStatus ? modalSound.play() : undefined;
+const closeSoundEffect = (soundsStatus: boolean): Promise<void> | undefined =>
+    soundsStatus ? modalSound.play() : undefined;
 
-    const controlStateModal: Record<Modal, React.Dispatch<React.SetStateAction<boolean>>> = {
-        credits: setCredits,
-        availability: setAvailability,
-        social: setSocial,
-        setting: setSetting,
-        challenge: setChallenge,
-        navigationMobile: setNavigationMobile,
-        creations: setCreations,
+const useModal = (soundsStatus: boolean): IUseModal => {
+    const isLarge: boolean = useMediaQuery({ maxWidth: 1200 });
+    const [statusModal, setStatusModal] = React.useState<boolean>(false);
+    const [delay, setDelay] = React.useState<boolean>(false);
+    const statusForm = React.useRef<boolean>(false);
+
+    const closeModal = (): void => {
+        if ((!delay && !isLarge) || statusForm.current) return;
+
+        window.removeEventListener('keydown', closeModalByKey);
+        closeSoundEffect(soundsStatus);
+        setStatusModal(false);
+        setDelay(false);
+        scroll.on();
     };
 
-    const mutableStateModal: React.Dispatch<React.SetStateAction<boolean>> = controlStateModal[modal];
+    function closeModalByKey(event: KeyboardEvent): void {
+        if (event.key === 'Escape') closeModal();
+    }
 
-    const openSoundEffect = () => {
-        if (sounds) modalSound.play();
-    };
+    React.useEffect(() => {
+        if (statusModal && !isLarge) window.addEventListener('keydown', closeModalByKey);
+    }, [delay, statusModal]);
 
     const openModal = (): void => {
-        mutableStateModal(true);
-        openSoundEffect();
+        const openHandler = (): void => {
+            window.removeEventListener('scrollend', openHandler);
+            setTimeout(() => setDelay(() => true), 1500);
+            openSoundEffect(soundsStatus);
+            setStatusModal(true);
+            scroll.off();
+        };
 
         if (window.scrollY !== 0) {
-            window.addEventListener('scrollend', openModal);
+            window.addEventListener('scrollend', openHandler);
             scroll.moveTop();
             return;
         }
 
-        scroll.off();
-        window.removeEventListener('scrollend', openModal);
+        openHandler();
+    };
+
+    const stopPropagation = <T>(event: React.MouseEvent<T>) => event.stopPropagation();
+    const setStatusForm = (value: boolean): void => {
+        statusForm.current = value;
     };
 
     return {
+        statusModal,
         openModal,
+        closeModal,
+        stopPropagation,
+        setStatusForm,
     };
 };
 
-export { useModal };
+export { useModal, IUseModal };

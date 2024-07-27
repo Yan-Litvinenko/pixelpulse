@@ -1,35 +1,25 @@
 import React from 'react';
 import useFormSubmit from '../../hooks/useFormSubmit';
-import useCloseModal from '../../hooks/useCloseModal';
 import Cross from '../cross/Cross';
 import Form from '../form/Form';
 import ModalBoxButton from '../modalBoxButton/ModalBoxButton';
 import ModalLoader from '../modalLoader/ModalLoader';
 import ModalSendState from '../modalSendState/ModalSendState';
-import { ContextApp } from '../app/App';
-import { IContextApp } from '../../interfaces/interface';
 import { FormSubmit } from '../../interfaces/interface.form';
+import { useAppContext } from '../../hooks/useAppContext';
 import styles from './ModalAvailability.module.scss';
 
 const ModalAvailability = (): React.JSX.Element | null => {
-    const contextApp: IContextApp | null = React.useContext(ContextApp);
-
-    if (!contextApp) return null;
-
-    const { setAvailability } = contextApp;
-    const modal: React.MutableRefObject<HTMLDivElement | null> = React.useRef(null);
     const formSubmit: FormSubmit = useFormSubmit('Вам предложили проект!');
-    const buttonEscape = useCloseModal(
-        modal,
-        setAvailability,
-        formSubmit.successfully,
-        formSubmit.loading,
-        formSubmit.error,
-    );
+    const { availability } = useAppContext();
+
+    React.useEffect(() => {
+        availability.setStatusForm(formSubmit.error || formSubmit.loading || formSubmit.successfully ? true : false);
+    }, [formSubmit.error, formSubmit.loading, formSubmit.successfully]);
 
     return (
         <>
-            <div className={styles.modal} ref={modal}>
+            <div className={styles.modal} onClick={availability.closeModal}>
                 {formSubmit.loading ? <ModalLoader /> : null}
                 {formSubmit.successfully ? (
                     <ModalSendState
@@ -47,16 +37,20 @@ const ModalAvailability = (): React.JSX.Element | null => {
                         status={formSubmit.error}
                     />
                 ) : null}
-                <form className={styles.modal__inner} onSubmit={formSubmit.handleSubmit}>
+                <form
+                    className={styles.modal__inner}
+                    onSubmit={formSubmit.handleSubmit}
+                    onClick={availability.stopPropagation}
+                >
                     <div className={styles.modal__box_title}>
                         <h3 className={styles.modal__title}>open for hire</h3>
-                        <Cross setModalState={setAvailability} scrollStatus="on" />
+                        <Cross handler={availability.closeModal} />
                     </div>
                     <h4 className={styles.modal__subtitle}>I would love to hear about your projects!</h4>
                     <Form register={formSubmit.register} errors={formSubmit.errors} />
                     <ModalBoxButton
                         handleEnter={formSubmit.handleSubmit}
-                        handleEscape={buttonEscape}
+                        handleEscape={availability.closeModal}
                         isValid={formSubmit.isValid}
                         textEnter={'send message [enter]'}
                         textEsc={'discard [esc]'}

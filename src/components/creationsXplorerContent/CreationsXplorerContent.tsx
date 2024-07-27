@@ -2,13 +2,12 @@ import React from 'react';
 import { IXplorer } from '../../interfaces/interface.creations';
 import { nanoid } from 'nanoid';
 import { useAppContext } from '../../hooks/useAppContext';
-import { useModal } from '../../hooks/useModal';
 import CreationsXplorerItem from '../CreationsXplorerItem/CreationsXplorerItem';
 import styles from './CreationsXplorerContent.module.scss';
 
 const CreationsXplorerContent = (props: IXplorer): React.JSX.Element => {
-    const { setProjectImages, setModalProject, handleSoundClick, setModalProjectImage, modalProject } = useAppContext();
-    const { openModal } = useModal('creations');
+    const { setProjectImages, setModalProject, handleSoundClick, setModalProjectImage, modalProject, creations } =
+        useAppContext();
     const { projects, setXplorerState, xplorerState } = props;
 
     const projectClick = (projectIndex: number): void => {
@@ -19,7 +18,7 @@ const CreationsXplorerContent = (props: IXplorer): React.JSX.Element => {
     };
 
     const imageClick = (imageIndex: number): void => {
-        openModal();
+        creations.openModal();
         setModalProjectImage(imageIndex);
     };
 

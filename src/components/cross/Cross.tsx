@@ -1,20 +1,12 @@
 import React from 'react';
 import { ICross } from '../../interfaces/interface.component';
-import { scroll } from '../../classes/Scroll';
 import styles from './Cross.module.scss';
 
 const Cross = (props: ICross): React.JSX.Element => {
-    const { setModalState, scrollStatus } = props;
-
-    const handleClick = (): void => {
-        setModalState(false);
-
-        if (scrollStatus === 'off') scroll.off();
-        if (scrollStatus === 'on') scroll.on();
-    };
+    const { handler } = props;
 
     return (
-        <div className={styles.cross_box} onClick={handleClick}>
+        <div className={styles.cross_box} onClick={handler}>
             <svg
                 className={styles.cross}
                 fill="none"

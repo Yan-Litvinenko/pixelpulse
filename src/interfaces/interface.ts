@@ -1,37 +1,36 @@
 import { IUseAchievements } from '../hooks/useAchievements';
 import { IUseHeaderStatistic } from '../hooks/useHeaderStatistics';
 import { UseAudioPlayer } from '../hooks/useAudioPlayer';
+import { IUseModal } from '../hooks/useModal';
 
 type Page = 'welcome' | 'beginning' | 'about' | 'logs' | 'achievements' | 'creations' | 'games';
 
 type IContextApp = {
     achievements: IUseAchievements;
-    creations: boolean;
+    availability: IUseModal;
+    challenge: IUseModal;
+    creations: IUseModal;
+    credits: IUseModal;
+    headerStatistic: IUseHeaderStatistic;
     isLarge: boolean;
     isMedium: boolean;
     mainMusic: UseAudioPlayer;
     modalProject: number;
     modalProjectImage: number;
-    headerStatistic: IUseHeaderStatistic;
     music: boolean;
-    navigationMobile: boolean;
+    navigationMobile: IUseModal;
     projectImages: string[];
-    handleSoundClick: () => Promise<void> | null;
-    setAvailability: React.Dispatch<React.SetStateAction<boolean>>;
-    setChallenge: React.Dispatch<React.SetStateAction<boolean>>;
-    setCreations: React.Dispatch<React.SetStateAction<boolean>>;
-    setCredits: React.Dispatch<React.SetStateAction<boolean>>;
-    setModalProject: React.Dispatch<React.SetStateAction<number>>;
-    setModalProjectImage: React.Dispatch<React.SetStateAction<number>>;
-    setMusic: React.Dispatch<React.SetStateAction<boolean>>;
-    setNavigationMobile: React.Dispatch<React.SetStateAction<boolean>>;
-    setProjectImages: React.Dispatch<React.SetStateAction<string[]>>;
-    setSetting: React.Dispatch<React.SetStateAction<boolean>>;
-    setSocial: React.Dispatch<React.SetStateAction<boolean>>;
-    setSounds: React.Dispatch<React.SetStateAction<boolean>>;
+    setting: IUseModal;
+    social: IUseModal;
     sounds: boolean;
     styles: Record<string, string>;
     TRANSITION_TIME: number;
+    handleSoundClick: () => Promise<void> | null;
+    setModalProject: React.Dispatch<React.SetStateAction<number>>;
+    setModalProjectImage: React.Dispatch<React.SetStateAction<number>>;
+    setMusic: React.Dispatch<React.SetStateAction<boolean>>;
+    setProjectImages: React.Dispatch<React.SetStateAction<string[]>>;
+    setSounds: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 interface IAddCoinResult {

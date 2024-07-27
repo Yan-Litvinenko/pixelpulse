@@ -1,27 +1,17 @@
 import React from 'react';
 import useSlider from '../../hooks/useSlider';
-import useCloseModal from '../../hooks/useCloseModal';
-import Button from '../button/Button';
-import { ContextApp } from '../app/App';
-import { IContextApp } from '../../interfaces/interface';
+import { useAppContext } from '../../hooks/useAppContext';
 import vectorImageRight from '../../assets/images/vector-right.svg';
 import vectorImageLeft from '../../assets/images/vector-left.svg';
 import projects from '../../assets/json/projects.json';
 import styles from './ModalCreations.module.scss';
 
 const ModalCreations = (): React.JSX.Element => {
-    const contextApp: IContextApp | null = React.useContext(ContextApp);
-
-    if (!contextApp) return <></>;
-
-    const { setCreations, modalProject, projectImages } = contextApp;
-
-    const modal = React.useRef<HTMLDivElement | null>(null);
+    const { modalProject, projectImages, creations } = useAppContext();
     const slider = React.useRef<HTMLDivElement | null>(null);
     const vectorLeft = React.useRef<HTMLImageElement | null>(null);
     const vectorRight = React.useRef<HTMLImageElement | null>(null);
     const countSlider = useSlider(slider, vectorLeft, vectorRight);
-    const handleCloseModal = useCloseModal(modal, setCreations, false, false, false);
 
     const enter = (event: KeyboardEvent): void => {
         if (event.key === 'Enter') {
@@ -32,14 +22,12 @@ const ModalCreations = (): React.JSX.Element => {
     React.useEffect(() => {
         window.addEventListener('keydown', enter);
 
-        return () => {
-            window.removeEventListener('keydown', enter);
-        };
+        return () => window.removeEventListener('keydown', enter);
     }, []);
 
     return (
-        <div className={styles.modal} ref={modal}>
-            <div className={styles.modal__inner}>
+        <div className={styles.modal} onClick={creations.closeModal}>
+            <div className={styles.modal__inner} onClick={creations.stopPropagation}>
                 <div className={styles.modal__header}>
                     <h3 className={styles.modal__subtitle}>previewing images from</h3>
                     <h2 className={styles.modal__title}>{projects[modalProject].name}</h2>
@@ -93,13 +81,9 @@ const ModalCreations = (): React.JSX.Element => {
                     <span className={styles.button_wrapper__count}>
                         {countSlider + 1} of {projectImages.length}
                     </span>
-                    <Button
-                        className={styles.button_wrapper__escape}
-                        delayEvent={true}
-                        handleButton={handleCloseModal}
-                        textContent={'CLOSE [esc]'}
-                        type="button"
-                    />
+                    <button className={styles.button_wrapper__escape} onClick={creations.closeModal} type="button">
+                        {'CLOSE [esc]'}
+                    </button>
                 </div>
             </div>
         </div>

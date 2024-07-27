@@ -1,39 +1,25 @@
 import React from 'react';
-import useCloseModal from '../../hooks/useCloseModal';
+import { useAppContext } from '../../hooks/useAppContext';
 import useModalSettings from '../../hooks/useModalSettings';
-import Button from '../button/Button';
 import ClipPathBorder from '../clipPathBorder/ClipPathBorder';
 import Cross from '../cross/Cross';
 import ModalBackground from '../modalBackground/ModalBackground';
 import ModalBoxButton from '../modalBoxButton/ModalBoxButton';
 import Range from '../range/Range';
 import { Warning } from '../svgIcon/SvgIcon';
-import { ContextApp } from '../app/App';
-import { IContextApp } from '../../interfaces/interface';
 import styles from './ModalSetting.module.scss';
 
 const ModalSetting = (): React.JSX.Element => {
-    const contextApp: IContextApp | null = React.useContext(ContextApp);
-
-    if (!contextApp) return <></>;
-
-    const { setSetting, setNavigationMobile } = contextApp;
-    const modal = React.useRef<HTMLDivElement | null>(null);
     const { enterText, settings, handleResetSettings, handleModifySaveSetting, changeSettingValue } =
         useModalSettings();
 
-    const handleButtonEscape = useCloseModal(modal, setSetting, false, false, false);
-    const handleCrossModal = (): void => {
-        setNavigationMobile(true);
-        setSetting(false);
-    };
-
+    const { setting } = useAppContext();
     return (
-        <div className={styles.modal} ref={modal}>
-            <div className={styles.modal__inner}>
+        <div className={styles.modal} onClick={setting.closeModal}>
+            <div className={styles.modal__inner} onClick={setting.stopPropagation}>
                 <div className={styles.modal__box_title}>
                     <h3 className={styles.modal__title}>visual configurator</h3>
-                    <Cross setModalState={handleCrossModal} scrollStatus="off" />
+                    <Cross handler={setting.closeModal} />
                 </div>
                 <h4 className={styles.modal__subtitle}>apply what works best for you</h4>
 
@@ -56,13 +42,9 @@ const ModalSetting = (): React.JSX.Element => {
                             min={0}
                             textContent="hud size"
                         />
-                        <Button
-                            className={styles.default_button}
-                            delayEvent={false}
-                            handleButton={handleResetSettings}
-                            textContent="default settings"
-                            type="button"
-                        />
+                        <button className={styles.default_button} onClick={handleResetSettings} type="button">
+                            default settings
+                        </button>
                         <ClipPathBorder className={styles.border} />
                         <ModalBackground />
                     </div>
@@ -78,7 +60,7 @@ const ModalSetting = (): React.JSX.Element => {
 
                 <ModalBoxButton
                     handleEnter={handleModifySaveSetting}
-                    handleEscape={handleButtonEscape}
+                    handleEscape={setting.closeModal}
                     isValid={true}
                     textEnter={enterText}
                     textEsc="discard [esc]"
