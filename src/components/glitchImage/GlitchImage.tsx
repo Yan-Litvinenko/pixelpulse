@@ -116,4 +116,4 @@ const GlitchImage: React.FC<GlitchCanvasProps> = ({ imageUrl, className, minDela
     );
 };
 
-export default GlitchImage;
+export { GlitchImage };

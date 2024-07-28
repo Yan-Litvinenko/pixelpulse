@@ -1,7 +1,14 @@
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
-import { IPageTransition, ISmoothTransition } from '../interfaces/interface.transition';
+
+interface ISmoothTransition {
+    children: React.ReactNode;
+}
+
+interface IPageTransition {
+    duration: number;
+}
 
 const pageVariants: Variants = {
     initial: {

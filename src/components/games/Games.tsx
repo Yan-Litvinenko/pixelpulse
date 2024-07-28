@@ -17,7 +17,7 @@ const Games = (): React.JSX.Element => {
 
     return (
         <main className={styles.games}>
-            <h2 className={styles.games__title}>mini games</h2>
+            <h1 className={styles.games__title}>mini games</h1>
 
             {!isGameRoute ? (
                 <div className={styles.content}>
@@ -33,7 +33,7 @@ const Games = (): React.JSX.Element => {
                             <figure className={styles.content__item}>
                                 <img src={SnakeImg} alt="Snake" draggable={false} />
                                 <figcaption className={styles.content__description}>
-                                    <h3 className={styles.content__title}>snake</h3>
+                                    <h2 className={styles.content__title}>snake</h2>
                                     <p className={styles.content__text}>classic snake game</p>
                                 </figcaption>
                             </figure>
@@ -42,7 +42,7 @@ const Games = (): React.JSX.Element => {
                         <figure className={`${styles.content__item} ${styles.content__item_deactive}`}>
                             <img src={MarioImg} alt="Mario" draggable={false} />
                             <figcaption className={styles.content__description}>
-                                <h3 className={styles.content__title}>dr mario</h3>
+                                <h2 className={styles.content__title}>dr mario</h2>
                                 <p className={styles.content__text}>a dr. mario clone</p>
                             </figcaption>
                         </figure>
@@ -50,7 +50,7 @@ const Games = (): React.JSX.Element => {
                         <figure className={`${styles.content__item} ${styles.content__item_deactive}`}>
                             <img src={ArcanoidImg} alt="Arcanoid" draggable={false} />
                             <figcaption className={styles.content__description}>
-                                <h3 className={styles.content__title}>arcanoid</h3>
+                                <h2 className={styles.content__title}>arcanoid</h2>
                                 <p className={styles.content__text}>destroy the bricks game</p>
                             </figcaption>
                         </figure>
@@ -63,4 +63,4 @@ const Games = (): React.JSX.Element => {
     );
 };
 
-export default Games;
+export { Games };

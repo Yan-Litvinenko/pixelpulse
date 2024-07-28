@@ -1,19 +1,19 @@
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import { About } from './components/about/About';
 import { Achievements } from './components/achievements/Achievements';
 import { App } from './components/app/App';
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
+import { Beginning } from './components/beginning/Beginning';
+import { createBrowserRouter, createRoutesFromElements, Navigate, Route, RouterProvider } from 'react-router-dom';
+import { Creations } from './components/creations/Creations';
+import { CreationsXplorerContent } from './components/creationsXplorerContent/CreationsXplorerContent';
+import { ErrorPage } from './components/errorPage/ErrorPage';
+import { Games } from './components/games/Games';
+import { GameSnake } from './components/gameSnake/GameSnake';
 import { Logs } from './components/logs/Logs';
 import { logsLoader } from './components/logs/logsLoader';
-import { Beginning } from './components/beginning/Beginning';
-import { Creations } from './components/creations/Creations';
-import { ErrorPage } from './components/errorPage/ErrorPage';
-import Games from './components/games/Games';
-import GameSnake from './components/gameSnake/GameSnake';
-import React from 'react';
-import ReactDOM from 'react-dom/client';
 import { Welcome } from './components/welcome/Welocme';
 import './css/index.scss';
-import { CreationsXplorerContent } from './components/creationsXplorerContent/CreationsXplorerContent';
 
 const root: ReactDOM.Root = ReactDOM.createRoot(document.getElementById('root')!);
 const router = createBrowserRouter(
@@ -31,7 +31,8 @@ const router = createBrowserRouter(
             <Route path="games" element={<Games />}>
                 <Route path="snake" element={<GameSnake />} />
             </Route>
-            <Route path="*" element={<ErrorPage />} />
+            <Route path="error" element={<ErrorPage status="404" detail="page not found" />} />
+            <Route path="*" element={<Navigate to={'error'} />} />
         </Route>,
     ),
 );

@@ -1,11 +1,11 @@
 import React from 'react';
+import { Joystick } from '../joystick/Jouystick';
 import { Link } from 'react-router-dom';
-import { useAppContext } from '../../hooks/useAppContext';
-import useLocalStorage from '../../hooks/useLocalStorage';
 import { Snake } from '../../classes/Snake';
-import snakeTheme from '../../assets/audio/snake.mp3';
+import { useAppContext } from '../../hooks/useAppContext';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 import mainTheme from '../../assets/audio/main-theme.mp3';
-import Joystick from '../joystick/Jouystick';
+import snakeTheme from '../../assets/audio/snake.mp3';
 import styles from './GameSnake.module.scss';
 
 const GameSnake = (): React.JSX.Element => {
@@ -71,4 +71,4 @@ const GameSnake = (): React.JSX.Element => {
     );
 };
 
-export default GameSnake;
+export { GameSnake };

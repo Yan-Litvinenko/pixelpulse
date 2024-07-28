@@ -15,4 +15,4 @@ const useLocalStorage = <T>(initValue: T, key: string): [T, Dispatch<SetStateAct
     return [value, setValue];
 };
 
-export default useLocalStorage;
+export { useLocalStorage };

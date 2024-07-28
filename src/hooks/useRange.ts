@@ -18,4 +18,4 @@ const useRange = (
     return [value, setValue];
 };
 
-export default useRange;
+export { useRange };

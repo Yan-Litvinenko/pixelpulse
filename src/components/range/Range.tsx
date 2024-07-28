@@ -1,6 +1,6 @@
 import React from 'react';
-import useRange from '../../hooks/useRange';
 import { IRange } from '../../interfaces/interface.component';
+import { useRange } from '../../hooks/useRange';
 import styles from './Range.module.scss';
 
 const Range = (props: IRange): React.JSX.Element => {

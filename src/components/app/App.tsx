@@ -1,14 +1,8 @@
 import React from 'react';
-
-import { useLocation } from 'react-router-dom';
-
-import { useMediaQuery } from 'react-responsive';
-import { useAudioPlayer } from '../../hooks/useAudioPlayer';
-import useLocalStorage from '../../hooks/useLocalStorage';
-
 import { handleInitSettings } from '../../utils/handleSettings';
-import handleWrapperClassName from '../../utils/handleWrapperClassName';
-
+import { IContextApp } from '../../interfaces/interface';
+import { IUseAchievements, useAchievements } from '../../hooks/useAchievements';
+import { IUseHeaderStatistic, useHeaderStatistic } from '../../hooks/useHeaderStatistics';
 import { Layout } from '../layout/Layout';
 import { ModalAvailability } from '../modalAvailability/ModalAvailability';
 import { ModalChallenge } from '../modalChallenge/ModalChallenge';
@@ -16,17 +10,17 @@ import { ModalCreations } from '../modalCreations/ModalCreations';
 import { ModalCredits } from '../modalCredits/ModalCredits';
 import { ModalSetting } from '../modalSetting/ModalSetting';
 import { ModalSocial } from '../modalSocial/ModalSocial';
-
 import { NavigationMobile } from '../navigationMobile/NavigationMobile';
-
-import mainTheme from '../../assets/audio/main-theme.mp3';
-
-import clickSoundEffect from '../../assets/audio/click.ogg';
+import { useAudioPlayer } from '../../hooks/useAudioPlayer';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { useLocation } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 import { useModal } from '../../hooks/useModal';
-import { IContextApp } from '../../interfaces/interface';
-import { IUseHeaderStatistic, useHeaderStatistic } from '../../hooks/useHeaderStatistics';
-import { IUseAchievements, useAchievements } from '../../hooks/useAchievements';
+import { wrapperClassName } from '../../utils/wrapperClassName';
+import clickSoundEffect from '../../assets/audio/click.ogg';
+import mainTheme from '../../assets/audio/main-theme.mp3';
 import styles from './App.module.scss';
+import ErrorBoundary from '../../hoc/ErrorBoundary';
 
 const ContextApp = React.createContext<IContextApp | null>(null);
 const TRANSITION_TIME: number = 1500;
@@ -58,7 +52,7 @@ const App = (): React.JSX.Element => {
 
     const mainMusic = useAudioPlayer(music);
 
-    const handleSoundClick = () => (sounds ? clickSound.play() : null);
+    const handleSoundClick = (): Promise<void> | null => (sounds ? clickSound.play() : null);
 
     handleInitSettings();
 
@@ -67,60 +61,61 @@ const App = (): React.JSX.Element => {
     }, [location]);
 
     return (
-        <ContextApp.Provider
-            value={{
-                TRANSITION_TIME,
-                handleSoundClick,
-                setTargetProject,
-                setTargetImage,
-                setMusic,
-                setProjectImages,
-                setSounds,
-                availability,
-                challenge,
-                credits,
-                setting,
-                social,
-                achievements,
-                headerStatistic,
-                creations,
-                isLarge,
-                isMedium,
-                mainMusic,
-                targetImage,
-                targetProject,
-                music,
-                navigationMobile,
-                projectImages,
-                sounds,
-                styles,
-            }}
-        >
-            <div
-                className={handleWrapperClassName({
-                    effectsLeft: [
-                        social.statusModal,
-                        availability.statusModal,
-                        credits.statusModal,
-                        challenge.statusModal,
-                    ],
-                    effectsCenter: [setting.statusModal, creations.statusModal],
-                    isMedium: isMedium,
-                    isLarge: isLarge,
-                    stylesWrapper: styles,
-                })}
+        <ErrorBoundary>
+            <ContextApp.Provider
+                value={{
+                    TRANSITION_TIME,
+                    handleSoundClick,
+                    setMusic,
+                    setProjectImages,
+                    setSounds,
+                    setTargetImage,
+                    setTargetProject,
+                    achievements,
+                    availability,
+                    challenge,
+                    creations,
+                    credits,
+                    headerStatistic,
+                    isLarge,
+                    isMedium,
+                    mainMusic,
+                    music,
+                    navigationMobile,
+                    projectImages,
+                    setting,
+                    social,
+                    sounds,
+                    targetImage,
+                    targetProject,
+                    styles,
+                }}
             >
-                <Layout />
-            </div>
+                <div
+                    className={wrapperClassName({
+                        social: social.statusModal,
+                        availability: availability.statusModal,
+                        credits: credits.statusModal,
+                        challenge: challenge.statusModal,
+                        setting: setting.statusModal,
+                        creations: creations.statusModal,
+                        isMedium,
+                        isLarge,
+                        styles,
+                    })}
+                >
+                    <Layout />
+                </div>
 
-            {availability.statusModal ? <ModalAvailability /> : null}
-            {challenge.statusModal ? <ModalChallenge /> : null}
-            {creations.statusModal ? <ModalCreations /> : null}
-            {credits.statusModal ? <ModalCredits /> : null}
-            {navigationMobile.statusModal && (isMedium || isLarge) ? <NavigationMobile /> : null}
-            {setting.statusModal ? <ModalSetting /> : null}
-            {social.statusModal ? <ModalSocial /> : null}
-        </ContextApp.Provider>
+                {availability.statusModal ? <ModalAvailability /> : null}
+                {challenge.statusModal ? <ModalChallenge /> : null}
+                {creations.statusModal ? <ModalCreations /> : null}
+                {credits.statusModal ? <ModalCredits /> : null}
+                {navigationMobile.statusModal && (isMedium || isLarge) ? <NavigationMobile /> : null}
+                {setting.statusModal ? <ModalSetting /> : null}
+                {social.statusModal ? <ModalSocial /> : null}
+            </ContextApp.Provider>
+        </ErrorBoundary>
     );
 };
 

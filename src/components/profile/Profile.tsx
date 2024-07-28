@@ -1,11 +1,11 @@
 import React from 'react';
 import { Frame } from '../frame/Frame';
+import { GlitchImage } from '../glitchImage/GlitchImage';
 import { Link } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import { ProfileElement } from '../profileElement/ProfileElement';
 import { useAppContext } from '../../hooks/useAppContext';
 import avatar from '../../assets/images/avatar.png';
-import GlitchImage from '../glitchImage/GlitchImage';
 import profileItems from '../../assets/json/profile.json';
 import styles from './Profile.module.scss';
 

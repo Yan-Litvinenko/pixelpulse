@@ -27,7 +27,7 @@ const Creations = (): React.JSX.Element => {
 
     return (
         <main className={styles.creations}>
-            <h2 className={styles.creations__title}>creations</h2>
+            <h1 className={styles.creations__title}>creations</h1>
 
             <div className={styles.creations__inner}>
                 <div className={styles.creations__details_block}>

@@ -68,7 +68,7 @@ const Welcome = (): React.JSX.Element => {
             <h2 className={styles.welcome__greeting}>HI!</h2>
             <div className={styles.welcome__content}>
                 <div className={styles.welcome__item}>
-                    <h1 className={`${styles.welcome__title} ${styles.hidden}`}>{textForPrint.title}</h1>
+                    <h2 className={`${styles.welcome__title} ${styles.hidden}`}>{textForPrint.title}</h2>
                     <h1 className={styles.welcome__title}>
                         {skipStatus.current
                             ? textForPrint.title

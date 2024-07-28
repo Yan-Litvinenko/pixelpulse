@@ -43,4 +43,4 @@ const Joystick = (props: IJouystick): React.JSX.Element => {
     );
 };
 
-export default Joystick;
+export { Joystick };

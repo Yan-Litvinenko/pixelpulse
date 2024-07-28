@@ -121,11 +121,17 @@ interface ISettingElement {
     textContent: string;
 }
 
+interface IErrorPage {
+    status: string;
+    detail: string;
+}
+
 export {
     IAboutElement,
     IClipPathBorder,
     ICreditItem,
     ICross,
+    IErrorPage,
     IFrame,
     IJouystick,
     ILayout,

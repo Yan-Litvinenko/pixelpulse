@@ -3,16 +3,16 @@ import { Link } from 'react-router-dom';
 import { IErrorPage } from '../../interfaces/interface.component';
 import styles from './ErrorPage.module.scss';
 
-const ErrorPage = (props: IErrorPage): React.JSX.Element => {
+const ErrorBoundaryPage = (props: IErrorPage): React.JSX.Element => {
     const { status, detail } = props;
     return (
         <>
-            <div className={styles.wrapper}>
-                <div className={styles.container} data-text={status}>
-                    <h1 className={`${styles.title} ${styles.glitch}`} data-text={status}>
+            <div className={styles.wrapper_boundary}>
+                <div className={styles.container_boundary} data-text={status}>
+                    <h1 className={`${styles.title_boundary} ${styles.glitch}`} data-text={status}>
                         {status}
                     </h1>
-                    <p className={`${styles.description} ${styles.glitch}`} data-text={detail}>
+                    <p className={`${styles.description_boundary} ${styles.glitch}`} data-text={detail}>
                         {detail}
                     </p>
                     <Link className={styles.home} to="/beginning">
@@ -29,4 +29,4 @@ const ErrorPage = (props: IErrorPage): React.JSX.Element => {
     );
 };
 
-export { ErrorPage };
+export { ErrorBoundaryPage };

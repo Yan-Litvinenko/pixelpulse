@@ -25,4 +25,4 @@ const useStatusData = <T>(dependences: UseStatusDate<T>) => {
     return { message };
 };
 
-export default useStatusData;
+export { useStatusData };
