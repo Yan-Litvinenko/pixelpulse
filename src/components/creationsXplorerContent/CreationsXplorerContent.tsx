@@ -1,17 +1,17 @@
 import React from 'react';
-import { CreationsXplorerItem } from '../CreationsXplorerItem/CreationsXplorerItem';
-import { ICreationsXplorer } from '../../interfaces/interface.creations';
+import { Image, Folder } from '../svgIcon/SvgIcon';
 import { nanoid } from 'nanoid';
 import { useAppContext } from '../../hooks/useAppContext';
+import { useParams, Link } from 'react-router-dom';
+import projects from '../../assets/json/projects.json';
 import styles from './CreationsXplorerContent.module.scss';
 
-const CreationsXplorerContent = (props: ICreationsXplorer): React.JSX.Element => {
+const CreationsXplorerContent = (): React.JSX.Element => {
     const { setProjectImages, handleSoundClick, creations, targetProject, setTargetImage, setTargetProject } =
         useAppContext();
-    const { projects, xplorerLocation, setXplorerLocation } = props;
+    const { projectName } = useParams();
 
     const projectClick = (projectIndex: number): void => {
-        setXplorerLocation('projectImages');
         setProjectImages(projects[projectIndex].images);
         setTargetProject(projectIndex);
         handleSoundClick();
@@ -26,22 +26,24 @@ const CreationsXplorerContent = (props: ICreationsXplorer): React.JSX.Element =>
         <>
             <ul className={styles.content}>
                 {projects.length === 0 ? <span className={styles.not_content}>No projects have been added</span> : null}
-                {xplorerLocation === 'projects'
+                {!projectName
                     ? projects.map((project, index) => (
-                          <CreationsXplorerItem
-                              image="folder"
-                              key={nanoid()}
-                              onClick={() => projectClick(index)}
-                              textContent={project.name}
-                          />
+                          <li key={nanoid()} onClick={() => projectClick(index)}>
+                              <Link className={`${styles.item} ${styles.item_link}`} to={project.name}>
+                                  <div className={styles.frame}>
+                                      <Folder />
+                                  </div>
+                                  {project.name}
+                              </Link>
+                          </li>
                       ))
                     : projects[targetProject].images.map((imageName, index) => (
-                          <CreationsXplorerItem
-                              image="image"
-                              key={nanoid()}
-                              onClick={() => imageClick(index)}
-                              textContent={imageName}
-                          />
+                          <li key={nanoid()} className={styles.item} onClick={() => imageClick(index)}>
+                              <div className={styles.frame}>
+                                  <Image />
+                              </div>
+                              {imageName.slice(5)}
+                          </li>
                       ))}
             </ul>
         </>
