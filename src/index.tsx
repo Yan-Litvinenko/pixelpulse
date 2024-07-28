@@ -11,7 +11,7 @@ import Games from './components/games/Games';
 import GameSnake from './components/gameSnake/GameSnake';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Welcome from './components/welcome/Welocme';
+import { Welcome } from './components/welcome/Welocme';
 import './css/index.scss';
 
 const root: ReactDOM.Root = ReactDOM.createRoot(document.getElementById('root')!);
