@@ -11,8 +11,9 @@ import Games from './components/games/Games';
 import GameSnake from './components/gameSnake/GameSnake';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Welcome from './components/welcome/Welocme';
+import { Welcome } from './components/welcome/Welocme';
 import './css/index.scss';
+import { CreationsXplorerContent } from './components/creationsXplorerContent/CreationsXplorerContent';
 
 const root: ReactDOM.Root = ReactDOM.createRoot(document.getElementById('root')!);
 const router = createBrowserRouter(
@@ -22,7 +23,10 @@ const router = createBrowserRouter(
             <Route path="beginning" element={<Beginning />} />
             <Route path="logs" element={<Logs />} loader={logsLoader} />
             <Route path="achievements" element={<Achievements />} />
-            <Route path="creations" element={<Creations />} />
+            <Route path="creations" element={<Creations />}>
+                <Route index element={<CreationsXplorerContent />} />
+                <Route path=":projectName" element={<CreationsXplorerContent />} />
+            </Route>
             <Route path="about" element={<About />} />
             <Route path="games" element={<Games />}>
                 <Route path="snake" element={<GameSnake />} />

@@ -3,8 +3,10 @@ import { CreationsAbout } from '../creationsAbout/CreationsAbout';
 import { CreationsDetails } from '../creationsDetails/CreationsDetails';
 import { CreationsTechnologies } from '../creationsTechnologies/CreationsTechnologies';
 import { CreationsXplorer } from '../creationsXplorer/CreationsXplorer';
-import { IProject, XplorerLocation } from '../../interfaces/interface.creations';
+import { IProject } from '../../interfaces/interface.creations';
+import { Link } from 'react-router-dom';
 import { useAppContext } from '../../hooks/useAppContext';
+import { useTargetProject } from '../../hooks/useTargetProject';
 import projects from '../../assets/json/projects.json';
 import styles from './Creations.module.scss';
 
@@ -21,7 +23,7 @@ const projectDefault: IProject = {
 
 const Creations = (): React.JSX.Element => {
     const { handleSoundClick } = useAppContext();
-    const [xplorerLocation, setXplorerLocation] = React.useState<XplorerLocation>('projects');
+    useTargetProject();
 
     return (
         <main className={styles.creations}>
@@ -29,41 +31,23 @@ const Creations = (): React.JSX.Element => {
 
             <div className={styles.creations__inner}>
                 <div className={styles.creations__details_block}>
-                    <CreationsDetails
-                        projectDefault={projectDefault}
-                        projects={projects}
-                        xplorerLocation={xplorerLocation}
-                    />
-                    <CreationsTechnologies
-                        projectDefault={projectDefault}
-                        projects={projects}
-                        xplorerLocation={xplorerLocation}
-                    />
-                    <CreationsAbout
-                        projectDefault={projectDefault}
-                        projects={projects}
-                        xplorerLocation={xplorerLocation}
-                    />
+                    <CreationsDetails projectDefault={projectDefault} projects={projects} />
+                    <CreationsTechnologies projectDefault={projectDefault} projects={projects} />
+                    <CreationsAbout projectDefault={projectDefault} projects={projects} />
                 </div>
 
                 <div className={styles.xplorer_block}>
-                    <CreationsXplorer
-                        projects={projects}
-                        xplorerLocation={xplorerLocation}
-                        setXplorerLocation={setXplorerLocation}
-                    />
+                    <CreationsXplorer projects={projects} />
 
                     <div className={styles.box_button}>
-                        <button
+                        <Link
+                            to={'/creations'}
                             className={styles.box_button__back}
-                            onClick={() => {
-                                setXplorerLocation('projects');
-                                handleSoundClick();
-                            }}
+                            onClick={handleSoundClick}
                             type="button"
                         >
                             Back to all projects
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>

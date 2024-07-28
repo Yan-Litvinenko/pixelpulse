@@ -30,6 +30,7 @@ import styles from './App.module.scss';
 
 const ContextApp = React.createContext<IContextApp | null>(null);
 const TRANSITION_TIME: number = 1500;
+const clickSound: HTMLAudioElement = new Audio(clickSoundEffect);
 
 const App = (): React.JSX.Element => {
     const isMedium: boolean = useMediaQuery({ maxWidth: 768 });
@@ -56,8 +57,6 @@ const App = (): React.JSX.Element => {
     const [targetImage, setTargetImage] = React.useState<number>(0);
 
     const mainMusic = useAudioPlayer(music);
-
-    const clickSound: HTMLAudioElement = new Audio(clickSoundEffect);
 
     const handleSoundClick = () => (sounds ? clickSound.play() : null);
 

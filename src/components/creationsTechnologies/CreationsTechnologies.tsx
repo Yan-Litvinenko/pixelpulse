@@ -1,13 +1,15 @@
 import React from 'react';
 import { CreationsTechnologiesContent } from '../creationsTechnologiesContent/CreationsTechnologiesContent';
 import { Hexagon } from '../svgIcon/SvgIcon';
-import { useAppContext } from '../../hooks/useAppContext';
 import { ICreationsBlock } from '../../interfaces/interface.creations';
+import { useAppContext } from '../../hooks/useAppContext';
+import { useParams } from 'react-router-dom';
 import styles from './CreationsTechnologies.module.scss';
 
 const CreationsTechnologies = (props: ICreationsBlock): React.JSX.Element => {
     const { targetProject } = useAppContext();
-    const { projectDefault, projects, xplorerLocation } = props;
+    const { projectName } = useParams();
+    const { projectDefault, projects } = props;
 
     return (
         <div className={styles.technologies}>
@@ -17,11 +19,7 @@ const CreationsTechnologies = (props: ICreationsBlock): React.JSX.Element => {
             </h3>
             <div>
                 <CreationsTechnologiesContent
-                    names={
-                        xplorerLocation === 'projects'
-                            ? projectDefault.technologies
-                            : projects[targetProject].technologies
-                    }
+                    names={projectName ? projectDefault.technologies : projects[targetProject].technologies}
                 />
             </div>
         </div>
