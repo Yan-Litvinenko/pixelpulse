@@ -27,7 +27,7 @@ const HeaderStatistics = (props: IStatistics): React.JSX.Element => {
                             <button
                                 className={`${styles.coins__btn} ${!addStatus ? styles.coins__btn_pulse : styles.coins__btn_deactive}`}
                                 type="button"
-                                onClick={(event) => (!isError ? addCoin(event) : null)}
+                                onClick={(event) => (isError || addStatus ? null : addCoin(event))}
                             >
                                 +
                             </button>
