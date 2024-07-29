@@ -25,7 +25,7 @@
         padding-right: 0.3125rem;
 
         &::-webkit-scrollbar-track {
-            margin-top: 35px;
+            margin-top: 2.1875rem;
         }
     }
 }
@@ -101,7 +101,7 @@
     }
 
     .achievements {
-        padding: 1.5rem 0.625rem 0rem;
+        padding: 0rem;
 
         *::-webkit-scrollbar {
             background-color: transparent;
@@ -112,7 +112,11 @@
             gap: 2.75rem 0rem;
             grid-column: 1 / -1;
             grid-row: 2 / 3;
-            padding: 0.6rem 0rem 0rem;
+            padding: 0.6rem 0.3rem 0rem 0rem;
+
+            &::-webkit-scrollbar-track {
+                margin-top: 2.7875rem;
+            }
         }
 
         &__content {
