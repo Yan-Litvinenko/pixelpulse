@@ -45,6 +45,7 @@ const Creations = (): React.JSX.Element => {
                             className={styles.box_button__back}
                             onClick={handleSoundClick}
                             type="button"
+                            state={{ notTransition: true }}
                         >
                             Back to all projects
                         </Link>
