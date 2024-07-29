@@ -16,13 +16,13 @@ const Quest = (): React.JSX.Element => {
                 <QuestElement
                     className={{ header: styles.quest__title, text: styles.quest__name_text }}
                     hexagon={false}
-                    text="Learn React"
+                    text="React"
                     textTitle="quest name"
                 />
                 <QuestElement
                     className={{ header: styles.quest__title, text: styles.quest__goal_text }}
                     hexagon={false}
-                    text="Completely master the React library, as well as all its add-ons: Redux, React-Routing, React-Transition-Group, etc."
+                    text="Completely master the React library, as well as all its add-ons: Redux, React Routing, React Testing Library and etc."
                     textTitle="goal"
                 />
             </div>
