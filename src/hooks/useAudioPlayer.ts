@@ -13,12 +13,12 @@ const useAudioPlayer = (initStatus: boolean): UseAudioPlayer => {
     const audioRef = React.useRef(new Audio());
 
     React.useEffect(() => {
-        const audio = audioRef.current;
+        const audio: HTMLAudioElement = audioRef.current;
         audio.volume = 0.4;
 
-        const handlePlay = () => setIsPlaying(true);
-        const handlePause = () => setIsPlaying(false);
-        const handleEnded = () => {
+        const handlePlay = (): void => setIsPlaying(true);
+        const handlePause = (): void => setIsPlaying(false);
+        const handleEnded = (): void => {
             setIsPlaying(false);
             audio.play();
         };
@@ -37,6 +37,7 @@ const useAudioPlayer = (initStatus: boolean): UseAudioPlayer => {
     React.useEffect(() => {
         if (audioSrc) {
             audioRef.current.src = audioSrc;
+
             if (isPlaying) {
                 audioRef.current.play().catch((error) => {
                     console.error('Failed to play audio:', error);
@@ -47,15 +48,13 @@ const useAudioPlayer = (initStatus: boolean): UseAudioPlayer => {
 
     React.useEffect(() => {
         if (isPlaying && audioRef.current.src) {
-            audioRef.current.play().catch((error) => {
-                console.error('Failed to play audio:', error);
-            });
+            audioRef.current.play().catch((error) => console.error('Failed to play audio:', error));
         } else {
             audioRef.current.pause();
         }
     }, [isPlaying]);
 
-    const play = () =>
+    const play = (): Promise<void> =>
         audioRef.current
             .play()
             .then(() => setIsPlaying(true))
@@ -64,12 +63,12 @@ const useAudioPlayer = (initStatus: boolean): UseAudioPlayer => {
                 setIsPlaying(false);
             });
 
-    const pause = () => {
+    const pause = (): void => {
         audioRef.current.pause();
         setIsPlaying(false);
     };
 
-    const selectTrack = (src: string) => setAudioSrc(src);
+    const selectTrack = (src: string): void => setAudioSrc(src);
 
     React.useEffect(() => {
         if (initStatus) {

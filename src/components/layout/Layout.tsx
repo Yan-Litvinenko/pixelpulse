@@ -15,7 +15,7 @@ const Layout = (): React.JSX.Element => {
     const { isMedium, isLarge, styles } = useAppContext();
     const location = useLocation();
     const isBeginning: boolean = location.pathname === '/beginning';
-    const isCreations: boolean = location.pathname.startsWith('/creations');
+    const notTransition: boolean = location.state?.notTransition;
 
     useTitle();
 
@@ -31,7 +31,7 @@ const Layout = (): React.JSX.Element => {
                     <Quest />
                     <div className={`${stylesLayout.content} ${isBeginning ? stylesLayout.content_beginning : ''}`}>
                         <Frame className={stylesLayout.frame} />
-                        {isCreations ? (
+                        {notTransition ? (
                             <Outlet />
                         ) : (
                             <SmoothTransition>

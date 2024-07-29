@@ -17,10 +17,10 @@ import { useLocation } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import { useModal } from '../../hooks/useModal';
 import { wrapperClassName } from '../../utils/wrapperClassName';
+import ErrorBoundary from '../../hoc/ErrorBoundary';
 import clickSoundEffect from '../../assets/audio/click.ogg';
 import mainTheme from '../../assets/audio/main-theme.mp3';
 import styles from './App.module.scss';
-import ErrorBoundary from '../../hoc/ErrorBoundary';
 
 const ContextApp = React.createContext<IContextApp | null>(null);
 const TRANSITION_TIME: number = 1500;
@@ -51,14 +51,11 @@ const App = (): React.JSX.Element => {
     const [targetImage, setTargetImage] = React.useState<number>(0);
 
     const mainMusic = useAudioPlayer(music);
-
     const handleSoundClick = (): Promise<void> | null => (sounds ? clickSound.play() : null);
 
     settings.init();
 
-    React.useEffect(() => {
-        mainMusic.selectTrack(mainTheme);
-    }, [location]);
+    React.useEffect(() => mainMusic.selectTrack(mainTheme), [location]);
 
     return (
         <ErrorBoundary>

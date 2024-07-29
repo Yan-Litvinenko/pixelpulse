@@ -29,7 +29,11 @@ const CreationsXplorerContent = (): React.JSX.Element => {
                 {!projectName
                     ? projects.map((project, index) => (
                           <li key={nanoid()} onClick={() => projectClick(index)}>
-                              <Link className={`${styles.item} ${styles.item_link}`} to={project.name}>
+                              <Link
+                                  className={`${styles.item} ${styles.item_link}`}
+                                  to={project.name}
+                                  state={{ notTransition: true }}
+                              >
                                   <div className={styles.frame}>
                                       <Folder />
                                   </div>
