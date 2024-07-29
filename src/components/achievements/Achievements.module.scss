@@ -79,7 +79,7 @@
 
         &__achievements {
             height: auto;
-            max-height: calc(100vh - 14.6875rem);
+            max-height: calc(100vh - 7.4875rem);
             overflow-y: auto;
         }
     }
@@ -112,7 +112,6 @@
             gap: 2.75rem 0rem;
             grid-column: 1 / -1;
             grid-row: 2 / 3;
-            height: calc(100vh - 235px);
             padding: 0.6rem 0rem 0rem;
         }
 
