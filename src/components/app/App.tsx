@@ -51,14 +51,11 @@ const App = (): React.JSX.Element => {
     const [targetImage, setTargetImage] = React.useState<number>(0);
 
     const mainMusic = useAudioPlayer(music);
-
     const handleSoundClick = (): Promise<void> | null => (sounds ? clickSound.play() : null);
 
     settings.init();
 
-    React.useEffect(() => {
-        mainMusic.selectTrack(mainTheme);
-    }, [location]);
+    React.useEffect(() => mainMusic.selectTrack(mainTheme), [location]);
 
     return (
         <ErrorBoundary>
