@@ -95,12 +95,11 @@ interface IQuestElement {
 
 interface IRange {
     changeSettingValue: (event: React.ChangeEvent<HTMLInputElement>, variableName: 'hue' | 'size') => void;
-    color?: 'hue';
     inputTarget: 'color' | 'size';
     max: number;
     min: number;
     textContent: string;
-    initValue: number;
+    inputValue: number;
 }
 
 interface ISelectChallenge {

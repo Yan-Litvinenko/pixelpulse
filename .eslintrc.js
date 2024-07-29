@@ -14,6 +14,14 @@ module.exports = {
         },
     },
     rules: {
+        '@typescript-eslint/naming-convention': [
+            'error',
+            {
+                selector: 'variable',
+                modifiers: ['const'],
+                format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
+            },
+        ],
         '@typescript-eslint/lines-between-class-members': 'off',
         '@typescript-eslint/no-explicit-any': 'error',
         '@typescript-eslint/no-use-before-define': ['error', { functions: false }],
@@ -27,7 +35,7 @@ module.exports = {
         'no-debugger': 'off',
         'no-use-before-define': 'off',
         'object-curly-spacing': ['error', 'always'],
-        // 'react-compiler/react-compiler': 'error',
+        'react-compiler/react-compiler': 'error',
         'react-hooks/exhaustive-deps': 'off',
         'react-hooks/rules-of-hooks': 'off',
         'react/jsx-uses-react': 'error',

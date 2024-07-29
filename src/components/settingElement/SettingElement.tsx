@@ -6,7 +6,7 @@ const SettingElement = (props: ISettingElement): React.JSX.Element => {
     const isGear: boolean = image === 'gear';
 
     return (
-        <button className={className} onClick={() => onClick && onClick()}>
+        <button className={className} onClick={onClick}>
             {textContent}
             <div className={audioClassName}>
                 {isGear && (

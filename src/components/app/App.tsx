@@ -1,5 +1,4 @@
 import React from 'react';
-import { handleInitSettings } from '../../utils/handleSettings';
 import { IContextApp } from '../../interfaces/interface';
 import { IUseAchievements, useAchievements } from '../../hooks/useAchievements';
 import { IUseHeaderStatistic, useHeaderStatistic } from '../../hooks/useHeaderStatistics';
@@ -11,6 +10,7 @@ import { ModalCredits } from '../modalCredits/ModalCredits';
 import { ModalSetting } from '../modalSetting/ModalSetting';
 import { ModalSocial } from '../modalSocial/ModalSocial';
 import { NavigationMobile } from '../navigationMobile/NavigationMobile';
+import { settings } from '../../classes/Settings';
 import { useAudioPlayer } from '../../hooks/useAudioPlayer';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { useLocation } from 'react-router-dom';
@@ -54,7 +54,7 @@ const App = (): React.JSX.Element => {
 
     const handleSoundClick = (): Promise<void> | null => (sounds ? clickSound.play() : null);
 
-    handleInitSettings();
+    settings.init();
 
     React.useEffect(() => {
         mainMusic.selectTrack(mainTheme);
