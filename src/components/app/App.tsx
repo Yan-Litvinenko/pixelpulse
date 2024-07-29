@@ -17,10 +17,10 @@ import { useLocation } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import { useModal } from '../../hooks/useModal';
 import { wrapperClassName } from '../../utils/wrapperClassName';
+import ErrorBoundary from '../../hoc/ErrorBoundary';
 import clickSoundEffect from '../../assets/audio/click.ogg';
 import mainTheme from '../../assets/audio/main-theme.mp3';
 import styles from './App.module.scss';
-import ErrorBoundary from '../../hoc/ErrorBoundary';
 
 const ContextApp = React.createContext<IContextApp | null>(null);
 const TRANSITION_TIME: number = 1500;

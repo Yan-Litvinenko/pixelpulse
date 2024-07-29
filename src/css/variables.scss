@@ -29,10 +29,10 @@
     --frame-border-color: rgba(255, 255, 255, 0.1); /*  граница рамок */
     --modal-filter: brightness(13%);
 
-    --box-shadow: 0px 0px 1.5px var(--main-color);
-    --text-shadow: 0px 0px 1.5px var(--main-color);
-    --text-shadow-black: 0px 0px 0.2px var(--main-background-color);
-    --text-shadow-white: 0px 0px 0.2px var(--main-text-color);
+    --box-shadow: 0rem 0rem 0.09375rem var(--main-color);
+    --text-shadow: 0rem 0rem 0.09375rem var(--main-color);
+    --text-shadow-black: 0rem 0rem 0.0125rem var(--main-background-color);
+    --text-shadow-white: 0rem 0rem 0.0125rem var(--main-text-color);
 
     --clip-path-modal: polygon(0.875rem 0rem, 100% 0rem, 100% 100%, 0% 100%, 0% 0.75rem);
 
