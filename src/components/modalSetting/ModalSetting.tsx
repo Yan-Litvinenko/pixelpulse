@@ -11,8 +11,7 @@ import styles from './ModalSetting.module.scss';
 
 const ModalSetting = (): React.JSX.Element => {
     const { setting } = useAppContext();
-    const { enterText, settings, handleResetSettings, handleModifySaveSetting, changeSettingValue } =
-        useModalSettings();
+    const { enterBtnText, inputValue, handleDefault, transformSaveFn, changeSettingValue } = useModalSettings();
 
     return (
         <div className={styles.modal} onClick={setting.closeModal}>
@@ -27,8 +26,7 @@ const ModalSetting = (): React.JSX.Element => {
                     <div className={styles.modal__setting}>
                         <Range
                             changeSettingValue={changeSettingValue}
-                            color={'hue'}
-                            initValue={settings.hue}
+                            inputValue={inputValue.hue}
                             inputTarget="color"
                             max={100}
                             min={0}
@@ -36,13 +34,13 @@ const ModalSetting = (): React.JSX.Element => {
                         />
                         <Range
                             changeSettingValue={changeSettingValue}
-                            initValue={settings.size}
+                            inputValue={inputValue.size}
                             inputTarget="size"
                             max={100}
                             min={0}
                             textContent="hud size"
                         />
-                        <button className={styles.default_button} onClick={handleResetSettings} type="button">
+                        <button className={styles.default_button} onClick={handleDefault} type="button">
                             default settings
                         </button>
                         <ClipPathBorder className={styles.border} />
@@ -59,10 +57,10 @@ const ModalSetting = (): React.JSX.Element => {
                 </div>
 
                 <ModalBoxButton
-                    handleEnter={handleModifySaveSetting}
+                    handleEnter={transformSaveFn}
                     handleEscape={setting.closeModal}
                     isValid={true}
-                    textEnter={enterText}
+                    textEnter={enterBtnText}
                     textEsc="discard [esc]"
                     typeEnter="submit"
                 />
