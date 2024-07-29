@@ -1,10 +1,10 @@
 import React from 'react';
-import ClipPathBorder from '../clipPathBorder/ClipPathBorder';
-import FormLabel from '../formLabel/FormLabel';
-import ModalBackground from '../modalBackground/ModalBackground';
-import SelectChallenge from '../selectChallenge/SelectChallenge';
+import { ClipPathBorder } from '../clipPathBorder/ClipPathBorder';
+import { FormLabel } from '../formLabel/FormLabel';
 import { IForm } from '../../interfaces/interface.form';
+import { ModalBackground } from '../modalBackground/ModalBackground';
 import { Rarity } from '../../interfaces/interface.achievements';
+import { SelectChallenge } from '../selectChallenge/SelectChallenge';
 import styles from './FormChallenge.module.scss';
 
 interface IFormChallenge extends IForm {
@@ -13,36 +13,34 @@ interface IFormChallenge extends IForm {
 }
 
 const FormChallenge = (props: IFormChallenge): React.JSX.Element => {
+    const { errors, register, selectValue, setSelectValue } = props;
+
     return (
         <>
             <div className={styles.form}>
-                <SelectChallenge
-                    register={props.register}
-                    selectValue={props.selectValue}
-                    setSelectValue={props.setSelectValue}
-                />
+                <SelectChallenge register={register} selectValue={selectValue} setSelectValue={setSelectValue} />
                 <FormLabel
                     child={'input'}
-                    errors={props.errors}
+                    errors={errors}
                     maxLength={50}
                     minLength={3}
                     name="title"
                     pattern={/^[a-zA-Zа-яА-Я0-9\s.,!?()"'&:;]+$/}
                     patternMessage={`The message may contain letters of the Russian or Latin alphabet, as well as the symbols ".,!?()"'&:;"`}
                     placeholder={'"The Smell of Money"'}
-                    register={props.register}
+                    register={register}
                     textContent={'Title of achievement'}
                 />
                 <FormLabel
                     child={'textarea'}
-                    errors={props.errors}
+                    errors={errors}
                     maxLength={50}
                     minLength={3}
                     name="description"
                     pattern={/^[a-zA-Zа-яА-Я0-9\s.,!?()"'&:;]+$/}
                     patternMessage={`The message may contain letters of the Russian or Latin alphabet, as well as the symbols ".,!?()"'&:;"`}
                     placeholder={'To get the achievement...'}
-                    register={props.register}
+                    register={register}
                     textContent={'achievement description'}
                 />
                 <ClipPathBorder className={styles.border} />
@@ -52,4 +50,4 @@ const FormChallenge = (props: IFormChallenge): React.JSX.Element => {
     );
 };
 
-export default FormChallenge;
+export { FormChallenge };

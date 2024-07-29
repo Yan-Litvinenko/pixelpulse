@@ -1,62 +1,55 @@
 import React from 'react';
-import { ContextApp } from '../app/App';
-import { IAppContext } from '../../interfaces/interface';
-import Button from '../button/Button';
-import requestForServer from '../../utils/requestForServer';
-import handleIinitStatistics from '../../utils/handleInitStatistics';
-import fetchAchievements from '../../utils/fetchAchievements';
+import { IStatistics } from '../../interfaces/interface.component';
+import { useAppContext } from '../../hooks/useAppContext';
+import { HeaderStatisticsFallback } from './HeaderStatisticFallback';
 
-interface IStatistics {
-    className: Record<string, string>;
-}
-
-const HeaderStatistics = ({ className }: IStatistics): React.JSX.Element => {
-    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
-
-    if (!contextApp) return <></>;
-
-    const handleAddCoin = async (): Promise<void> => {
-        if (!contextApp.isAddedCoinToday) {
-            try {
-                const fetchAddCoinStatus: boolean = await requestForServer<boolean>('/add_coin');
-
-                if (fetchAddCoinStatus) {
-                    await handleIinitStatistics(
-                        contextApp.setLevel,
-                        contextApp.setCoins,
-                        contextApp.setIsAddedCoinToday,
-                    );
-
-                    fetchAchievements().then((data) => contextApp.setAchievements(data));
-                }
-            } catch (error) {
-                console.error('Failed to add coin:', error);
-            }
-        }
-    };
+const HeaderStatistics = (props: IStatistics): React.JSX.Element => {
+    const { styles } = props;
+    const { headerStatistic } = useAppContext();
+    const { level, coins, addStatus, isLoad, isError, addCoin } = headerStatistic;
 
     return (
-        <div className={className.statistics}>
-            <div className={className.level__box}>
-                <span className={className.level__text}>{contextApp.level}</span> level
-            </div>
-            <div className={className.coins}>
-                <div className={className.coins__add_box}>
-                    <Button
-                        className={`${className.coins__btn} ${!contextApp.isAddedCoinToday ? className.coins__btn_pulse : ''}`}
-                        delayEvent={false}
-                        handleButton={handleAddCoin}
-                        textContent="+"
-                        type="button"
-                    />
-                    {!contextApp.isAddedCoinToday ? <div className={className.pulse}></div> : null}
-                </div>
-                <div className={className.coins__text_box}>
-                    <span className={className.coins__text}>{contextApp.coins}</span> coins awarded
-                </div>
-            </div>
+        <div className={styles.statistics}>
+            {isLoad ? (
+                <HeaderStatisticsFallback styles={styles} />
+            ) : (
+                <>
+                    <div className={styles.level__box}>
+                        {isError ? (
+                            <span className={styles.level__text}>Error</span>
+                        ) : (
+                            <span className={styles.level__text}>{level}</span>
+                        )}
+                        <span>level</span>
+                    </div>
+                    <div className={styles.coins}>
+                        <form className={styles.coins__add_box}>
+                            <button
+                                className={`${styles.coins__btn} ${!addStatus ? styles.coins__btn_pulse : styles.coins__btn_deactive}`}
+                                type="button"
+                                onClick={(event) => (!isError ? addCoin(event) : null)}
+                            >
+                                +
+                            </button>
+                            {!isError ? !addStatus ? <div className={styles.pulse}></div> : null : null}
+                        </form>
+                    </div>
+                    <div className={styles.coins__text_box}>
+                        {isError ? (
+                            <span className={styles.coins__text}>Error</span>
+                        ) : (
+                            <span className={styles.coins__text}>{coins}</span>
+                        )}
+
+                        <span>coins awarded</span>
+                    </div>
+                </>
+            )}
         </div>
     );
 };
 
-export default HeaderStatistics;
+export { HeaderStatistics };
+
+{
+}

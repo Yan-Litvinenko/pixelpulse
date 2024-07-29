@@ -1,66 +1,53 @@
 import React from 'react';
-import { ContextApp } from '../app/App';
-import CreationsXplorerItem from '../CreationsXplorerItem/CreationsXplorerItem';
-import handleOpenModal from '../../utils/handleOpenModal';
+import { Image, Folder } from '../svgIcon/SvgIcon';
 import { nanoid } from 'nanoid';
-import { IProject, XplorerState } from '../../interfaces/interface.credits';
-import { IAppContext } from '../../interfaces/interface';
+import { useAppContext } from '../../hooks/useAppContext';
+import { useParams, Link } from 'react-router-dom';
+import projects from '../../assets/json/projects.json';
 import styles from './CreationsXplorerContent.module.scss';
 
-interface ICreationsXplorerContent {
-    projects: IProject[];
-    setXplorerState: React.Dispatch<React.SetStateAction<XplorerState>>;
-    xplorerState: XplorerState;
-}
+const CreationsXplorerContent = (): React.JSX.Element => {
+    const { setProjectImages, handleSoundClick, creations, targetProject, setTargetImage, setTargetProject } =
+        useAppContext();
+    const { projectName } = useParams();
 
-const CreationsXplorerContent = ({
-    projects,
-    setXplorerState,
-    xplorerState,
-}: ICreationsXplorerContent): React.JSX.Element => {
-    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
+    const projectClick = (projectIndex: number): void => {
+        setProjectImages(projects[projectIndex].images);
+        setTargetProject(projectIndex);
+        handleSoundClick();
+    };
 
-    if (!contextApp) return <></>;
-
-    const handleChangeProject = (index: number): void => {
-        setXplorerState('projectImages');
-        contextApp?.setProjectImages(projects[contextApp.modalProject].images);
-        contextApp?.setModalProject(index);
-        contextApp?.handleSoundClick();
+    const imageClick = (imageIndex: number): void => {
+        creations.openModal();
+        setTargetImage(imageIndex);
     };
 
     return (
         <>
             <ul className={styles.content}>
                 {projects.length === 0 ? <span className={styles.not_content}>No projects have been added</span> : null}
-                {xplorerState === 'projects'
-                    ? projects.map((project, index) => {
-                          return (
-                              <CreationsXplorerItem
-                                  image={'folder'}
-                                  key={nanoid()}
-                                  onClick={() => handleChangeProject(index)}
-                                  textContent={project.name}
-                              />
-                          );
-                      })
-                    : projects[contextApp.modalProject].images.map((imageName, index) => {
-                          return (
-                              <CreationsXplorerItem
-                                  image={'image'}
-                                  key={nanoid()}
-                                  onClick={() => {
-                                      handleOpenModal(contextApp?.setCreations);
-                                      contextApp?.setModalProjectImage(index);
-                                      contextApp?.handleSoundModal();
-                                  }}
-                                  textContent={imageName}
-                              />
-                          );
-                      })}
+                {!projectName
+                    ? projects.map((project, index) => (
+                          <li key={nanoid()} onClick={() => projectClick(index)}>
+                              <Link className={`${styles.item} ${styles.item_link}`} to={project.name}>
+                                  <div className={styles.frame}>
+                                      <Folder />
+                                  </div>
+                                  {project.name}
+                              </Link>
+                          </li>
+                      ))
+                    : projects[targetProject].images.map((imageName, index) => (
+                          <li key={nanoid()} className={styles.item} onClick={() => imageClick(index)}>
+                              <div className={styles.frame}>
+                                  <Image />
+                              </div>
+                              {imageName.slice(5)}
+                          </li>
+                      ))}
             </ul>
         </>
     );
 };
 
-export default CreationsXplorerContent;
+export { CreationsXplorerContent };

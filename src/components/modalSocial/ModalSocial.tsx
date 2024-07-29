@@ -1,67 +1,56 @@
 import React from 'react';
-import useCloseModal from '../../hooks/useCloseModal';
-import useFormSubmit from '../../hooks/useFormSubmit';
-import { ContextApp } from '../app/App';
-import Cross from '../cross/Cross';
-import Form from '../form/Form';
-import Heading from '../heading/Heading';
-import ModalBoxButton from '../modalBoxButton/ModalBoxButton';
-import ModalLoader from '../modalLoader/ModalLoader';
-import ModalSendState from '../modalSendState/ModalSendState';
-import { IAppContext } from '../../interfaces/interface';
-import { FormSubmit } from '../../interfaces/interface.form';
+import { Cross } from '../cross/Cross';
+import { Form } from '../form/Form';
+import { ModalBoxButton } from '../modalBoxButton/ModalBoxButton';
+import { ModalLoader } from '../modalLoader/ModalLoader';
+import { ModalSendState } from '../modalSendState/ModalSendState';
+import { useAppContext } from '../../hooks/useAppContext';
+import { useFormSubmit, UseFormSubmit } from '../../hooks/useFormSubmit';
 import styles from './ModalSocial.module.scss';
 
-const ModalSocial = (): React.JSX.Element | null => {
-    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
+const ModalSocial = (): React.JSX.Element => {
+    const { social } = useAppContext();
+    const formSubmit: UseFormSubmit = useFormSubmit('Вам отправили сообщение!');
 
-    if (!contextApp) return null;
+    const { successfullyTelegram, errorTelegram, loadingTelegram } = formSubmit;
+    const { registerForm, handleSubmitForm, isValidForm, errorForm } = formSubmit;
+    const { setErrorTelegram, setLoadingTelegram, setSuccessfullyTelegram } = formSubmit;
 
-    const modal: React.MutableRefObject<HTMLDivElement | null> = React.useRef(null);
-    const formSubmit: FormSubmit = useFormSubmit('Вам отправили сообщение!');
-    const handleCloseButton = useCloseModal(
-        modal,
-        contextApp.setSocial,
-        formSubmit.successfully,
-        formSubmit.loading,
-        formSubmit.error,
-    );
+    React.useEffect(() => {
+        social.setStatusForm(errorTelegram || loadingTelegram || successfullyTelegram ? true : false);
+    }, [errorTelegram, loadingTelegram, successfullyTelegram]);
 
     return (
         <>
-            <div className={styles.modal} ref={modal}>
-                {formSubmit.loading ? <ModalLoader /> : null}
-                {formSubmit.successfully ? (
+            <div className={styles.modal} onClick={social.closeModal}>
+                {loadingTelegram ? <ModalLoader /> : null}
+                {successfullyTelegram ? (
                     <ModalSendState
-                        setError={formSubmit.setError}
-                        setLoading={formSubmit.setLoading}
-                        setSuccessfully={formSubmit.setSuccessfully}
-                        status={formSubmit.successfully}
+                        setError={setErrorTelegram}
+                        setLoading={setLoadingTelegram}
+                        setSuccessfully={setSuccessfullyTelegram}
+                        status={successfullyTelegram}
                     />
                 ) : null}
-                {formSubmit.error ? (
+                {errorTelegram ? (
                     <ModalSendState
-                        setError={formSubmit.setError}
-                        setLoading={formSubmit.setLoading}
-                        setSuccessfully={formSubmit.setSuccessfully}
-                        status={formSubmit.error}
+                        setError={setErrorTelegram}
+                        setLoading={setLoadingTelegram}
+                        setSuccessfully={setSuccessfullyTelegram}
+                        status={errorTelegram}
                     />
                 ) : null}
-                <form className={styles.modal__inner} onSubmit={formSubmit.handleSubmit}>
+                <form className={styles.modal__inner} onSubmit={handleSubmitForm} onClick={social.stopPropagation}>
                     <div className={styles.modal__box_title}>
-                        <Heading className={styles.modal__title} level="3" textContent={'connect with me'} />
-                        <Cross setModalState={contextApp.setSocial} scrollStatus="on" />
+                        <h3 className={styles.modal__title}>connect with me</h3>
+                        <Cross handler={social.closeModal} />
                     </div>
-                    <Heading
-                        className={styles.modal__subtitle}
-                        level="4"
-                        textContent={'wanna chat? Or just share something cool?'}
-                    />
-                    <Form register={formSubmit.register} errors={formSubmit.errors} />
+                    <h4 className={styles.modal__subtitle}>wanna chat? Or just share something cool?</h4>
+                    <Form register={registerForm} errors={errorForm} />
                     <ModalBoxButton
-                        handleEnter={formSubmit.handleSubmit}
-                        handleEscape={handleCloseButton}
-                        isValid={formSubmit.isValid}
+                        handleEnter={handleSubmitForm}
+                        handleEscape={social.closeModal}
+                        isValid={isValidForm}
                         textEnter={'send message [enter]'}
                         textEsc={'discard [esc]'}
                         typeEnter="submit"
@@ -72,4 +61,4 @@ const ModalSocial = (): React.JSX.Element | null => {
     );
 };
 
-export default ModalSocial;
+export { ModalSocial };

@@ -1,48 +1,48 @@
-import { IAchieve } from './interface.achievements';
-import { ICommitLog } from './interface.github';
+import { IUseAchievements } from '../hooks/useAchievements';
+import { IUseHeaderStatistic } from '../hooks/useHeaderStatistics';
 import { UseAudioPlayer } from '../hooks/useAudioPlayer';
+import { IUseModal } from '../hooks/useModal';
 
 type Page = 'welcome' | 'beginning' | 'about' | 'logs' | 'achievements' | 'creations' | 'games';
 
-type BooleanState = React.Dispatch<React.SetStateAction<boolean>>;
-type IAppContext = {
-    achievements: IAchieve[];
-    coins: string;
-    commits: ICommitLog[];
-    creations: boolean;
-    errorGithub: boolean;
-    isAddedCoinToday: boolean;
+type IContextApp = {
+    achievements: IUseAchievements;
+    availability: IUseModal;
+    challenge: IUseModal;
+    creations: IUseModal;
+    credits: IUseModal;
+    headerStatistic: IUseHeaderStatistic;
     isLarge: boolean;
-    isLoadingGithub: boolean;
     isMedium: boolean;
-    level: string;
     mainMusic: UseAudioPlayer;
-    modalProject: number;
-    modalProjectImage: number;
     music: boolean;
-    navigationMobile: boolean;
+    navigationMobile: IUseModal;
     projectImages: string[];
-    handleSoundClick: () => Promise<void> | null;
-    handleSoundModal: () => Promise<void> | null;
-    setAchievements: React.Dispatch<React.SetStateAction<IAchieve[]>>;
-    setAvailability: BooleanState;
-    setChallenge: BooleanState;
-    setCoins: React.Dispatch<React.SetStateAction<string>>;
-    setCreations: BooleanState;
-    setCredits: BooleanState;
-    setIsAddedCoinToday: BooleanState;
-    setLevel: React.Dispatch<React.SetStateAction<string>>;
-    setModalProject: React.Dispatch<React.SetStateAction<number>>;
-    setModalProjectImage: React.Dispatch<React.SetStateAction<number>>;
-    setMusic: BooleanState;
-    setNavigationMobile: BooleanState;
-    setProjectImages: React.Dispatch<React.SetStateAction<string[]>>;
-    setSetting: BooleanState;
-    setSocial: BooleanState;
-    setSounds: BooleanState;
+    setting: IUseModal;
+    social: IUseModal;
     sounds: boolean;
     styles: Record<string, string>;
+    targetImage: number;
+    targetProject: number;
     TRANSITION_TIME: number;
+    setTargetImage: React.Dispatch<React.SetStateAction<number>>;
+    setTargetProject: React.Dispatch<React.SetStateAction<number>>;
+    handleSoundClick: () => Promise<void> | null;
+    setMusic: React.Dispatch<React.SetStateAction<boolean>>;
+    setProjectImages: React.Dispatch<React.SetStateAction<string[]>>;
+    setSounds: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export { BooleanState, IAppContext, Page };
+interface IAddCoinResult {
+    level: number;
+    coins: number;
+    addStatus: boolean;
+    isLoad: boolean;
+}
+
+interface ResolveError {
+    status: string;
+    message: string;
+}
+
+export { IContextApp, Page, IAddCoinResult, ResolveError };

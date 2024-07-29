@@ -1,7 +1,7 @@
 import { useState, useEffect, Dispatch, SetStateAction } from 'react';
 
 const useLocalStorage = <T>(initValue: T, key: string): [T, Dispatch<SetStateAction<T>>] => {
-    const prefix: string = 'yan-litvinenko-cv-';
+    const prefix: string = 'pixelpulse-';
     const [value, setValue] = useState<T>(() => {
         const localStorageData: string | null = localStorage.getItem(prefix + key);
 
@@ -15,4 +15,4 @@ const useLocalStorage = <T>(initValue: T, key: string): [T, Dispatch<SetStateAct
     return [value, setValue];
 };
 
-export default useLocalStorage;
+export { useLocalStorage };

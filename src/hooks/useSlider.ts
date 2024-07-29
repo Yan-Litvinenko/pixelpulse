@@ -1,19 +1,13 @@
 import React from 'react';
-import { ContextApp } from '../components/app/App';
-import { IAppContext } from '../interfaces/interface';
-import soundClick from '../assets/audio/click.ogg';
+import { useAppContext } from './useAppContext';
 
 const useSlider = (
     slider: React.MutableRefObject<HTMLDivElement | null>,
     vectorLeft: React.MutableRefObject<HTMLImageElement | null>,
     vectorRight: React.MutableRefObject<HTMLImageElement | null>,
 ): number => {
-    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
-    const audio = new Audio(soundClick);
-
-    if (!contextApp) return 0;
-
-    const [countSlider, setCountSlider] = React.useState<number>(contextApp.modalProjectImage);
+    const { projectImages, targetImage, handleSoundClick } = useAppContext();
+    const [countSlider, setCountSlider] = React.useState<number>(targetImage);
 
     let xDown: number = 0;
     let yDown: number = 0;
@@ -21,13 +15,9 @@ const useSlider = (
     const rollSlider = (content: HTMLDivElement | null, counter: number): void => {
         if (content) {
             const transformValue: string = `translateX(-${counter}00%)`;
-            if (content.style.transform !== transformValue) {
-                content.style.transform = transformValue;
-            }
 
-            if (contextApp.sounds) {
-                audio.play();
-            }
+            if (content.style.transform !== transformValue) content.style.transform = transformValue;
+            handleSoundClick();
         }
     };
 
@@ -35,7 +25,7 @@ const useSlider = (
         setCountSlider((prev) => {
             const count: number = prev + 1;
 
-            if (contextApp.projectImages.length - 1 < count) return count - 1;
+            if (projectImages.length - 1 < count) return count - 1;
 
             rollSlider(slider.current, count);
             return count;
@@ -97,10 +87,14 @@ const useSlider = (
         yDown = 0;
     };
 
+    const setTransformSider = (sliderContainer: HTMLDivElement): void => {
+        sliderContainer.style.transform = `translateX(-${targetImage}00%)`;
+    };
+
     React.useEffect(() => {
         const leftElement: HTMLImageElement | null = vectorLeft.current;
         const rightElement: HTMLImageElement | null = vectorRight.current;
-        const sliderElement: HTMLDivElement | null = slider.current;
+        const sliderBody: HTMLDivElement | null = slider.current;
 
         if (leftElement) {
             leftElement.addEventListener('click', prevSlide);
@@ -109,27 +103,22 @@ const useSlider = (
             rightElement.addEventListener('click', nextSlide);
         }
 
-        if (sliderElement) {
-            sliderElement.addEventListener('touchstart', touchStart);
-            sliderElement.addEventListener('touchmove', touchMove);
-            sliderElement.addEventListener('mousedown', mouseStart);
-            sliderElement.addEventListener('mousemove', mouseMove);
-            sliderElement.style.transform = `translateX(-${contextApp.modalProjectImage}00%)`;
+        if (sliderBody) {
+            sliderBody.addEventListener('touchstart', touchStart);
+            sliderBody.addEventListener('touchmove', touchMove);
+            sliderBody.addEventListener('mousedown', mouseStart);
+            sliderBody.addEventListener('mousemove', mouseMove);
+            setTransformSider(sliderBody);
         }
 
         return () => {
-            if (leftElement) {
-                leftElement.removeEventListener('click', prevSlide);
-            }
-            if (rightElement) {
-                rightElement.removeEventListener('click', nextSlide);
-            }
-
-            if (sliderElement) {
-                sliderElement.removeEventListener('touchstart', touchStart);
-                sliderElement.removeEventListener('touchmove', touchMove);
-                sliderElement.removeEventListener('mousemove', mouseMove);
-                sliderElement.removeEventListener('mousedown', mouseStart);
+            if (leftElement) leftElement.removeEventListener('click', prevSlide);
+            if (rightElement) rightElement.removeEventListener('click', nextSlide);
+            if (sliderBody) {
+                sliderBody.removeEventListener('touchstart', touchStart);
+                sliderBody.removeEventListener('touchmove', touchMove);
+                sliderBody.removeEventListener('mousemove', mouseMove);
+                sliderBody.removeEventListener('mousedown', mouseStart);
             }
         };
     }, []);
@@ -137,4 +126,4 @@ const useSlider = (
     return countSlider;
 };
 
-export default useSlider;
+export { useSlider };

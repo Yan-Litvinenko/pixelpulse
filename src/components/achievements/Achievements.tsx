@@ -1,48 +1,79 @@
 import React from 'react';
-import AchievementsLabel from '../achievementsLabel/AchievementsLabel';
-import AchievementsProgress from '../achievementsProgress/AchievementsProgress';
-import AchievementsRender from '../achievementsRender/AchievementsRender';
-import Heading from '../heading/Heading';
-import { ContextApp } from '../app/App';
-import { SwitchAchieved } from '../../interfaces/interface.achievements';
+import { AchievementsBlock } from '../achievementsBlock/AchievementsBlock';
+import { AchievementsError } from '../achievementsError/AchievementsError';
+import { achievementsFilter, achievementsSort } from '../../hooks/useAchievements';
+import { AchievementsProgress } from '../achievementsProgress/AchievementsProgress';
+import { AchievementsToggle } from '../achievementsToggle/AchievementsToggle';
+import { ToggleStatus } from '../../interfaces/interface.achievements';
+import { Triangle } from 'react-loader-spinner';
+import { useAppContext } from '../../hooks/useAppContext';
 import styles from './Achievements.module.scss';
 
 const Achievements = (): React.JSX.Element => {
-    const contextApp = React.useContext(ContextApp);
-    const [switchStatus, setSwitchStatus] = React.useState<SwitchAchieved>('all');
+    const { handleSoundClick, achievements } = useAppContext();
+    const { isError, isLoad } = achievements;
+    const [filterStatus, setFilterStatus] = React.useState<ToggleStatus>('all');
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-        setSwitchStatus(event.target.value as SwitchAchieved);
-        contextApp?.handleSoundClick();
+        setFilterStatus(event.target.value as ToggleStatus);
+        handleSoundClick();
     };
 
     return (
         <main className={styles.achievements}>
-            <Heading className={styles.achievements__title} level="2" textContent="achievements" />
+            <h1 className={styles.achievements__title}>{isError ? 'Error achievements loading' : 'Achievements'}</h1>
+
             <div className={styles.achievements__content}>
                 <AchievementsProgress />
+
                 <div className={styles.achievements__achievements}>
-                    <AchievementsRender achieveStatus={'achieved'} prefix={'achieved'} switchStatus={switchStatus} />
-                    <AchievementsRender achieveStatus={'in progress'} prefix={'ongoing'} switchStatus={switchStatus} />
+                    {isLoad ? (
+                        <Triangle
+                            ariaLabel="triangle-loading"
+                            color=""
+                            height="120"
+                            visible={true}
+                            width="120"
+                            wrapperClass={styles.loader}
+                            wrapperStyle={{}}
+                        />
+                    ) : isError ? (
+                        <AchievementsError />
+                    ) : (
+                        <>
+                            <AchievementsBlock
+                                prefixForClassName={'achieved'}
+                                achievements={achievementsSort(
+                                    achievementsFilter(achievements.achievements || [], filterStatus, 'achieved'),
+                                )}
+                            />
+                            <AchievementsBlock
+                                prefixForClassName={'ongoing'}
+                                achievements={achievementsSort(
+                                    achievementsFilter(achievements.achievements || [], filterStatus, 'in progress'),
+                                )}
+                            />
+                        </>
+                    )}
                 </div>
 
                 <div className={styles.switchers}>
-                    <AchievementsLabel
-                        checked={switchStatus === 'all'}
+                    <AchievementsToggle
+                        checked={filterStatus === 'all'}
                         id="all"
                         onChange={handleChange}
                         textContent="all"
                         value={'all'}
                     />
-                    <AchievementsLabel
-                        checked={switchStatus === 'achieved'}
+                    <AchievementsToggle
+                        checked={filterStatus === 'achieved'}
                         id="achieved"
                         onChange={handleChange}
                         textContent="achieved"
                         value={'achieved'}
                     />
-                    <AchievementsLabel
-                        checked={switchStatus === 'inProgress'}
+                    <AchievementsToggle
+                        checked={filterStatus === 'inProgress'}
                         id="inProgress"
                         onChange={handleChange}
                         textContent="in progress"
@@ -54,4 +85,4 @@ const Achievements = (): React.JSX.Element => {
     );
 };
 
-export default Achievements;
+export { Achievements };

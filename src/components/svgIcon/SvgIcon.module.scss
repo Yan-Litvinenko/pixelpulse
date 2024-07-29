@@ -10,6 +10,8 @@
 
 .hexagon_border {
     stroke: var(--main-color);
+    height: 3.75rem;
+    width: 3.25rem;
 }
 
 .hexagon polygon {
@@ -42,8 +44,8 @@
 
 .folder {
     fill: var(--main-color);
-    height: 24px;
-    width: 24px;
+    height: 1.5rem;
+    width: 1.5rem;
 }
 
 .joystick_left,

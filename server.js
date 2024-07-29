@@ -9,10 +9,10 @@ const {
     getCoins,
     getStatusAddToday,
     addCoin,
-    updateUsersStatistic,
     getAchievements,
     getServerTime,
     previewImage,
+    visit,
 } = require('./srv/routes.js');
 
 const app = express();
@@ -24,14 +24,18 @@ const PORT = 3000;
 
         app.use(express.static(path.join(__dirname, 'dist')));
 
-        app.get('/level', getLevel);
-        app.get('/coins', getCoins);
-        app.get('/status_add_today', getStatusAddToday);
-        app.get('/add_coin', addCoin);
-        app.get('/update_users_statistic', updateUsersStatistic);
-        app.get('/getAchievements', getAchievements);
-        app.get('/server-time', getServerTime);
+        app.get('/api/getLevel', getLevel);
+        app.get('/api/getCoins', getCoins);
+        app.get('/api/getStatusAddToday', getStatusAddToday);
+        app.get('/api/getAchievements', getAchievements);
+        app.get('/api/serverTime', getServerTime);
         app.get('/preview.jpg', previewImage);
+        app.get('/visit', visit);
+        app.post('/addCoin', addCoin);
+
+        app.use('/api/*', (req, res) => {
+            res.status(404).json({ status: '404', message: 'Error receiving data' });
+        });
 
         app.get('*', (_, res) => {
             res.sendFile(path.join(__dirname, 'dist', 'index.html'));
@@ -40,6 +44,15 @@ const PORT = 3000;
         cron.schedule('0 0 * * *', () => {
             usersBase.clear();
             console.log('Clean users');
+        });
+
+        app.use((err, req, res, next) => {
+            console.error(err.stack);
+            if (req.accepts('json')) {
+                res.status(500).json({ error: 'Internal Server Error' });
+            } else {
+                res.status(500).send('Internal Server Error');
+            }
         });
 
         const httpServer = http.createServer(app);

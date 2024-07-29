@@ -1,28 +1,29 @@
 import React from 'react';
 
 interface IUsePrintedText {
-    text: string;
+    animationText: string;
+    setAnimationText: React.Dispatch<React.SetStateAction<string>>;
     animationEnd: boolean;
     timers: NodeJS.Timeout[];
 }
 
-const usePrintedText = (fullText: string, delay: number = 0): IUsePrintedText => {
-    const [text, setText] = React.useState<string>('');
+const usePrintedText = (originalText: string, delay: number = 0): IUsePrintedText => {
+    const [animationText, setAnimationText] = React.useState<string>('');
     const [animationEnd, setAnimationEnd] = React.useState<boolean>(false);
     const [timers, setTimers] = React.useState<NodeJS.Timeout[]>([]);
     const animationStarted = React.useRef<boolean>(false);
 
+    const setStatusAnimation = (newStatus: boolean): boolean => (animationStarted.current = newStatus);
+
     const printed = (i: number): void => {
         const timer: NodeJS.Timeout = setTimeout(
-            () => {
-                setText((prev) => {
-                    const change = prev + fullText[i];
-                    return change;
+            (): void => {
+                setAnimationText((prevText) => {
+                    const changeText: string = prevText + originalText[i];
+                    return changeText;
                 });
 
-                if (i === fullText.length - 1) {
-                    setAnimationEnd(true);
-                }
+                if (i === originalText.length - 1) setAnimationEnd(true);
             },
             delay + i * 50,
         );
@@ -32,24 +33,19 @@ const usePrintedText = (fullText: string, delay: number = 0): IUsePrintedText =>
 
     React.useEffect(() => {
         if (!animationStarted.current) {
-            for (let i = 0; i < fullText.length; i++) {
-                printed(i);
-            }
-            animationStarted.current = true;
+            for (let i = 0; i < originalText.length; i++) printed(i);
+            setStatusAnimation(true);
         }
 
-        return () => {
-            timers.forEach((timer) => {
-                clearTimeout(timer);
-            });
-        };
+        return () => timers.forEach((timer) => clearTimeout(timer));
     }, []);
 
     return {
-        text: text,
-        animationEnd: animationEnd,
-        timers: timers,
+        animationText,
+        setAnimationText,
+        animationEnd,
+        timers,
     };
 };
 
-export default usePrintedText;
+export { usePrintedText };

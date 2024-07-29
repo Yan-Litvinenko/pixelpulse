@@ -20,4 +20,4 @@ const ModalLoader = (): React.JSX.Element => {
     );
 };
 
-export default ModalLoader;
+export { ModalLoader };

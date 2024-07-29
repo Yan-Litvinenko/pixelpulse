@@ -1,51 +1,44 @@
 import React from 'react';
-import useRange from '../../hooks/useRange';
+import { IRange } from '../../interfaces/interface.component';
+import { useRange } from '../../hooks/useRange';
 import styles from './Range.module.scss';
 
-interface IRange {
-    changeSettingValue: (
-        event: React.ChangeEvent<HTMLInputElement>,
-        variableName: 'hue' | 'saturation' | 'lightness' | 'size',
-    ) => void;
-    color?: 'hue' | 'saturation' | 'lightness';
-    inputTarget: 'color' | 'size';
-    max: number;
-    min: number;
-    textContent: string;
-    initValue: number;
-}
+const Range = (props: IRange): React.JSX.Element => {
+    const { inputValue, changeSettingValue, textContent, min, max, inputTarget } = props;
 
-const Range = (props: IRange): React.JSX.Element | null => {
     const progress: React.MutableRefObject<HTMLDivElement | null> = React.useRef(null);
     const customThumb: React.MutableRefObject<HTMLDivElement | null> = React.useRef(null);
 
-    const [rangeElement, setRangeElement] = useRange(props.initValue, progress, customThumb);
+    const setRefProgress = (value: number): void => {
+        if (progress.current) progress.current.style.width = value + '%';
+    };
+    const setRefThumb = (value: number): void => {
+        if (customThumb.current) {
+            customThumb.current.style.left = value + '%';
+            customThumb.current.style.transform = `translateX(-${value}%)`;
+        }
+    };
 
-    React.useEffect(() => {
-        setRangeElement(props.initValue);
-    }, [props.initValue]);
+    const [rangeValue, setRangeValue] = useRange(inputValue, setRefProgress, setRefThumb);
+
+    const handleRange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+        setRangeValue(Number(event.target.value));
+
+        if (inputTarget === 'color') changeSettingValue(event, 'hue');
+        if (inputTarget === 'size') changeSettingValue(event, 'size');
+    };
 
     return (
         <label className={styles.range}>
-            {props.textContent}
+            {textContent}
             <div className={styles.range__box}>
                 <input
                     className={styles.range__input}
-                    max={props.max}
-                    min={props.min}
-                    onChange={(event) => {
-                        setRangeElement(Number(event?.target.value));
-
-                        if (props.inputTarget === 'color') {
-                            props.changeSettingValue(event, props.color || 'hue');
-                        }
-
-                        if (props.inputTarget === 'size') {
-                            props.changeSettingValue(event, 'size');
-                        }
-                    }}
+                    max={max}
+                    min={min}
+                    onChange={handleRange}
                     type="range"
-                    value={rangeElement}
+                    value={rangeValue}
                 />
                 <div className={styles.range__progress} ref={progress}></div>
                 <div className={styles.range__custom_thumb} ref={customThumb}></div>

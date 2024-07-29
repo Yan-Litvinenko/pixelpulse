@@ -13,26 +13,12 @@
         padding: 0.3125rem 0.5rem 0.25rem 0.5rem;
         position: relative;
     }
-
-    &__content {
-        @include flex-container($gap: 0rem 0.4375rem);
-    }
-
-    &__item {
-        position: relative;
-        width: 52px;
-        height: 60px;
-    }
 }
 
 @media (max-width: 1380px) {
     .technologies {
         grid-column: 1 / 2;
         max-width: 100%;
-
-        &__content {
-            justify-content: space-around;
-        }
     }
 }
 
@@ -45,9 +31,5 @@
 @media (max-width: 400px) {
     .technologies {
         padding: 0.35rem;
-
-        &__content {
-            column-gap: 0.2375rem;
-        }
     }
 }

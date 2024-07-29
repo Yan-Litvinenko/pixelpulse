@@ -1,31 +1,30 @@
 import React from 'react';
-import Heading from '../heading/Heading';
-import Paragraph from '../paragraph/Paragraph';
-import { ContextApp } from '../app/App';
-import { IAppContext } from '../../interfaces/interface';
+import { ICreationsBlock } from '../../interfaces/interface.creations';
 import { nanoid } from 'nanoid';
-import { ICreationsBlock } from '../../interfaces/interface.credits';
+import { useAppContext } from '../../hooks/useAppContext';
+import { useParams } from 'react-router-dom';
 import styles from './CreationsAbout.module.scss';
 
-const renderAboutText = (texts: string[], className: string): React.JSX.Element[] => {
-    return texts.map((text) => <Paragraph className={className} textContent={text} key={nanoid()} />);
-};
+const CreationsAbout = (props: ICreationsBlock): React.JSX.Element => {
+    const { targetProject } = useAppContext();
+    const { projectName } = useParams();
+    const { projectDefault, projects } = props;
 
-const CreationsAbout = ({ projects, projectDefault, xplorerState }: ICreationsBlock): React.JSX.Element => {
-    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
-
-    if (!contextApp) return <></>;
+    const texts: string[] = projectName ? projectDefault.about : projects[targetProject].about || [];
 
     return (
         <div className={styles.about}>
-            <Heading className={styles.about__title} level="3" textContent="About:" />
+            <h3 className={styles.about__title}>About:</h3>
+
             <div className={styles.about__text_box}>
-                {xplorerState === 'projects'
-                    ? renderAboutText(projectDefault.about, styles.about__text)
-                    : renderAboutText(projects[contextApp.modalProject].about, styles.about__text)}
+                {texts.map((text) => (
+                    <p key={nanoid()} className={styles.about__text}>
+                        {text}
+                    </p>
+                ))}
             </div>
         </div>
     );
 };
 
-export default CreationsAbout;
+export { CreationsAbout };

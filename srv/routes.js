@@ -2,33 +2,36 @@ const path = require('path');
 const dataBase = require('./dataBase.js');
 const usersBase = require('./usersBase.js');
 
-exports.getLevel = async (req, res) => {
+exports.getLevel = async (req, res, next) => {
     try {
         const LEVEL = await dataBase.getDataAdminTable('level');
+
         res.json(LEVEL);
     } catch (error) {
-        console.error('Error fetching level data:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        next(error);
     }
 };
 
-exports.getCoins = async (req, res) => {
+exports.getCoins = async (req, res, next) => {
     try {
         const COINS = await dataBase.getDataAdminTable('coins');
         res.json(COINS);
     } catch (error) {
-        console.error('Error fetching coins data:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        next(error);
     }
 };
 
-exports.getStatusAddToday = (req, res) => {
-    const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-    const isPressToday = usersBase.has(ip);
-    res.json(isPressToday);
+exports.getStatusAddToday = (req, res, next) => {
+    try {
+        const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+        const isPressToday = usersBase.has(ip);
+        res.json(isPressToday);
+    } catch (error) {
+        next(error);
+    }
 };
 
-exports.addCoin = async (req, res) => {
+exports.addCoin = async (req, res, next) => {
     try {
         const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
 
@@ -48,43 +51,37 @@ exports.addCoin = async (req, res) => {
                 await dataBase.achievedLevelAchieve(LEVEL);
             }
 
-            res.json(true);
+            res.json({
+                level: LEVEL,
+                coins: COINS,
+                addStatus: true,
+            });
+
+            console.log(`User ${ip} added coins`);
         } else {
+            console.log(`User ${ip} was unable to add coins`);
             res.json(false);
         }
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        next(error);
     }
 };
 
-exports.updateUsersStatistic = async (req, res) => {
-    try {
-        const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-        await dataBase.updateUserTable(ip);
-        res.status(200).json({ success: true });
-    } catch (error) {
-        console.error('Error updating user statistics in the database:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
-};
-
-exports.getAchievements = async (req, res) => {
+exports.getAchievements = async (req, res, next) => {
     try {
         const achievements = await dataBase.getAchievements();
         res.json(achievements);
     } catch (error) {
-        console.error('Error getting achievements from database:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        next(error);
     }
 };
 
-exports.getServerTime = (req, res) => {
+exports.getServerTime = (req, res, next) => {
     try {
         const serverTime = new Date();
-        res.json({ serverTime: serverTime.toISOString() });
+        res.json(serverTime.toISOString());
     } catch (error) {
-        res.status(500).json({ error: 'Internal Server Error' });
+        next(error);
     }
 };
 
@@ -96,4 +93,9 @@ exports.previewImage = (req, res) => {
             res.status(500).json({ error: 'Internal Server Error', message: err.message });
         }
     });
+};
+
+exports.visit = (req, res) => {
+    const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+    console.log(`User ${ip} visited site!`);
 };

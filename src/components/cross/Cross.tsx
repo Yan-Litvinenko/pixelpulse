@@ -1,31 +1,12 @@
 import React from 'react';
-import { ContextApp } from '../app/App';
-import scroll from '../../classes/Scroll';
-import { BooleanState } from '../../interfaces/interface';
+import { ICross } from '../../interfaces/interface.component';
 import styles from './Cross.module.scss';
 
-interface ICross {
-    setModalState: BooleanState;
-    scrollStatus: 'on' | 'off';
-}
-
-const Cross = ({ setModalState, scrollStatus }: ICross): React.JSX.Element => {
-    const contextApp = React.useContext(ContextApp);
-
-    const handleCross = (): void => {
-        contextApp?.handleSoundModal();
-        setModalState(false);
-
-        if (scrollStatus === 'off') {
-            scroll.off();
-            return;
-        }
-
-        scroll.on();
-    };
+const Cross = (props: ICross): React.JSX.Element => {
+    const { handler } = props;
 
     return (
-        <div className={styles.cross_box} onClick={handleCross}>
+        <div className={styles.cross_box} onClick={handler}>
             <svg
                 className={styles.cross}
                 fill="none"
@@ -46,4 +27,4 @@ const Cross = ({ setModalState, scrollStatus }: ICross): React.JSX.Element => {
     );
 };
 
-export default Cross;
+export { Cross };

@@ -1,41 +1,51 @@
-import React from 'react';
-import LogsElement from '../logsElement/LogsElement';
+import React, { Suspense } from 'react';
+import { Await, useLoaderData } from 'react-router-dom';
+import { getReplacementCommits, transformCommits } from '../logs/logsLoader';
+import { IGithubRespone } from '../../interfaces/interface.github';
+import { LogsElement } from '../logsElement/LogsElement';
 import { nanoid } from 'nanoid';
-import { ContextApp } from '../app/App';
-import { IAppContext } from '../../interfaces/interface';
-import { ICommitLog } from '../../interfaces/interface.github';
+import { ResolveError } from '../../interfaces/interface';
 import styles from './LogsOld.module.scss';
 
 const LogsOld = (): React.JSX.Element => {
-    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
-
-    if (!contextApp) return <></>;
-
-    let message = 'connection error';
-    let commits: ICommitLog[] = contextApp.commits;
-
-    if (contextApp.isLoadingGithub) message = 'loading';
+    const { githubCommits } = useLoaderData() as { githubCommits: IGithubRespone[] | ResolveError };
 
     return (
         <div>
             <span className={styles.title}>older logs:</span>
             <ul className={styles.list}>
-                {commits.length === 0 ? (
-                    <>
-                        {Array.from({ length: 5 }).map(() => (
-                            <LogsElement key={nanoid()} date={message} textContent={message} />
-                        ))}
-                    </>
-                ) : (
-                    <>
-                        {commits.map((item) => (
-                            <LogsElement key={nanoid()} date={item.date} textContent={item.message} />
-                        ))}
-                    </>
-                )}
+                <Suspense
+                    fallback={getReplacementCommits('loading').map((item) => (
+                        <LogsElement key={nanoid()} className={''} date={item.date} textContent={item.message} />
+                    ))}
+                >
+                    <Await resolve={githubCommits}>
+                        {(resolveCommits: ResolveError | IGithubRespone[]) => {
+                            if ((resolveCommits as ResolveError).status === '404') {
+                                return getReplacementCommits('error loading').map((commit) => (
+                                    <LogsElement
+                                        key={nanoid()}
+                                        className={''}
+                                        date={commit.date}
+                                        textContent={commit.message}
+                                    />
+                                ));
+                            }
+
+                            return transformCommits(resolveCommits as IGithubRespone[]).map((commit) => (
+                                <LogsElement
+                                    key={nanoid()}
+                                    className={''}
+                                    date={commit.date}
+                                    textContent={commit.message}
+                                />
+                            ));
+                        }}
+                    </Await>
+                </Suspense>
             </ul>
         </div>
     );
 };
 
-export default LogsOld;
+export { LogsOld };

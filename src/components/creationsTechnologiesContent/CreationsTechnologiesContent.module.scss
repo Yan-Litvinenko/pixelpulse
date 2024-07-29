@@ -1,0 +1,17 @@
+@import '../../css/mixin.scss';
+
+.content {
+    @include flex-container($gap: 0rem 0.4375rem, $justify-content: space-around);
+
+    &__item {
+        height: 3.75rem;
+        position: relative;
+        width: 3.25rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .content {
+        column-gap: 0.2375rem;
+    }
+}

@@ -1,3 +1,4 @@
+require('dotenv').config();
 const mysql = require('mysql2/promise');
 
 class DataBase {
@@ -6,21 +7,25 @@ class DataBase {
     }
 
     async connect() {
-        try {
+        if (this.db) {
+            try {
+                await this.db.ping();
+            } catch (error) {
+                console.error('Lost connection, reconnecting:', error);
+                this.db = await mysql.createConnection(this.config);
+            }
+        } else {
             this.db = await mysql.createConnection(this.config);
             console.log('Database connection successful!');
-        } catch (error) {
-            console.error('Error connecting to database:', error);
-            throw error;
         }
     }
 
     async getDataAdminTable(columnName) {
         try {
-            const data = await this.db.query(`SELECT ${columnName} FROM admin LIMIT 1`);
-
-            if (data.length > 0) {
-                return data[0][0][columnName];
+            await this.connect();
+            const [rows] = await this.db.query(`SELECT ${columnName} FROM admin LIMIT 1`);
+            if (rows.length > 0) {
+                return rows[0][columnName];
             }
             return null;
         } catch (error) {
@@ -31,6 +36,7 @@ class DataBase {
 
     async updateDataAdminTable(columnName, value) {
         try {
+            await this.connect();
             await this.db.execute(`UPDATE admin SET ${columnName} = ?`, [value]);
             return true;
         } catch (error) {
@@ -39,63 +45,55 @@ class DataBase {
         }
     }
 
-    async updateUserTable(ip) {
-        const [rows] = await this.db.query(`SELECT COUNT(*) AS count FROM users WHERE ip_address = ?`, [ip]);
-        const hasInDataBase = rows[0].count > 0;
-
-        if (hasInDataBase) {
-            const query = `UPDATE users SET login_count = login_count + 1, last_login = CURRENT_TIMESTAMP WHERE ip_address = ?`;
-            await this.db.execute(query, [ip]);
-        } else {
-            const query = `INSERT INTO users (ip_address, login_count, last_login) VALUES (?, ?, CURRENT_TIMESTAMP)`;
-            await this.db.execute(query, [ip, 1]);
+    async getAchievements() {
+        try {
+            await this.connect();
+            const [rows] = await this.db.execute('SELECT * FROM achievements');
+            return rows;
+        } catch (error) {
+            console.error('Request execution error:', error);
+            return [];
         }
     }
 
-    async getAchievements() {
-        const achievements = await this.db.execute('SELECT * FROM achievements');
-        return achievements[0];
-    }
-
     async achievedLevelAchieve(level) {
-        const query = 'UPDATE achievements SET status = ?, date = ? WHERE description = ? AND status = "in progress"';
-
-        const description = `Get level ${level}`;
-        const status = 'achieved';
-
-        const dateObject = new Date();
-        const year = dateObject.getFullYear();
-        const month = this.getZero(dateObject.getMonth() + 1);
-        const day = this.getZero(dateObject.getDate());
-        const date = `${year}.${month}.${day}`;
-
         try {
+            await this.connect();
+            const query =
+                'UPDATE achievements SET status = ?, date = ? WHERE description = ? AND status = "in progress"';
+
+            const description = `Get level ${level}`;
+            const status = 'achieved';
+
+            const dateObject = new Date();
+            const year = dateObject.getFullYear();
+            const month = this.getZero(dateObject.getMonth() + 1);
+            const day = this.getZero(dateObject.getDate());
+            const date = `${year}.${month}.${day}`;
+
             await this.db.execute(query, [status, date, description]);
         } catch (error) {
-            console.error(error);
+            console.error('Request execution error:', error);
         }
     }
 
     getZero(number) {
-        if (number < 10) return `0${number}`;
-        return `${number}`;
+        return number < 10 ? `0${number}` : `${number}`;
     }
 
     levelUp(countCoins) {
-        if (countCoins > 75) {
-            return Math.floor(countCoins / 75);
-        }
-
-        return 1;
+        return countCoins > 75 ? Math.ceil(countCoins / 75) : 1;
     }
 }
 
+console.log(process.env.DATA_BASE_HOST);
+
 const dataBase = new DataBase({
-    host: '',
-    port: 3306,
-    user: '',
-    password: '',
-    database: '',
+    host: process.env.DATA_BASE_HOST,
+    port: process.env.DATA_BASE_PORT,
+    user: process.env.DATA_BASE_USER,
+    password: process.env.DATA_BASE_PASSWORD,
+    database: process.env.DATA_BASE_NAME,
 });
 
 module.exports = dataBase;

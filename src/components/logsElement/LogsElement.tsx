@@ -1,24 +1,16 @@
 import React from 'react';
-import Heading from '../heading/Heading';
+import { ILogsElement } from '../../interfaces/interface.component';
 import styles from './LogsElement.module.scss';
 
-interface ILogsElement {
-    className?: string;
-    date: string | undefined;
-    textContent: string | undefined;
-}
-
 const LogsElement = (props: ILogsElement): React.JSX.Element => {
+    const { className, textContent, date } = props;
+
     return (
-        <li className={`${styles.element} ${props.className && props.className}`}>
-            <Heading
-                className={styles.element__title}
-                level="4"
-                textContent={props.textContent ? props.textContent : ''}
-            />
-            <span className={styles.element__date}>date:{props.date}</span>
+        <li className={`${styles.element} ${className}`}>
+            <h3 className={styles.element__title}>{textContent}</h3>
+            <span className={styles.element__date}>date:{date}</span>
         </li>
     );
 };
 
-export default LogsElement;
+export { LogsElement };

@@ -83,7 +83,7 @@ class Snake {
     private drawGame(): void {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-        this.ctx.fillStyle = `rgba(${this.getColor()}, 0.3)`;
+        this.ctx.fillStyle = `hsla(${this.getColor()}, 0.3)`;
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
         this.drawGrid();
@@ -93,7 +93,7 @@ class Snake {
     }
 
     private drawGrid(): void {
-        this.ctx.strokeStyle = `rgba(${this.getColor}, 0.5)`;
+        this.ctx.strokeStyle = `hsla(${this.getColor}, 0.5)`;
 
         for (let x = 0; x <= this.canvas.width; x += this.gridSize) {
             this.ctx.beginPath();
@@ -110,7 +110,7 @@ class Snake {
     }
 
     private drawCells(): void {
-        this.ctx.fillStyle = `rgba(${this.getColor()}, 0.2)`;
+        this.ctx.fillStyle = `hsla(${this.getColor()}, 0.2)`;
 
         for (let x = 0; x < this.cellCount; x++) {
             for (let y = 0; y < this.cellCount; y++) {
@@ -120,8 +120,8 @@ class Snake {
     }
 
     private drawSnake(): void {
-        this.ctx.fillStyle = `rgba(${this.getColor()}, 0.8)`;
-        this.ctx.strokeStyle = `rgba(${this.getColor()}, 0.8)`;
+        this.ctx.fillStyle = `hsla(${this.getColor()}, 0.8)`;
+        this.ctx.strokeStyle = `hsla(${this.getColor()}, 0.8)`;
 
         this.snake.forEach((snakeItem) => {
             const x: number = snakeItem.x * this.gridSize;
@@ -133,8 +133,8 @@ class Snake {
     }
 
     private drawApple(): void {
-        this.ctx.fillStyle = `rgb(${this.getColor()})`;
-        this.ctx.strokeStyle = `rgb(${this.getColor()})`;
+        this.ctx.fillStyle = `hsl(${this.getColor()})`;
+        this.ctx.strokeStyle = `hsl(${this.getColor()})`;
 
         const x: number = this.apple.x * this.gridSize;
         const y: number = this.apple.y * this.gridSize;
@@ -258,12 +258,12 @@ class Snake {
     }
 
     private getColor(): string {
-        const r: string = getComputedStyle(document.documentElement).getPropertyValue('--data-hue');
-        const g: string = getComputedStyle(document.documentElement).getPropertyValue('--data-saturation');
-        const b: string = getComputedStyle(document.documentElement).getPropertyValue('--data-lightness');
+        const h: string = getComputedStyle(document.documentElement).getPropertyValue('--data-hue');
+        const s: string = getComputedStyle(document.documentElement).getPropertyValue('--data-saturation');
+        const l: string = getComputedStyle(document.documentElement).getPropertyValue('--data-lightness');
 
-        return `${r}, ${g}, ${b}`;
+        return `${h}, ${s}, ${l}`;
     }
 }
 
-export default Snake;
+export { Snake };

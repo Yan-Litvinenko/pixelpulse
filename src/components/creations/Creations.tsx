@@ -1,12 +1,12 @@
 import React from 'react';
-import Button from '../button/Button';
-import CreationsAbout from '../creationsAbout/CreationsAbout';
-import CreationsDetails from '../creationsDetails/CreationsDetails';
-import CreationsTechnologies from '../creationsTechnologies/CreationsTechnologies';
-import { ContextApp } from '../app/App';
-import Heading from '../heading/Heading';
-import Xplorer from '../creationsXplorer/CreationsXplorer';
-import { IProject, XplorerState } from '../../interfaces/interface.credits';
+import { CreationsAbout } from '../creationsAbout/CreationsAbout';
+import { CreationsDetails } from '../creationsDetails/CreationsDetails';
+import { CreationsTechnologies } from '../creationsTechnologies/CreationsTechnologies';
+import { CreationsXplorer } from '../creationsXplorer/CreationsXplorer';
+import { IProject } from '../../interfaces/interface.creations';
+import { Link } from 'react-router-dom';
+import { useAppContext } from '../../hooks/useAppContext';
+import { useTargetProject } from '../../hooks/useTargetProject';
 import projects from '../../assets/json/projects.json';
 import styles from './Creations.module.scss';
 
@@ -22,52 +22,37 @@ const projectDefault: IProject = {
 };
 
 const Creations = (): React.JSX.Element => {
-    const contextApp = React.useContext(ContextApp);
-    const [xplorerState, setXplorerState] = React.useState<XplorerState>('projects');
+    const { handleSoundClick } = useAppContext();
+    useTargetProject();
 
     return (
         <main className={styles.creations}>
-            <>
-                <Heading className={styles.creations__title} level="2" textContent="creations" />
+            <h1 className={styles.creations__title}>creations</h1>
 
-                <div className={styles.creations__inner}>
-                    <div className={styles.creations__details_block}>
-                        <CreationsDetails
-                            projectDefault={projectDefault}
-                            projects={projects}
-                            xplorerState={xplorerState}
-                        />
-                        <CreationsTechnologies
-                            projectDefault={projectDefault}
-                            projects={projects}
-                            xplorerState={xplorerState}
-                        />
-                        <CreationsAbout
-                            projectDefault={projectDefault}
-                            projects={projects}
-                            xplorerState={xplorerState}
-                        />
-                    </div>
+            <div className={styles.creations__inner}>
+                <div className={styles.creations__details_block}>
+                    <CreationsDetails projectDefault={projectDefault} projects={projects} />
+                    <CreationsTechnologies projectDefault={projectDefault} projects={projects} />
+                    <CreationsAbout projectDefault={projectDefault} projects={projects} />
+                </div>
 
-                    <div className={styles.xplorer_block}>
-                        <Xplorer projects={projects} setXplorerState={setXplorerState} xplorerState={xplorerState} />
-                        <div className={styles.box_button}>
-                            <Button
-                                className={styles.box_button__back}
-                                delayEvent={false}
-                                handleButton={() => {
-                                    setXplorerState('projects');
-                                    contextApp?.handleSoundClick();
-                                }}
-                                textContent="Back to all projects"
-                                type="button"
-                            />
-                        </div>
+                <div className={styles.xplorer_block}>
+                    <CreationsXplorer projects={projects} />
+
+                    <div className={styles.box_button}>
+                        <Link
+                            to={'/creations'}
+                            className={styles.box_button__back}
+                            onClick={handleSoundClick}
+                            type="button"
+                        >
+                            Back to all projects
+                        </Link>
                     </div>
                 </div>
-            </>
+            </div>
         </main>
     );
 };
 
-export default Creations;
+export { Creations };

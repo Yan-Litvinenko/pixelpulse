@@ -37,4 +37,4 @@ class Scroll {
 
 const scroll: Scroll = new Scroll();
 
-export default scroll;
+export { scroll };

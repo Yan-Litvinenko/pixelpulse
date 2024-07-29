@@ -20,14 +20,14 @@
         border: 0.0625rem solid var(--main-color);
         color: var(--main-color);
         display: block;
-        margin: 0 auto 3.125rem;
+        margin: 0 auto 1.125rem;
         max-width: 12.5rem;
-        min-width: 12.5rem;
-        padding: 0.4375rem 0.825rem 0.25rem 0.825rem;
+        padding: 0.3375rem 0.825rem 0.25rem 0.825rem;
         text-align: center;
         transition:
             box-shadow var(--transition-element),
             text-shadow var(--transition-element);
+        width: 100%;
     }
 }
 
@@ -46,10 +46,11 @@
 
 @media (max-width: 1380px) {
     .logs {
-        height: auto;
+        height: var(--height-small);
+        overflow-y: scroll;
 
         &__inner {
-            margin-bottom: 4rem;
+            margin-bottom: 0rem;
         }
     }
 }
@@ -57,6 +58,8 @@
 @media (max-width: 1200px) {
     .logs {
         padding: 1.5rem 0.625rem 0rem;
+        height: auto;
+        overflow-y: auto;
 
         &__inner {
             @include flex-container(column);
@@ -64,17 +67,24 @@
             margin-bottom: 1.5rem;
         }
     }
+
+    .title {
+        margin-bottom: 0.4125rem;
+    }
 }
 
 @media (max-width: 768px) {
     .logs {
         &__inner {
             margin-bottom: 0;
-            min-height: 100vh;
         }
 
         &__title {
             margin-bottom: 1.5rem;
         }
+    }
+
+    .list {
+        margin-bottom: 2rem;
     }
 }

@@ -12,7 +12,6 @@
     height: max-content;
     padding: 0.9375rem 0.9375rem 0.625rem;
     position: relative;
-    min-height: 100%;
     z-index: 2;
 
     &::before {
@@ -36,12 +35,14 @@
     &__text {
         @include text-properties('Iceland', 0.875rem, 400);
         color: var(--dark-grey);
+        min-height: 2.8475rem;
     }
 
     &__text_clip {
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 3;
         display: -webkit-box;
+        line-clamp: 3;
         overflow: hidden;
         text-overflow: ellipsis;
     }
@@ -58,6 +59,11 @@
         text-transform: uppercase;
         transition: text-shadow var(--transition-element);
     }
+
+    &__expend_deactive {
+        color: hsla(var(--data-main-color), 0.5);
+        cursor: auto;
+    }
 }
 
 .element:has(.element__text_clip) {
@@ -68,10 +74,24 @@
     .element__expend:hover {
         text-shadow: var(--text-shadow);
     }
+
+    .element__expend_deactive:hover {
+        text-shadow: none;
+    }
 }
 
 @media (max-width: 1200px) {
     .update {
         grid-template-columns: 1fr;
+    }
+
+    .element__text {
+        min-height: auto;
+    }
+}
+
+@media (max-width: 350px) {
+    .update__element {
+        width: calc(100vw - 2.5rem);
     }
 }

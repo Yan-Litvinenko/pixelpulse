@@ -1,43 +1,30 @@
 import React from 'react';
-import { ContextApp } from '../app/App';
-import { IAppContext } from '../../interfaces/interface';
-import Button from '../button/Button';
+import { useAppContext } from '../../hooks/useAppContext';
+import { IModalBoxButton } from '../../interfaces/interface.component';
 import styles from './ModalBoxButton.module.scss';
 
-interface IModalBoxButton {
-    handleEnter: () => void;
-    handleEscape: () => void;
-    isValid?: boolean;
-    textEnter: string;
-    textEsc: string;
-    typeEnter: 'submit' | 'button';
-}
-
-const ModalBoxButton = (props: IModalBoxButton): React.JSX.Element | null => {
-    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
+const ModalBoxButton = (props: IModalBoxButton): React.JSX.Element => {
+    const { handleEnter, isValid, textEnter, typeEnter, handleEscape, textEsc } = props;
+    const { handleSoundClick } = useAppContext();
 
     return (
         <div className={styles.box}>
-            <Button
+            <button
                 className={`${styles.box__enter} ${!props.isValid ? styles.box__enter_deactive : ''}`}
-                delayEvent={true}
-                handleButton={() => {
-                    props.handleEnter();
-                    contextApp?.handleSoundClick();
+                onClick={() => {
+                    handleEnter();
+                    handleSoundClick();
                 }}
-                isValid={!props.isValid}
-                textContent={props.textEnter}
-                type={props.typeEnter}
-            />
-            <Button
-                className={styles.box__esc}
-                delayEvent={true}
-                handleButton={props.handleEscape}
-                textContent={props.textEsc}
-                type="button"
-            />
+                disabled={!isValid}
+                type={typeEnter}
+            >
+                {textEnter}
+            </button>
+            <button className={styles.box__esc} onClick={handleEscape} type="button">
+                {textEsc}
+            </button>
         </div>
     );
 };
 
-export default ModalBoxButton;
+export { ModalBoxButton };

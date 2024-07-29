@@ -13,6 +13,7 @@
 
     &__content {
         @include grid-container(1fr 2fr 1fr, 2.2rem repeat(3, auto), $gap: 0rem 1.25rem);
+        position: relative;
     }
 
     &__achievements {
@@ -41,10 +42,15 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-}
+    z-index: 20;
 
-.loader polygon {
-    stroke-width: 2;
+    & polygon {
+        stroke-width: 2;
+    }
+
+    & svg {
+        stroke: var(--main-color);
+    }
 }
 
 @media (max-width: 1700px) {
@@ -59,10 +65,22 @@
 
 @media (max-width: 1380px) {
     .achievements {
+        height: var(--height-small);
+
+        &__achievements {
+            height: calc(var(--height-small) - 6.375rem);
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .achievements {
         height: auto;
 
         &__achievements {
-            height: calc(var(--height-small) - 9.375rem);
+            height: auto;
+            max-height: calc(100vh - 14.6875rem);
+            overflow-y: auto;
         }
     }
 }
@@ -91,17 +109,18 @@
         }
 
         &__achievements {
+            gap: 2.75rem 0rem;
             grid-column: 1 / -1;
             grid-row: 2 / 3;
-            height: auto;
-            max-height: 55rem;
-            overflow-y: auto;
+            height: calc(100vh - 235px);
+            padding: 0.6rem 0rem 0rem;
         }
 
         &__content {
             grid-template-columns: 2fr 1fr;
-            grid-template-rows: max-content 1fr;
-            row-gap: 1rem;
+            grid-template-rows: max-content max-content max-content;
+            row-gap: 1.5rem;
+            min-height: calc(100vh - 9.375rem);
         }
     }
 }
@@ -114,14 +133,8 @@
     }
 
     .achievements {
-        &__achievements {
-            grid-row: 2 / 3;
-            margin-bottom: 1.125rem;
-            gap: 2.75rem 0rem;
-        }
-
         &__content {
-            grid-template-rows: max-content max-content 1fr;
+            row-gap: 1rem;
         }
     }
 }

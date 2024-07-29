@@ -3,4 +3,4 @@ const getZero = (minutes: number): string => {
     return `${minutes}`;
 };
 
-export default getZero;
+export { getZero };

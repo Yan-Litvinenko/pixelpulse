@@ -1,26 +1,47 @@
-import React from 'react';
-import { ContextApp } from '../app/App';
-import { IAppContext } from '../../interfaces/interface';
-import LogsElement from '../logsElement/LogsElement';
+import React, { Suspense } from 'react';
+import { Await, useLoaderData } from 'react-router-dom';
+import { getLastUpdate } from '../logs/logsLoader';
+import { IGithubRespone } from '../../interfaces/interface.github';
+import { LogsElement } from '../logsElement/LogsElement';
+import { ResolveError } from '../../interfaces/interface';
 import styles from './LogsProject.module.scss';
 
 const LogsProject = (): React.JSX.Element => {
-    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
-
-    if (!contextApp) return <></>;
-
-    let lastDate: string = 'error connection';
-
-    if (contextApp.isLoadingGithub) lastDate = 'loading';
-    if (contextApp.commits[0]) lastDate = contextApp.commits[0].date;
+    const { githubCommits } = useLoaderData() as { githubCommits: IGithubRespone[] };
 
     return (
         <ul className={styles.project}>
-            <LogsElement
-                className={styles.project__title}
-                date={lastDate}
-                textContent={'LOG ENTRY: PROJECT DEVELOPMENT UPDATE'}
-            />
+            <Suspense
+                fallback={
+                    <LogsElement
+                        className={styles.project__title}
+                        date={'loading'}
+                        textContent={'LOG ENTRY: PROJECT DEVELOPMENT UPDATE'}
+                    />
+                }
+            >
+                <Await resolve={githubCommits}>
+                    {(resolveGithubCommits: ResolveError | IGithubRespone[]) => {
+                        if ((resolveGithubCommits as ResolveError).status === '404') {
+                            return (
+                                <LogsElement
+                                    className={styles.project__title}
+                                    date={'error loading'}
+                                    textContent={'LOG ENTRY: PROJECT DEVELOPMENT UPDATE'}
+                                />
+                            );
+                        }
+
+                        return (
+                            <LogsElement
+                                className={styles.project__title}
+                                date={getLastUpdate(resolveGithubCommits as IGithubRespone[])}
+                                textContent={'LOG ENTRY: PROJECT DEVELOPMENT UPDATE'}
+                            />
+                        );
+                    }}
+                </Await>
+            </Suspense>
             <li className={styles.project__item}>
                 LOCATION: <span>Belarus</span>
             </li>
@@ -31,4 +52,4 @@ const LogsProject = (): React.JSX.Element => {
     );
 };
 
-export default LogsProject;
+export { LogsProject };

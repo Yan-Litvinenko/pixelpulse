@@ -1,67 +1,60 @@
 import React from 'react';
-import useFormSubmit from '../../hooks/useFormSubmit';
-import useCloseModal from '../../hooks/useCloseModal';
-import { ContextApp } from '../app/App';
-import Cross from '../cross/Cross';
-import Form from '../form/Form';
-import Heading from '../heading/Heading';
-import ModalBoxButton from '../modalBoxButton/ModalBoxButton';
-import ModalLoader from '../modalLoader/ModalLoader';
-import ModalSendState from '../modalSendState/ModalSendState';
-import { IAppContext } from '../../interfaces/interface';
-import { FormSubmit } from '../../interfaces/interface.form';
+import { Cross } from '../cross/Cross';
+import { Form } from '../form/Form';
+import { ModalBoxButton } from '../modalBoxButton/ModalBoxButton';
+import { ModalLoader } from '../modalLoader/ModalLoader';
+import { ModalSendState } from '../modalSendState/ModalSendState';
+import { useAppContext } from '../../hooks/useAppContext';
+import { useFormSubmit, UseFormSubmit } from '../../hooks/useFormSubmit';
 import styles from './ModalAvailability.module.scss';
 
-const ModalAvailability = (): React.JSX.Element | null => {
-    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
+const ModalAvailability = (): React.JSX.Element => {
+    const { availability } = useAppContext();
+    const formSubmit: UseFormSubmit = useFormSubmit('Вам предложили проект!');
 
-    if (!contextApp) return null;
+    const { successfullyTelegram, errorTelegram, loadingTelegram } = formSubmit;
+    const { registerForm, handleSubmitForm, isValidForm, errorForm } = formSubmit;
+    const { setErrorTelegram, setLoadingTelegram, setSuccessfullyTelegram } = formSubmit;
 
-    const modal: React.MutableRefObject<HTMLDivElement | null> = React.useRef(null);
-    const formSubmit: FormSubmit = useFormSubmit('Вам предложили проект!');
-    const handleButtonEscape = useCloseModal(
-        modal,
-        contextApp.setAvailability,
-        formSubmit.successfully,
-        formSubmit.loading,
-        formSubmit.error,
-    );
+    React.useEffect(() => {
+        availability.setStatusForm(errorTelegram || loadingTelegram || successfullyTelegram ? true : false);
+    }, [errorTelegram, loadingTelegram, successfullyTelegram]);
 
     return (
         <>
-            <div className={styles.modal} ref={modal}>
-                {formSubmit.loading ? <ModalLoader /> : null}
-                {formSubmit.successfully ? (
+            <div className={styles.modal} onClick={availability.closeModal}>
+                {loadingTelegram ? <ModalLoader /> : null}
+                {successfullyTelegram ? (
                     <ModalSendState
-                        setError={formSubmit.setError}
-                        setLoading={formSubmit.setLoading}
-                        setSuccessfully={formSubmit.setSuccessfully}
-                        status={formSubmit.successfully}
+                        setError={setErrorTelegram}
+                        setLoading={setLoadingTelegram}
+                        setSuccessfully={setSuccessfullyTelegram}
+                        status={successfullyTelegram}
                     />
                 ) : null}
-                {formSubmit.error ? (
+                {errorTelegram ? (
                     <ModalSendState
-                        setError={formSubmit.setError}
-                        setLoading={formSubmit.setLoading}
-                        setSuccessfully={formSubmit.setSuccessfully}
-                        status={formSubmit.error}
+                        setError={setErrorTelegram}
+                        setLoading={setLoadingTelegram}
+                        setSuccessfully={setSuccessfullyTelegram}
+                        status={errorTelegram}
                     />
                 ) : null}
-                <form className={styles.modal__inner} onSubmit={formSubmit.handleSubmit}>
+                <form
+                    className={styles.modal__inner}
+                    onSubmit={handleSubmitForm}
+                    onClick={availability.stopPropagation}
+                >
                     <div className={styles.modal__box_title}>
-                        <Heading className={styles.modal__title} level="3" textContent={'open for hire'} />
-                        <Cross setModalState={contextApp.setAvailability} scrollStatus="on" />
+                        <h3 className={styles.modal__title}>open for hire</h3>
+                        <Cross handler={availability.closeModal} />
                     </div>
-                    <Heading
-                        className={styles.modal__subtitle}
-                        level="4"
-                        textContent={'I would love to hear about your projects!'}
-                    />
-                    <Form register={formSubmit.register} errors={formSubmit.errors} />
+                    <h4 className={styles.modal__subtitle}>I would love to hear about your projects!</h4>
+                    <Form register={registerForm} errors={errorForm} />
                     <ModalBoxButton
-                        handleEnter={formSubmit.handleSubmit}
-                        handleEscape={handleButtonEscape}
-                        isValid={formSubmit.isValid}
+                        handleEnter={handleSubmitForm}
+                        handleEscape={availability.closeModal}
+                        isValid={isValidForm}
                         textEnter={'send message [enter]'}
                         textEsc={'discard [esc]'}
                         typeEnter={'submit'}
@@ -72,4 +65,4 @@ const ModalAvailability = (): React.JSX.Element | null => {
     );
 };
 
-export default ModalAvailability;
+export { ModalAvailability };

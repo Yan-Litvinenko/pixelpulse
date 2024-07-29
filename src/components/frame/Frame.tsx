@@ -1,11 +1,9 @@
 import React from 'react';
+import { IFrame } from '../../interfaces/interface.component';
 import styles from './Frame.module.scss';
 
-interface IFrame {
-    className?: string;
-}
-
-const Frame = ({ className }: IFrame): React.JSX.Element => {
+const Frame = (props: IFrame): React.JSX.Element => {
+    const { className } = props;
     return (
         <div className={className}>
             <svg
@@ -55,4 +53,4 @@ const Frame = ({ className }: IFrame): React.JSX.Element => {
     );
 };
 
-export default Frame;
+export { Frame };

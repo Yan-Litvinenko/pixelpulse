@@ -1,48 +1,39 @@
 import React from 'react';
-import { ContextApp } from '../app/App';
-import { NavLink } from 'react-router-dom';
-import Heading from '../heading/Heading';
-import Paragraph from '../paragraph/Paragraph';
-import scroll from '../../classes/Scroll';
 import { Hexagon } from '../svgIcon/SvgIcon';
-import { Page, IAppContext } from '../../interfaces/interface';
+import { INavigationElement } from '../../interfaces/interface.component';
+import { NavLink } from 'react-router-dom';
+import { scroll } from '../../classes/Scroll';
+import { useAppContext } from '../../hooks/useAppContext';
 import styles from './NavigationElement.module.scss';
 
-interface INavigationElement {
-    textContent: Page;
-}
+const NavigationElement = (props: INavigationElement): React.JSX.Element => {
+    const { isLarge, isMedium, handleSoundClick, navigationMobile } = useAppContext();
+    const { pageName } = props;
 
-const NavigationElement = ({ textContent }: INavigationElement): React.JSX.Element | null => {
-    const contextApp: IAppContext | undefined = React.useContext(ContextApp);
+    const switchPage = (): void => {
+        navigationMobile.closeModal();
 
-    if (!contextApp) return null;
-
-    const handleNavigationChange = (): void => {
-        contextApp.setNavigationMobile(false);
-
-        if (contextApp.isLarge || contextApp.isMedium) {
-            contextApp.handleSoundModal();
-        } else {
-            contextApp.handleSoundClick();
+        if (!isLarge && !isMedium) {
+            handleSoundClick();
         }
 
         scroll.on();
     };
 
     return (
-        <li onClick={handleNavigationChange}>
+        <li onClick={switchPage}>
             <NavLink
-                to={textContent}
+                to={pageName}
                 className={({ isActive }) => (isActive ? `${styles.link_active} ${styles.link}` : styles.link)}
             >
-                <Heading className={styles.link__title} level="4" textContent={textContent} image={() => <Hexagon />} />
-                <Paragraph
-                    className={styles.link__text}
-                    textContent="Suscipit est consequatur nemo voluptatem est labore saepe."
-                />
+                <h4 className={styles.link__title}>
+                    {pageName}
+                    <Hexagon />
+                </h4>
+                <p className={styles.link__text}>Suscipit est consequatur nemo voluptatem est labore saepe.</p>
             </NavLink>
         </li>
     );
 };
 
-export default NavigationElement;
+export { NavigationElement };

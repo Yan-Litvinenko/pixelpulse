@@ -1,7 +1,7 @@
 @import '../../css/mixin.scss';
 
 .wrapper {
-    @include grid-container(1fr, $gap: 0.925rem 0rem);
+    @include flex-container(column, $align-items: center);
     margin: 0 auto;
     width: max-content;
 }
@@ -9,6 +9,7 @@
 .canvas {
     border: 0.325rem solid var(--main-color);
     height: 22.75rem;
+    margin-bottom: 25px;
     width: 22.75rem;
 }
 
@@ -17,6 +18,8 @@
     @include text-properties('Big-Shoulders', 1.425rem, 700);
     color: var(--main-color);
     user-select: none;
+    margin-bottom: 10px;
+    width: 100%;
 }
 
 .back {
@@ -44,39 +47,31 @@
 }
 
 @media (max-width: 1200px) {
-    .wrapper {
-        grid-template-columns: max-content 1fr;
-        column-gap: 3rem;
-    }
-
     .canvas {
-        grid-column: 2 / 3;
+        order: 2;
+        margin-bottom: 15px;
     }
 
     .score {
-        grid-column: 2 / 3;
+        order: 1;
     }
 
     .back {
-        grid-column: 2 / 3;
+        order: 3;
     }
 
     .joystick {
-        align-self: center;
-        grid-column: 1 / 2;
-        grid-row: 2 / 3;
-        justify-self: center;
+        margin-top: 20px;
+        order: 4;
     }
 }
 
 @media (max-width: 600px) {
     .wrapper {
-        @include flex-container(column, $gap: 0.935rem 0rem);
-        grid-template-columns: 1fr;
+        @include flex-container(column, $gap: 0.935rem 0rem, $align-items: center);
     }
 
     .joystick {
-        order: 4;
         margin-top: 2rem;
     }
 }

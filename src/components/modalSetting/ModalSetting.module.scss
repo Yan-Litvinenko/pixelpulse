@@ -21,11 +21,14 @@
     }
 
     &__content {
+        @include flex-container();
         backdrop-filter: blur(0.1875rem);
         border: 0.0625rem solid var(--dark-border);
         clip-path: var(--clip-path-modal);
-        padding: 2.375rem 2rem 1.75rem;
+        flex-direction: column;
         margin-bottom: 0.625rem;
+        min-height: 550px;
+        padding: 2.375rem 2rem 1.75rem;
     }
 
     &__setting {
@@ -36,6 +39,7 @@
     &__line {
         background-color: var(--main-color);
         height: 0.0625rem;
+        margin-top: auto;
         margin-bottom: 0.8125rem;
         position: relative;
         width: 100%;

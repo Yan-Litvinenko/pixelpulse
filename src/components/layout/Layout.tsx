@@ -1,49 +1,50 @@
 import React from 'react';
-import { ContextApp } from '../app/App';
-import Frame from '../frame/Frame';
+import { Frame } from '../frame/Frame';
+import { Header } from '../header/Header';
+import { MobileBoxButton } from '../mobileBoxButton/MobileBoxButton';
+import { Navigation } from '../navigation/Navigation';
 import { Outlet, useLocation } from 'react-router-dom';
-import Header from '../header/Header';
-import Navigation from '../navigation/Navigation';
-import MobileBoxButton from '../mobileBoxButton/MobileBoxButton';
-import Profile from '../profile/Profile';
-import Quest from '../quest/Quest';
-import { IAppContext } from '../../interfaces/interface';
-import styles from './Layout.module.scss';
+import { Profile } from '../profile/Profile';
+import { Quest } from '../quest/Quest';
+import { SmoothTransition } from '../../hoc/SmoothTransition';
+import { useAppContext } from '../../hooks/useAppContext';
+import { useTitle } from '../../hooks/useTitle';
+import stylesLayout from './Layout.module.scss';
 
-const Layout = ({ children }: { children: React.JSX.Element }): React.JSX.Element => {
-    const contextApp = React.useContext<IAppContext | undefined>(ContextApp);
+const Layout = (): React.JSX.Element => {
+    const { isMedium, isLarge, styles } = useAppContext();
     const location = useLocation();
+    const isBeginning: boolean = location.pathname === '/beginning';
+    const isCreations: boolean = location.pathname.startsWith('/creations');
 
-    if (location.pathname === '/') {
-        return <>{children}</>;
-    }
-
-    const addProfile = (): React.JSX.Element | null => {
-        if ((contextApp?.isLarge || contextApp?.isMedium) && location.pathname !== '/beginning') {
-            return null;
-        }
-
-        return (
-            <>
-                <Profile />
-            </>
-        );
-    };
+    useTitle();
 
     return (
         <>
-            <Header />
-            <Navigation className={contextApp?.styles} />
-            <Outlet />
-            <Quest />
-            <div className={`${styles.content} ${location.pathname === '/beginning' ? styles.content_beginning : ''}`}>
-                <Frame className={styles.frame} />
-                {children}
-            </div>
-            {addProfile()}
-            {contextApp?.isLarge || contextApp?.isMedium ? <MobileBoxButton /> : null}
+            {location.pathname === '/' ? (
+                <Outlet />
+            ) : (
+                <>
+                    {' '}
+                    <Header />
+                    <Navigation styles={styles} />
+                    <Quest />
+                    <div className={`${stylesLayout.content} ${isBeginning ? stylesLayout.content_beginning : ''}`}>
+                        <Frame className={stylesLayout.frame} />
+                        {isCreations ? (
+                            <Outlet />
+                        ) : (
+                            <SmoothTransition>
+                                <Outlet />
+                            </SmoothTransition>
+                        )}
+                    </div>
+                    {(isLarge || isMedium) && !isBeginning ? null : <Profile />}
+                    {isLarge || isMedium ? <MobileBoxButton /> : null}
+                </>
+            )}
         </>
     );
 };
 
-export default Layout;
+export { Layout };

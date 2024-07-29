@@ -1,22 +1,29 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
-import useTelegramApi from './useTelegramApi';
-import { FormSubmit } from '../interfaces/interface.form';
+import { UseFormRegister, FieldValues, FieldErrors, useForm } from 'react-hook-form';
+import { UseTelegramApi, useTelegramApi } from './useTelegramApi';
 
-const useFormSubmit = (message: string): FormSubmit => {
-    const [successfully, loading, error, setSuccessfully, setLoading, setError, sendMessage] = useTelegramApi();
+interface UseFormSubmit {
+    errorForm: FieldErrors<FieldValues>;
+    handleSubmitForm: (e?: React.BaseSyntheticEvent) => Promise<void>;
+    isValidForm: boolean;
+    registerForm: UseFormRegister<FieldValues>;
+    errorTelegram: boolean;
+    loadingTelegram: boolean;
+    successfullyTelegram: boolean;
+    setErrorTelegram: React.Dispatch<React.SetStateAction<boolean>>;
+    setLoadingTelegram: React.Dispatch<React.SetStateAction<boolean>>;
+    setSuccessfullyTelegram: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-    const {
-        formState: { errors, isValid },
-        handleSubmit,
-        register,
-        reset,
-    } = useForm({
-        mode: 'onChange',
-    });
+const useFormSubmit = (message: string): UseFormSubmit => {
+    const telegramMessage: UseTelegramApi = useTelegramApi();
+    const form = useForm({ mode: 'onChange' });
+
+    const { send } = telegramMessage;
+    const { reset, handleSubmit } = form;
 
     const onSubmit = (data: Record<string, string>): void => {
-        sendMessage(data, message);
+        send(data, message);
         reset();
     };
 
@@ -29,24 +36,21 @@ const useFormSubmit = (message: string): FormSubmit => {
 
     React.useEffect(() => {
         window.addEventListener('keydown', handleKeyPress);
-
-        return () => {
-            window.removeEventListener('keydown', handleKeyPress);
-        };
+        return () => window.removeEventListener('keydown', handleKeyPress);
     }, []);
 
     return {
-        error,
-        errors,
-        isValid,
-        loading,
-        register,
-        successfully,
-        setError,
-        setLoading,
-        setSuccessfully,
-        handleSubmit: handleSubmit(onSubmit),
+        errorForm: form.formState.errors,
+        handleSubmitForm: form.handleSubmit(onSubmit),
+        isValidForm: form.formState.isValid,
+        registerForm: form.register,
+        errorTelegram: telegramMessage.error,
+        loadingTelegram: telegramMessage.loading,
+        setErrorTelegram: telegramMessage.setError,
+        setLoadingTelegram: telegramMessage.setLoading,
+        setSuccessfullyTelegram: telegramMessage.setSuccessfully,
+        successfullyTelegram: telegramMessage.successfully,
     };
 };
 
-export default useFormSubmit;
+export { useFormSubmit, UseFormSubmit };

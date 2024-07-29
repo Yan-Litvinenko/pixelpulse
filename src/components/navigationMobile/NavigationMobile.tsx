@@ -1,32 +1,24 @@
-import React, { useContext } from 'react';
-import Cross from '../cross/Cross';
-import Heading from '../heading/Heading';
-import Setting from '../setting/Setting';
-import HeaderStatistics from '../headerStatistics/HeaderStatistics';
-import Navigation from '../navigation/Navigation';
-import MobileBoxButton from '../mobileBoxButton/MobileBoxButton';
-import { IAppContext } from '../../interfaces/interface';
-import { ContextApp } from '../app/App';
+import React from 'react';
+import { Cross } from '../cross/Cross';
+import { HeaderStatistics } from '../headerStatistics/HeaderStatistics';
+import { MobileBoxButton } from '../mobileBoxButton/MobileBoxButton';
+import { Navigation } from '../navigation/Navigation';
+import { Setting } from '../setting/Setting';
+import { useAppContext } from '../../hooks/useAppContext';
 import styles from './NavigationMobile.module.scss';
 
 const NavigationMobile = (): React.JSX.Element => {
-    const contextApp = useContext<IAppContext | undefined>(ContextApp);
+    const { navigationMobile } = useAppContext();
 
     return (
         <div className={styles.box}>
             <div className={styles.box__inner}>
                 <div className={styles.box__header}>
-                    <Heading className={styles.header} level={'2'} textContent={'Navigation'} />
-                    <Cross
-                        setModalState={() => {
-                            contextApp?.setNavigationMobile(false);
-                            contextApp?.handleSoundModal();
-                        }}
-                        scrollStatus="on"
-                    />
+                    <h2 className={styles.header}>Navigation</h2>
+                    <Cross handler={navigationMobile.closeModal} />
                 </div>
-                <HeaderStatistics className={styles} />
-                <Navigation className={styles} />
+                <HeaderStatistics styles={styles} />
+                <Navigation styles={styles} />
                 <Setting className={styles} />
             </div>
             <MobileBoxButton />
@@ -34,4 +26,4 @@ const NavigationMobile = (): React.JSX.Element => {
     );
 };
 
-export default NavigationMobile;
+export { NavigationMobile };

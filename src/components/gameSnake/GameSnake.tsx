@@ -1,31 +1,30 @@
 import React from 'react';
-import { ContextApp } from '../app/App';
+import { Joystick } from '../joystick/Jouystick';
 import { Link } from 'react-router-dom';
-import useLocalStorage from '../../hooks/useLocalStorage';
-import Snake from '../../classes/Snake';
-import snakeTheme from '../../assets/audio/snake.mp3';
+import { Snake } from '../../classes/Snake';
+import { useAppContext } from '../../hooks/useAppContext';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 import mainTheme from '../../assets/audio/main-theme.mp3';
-import Joystick from '../joystick/Jouystick';
+import snakeTheme from '../../assets/audio/snake.mp3';
 import styles from './GameSnake.module.scss';
 
 const GameSnake = (): React.JSX.Element => {
-    const contextApp = React.useContext(ContextApp);
+    const { mainMusic } = useAppContext();
+
     const [score, setScore] = React.useState(0);
     const [bestScore, setBestScore] = useLocalStorage(0, 'best-score');
     const snake = React.useRef<null | Snake>(null);
     const canvas = React.useRef<HTMLCanvasElement | null>(null);
 
     React.useEffect(() => {
-        contextApp?.mainMusic.selectTrack(snakeTheme);
+        mainMusic.selectTrack(snakeTheme);
 
         if (canvas.current) {
             snake.current = new Snake(canvas.current);
         }
 
         const eventKeyboard = (event: KeyboardEvent): void => {
-            if (snake.current) {
-                snake.current.eventKeyboard(event);
-            }
+            if (snake.current) snake.current.eventKeyboard(event);
         };
 
         window.addEventListener('keydown', eventKeyboard);
@@ -45,7 +44,7 @@ const GameSnake = (): React.JSX.Element => {
             window.removeEventListener('keydown', eventKeyboard);
             clearInterval(snake.current?.intervalId!);
 
-            contextApp?.mainMusic.selectTrack(mainTheme);
+            mainMusic.selectTrack(mainTheme);
         };
     }, []);
 
@@ -72,4 +71,4 @@ const GameSnake = (): React.JSX.Element => {
     );
 };
 
-export default GameSnake;
+export { GameSnake };

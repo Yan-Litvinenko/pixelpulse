@@ -27,6 +27,22 @@ module.exports = {
             util: false,
         },
     },
+    devServer: {
+        static: {
+            directory: path.resolve(__dirname, 'dist'),
+        },
+        historyApiFallback: true,
+        proxy: [
+            {
+                context: ['/'],
+                target: 'http://localhost:3000',
+                secure: false,
+            },
+        ],
+        port: 8080,
+        open: true,
+        hot: true,
+    },
     module: {
         rules: [
             {

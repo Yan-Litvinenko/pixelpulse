@@ -1,44 +1,30 @@
 import React from 'react';
-import { UseFormRegister, FieldValues } from 'react-hook-form';
-import Heading from '../heading/Heading';
 import { nanoid } from 'nanoid';
 import { Rarity } from '../../interfaces/interface.achievements';
+import { ISelectChallenge } from '../../interfaces/interface.component';
 import styles from './SelectChallenge.module.scss';
-
-interface ISelectChallenge {
-    register: UseFormRegister<FieldValues>;
-    selectValue: Rarity;
-    setSelectValue: React.Dispatch<React.SetStateAction<Rarity>>;
-}
 
 const rarity: Rarity[] = ['unusual', 'rare', 'epic', 'legendary'];
 
 const SelectChallenge = (props: ISelectChallenge): React.JSX.Element => {
+    const { setSelectValue, register, selectValue } = props;
     const [isOpen, setIsOpen] = React.useState<boolean>(false);
 
-    const handleSelectClick = (): void => setIsOpen(!isOpen);
-    const handleOptionClick = (value: Rarity) => {
-        props.setSelectValue(value);
+    const selectClick = (): void => setIsOpen(!isOpen);
+    const optionClick = (value: Rarity): void => {
+        setSelectValue(value);
         setIsOpen(false);
-        props.register('rarity', { value: value });
-    };
-
-    const selectClassName = (initClass: string): string => {
-        if (isOpen) {
-            return `${initClass} ${styles.select_deactive}`;
-        }
-
-        return initClass;
+        register('rarity', { value: value });
     };
 
     return (
         <>
             <div>
-                <h3 className={styles.title} onClick={handleSelectClick}>
+                <h3 className={styles.title} onClick={selectClick}>
                     achievement rarity
                 </h3>
-                <div className={selectClassName(styles.select)} onClick={handleSelectClick}>
-                    <Heading className="" level="4" textContent={props.selectValue} />
+                <div className={`${styles.select} ${isOpen ? styles.select_deactive : ''}`} onClick={selectClick}>
+                    <h4>{selectValue}</h4>
                     {isOpen ? (
                         <div className={styles.select__content}>
                             {isOpen &&
@@ -46,7 +32,7 @@ const SelectChallenge = (props: ISelectChallenge): React.JSX.Element => {
                                     <div
                                         key={nanoid()}
                                         className={styles.select__option}
-                                        onClick={() => handleOptionClick(option as Rarity)}
+                                        onClick={() => optionClick(option as Rarity)}
                                     >
                                         {option}
                                     </div>
@@ -59,4 +45,4 @@ const SelectChallenge = (props: ISelectChallenge): React.JSX.Element => {
     );
 };
 
-export default SelectChallenge;
+export { SelectChallenge };
