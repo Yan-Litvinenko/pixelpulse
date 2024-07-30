@@ -1,10 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { IErrorPage } from '../../interfaces/interface.component';
 import styles from './ErrorPage.module.scss';
 
-const ErrorBoundaryPage = (props: IErrorPage): React.JSX.Element => {
-    const { status, detail } = props;
+type Reset = {
+    reset: () => void;
+};
+
+const ErrorBoundaryPage = (props: IErrorPage & Reset): React.JSX.Element => {
+    const { status, detail, reset } = props;
     return (
         <>
             <div className={styles.wrapper_boundary}>
@@ -15,14 +18,15 @@ const ErrorBoundaryPage = (props: IErrorPage): React.JSX.Element => {
                     <p className={`${styles.description_boundary} ${styles.glitch}`} data-text={detail}>
                         {detail}
                     </p>
-                    <Link className={styles.home} to="/beginning">
-                        return home
+
+                    <button className={styles.home} onClick={reset}>
+                        reset error
                         <span className={`${styles.home__line} ${styles.top_left}`}></span>
                         <span className={`${styles.home__line} ${styles.top_right}`}></span>
                         <span className={`${styles.home__line} ${styles.bottom_left}`}></span>
                         <span className={`${styles.home__line} ${styles.bottom_right}`}></span>
                         <span className={styles.slick}></span>
-                    </Link>
+                    </button>
                 </div>
             </div>
         </>

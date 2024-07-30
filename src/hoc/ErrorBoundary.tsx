@@ -34,7 +34,11 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
         if (this.state.hasError) {
             return (
                 <>
-                    <ErrorBoundaryPage status={'app error'} detail={'An unknown error has occurred'} />
+                    <ErrorBoundaryPage
+                        status={'app error'}
+                        detail={'An unknown error has occurred'}
+                        reset={this.handleReload}
+                    />
                 </>
             );
         }

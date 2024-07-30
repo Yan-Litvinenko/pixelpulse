@@ -101,7 +101,7 @@
     }
 
     .achievements {
-        padding: 0rem;
+        padding: 2.5rem 0 0;
 
         *::-webkit-scrollbar {
             background-color: transparent;
@@ -136,6 +136,8 @@
     }
 
     .achievements {
+        padding-top: 1.5rem;
+
         &__content {
             row-gap: 1rem;
         }
