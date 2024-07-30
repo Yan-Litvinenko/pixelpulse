@@ -10,7 +10,7 @@ const CreationsAbout = (props: ICreationsBlock): React.JSX.Element => {
     const { projectName } = useParams();
     const { projectDefault, projects } = props;
 
-    const texts: string[] = projectName ? projectDefault.about : projects[targetProject].about || [];
+    const texts: string[] = !projectName ? projectDefault.about : projects[targetProject].about || [];
 
     return (
         <div className={styles.about}>
