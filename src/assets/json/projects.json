@@ -1,10 +1,11 @@
 [
     {
-        "name": "coffee-house",
-        "brief": "popular destination for coffee lovers",
-        "technologies": ["github", "figma", "gulp", "sass", "js"],
         "about": ["Coffee House is a two-page adaptive project with attractive visual effects."],
-        "images": ["CFHS_enjoy.png", "CFHS_about-1.jpg", "CFHS_mobile-app.png", "CFHS_about-2.jpg"],
-        "link": "https://darth-vaderx.github.io/coffee-house/"
+        "backgroundColor": "#E1D4C9",
+        "brief": "popular destination for coffee lovers",
+        "images": ["CFHS_about-1.jpg", "CFHS_about-2.jpg", "CFHS_mobile-app.png"],
+        "link": "https://darth-vaderx.github.io/coffee-house/",
+        "name": "coffee-house",
+        "technologies": ["github", "figma", "gulp", "sass", "js"]
     }
 ]
