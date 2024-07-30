@@ -120,10 +120,10 @@ interface ISettingElement {
     textContent: string;
 }
 
-interface IErrorPage {
+type IErrorPage = {
     status: string;
     detail: string;
-}
+};
 
 export {
     IAboutElement,

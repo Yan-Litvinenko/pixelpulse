@@ -19,7 +19,7 @@ const CreationsTechnologies = (props: ICreationsBlock): React.JSX.Element => {
             </h3>
             <div>
                 <CreationsTechnologiesContent
-                    names={projectName ? projectDefault.technologies : projects[targetProject].technologies}
+                    names={!projectName ? projectDefault.technologies : projects[targetProject].technologies}
                 />
             </div>
         </div>

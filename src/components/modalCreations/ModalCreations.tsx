@@ -1,9 +1,10 @@
 import React from 'react';
-import { useSlider } from '../../hooks/useSlider';
+import { nanoid } from 'nanoid';
 import { useAppContext } from '../../hooks/useAppContext';
-import vectorImageRight from '../../assets/images/vector-right.svg';
-import vectorImageLeft from '../../assets/images/vector-left.svg';
+import { useSlider } from '../../hooks/useSlider';
 import projects from '../../assets/json/projects.json';
+import vectorImageLeft from '../../assets/images/vector-left.svg';
+import vectorImageRight from '../../assets/images/vector-right.svg';
 import styles from './ModalCreations.module.scss';
 
 const ModalCreations = (): React.JSX.Element => {
@@ -20,6 +21,7 @@ const ModalCreations = (): React.JSX.Element => {
     };
 
     React.useEffect(() => {
+        document.documentElement.style.setProperty('--bg-creations-modal', projects[targetProject].backgroundColor);
         window.addEventListener('keydown', enter);
 
         return () => window.removeEventListener('keydown', enter);
@@ -43,21 +45,14 @@ const ModalCreations = (): React.JSX.Element => {
                     />
                     <div className={styles.modal__content}>
                         <div className={styles.modal__content_inner} ref={slider}>
-                            {projectImages.map((imageName, index) => {
+                            {projectImages.map((imageName) => {
                                 return (
-                                    <div className={styles.modal__item}>
+                                    <div className={styles.modal__item} key={nanoid()}>
                                         <img
                                             alt={imageName}
                                             className={styles.modal__item_img}
                                             draggable="false"
-                                            key={index}
-                                            src={require('../../assets/images/' + imageName)}
-                                        />
-                                        <img
-                                            alt={imageName}
-                                            className={styles.modal__item_bg}
-                                            draggable="false"
-                                            key={index}
+                                            key={nanoid()}
                                             src={require('../../assets/images/' + imageName)}
                                         />
                                     </div>

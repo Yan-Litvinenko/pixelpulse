@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -42,6 +43,7 @@ module.exports = {
         port: 8080,
         open: true,
         hot: true,
+        historyApiFallback: true,
     },
     module: {
         rules: [
@@ -139,6 +141,7 @@ function addPlugins() {
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
         new DotenvWebpackPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
     ];
 
     if (isDev) {

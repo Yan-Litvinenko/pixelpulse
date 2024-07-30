@@ -18,13 +18,15 @@ const CreationsDetails = (props: ICreationsBlock): React.JSX.Element => {
             </h3>
             <h4 className={styles.details__subtitle}>project name</h4>
             <span className={styles.details__text}>
-                {projectName ? projectDefault.name : projects[targetProject].name}
+                {!projectName ? projectDefault.name : projects[targetProject].name}
             </span>
 
             <div className={styles.decorative_line}></div>
 
             <h4 className={styles.details__subtitle}>brief</h4>
-            <p className={styles.details__text}>{projectName ? projectDefault.brief : projects[targetProject].brief}</p>
+            <p className={styles.details__text}>
+                {!projectName ? projectDefault.brief : projects[targetProject].brief}
+            </p>
         </div>
     );
 };

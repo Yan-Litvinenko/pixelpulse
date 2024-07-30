@@ -9,7 +9,7 @@ const CreationsXplorer = (props: ICreationsXplorer): React.JSX.Element => {
     const { targetProject } = useAppContext();
     const { projectName } = useParams();
     const { projects } = props;
-    const path: string = `location: /projects${!projectName ? '/' + projects[targetProject].name : ''}`;
+    const path: string = `location: /projects${projectName ? '/' + projects[targetProject].name : ''}`;
 
     return (
         <div className={styles.xplorer}>

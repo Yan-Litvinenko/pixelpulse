@@ -4,7 +4,7 @@
     "main": "index.js",
     "name": "pixelpulse",
     "type": "commonjs",
-    "version": "1.5.2",
+    "version": "1.8.3",
     "scripts": {
         "build": "cross-env NODE_ENV=production webpack --mode production",
         "start": "cross-env NODE_ENV=development webpack serve --mode development --open",

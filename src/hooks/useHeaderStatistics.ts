@@ -63,7 +63,9 @@ const useHeaderStatistic = (): IUseHeaderStatistic => {
             const updateStatistic: IAddCoinResult | false = await response.json();
 
             if (updateStatistic) {
-                successfulCompletion(updateStatistic.level, updateStatistic.coins, updateStatistic.addStatus);
+                setTimeout(() => {
+                    successfulCompletion(updateStatistic.level, updateStatistic.coins, updateStatistic.addStatus);
+                }, 500);
             }
         } catch (error) {
             errorResponse();
