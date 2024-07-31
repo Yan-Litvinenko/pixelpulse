@@ -7,7 +7,7 @@ import styles from './LogsUpdate.module.scss';
 const update: Record<string, string>[] = [
     {
         title: 'project update',
-        text: 'I continue to actively work to improve quality and expand capabilities. I constantly working to improve code readability/structure/performance.',
+        text: 'I continue to actively work to improve quality and expand capabilities. I constantly working to improve code readability, structure and performance.',
     },
     {
         title: 'Challenges',

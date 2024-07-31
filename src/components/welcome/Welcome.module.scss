@@ -135,10 +135,6 @@
             text-align: center;
             margin-bottom: 1.875rem;
         }
-
-        &__btn {
-            max-width: 100%;
-        }
     }
 }
 
@@ -146,6 +142,10 @@
     .welcome {
         &__content {
             @include flex-container(column);
+        }
+
+        &__title {
+            font-size: 1.5rem;
         }
 
         &__text,
@@ -158,6 +158,7 @@
         &__btn {
             font-size: 1.25rem;
             margin-top: 0rem;
+            max-width: 100%;
         }
     }
 }
