@@ -1,6 +1,6 @@
 import React from 'react';
 import { Frame } from '../frame/Frame';
-import { GlitchImage } from '../glitchImage/GlitchImage';
+import GlitchImage from '../glitchImage/GlitchImage';
 import beginningJpg from '../../assets/images/beginning.jpg';
 import styles from './Beginning.module.scss';
 
@@ -17,15 +17,15 @@ const Beginning = (): React.JSX.Element => {
                             </h1>
                             <h2 className={styles.beginning__subtitle}>Artwork generated with midjourney</h2>
                         </div>
-                        <picture className={styles.beginning__background_box}>
+                        <div className={styles.beginning__background_box}>
                             <GlitchImage
                                 className={styles.beginning__background}
                                 imageUrl={beginningJpg}
-                                minDelay={20000}
-                                maxDelay={40000}
+                                minDelay={10000}
+                                maxDelay={25000}
                             />
                             <Frame className={styles.beginning__background_frame} />
-                        </picture>
+                        </div>
                     </>
                 </div>
             </main>

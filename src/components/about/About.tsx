@@ -2,8 +2,7 @@ import React from 'react';
 import { AboutElement } from '../aboutElement/AboutElement';
 import { Frame } from '../frame/Frame';
 import { useAppContext } from '../../hooks/useAppContext';
-import humanAvif from '../../assets/images/human.avif';
-import humanWebp from '../../assets/images/human.webp';
+import GlitchImage from '../glitchImage/GlitchImage';
 import humanJpg from '../../assets/images/human.jpg';
 import styles from './About.module.scss';
 
@@ -37,13 +36,15 @@ const About = (): React.JSX.Element => {
                 </div>
 
                 {isMedium ? null : (
-                    <picture className={styles.box_image}>
+                    <div className={styles.box_image}>
                         <Frame className={styles.frame} />
-
-                        <source srcSet={humanAvif} />
-                        <source srcSet={humanWebp} />
-                        <img src={humanJpg} alt="human" className={styles.about__img} />
-                    </picture>
+                        <GlitchImage
+                            className={styles.about__img}
+                            imageUrl={humanJpg}
+                            maxDelay={25000}
+                            minDelay={10000}
+                        />
+                    </div>
                 )}
             </div>
         </main>
