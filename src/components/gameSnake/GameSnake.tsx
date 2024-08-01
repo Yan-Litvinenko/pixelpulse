@@ -12,10 +12,10 @@ const GameSnake = (): React.JSX.Element => {
             <div className={styles.wrapper}>
                 <Joystick
                     className={styles.joystick}
-                    down={() => snake?.setVectorSnake(0, 1, 'y')}
-                    left={() => snake?.setVectorSnake(-1, 0, 'x')}
-                    right={() => snake?.setVectorSnake(1, 0, 'x')}
-                    up={() => snake?.setVectorSnake(0, -1, 'y')}
+                    down={() => snake.current?.setVectorSnake(0, 1, 'y')}
+                    left={() => snake.current?.setVectorSnake(-1, 0, 'x')}
+                    right={() => snake.current?.setVectorSnake(1, 0, 'x')}
+                    up={() => snake.current?.setVectorSnake(0, -1, 'y')}
                 />
                 <div className={styles.score}>
                     <span>score:{score}</span>

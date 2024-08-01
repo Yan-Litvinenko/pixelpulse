@@ -13,7 +13,6 @@ import { NavigationMobile } from '../navigationMobile/NavigationMobile';
 import { settings } from '../../classes/Settings';
 import { useAudioPlayer } from '../../hooks/useAudioPlayer';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
-import { useLocation } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import { useModal } from '../../hooks/useModal';
 import { wrapperClassName } from '../../utils/wrapperClassName';
@@ -29,8 +28,6 @@ const clickSound: HTMLAudioElement = new Audio(clickSoundEffect);
 const App = (): React.JSX.Element => {
     const isMedium: boolean = useMediaQuery({ maxWidth: 768 });
     const isLarge: boolean = useMediaQuery({ maxWidth: 1200 });
-
-    const location = useLocation();
 
     const headerStatistic: IUseHeaderStatistic = useHeaderStatistic();
     const achievements: IUseAchievements = useAchievements(headerStatistic.level);
@@ -55,7 +52,7 @@ const App = (): React.JSX.Element => {
 
     settings.init();
 
-    React.useEffect(() => mainMusic.selectTrack(mainTheme), [location]);
+    React.useEffect(() => mainMusic.selectTrack(mainTheme), []);
 
     return (
         <ErrorBoundary>

@@ -8,7 +8,7 @@ import snakeTheme from '../assets/audio/snake.mp3';
 interface UseSnake {
     score: number;
     bestScore: number;
-    snake: Snake | null;
+    snake: React.MutableRefObject<Snake | null>;
     canvas: React.MutableRefObject<HTMLCanvasElement | null>;
 }
 
@@ -47,12 +47,12 @@ const useSnake = (): UseSnake => {
             window.removeEventListener('keydown', eventKeyboard);
             mainMusic.selectTrack(mainTheme);
         };
-    }, []);
+    }, [snake.current, canvas.current]);
 
     return {
         score,
         bestScore,
-        snake: snake.current,
+        snake,
         canvas,
     };
 };

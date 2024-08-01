@@ -68,7 +68,9 @@ const useAudioPlayer = (initStatus: boolean): UseAudioPlayer => {
         setIsPlaying(false);
     };
 
-    const selectTrack = (src: string): void => setAudioSrc(src);
+    const selectTrack = (src: string): void => {
+        setAudioSrc(src);
+    };
 
     React.useEffect(() => {
         if (initStatus) {
