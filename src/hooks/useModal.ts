@@ -1,6 +1,7 @@
 import React from 'react';
-import { useMediaQuery } from 'react-responsive';
 import { scroll } from '../classes/Scroll';
+import { Store } from '../store/store';
+import { useSelector } from 'react-redux';
 import soundEffect from '../assets/audio/modal.mp3';
 
 interface IUseModal {
@@ -19,13 +20,13 @@ const closeSoundEffect = (soundsStatus: boolean): Promise<void> | undefined =>
     soundsStatus ? modalSound.play() : undefined;
 
 const useModal = (soundsStatus: boolean): IUseModal => {
-    const isLarge: boolean = useMediaQuery({ maxWidth: 1200 });
+    const { isMedium } = useSelector((state: Store) => state.mediaQuery);
     const [statusModal, setStatusModal] = React.useState<boolean>(false);
     const [delay, setDelay] = React.useState<boolean>(false);
     const statusForm = React.useRef<boolean>(false);
 
     const closeModal = (): void => {
-        if ((!delay && !isLarge) || statusForm.current) return;
+        if ((!delay && !isMedium) || statusForm.current) return;
 
         window.removeEventListener('keydown', closeModalByKey);
         closeSoundEffect(soundsStatus);
@@ -39,7 +40,7 @@ const useModal = (soundsStatus: boolean): IUseModal => {
     }
 
     React.useEffect(() => {
-        if (statusModal && !isLarge) window.addEventListener('keydown', closeModalByKey);
+        if (statusModal && !isMedium) window.addEventListener('keydown', closeModalByKey);
     }, [delay, statusModal]);
 
     const openModal = (): void => {

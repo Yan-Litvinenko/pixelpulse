@@ -3,18 +3,21 @@ import { Frame } from '../frame/Frame';
 import { Link } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import { ProfileElement } from '../profileElement/ProfileElement';
+import { Store } from '../../store/store';
 import { useAppContext } from '../../hooks/useAppContext';
+import { useSelector } from 'react-redux';
 import GlitchImage from '../glitchImage/GlitchImage';
 import avatar from '../../assets/images/avatar.png';
 import profileItems from '../../assets/json/profile.json';
 import styles from './Profile.module.scss';
 
 const Profile = (): React.JSX.Element => {
-    const { handleSoundClick, isMedium } = useAppContext();
+    const { handleSoundClick } = useAppContext();
+    const { isSmall } = useSelector((state: Store) => state.mediaQuery);
 
     return (
         <aside className={styles.profile}>
-            {isMedium ? null : (
+            {isSmall ? null : (
                 <Link to="about" className={styles.avatar} onClick={handleSoundClick}>
                     <Frame className={styles.avatar__frame} />
                     <GlitchImage className={styles.canvas} imageUrl={avatar} minDelay={20000} maxDelay={40000} />

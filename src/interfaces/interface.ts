@@ -12,8 +12,6 @@ type IContextApp = {
     creations: IUseModal;
     credits: IUseModal;
     headerStatistic: IUseHeaderStatistic;
-    isLarge: boolean;
-    isMedium: boolean;
     mainMusic: UseAudioPlayer;
     music: boolean;
     navigationMobile: IUseModal;

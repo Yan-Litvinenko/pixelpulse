@@ -3,17 +3,21 @@ import { Hexagon } from '../svgIcon/SvgIcon';
 import { INavigationElement } from '../../interfaces/interface.component';
 import { NavLink } from 'react-router-dom';
 import { scroll } from '../../classes/Scroll';
+import { Store } from '../../store/store';
 import { useAppContext } from '../../hooks/useAppContext';
+import { useSelector } from 'react-redux';
 import styles from './NavigationElement.module.scss';
 
 const NavigationElement = (props: INavigationElement): React.JSX.Element => {
-    const { isLarge, isMedium, handleSoundClick, navigationMobile } = useAppContext();
+    const { handleSoundClick, navigationMobile } = useAppContext();
+    const { isSmall, isMedium } = useSelector((state: Store) => state.mediaQuery);
+
     const { pageName } = props;
 
     const switchPage = (): void => {
         navigationMobile.closeModal();
 
-        if (!isLarge && !isMedium) {
+        if (!isMedium && !isSmall) {
             handleSoundClick();
         }
 

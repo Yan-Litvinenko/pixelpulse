@@ -7,12 +7,15 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { Profile } from '../profile/Profile';
 import { Quest } from '../quest/Quest';
 import { SmoothTransition } from '../../hoc/SmoothTransition';
+import { Store } from '../../store/store';
 import { useAppContext } from '../../hooks/useAppContext';
+import { useSelector } from 'react-redux';
 import { useTitle } from '../../hooks/useTitle';
 import stylesLayout from './Layout.module.scss';
 
 const Layout = (): React.JSX.Element => {
-    const { isMedium, isLarge, styles } = useAppContext();
+    const { isSmall, isMedium } = useSelector((state: Store) => state.mediaQuery);
+    const { styles } = useAppContext();
     const location = useLocation();
     const isBeginning: boolean = location.pathname === '/beginning';
     const notTransition: boolean = location.state?.notTransition;
@@ -39,8 +42,8 @@ const Layout = (): React.JSX.Element => {
                             </SmoothTransition>
                         )}
                     </div>
-                    {(isLarge || isMedium) && !isBeginning ? null : <Profile />}
-                    {isLarge || isMedium ? <MobileBoxButton /> : null}
+                    {(isMedium || isSmall) && !isBeginning ? null : <Profile />}
+                    {isMedium || isSmall ? <MobileBoxButton /> : null}
                 </>
             )}
         </>

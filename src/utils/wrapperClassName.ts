@@ -1,24 +1,26 @@
+import { Store } from '../store/store';
+import { useSelector } from 'react-redux';
+
 interface WrapperClassName {
     availability: boolean;
     challenge: boolean;
     creations: boolean;
     credits: boolean;
-    isLarge: boolean;
-    isMedium: boolean;
     setting: boolean;
     social: boolean;
     styles: Record<string, string>;
 }
 
 const wrapperClassName = (props: WrapperClassName): string => {
+    const { isSmall, isMedium } = useSelector((state: Store) => state.mediaQuery);
     const { availability, creations, credits, challenge, setting, social } = props;
-    const { isLarge, isMedium, styles } = props;
+    const { styles } = props;
 
     const classes: string[] = [styles.wrapper];
     const modalWithCenterlEffect: boolean[] = [creations, setting];
     const modalWithLeftEffect: boolean[] = [availability, social, credits, challenge];
 
-    if (!isMedium && !isLarge) {
+    if (!isMedium && !isSmall) {
         const hasModalLeftEffect: boolean = modalWithLeftEffect.some((state) => state);
         const hasModalCenterEffect: boolean = modalWithCenterlEffect.some((state) => state);
 

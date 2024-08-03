@@ -1,13 +1,14 @@
 import React from 'react';
 import { AboutElement } from '../aboutElement/AboutElement';
 import { Frame } from '../frame/Frame';
-import { useAppContext } from '../../hooks/useAppContext';
+import { Store } from '../../store/store';
+import { useSelector } from 'react-redux';
 import GlitchImage from '../glitchImage/GlitchImage';
 import humanJpg from '../../assets/images/human.jpg';
 import styles from './About.module.scss';
 
 const About = (): React.JSX.Element => {
-    const { isMedium } = useAppContext();
+    const { isSmall } = useSelector((state: Store) => state.mediaQuery);
 
     return (
         <main className={styles.about}>
@@ -35,7 +36,7 @@ const About = (): React.JSX.Element => {
                     />
                 </div>
 
-                {isMedium ? null : (
+                {isSmall ? null : (
                     <div className={styles.box_image}>
                         <Frame className={styles.frame} />
                         <GlitchImage

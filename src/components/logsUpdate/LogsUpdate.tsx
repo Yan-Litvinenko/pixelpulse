@@ -1,7 +1,9 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
+import { Store } from '../../store/store';
 import { useAppContext } from '../../hooks/useAppContext';
 import { useLogsUpdate } from '../../hooks/useLogsUpdate';
+import { useSelector } from 'react-redux';
 import styles from './LogsUpdate.module.scss';
 
 const update: Record<string, string>[] = [
@@ -24,7 +26,8 @@ const update: Record<string, string>[] = [
 ];
 
 const LogsUpdate = (): React.JSX.Element => {
-    const { handleSoundClick, isLarge } = useAppContext();
+    const { handleSoundClick } = useAppContext();
+    const { isMedium } = useSelector((state: Store) => state.mediaQuery);
     const [expandStates, clippedIndexes, setExpandStates, setRef] = useLogsUpdate(update, styles.element__text_clip);
 
     const detail = (index: number): void => {
@@ -52,7 +55,7 @@ const LogsUpdate = (): React.JSX.Element => {
                             {element.text}
                         </p>
 
-                        {isLarge ? (
+                        {isMedium ? (
                             isClipped ? (
                                 <button className={styles.element__expend} type="button" onClick={() => detail(index)}>
                                     {expandStates[index] ? '-collapse' : '+expand'}

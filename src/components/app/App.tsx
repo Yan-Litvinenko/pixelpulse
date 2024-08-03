@@ -11,10 +11,12 @@ import { ModalSetting } from '../modalSetting/ModalSetting';
 import { ModalSocial } from '../modalSocial/ModalSocial';
 import { NavigationMobile } from '../navigationMobile/NavigationMobile';
 import { settings } from '../../classes/Settings';
+import { Store } from '../../store/store';
 import { useAudioPlayer } from '../../hooks/useAudioPlayer';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
-import { useMediaQuery } from 'react-responsive';
 import { useModal } from '../../hooks/useModal';
+import { useMedia } from '../../hooks/useMedia';
+import { useSelector } from 'react-redux';
 import { wrapperClassName } from '../../utils/wrapperClassName';
 import ErrorBoundary from '../../hoc/ErrorBoundary';
 import clickSoundEffect from '../../assets/audio/click.ogg';
@@ -26,8 +28,8 @@ const TRANSITION_TIME: number = 1500;
 const clickSound: HTMLAudioElement = new Audio(clickSoundEffect);
 
 const App = (): React.JSX.Element => {
-    const isMedium: boolean = useMediaQuery({ maxWidth: 768 });
-    const isLarge: boolean = useMediaQuery({ maxWidth: 1200 });
+    const { isSmall, isMedium } = useSelector((state: Store) => state.mediaQuery);
+    useMedia();
 
     const headerStatistic: IUseHeaderStatistic = useHeaderStatistic();
     const achievements: IUseAchievements = useAchievements(headerStatistic.level);
@@ -71,8 +73,6 @@ const App = (): React.JSX.Element => {
                     creations,
                     credits,
                     headerStatistic,
-                    isLarge,
-                    isMedium,
                     mainMusic,
                     music,
                     navigationMobile,
@@ -93,8 +93,6 @@ const App = (): React.JSX.Element => {
                         challenge: challenge.statusModal,
                         setting: setting.statusModal,
                         creations: creations.statusModal,
-                        isMedium,
-                        isLarge,
                         styles,
                     })}
                 >
@@ -105,7 +103,7 @@ const App = (): React.JSX.Element => {
                 {challenge.statusModal ? <ModalChallenge /> : null}
                 {creations.statusModal ? <ModalCreations /> : null}
                 {credits.statusModal ? <ModalCredits /> : null}
-                {navigationMobile.statusModal && (isMedium || isLarge) ? <NavigationMobile /> : null}
+                {navigationMobile.statusModal && (isMedium || isSmall) ? <NavigationMobile /> : null}
                 {setting.statusModal ? <ModalSetting /> : null}
                 {social.statusModal ? <ModalSocial /> : null}
             </ContextApp.Provider>

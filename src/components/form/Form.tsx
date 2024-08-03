@@ -1,19 +1,20 @@
 import React from 'react';
-import { useAppContext } from '../../hooks/useAppContext';
 import { ClipPathBorder } from '../clipPathBorder/ClipPathBorder';
 import { FormLabel } from '../formLabel/FormLabel';
-import { ModalBackground } from '../modalBackground/ModalBackground';
 import { IForm } from '../../interfaces/interface.form';
+import { ModalBackground } from '../modalBackground/ModalBackground';
+import { Store } from '../../store/store';
+import { useSelector } from 'react-redux';
 import styles from './Form.module.scss';
 
 const Form = (props: IForm): React.JSX.Element => {
-    const { isLarge } = useAppContext();
+    const { isMedium } = useSelector((state: Store) => state.mediaQuery);
     const { errors, register } = props;
 
     return (
         <div className={styles.form}>
             <FormLabel
-                autofocus={!isLarge ? true : false}
+                autofocus={!isMedium ? true : false}
                 child={'input'}
                 errors={errors}
                 maxLength={20}
