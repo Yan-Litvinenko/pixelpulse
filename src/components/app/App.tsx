@@ -40,16 +40,11 @@ const App = (): React.JSX.Element => {
     const [music, setMusic] = useLocalStorage<boolean>(true, 'music');
     const [sounds, setSounds] = useLocalStorage<boolean>(true, 'sounds');
 
-    const [projectImages, setProjectImages] = React.useState<string[]>([]);
-    const [targetProject, setTargetProject] = React.useState<number>(0);
-    const [targetImage, setTargetImage] = React.useState<number>(0);
-
     const mainMusic = useAudioPlayer(music);
 
     const handleSoundClick = (): Promise<void> | null => (sounds ? clickSound.play() : null);
 
     settingsColor.init();
-
     useMedia();
     useModalCloseByKey();
 
@@ -61,18 +56,12 @@ const App = (): React.JSX.Element => {
                 value={{
                     handleSoundClick,
                     setMusic,
-                    setProjectImages,
                     setSounds,
-                    setTargetImage,
-                    setTargetProject,
                     achievements,
                     headerStatistic,
                     mainMusic,
                     music,
-                    projectImages,
                     sounds,
-                    targetImage,
-                    targetProject,
                     styles,
                 }}
             >

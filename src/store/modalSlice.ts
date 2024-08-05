@@ -11,7 +11,7 @@ type SetValueAndKeyReduce = {
 };
 type SetKeyReduce = Pick<SetValueAndKeyReduce, 'key'>;
 type ModalSlice = {
-    TRANSITION_TIME: number;
+    readonly TRANSITION_TIME: number;
     stateModal: Record<Modal, boolean>;
     stateForm: Record<Modal, boolean>;
     delay: Record<Modal, boolean>;

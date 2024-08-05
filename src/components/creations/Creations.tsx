@@ -1,5 +1,4 @@
 import React from 'react';
-import projects from '../../assets/json/projects.json';
 import styles from './Creations.module.scss';
 import { CreationsAbout } from '../creationsAbout/CreationsAbout';
 import { CreationsDetails } from '../creationsDetails/CreationsDetails';
@@ -8,18 +7,6 @@ import { CreationsXplorer } from '../creationsXplorer/CreationsXplorer';
 import { Link } from 'react-router-dom';
 import { useAppContext } from '../../hooks/useAppContext';
 import { useTargetProject } from '../../hooks/useTargetProject';
-import type { IProject } from '../../interfaces/interface.creations';
-
-const projectDefault: IProject = {
-    about: [
-        'The site design is made in the style of a computer game. It describes my achievements and skills, information about my life and goals.',
-    ],
-    brief: 'reflects growth in educational or professional achievements',
-    images: [''],
-    link: '',
-    name: 'pixelpulse',
-    technologies: ['webpack', 'ts', 'react', 'nodeJS', 'mysql'],
-};
 
 const Creations = (): React.JSX.Element => {
     const { handleSoundClick } = useAppContext();
@@ -31,13 +18,13 @@ const Creations = (): React.JSX.Element => {
 
             <div className={styles.creations__inner}>
                 <div className={styles.creations__details_block}>
-                    <CreationsDetails projectDefault={projectDefault} projects={projects} />
-                    <CreationsTechnologies projectDefault={projectDefault} projects={projects} />
-                    <CreationsAbout projectDefault={projectDefault} projects={projects} />
+                    <CreationsDetails />
+                    <CreationsTechnologies />
+                    <CreationsAbout />
                 </div>
 
                 <div className={styles.xplorer_block}>
-                    <CreationsXplorer projects={projects} />
+                    <CreationsXplorer />
 
                     <div className={styles.box_button}>
                         <Link

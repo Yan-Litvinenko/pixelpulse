@@ -3,7 +3,10 @@ import styles from './CreationsTechnologiesContent.module.scss';
 import { nanoid } from '@reduxjs/toolkit';
 import { Figma, GitHub, Gulp, HexagonBorder, Html, JS } from '../svgIcon/SvgIcon';
 import { MySql, NodeJS, ReactIcon, Sass, Ts, Webpack, Wordpress } from '../svgIcon/SvgIcon';
-import type { Technologies, ICreationsTechnologiesContent } from '../../interfaces/interface.creations';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import type { Technologies } from '../../interfaces/interface.creations';
+import type { RootState } from '../../store/store';
 
 const technologies: Technologies = {
     figma: Figma,
@@ -20,12 +23,18 @@ const technologies: Technologies = {
     wordpress: Wordpress,
 };
 
-const CreationsTechnologiesContent = (props: ICreationsTechnologiesContent): React.JSX.Element => {
-    const { names } = props;
+const CreationsTechnologiesContent = (): React.JSX.Element => {
+    const { targetProject, defaultProject, projects } = useSelector((state: RootState) => state.creations);
+    const { projectName } = useParams();
+
+    const technologiesNames: string[] = !projectName
+        ? defaultProject.technologies
+        : projects[targetProject].technologies;
+
     return (
         <div className={styles.content}>
-            {names.map((item) => {
-                const IconComponent = technologies[item];
+            {technologiesNames.map((name) => {
+                const IconComponent = technologies[name];
 
                 return (
                     <div className={styles.content__item} key={nanoid()}>

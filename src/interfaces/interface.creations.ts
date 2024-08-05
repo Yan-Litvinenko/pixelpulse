@@ -11,17 +11,4 @@ interface IProject {
     technologies: string[];
 }
 
-interface ICreationsBlock {
-    projectDefault: IProject;
-    projects: IProject[];
-}
-
-interface ICreationsXplorer {
-    projects: IProject[];
-}
-
-interface ICreationsTechnologiesContent {
-    names: string[];
-}
-
-export type { ICreationsBlock, ICreationsTechnologiesContent, ICreationsXplorer, IProject, Technologies };
+export type { IProject, Technologies };

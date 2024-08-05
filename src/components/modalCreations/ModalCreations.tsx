@@ -5,14 +5,14 @@ import vectorImageRight from '../../assets/images/vector-right.svg';
 import styles from './ModalCreations.module.scss';
 import { nanoid } from '@reduxjs/toolkit';
 import { stopPropagation } from '../../utils/stopPropagation';
-import { useAppContext } from '../../hooks/useAppContext';
 import { useModal } from '../../hooks/useModal';
+import { useSelector } from 'react-redux';
 import { useSlider } from '../../hooks/useSlider';
+import type { RootState } from '../../store/store';
 
 const ModalCreations = (): React.JSX.Element => {
     const closeModalCreations = useModal('creations').close;
-
-    const { targetProject, projectImages } = useAppContext();
+    const { targetProject, projectImages } = useSelector((state: RootState) => state.creations);
 
     const slider = React.useRef<HTMLDivElement | null>(null);
     const vectorLeft = React.useRef<HTMLImageElement | null>(null);

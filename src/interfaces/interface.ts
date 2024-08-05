@@ -9,16 +9,10 @@ type IContextApp = {
     headerStatistic: IUseHeaderStatistic;
     mainMusic: UseAudioPlayer;
     music: boolean;
-    projectImages: string[];
     sounds: boolean;
     styles: Record<string, string>;
-    targetImage: number;
-    targetProject: number;
-    setTargetImage: React.Dispatch<React.SetStateAction<number>>;
-    setTargetProject: React.Dispatch<React.SetStateAction<number>>;
     handleSoundClick: () => Promise<void> | null;
     setMusic: React.Dispatch<React.SetStateAction<boolean>>;
-    setProjectImages: React.Dispatch<React.SetStateAction<string[]>>;
     setSounds: React.Dispatch<React.SetStateAction<boolean>>;
 };
 

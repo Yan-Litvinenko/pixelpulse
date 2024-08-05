@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { creationsSlice } from './creationsSlice';
 import { mediaSlice } from './mediaSlice';
 import { modalSlice } from './modalSlice';
 import type { ThunkAction, Action } from '@reduxjs/toolkit';
@@ -7,6 +8,7 @@ const store = configureStore({
     reducer: {
         mediaQuery: mediaSlice.reducer,
         modal: modalSlice.reducer,
+        creations: creationsSlice.reducer,
     },
 });
 
