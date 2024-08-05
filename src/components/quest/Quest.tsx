@@ -1,7 +1,7 @@
 import React from 'react';
+import styles from './Quest.module.scss';
 import { QuestElement } from '../questElement/QuestElement';
 import { Setting } from '../setting/Setting';
-import styles from './Quest.module.scss';
 
 const Quest = (): React.JSX.Element => {
     return (

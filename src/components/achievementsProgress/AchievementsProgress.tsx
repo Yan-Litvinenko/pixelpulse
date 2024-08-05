@@ -1,11 +1,15 @@
 import React from 'react';
-import { AchievementsProgressRing } from '../achievementsProgressRing/AchievementsProgressRing';
-import { useAppContext } from '../../hooks/useAppContext';
 import styles from './AchievementsProgress.module.scss';
+import { AchievementsProgressRing } from '../achievementsProgressRing/AchievementsProgressRing';
+import { modalOpenHandler } from '../../store/modalSlice';
+import { useAppContext } from '../../hooks/useAppContext';
+import { useDispatch } from 'react-redux';
+import type { AppDispatch } from '../../store/store';
 
 const AchievementsProgress = (): React.JSX.Element => {
-    const { achievements, challenge } = useAppContext();
+    const { achievements } = useAppContext();
     const { isLoad, isError, amountAchieved, amountAchievements, percent } = achievements;
+    const dispatch = useDispatch<AppDispatch>();
 
     return (
         <div className={styles.progress}>
@@ -34,7 +38,11 @@ const AchievementsProgress = (): React.JSX.Element => {
                 If you want to give me a challenge and rate it, please feel free to submit it with the button below!
             </p>
 
-            <button className={styles.progress__button} onClick={challenge.openModal} type="button">
+            <button
+                className={styles.progress__button}
+                onClick={() => dispatch(modalOpenHandler({ key: 'challenge' }))}
+                type="button"
+            >
                 Challenge me
             </button>
         </div>

@@ -1,8 +1,8 @@
 import React from 'react';
+import styles from './GameSnake.module.scss';
 import { Joystick } from '../joystick/Jouystick';
 import { Link } from 'react-router-dom';
 import { useSnake } from '../../hooks/useSnake';
-import styles from './GameSnake.module.scss';
 
 const GameSnake = (): React.JSX.Element => {
     const { score, bestScore, snake, canvas } = useSnake();

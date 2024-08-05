@@ -1,8 +1,8 @@
 import React from 'react';
-import { IProject } from '../interfaces/interface.creations';
+import projects from '../assets/json/projects.json';
 import { useAppContext } from './useAppContext';
 import { useNavigate, useParams } from 'react-router-dom';
-import projects from '../assets/json/projects.json';
+import type { IProject } from '../interfaces/interface.creations';
 
 const useTargetProject = () => {
     const navigate = useNavigate();

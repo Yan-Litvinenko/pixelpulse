@@ -1,13 +1,13 @@
 import React from 'react';
+import styles from './Achievements.module.scss';
 import { AchievementsBlock } from '../achievementsBlock/AchievementsBlock';
 import { AchievementsError } from '../achievementsError/AchievementsError';
 import { achievementsFilter, achievementsSort } from '../../hooks/useAchievements';
 import { AchievementsProgress } from '../achievementsProgress/AchievementsProgress';
 import { AchievementsToggle } from '../achievementsToggle/AchievementsToggle';
-import { ToggleStatus } from '../../interfaces/interface.achievements';
 import { Triangle } from 'react-loader-spinner';
 import { useAppContext } from '../../hooks/useAppContext';
-import styles from './Achievements.module.scss';
+import type { ToggleStatus } from '../../interfaces/interface.achievements';
 
 const Achievements = (): React.JSX.Element => {
     const { handleSoundClick, achievements } = useAppContext();

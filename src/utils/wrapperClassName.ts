@@ -1,23 +1,14 @@
-import { Store } from '../store/store';
 import { useSelector } from 'react-redux';
+import type { RootState } from '../store/store';
 
-interface WrapperClassName {
-    availability: boolean;
-    challenge: boolean;
-    creations: boolean;
-    credits: boolean;
-    setting: boolean;
-    social: boolean;
-    styles: Record<string, string>;
-}
-
-const wrapperClassName = (props: WrapperClassName): string => {
-    const { isSmall, isMedium } = useSelector((state: Store) => state.mediaQuery);
-    const { availability, creations, credits, challenge, setting, social } = props;
-    const { styles } = props;
+const wrapperClassName = (styles: Record<string, string>): string => {
+    const { isSmall, isMedium } = useSelector((state: RootState) => state.mediaQuery);
+    const { availability, creations, credits, challenge, settings, social } = useSelector(
+        (state: RootState) => state.modal.stateModal,
+    );
 
     const classes: string[] = [styles.wrapper];
-    const modalWithCenterlEffect: boolean[] = [creations, setting];
+    const modalWithCenterlEffect: boolean[] = [creations, settings];
     const modalWithLeftEffect: boolean[] = [availability, social, credits, challenge];
 
     if (!isMedium && !isSmall) {

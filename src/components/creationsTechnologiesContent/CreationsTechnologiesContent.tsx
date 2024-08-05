@@ -1,9 +1,9 @@
 import React from 'react';
-import { nanoid } from 'nanoid';
+import styles from './CreationsTechnologiesContent.module.scss';
+import { nanoid } from '@reduxjs/toolkit';
 import { Figma, GitHub, Gulp, HexagonBorder, Html, JS } from '../svgIcon/SvgIcon';
 import { MySql, NodeJS, ReactIcon, Sass, Ts, Webpack, Wordpress } from '../svgIcon/SvgIcon';
-import { Technologies, ICreationsTechnologiesContent } from '../../interfaces/interface.creations';
-import styles from './CreationsTechnologiesContent.module.scss';
+import type { Technologies, ICreationsTechnologiesContent } from '../../interfaces/interface.creations';
 
 const technologies: Technologies = {
     figma: Figma,

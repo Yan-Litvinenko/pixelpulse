@@ -1,10 +1,10 @@
 import React, { Suspense } from 'react';
+import styles from './LogsProject.module.scss';
 import { Await, useLoaderData } from 'react-router-dom';
 import { getLastUpdate } from '../logs/logsLoader';
-import { IGithubRespone } from '../../interfaces/interface.github';
 import { LogsElement } from '../logsElement/LogsElement';
-import { ResolveError } from '../../interfaces/interface';
-import styles from './LogsProject.module.scss';
+import type { IGithubRespone } from '../../interfaces/interface.github';
+import type { ResolveError } from '../../interfaces/interface';
 
 const LogsProject = (): React.JSX.Element => {
     const { githubCommits } = useLoaderData() as { githubCommits: IGithubRespone[] };

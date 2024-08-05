@@ -1,6 +1,6 @@
 import React from 'react';
 import { ContextApp } from '../components/app/App';
-import { IContextApp } from '../interfaces/interface';
+import type { IContextApp } from '../interfaces/interface';
 
 const useAppContext = (): IContextApp => {
     const contextApp: IContextApp | null = React.useContext(ContextApp);

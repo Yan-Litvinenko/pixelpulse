@@ -1,6 +1,6 @@
 import React from 'react';
-import { IStatistics } from '../../interfaces/interface.component';
 import { Triangle } from 'react-loader-spinner';
+import type { IStatistics } from '../../interfaces/interface.component';
 
 const HeaderStatisticsFallback = (props: IStatistics): React.JSX.Element => {
     const { styles } = props;

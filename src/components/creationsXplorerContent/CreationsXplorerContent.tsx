@@ -1,14 +1,18 @@
 import React from 'react';
-import { Image, Folder } from '../svgIcon/SvgIcon';
-import { nanoid } from 'nanoid';
-import { useAppContext } from '../../hooks/useAppContext';
-import { useParams, Link } from 'react-router-dom';
 import projects from '../../assets/json/projects.json';
 import styles from './CreationsXplorerContent.module.scss';
+import { Image, Folder } from '../svgIcon/SvgIcon';
+import { modalOpenHandler } from '../../store/modalSlice';
+import { nanoid } from '@reduxjs/toolkit';
+import { useAppContext } from '../../hooks/useAppContext';
+import { useDispatch } from 'react-redux';
+import { useParams, Link } from 'react-router-dom';
+import type { AppDispatch } from '../../store/store';
 
 const CreationsXplorerContent = (): React.JSX.Element => {
-    const { setProjectImages, handleSoundClick, creations, targetProject, setTargetImage, setTargetProject } =
-        useAppContext();
+    const dispatch = useDispatch<AppDispatch>();
+
+    const { setProjectImages, handleSoundClick, targetProject, setTargetImage, setTargetProject } = useAppContext();
     const { projectName } = useParams();
 
     const projectClick = (projectIndex: number): void => {
@@ -18,7 +22,7 @@ const CreationsXplorerContent = (): React.JSX.Element => {
     };
 
     const imageClick = (imageIndex: number): void => {
-        creations.openModal();
+        dispatch(modalOpenHandler({ key: 'creations' }));
         setTargetImage(imageIndex);
     };
 

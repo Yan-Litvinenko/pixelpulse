@@ -1,6 +1,6 @@
 import React from 'react';
-import { ILogsElement } from '../../interfaces/interface.component';
 import styles from './LogsElement.module.scss';
+import type { ILogsElement } from '../../interfaces/interface.component';
 
 const LogsElement = (props: ILogsElement): React.JSX.Element => {
     const { className, textContent, date } = props;

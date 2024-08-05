@@ -1,8 +1,8 @@
 import React from 'react';
-import { Frame } from '../frame/Frame';
 import GlitchImage from '../glitchImage/GlitchImage';
 import beginningJpg from '../../assets/images/beginning.jpg';
 import styles from './Beginning.module.scss';
+import { Frame } from '../frame/Frame';
 
 const Beginning = (): React.JSX.Element => {
     return (

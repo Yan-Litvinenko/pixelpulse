@@ -1,26 +1,25 @@
 import React from 'react';
+import styles from './NavigationElement.module.scss';
 import { Hexagon } from '../svgIcon/SvgIcon';
-import { INavigationElement } from '../../interfaces/interface.component';
 import { NavLink } from 'react-router-dom';
 import { scroll } from '../../classes/Scroll';
-import { Store } from '../../store/store';
 import { useAppContext } from '../../hooks/useAppContext';
+import { useModal } from '../../hooks/useModal';
 import { useSelector } from 'react-redux';
-import styles from './NavigationElement.module.scss';
+import type { RootState } from '../../store/store';
+import type { INavigationElement } from '../../interfaces/interface.component';
 
 const NavigationElement = (props: INavigationElement): React.JSX.Element => {
-    const { handleSoundClick, navigationMobile } = useAppContext();
-    const { isSmall, isMedium } = useSelector((state: Store) => state.mediaQuery);
+    const { handleSoundClick, sounds } = useAppContext();
+    const { isSmall, isMedium } = useSelector((state: RootState) => state.mediaQuery);
+    const closeNavigationMobile = useModal('navigationMobile').close;
 
     const { pageName } = props;
 
     const switchPage = (): void => {
-        navigationMobile.closeModal();
+        if (!isMedium && !isSmall && sounds) handleSoundClick();
 
-        if (!isMedium && !isSmall) {
-            handleSoundClick();
-        }
-
+        closeNavigationMobile();
         scroll.on();
     };
 

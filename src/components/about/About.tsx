@@ -1,14 +1,14 @@
 import React from 'react';
-import { AboutElement } from '../aboutElement/AboutElement';
-import { Frame } from '../frame/Frame';
-import { Store } from '../../store/store';
-import { useSelector } from 'react-redux';
 import GlitchImage from '../glitchImage/GlitchImage';
 import humanJpg from '../../assets/images/human.jpg';
 import styles from './About.module.scss';
+import { AboutElement } from '../aboutElement/AboutElement';
+import { Frame } from '../frame/Frame';
+import { useSelector } from 'react-redux';
+import type { RootState } from '../../store/store';
 
 const About = (): React.JSX.Element => {
-    const { isSmall } = useSelector((state: Store) => state.mediaQuery);
+    const { isSmall } = useSelector((state: RootState) => state.mediaQuery);
 
     return (
         <main className={styles.about}>

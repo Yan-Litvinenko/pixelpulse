@@ -1,9 +1,9 @@
 import React from 'react';
-import { ICreationsBlock } from '../../interfaces/interface.creations';
-import { nanoid } from 'nanoid';
+import styles from './CreationsAbout.module.scss';
+import { nanoid } from '@reduxjs/toolkit';
 import { useAppContext } from '../../hooks/useAppContext';
 import { useParams } from 'react-router-dom';
-import styles from './CreationsAbout.module.scss';
+import type { ICreationsBlock } from '../../interfaces/interface.creations';
 
 const CreationsAbout = (props: ICreationsBlock): React.JSX.Element => {
     const { targetProject } = useAppContext();

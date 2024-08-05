@@ -1,7 +1,7 @@
 import React from 'react';
-import { nanoid } from 'nanoid';
-import { ILabel } from '../../interfaces/interface.form';
 import styles from './FormLabel.module.scss';
+import { nanoid } from '@reduxjs/toolkit';
+import type { ILabel } from '../../interfaces/interface.form';
 
 const FormLabel = (props: ILabel): React.JSX.Element => {
     const { errors, name, child, textContent, autofocus, placeholder } = props;

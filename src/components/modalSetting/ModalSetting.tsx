@@ -1,24 +1,25 @@
 import React from 'react';
+import styles from './ModalSetting.module.scss';
 import { ClipPathBorder } from '../clipPathBorder/ClipPathBorder';
 import { Cross } from '../cross/Cross';
 import { ModalBackground } from '../modalBackground/ModalBackground';
 import { ModalBoxButton } from '../modalBoxButton/ModalBoxButton';
-import { useAppContext } from '../../hooks/useAppContext';
+import { Range } from '../range/Range';
+import { stopPropagation } from '../../utils/stopPropagation';
+import { useModal } from '../../hooks/useModal';
 import { useModalSettings } from '../../hooks/useModalSettings';
 import { Warning } from '../svgIcon/SvgIcon';
-import Range from '../range/Range';
-import styles from './ModalSetting.module.scss';
 
 const ModalSetting = (): React.JSX.Element => {
-    const { setting } = useAppContext();
+    const closeModalSettings = useModal('settings').close;
     const { enterBtnText, inputValue, handleDefault, transformSaveFn, changeSettingValue } = useModalSettings();
 
     return (
-        <div className={styles.modal} onClick={setting.closeModal}>
-            <div className={styles.modal__inner} onClick={setting.stopPropagation}>
+        <div className={styles.modal} onClick={closeModalSettings}>
+            <div className={styles.modal__inner} onClick={stopPropagation}>
                 <div className={styles.modal__box_title}>
                     <h3 className={styles.modal__title}>visual configurator</h3>
-                    <Cross handler={setting.closeModal} />
+                    <Cross handler={closeModalSettings} />
                 </div>
                 <h4 className={styles.modal__subtitle}>apply what works best for you</h4>
 
@@ -58,7 +59,7 @@ const ModalSetting = (): React.JSX.Element => {
 
                 <ModalBoxButton
                     handleEnter={transformSaveFn}
-                    handleEscape={setting.closeModal}
+                    handleEscape={closeModalSettings}
                     isValid={true}
                     textEnter={enterBtnText}
                     textEsc="discard [esc]"

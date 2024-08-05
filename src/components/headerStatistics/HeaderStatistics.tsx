@@ -1,7 +1,7 @@
 import React from 'react';
-import { IStatistics } from '../../interfaces/interface.component';
 import { useAppContext } from '../../hooks/useAppContext';
 import { HeaderStatisticsFallback } from './HeaderStatisticFallback';
+import type { IStatistics } from '../../interfaces/interface.component';
 
 const HeaderStatistics = (props: IStatistics): React.JSX.Element => {
     const { styles } = props;

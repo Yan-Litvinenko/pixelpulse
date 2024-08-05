@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { IErrorPage } from '../../interfaces/interface.component';
 import styles from './ErrorPage.module.scss';
+import { Link } from 'react-router-dom';
+import type { IErrorPage } from '../../interfaces/interface.component';
 
 const ErrorPage = (props: IErrorPage): React.JSX.Element => {
     const { status, detail } = props;

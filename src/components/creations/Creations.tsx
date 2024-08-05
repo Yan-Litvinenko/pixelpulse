@@ -1,14 +1,14 @@
 import React from 'react';
+import projects from '../../assets/json/projects.json';
+import styles from './Creations.module.scss';
 import { CreationsAbout } from '../creationsAbout/CreationsAbout';
 import { CreationsDetails } from '../creationsDetails/CreationsDetails';
 import { CreationsTechnologies } from '../creationsTechnologies/CreationsTechnologies';
 import { CreationsXplorer } from '../creationsXplorer/CreationsXplorer';
-import { IProject } from '../../interfaces/interface.creations';
 import { Link } from 'react-router-dom';
 import { useAppContext } from '../../hooks/useAppContext';
 import { useTargetProject } from '../../hooks/useTargetProject';
-import projects from '../../assets/json/projects.json';
-import styles from './Creations.module.scss';
+import type { IProject } from '../../interfaces/interface.creations';
 
 const projectDefault: IProject = {
     about: [

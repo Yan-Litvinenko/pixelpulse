@@ -1,28 +1,19 @@
-import { IUseAchievements } from '../hooks/useAchievements';
-import { IUseHeaderStatistic } from '../hooks/useHeaderStatistics';
-import { UseAudioPlayer } from '../hooks/useAudioPlayer';
-import { IUseModal } from '../hooks/useModal';
+import type { IUseAchievements } from '../hooks/useAchievements';
+import type { IUseHeaderStatistic } from '../hooks/useHeaderStatistics';
+import type { UseAudioPlayer } from '../hooks/useAudioPlayer';
 
 type Page = 'welcome' | 'beginning' | 'about' | 'logs' | 'achievements' | 'creations' | 'games';
 
 type IContextApp = {
     achievements: IUseAchievements;
-    availability: IUseModal;
-    challenge: IUseModal;
-    creations: IUseModal;
-    credits: IUseModal;
     headerStatistic: IUseHeaderStatistic;
     mainMusic: UseAudioPlayer;
     music: boolean;
-    navigationMobile: IUseModal;
     projectImages: string[];
-    setting: IUseModal;
-    social: IUseModal;
     sounds: boolean;
     styles: Record<string, string>;
     targetImage: number;
     targetProject: number;
-    TRANSITION_TIME: number;
     setTargetImage: React.Dispatch<React.SetStateAction<number>>;
     setTargetProject: React.Dispatch<React.SetStateAction<number>>;
     handleSoundClick: () => Promise<void> | null;
@@ -43,4 +34,4 @@ interface ResolveError {
     message: string;
 }
 
-export { IContextApp, Page, IAddCoinResult, ResolveError };
+export type { IContextApp, Page, IAddCoinResult, ResolveError };

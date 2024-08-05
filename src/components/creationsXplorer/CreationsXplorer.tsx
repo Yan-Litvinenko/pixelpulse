@@ -1,9 +1,9 @@
 import React from 'react';
+import styles from './CreationsXplorer.module.scss';
 import { Frame } from '../frame/Frame';
-import { ICreationsXplorer } from '../../interfaces/interface.creations';
 import { Outlet, useParams } from 'react-router-dom';
 import { useAppContext } from '../../hooks/useAppContext';
-import styles from './CreationsXplorer.module.scss';
+import type { ICreationsXplorer } from '../../interfaces/interface.creations';
 
 const CreationsXplorer = (props: ICreationsXplorer): React.JSX.Element => {
     const { targetProject } = useAppContext();

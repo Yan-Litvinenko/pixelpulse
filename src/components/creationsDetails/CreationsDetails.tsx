@@ -1,9 +1,9 @@
 import React from 'react';
+import styles from './CreationsDetails.module.scss';
 import { Hexagon } from '../svgIcon/SvgIcon';
-import { ICreationsBlock } from '../../interfaces/interface.creations';
 import { useAppContext } from '../../hooks/useAppContext';
 import { useParams } from 'react-router-dom';
-import styles from './CreationsDetails.module.scss';
+import type { ICreationsBlock } from '../../interfaces/interface.creations';
 
 const CreationsDetails = (props: ICreationsBlock): React.JSX.Element => {
     const { targetProject } = useAppContext();

@@ -24,4 +24,4 @@ interface ICreationsTechnologiesContent {
     names: string[];
 }
 
-export { ICreationsBlock, ICreationsTechnologiesContent, ICreationsXplorer, IProject, Technologies };
+export type { ICreationsBlock, ICreationsTechnologiesContent, ICreationsXplorer, IProject, Technologies };

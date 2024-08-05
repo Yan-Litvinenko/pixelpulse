@@ -1,8 +1,8 @@
 import React from 'react';
-import { AchievementsAchieve } from '../achievementsAchieve/AchievementsAchieve';
-import { IAchievementsBlock, ExecutionStatus, Rarity } from '../../interfaces/interface.achievements';
-import { nanoid } from 'nanoid';
 import styles from './AchievementsBlock.module.scss';
+import { AchievementsAchieve } from '../achievementsAchieve/AchievementsAchieve';
+import { nanoid } from '@reduxjs/toolkit';
+import type { IAchievementsBlock, ExecutionStatus, Rarity } from '../../interfaces/interface.achievements';
 
 const AchievementsBlock = (props: IAchievementsBlock): React.JSX.Element => {
     const { achievements, prefixForClassName } = props;

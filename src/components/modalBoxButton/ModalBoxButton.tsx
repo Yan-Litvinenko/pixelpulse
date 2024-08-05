@@ -1,7 +1,7 @@
 import React from 'react';
-import { useAppContext } from '../../hooks/useAppContext';
-import { IModalBoxButton } from '../../interfaces/interface.component';
 import styles from './ModalBoxButton.module.scss';
+import { useAppContext } from '../../hooks/useAppContext';
+import type { IModalBoxButton } from '../../interfaces/interface.component';
 
 const ModalBoxButton = (props: IModalBoxButton): React.JSX.Element => {
     const { handleEnter, isValid, textEnter, typeEnter, handleEscape, textEsc } = props;

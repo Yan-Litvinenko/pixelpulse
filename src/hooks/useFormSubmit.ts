@@ -1,6 +1,11 @@
 import React from 'react';
-import { UseFormRegister, FieldValues, FieldErrors, useForm } from 'react-hook-form';
-import { UseTelegramApi, useTelegramApi } from './useTelegramApi';
+import { setModalStateForm } from '../store/modalSlice';
+import { useDispatch } from 'react-redux';
+import { useForm } from 'react-hook-form';
+import { useTelegramApi } from './useTelegramApi';
+import type { Modal } from '../store/modalSlice';
+import type { UseFormRegister, FieldValues, FieldErrors } from 'react-hook-form';
+import type { UseTelegramApi } from './useTelegramApi';
 
 interface UseFormSubmit {
     errorForm: FieldErrors<FieldValues>;
@@ -15,7 +20,9 @@ interface UseFormSubmit {
     setSuccessfullyTelegram: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const useFormSubmit = (message: string): UseFormSubmit => {
+const useFormSubmit = (message: string, modalKey: Modal): UseFormSubmit => {
+    const dispatch = useDispatch();
+
     const telegramMessage: UseTelegramApi = useTelegramApi();
     const form = useForm({ mode: 'onChange' });
 
@@ -33,6 +40,15 @@ const useFormSubmit = (message: string): UseFormSubmit => {
             handleSubmit(onSubmit)();
         }
     };
+
+    React.useEffect(() => {
+        dispatch(
+            setModalStateForm({
+                key: modalKey,
+                value: telegramMessage.error || telegramMessage.loading || telegramMessage.successfully ? true : false,
+            }),
+        );
+    }, [telegramMessage.error, telegramMessage.loading, telegramMessage.successfully]);
 
     React.useEffect(() => {
         window.addEventListener('keydown', handleKeyPress);
@@ -53,4 +69,5 @@ const useFormSubmit = (message: string): UseFormSubmit => {
     };
 };
 
-export { useFormSubmit, UseFormSubmit };
+export { useFormSubmit };
+export type { UseFormSubmit };

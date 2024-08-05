@@ -1,9 +1,9 @@
 import React from 'react';
+import styles from './Logs.module.scss';
 import { LogsOld } from '../logsOld/LogsOld';
 import { LogsProject } from '../logsProject/LogsProject';
 import { LogsUpdate } from '../logsUpdate/LogsUpdate';
 import { useAppContext } from '../../hooks/useAppContext';
-import styles from './Logs.module.scss';
 
 const Logs = (): React.JSX.Element => {
     const { handleSoundClick } = useAppContext();

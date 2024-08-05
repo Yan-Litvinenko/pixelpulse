@@ -1,10 +1,10 @@
 import React from 'react';
+import styles from './CreationsTechnologies.module.scss';
 import { CreationsTechnologiesContent } from '../creationsTechnologiesContent/CreationsTechnologiesContent';
 import { Hexagon } from '../svgIcon/SvgIcon';
-import { ICreationsBlock } from '../../interfaces/interface.creations';
 import { useAppContext } from '../../hooks/useAppContext';
 import { useParams } from 'react-router-dom';
-import styles from './CreationsTechnologies.module.scss';
+import type { ICreationsBlock } from '../../interfaces/interface.creations';
 
 const CreationsTechnologies = (props: ICreationsBlock): React.JSX.Element => {
     const { targetProject } = useAppContext();

@@ -1,6 +1,6 @@
 import React from 'react';
-import { useAppContext } from '../../hooks/useAppContext';
 import glitchEffect from '../../assets/audio/glitch.mp3';
+import { useAppContext } from '../../hooks/useAppContext';
 
 interface GlitchCanvasProps {
     className: string;

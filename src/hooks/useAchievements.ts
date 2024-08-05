@@ -1,7 +1,7 @@
 import React from 'react';
 import { customFetch } from '../utils/customFetch';
-import { IAchieve } from '../interfaces/interface.achievements';
-import { ToggleStatus } from '../interfaces/interface.achievements';
+import type { IAchieve } from '../interfaces/interface.achievements';
+import type { ToggleStatus } from '../interfaces/interface.achievements';
 
 interface IUseAchievements {
     achievements: IAchieve[] | null;
@@ -102,4 +102,5 @@ const useAchievements = <T>(dependence: T): IUseAchievements => {
     };
 };
 
-export { useAchievements, IUseAchievements, achievementsFilter, achievementsSort };
+export { useAchievements, achievementsFilter, achievementsSort };
+export type { IUseAchievements };

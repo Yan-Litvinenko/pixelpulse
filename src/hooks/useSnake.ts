@@ -1,9 +1,9 @@
 import React from 'react';
+import mainTheme from '../assets/audio/main-theme.mp3';
+import snakeTheme from '../assets/audio/snake.mp3';
 import { Snake } from '../classes/Snake';
 import { useLocalStorage } from './useLocalStorage';
 import { useAppContext } from './useAppContext';
-import mainTheme from '../assets/audio/main-theme.mp3';
-import snakeTheme from '../assets/audio/snake.mp3';
 
 interface UseSnake {
     score: number;

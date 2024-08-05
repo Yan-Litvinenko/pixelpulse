@@ -1,9 +1,9 @@
 import React from 'react';
+import audioKeyboardPress from '../../assets/audio/pressKeyboard.mp3';
+import styles from './Welcome.module.scss';
 import { Link } from 'react-router-dom';
 import { useAppContext } from '../../hooks/useAppContext';
 import { usePrintedText } from '../../hooks/usePrintedText';
-import audioKeyboardPress from '../../assets/audio/pressKeyboard.mp3';
-import styles from './Welcome.module.scss';
 
 const audioKeyboard = new Audio(audioKeyboardPress);
 const textForPrint: Record<string, string> = {

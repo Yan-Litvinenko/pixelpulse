@@ -1,6 +1,6 @@
 import React from 'react';
-import { IAddCoinResult } from '../interfaces/interface';
 import { customFetch } from '../utils/customFetch';
+import type { IAddCoinResult } from '../interfaces/interface';
 
 interface IUseHeaderStatistic {
     level: number | null;
@@ -86,4 +86,5 @@ const useHeaderStatistic = (): IUseHeaderStatistic => {
     };
 };
 
-export { useHeaderStatistic, IUseHeaderStatistic };
+export { useHeaderStatistic };
+export type { IUseHeaderStatistic };

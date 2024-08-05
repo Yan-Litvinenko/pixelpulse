@@ -100,4 +100,5 @@ const useAudioPlayer = (initStatus: boolean): UseAudioPlayer => {
     };
 };
 
-export { useAudioPlayer, UseAudioPlayer };
+export { useAudioPlayer };
+export type { UseAudioPlayer };

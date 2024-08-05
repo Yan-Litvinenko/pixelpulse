@@ -1,19 +1,19 @@
 import React from 'react';
-import { Frame } from '../frame/Frame';
-import { Link } from 'react-router-dom';
-import { nanoid } from 'nanoid';
-import { ProfileElement } from '../profileElement/ProfileElement';
-import { Store } from '../../store/store';
-import { useAppContext } from '../../hooks/useAppContext';
-import { useSelector } from 'react-redux';
 import GlitchImage from '../glitchImage/GlitchImage';
 import avatar from '../../assets/images/avatar.png';
 import profileItems from '../../assets/json/profile.json';
 import styles from './Profile.module.scss';
+import { Frame } from '../frame/Frame';
+import { Link } from 'react-router-dom';
+import { nanoid } from '@reduxjs/toolkit';
+import { ProfileElement } from '../profileElement/ProfileElement';
+import { useAppContext } from '../../hooks/useAppContext';
+import { useSelector } from 'react-redux';
+import type { RootState } from '../../store/store';
 
 const Profile = (): React.JSX.Element => {
     const { handleSoundClick } = useAppContext();
-    const { isSmall } = useSelector((state: Store) => state.mediaQuery);
+    const { isSmall } = useSelector((state: RootState) => state.mediaQuery);
 
     return (
         <aside className={styles.profile}>

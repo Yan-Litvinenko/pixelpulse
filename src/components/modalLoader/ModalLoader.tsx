@@ -1,6 +1,6 @@
 import React from 'react';
-import { Triangle } from 'react-loader-spinner';
 import styles from './ModalLoader.module.scss';
+import { Triangle } from 'react-loader-spinner';
 
 const ModalLoader = (): React.JSX.Element => {
     return (
