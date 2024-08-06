@@ -5,7 +5,7 @@ import { Image, Folder } from '../svgIcon/SvgIcon';
 import { modalOpenHandler } from '../../store/modalSlice';
 import { nanoid } from '@reduxjs/toolkit';
 import { setProjectImages, setTargetProject, setTargetImage } from '../../store/creationsSlice';
-import { useActionWithDispatch } from '../../hooks/useWithDispatch';
+import { useActionWithDispatch } from '../../hooks/useActionWithDispatch';
 import { useAppContext } from '../../hooks/useAppContext';
 import { useDispatch } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';

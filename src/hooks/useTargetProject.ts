@@ -1,7 +1,7 @@
 import React from 'react';
 import projects from '../assets/json/projects.json';
 import { setTargetProject } from '../store/creationsSlice';
-import { useActionWithDispatch } from './useWithDispatch';
+import { useActionWithDispatch } from './useActionWithDispatch';
 import { useNavigate, useParams } from 'react-router-dom';
 import type { IProject } from '../interfaces/interface.creations';
 

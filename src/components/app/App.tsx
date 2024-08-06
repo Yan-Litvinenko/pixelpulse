@@ -3,8 +3,7 @@ import clickSoundEffect from '../../assets/audio/click.ogg';
 import mainTheme from '../../assets/audio/main-theme.mp3';
 import styles from './App.module.scss';
 import { ErrorBoundary } from '../../hoc/ErrorBoundary';
-import { useAchievements } from '../../hooks/useAchievements';
-import { useHeaderStatistic } from '../../hooks/useHeaderStatistics';
+import { installRootStyles } from '../../store/rootStyleSlice';
 import { Layout } from '../layout/Layout';
 import { ModalAvailability } from '../modalAvailability/ModalAvailability';
 import { ModalChallenge } from '../modalChallenge/ModalChallenge';
@@ -14,7 +13,10 @@ import { ModalSetting } from '../modalSetting/ModalSetting';
 import { ModalSocial } from '../modalSocial/ModalSocial';
 import { NavigationMobile } from '../navigationMobile/NavigationMobile';
 import { settingsColor } from '../../classes/SettingsColor';
+import { useAchievements } from '../../hooks/useAchievements';
 import { useAudioPlayer } from '../../hooks/useAudioPlayer';
+import { useDispatch } from 'react-redux';
+import { useHeaderStatistic } from '../../hooks/useHeaderStatistics';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { useMedia } from '../../hooks/useMedia';
 import { useModalCloseByKey } from '../../hooks/useModalCloseByKey';
@@ -29,6 +31,7 @@ const ContextApp = React.createContext<IContextApp | null>(null);
 const clickSound: HTMLAudioElement = new Audio(clickSoundEffect);
 
 const App = (): React.JSX.Element => {
+    const dispatch = useDispatch();
     const { isSmall, isMedium } = useSelector((state: RootState) => state.mediaQuery);
     const { availability, settings, social, challenge, creations, credits, navigationMobile } = useSelector(
         (state: RootState) => state.modal.stateModal,
@@ -47,6 +50,7 @@ const App = (): React.JSX.Element => {
     settingsColor.init();
     useMedia();
     useModalCloseByKey();
+    dispatch(installRootStyles(styles));
 
     React.useEffect(() => mainMusic.selectTrack(mainTheme), []);
 
@@ -62,10 +66,9 @@ const App = (): React.JSX.Element => {
                     mainMusic,
                     music,
                     sounds,
-                    styles,
                 }}
             >
-                <div className={wrapperClassName(styles)}>
+                <div className={wrapperClassName()}>
                     <Layout />
                 </div>
 

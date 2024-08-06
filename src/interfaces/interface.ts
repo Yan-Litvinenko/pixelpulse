@@ -10,7 +10,6 @@ type IContextApp = {
     mainMusic: UseAudioPlayer;
     music: boolean;
     sounds: boolean;
-    styles: Record<string, string>;
     handleSoundClick: () => Promise<void> | null;
     setMusic: React.Dispatch<React.SetStateAction<boolean>>;
     setSounds: React.Dispatch<React.SetStateAction<boolean>>;

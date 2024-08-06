@@ -2,13 +2,15 @@ import { configureStore } from '@reduxjs/toolkit';
 import { creationsSlice } from './creationsSlice';
 import { mediaSlice } from './mediaSlice';
 import { modalSlice } from './modalSlice';
+import { rootStyleSlice } from './rootStyleSlice';
 import type { ThunkAction, Action } from '@reduxjs/toolkit';
 
 const store = configureStore({
     reducer: {
+        creations: creationsSlice.reducer,
         mediaQuery: mediaSlice.reducer,
         modal: modalSlice.reducer,
-        creations: creationsSlice.reducer,
+        rootStyles: rootStyleSlice.reducer,
     },
 });
 

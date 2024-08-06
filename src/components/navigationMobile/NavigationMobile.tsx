@@ -9,6 +9,7 @@ import { useModal } from '../../hooks/useModal';
 
 const NavigationMobile = (): React.JSX.Element => {
     const closeModalNavigationMobile = useModal('navigationMobile').close;
+
     return (
         <div className={styles.box}>
             <div className={styles.box__inner}>

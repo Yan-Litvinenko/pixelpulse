@@ -8,14 +8,14 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { Profile } from '../profile/Profile';
 import { Quest } from '../quest/Quest';
 import { SmoothTransition } from '../../hoc/SmoothTransition';
-import { useAppContext } from '../../hooks/useAppContext';
 import { useSelector } from 'react-redux';
 import { useTitle } from '../../hooks/useTitle';
 import type { RootState } from '../../store/store';
 
 const Layout = (): React.JSX.Element => {
     const { isSmall, isMedium } = useSelector((state: RootState) => state.mediaQuery);
-    const { styles } = useAppContext();
+    const styles = useSelector((state: RootState) => state.rootStyles);
+
     const location = useLocation();
     const isBeginning: boolean = location.pathname === '/beginning';
     const notTransition: boolean = location.state?.notTransition;
@@ -28,7 +28,6 @@ const Layout = (): React.JSX.Element => {
                 <Outlet />
             ) : (
                 <>
-                    {' '}
                     <Header />
                     <Navigation styles={styles} />
                     <Quest />
