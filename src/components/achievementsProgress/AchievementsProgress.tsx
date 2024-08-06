@@ -2,19 +2,19 @@ import React from 'react';
 import styles from './AchievementsProgress.module.scss';
 import { AchievementsProgressRing } from '../achievementsProgressRing/AchievementsProgressRing';
 import { modalOpenHandler } from '../../store/modalSlice';
-import { useAppContext } from '../../hooks/useAppContext';
-import { useDispatch } from 'react-redux';
-import type { AppDispatch } from '../../store/store';
+import { useDispatch, useSelector } from 'react-redux';
+import type { AppDispatch, RootState } from '../../store/store';
 
 const AchievementsProgress = (): React.JSX.Element => {
-    const { achievements } = useAppContext();
-    const { isLoad, isError, amountAchieved, amountAchievements, percent } = achievements;
+    const { error, loading, amountAchieved, amountAchievements, percent } = useSelector(
+        (state: RootState) => state.achievements,
+    );
     const dispatch = useDispatch<AppDispatch>();
 
     return (
         <div className={styles.progress}>
             <div className={styles.progress__inner}>
-                {isLoad || isError ? (
+                {loading || error ? (
                     <>
                         <AchievementsProgressRing percent={100} />
                         <span className={styles.progress__statistic}>0/0</span>

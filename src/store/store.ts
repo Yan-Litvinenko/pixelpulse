@@ -1,9 +1,10 @@
+import { achievementsSlice } from './achievementsSlice';
 import { configureStore } from '@reduxjs/toolkit';
 import { creationsSlice } from './creationsSlice';
+import { headerStatisticSlice } from './headerStatisticSlice';
 import { mediaSlice } from './mediaSlice';
 import { modalSlice } from './modalSlice';
 import { rootStyleSlice } from './rootStyleSlice';
-import { headerStatisticSlice } from './headerStatisticSlice';
 import type { ThunkAction, Action } from '@reduxjs/toolkit';
 
 const store = configureStore({
@@ -13,6 +14,7 @@ const store = configureStore({
         modal: modalSlice.reducer,
         rootStyles: rootStyleSlice.reducer,
         headerStatistic: headerStatisticSlice.reducer,
+        achievements: achievementsSlice.reducer,
     },
 });
 

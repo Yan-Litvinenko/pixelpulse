@@ -23,9 +23,7 @@ import { useModalCloseByKey } from '../../hooks/useModalCloseByKey';
 import { useSelector } from 'react-redux';
 import { wrapperClassName } from '../../utils/wrapperClassName';
 import type { IContextApp } from '../../interfaces/interface';
-import type { IUseAchievements } from '../../hooks/useAchievements';
-import type { AppDispatch } from '../../store/store';
-import { type RootState } from '../../store/store';
+import type { AppDispatch, RootState } from '../../store/store';
 
 const ContextApp = React.createContext<IContextApp | null>(null);
 const clickSound: HTMLAudioElement = new Audio(clickSoundEffect);
@@ -37,8 +35,6 @@ const App = (): React.JSX.Element => {
         (state: RootState) => state.modal.stateModal,
     );
 
-    const achievements: IUseAchievements = useAchievements(headerStatistic.level);
-
     const [music, setMusic] = useLocalStorage<boolean>(true, 'music');
     const [sounds, setSounds] = useLocalStorage<boolean>(true, 'sounds');
 
@@ -49,6 +45,7 @@ const App = (): React.JSX.Element => {
     settingsColor.init();
 
     useMedia();
+    useAchievements();
     useModalCloseByKey();
     useHeaderStatistic();
     dispatch(installRootStyles(styles));
@@ -62,8 +59,6 @@ const App = (): React.JSX.Element => {
                     handleSoundClick,
                     setMusic,
                     setSounds,
-                    achievements,
-                    headerStatistic,
                     mainMusic,
                     music,
                     sounds,
