@@ -5,7 +5,6 @@ import { Image, Folder } from '../svgIcon/SvgIcon';
 import { modalOpenHandler } from '../../store/modalSlice';
 import { nanoid } from '@reduxjs/toolkit';
 import { setProjectImages, setTargetProject, setTargetImage } from '../../store/creationsSlice';
-import { useActionWithDispatch } from '../../hooks/useActionWithDispatch';
 import { useAppContext } from '../../hooks/useAppContext';
 import { useDispatch } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
@@ -14,23 +13,20 @@ import type { AppDispatch, RootState } from '../../store/store';
 
 const CreationsXplorerContent = (): React.JSX.Element => {
     const dispatch = useDispatch<AppDispatch>();
-    const dispatchSetTargetImage = useActionWithDispatch<number>(setTargetImage);
-    const dispatchSetTargetProject = useActionWithDispatch<number>(setTargetProject);
-    const dispatchSetProjectImages = useActionWithDispatch<string[]>(setProjectImages);
 
     const { targetProject } = useSelector((state: RootState) => state.creations);
     const { projectName } = useParams();
     const { handleSoundClick } = useAppContext();
 
     const projectClick = (projectIndex: number): void => {
-        dispatchSetProjectImages(projects[projectIndex].images);
-        dispatchSetTargetProject(projectIndex);
+        dispatch(setProjectImages(projects[projectIndex].images));
+        dispatch(setTargetProject(projectIndex));
         handleSoundClick();
     };
 
     const imageClick = (imageIndex: number): void => {
         dispatch(modalOpenHandler({ key: 'creations' }));
-        dispatchSetTargetImage(imageIndex);
+        dispatch(setTargetImage(imageIndex));
     };
 
     return (

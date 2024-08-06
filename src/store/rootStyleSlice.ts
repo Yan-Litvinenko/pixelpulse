@@ -18,7 +18,7 @@ const initialState: RootStyleSlice = {
 };
 
 const rootStyleSlice = createSlice({
-    name: 'rootStyle',
+    name: 'rootStyles',
     initialState,
     reducers: {
         installRootStyles(state, action: PayloadAction<Record<string, string>>) {

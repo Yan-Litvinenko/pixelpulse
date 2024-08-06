@@ -1,21 +1,26 @@
 import React from 'react';
-import { useAppContext } from '../../hooks/useAppContext';
+import { useSelector } from 'react-redux';
 import { HeaderStatisticsFallback } from './HeaderStatisticFallback';
+import { useDispatch } from 'react-redux';
+import { fetchAddCoin } from '../../store/headerStatisticSlice';
 import type { IStatistics } from '../../interfaces/interface.component';
+import type { AppDispatch, RootState } from '../../store/store';
 
 const HeaderStatistics = (props: IStatistics): React.JSX.Element => {
+    const dispatch = useDispatch<AppDispatch>();
+    const { headerStatistic } = useSelector((state: RootState) => state);
+    const { error, loading, statistic } = headerStatistic;
+    const { level, coins, addStatus } = statistic;
     const { styles } = props;
-    const { headerStatistic } = useAppContext();
-    const { level, coins, addStatus, isLoad, isError, addCoin } = headerStatistic;
 
     return (
         <div className={styles.statistics}>
-            {isLoad ? (
+            {loading ? (
                 <HeaderStatisticsFallback styles={styles} />
             ) : (
                 <>
                     <div className={styles.level__box}>
-                        {isError ? (
+                        {error ? (
                             <span className={styles.level__text}>Error</span>
                         ) : (
                             <span className={styles.level__text}>{level}</span>
@@ -27,15 +32,15 @@ const HeaderStatistics = (props: IStatistics): React.JSX.Element => {
                             <button
                                 className={`${styles.coins__btn} ${!addStatus ? styles.coins__btn_pulse : styles.coins__btn_deactive}`}
                                 type="button"
-                                onClick={(event) => (isError || addStatus ? null : addCoin(event))}
+                                onClick={(event) => (error || addStatus ? null : dispatch(fetchAddCoin(event)))}
                             >
                                 +
                             </button>
-                            {!isError ? !addStatus ? <div className={styles.pulse}></div> : null : null}
+                            {!error ? !addStatus ? <div className={styles.pulse}></div> : null : null}
                         </form>
                     </div>
                     <div className={styles.coins__text_box}>
-                        {isError ? (
+                        {error ? (
                             <span className={styles.coins__text}>Error</span>
                         ) : (
                             <span className={styles.coins__text}>{coins}</span>
@@ -50,6 +55,3 @@ const HeaderStatistics = (props: IStatistics): React.JSX.Element => {
 };
 
 export { HeaderStatistics };
-
-{
-}

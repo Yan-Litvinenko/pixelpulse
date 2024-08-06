@@ -24,20 +24,19 @@ import { useSelector } from 'react-redux';
 import { wrapperClassName } from '../../utils/wrapperClassName';
 import type { IContextApp } from '../../interfaces/interface';
 import type { IUseAchievements } from '../../hooks/useAchievements';
-import type { IUseHeaderStatistic } from '../../hooks/useHeaderStatistics';
-import type { RootState } from '../../store/store';
+import type { AppDispatch } from '../../store/store';
+import { type RootState } from '../../store/store';
 
 const ContextApp = React.createContext<IContextApp | null>(null);
 const clickSound: HTMLAudioElement = new Audio(clickSoundEffect);
 
 const App = (): React.JSX.Element => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
     const { isSmall, isMedium } = useSelector((state: RootState) => state.mediaQuery);
     const { availability, settings, social, challenge, creations, credits, navigationMobile } = useSelector(
         (state: RootState) => state.modal.stateModal,
     );
 
-    const headerStatistic: IUseHeaderStatistic = useHeaderStatistic();
     const achievements: IUseAchievements = useAchievements(headerStatistic.level);
 
     const [music, setMusic] = useLocalStorage<boolean>(true, 'music');
@@ -48,8 +47,10 @@ const App = (): React.JSX.Element => {
     const handleSoundClick = (): Promise<void> | null => (sounds ? clickSound.play() : null);
 
     settingsColor.init();
+
     useMedia();
     useModalCloseByKey();
+    useHeaderStatistic();
     dispatch(installRootStyles(styles));
 
     React.useEffect(() => mainMusic.selectTrack(mainTheme), []);

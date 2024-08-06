@@ -3,6 +3,7 @@ import { creationsSlice } from './creationsSlice';
 import { mediaSlice } from './mediaSlice';
 import { modalSlice } from './modalSlice';
 import { rootStyleSlice } from './rootStyleSlice';
+import { headerStatisticSlice } from './headerStatisticSlice';
 import type { ThunkAction, Action } from '@reduxjs/toolkit';
 
 const store = configureStore({
@@ -11,6 +12,7 @@ const store = configureStore({
         mediaQuery: mediaSlice.reducer,
         modal: modalSlice.reducer,
         rootStyles: rootStyleSlice.reducer,
+        headerStatistic: headerStatisticSlice.reducer,
     },
 });
 
