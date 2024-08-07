@@ -20,7 +20,7 @@ const initialState: CreationsSlice = {
         images: [''],
         link: '',
         name: 'pixelpulse',
-        technologies: ['webpack', 'ts', 'react', 'nodeJS', 'mysql'],
+        technologies: ['ts', 'react', 'redux', 'nodeJS', 'mysql'],
     },
     targetProject: 0,
     targetImage: 0,

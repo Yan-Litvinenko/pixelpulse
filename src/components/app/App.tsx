@@ -1,9 +1,6 @@
 import React from 'react';
-import clickSoundEffect from '../../assets/audio/click.ogg';
-import mainTheme from '../../assets/audio/main-theme.mp3';
 import styles from './App.module.scss';
 import { ErrorBoundary } from '../../hoc/ErrorBoundary';
-import { installRootStyles } from '../../store/rootStyleSlice';
 import { Layout } from '../layout/Layout';
 import { ModalAvailability } from '../modalAvailability/ModalAvailability';
 import { ModalChallenge } from '../modalChallenge/ModalChallenge';
@@ -14,70 +11,46 @@ import { ModalSocial } from '../modalSocial/ModalSocial';
 import { NavigationMobile } from '../navigationMobile/NavigationMobile';
 import { settingsColor } from '../../classes/SettingsColor';
 import { useAchievements } from '../../hooks/useAchievements';
-import { useAudioPlayer } from '../../hooks/useAudioPlayer';
-import { useDispatch } from 'react-redux';
+import { useApp } from '../../hooks/useApp';
 import { useHeaderStatistic } from '../../hooks/useHeaderStatistics';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { useMedia } from '../../hooks/useMedia';
 import { useModalCloseByKey } from '../../hooks/useModalCloseByKey';
+import { useMusic } from '../../hooks/useMusic';
 import { useSelector } from 'react-redux';
+import { useSounds } from '../../hooks/useSounds';
 import { wrapperClassName } from '../../utils/wrapperClassName';
-import type { IContextApp } from '../../interfaces/interface';
-import type { AppDispatch, RootState } from '../../store/store';
-
-const ContextApp = React.createContext<IContextApp | null>(null);
-const clickSound: HTMLAudioElement = new Audio(clickSoundEffect);
+import type { RootState } from '../../store/store';
 
 const App = (): React.JSX.Element => {
-    const dispatch = useDispatch<AppDispatch>();
     const { isSmall, isMedium } = useSelector((state: RootState) => state.mediaQuery);
     const { availability, settings, social, challenge, creations, credits, navigationMobile } = useSelector(
         (state: RootState) => state.modal.stateModal,
     );
 
-    const [music, setMusic] = useLocalStorage<boolean>(true, 'music');
-    const [sounds, setSounds] = useLocalStorage<boolean>(true, 'sounds');
-
-    const mainMusic = useAudioPlayer(music);
-
-    const handleSoundClick = (): Promise<void> | null => (sounds ? clickSound.play() : null);
-
     settingsColor.init();
-
+    useApp(styles);
+    useMusic();
     useMedia();
+    useSounds();
     useAchievements();
     useModalCloseByKey();
     useHeaderStatistic();
-    dispatch(installRootStyles(styles));
-
-    React.useEffect(() => mainMusic.selectTrack(mainTheme), []);
 
     return (
         <ErrorBoundary>
-            <ContextApp.Provider
-                value={{
-                    handleSoundClick,
-                    setMusic,
-                    setSounds,
-                    mainMusic,
-                    music,
-                    sounds,
-                }}
-            >
-                <div className={wrapperClassName()}>
-                    <Layout />
-                </div>
+            <div className={wrapperClassName()}>
+                <Layout />
+            </div>
 
-                {availability ? <ModalAvailability /> : null}
-                {challenge ? <ModalChallenge /> : null}
-                {creations ? <ModalCreations /> : null}
-                {credits ? <ModalCredits /> : null}
-                {navigationMobile && (isMedium || isSmall) ? <NavigationMobile /> : null}
-                {settings ? <ModalSetting /> : null}
-                {social ? <ModalSocial /> : null}
-            </ContextApp.Provider>
+            {availability ? <ModalAvailability /> : null}
+            {challenge ? <ModalChallenge /> : null}
+            {creations ? <ModalCreations /> : null}
+            {credits ? <ModalCredits /> : null}
+            {navigationMobile && (isMedium || isSmall) ? <NavigationMobile /> : null}
+            {settings ? <ModalSetting /> : null}
+            {social ? <ModalSocial /> : null}
         </ErrorBoundary>
     );
 };
 
-export { App, ContextApp };
+export { App };

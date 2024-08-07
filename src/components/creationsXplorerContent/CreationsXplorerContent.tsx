@@ -1,11 +1,11 @@
 import React from 'react';
 import projects from '../../assets/json/projects.json';
 import styles from './CreationsXplorerContent.module.scss';
+import { soundsClickTrigger } from '../../store/soundsSlice';
 import { Image, Folder } from '../svgIcon/SvgIcon';
 import { modalOpenHandler } from '../../store/modalSlice';
 import { nanoid } from '@reduxjs/toolkit';
 import { setProjectImages, setTargetProject, setTargetImage } from '../../store/creationsSlice';
-import { useAppContext } from '../../hooks/useAppContext';
 import { useDispatch } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -13,15 +13,13 @@ import type { AppDispatch, RootState } from '../../store/store';
 
 const CreationsXplorerContent = (): React.JSX.Element => {
     const dispatch = useDispatch<AppDispatch>();
-
     const { targetProject } = useSelector((state: RootState) => state.creations);
     const { projectName } = useParams();
-    const { handleSoundClick } = useAppContext();
 
     const projectClick = (projectIndex: number): void => {
         dispatch(setProjectImages(projects[projectIndex].images));
         dispatch(setTargetProject(projectIndex));
-        handleSoundClick();
+        dispatch(soundsClickTrigger());
     };
 
     const imageClick = (imageIndex: number): void => {

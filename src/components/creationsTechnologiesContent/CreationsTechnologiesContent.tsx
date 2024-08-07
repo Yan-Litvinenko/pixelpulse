@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './CreationsTechnologiesContent.module.scss';
 import { nanoid } from '@reduxjs/toolkit';
-import { Figma, GitHub, Gulp, HexagonBorder, Html, JS } from '../svgIcon/SvgIcon';
+import { Figma, GitHub, Gulp, HexagonBorder, Html, JS, Redux } from '../svgIcon/SvgIcon';
 import { MySql, NodeJS, ReactIcon, Sass, Ts, Webpack, Wordpress } from '../svgIcon/SvgIcon';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -17,6 +17,7 @@ const technologies: Technologies = {
     mysql: MySql,
     nodeJS: NodeJS,
     react: ReactIcon,
+    redux: Redux,
     sass: Sass,
     ts: Ts,
     webpack: Webpack,

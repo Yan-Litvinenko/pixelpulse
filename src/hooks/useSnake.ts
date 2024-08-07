@@ -1,26 +1,38 @@
 import React from 'react';
-import mainTheme from '../assets/audio/main-theme.mp3';
-import snakeTheme from '../assets/audio/snake.mp3';
+import { useSelector, useDispatch } from 'react-redux';
 import { Snake } from '../classes/Snake';
-import { useLocalStorage } from './useLocalStorage';
-import { useAppContext } from './useAppContext';
+import { setActiveMusicTheme } from '../store/musicSlice';
+import type { AppDispatch, RootState } from '../store/store';
 
 interface UseSnake {
-    score: number;
     bestScore: number;
-    snake: React.MutableRefObject<Snake | null>;
     canvas: React.MutableRefObject<HTMLCanvasElement | null>;
+    score: number;
+    snake: React.MutableRefObject<Snake | null>;
 }
 
+const KEY_SNAKE_LOCALSTORAGE: string = 'snake-best-score';
+
+const getValueToLocalStorage = <T>(key: string, defaultValue: T): T => {
+    const localStorageData: string | null = localStorage.getItem(key);
+    return localStorageData ? JSON.parse(localStorageData) : defaultValue;
+};
+
+const setStateToLocalStorage = <T>(key: string, value: T): void => {
+    localStorage.setItem(key, JSON.stringify(value));
+};
+
 const useSnake = (): UseSnake => {
-    const { mainMusic } = useAppContext();
-    const [score, setScore] = React.useState(0);
-    const [bestScore, setBestScore] = useLocalStorage(0, 'yan-litvinenko-cv-snake-best-score');
+    const dispatch = useDispatch<AppDispatch>();
+    const [score, setScore] = React.useState<number>(0);
+    const [bestScore, setBestScore] = React.useState<number>(getValueToLocalStorage(KEY_SNAKE_LOCALSTORAGE, 0));
+    const { linkSnakeMusic, linkAutomataMusic } = useSelector((state: RootState) => state.music);
+
     const snake = React.useRef<null | Snake>(null);
     const canvas = React.useRef<HTMLCanvasElement | null>(null);
 
     React.useEffect(() => {
-        mainMusic.selectTrack(snakeTheme);
+        dispatch(setActiveMusicTheme(linkSnakeMusic));
 
         if (canvas.current) snake.current = new Snake(canvas.current);
 
@@ -35,8 +47,8 @@ const useSnake = (): UseSnake => {
 
             if (updateScore > bestScore) {
                 setBestScore(updateScore);
+                setStateToLocalStorage(KEY_SNAKE_LOCALSTORAGE, updateScore);
             }
-
             setScore(updateScore);
         }, 100);
 
@@ -45,9 +57,9 @@ const useSnake = (): UseSnake => {
         return () => {
             if (snake.current) clearInterval(snake.current.intervalId!);
             window.removeEventListener('keydown', eventKeyboard);
-            mainMusic.selectTrack(mainTheme);
+            dispatch(setActiveMusicTheme(linkAutomataMusic));
         };
-    }, [snake.current, canvas.current]);
+    }, [dispatch]);
 
     return {
         score,

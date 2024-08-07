@@ -1,14 +1,4 @@
-import type { UseAudioPlayer } from '../hooks/useAudioPlayer';
-
 type Page = 'welcome' | 'beginning' | 'about' | 'logs' | 'achievements' | 'creations' | 'games';
-type IContextApp = {
-    mainMusic: UseAudioPlayer;
-    music: boolean;
-    sounds: boolean;
-    handleSoundClick: () => Promise<void> | null;
-    setMusic: React.Dispatch<React.SetStateAction<boolean>>;
-    setSounds: React.Dispatch<React.SetStateAction<boolean>>;
-};
 
 interface IAddCoinResult {
     level: number;
@@ -22,4 +12,4 @@ interface ResolveError {
     message: string;
 }
 
-export type { IContextApp, Page, IAddCoinResult, ResolveError };
+export type { Page, IAddCoinResult, ResolveError };

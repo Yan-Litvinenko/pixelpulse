@@ -1,7 +1,7 @@
 @import '../../css/mixin.scss';
 
 .hexagon {
-    @include absolute-position(46%, -1.125rem);
+    @include absolute-position(47%, -1.125rem);
     height: 4.375rem;
     transform: translateY(-50%);
     transition: filter var(--transition-element);
@@ -36,6 +36,16 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.redux {
+    fill: var(--main-color);
+    height: 20px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 22px;
 }
 
 .image {

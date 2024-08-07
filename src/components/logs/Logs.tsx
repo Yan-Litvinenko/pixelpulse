@@ -3,10 +3,12 @@ import styles from './Logs.module.scss';
 import { LogsOld } from '../logsOld/LogsOld';
 import { LogsProject } from '../logsProject/LogsProject';
 import { LogsUpdate } from '../logsUpdate/LogsUpdate';
-import { useAppContext } from '../../hooks/useAppContext';
+import { soundsClickTrigger } from '../../store/soundsSlice';
+import { useDispatch } from 'react-redux';
+import type { AppDispatch } from '../../store/store';
 
 const Logs = (): React.JSX.Element => {
-    const { handleSoundClick } = useAppContext();
+    const dispatch = useDispatch<AppDispatch>();
 
     return (
         <main className={styles.logs}>
@@ -20,7 +22,7 @@ const Logs = (): React.JSX.Element => {
                     <a
                         className={styles.logs__github}
                         href="https://github.com/Darth-VaderX"
-                        onClick={handleSoundClick}
+                        onClick={() => dispatch(soundsClickTrigger())}
                         target="_blank"
                     >
                         github.com

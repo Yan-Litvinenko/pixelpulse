@@ -1,11 +1,13 @@
 import React from 'react';
 import styles from './ModalBoxButton.module.scss';
-import { useAppContext } from '../../hooks/useAppContext';
+import { soundsClickTrigger } from '../../store/soundsSlice';
+import { useDispatch } from 'react-redux';
+import type { AppDispatch } from '../../store/store';
 import type { IModalBoxButton } from '../../interfaces/interface.component';
 
 const ModalBoxButton = (props: IModalBoxButton): React.JSX.Element => {
+    const dispatch = useDispatch<AppDispatch>();
     const { handleEnter, isValid, textEnter, typeEnter, handleEscape, textEsc } = props;
-    const { handleSoundClick } = useAppContext();
 
     return (
         <div className={styles.box}>
@@ -13,7 +15,7 @@ const ModalBoxButton = (props: IModalBoxButton): React.JSX.Element => {
                 className={`${styles.box__enter} ${!props.isValid ? styles.box__enter_deactive : ''}`}
                 onClick={() => {
                     handleEnter();
-                    handleSoundClick();
+                    dispatch(soundsClickTrigger());
                 }}
                 disabled={!isValid}
                 type={typeEnter}

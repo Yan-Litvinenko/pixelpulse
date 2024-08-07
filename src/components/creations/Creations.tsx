@@ -5,11 +5,13 @@ import { CreationsDetails } from '../creationsDetails/CreationsDetails';
 import { CreationsTechnologies } from '../creationsTechnologies/CreationsTechnologies';
 import { CreationsXplorer } from '../creationsXplorer/CreationsXplorer';
 import { Link } from 'react-router-dom';
-import { useAppContext } from '../../hooks/useAppContext';
+import { soundsClickTrigger } from '../../store/soundsSlice';
+import { useDispatch } from 'react-redux';
 import { useTargetProject } from '../../hooks/useTargetProject';
+import type { AppDispatch } from '../../store/store';
 
 const Creations = (): React.JSX.Element => {
-    const { handleSoundClick } = useAppContext();
+    const dispatch = useDispatch<AppDispatch>();
     useTargetProject();
 
     return (
@@ -30,7 +32,7 @@ const Creations = (): React.JSX.Element => {
                         <Link
                             to={'/creations'}
                             className={styles.box_button__back}
-                            onClick={handleSoundClick}
+                            onClick={() => dispatch(soundsClickTrigger())}
                             type="button"
                             state={{ notTransition: true }}
                         >

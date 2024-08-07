@@ -6,20 +6,20 @@ import { achievementsFilter } from '../../utils/achievementsFilter';
 import { AchievementsProgress } from '../achievementsProgress/AchievementsProgress';
 import { achievementsSort } from '../../utils/achievementsSort';
 import { AchievementsToggle } from '../achievementsToggle/AchievementsToggle';
-import type { RootState } from '../../store/store';
+import { soundsClickTrigger } from '../../store/soundsSlice';
 import { Triangle } from 'react-loader-spinner';
-import { useAppContext } from '../../hooks/useAppContext';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import type { AppDispatch, RootState } from '../../store/store';
 import type { ToggleStatus } from '../../interfaces/interface.achievements';
 
 const Achievements = (): React.JSX.Element => {
-    const { handleSoundClick } = useAppContext();
+    const dispatch = useDispatch<AppDispatch>();
     const { achievements, loading, error } = useSelector((state: RootState) => state.achievements);
     const [filterStatus, setFilterStatus] = React.useState<ToggleStatus>('all');
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
         setFilterStatus(event.target.value as ToggleStatus);
-        handleSoundClick();
+        dispatch(soundsClickTrigger());
     };
 
     return (

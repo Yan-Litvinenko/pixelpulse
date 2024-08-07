@@ -4,10 +4,12 @@ import MarioImg from '../../assets/images/mario.jpg';
 import SnakeImg from '../../assets/images/snake.jpg';
 import styles from './Games.module.scss';
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import { useAppContext } from '../../hooks/useAppContext';
+import { soundsClickTrigger } from '../../store/soundsSlice';
+import { useDispatch } from 'react-redux';
+import type { AppDispatch } from '../../store/store';
 
 const Games = (): React.JSX.Element => {
-    const { handleSoundClick } = useAppContext();
+    const dispatch = useDispatch<AppDispatch>();
     const isGameRoute: boolean = useLocation().pathname.includes('/games/');
 
     return (
@@ -24,7 +26,7 @@ const Games = (): React.JSX.Element => {
                     </div>
 
                     <div className={styles.content__games}>
-                        <Link to={'/games/snake'} onClick={handleSoundClick}>
+                        <Link to={'/games/snake'} onClick={() => dispatch(soundsClickTrigger())}>
                             <figure className={styles.content__item}>
                                 <img src={SnakeImg} alt="Snake" draggable={false} />
                                 <figcaption className={styles.content__description}>

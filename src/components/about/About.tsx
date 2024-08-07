@@ -1,6 +1,7 @@
 import React from 'react';
-import GlitchImage from '../glitchImage/GlitchImage';
+import humanAvif from '../../assets/images/human.avif';
 import humanJpg from '../../assets/images/human.jpg';
+import humanWebp from '../../assets/images/human.webp';
 import styles from './About.module.scss';
 import { AboutElement } from '../aboutElement/AboutElement';
 import { Frame } from '../frame/Frame';
@@ -37,15 +38,13 @@ const About = (): React.JSX.Element => {
                 </div>
 
                 {isSmall ? null : (
-                    <div className={styles.box_image}>
+                    <picture className={styles.box_image}>
                         <Frame className={styles.frame} />
-                        <GlitchImage
-                            className={styles.about__img}
-                            imageUrl={humanJpg}
-                            maxDelay={25000}
-                            minDelay={10000}
-                        />
-                    </div>
+
+                        <source srcSet={humanAvif} />
+                        <source srcSet={humanWebp} />
+                        <img src={humanJpg} alt="human" className={styles.about__img} />
+                    </picture>
                 )}
             </div>
         </main>
