@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Hexagon } from '../svgIcon/SvgIcon';
 import { NavLink } from 'react-router-dom';
 import { scroll } from '../../classes/Scroll';
-import { soundsClickTrigger } from '../../store/soundsSlice';
+import { soundsClickTrigger, soundsModalTrigger } from '../../store/soundsSlice';
 import { useModal } from '../../hooks/useModal';
 import type { AppDispatch, RootState } from '../../store/store';
 import type { INavigationElement } from '../../interfaces/interface.component';
@@ -18,6 +18,7 @@ const NavigationElement = (props: INavigationElement): React.JSX.Element => {
 
     const switchPage = (): void => {
         if (isMedium) {
+            dispatch(soundsModalTrigger());
             closeNavigationMobile();
             scroll.on();
         } else {
