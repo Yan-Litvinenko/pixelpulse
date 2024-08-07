@@ -78,8 +78,8 @@
         height: auto;
 
         &__achievements {
-            height: auto;
-            max-height: calc(100vh - 7.4875rem);
+            height: 100%;
+            max-height: 53rem;
             overflow-y: auto;
         }
     }
@@ -123,7 +123,6 @@
             grid-template-columns: 2fr 1fr;
             grid-template-rows: max-content max-content max-content;
             row-gap: 1.5rem;
-            min-height: calc(100vh - 9.375rem);
         }
     }
 }

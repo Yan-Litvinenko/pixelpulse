@@ -1,6 +1,6 @@
 import React from 'react';
-import { useAppContext } from '../../hooks/useAppContext';
-import glitchEffect from '../../assets/audio/glitch.mp3';
+import { useDispatch } from 'react-redux';
+import { soundsGlitchTrigger } from '../../store/soundsSlice';
 
 interface GlitchCanvasProps {
     className: string;
@@ -10,16 +10,12 @@ interface GlitchCanvasProps {
 }
 
 const GlitchImage: React.FC<GlitchCanvasProps> = ({ imageUrl, className, minDelay, maxDelay }) => {
-    const { sounds } = useAppContext();
-    const actualSoundState = React.useRef<boolean | undefined>(sounds);
+    const dispatch = useDispatch();
     const timer = React.useRef<NodeJS.Timeout | null>(null);
     const canvasRef = React.useRef<HTMLCanvasElement>(null);
     const imgRef = React.useRef<HTMLImageElement>(new Image());
     const countRender = React.useRef<number>(1);
     const cachedImage = React.useRef<HTMLImageElement | null>(null);
-
-    const audio: HTMLAudioElement = new Audio(glitchEffect);
-    audio.volume = 0.1;
 
     const getRandomDelay = (): number => {
         return Math.floor(Math.random() * (maxDelay - minDelay + 1)) + minDelay;
@@ -78,8 +74,8 @@ const GlitchImage: React.FC<GlitchCanvasProps> = ({ imageUrl, className, minDela
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(img, 0, 0);
 
-            if (countRender.current > 2 && actualSoundState.current) {
-                audio.play();
+            if (countRender.current > 2) {
+                dispatch(soundsGlitchTrigger());
             }
         }, 100);
 
@@ -97,6 +93,7 @@ const GlitchImage: React.FC<GlitchCanvasProps> = ({ imageUrl, className, minDela
         img.src = imageUrl;
         img.onload = (): void => {
             const canvas: HTMLCanvasElement | null = canvasRef.current;
+
             if (canvas) {
                 canvas.width = img.width;
                 canvas.height = img.height;
@@ -109,10 +106,6 @@ const GlitchImage: React.FC<GlitchCanvasProps> = ({ imageUrl, className, minDela
             if (timer.current) clearTimeout(timer.current);
         };
     }, [imageUrl, glitchImage]);
-
-    React.useEffect(() => {
-        actualSoundState.current = sounds;
-    }, [sounds]);
 
     return (
         <>

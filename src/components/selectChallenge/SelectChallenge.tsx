@@ -1,8 +1,8 @@
 import React from 'react';
-import { nanoid } from 'nanoid';
-import { Rarity } from '../../interfaces/interface.achievements';
-import { ISelectChallenge } from '../../interfaces/interface.component';
 import styles from './SelectChallenge.module.scss';
+import { nanoid } from '@reduxjs/toolkit';
+import type { Rarity } from '../../interfaces/interface.achievements';
+import type { ISelectChallenge } from '../../interfaces/interface.component';
 
 const rarity: Rarity[] = ['unusual', 'rare', 'epic', 'legendary'];
 

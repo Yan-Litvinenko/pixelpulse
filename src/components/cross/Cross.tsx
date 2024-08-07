@@ -1,6 +1,6 @@
 import React from 'react';
-import { ICross } from '../../interfaces/interface.component';
 import styles from './Cross.module.scss';
+import type { ICross } from '../../interfaces/interface.component';
 
 const Cross = (props: ICross): React.JSX.Element => {
     const { handler } = props;

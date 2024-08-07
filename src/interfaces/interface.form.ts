@@ -1,4 +1,5 @@
-import { UseFormRegister, FieldValues, FieldErrors } from 'react-hook-form';
+import type { UseFormRegister, FieldValues, FieldErrors } from 'react-hook-form';
+
 type Field = 'name' | 'email' | 'message' | 'title' | 'description';
 type Rarity = 'unusual' | 'rare' | 'epic' | 'legendary';
 
@@ -21,4 +22,4 @@ interface ILabel {
     textContent: string;
 }
 
-export { Field, IForm, Rarity, ILabel };
+export type { Field, IForm, Rarity, ILabel };

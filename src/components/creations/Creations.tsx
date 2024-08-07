@@ -1,28 +1,17 @@
 import React from 'react';
+import styles from './Creations.module.scss';
 import { CreationsAbout } from '../creationsAbout/CreationsAbout';
 import { CreationsDetails } from '../creationsDetails/CreationsDetails';
 import { CreationsTechnologies } from '../creationsTechnologies/CreationsTechnologies';
 import { CreationsXplorer } from '../creationsXplorer/CreationsXplorer';
-import { IProject } from '../../interfaces/interface.creations';
 import { Link } from 'react-router-dom';
-import { useAppContext } from '../../hooks/useAppContext';
+import { soundsClickTrigger } from '../../store/soundsSlice';
+import { useDispatch } from 'react-redux';
 import { useTargetProject } from '../../hooks/useTargetProject';
-import projects from '../../assets/json/projects.json';
-import styles from './Creations.module.scss';
-
-const projectDefault: IProject = {
-    about: [
-        'The site design is made in the style of a computer game. It describes my achievements and skills, information about my life and goals.',
-    ],
-    brief: 'reflects growth in educational or professional achievements',
-    images: [''],
-    link: '',
-    name: 'pixelpulse',
-    technologies: ['webpack', 'ts', 'react', 'nodeJS', 'mysql'],
-};
+import type { AppDispatch } from '../../store/store';
 
 const Creations = (): React.JSX.Element => {
-    const { handleSoundClick } = useAppContext();
+    const dispatch = useDispatch<AppDispatch>();
     useTargetProject();
 
     return (
@@ -31,19 +20,19 @@ const Creations = (): React.JSX.Element => {
 
             <div className={styles.creations__inner}>
                 <div className={styles.creations__details_block}>
-                    <CreationsDetails projectDefault={projectDefault} projects={projects} />
-                    <CreationsTechnologies projectDefault={projectDefault} projects={projects} />
-                    <CreationsAbout projectDefault={projectDefault} projects={projects} />
+                    <CreationsDetails />
+                    <CreationsTechnologies />
+                    <CreationsAbout />
                 </div>
 
                 <div className={styles.xplorer_block}>
-                    <CreationsXplorer projects={projects} />
+                    <CreationsXplorer />
 
                     <div className={styles.box_button}>
                         <Link
                             to={'/creations'}
                             className={styles.box_button__back}
-                            onClick={handleSoundClick}
+                            onClick={() => dispatch(soundsClickTrigger())}
                             type="button"
                             state={{ notTransition: true }}
                         >

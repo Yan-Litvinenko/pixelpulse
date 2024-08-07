@@ -1,6 +1,6 @@
 import React from 'react';
-import { IFrame } from '../../interfaces/interface.component';
 import styles from './Frame.module.scss';
+import type { IFrame } from '../../interfaces/interface.component';
 
 const Frame = (props: IFrame): React.JSX.Element => {
     const { className } = props;

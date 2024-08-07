@@ -1,33 +1,36 @@
 import React from 'react';
+import styles from './Achievements.module.scss';
 import { AchievementsBlock } from '../achievementsBlock/AchievementsBlock';
 import { AchievementsError } from '../achievementsError/AchievementsError';
-import { achievementsFilter, achievementsSort } from '../../hooks/useAchievements';
+import { achievementsFilter } from '../../utils/achievementsFilter';
 import { AchievementsProgress } from '../achievementsProgress/AchievementsProgress';
+import { achievementsSort } from '../../utils/achievementsSort';
 import { AchievementsToggle } from '../achievementsToggle/AchievementsToggle';
-import { ToggleStatus } from '../../interfaces/interface.achievements';
+import { soundsClickTrigger } from '../../store/soundsSlice';
 import { Triangle } from 'react-loader-spinner';
-import { useAppContext } from '../../hooks/useAppContext';
-import styles from './Achievements.module.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import type { AppDispatch, RootState } from '../../store/store';
+import type { ToggleStatus } from '../../interfaces/interface.achievements';
 
 const Achievements = (): React.JSX.Element => {
-    const { handleSoundClick, achievements } = useAppContext();
-    const { isError, isLoad } = achievements;
+    const dispatch = useDispatch<AppDispatch>();
+    const { achievements, loading, error } = useSelector((state: RootState) => state.achievements);
     const [filterStatus, setFilterStatus] = React.useState<ToggleStatus>('all');
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
         setFilterStatus(event.target.value as ToggleStatus);
-        handleSoundClick();
+        dispatch(soundsClickTrigger());
     };
 
     return (
         <main className={styles.achievements}>
-            <h1 className={styles.achievements__title}>{isError ? 'Error achievements loading' : 'Achievements'}</h1>
+            <h1 className={styles.achievements__title}>{error ? 'Error achievements loading' : 'Achievements'}</h1>
 
             <div className={styles.achievements__content}>
                 <AchievementsProgress />
 
                 <div className={styles.achievements__achievements}>
-                    {isLoad ? (
+                    {loading ? (
                         <Triangle
                             ariaLabel="triangle-loading"
                             color=""
@@ -37,20 +40,20 @@ const Achievements = (): React.JSX.Element => {
                             wrapperClass={styles.loader}
                             wrapperStyle={{}}
                         />
-                    ) : isError ? (
+                    ) : error ? (
                         <AchievementsError />
                     ) : (
                         <>
                             <AchievementsBlock
                                 prefixForClassName={'achieved'}
                                 achievements={achievementsSort(
-                                    achievementsFilter(achievements.achievements || [], filterStatus, 'achieved'),
+                                    achievementsFilter(achievements || [], filterStatus, 'achieved'),
                                 )}
                             />
                             <AchievementsBlock
                                 prefixForClassName={'ongoing'}
                                 achievements={achievementsSort(
-                                    achievementsFilter(achievements.achievements || [], filterStatus, 'in progress'),
+                                    achievementsFilter(achievements || [], filterStatus, 'in progress'),
                                 )}
                             />
                         </>

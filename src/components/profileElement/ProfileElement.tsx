@@ -1,14 +1,12 @@
 import React from 'react';
-import { Bluetooth, Hexagon } from '../svgIcon/SvgIcon';
-import { IProfileElement } from '../../interfaces/interface.component';
-import { useAppContext } from '../../hooks/useAppContext';
 import styles from './ProfileElement.module.scss';
+import { Bluetooth, Hexagon } from '../svgIcon/SvgIcon';
+import { useModal } from '../../hooks/useModal';
+import type { IProfileElement } from '../../interfaces/interface.component';
 
 const ProfileElement = (props: IProfileElement): React.JSX.Element => {
-    const { social, availability } = useAppContext();
     const { adjacent, header, classRoot, modal } = props;
-
-    const openModal = modal === 'social' ? social.openModal : availability.openModal;
+    const openModal = useModal(modal || 'availability').open;
 
     return (
         <div className={styles.profile__element}>

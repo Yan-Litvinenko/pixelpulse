@@ -1,12 +1,15 @@
 import React from 'react';
-import { useAppContext } from './useAppContext';
+import { useSelector, useDispatch } from 'react-redux';
+import { soundsClickTrigger } from '../store/soundsSlice';
+import type { AppDispatch, RootState } from '../store/store';
 
 const useSlider = (
     slider: React.MutableRefObject<HTMLDivElement | null>,
     vectorLeft: React.MutableRefObject<HTMLImageElement | null>,
     vectorRight: React.MutableRefObject<HTMLImageElement | null>,
 ): number => {
-    const { projectImages, targetImage, handleSoundClick } = useAppContext();
+    const dispatch = useDispatch<AppDispatch>();
+    const { targetImage, projectImages } = useSelector((state: RootState) => state.creations);
     const [countSlider, setCountSlider] = React.useState<number>(targetImage);
 
     let xDown: number = 0;
@@ -17,7 +20,7 @@ const useSlider = (
             const transformValue: string = `translateX(-${counter}00%)`;
 
             if (content.style.transform !== transformValue) content.style.transform = transformValue;
-            handleSoundClick();
+            dispatch(soundsClickTrigger());
         }
     };
 

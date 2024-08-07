@@ -1,6 +1,6 @@
-import { Page } from './interface';
-import { UseFormRegister, FieldValues } from 'react-hook-form';
-import { Rarity } from './interface.achievements';
+import type { Page } from './interface';
+import type { UseFormRegister, FieldValues } from 'react-hook-form';
+import type { Rarity } from './interface.achievements';
 
 interface IAboutElement {
     title: string;
@@ -125,7 +125,7 @@ type IErrorPage = {
     detail: string;
 };
 
-export {
+export type {
     IAboutElement,
     IClipPathBorder,
     ICreditItem,

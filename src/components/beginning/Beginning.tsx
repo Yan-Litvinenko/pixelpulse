@@ -1,8 +1,9 @@
 import React from 'react';
-import { Frame } from '../frame/Frame';
-import GlitchImage from '../glitchImage/GlitchImage';
+import beginnintAvif from '../../assets/images/beginning.avif';
+import beginnintWebp from '../../assets/images/beginning.webp';
 import beginningJpg from '../../assets/images/beginning.jpg';
 import styles from './Beginning.module.scss';
+import { Frame } from '../frame/Frame';
 
 const Beginning = (): React.JSX.Element => {
     return (
@@ -17,15 +18,13 @@ const Beginning = (): React.JSX.Element => {
                             </h1>
                             <h2 className={styles.beginning__subtitle}>Artwork generated with midjourney</h2>
                         </div>
-                        <div className={styles.beginning__background_box}>
-                            <GlitchImage
-                                className={styles.beginning__background}
-                                imageUrl={beginningJpg}
-                                minDelay={10000}
-                                maxDelay={25000}
-                            />
+
+                        <picture className={styles.beginning__background_box}>
+                            <source srcSet={beginnintAvif} />
+                            <source srcSet={beginnintWebp} />
+                            <img src={beginningJpg} alt="whale" className={styles.beginning__background} />
                             <Frame className={styles.beginning__background_frame} />
-                        </div>
+                        </picture>
                     </>
                 </div>
             </main>

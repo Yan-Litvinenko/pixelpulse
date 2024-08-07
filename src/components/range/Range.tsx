@@ -1,7 +1,7 @@
 import React from 'react';
-import { IRange } from '../../interfaces/interface.component';
-import { useRange } from '../../hooks/useRange';
 import styles from './Range.module.scss';
+import { useRange } from '../../hooks/useRange';
+import type { IRange } from '../../interfaces/interface.component';
 
 const Range = (props: IRange): React.JSX.Element => {
     const { inputValue, changeSettingValue, textContent, min, max, inputTarget } = props;
@@ -47,4 +47,4 @@ const Range = (props: IRange): React.JSX.Element => {
     );
 };
 
-export default Range;
+export { Range };

@@ -1,21 +1,24 @@
 import React from 'react';
-import { Frame } from '../frame/Frame';
-import { Link } from 'react-router-dom';
-import { nanoid } from 'nanoid';
-import { ProfileElement } from '../profileElement/ProfileElement';
-import { useAppContext } from '../../hooks/useAppContext';
 import GlitchImage from '../glitchImage/GlitchImage';
 import avatar from '../../assets/images/avatar.png';
 import profileItems from '../../assets/json/profile.json';
 import styles from './Profile.module.scss';
+import { Frame } from '../frame/Frame';
+import { Link } from 'react-router-dom';
+import { nanoid } from '@reduxjs/toolkit';
+import { ProfileElement } from '../profileElement/ProfileElement';
+import { useSelector, useDispatch } from 'react-redux';
+import { soundsClickTrigger } from '../../store/soundsSlice';
+import type { RootState, AppDispatch } from '../../store/store';
 
 const Profile = (): React.JSX.Element => {
-    const { handleSoundClick, isMedium } = useAppContext();
+    const dispatch = useDispatch<AppDispatch>();
+    const { isSmall } = useSelector((state: RootState) => state.mediaQuery);
 
     return (
         <aside className={styles.profile}>
-            {isMedium ? null : (
-                <Link to="about" className={styles.avatar} onClick={handleSoundClick}>
+            {isSmall ? null : (
+                <Link to="about" className={styles.avatar} onClick={() => dispatch(soundsClickTrigger())}>
                     <Frame className={styles.avatar__frame} />
                     <GlitchImage className={styles.canvas} imageUrl={avatar} minDelay={20000} maxDelay={40000} />
                 </Link>

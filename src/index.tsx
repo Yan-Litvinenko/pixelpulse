@@ -12,6 +12,8 @@ import { Games } from './components/games/Games';
 import { GameSnake } from './components/gameSnake/GameSnake';
 import { Logs } from './components/logs/Logs';
 import { logsLoader } from './components/logs/logsLoader';
+import { Provider } from 'react-redux';
+import { store } from './store/store';
 import { Welcome } from './components/welcome/Welocme';
 import './css/index.scss';
 
@@ -39,6 +41,8 @@ const router = createBrowserRouter(
 
 root.render(
     <React.StrictMode>
-        <RouterProvider router={router} />
+        <Provider store={store}>
+            <RouterProvider router={router} />
+        </Provider>
     </React.StrictMode>,
 );

@@ -1,6 +1,6 @@
 import { defer } from 'react-router-dom';
 import { getZero } from '../../utils/getZero';
-import { ICommitTransform, IGithubRespone } from '../../interfaces/interface.github';
+import type { ICommitTransform, IGithubRespone } from '../../interfaces/interface.github';
 
 const ACCESS_TOKEN: string | undefined = process.env.REACT_APP_GITHUB_TOKEN;
 const URL: string | undefined = process.env.REACT_APP_GITHUB_URL;

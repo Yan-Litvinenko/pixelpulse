@@ -1,9 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useAppContext } from '../../hooks/useAppContext';
-import { usePrintedText } from '../../hooks/usePrintedText';
 import audioKeyboardPress from '../../assets/audio/pressKeyboard.mp3';
 import styles from './Welcome.module.scss';
+import { Link } from 'react-router-dom';
+import { soundsClickTrigger } from '../../store/soundsSlice';
+import { usePrintedText } from '../../hooks/usePrintedText';
+import { useSelector, useDispatch } from 'react-redux';
+import type { AppDispatch } from '../../store/store';
+import type { RootState } from '../../store/store';
 
 const audioKeyboard = new Audio(audioKeyboardPress);
 const textForPrint: Record<string, string> = {
@@ -13,7 +16,8 @@ const textForPrint: Record<string, string> = {
 };
 
 const Welcome = (): React.JSX.Element => {
-    const { handleSoundClick, sounds } = useAppContext();
+    const dispatch = useDispatch<AppDispatch>();
+    const { soundsState } = useSelector((state: RootState) => state.sounds);
 
     const skipStatus = React.useRef(false);
     const isPlayedAudioKeyboard = React.useRef(false);
@@ -38,7 +42,7 @@ const Welcome = (): React.JSX.Element => {
         audioKeyboard.pause();
         setAnimationText();
         setSkipStatus();
-        handleSoundClick();
+        dispatch(soundsClickTrigger());
     };
 
     const textElementWithAnimation = (currentText: string, condition: boolean): string => {
@@ -46,7 +50,7 @@ const Welcome = (): React.JSX.Element => {
     };
 
     const handleAudioKeyboard = (): void => {
-        if (sounds && !isPlayedAudioKeyboard.current && !skipStatus.current) {
+        if (soundsState && !isPlayedAudioKeyboard.current && !skipStatus.current) {
             setInTrueStatusPlayed();
             audioKeyboard.play();
         }
@@ -64,7 +68,7 @@ const Welcome = (): React.JSX.Element => {
     }, []);
 
     return (
-        <div className={styles.welcome}>
+        <section className={styles.welcome}>
             <h2 className={styles.welcome__greeting}>HI!</h2>
             <div className={styles.welcome__content}>
                 <div className={styles.welcome__item}>
@@ -102,7 +106,7 @@ const Welcome = (): React.JSX.Element => {
 
                 <Link
                     className={`${styles.welcome__btn} ${skipStatus.current || textTwo.animationEnd ? '' : styles.hidden}`}
-                    onClick={handleSoundClick}
+                    onClick={() => dispatch(soundsClickTrigger())}
                     to="/beginning"
                 >
                     Enter the system
@@ -115,7 +119,7 @@ const Welcome = (): React.JSX.Element => {
                     skip animation<span className={styles.skip__quotes}>&#xBB;</span>
                 </button>
             </div>
-        </div>
+        </section>
     );
 };
 

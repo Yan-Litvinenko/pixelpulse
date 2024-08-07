@@ -1,6 +1,6 @@
 import React from 'react';
-import { IErrorPage } from '../../interfaces/interface.component';
 import styles from './ErrorPage.module.scss';
+import type { IErrorPage } from '../../interfaces/interface.component';
 
 type Reset = {
     reset: () => void;

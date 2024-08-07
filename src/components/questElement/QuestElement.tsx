@@ -1,6 +1,6 @@
 import React from 'react';
 import { Hexagon } from '../svgIcon/SvgIcon';
-import { IQuestElement } from '../../interfaces/interface.component';
+import type { IQuestElement } from '../../interfaces/interface.component';
 
 const QuestElement = (props: IQuestElement): React.JSX.Element => {
     const { text, textTitle, hexagon, className } = props;

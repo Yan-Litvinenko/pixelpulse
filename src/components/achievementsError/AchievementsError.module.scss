@@ -4,6 +4,7 @@
     @include flex-container(column, $gap: 0.5rem 0rem);
     color: var(--stone-grey);
     height: calc(var(--height-large) - 9.375rem);
+    padding-top: 2rem;
 
     &__item {
         padding-left: 1.5rem;
@@ -51,5 +52,6 @@
 @media (max-width: 768px) {
     .error {
         height: calc(var(--height-small) - 2.0625rem);
+        padding: 0;
     }
 }

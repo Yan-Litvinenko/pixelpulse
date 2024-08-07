@@ -115,10 +115,10 @@
 
 .navigation {
     padding: 0.625rem 1.25rem;
+}
 
-    &__list {
-        @include flex-container(column, $gap: 1.25rem 0rem);
-    }
+.navigationList {
+    @include flex-container(column, $gap: 1.25rem 0rem);
 }
 
 .settings {

@@ -1,7 +1,7 @@
 import React from 'react';
-import { ICreditItem } from '../../interfaces/interface.component';
-import { nanoid } from 'nanoid';
 import styles from './ModalCreditsElement.module.scss';
+import { nanoid } from '@reduxjs/toolkit';
+import type { ICreditItem } from '../../interfaces/interface.component';
 
 const ModalCreditsElement = (props: ICreditItem): React.ReactElement => {
     const { title, text } = props;

@@ -1,6 +1,6 @@
 import React from 'react';
-import { IAchievementsToggle } from '../../interfaces/interface.achievements';
 import styles from './AchievementsToggle.module.scss';
+import type { IAchievementsToggle } from '../../interfaces/interface.achievements';
 
 const AchievementsToggle = (props: IAchievementsToggle): React.JSX.Element => {
     const { checked, id, onChange, textContent, value } = props;

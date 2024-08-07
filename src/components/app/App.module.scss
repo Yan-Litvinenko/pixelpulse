@@ -23,11 +23,11 @@
         z-index: -1;
     }
 
-    &__active_left {
+    &__left_rotate {
         transform: perspective(46.875rem) rotateY(-31deg) translateY(-3rem) translateZ(-33.75rem);
     }
 
-    &__active_center {
+    &__center_rotate {
         transform: perspective(46.875rem) rotateX(25deg) translateY(-12rem) translateZ(-2.5rem);
     }
 }

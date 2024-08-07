@@ -1,5 +1,5 @@
 import React from 'react';
-import { ISettingElement } from '../../interfaces/interface.component';
+import type { ISettingElement } from '../../interfaces/interface.component';
 
 const SettingElement = (props: ISettingElement): React.JSX.Element => {
     const { image, onClick, className, audioClassName, textContent } = props;

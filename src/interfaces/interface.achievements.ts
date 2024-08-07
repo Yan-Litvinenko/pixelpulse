@@ -35,7 +35,7 @@ interface IAchievementsProgressRing {
     percent: number;
 }
 
-export {
+export type {
     ExecutionStatus,
     IAchieve,
     IAchievementsAchieve,

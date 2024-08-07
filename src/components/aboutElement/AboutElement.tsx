@@ -1,6 +1,6 @@
 import React from 'react';
-import { IAboutElement } from '../../interfaces/interface.component';
 import styles from './AboutElement.module.scss';
+import type { IAboutElement } from '../../interfaces/interface.component';
 
 const AboutElement = (props: IAboutElement): React.JSX.Element => {
     const { title, text } = props;
