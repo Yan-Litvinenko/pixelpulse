@@ -1,14 +1,14 @@
 import React from 'react';
-import { Frame } from '../frame/Frame';
-import { ICreationsXplorer } from '../../interfaces/interface.creations';
-import { Outlet, useParams } from 'react-router-dom';
-import { useAppContext } from '../../hooks/useAppContext';
 import styles from './CreationsXplorer.module.scss';
+import { Frame } from '../frame/Frame';
+import { Outlet, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import type { RootState } from '../../store/store';
 
-const CreationsXplorer = (props: ICreationsXplorer): React.JSX.Element => {
-    const { targetProject } = useAppContext();
+const CreationsXplorer = (): React.JSX.Element => {
+    const { targetProject, projects } = useSelector((state: RootState) => state.creations);
     const { projectName } = useParams();
-    const { projects } = props;
+
     const path: string = `location: /projects${projectName ? '/' + projects[targetProject].name : ''}`;
 
     return (

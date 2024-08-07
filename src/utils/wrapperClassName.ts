@@ -1,29 +1,23 @@
-interface WrapperClassName {
-    availability: boolean;
-    challenge: boolean;
-    creations: boolean;
-    credits: boolean;
-    isLarge: boolean;
-    isMedium: boolean;
-    setting: boolean;
-    social: boolean;
-    styles: Record<string, string>;
-}
+import { useSelector } from 'react-redux';
+import type { RootState } from '../store/store';
 
-const wrapperClassName = (props: WrapperClassName): string => {
-    const { availability, creations, credits, challenge, setting, social } = props;
-    const { isLarge, isMedium, styles } = props;
+const wrapperClassName = (): string => {
+    const { isSmall, isMedium } = useSelector((state: RootState) => state.mediaQuery);
+    const { availability, creations, credits, challenge, settings, social } = useSelector(
+        (state: RootState) => state.modal.stateModal,
+    );
+    const { wrapper, wrapperCenterRotate, wrapperLeftRotate } = useSelector((state: RootState) => state.rootStyles);
 
-    const classes: string[] = [styles.wrapper];
-    const modalWithCenterlEffect: boolean[] = [creations, setting];
-    const modalWithLeftEffect: boolean[] = [availability, social, credits, challenge];
+    const classes: string[] = [wrapper];
+    const modalWithCenterRotate: boolean[] = [creations, settings];
+    const modalWithLeftRotate: boolean[] = [availability, social, credits, challenge];
 
-    if (!isMedium && !isLarge) {
-        const hasModalLeftEffect: boolean = modalWithLeftEffect.some((state) => state);
-        const hasModalCenterEffect: boolean = modalWithCenterlEffect.some((state) => state);
+    if (!isMedium && !isSmall) {
+        const hasModalLeftEffect: boolean = modalWithLeftRotate.some((state) => state);
+        const hasModalCenterEffect: boolean = modalWithCenterRotate.some((state) => state);
 
-        classes.push(hasModalCenterEffect ? styles.wrapper__active_center : '');
-        classes.push(hasModalLeftEffect ? styles.wrapper__active_left : '');
+        classes.push(hasModalCenterEffect ? wrapperCenterRotate : '');
+        classes.push(hasModalLeftEffect ? wrapperLeftRotate : '');
     }
 
     return classes.join(' ');

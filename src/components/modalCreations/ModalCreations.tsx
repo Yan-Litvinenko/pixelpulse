@@ -1,23 +1,26 @@
 import React from 'react';
-import { nanoid } from 'nanoid';
-import { useAppContext } from '../../hooks/useAppContext';
-import { useSlider } from '../../hooks/useSlider';
 import projects from '../../assets/json/projects.json';
 import vectorImageLeft from '../../assets/images/vector-left.svg';
 import vectorImageRight from '../../assets/images/vector-right.svg';
 import styles from './ModalCreations.module.scss';
+import { nanoid } from '@reduxjs/toolkit';
+import { stopPropagation } from '../../utils/stopPropagation';
+import { useModal } from '../../hooks/useModal';
+import { useSelector } from 'react-redux';
+import { useSlider } from '../../hooks/useSlider';
+import type { RootState } from '../../store/store';
 
 const ModalCreations = (): React.JSX.Element => {
-    const { targetProject, projectImages, creations } = useAppContext();
+    const closeModalCreations = useModal('creations').close;
+    const { targetProject, projectImages } = useSelector((state: RootState) => state.creations);
+
     const slider = React.useRef<HTMLDivElement | null>(null);
     const vectorLeft = React.useRef<HTMLImageElement | null>(null);
     const vectorRight = React.useRef<HTMLImageElement | null>(null);
     const countSlider = useSlider(slider, vectorLeft, vectorRight);
 
     const enter = (event: KeyboardEvent): void => {
-        if (event.key === 'Enter') {
-            window.open(projects[targetProject].link, '_blank');
-        }
+        if (event.key === 'Enter') window.open(projects[targetProject].link, '_blank');
     };
 
     React.useEffect(() => {
@@ -28,8 +31,8 @@ const ModalCreations = (): React.JSX.Element => {
     }, []);
 
     return (
-        <div className={styles.modal} onClick={creations.closeModal}>
-            <div className={styles.modal__inner} onClick={creations.stopPropagation}>
+        <div className={styles.modal} onClick={closeModalCreations}>
+            <div className={styles.modal__inner} onClick={stopPropagation}>
                 <div className={styles.modal__header}>
                     <h3 className={styles.modal__subtitle}>previewing images from</h3>
                     <h2 className={styles.modal__title}>{projects[targetProject].name}</h2>
@@ -76,7 +79,7 @@ const ModalCreations = (): React.JSX.Element => {
                     <span className={styles.button_wrapper__count}>
                         {countSlider + 1} of {projectImages.length}
                     </span>
-                    <button className={styles.button_wrapper__escape} onClick={creations.closeModal} type="button">
+                    <button className={styles.button_wrapper__escape} onClick={closeModalCreations} type="button">
                         {'CLOSE [esc]'}
                     </button>
                 </div>

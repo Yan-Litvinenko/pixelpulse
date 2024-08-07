@@ -1,25 +1,30 @@
 import React from 'react';
-import { Image, Folder } from '../svgIcon/SvgIcon';
-import { nanoid } from 'nanoid';
-import { useAppContext } from '../../hooks/useAppContext';
-import { useParams, Link } from 'react-router-dom';
 import projects from '../../assets/json/projects.json';
 import styles from './CreationsXplorerContent.module.scss';
+import { soundsClickTrigger } from '../../store/soundsSlice';
+import { Image, Folder } from '../svgIcon/SvgIcon';
+import { modalOpenHandler } from '../../store/modalSlice';
+import { nanoid } from '@reduxjs/toolkit';
+import { setProjectImages, setTargetProject, setTargetImage } from '../../store/creationsSlice';
+import { useDispatch } from 'react-redux';
+import { useParams, Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import type { AppDispatch, RootState } from '../../store/store';
 
 const CreationsXplorerContent = (): React.JSX.Element => {
-    const { setProjectImages, handleSoundClick, creations, targetProject, setTargetImage, setTargetProject } =
-        useAppContext();
+    const dispatch = useDispatch<AppDispatch>();
+    const { targetProject } = useSelector((state: RootState) => state.creations);
     const { projectName } = useParams();
 
     const projectClick = (projectIndex: number): void => {
-        setProjectImages(projects[projectIndex].images);
-        setTargetProject(projectIndex);
-        handleSoundClick();
+        dispatch(setProjectImages(projects[projectIndex].images));
+        dispatch(setTargetProject(projectIndex));
+        dispatch(soundsClickTrigger());
     };
 
     const imageClick = (imageIndex: number): void => {
-        creations.openModal();
-        setTargetImage(imageIndex);
+        dispatch(modalOpenHandler({ key: 'creations' }));
+        dispatch(setTargetImage(imageIndex));
     };
 
     return (

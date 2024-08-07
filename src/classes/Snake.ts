@@ -16,6 +16,9 @@ class Snake {
 
     private isGameOver: boolean;
 
+    private lastMoveTime: number;
+    private minInterval: number;
+
     score: number;
     intervalId: NodeJS.Timeout | null;
 
@@ -47,6 +50,8 @@ class Snake {
 
         this.score = 0;
         this.intervalId = null;
+        this.lastMoveTime = 0;
+        this.minInterval = 100;
 
         this.isGameOver = false;
     }
@@ -164,6 +169,10 @@ class Snake {
 
     private moveSnake(head: Coordinates): void {
         if (!this.isGameOver) {
+            const currentTime = Date.now();
+
+            if (currentTime - this.lastMoveTime < this.minInterval) return;
+
             this.snake.unshift(head);
 
             if (head.x === this.apple.x && head.y === this.apple.y) {

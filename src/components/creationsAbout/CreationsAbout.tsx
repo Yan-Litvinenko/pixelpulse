@@ -1,16 +1,15 @@
 import React from 'react';
-import { ICreationsBlock } from '../../interfaces/interface.creations';
-import { nanoid } from 'nanoid';
-import { useAppContext } from '../../hooks/useAppContext';
-import { useParams } from 'react-router-dom';
 import styles from './CreationsAbout.module.scss';
+import { nanoid } from '@reduxjs/toolkit';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import type { RootState } from '../../store/store';
 
-const CreationsAbout = (props: ICreationsBlock): React.JSX.Element => {
-    const { targetProject } = useAppContext();
+const CreationsAbout = (): React.JSX.Element => {
+    const { targetProject, defaultProject, projects } = useSelector((state: RootState) => state.creations);
     const { projectName } = useParams();
-    const { projectDefault, projects } = props;
 
-    const texts: string[] = !projectName ? projectDefault.about : projects[targetProject].about || [];
+    const texts: string[] = !projectName ? defaultProject.about : projects[targetProject].about || [];
 
     return (
         <div className={styles.about}>

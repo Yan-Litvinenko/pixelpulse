@@ -1,23 +1,28 @@
 import React from 'react';
+import styles from './NavigationElement.module.scss';
+import { useDispatch, useSelector } from 'react-redux';
 import { Hexagon } from '../svgIcon/SvgIcon';
-import { INavigationElement } from '../../interfaces/interface.component';
 import { NavLink } from 'react-router-dom';
 import { scroll } from '../../classes/Scroll';
-import { useAppContext } from '../../hooks/useAppContext';
-import styles from './NavigationElement.module.scss';
+import { soundsClickTrigger } from '../../store/soundsSlice';
+import { useModal } from '../../hooks/useModal';
+import type { AppDispatch, RootState } from '../../store/store';
+import type { INavigationElement } from '../../interfaces/interface.component';
 
 const NavigationElement = (props: INavigationElement): React.JSX.Element => {
-    const { isLarge, isMedium, handleSoundClick, navigationMobile } = useAppContext();
+    const dispatch = useDispatch<AppDispatch>();
+    const closeNavigationMobile = useModal('navigationMobile').close;
+
+    const { isMedium } = useSelector((state: RootState) => state.mediaQuery);
     const { pageName } = props;
 
     const switchPage = (): void => {
-        navigationMobile.closeModal();
-
-        if (!isLarge && !isMedium) {
-            handleSoundClick();
+        if (isMedium) {
+            closeNavigationMobile();
+            scroll.on();
+        } else {
+            dispatch(soundsClickTrigger());
         }
-
-        scroll.on();
     };
 
     return (

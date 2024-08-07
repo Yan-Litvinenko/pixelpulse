@@ -1,11 +1,11 @@
 import React from 'react';
-import { settings } from '../classes/Settings';
+import { settingsColor } from '../classes/SettingsColor';
 
 const useModalSettings = () => {
     const [enterBtnText, setEnterBtnText] = React.useState<string>('write to disk [enter]');
     const [inputValue, setInputValue] = React.useState({
-        hue: settings.getColorInputValue(),
-        size: settings.getSizeInputValue(),
+        hue: settingsColor.getColorInputValue(),
+        size: settingsColor.getSizeInputValue(),
     });
 
     const timer = React.useRef<NodeJS.Timeout | null>(null);
@@ -20,7 +20,7 @@ const useModalSettings = () => {
             refClearTimeout();
             setRefTimer();
 
-            settings.save();
+            settingsColor.save();
             setEnterBtnText('saved!');
         }
     };
@@ -39,16 +39,16 @@ const useModalSettings = () => {
     }, []);
 
     const handleDefault = (): void => {
-        settings.default();
+        settingsColor.default();
         setInputValue({
-            hue: settings.getColorInputValue(),
-            size: settings.getSizeInputValue(),
+            hue: settingsColor.getColorInputValue(),
+            size: settingsColor.getSizeInputValue(),
         });
     };
 
     const changeSettingValue = (event: React.ChangeEvent<HTMLInputElement>, variableName: 'hue' | 'size') => {
-        if (variableName === 'size') settings.changeValueInputSize(event);
-        if (variableName === 'hue') settings.changeValueInputColor(event);
+        if (variableName === 'size') settingsColor.changeValueInputSize(event);
+        if (variableName === 'hue') settingsColor.changeValueInputColor(event);
 
         setInputValue((prevSettings) => ({
             ...prevSettings,

@@ -1,6 +1,6 @@
 import React from 'react';
-import { IModalSendState } from '../../interfaces/interface.component';
 import styles from './ModalSendState.module.scss';
+import type { IModalSendState } from '../../interfaces/interface.component';
 
 const ModalSendState = (props: IModalSendState): React.JSX.Element => {
     const { setError, setLoading, setSuccessfully, status } = props;

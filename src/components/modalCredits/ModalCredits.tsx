@@ -1,16 +1,17 @@
 import React from 'react';
-import { ModalCreditsElement } from '../modalCreditsElement/ModalCreditsElement';
-import { nanoid } from 'nanoid';
-import { useAppContext } from '../../hooks/useAppContext';
 import creditsJson from '../../assets/json/credits.json';
 import styles from './ModalCredits.module.scss';
+import { ModalCreditsElement } from '../modalCreditsElement/ModalCreditsElement';
+import { nanoid } from '@reduxjs/toolkit';
+import { stopPropagation } from '../../utils/stopPropagation';
+import { useModal } from '../../hooks/useModal';
 
 const ModalCredits = (): React.JSX.Element => {
-    const { credits } = useAppContext();
+    const closeModalCredits = useModal('credits').close;
 
     return (
-        <div className={styles.modal} onClick={credits.closeModal}>
-            <div className={styles.modal__inner} onClick={credits.stopPropagation}>
+        <div className={styles.modal} onClick={closeModalCredits}>
+            <div className={styles.modal__inner} onClick={stopPropagation}>
                 <h3 className={styles.modal__title}>Credits</h3>
                 <h4 className={styles.modal__subtitle}>Everything involved in this project</h4>
                 <div className={styles.modal__line}></div>

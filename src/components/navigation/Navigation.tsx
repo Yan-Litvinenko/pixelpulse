@@ -1,15 +1,15 @@
 import React from 'react';
-import { INavigation } from '../../interfaces/interface.component';
-import { nanoid } from 'nanoid';
+import { nanoid } from '@reduxjs/toolkit';
 import { NavigationElement } from '../navigationElement/NavigationElement';
-import { Page } from '../../interfaces/interface';
+import type { Page } from '../../interfaces/interface';
+import type { INavigation } from '../../interfaces/interface.component';
 
 const Navigation = (props: INavigation): React.JSX.Element => {
     const { styles } = props;
 
     return (
         <nav className={styles.navigation}>
-            <ul className={styles.navigation__list}>
+            <ul className={styles.navigationList}>
                 {['beginning', 'logs', 'achievements', 'creations', 'games'].map((page) => (
                     <NavigationElement key={nanoid()} pageName={page as Page} />
                 ))}

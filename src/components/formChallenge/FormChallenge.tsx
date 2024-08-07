@@ -1,11 +1,11 @@
 import React from 'react';
+import styles from './FormChallenge.module.scss';
 import { ClipPathBorder } from '../clipPathBorder/ClipPathBorder';
 import { FormLabel } from '../formLabel/FormLabel';
-import { IForm } from '../../interfaces/interface.form';
 import { ModalBackground } from '../modalBackground/ModalBackground';
-import { Rarity } from '../../interfaces/interface.achievements';
 import { SelectChallenge } from '../selectChallenge/SelectChallenge';
-import styles from './FormChallenge.module.scss';
+import type { IForm } from '../../interfaces/interface.form';
+import type { Rarity } from '../../interfaces/interface.achievements';
 
 interface IFormChallenge extends IForm {
     selectValue: Rarity;

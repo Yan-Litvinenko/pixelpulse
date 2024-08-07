@@ -1,11 +1,11 @@
 import React, { Suspense } from 'react';
+import styles from './LogsOld.module.scss';
 import { Await, useLoaderData } from 'react-router-dom';
 import { getReplacementCommits, transformCommits } from '../logs/logsLoader';
-import { IGithubRespone } from '../../interfaces/interface.github';
 import { LogsElement } from '../logsElement/LogsElement';
-import { nanoid } from 'nanoid';
-import { ResolveError } from '../../interfaces/interface';
-import styles from './LogsOld.module.scss';
+import { nanoid } from '@reduxjs/toolkit';
+import type { IGithubRespone } from '../../interfaces/interface.github';
+import type { ResolveError } from '../../interfaces/interface';
 
 const LogsOld = (): React.JSX.Element => {
     const { githubCommits } = useLoaderData() as { githubCommits: IGithubRespone[] | ResolveError };

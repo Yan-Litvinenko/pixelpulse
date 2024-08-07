@@ -1,16 +1,9 @@
 import React from 'react';
+import styles from './CreationsTechnologies.module.scss';
 import { CreationsTechnologiesContent } from '../creationsTechnologiesContent/CreationsTechnologiesContent';
 import { Hexagon } from '../svgIcon/SvgIcon';
-import { ICreationsBlock } from '../../interfaces/interface.creations';
-import { useAppContext } from '../../hooks/useAppContext';
-import { useParams } from 'react-router-dom';
-import styles from './CreationsTechnologies.module.scss';
 
-const CreationsTechnologies = (props: ICreationsBlock): React.JSX.Element => {
-    const { targetProject } = useAppContext();
-    const { projectName } = useParams();
-    const { projectDefault, projects } = props;
-
+const CreationsTechnologies = (): React.JSX.Element => {
     return (
         <div className={styles.technologies}>
             <h3 className={styles.technologies__title}>
@@ -18,9 +11,7 @@ const CreationsTechnologies = (props: ICreationsBlock): React.JSX.Element => {
                 <Hexagon />
             </h3>
             <div>
-                <CreationsTechnologiesContent
-                    names={!projectName ? projectDefault.technologies : projects[targetProject].technologies}
-                />
+                <CreationsTechnologiesContent />
             </div>
         </div>
     );

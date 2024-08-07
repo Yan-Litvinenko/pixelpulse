@@ -22,6 +22,8 @@ module.exports = {
                 format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
             },
         ],
+        '@typescript-eslint/consistent-type-imports': 'error',
+        '@typescript-eslint/consistent-type-exports': 'error',
         '@typescript-eslint/lines-between-class-members': 'off',
         '@typescript-eslint/no-explicit-any': 'error',
         '@typescript-eslint/no-use-before-define': ['error', { functions: false }],

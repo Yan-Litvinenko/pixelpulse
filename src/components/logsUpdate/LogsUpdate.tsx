@@ -1,13 +1,15 @@
 import React from 'react';
-import { nanoid } from 'nanoid';
-import { useAppContext } from '../../hooks/useAppContext';
-import { useLogsUpdate } from '../../hooks/useLogsUpdate';
 import styles from './LogsUpdate.module.scss';
+import { soundsClickTrigger } from '../../store/soundsSlice';
+import { nanoid } from '@reduxjs/toolkit';
+import { useLogsUpdate } from '../../hooks/useLogsUpdate';
+import { useSelector, useDispatch } from 'react-redux';
+import type { RootState, AppDispatch } from '../../store/store';
 
 const update: Record<string, string>[] = [
     {
         title: 'project update',
-        text: 'I continue to actively work to improve quality and expand capabilities. I constantly working to improve code readability/structure/performance.',
+        text: 'I continue to actively work to improve quality and expand capabilities. I constantly working to improve code readability, structure and performance.',
     },
     {
         title: 'Challenges',
@@ -24,7 +26,9 @@ const update: Record<string, string>[] = [
 ];
 
 const LogsUpdate = (): React.JSX.Element => {
-    const { handleSoundClick, isLarge } = useAppContext();
+    const dispatch = useDispatch<AppDispatch>();
+
+    const { isMedium } = useSelector((state: RootState) => state.mediaQuery);
     const [expandStates, clippedIndexes, setExpandStates, setRef] = useLogsUpdate(update, styles.element__text_clip);
 
     const detail = (index: number): void => {
@@ -33,7 +37,7 @@ const LogsUpdate = (): React.JSX.Element => {
             newStates[index] = !prevStates[index];
             return newStates;
         });
-        handleSoundClick();
+        dispatch(soundsClickTrigger());
     };
 
     return (
@@ -52,7 +56,7 @@ const LogsUpdate = (): React.JSX.Element => {
                             {element.text}
                         </p>
 
-                        {isLarge ? (
+                        {isMedium ? (
                             isClipped ? (
                                 <button className={styles.element__expend} type="button" onClick={() => detail(index)}>
                                     {expandStates[index] ? '-collapse' : '+expand'}

@@ -1,6 +1,7 @@
 import React from 'react';
-import { motion, Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
+import type { Variants } from 'framer-motion';
 
 interface ISmoothTransition {
     children: React.ReactNode;

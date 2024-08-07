@@ -1,4 +1,5 @@
 import React from 'react';
+import stylesLayout from './Layout.module.scss';
 import { Frame } from '../frame/Frame';
 import { Header } from '../header/Header';
 import { MobileBoxButton } from '../mobileBoxButton/MobileBoxButton';
@@ -7,12 +8,14 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { Profile } from '../profile/Profile';
 import { Quest } from '../quest/Quest';
 import { SmoothTransition } from '../../hoc/SmoothTransition';
-import { useAppContext } from '../../hooks/useAppContext';
+import { useSelector } from 'react-redux';
 import { useTitle } from '../../hooks/useTitle';
-import stylesLayout from './Layout.module.scss';
+import type { RootState } from '../../store/store';
 
 const Layout = (): React.JSX.Element => {
-    const { isMedium, isLarge, styles } = useAppContext();
+    const { isSmall, isMedium } = useSelector((state: RootState) => state.mediaQuery);
+    const styles = useSelector((state: RootState) => state.rootStyles);
+
     const location = useLocation();
     const isBeginning: boolean = location.pathname === '/beginning';
     const notTransition: boolean = location.state?.notTransition;
@@ -25,7 +28,6 @@ const Layout = (): React.JSX.Element => {
                 <Outlet />
             ) : (
                 <>
-                    {' '}
                     <Header />
                     <Navigation styles={styles} />
                     <Quest />
@@ -39,8 +41,8 @@ const Layout = (): React.JSX.Element => {
                             </SmoothTransition>
                         )}
                     </div>
-                    {(isLarge || isMedium) && !isBeginning ? null : <Profile />}
-                    {isLarge || isMedium ? <MobileBoxButton /> : null}
+                    {(isMedium || isSmall) && !isBeginning ? null : <Profile />}
+                    {isMedium || isSmall ? <MobileBoxButton /> : null}
                 </>
             )}
         </>

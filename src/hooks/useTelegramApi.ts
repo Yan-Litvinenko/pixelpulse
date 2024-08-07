@@ -59,4 +59,5 @@ const useTelegramApi = (): UseTelegramApi => {
     return { successfully, loading, error, setSuccessfully, setLoading, setError, send };
 };
 
-export { useTelegramApi, UseTelegramApi };
+export { useTelegramApi };
+export type { UseTelegramApi };
