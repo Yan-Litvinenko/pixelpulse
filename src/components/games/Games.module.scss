@@ -103,6 +103,10 @@
             margin-bottom: 1.5rem;
         }
     }
+
+    .content__item {
+        aspect-ratio: 113 / 73;
+    }
 }
 
 @media (max-width: 974px) {
