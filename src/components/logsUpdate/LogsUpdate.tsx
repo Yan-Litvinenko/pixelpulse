@@ -41,14 +41,14 @@ const LogsUpdate = (): React.JSX.Element => {
     };
 
     return (
-        <div className={styles.update}>
+        <section className={styles.update}>
             {update.map((element, index) => {
                 const isClipped: boolean = clippedIndexes.includes(index);
 
                 return (
-                    <div className={styles.element} key={nanoid()}>
+                    <article className={styles.element} key={nanoid()}>
                         <div className={styles.border}></div>
-                        <h2 className={styles.element__title}>{element.title}</h2>
+                        <h3 className={styles.element__title}>{element.title}</h3>
                         <p
                             className={`${styles.element__text} ${expandStates[index] ? '' : styles.element__text_clip}`}
                             ref={(item) => setRef(item, index)}
@@ -71,10 +71,10 @@ const LogsUpdate = (): React.JSX.Element => {
                                 {expandStates[index] ? '-collapse' : '+expand'}
                             </button>
                         )}
-                    </div>
+                    </article>
                 );
             })}
-        </div>
+        </section>
     );
 };
 

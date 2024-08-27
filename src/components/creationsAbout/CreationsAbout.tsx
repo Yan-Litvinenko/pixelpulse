@@ -12,7 +12,7 @@ const CreationsAbout = (): React.JSX.Element => {
     const texts: string[] = !projectName ? defaultProject.about : projects[targetProject].about || [];
 
     return (
-        <div className={styles.about}>
+        <section className={styles.about}>
             <h3 className={styles.about__title}>About:</h3>
 
             <div className={styles.about__text_box}>
@@ -22,7 +22,7 @@ const CreationsAbout = (): React.JSX.Element => {
                     </p>
                 ))}
             </div>
-        </div>
+        </section>
     );
 };
 

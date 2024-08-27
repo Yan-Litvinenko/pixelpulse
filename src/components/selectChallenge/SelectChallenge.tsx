@@ -19,7 +19,7 @@ const SelectChallenge = (props: ISelectChallenge): React.JSX.Element => {
 
     return (
         <>
-            <div>
+            <section>
                 <h3 className={styles.title} onClick={selectClick}>
                     achievement rarity
                 </h3>
@@ -40,7 +40,7 @@ const SelectChallenge = (props: ISelectChallenge): React.JSX.Element => {
                         </div>
                     ) : null}
                 </div>
-            </div>
+            </section>
         </>
     );
 };

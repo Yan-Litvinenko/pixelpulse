@@ -23,8 +23,8 @@ const Achievements = (): React.JSX.Element => {
     };
 
     return (
-        <main className={styles.achievements}>
-            <h1 className={styles.achievements__title}>{error ? 'Error achievements loading' : 'Achievements'}</h1>
+        <section className={styles.achievements}>
+            <h2 className={styles.achievements__title}>{error ? 'Error achievements loading' : 'Achievements'}</h2>
 
             <div className={styles.achievements__content}>
                 <AchievementsProgress />
@@ -84,7 +84,7 @@ const Achievements = (): React.JSX.Element => {
                     />
                 </div>
             </div>
-        </main>
+        </section>
     );
 };
 

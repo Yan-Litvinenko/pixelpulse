@@ -72,7 +72,7 @@ const Welcome = (): React.JSX.Element => {
             <h2 className={styles.welcome__greeting}>HI!</h2>
             <div className={styles.welcome__content}>
                 <div className={styles.welcome__item}>
-                    <h2 className={`${styles.welcome__title} ${styles.hidden}`}>{textForPrint.title}</h2>
+                    <div className={`${styles.welcome__title} ${styles.hidden}`}>{textForPrint.title}</div>
                     <h1 className={styles.welcome__title}>
                         {skipStatus.current
                             ? textForPrint.title
@@ -81,7 +81,7 @@ const Welcome = (): React.JSX.Element => {
                 </div>
 
                 <div className={styles.welcome__item}>
-                    <p className={`${styles.welcome__text} ${styles.hidden}`}>{textForPrint.text_1}</p>
+                    <div className={`${styles.welcome__text} ${styles.hidden}`}>{textForPrint.text_1}</div>
                     <p className={styles.welcome__text}>
                         {skipStatus.current
                             ? textForPrint.text_1
@@ -93,7 +93,7 @@ const Welcome = (): React.JSX.Element => {
                 </div>
 
                 <div className={styles.welcome__item}>
-                    <p className={`${styles.welcome__text} ${styles.hidden}`}>{textForPrint.text_2}</p>
+                    <div className={`${styles.welcome__text} ${styles.hidden}`}>{textForPrint.text_2}</div>
                     <p className={styles.welcome__text}>
                         {skipStatus.current
                             ? textForPrint.text_2

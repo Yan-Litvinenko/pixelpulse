@@ -8,13 +8,15 @@ type Reset = {
 
 const ErrorBoundaryPage = (props: IErrorPage & Reset): React.JSX.Element => {
     const { status, detail, reset } = props;
+
     return (
         <>
             <div className={styles.wrapper_boundary}>
-                <div className={styles.container_boundary} data-text={status}>
-                    <h1 className={`${styles.title_boundary} ${styles.glitch}`} data-text={status}>
+                <section className={styles.container_boundary} data-text={status}>
+                    <h2 className={`${styles.title_boundary} ${styles.glitch}`} data-text={status}>
                         {status}
-                    </h1>
+                    </h2>
+
                     <p className={`${styles.description_boundary} ${styles.glitch}`} data-text={detail}>
                         {detail}
                     </p>
@@ -27,7 +29,7 @@ const ErrorBoundaryPage = (props: IErrorPage & Reset): React.JSX.Element => {
                         <span className={`${styles.home__line} ${styles.bottom_right}`}></span>
                         <span className={styles.slick}></span>
                     </button>
-                </div>
+                </section>
             </div>
         </>
     );

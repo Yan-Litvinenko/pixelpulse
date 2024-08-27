@@ -12,7 +12,7 @@ const About = (): React.JSX.Element => {
     const { isSmall } = useSelector((state: RootState) => state.mediaQuery);
 
     return (
-        <main className={styles.about}>
+        <section className={styles.about}>
             <h2 className={styles.about__title}>who is Yan Litvinenko</h2>
 
             <div className={styles.about__content}>
@@ -43,11 +43,11 @@ const About = (): React.JSX.Element => {
 
                         <source srcSet={humanAvif} />
                         <source srcSet={humanWebp} />
-                        <img src={humanJpg} alt="human" className={styles.about__img} />
+                        <img src={humanJpg} alt="A portrait of Yan Litvinenko" className={styles.about__img} />
                     </picture>
                 )}
             </div>
-        </main>
+        </section>
     );
 };
 
