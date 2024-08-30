@@ -12,9 +12,13 @@ const AchievementsAchieve = (props: IAchievementsAchieve): React.JSX.Element => 
     const classNameAchieve: string = `${styles.achieve} ${styles[`achieve_${rarity}`]} ${executionStatus === 'in progress' ? styles.ongoing_status : ''}`;
 
     return (
-        <div className={classNameAchieve}>
+        <article className={classNameAchieve}>
             <figure className={styles.box_image}>
-                <img className={styles.box_image__image} src={rarityPictures[rarity]} alt="achieve" />
+                <img
+                    className={styles.box_image__image}
+                    src={rarityPictures[rarity]}
+                    alt={`Rarity icon representing ${rarity}`}
+                />
                 <figcaption className={styles.box_image__rarity}>{rarity}</figcaption>
             </figure>
 
@@ -22,10 +26,12 @@ const AchievementsAchieve = (props: IAchievementsAchieve): React.JSX.Element => 
                 <div className={styles.achieve__content}>
                     <h4 className={styles.achieve__title}>{title} </h4>
                     <p className={styles.achieve__description}>{description}</p>
-                    <div className={styles.achieve__date}>achgieved:{date}</div>
+                    <time dateTime={date} className={styles.achieve__date}>
+                        achieved:{date}
+                    </time>
                 </div>
             </div>
-        </div>
+        </article>
     );
 };
 

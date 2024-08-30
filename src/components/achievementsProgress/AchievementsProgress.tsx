@@ -12,7 +12,7 @@ const AchievementsProgress = (): React.JSX.Element => {
     const dispatch = useDispatch<AppDispatch>();
 
     return (
-        <div className={styles.progress}>
+        <section className={styles.progress}>
             <div className={styles.progress__inner}>
                 {loading || error ? (
                     <>
@@ -45,7 +45,7 @@ const AchievementsProgress = (): React.JSX.Element => {
             >
                 Challenge me
             </button>
-        </div>
+        </section>
     );
 };
 

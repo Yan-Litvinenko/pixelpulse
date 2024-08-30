@@ -5,13 +5,14 @@ import type { IErrorPage } from '../../interfaces/interface.component';
 
 const ErrorPage = (props: IErrorPage): React.JSX.Element => {
     const { status, detail } = props;
+
     return (
         <>
             <div className={styles.wrapper}>
-                <div className={styles.container} data-text={status}>
-                    <h1 className={`${styles.title} ${styles.glitch}`} data-text={status}>
+                <section className={styles.container} data-text={status}>
+                    <h2 className={`${styles.title} ${styles.glitch}`} data-text={status}>
                         {status}
-                    </h1>
+                    </h2>
                     <p className={`${styles.description} ${styles.glitch}`} data-text={detail}>
                         {detail}
                     </p>
@@ -23,7 +24,7 @@ const ErrorPage = (props: IErrorPage): React.JSX.Element => {
                         <span className={`${styles.home__line} ${styles.bottom_right}`}></span>
                         <span className={styles.slick}></span>
                     </Link>
-                </div>
+                </section>
             </div>
         </>
     );

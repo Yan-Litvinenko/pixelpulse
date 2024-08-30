@@ -15,8 +15,8 @@ const Creations = (): React.JSX.Element => {
     useTargetProject();
 
     return (
-        <main className={styles.creations}>
-            <h1 className={styles.creations__title}>creations</h1>
+        <section className={styles.creations}>
+            <h2 className={styles.creations__title}>creations</h2>
 
             <div className={styles.creations__inner}>
                 <div className={styles.creations__details_block}>
@@ -41,7 +41,7 @@ const Creations = (): React.JSX.Element => {
                     </div>
                 </div>
             </div>
-        </main>
+        </section>
     );
 };
 

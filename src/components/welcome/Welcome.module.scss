@@ -4,7 +4,9 @@
     @include flex-container($align-items: center, $justify-content: center, $gap: 0rem 5.25rem);
     grid-column: 1 / -1;
     grid-row: 1 / -1;
-    min-height: 100vh;
+    overflow: hidden;
+    min-height: 25rem;
+    height: 100vh;
 
     &__greeting {
         @include text-properties('Big-Shoulders', 33.625rem, 700, -2rem);
@@ -109,7 +111,7 @@
         }
 
         &__content {
-            padding: 2.5rem 0px 1.25rem 0px;
+            padding: 0rem;
         }
 
         &__text,

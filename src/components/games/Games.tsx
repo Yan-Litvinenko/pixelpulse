@@ -13,8 +13,8 @@ const Games = (): React.JSX.Element => {
     const isGameRoute: boolean = useLocation().pathname.includes('/games/');
 
     return (
-        <main className={styles.games}>
-            <h1 className={styles.games__title}>mini games</h1>
+        <section className={styles.games}>
+            <h2 className={styles.games__title}>mini games</h2>
 
             {!isGameRoute ? (
                 <div className={styles.content}>
@@ -56,7 +56,7 @@ const Games = (): React.JSX.Element => {
             ) : (
                 <Outlet />
             )}
-        </main>
+        </section>
     );
 };
 

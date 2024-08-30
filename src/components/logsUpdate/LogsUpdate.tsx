@@ -9,15 +9,15 @@ import type { RootState, AppDispatch } from '../../store/store';
 const update: Record<string, string>[] = [
     {
         title: 'project update',
-        text: 'I continue to actively work to improve quality and expand capabilities. I constantly working to improve code readability, structure and performance.',
+        text: 'I continue to actively work on improving the quality of the application. I am constantly working to improve the readability, structure and performance of the code.',
     },
     {
         title: 'Challenges',
-        text: 'Maximum test coverage of the application, as well as integration with Redux.',
+        text: 'Maximum test coverage of the application, as well as integration of Next.js, Three.js.',
     },
     {
         title: 'Next steps',
-        text: 'Creation of 3D animations and mini-games. Adding more flexible settings. Creating and adding pet projects that will tell about my skills.',
+        text: 'Creation of 3D animation and mini-games. Adding more flexible settings. Creating and adding pet projects that will tell about my skills.',
     },
     {
         title: 'Conclusion',
@@ -41,14 +41,14 @@ const LogsUpdate = (): React.JSX.Element => {
     };
 
     return (
-        <div className={styles.update}>
+        <section className={styles.update}>
             {update.map((element, index) => {
                 const isClipped: boolean = clippedIndexes.includes(index);
 
                 return (
-                    <div className={styles.element} key={nanoid()}>
+                    <article className={styles.element} key={nanoid()}>
                         <div className={styles.border}></div>
-                        <h2 className={styles.element__title}>{element.title}</h2>
+                        <h3 className={styles.element__title}>{element.title}</h3>
                         <p
                             className={`${styles.element__text} ${expandStates[index] ? '' : styles.element__text_clip}`}
                             ref={(item) => setRef(item, index)}
@@ -71,10 +71,10 @@ const LogsUpdate = (): React.JSX.Element => {
                                 {expandStates[index] ? '-collapse' : '+expand'}
                             </button>
                         )}
-                    </div>
+                    </article>
                 );
             })}
-        </div>
+        </section>
     );
 };
 

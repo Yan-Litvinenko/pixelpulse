@@ -12,13 +12,13 @@ const CreationsXplorer = (): React.JSX.Element => {
     const path: string = `location: /projects${projectName ? '/' + projects[targetProject].name : ''}`;
 
     return (
-        <div className={styles.xplorer}>
+        <section className={styles.xplorer}>
             <h3 className={styles.xplorer__title}>file xplorer</h3>
             <h4 className={styles.xplorer__path}>{path}</h4>
 
             <Outlet />
             <Frame />
-        </div>
+        </section>
     );
 };
 

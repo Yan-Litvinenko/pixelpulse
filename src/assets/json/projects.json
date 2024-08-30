@@ -4,7 +4,7 @@
         "backgroundColor": "#E1D4C9",
         "brief": "popular destination for coffee lovers",
         "images": ["CFHS_about-1.jpg", "CFHS_about-2.jpg", "CFHS_mobile-app.png"],
-        "link": "https://darth-vaderx.github.io/coffee-house/",
+        "link": "https://yan-litvinenko.github.io/coffee-house/",
         "name": "coffee-house",
         "technologies": ["github", "figma", "gulp", "sass", "js"]
     }

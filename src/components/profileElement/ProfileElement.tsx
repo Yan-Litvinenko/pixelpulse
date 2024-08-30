@@ -9,7 +9,7 @@ const ProfileElement = (props: IProfileElement): React.JSX.Element => {
     const openModal = useModal(modal || 'availability').open;
 
     return (
-        <div className={styles.profile__element}>
+        <article className={styles.profile__element}>
             <h3 className={`${styles.profile__title}`}>{header.text}</h3>
             {adjacent.type === 'button' ? (
                 <button className={styles['profile__' + classRoot]} onClick={openModal} type="button">
@@ -19,7 +19,7 @@ const ProfileElement = (props: IProfileElement): React.JSX.Element => {
             ) : (
                 <span className={styles.profile__text}>{adjacent.text}</span>
             )}
-        </div>
+        </article>
     );
 };
 

@@ -5,7 +5,7 @@ import { Hexagon } from '../svgIcon/SvgIcon';
 
 const CreationsTechnologies = (): React.JSX.Element => {
     return (
-        <div className={styles.technologies}>
+        <section className={styles.technologies}>
             <h3 className={styles.technologies__title}>
                 technologies
                 <Hexagon />
@@ -13,7 +13,7 @@ const CreationsTechnologies = (): React.JSX.Element => {
             <div>
                 <CreationsTechnologiesContent />
             </div>
-        </div>
+        </section>
     );
 };
 

@@ -5,13 +5,13 @@ import type { IQuestElement } from '../../interfaces/interface.component';
 const QuestElement = (props: IQuestElement): React.JSX.Element => {
     const { text, textTitle, hexagon, className } = props;
     return (
-        <div>
+        <article>
             <h3 className={className.header}>
                 {textTitle}
                 {hexagon ? <Hexagon /> : null}
             </h3>
-            <span className={className.text}>{text}</span>
-        </div>
+            <p className={className.text}>{text}</p>
+        </article>
     );
 };
 

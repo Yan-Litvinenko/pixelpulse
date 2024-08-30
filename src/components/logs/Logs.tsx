@@ -11,10 +11,10 @@ const Logs = (): React.JSX.Element => {
     const dispatch = useDispatch<AppDispatch>();
 
     return (
-        <main className={styles.logs}>
+        <section className={styles.logs}>
             <>
                 <div className={styles.logs__inner}>
-                    <h1 className={styles.logs__title}>data log dump initialized</h1>
+                    <h2 className={styles.logs__title}>data log dump initialized</h2>
 
                     <LogsProject />
                     <LogsUpdate />
@@ -31,7 +31,7 @@ const Logs = (): React.JSX.Element => {
                     <LogsOld />
                 </div>
             </>
-        </main>
+        </section>
     );
 };
 

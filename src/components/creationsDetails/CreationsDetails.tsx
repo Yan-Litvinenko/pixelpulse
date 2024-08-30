@@ -10,7 +10,7 @@ const CreationsDetails = (): React.JSX.Element => {
     const { projectName } = useParams();
 
     return (
-        <div className={styles.details}>
+        <section className={styles.details}>
             <h3 className={styles.details__title}>
                 details
                 <Hexagon />
@@ -26,7 +26,7 @@ const CreationsDetails = (): React.JSX.Element => {
             <p className={styles.details__text}>
                 {!projectName ? defaultProject.brief : projects[targetProject].brief}
             </p>
-        </div>
+        </section>
     );
 };
 

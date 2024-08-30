@@ -22,7 +22,7 @@ const Quest = (): React.JSX.Element => {
                 <QuestElement
                     className={{ header: styles.quest__title, text: styles.quest__goal_text }}
                     hexagon={false}
-                    text="Completely master the React library, as well as all its add-ons: Redux, React Routing, React Testing Library and etc."
+                    text="Completely master the React library, as well as all its add-ons: Redux, NextJS and etc."
                     textTitle="goal"
                 />
             </div>

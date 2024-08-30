@@ -34,10 +34,10 @@ const Profile = (): React.JSX.Element => {
                 />
             ))}
 
-            <div className={styles.motto}>
+            <article className={styles.motto}>
                 <h3 className={styles.motto__title}>motto:</h3>
                 <p className={styles.motto__text}>Bonum modulum est, quod connecti potest.</p>
-            </div>
+            </article>
         </aside>
     );
 };

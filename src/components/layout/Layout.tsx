@@ -31,7 +31,7 @@ const Layout = (): React.JSX.Element => {
                     <Header />
                     <Navigation styles={styles} />
                     <Quest />
-                    <div className={`${stylesLayout.content} ${isBeginning ? stylesLayout.content_beginning : ''}`}>
+                    <main className={`${stylesLayout.content} ${isBeginning ? stylesLayout.content_beginning : ''}`}>
                         <Frame className={stylesLayout.frame} />
                         {notTransition ? (
                             <Outlet />
@@ -40,7 +40,7 @@ const Layout = (): React.JSX.Element => {
                                 <Outlet />
                             </SmoothTransition>
                         )}
-                    </div>
+                    </main>
                     {(isMedium || isSmall) && !isBeginning ? null : <Profile />}
                     {isMedium || isSmall ? <MobileBoxButton /> : null}
                 </>
