@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { customFetch } from '../utils/customFetch';
-import type { IAddCoinResult } from '../interfaces/interface';
+import { customFetch } from '../../utils/customFetch';
+import type { IAddCoinResult } from '../../interfaces/interface';
 
 type HeaderStatistic = {
     statistic: {

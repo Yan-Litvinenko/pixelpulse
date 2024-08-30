@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { soundsGlitchTrigger } from '../../store/soundsSlice';
+import { soundsGlitchTrigger } from '../../store/slices/soundsSlice';
 
 interface GlitchCanvasProps {
     className: string;

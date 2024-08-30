@@ -1,7 +1,7 @@
-import projects from '../assets/json/projects.json';
+import projects from '../../assets/json/projects.json';
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { IProject } from '../interfaces/interface.creations';
+import type { IProject } from '../../interfaces/interface.creations';
 
 type CreationsSlice = {
     readonly defaultProject: IProject;

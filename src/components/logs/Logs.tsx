@@ -3,7 +3,7 @@ import styles from './Logs.module.scss';
 import { LogsOld } from '../logsOld/LogsOld';
 import { LogsProject } from '../logsProject/LogsProject';
 import { LogsUpdate } from '../logsUpdate/LogsUpdate';
-import { soundsClickTrigger } from '../../store/soundsSlice';
+import { soundsClickTrigger } from '../../store/slices/soundsSlice';
 import { useDispatch } from 'react-redux';
 import type { AppDispatch } from '../../store/store';
 

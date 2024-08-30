@@ -4,7 +4,7 @@ import MarioImg from '../../assets/images/mario.jpg';
 import SnakeImg from '../../assets/images/snake.jpg';
 import styles from './Games.module.scss';
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import { soundsClickTrigger } from '../../store/soundsSlice';
+import { soundsClickTrigger } from '../../store/slices/soundsSlice';
 import { useDispatch } from 'react-redux';
 import type { AppDispatch } from '../../store/store';
 

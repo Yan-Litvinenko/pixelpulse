@@ -1,8 +1,8 @@
-import { modalCloseHandler, modalOpenHandler } from '../store/modalSlice';
-import { soundsModalTrigger } from '../store/soundsSlice';
+import { modalCloseHandler, modalOpenHandler } from '../store/slices/modalSlice';
+import { soundsModalTrigger } from '../store/slices/soundsSlice';
 import { useDispatch } from 'react-redux';
 import type { AppDispatch } from '../store/store';
-import type { Modal } from '../store/modalSlice';
+import type { Modal } from '../store/slices/modalSlice';
 
 type UseModal = {
     close: () => void;

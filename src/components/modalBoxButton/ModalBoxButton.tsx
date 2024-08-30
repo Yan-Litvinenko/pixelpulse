@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './ModalBoxButton.module.scss';
-import { soundsClickTrigger } from '../../store/soundsSlice';
+import { soundsClickTrigger } from '../../store/slices/soundsSlice';
 import { useDispatch } from 'react-redux';
 import type { AppDispatch } from '../../store/store';
 import type { IModalBoxButton } from '../../interfaces/interface.component';

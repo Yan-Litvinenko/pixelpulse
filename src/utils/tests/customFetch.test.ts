@@ -1,4 +1,4 @@
-import { customFetch } from '../utils/customFetch';
+import { customFetch } from '../customFetch';
 
 describe('custom fetch', (): void => {
     const url: string = 'https://api.test.com/data';
@@ -23,6 +23,4 @@ describe('custom fetch', (): void => {
         global.fetch = jest.fn().mockResolvedValue(new Error(`A request error occurred ${url}`));
         expect(() => customFetch(url)).rejects.toThrow(`A request error occurred ${url}`);
     });
-
-    afterAll(() => jest.restoreAllMocks());
 });

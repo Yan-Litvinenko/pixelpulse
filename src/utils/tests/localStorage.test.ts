@@ -1,5 +1,5 @@
-import { getValueToLocalStorage } from '../utils/getValueToLocalStorage';
-import { setValueToLocalStorage } from '../utils/setValueToLocalStorage';
+import { getValueToLocalStorage } from '../getValueToLocalStorage';
+import { setValueToLocalStorage } from '../setValueToLocalStorage';
 
 const testKey: string = 'test-key';
 const testValue: number = 1;

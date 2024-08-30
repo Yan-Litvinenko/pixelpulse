@@ -1,8 +1,7 @@
-// availabilitySlice.ts
 import { createSlice } from '@reduxjs/toolkit';
-import { scroll } from '../classes/Scroll';
+import { scroll } from '../../classes/Scroll';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { AppThunk } from './store';
+import type { AppThunk } from '../store';
 
 type Modal = 'social' | 'availability' | 'creations' | 'credits' | 'settings' | 'challenge' | 'navigationMobile';
 type SetValueAndKeyReduce = {

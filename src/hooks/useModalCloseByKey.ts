@@ -1,12 +1,13 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { modalCloseHandler } from '../store/modalSlice';
-import type { AppDispatch, RootState } from '../store/store';
-import type { Modal } from '../store/modalSlice';
+import { modalCloseHandler } from '../store/slices/modalSlice';
+import { stateModalSelector } from '../store/selectors/selectors';
+import { useDispatch } from 'react-redux';
+import type { AppDispatch } from '../store/store';
+import type { Modal } from '../store/slices/modalSlice';
 
 const useModalCloseByKey = (): void => {
     const dispatch = useDispatch<AppDispatch>();
-    const modals = useSelector((state: RootState) => state.modal.stateModal);
+    const modals = stateModalSelector;
 
     React.useEffect(() => {
         const closeModalByKey = (event: KeyboardEvent) => {

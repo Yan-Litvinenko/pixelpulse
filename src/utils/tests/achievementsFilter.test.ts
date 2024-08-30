@@ -1,18 +1,18 @@
-import { achievementsFilter } from '../utils/achievementsFilter';
-import type { IAchieve } from '../interfaces/interface.achievements';
+import { achievementsFilter } from '../achievementsFilter';
+import type { IAchieve } from '../../interfaces/interface.achievements';
+
+const mockAchievements = Array.from({ length: 6 }).map((_, index) => {
+    return { status: index > 2 ? 'achieved' : 'in progress' };
+}) as IAchieve[];
+
+const mockAchievementsAchieved: IAchieve[] = mockAchievements.filter(
+    (achieve) => (achieve as IAchieve).status === 'achieved',
+);
+const mockAchievementsNotAchieved: IAchieve[] = mockAchievements.filter(
+    (achieve) => (achieve as IAchieve).status === 'in progress',
+);
 
 describe('filter achievements', (): void => {
-    const mockAchievements = Array.from({ length: 6 }).map((_, index) => {
-        return { status: index > 2 ? 'achieved' : 'in progress' };
-    }) as IAchieve[];
-
-    const mockAchievementsAchieved: IAchieve[] = mockAchievements.filter(
-        (achieve) => (achieve as IAchieve).status === 'achieved',
-    );
-    const mockAchievementsNotAchieved: IAchieve[] = mockAchievements.filter(
-        (achieve) => (achieve as IAchieve).status === 'in progress',
-    );
-
     // achieve status/achieve block
     test('Should return achievements all/achieved', (): void => {
         expect(achievementsFilter(mockAchievements, 'all', 'achieved')).toEqual(mockAchievementsAchieved);

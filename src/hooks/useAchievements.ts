@@ -1,11 +1,12 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchAchievements } from '../store/achievementsSlice';
-import type { AppDispatch, RootState } from '../store/store';
+import { fetchAchievements } from '../store/slices/achievementsSlice';
+import { headerStatisticSelector } from '../store/selectors/selectors';
+import { useDispatch } from 'react-redux';
+import type { AppDispatch } from '../store/store';
 
 const useAchievements = (): void => {
     const dispatch = useDispatch<AppDispatch>();
-    const { level } = useSelector((state: RootState) => state.headerStatistic.statistic);
+    const { level } = headerStatisticSelector.statistic;
 
     React.useEffect(() => {
         dispatch(fetchAchievements());

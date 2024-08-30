@@ -1,12 +1,11 @@
 import React from 'react';
 import styles from './CreationsTechnologiesContent.module.scss';
-import { nanoid } from '@reduxjs/toolkit';
+import { creationsSelector } from '../../store/selectors/selectors';
 import { Figma, GitHub, Gulp, HexagonBorder, Html, JS, Redux } from '../svgIcon/SvgIcon';
 import { MySql, NodeJS, ReactIcon, Sass, Ts, Webpack, Wordpress } from '../svgIcon/SvgIcon';
+import { nanoid } from '@reduxjs/toolkit';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import type { Technologies } from '../../interfaces/interface.creations';
-import type { RootState } from '../../store/store';
 
 const technologies: Technologies = {
     figma: Figma,
@@ -25,7 +24,7 @@ const technologies: Technologies = {
 };
 
 const CreationsTechnologiesContent = (): React.JSX.Element => {
-    const { targetProject, defaultProject, projects } = useSelector((state: RootState) => state.creations);
+    const { targetProject, defaultProject, projects } = creationsSelector;
     const { projectName } = useParams();
 
     const technologiesNames: string[] = !projectName

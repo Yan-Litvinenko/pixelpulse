@@ -1,17 +1,17 @@
 import React from 'react';
+import { musicSelector, soundsSelector } from '../../store/selectors/selectors';
+import { setStateMusic } from '../../store/slices/musicSlice';
+import { setStateSounds, soundsClickTrigger } from '../../store/slices/soundsSlice';
 import { SettingElement } from '../settingElement/SettingElement';
-import { useModal } from '../../hooks/useModal';
 import { useDispatch } from 'react-redux';
-import { setStateMusic } from '../../store/musicSlice';
-import { setStateSounds, soundsClickTrigger } from '../../store/soundsSlice';
-import { useSelector } from 'react-redux';
+import { useModal } from '../../hooks/useModal';
 import type { ISetting } from '../../interfaces/interface.component';
-import type { AppDispatch, RootState } from '../../store/store';
+import type { AppDispatch } from '../../store/store';
 
 const Setting = (props: ISetting): React.JSX.Element => {
     const dispatch = useDispatch<AppDispatch>();
-    const { musicState } = useSelector((state: RootState) => state.music);
-    const { soundsState } = useSelector((state: RootState) => state.sounds);
+    const { musicState } = musicSelector;
+    const { soundsState } = soundsSelector;
 
     const closeNavigationMobile = useModal('navigationMobile').close;
     const openModalSettings = useModal('settings').open;

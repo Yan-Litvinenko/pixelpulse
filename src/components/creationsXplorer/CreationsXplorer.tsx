@@ -1,12 +1,11 @@
 import React from 'react';
 import styles from './CreationsXplorer.module.scss';
+import { creationsSelector } from '../../store/selectors/selectors';
 import { Frame } from '../frame/Frame';
 import { Outlet, useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import type { RootState } from '../../store/store';
 
 const CreationsXplorer = (): React.JSX.Element => {
-    const { targetProject, projects } = useSelector((state: RootState) => state.creations);
+    const { targetProject, projects } = creationsSelector;
     const { projectName } = useParams();
 
     const path: string = `location: /projects${projectName ? '/' + projects[targetProject].name : ''}`;

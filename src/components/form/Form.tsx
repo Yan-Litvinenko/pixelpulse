@@ -2,13 +2,12 @@ import React from 'react';
 import styles from './Form.module.scss';
 import { ClipPathBorder } from '../clipPathBorder/ClipPathBorder';
 import { FormLabel } from '../formLabel/FormLabel';
+import { mediaQuerySelector } from '../../store/selectors/selectors';
 import { ModalBackground } from '../modalBackground/ModalBackground';
-import { useSelector } from 'react-redux';
 import type { IForm } from '../../interfaces/interface.form';
-import type { RootState } from '../../store/store';
 
 const Form = (props: IForm): React.JSX.Element => {
-    const { isMedium } = useSelector((state: RootState) => state.mediaQuery);
+    const { isMedium } = mediaQuerySelector;
     const { errors, register } = props;
 
     return (

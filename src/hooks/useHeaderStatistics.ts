@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchHeaderStatistic } from '../store/headerStatisticSlice';
+import { fetchHeaderStatistic } from '../store/slices/headerStatisticSlice';
 import type { AppDispatch } from '../store/store';
 
 const useHeaderStatistic = (): void => {

@@ -1,7 +1,7 @@
-import linkAutomataMusic from '../assets/audio/main-theme.mp3';
-import linkSnakeMusic from '../assets/audio/snake.mp3';
+import linkAutomataMusic from '../../assets/audio/main-theme.mp3';
+import linkSnakeMusic from '../../assets/audio/snake.mp3';
 import { createSlice } from '@reduxjs/toolkit';
-import { getValueToLocalStorage } from '../utils/getValueToLocalStorage';
+import { getValueToLocalStorage } from '../../utils/getValueToLocalStorage';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 type MusicSlice = {

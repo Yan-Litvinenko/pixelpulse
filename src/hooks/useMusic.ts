@@ -1,11 +1,10 @@
 import React from 'react';
+import { musicSelector } from '../store/selectors/selectors';
 import { setValueToLocalStorage } from '../utils/setValueToLocalStorage';
 import { useFirstInteraction } from './useFirstInteraction';
-import { useSelector } from 'react-redux';
-import type { RootState } from '../store/store';
 
 const useMusic = (): void => {
-    const { musicState, linkActiveMusicTheme } = useSelector((state: RootState) => state.music);
+    const { musicState, linkActiveMusicTheme } = musicSelector;
     const music = React.useRef<HTMLAudioElement>(new Audio(linkActiveMusicTheme));
     const firstInteraction: boolean = useFirstInteraction();
 

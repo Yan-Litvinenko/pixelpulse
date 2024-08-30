@@ -1,5 +1,5 @@
-import { achievementsSort } from '../utils/achievementsSort';
-import type { IAchieve } from '../interfaces/interface.achievements';
+import { achievementsSort } from '../achievementsSort';
+import type { IAchieve } from '../../interfaces/interface.achievements';
 
 const rarity: string[] = ['legendary', 'unusual', 'rare', 'epic'];
 const levelRarity: Record<string, number> = {

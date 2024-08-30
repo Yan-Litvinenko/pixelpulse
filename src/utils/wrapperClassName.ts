@@ -1,12 +1,9 @@
-import { useSelector } from 'react-redux';
-import type { RootState } from '../store/store';
+import { mediaQuerySelector, stateModalSelector, rootStylesSelector } from '../store/selectors/selectors';
 
 const wrapperClassName = (): string => {
-    const { isSmall, isMedium } = useSelector((state: RootState) => state.mediaQuery);
-    const { availability, creations, credits, challenge, settings, social } = useSelector(
-        (state: RootState) => state.modal.stateModal,
-    );
-    const { wrapper, wrapperCenterRotate, wrapperLeftRotate } = useSelector((state: RootState) => state.rootStyles);
+    const { isSmall, isMedium } = mediaQuerySelector;
+    const { availability, creations, credits, challenge, settings, social } = stateModalSelector;
+    const { wrapper, wrapperCenterRotate, wrapperLeftRotate } = rootStylesSelector;
 
     const classes: string[] = [wrapper];
     const modalWithCenterRotate: boolean[] = [creations, settings];

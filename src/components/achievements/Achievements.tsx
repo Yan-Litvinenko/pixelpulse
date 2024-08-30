@@ -4,17 +4,18 @@ import { AchievementsBlock } from '../achievementsBlock/AchievementsBlock';
 import { AchievementsError } from '../achievementsError/AchievementsError';
 import { achievementsFilter } from '../../utils/achievementsFilter';
 import { AchievementsProgress } from '../achievementsProgress/AchievementsProgress';
+import { achievementsSelector } from '../../store/selectors/selectors';
 import { achievementsSort } from '../../utils/achievementsSort';
 import { AchievementsToggle } from '../achievementsToggle/AchievementsToggle';
-import { soundsClickTrigger } from '../../store/soundsSlice';
+import { soundsClickTrigger } from '../../store/slices/soundsSlice';
 import { Triangle } from 'react-loader-spinner';
-import { useDispatch, useSelector } from 'react-redux';
-import type { AppDispatch, RootState } from '../../store/store';
+import { useDispatch } from 'react-redux';
+import type { AppDispatch } from '../../store/store';
 import type { ToggleStatus } from '../../interfaces/interface.achievements';
 
 const Achievements = (): React.JSX.Element => {
     const dispatch = useDispatch<AppDispatch>();
-    const { achievements, loading, error } = useSelector((state: RootState) => state.achievements);
+    const { achievements, loading, error } = achievementsSelector;
     const [filterStatus, setFilterStatus] = React.useState<ToggleStatus>('all');
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './AchievementsError.module.scss';
-import { modalOpenHandler } from '../../store/modalSlice';
+import { modalOpenHandler } from '../../store/slices/modalSlice';
 import { useDispatch } from 'react-redux';
 import type { AppDispatch } from '../../store/store';
 

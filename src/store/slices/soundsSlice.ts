@@ -1,8 +1,8 @@
-import linkSoundClick from '../assets/audio/click.ogg';
-import linkSoundModal from '../assets/audio/modal.mp3';
-import linkGlitchEffect from '../assets/audio/glitch.mp3';
+import linkSoundClick from '../../assets/audio/click.ogg';
+import linkSoundModal from '../../assets/audio/modal.mp3';
+import linkGlitchEffect from '../../assets/audio/glitch.mp3';
 import { createSlice } from '@reduxjs/toolkit';
-import { getValueToLocalStorage } from '../utils/getValueToLocalStorage';
+import { getValueToLocalStorage } from '../../utils/getValueToLocalStorage';
 
 type SoundsSlice = {
     readonly linkGlitchEffect: string;

@@ -1,12 +1,12 @@
-import { achievementsSlice } from './achievementsSlice';
+import { achievementsSlice } from './slices/achievementsSlice';
 import { configureStore } from '@reduxjs/toolkit';
-import { creationsSlice } from './creationsSlice';
-import { headerStatisticSlice } from './headerStatisticSlice';
-import { mediaSlice } from './mediaSlice';
-import { modalSlice } from './modalSlice';
-import { musicSlice } from './musicSlice';
-import { rootStyleSlice } from './rootStyleSlice';
-import { soundsSlice } from './soundsSlice';
+import { creationsSlice } from './slices/creationsSlice';
+import { headerStatisticSlice } from './slices/headerStatisticSlice';
+import { mediaSlice } from './slices/mediaSlice';
+import { modalSlice } from './slices/modalSlice';
+import { musicSlice } from './slices/musicSlice';
+import { rootStyleSlice } from './slices/rootStyleSlice';
+import { soundsSlice } from './slices/soundsSlice';
 import type { ThunkAction, Action } from '@reduxjs/toolkit';
 
 const store = configureStore({

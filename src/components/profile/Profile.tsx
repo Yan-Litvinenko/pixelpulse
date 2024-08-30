@@ -5,15 +5,16 @@ import profileItems from '../../assets/json/profile.json';
 import styles from './Profile.module.scss';
 import { Frame } from '../frame/Frame';
 import { Link } from 'react-router-dom';
+import { mediaQuerySelector } from '../../store/selectors/selectors';
 import { nanoid } from '@reduxjs/toolkit';
 import { ProfileElement } from '../profileElement/ProfileElement';
-import { useSelector, useDispatch } from 'react-redux';
-import { soundsClickTrigger } from '../../store/soundsSlice';
-import type { RootState, AppDispatch } from '../../store/store';
+import { soundsClickTrigger } from '../../store/slices/soundsSlice';
+import { useDispatch } from 'react-redux';
+import type { AppDispatch } from '../../store/store';
 
 const Profile = (): React.JSX.Element => {
     const dispatch = useDispatch<AppDispatch>();
-    const { isSmall } = useSelector((state: RootState) => state.mediaQuery);
+    const { isSmall } = mediaQuerySelector;
 
     return (
         <aside className={styles.profile}>

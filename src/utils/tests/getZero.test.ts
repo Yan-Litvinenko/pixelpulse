@@ -1,4 +1,4 @@
-import { getZero } from '../utils/getZero';
+import { getZero } from '../getZero';
 
 describe('add zero function', (): void => {
     test('Value less than 0 throws error', () => {

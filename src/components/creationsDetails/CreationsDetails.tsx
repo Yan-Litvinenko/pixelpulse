@@ -1,12 +1,11 @@
 import React from 'react';
 import styles from './CreationsDetails.module.scss';
+import { creationsSelector } from '../../store/selectors/selectors';
 import { Hexagon } from '../svgIcon/SvgIcon';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import type { RootState } from '../../store/store';
 
 const CreationsDetails = (): React.JSX.Element => {
-    const { targetProject, defaultProject, projects } = useSelector((state: RootState) => state.creations);
+    const { targetProject, defaultProject, projects } = creationsSelector;
     const { projectName } = useParams();
 
     return (

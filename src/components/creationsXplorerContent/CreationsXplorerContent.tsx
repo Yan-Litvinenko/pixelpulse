@@ -1,19 +1,19 @@
 import React from 'react';
 import projects from '../../assets/json/projects.json';
 import styles from './CreationsXplorerContent.module.scss';
-import { soundsClickTrigger } from '../../store/soundsSlice';
+import { creationsSelector } from '../../store/selectors/selectors';
 import { Image, Folder } from '../svgIcon/SvgIcon';
-import { modalOpenHandler } from '../../store/modalSlice';
+import { modalOpenHandler } from '../../store/slices/modalSlice';
 import { nanoid } from '@reduxjs/toolkit';
-import { setProjectImages, setTargetProject, setTargetImage } from '../../store/creationsSlice';
+import { setProjectImages, setTargetProject, setTargetImage } from '../../store/slices/creationsSlice';
+import { soundsClickTrigger } from '../../store/slices/soundsSlice';
 import { useDispatch } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import type { AppDispatch, RootState } from '../../store/store';
+import type { AppDispatch } from '../../store/store';
 
 const CreationsXplorerContent = (): React.JSX.Element => {
     const dispatch = useDispatch<AppDispatch>();
-    const { targetProject } = useSelector((state: RootState) => state.creations);
+    const { targetProject } = creationsSelector;
     const { projectName } = useParams();
 
     const projectClick = (projectIndex: number): void => {

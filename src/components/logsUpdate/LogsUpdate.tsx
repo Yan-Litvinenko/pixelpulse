@@ -1,10 +1,11 @@
 import React from 'react';
 import styles from './LogsUpdate.module.scss';
-import { soundsClickTrigger } from '../../store/soundsSlice';
+import { useDispatch } from 'react-redux';
+import { mediaQuerySelector } from '../../store/selectors/selectors';
 import { nanoid } from '@reduxjs/toolkit';
+import { soundsClickTrigger } from '../../store/slices/soundsSlice';
 import { useLogsUpdate } from '../../hooks/useLogsUpdate';
-import { useSelector, useDispatch } from 'react-redux';
-import type { RootState, AppDispatch } from '../../store/store';
+import type { AppDispatch } from '../../store/store';
 
 const update: Record<string, string>[] = [
     {
@@ -28,7 +29,7 @@ const update: Record<string, string>[] = [
 const LogsUpdate = (): React.JSX.Element => {
     const dispatch = useDispatch<AppDispatch>();
 
-    const { isMedium } = useSelector((state: RootState) => state.mediaQuery);
+    const { isMedium } = mediaQuerySelector;
     const [expandStates, clippedIndexes, setExpandStates, setRef] = useLogsUpdate(update, styles.element__text_clip);
 
     const detail = (index: number): void => {

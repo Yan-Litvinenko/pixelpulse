@@ -1,10 +1,10 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { setMediaState } from '../store/mediaSlice';
-import type { RootState } from '../store/store';
+import { mediaQuerySelector } from '../store/selectors/selectors';
+import { setMediaState } from '../store/slices/mediaSlice';
+import { useDispatch } from 'react-redux';
 
 const useMedia = (): void => {
-    const { SMALL, MEDIUM } = useSelector((state: RootState) => state.mediaQuery);
+    const { SMALL, MEDIUM } = mediaQuerySelector;
     const dispatch = useDispatch();
 
     React.useEffect(() => {

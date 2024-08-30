@@ -1,4 +1,4 @@
-import { stopPropagation } from '../utils/stopPropagation';
+import { stopPropagation } from '../stopPropagation';
 
 describe('stop propagation', (): void => {
     const mockStopPropagation = jest.fn();
@@ -10,6 +10,4 @@ describe('stop propagation', (): void => {
         stopPropagation(mockEvent);
         expect(mockStopPropagation).toHaveBeenCalled();
     });
-
-    afterAll(() => jest.restoreAllMocks());
 });

@@ -5,7 +5,7 @@ import { CreationsDetails } from '../creationsDetails/CreationsDetails';
 import { CreationsTechnologies } from '../creationsTechnologies/CreationsTechnologies';
 import { CreationsXplorer } from '../creationsXplorer/CreationsXplorer';
 import { Link } from 'react-router-dom';
-import { soundsClickTrigger } from '../../store/soundsSlice';
+import { soundsClickTrigger } from '../../store/slices/soundsSlice';
 import { useDispatch } from 'react-redux';
 import { useTargetProject } from '../../hooks/useTargetProject';
 import type { AppDispatch } from '../../store/store';

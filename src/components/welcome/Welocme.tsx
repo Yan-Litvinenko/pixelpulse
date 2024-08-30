@@ -2,11 +2,11 @@ import React from 'react';
 import audioKeyboardPress from '../../assets/audio/pressKeyboard.mp3';
 import styles from './Welcome.module.scss';
 import { Link } from 'react-router-dom';
-import { soundsClickTrigger } from '../../store/soundsSlice';
+import { soundsClickTrigger } from '../../store/slices/soundsSlice';
+import { soundsSelector } from '../../store/selectors/selectors';
+import { useDispatch } from 'react-redux';
 import { usePrintedText } from '../../hooks/usePrintedText';
-import { useSelector, useDispatch } from 'react-redux';
 import type { AppDispatch } from '../../store/store';
-import type { RootState } from '../../store/store';
 
 const audioKeyboard = new Audio(audioKeyboardPress);
 const textForPrint: Record<string, string> = {
@@ -17,7 +17,7 @@ const textForPrint: Record<string, string> = {
 
 const Welcome = (): React.JSX.Element => {
     const dispatch = useDispatch<AppDispatch>();
-    const { soundsState } = useSelector((state: RootState) => state.sounds);
+    const { soundsState } = soundsSelector;
 
     const skipStatus = React.useRef(false);
     const isPlayedAudioKeyboard = React.useRef(false);

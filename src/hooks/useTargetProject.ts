@@ -1,6 +1,6 @@
 import React from 'react';
 import projects from '../assets/json/projects.json';
-import { setTargetProject } from '../store/creationsSlice';
+import { setTargetProject } from '../store/slices/creationsSlice';
 import { useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import type { AppDispatch } from '../store/store';

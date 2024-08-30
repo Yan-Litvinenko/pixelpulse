@@ -1,4 +1,4 @@
-import { debounce } from '../utils/debounce';
+import { debounce } from '../debounce';
 
 describe('debounce', (): void => {
     const mockCallback = jest.fn();

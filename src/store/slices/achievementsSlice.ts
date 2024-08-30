@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { customFetch } from '../utils/customFetch';
-import type { IAchieve } from '../interfaces/interface.achievements';
+import { customFetch } from '../../utils/customFetch';
+import type { IAchieve } from '../../interfaces/interface.achievements';
 
 type AchievementsSlice = {
     amountAchievements: null | number;

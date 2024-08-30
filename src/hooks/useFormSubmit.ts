@@ -1,9 +1,9 @@
 import React from 'react';
-import { setModalStateForm } from '../store/modalSlice';
+import { setModalStateForm } from '../store/slices/modalSlice';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { useTelegramApi } from './useTelegramApi';
-import type { Modal } from '../store/modalSlice';
+import type { Modal } from '../store/slices/modalSlice';
 import type { UseFormRegister, FieldValues, FieldErrors } from 'react-hook-form';
 import type { UseTelegramApi } from './useTelegramApi';
 
