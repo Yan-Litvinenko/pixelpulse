@@ -2,13 +2,13 @@ import React from 'react';
 import { fetchAddCoin } from '../../store/slices/headerStatisticSlice';
 import { headerStatisticSelector } from '../../store/selectors/selectors';
 import { HeaderStatisticsFallback } from './HeaderStatisticFallback';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import type { IStatistics } from '../../interfaces/interface.component';
 import type { AppDispatch } from '../../store/store';
 
 const HeaderStatistics = (props: IStatistics): React.JSX.Element => {
     const dispatch = useDispatch<AppDispatch>();
-    const { error, loading, statistic } = headerStatisticSelector;
+    const { error, loading, statistic } = useSelector(headerStatisticSelector);
     const { level, coins, addStatus } = statistic;
     const { styles } = props;
 

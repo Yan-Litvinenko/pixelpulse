@@ -34,4 +34,5 @@ const musicSlice = createSlice({
 });
 
 export const { setStateMusic, setActiveMusicTheme } = musicSlice.actions;
+export type { MusicSlice };
 export { musicSlice };

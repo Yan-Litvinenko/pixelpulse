@@ -2,7 +2,7 @@ import { achievementsSlice } from './slices/achievementsSlice';
 import { configureStore } from '@reduxjs/toolkit';
 import { creationsSlice } from './slices/creationsSlice';
 import { headerStatisticSlice } from './slices/headerStatisticSlice';
-import { mediaSlice } from './slices/mediaSlice';
+import { mediaQuerySlice } from './slices/mediaQuerySlice';
 import { modalSlice } from './slices/modalSlice';
 import { musicSlice } from './slices/musicSlice';
 import { rootStyleSlice } from './slices/rootStyleSlice';
@@ -14,7 +14,7 @@ const store = configureStore({
         achievements: achievementsSlice.reducer,
         creations: creationsSlice.reducer,
         headerStatistic: headerStatisticSlice.reducer,
-        mediaQuery: mediaSlice.reducer,
+        mediaQuery: mediaQuerySlice.reducer,
         modal: modalSlice.reducer,
         music: musicSlice.reducer,
         rootStyles: rootStyleSlice.reducer,

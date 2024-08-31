@@ -5,7 +5,7 @@ import { mediaQuerySelector } from '../../store/selectors/selectors';
 import { NavLink } from 'react-router-dom';
 import { scroll } from '../../classes/Scroll';
 import { soundsClickTrigger, soundsModalTrigger } from '../../store/slices/soundsSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useModal } from '../../hooks/useModal';
 import type { AppDispatch } from '../../store/store';
 import type { INavigationElement } from '../../interfaces/interface.component';
@@ -14,7 +14,7 @@ const NavigationElement = (props: INavigationElement): React.JSX.Element => {
     const dispatch = useDispatch<AppDispatch>();
     const closeNavigationMobile = useModal('navigationMobile').close;
 
-    const { isMedium } = mediaQuerySelector;
+    const { isMedium } = useSelector(mediaQuerySelector);
     const { pageName } = props;
 
     const switchPage = (): void => {

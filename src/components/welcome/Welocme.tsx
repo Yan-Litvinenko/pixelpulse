@@ -4,7 +4,7 @@ import styles from './Welcome.module.scss';
 import { Link } from 'react-router-dom';
 import { soundsClickTrigger } from '../../store/slices/soundsSlice';
 import { soundsSelector } from '../../store/selectors/selectors';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { usePrintedText } from '../../hooks/usePrintedText';
 import type { AppDispatch } from '../../store/store';
 
@@ -17,7 +17,7 @@ const textForPrint: Record<string, string> = {
 
 const Welcome = (): React.JSX.Element => {
     const dispatch = useDispatch<AppDispatch>();
-    const { soundsState } = soundsSelector;
+    const { soundsState } = useSelector(soundsSelector);
 
     const skipStatus = React.useRef(false);
     const isPlayedAudioKeyboard = React.useRef(false);

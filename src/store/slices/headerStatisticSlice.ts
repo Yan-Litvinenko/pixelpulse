@@ -92,3 +92,4 @@ const headerStatisticSlice = createSlice({
 });
 
 export { headerStatisticSlice, fetchAddCoin, fetchHeaderStatistic };
+export type { HeaderStatistic };

@@ -3,9 +3,10 @@ import styles from './CreationsDetails.module.scss';
 import { creationsSelector } from '../../store/selectors/selectors';
 import { Hexagon } from '../svgIcon/SvgIcon';
 import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const CreationsDetails = (): React.JSX.Element => {
-    const { targetProject, defaultProject, projects } = creationsSelector;
+    const { targetProject, defaultProject, projects } = useSelector(creationsSelector);
     const { projectName } = useParams();
 
     return (

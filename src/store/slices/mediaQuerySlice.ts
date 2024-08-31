@@ -28,4 +28,5 @@ const mediaQuerySlice = createSlice({
 });
 
 export const { setMediaState } = mediaQuerySlice.actions;
+export type { MediaQueryState };
 export { mediaQuerySlice };

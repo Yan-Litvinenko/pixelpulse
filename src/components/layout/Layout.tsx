@@ -9,11 +9,12 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { Profile } from '../profile/Profile';
 import { Quest } from '../quest/Quest';
 import { SmoothTransition } from '../../hoc/SmoothTransition';
+import { useSelector } from 'react-redux';
 import { useTitle } from '../../hooks/useTitle';
 
 const Layout = (): React.JSX.Element => {
-    const { isSmall, isMedium } = mediaQuerySelector;
-    const styles = rootStylesSelector;
+    const { isSmall, isMedium } = useSelector(mediaQuerySelector);
+    const styles = useSelector(rootStylesSelector);
 
     const location = useLocation();
     const isBeginning: boolean = location.pathname === '/beginning';

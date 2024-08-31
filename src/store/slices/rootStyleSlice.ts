@@ -32,4 +32,5 @@ const rootStyleSlice = createSlice({
 });
 
 export const { installRootStyles } = rootStyleSlice.actions;
+export type { RootStyleSlice };
 export { rootStyleSlice };

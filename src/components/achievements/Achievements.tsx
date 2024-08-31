@@ -9,13 +9,13 @@ import { achievementsSort } from '../../utils/achievementsSort';
 import { AchievementsToggle } from '../achievementsToggle/AchievementsToggle';
 import { soundsClickTrigger } from '../../store/slices/soundsSlice';
 import { Triangle } from 'react-loader-spinner';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import type { AppDispatch } from '../../store/store';
 import type { ToggleStatus } from '../../interfaces/interface.achievements';
 
 const Achievements = (): React.JSX.Element => {
     const dispatch = useDispatch<AppDispatch>();
-    const { achievements, loading, error } = achievementsSelector;
+    const { achievements, loading, error } = useSelector(achievementsSelector);
     const [filterStatus, setFilterStatus] = React.useState<ToggleStatus>('all');
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {

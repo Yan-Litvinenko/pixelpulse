@@ -3,9 +3,10 @@ import styles from './CreationsXplorer.module.scss';
 import { creationsSelector } from '../../store/selectors/selectors';
 import { Frame } from '../frame/Frame';
 import { Outlet, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const CreationsXplorer = (): React.JSX.Element => {
-    const { targetProject, projects } = creationsSelector;
+    const { targetProject, projects } = useSelector(creationsSelector);
     const { projectName } = useParams();
 
     const path: string = `location: /projects${projectName ? '/' + projects[targetProject].name : ''}`;

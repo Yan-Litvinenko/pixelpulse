@@ -1,11 +1,12 @@
 import React from 'react';
 import { setValueToLocalStorage } from '../utils/setValueToLocalStorage';
-import { useFirstInteraction } from './useFirstInteraction';
 import { soundsSelector } from '../store/selectors/selectors';
+import { useFirstInteraction } from './useFirstInteraction';
+import { useSelector } from 'react-redux';
 
 const useSounds = (): void => {
     const firstInteraction: boolean = useFirstInteraction();
-    const sounds = soundsSelector;
+    const sounds = useSelector(soundsSelector);
     const { soundsState } = sounds;
     const { linkGlitchEffect, linkSoundClick, linkSoundModal } = sounds;
     const { stateClickTrigger, stateGlitchTrigger, stateModalTrigger } = sounds;

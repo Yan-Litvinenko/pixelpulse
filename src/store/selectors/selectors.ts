@@ -1,11 +1,10 @@
-import { useSelector } from 'react-redux';
 import type { RootState } from '../store';
 
-export const mediaQuerySelector = useSelector((state: RootState) => state.mediaQuery);
-export const stateModalSelector = useSelector((state: RootState) => state.modal.stateModal);
-export const rootStylesSelector = useSelector((state: RootState) => state.rootStyles);
-export const achievementsSelector = useSelector((state: RootState) => state.achievements);
-export const creationsSelector = useSelector((state: RootState) => state.creations);
-export const headerStatisticSelector = useSelector((state: RootState) => state.headerStatistic);
-export const musicSelector = useSelector((state: RootState) => state.music);
-export const soundsSelector = useSelector((state: RootState) => state.sounds);
+export const mediaQuerySelector = (state: RootState) => state.mediaQuery;
+export const stateModalSelector = (state: RootState) => state.modal.stateModal;
+export const rootStylesSelector = (state: RootState) => state.rootStyles;
+export const achievementsSelector = (state: RootState) => state.achievements;
+export const creationsSelector = (state: RootState) => state.creations;
+export const headerStatisticSelector = (state: RootState) => state.headerStatistic;
+export const musicSelector = (state: RootState) => state.music;
+export const soundsSelector = (state: RootState) => state.sounds;

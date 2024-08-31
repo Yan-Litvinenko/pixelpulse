@@ -2,7 +2,7 @@ import React from 'react';
 import { musicSelector } from '../store/selectors/selectors';
 import { setActiveMusicTheme } from '../store/slices/musicSlice';
 import { Snake } from '../classes/Snake';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import type { AppDispatch } from '../store/store';
 
 interface UseSnake {
@@ -27,7 +27,7 @@ const useSnake = (): UseSnake => {
     const dispatch = useDispatch<AppDispatch>();
     const [score, setScore] = React.useState<number>(0);
     const [bestScore, setBestScore] = React.useState<number>(getValueToLocalStorage(KEY_SNAKE_LOCALSTORAGE, 0));
-    const { linkSnakeMusic, linkAutomataMusic } = musicSelector;
+    const { linkSnakeMusic, linkAutomataMusic } = useSelector(musicSelector);
 
     const snake = React.useRef<null | Snake>(null);
     const canvas = React.useRef<HTMLCanvasElement | null>(null);

@@ -59,3 +59,4 @@ const achievementsSlice = createSlice({
 });
 
 export { achievementsSlice, fetchAchievements };
+export type { AchievementsSlice };

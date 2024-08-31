@@ -44,4 +44,5 @@ const soundsSlice = createSlice({
 });
 
 export const { setStateSounds, soundsModalTrigger, soundsClickTrigger, soundsGlitchTrigger } = soundsSlice.actions;
+export type { SoundsSlice };
 export { soundsSlice };

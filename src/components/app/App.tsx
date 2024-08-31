@@ -18,12 +18,14 @@ import { useHeaderStatistic } from '../../hooks/useHeaderStatistics';
 import { useMedia } from '../../hooks/useMedia';
 import { useModalCloseByKey } from '../../hooks/useModalCloseByKey';
 import { useMusic } from '../../hooks/useMusic';
+import { useSelector } from 'react-redux';
 import { useSounds } from '../../hooks/useSounds';
 import { wrapperClassName } from '../../utils/wrapperClassName';
 
 const App = (): React.JSX.Element => {
-    const { isSmall, isMedium } = mediaQuerySelector;
-    const { availability, settings, social, challenge, creations, credits, navigationMobile } = stateModalSelector;
+    const { isSmall, isMedium } = useSelector(mediaQuerySelector);
+    const { availability, settings, social, challenge, creations, credits, navigationMobile } =
+        useSelector(stateModalSelector);
 
     settingsColor.init();
     useApp(styles);

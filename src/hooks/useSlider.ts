@@ -1,7 +1,7 @@
 import React from 'react';
 import { creationsSelector } from '../store/selectors/selectors';
 import { soundsClickTrigger } from '../store/slices/soundsSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import type { AppDispatch } from '../store/store';
 
 const useSlider = (
@@ -10,7 +10,7 @@ const useSlider = (
     vectorRight: React.MutableRefObject<HTMLImageElement | null>,
 ): number => {
     const dispatch = useDispatch<AppDispatch>();
-    const { targetImage, projectImages } = creationsSelector;
+    const { targetImage, projectImages } = useSelector(creationsSelector);
     const [countSlider, setCountSlider] = React.useState<number>(targetImage);
 
     let xDown: number = 0;

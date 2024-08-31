@@ -7,13 +7,13 @@ import { modalOpenHandler } from '../../store/slices/modalSlice';
 import { nanoid } from '@reduxjs/toolkit';
 import { setProjectImages, setTargetProject, setTargetImage } from '../../store/slices/creationsSlice';
 import { soundsClickTrigger } from '../../store/slices/soundsSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 import type { AppDispatch } from '../../store/store';
 
 const CreationsXplorerContent = (): React.JSX.Element => {
     const dispatch = useDispatch<AppDispatch>();
-    const { targetProject } = creationsSelector;
+    const { targetProject } = useSelector(creationsSelector);
     const { projectName } = useParams();
 
     const projectClick = (projectIndex: number): void => {

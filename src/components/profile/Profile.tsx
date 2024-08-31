@@ -9,12 +9,12 @@ import { mediaQuerySelector } from '../../store/selectors/selectors';
 import { nanoid } from '@reduxjs/toolkit';
 import { ProfileElement } from '../profileElement/ProfileElement';
 import { soundsClickTrigger } from '../../store/slices/soundsSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import type { AppDispatch } from '../../store/store';
 
 const Profile = (): React.JSX.Element => {
     const dispatch = useDispatch<AppDispatch>();
-    const { isSmall } = mediaQuerySelector;
+    const { isSmall } = useSelector(mediaQuerySelector);
 
     return (
         <aside className={styles.profile}>

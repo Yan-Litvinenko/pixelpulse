@@ -3,9 +3,10 @@ import styles from './CreationsAbout.module.scss';
 import { creationsSelector } from '../../store/selectors/selectors';
 import { nanoid } from '@reduxjs/toolkit';
 import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const CreationsAbout = (): React.JSX.Element => {
-    const { targetProject, defaultProject, projects } = creationsSelector;
+    const { targetProject, defaultProject, projects } = useSelector(creationsSelector);
     const { projectName } = useParams();
 
     const texts: string[] = !projectName ? defaultProject.about : projects[targetProject].about || [];

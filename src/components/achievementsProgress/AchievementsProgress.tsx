@@ -3,11 +3,11 @@ import styles from './AchievementsProgress.module.scss';
 import { AchievementsProgressRing } from '../achievementsProgressRing/AchievementsProgressRing';
 import { achievementsSelector } from '../../store/selectors/selectors';
 import { modalOpenHandler } from '../../store/slices/modalSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import type { AppDispatch } from '../../store/store';
 
 const AchievementsProgress = (): React.JSX.Element => {
-    const { error, loading, amountAchieved, amountAchievements, percent } = achievementsSelector;
+    const { error, loading, amountAchieved, amountAchievements, percent } = useSelector(achievementsSelector);
     const dispatch = useDispatch<AppDispatch>();
 
     return (

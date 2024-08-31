@@ -7,11 +7,12 @@ import { creationsSelector } from '../../store/selectors/selectors';
 import { nanoid } from '@reduxjs/toolkit';
 import { stopPropagation } from '../../utils/stopPropagation';
 import { useModal } from '../../hooks/useModal';
+import { useSelector } from 'react-redux';
 import { useSlider } from '../../hooks/useSlider';
 
 const ModalCreations = (): React.JSX.Element => {
     const closeModalCreations = useModal('creations').close;
-    const { targetProject, projectImages } = creationsSelector;
+    const { targetProject, projectImages } = useSelector(creationsSelector);
 
     const slider = React.useRef<HTMLDivElement | null>(null);
     const vectorLeft = React.useRef<HTMLImageElement | null>(null);

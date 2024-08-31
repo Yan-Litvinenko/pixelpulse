@@ -4,10 +4,11 @@ import { ClipPathBorder } from '../clipPathBorder/ClipPathBorder';
 import { FormLabel } from '../formLabel/FormLabel';
 import { mediaQuerySelector } from '../../store/selectors/selectors';
 import { ModalBackground } from '../modalBackground/ModalBackground';
+import { useSelector } from 'react-redux';
 import type { IForm } from '../../interfaces/interface.form';
 
 const Form = (props: IForm): React.JSX.Element => {
-    const { isMedium } = mediaQuerySelector;
+    const { isMedium } = useSelector(mediaQuerySelector);
     const { errors, register } = props;
 
     return (

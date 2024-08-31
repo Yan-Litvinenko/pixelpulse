@@ -5,6 +5,7 @@ import { Figma, GitHub, Gulp, HexagonBorder, Html, JS, Redux } from '../svgIcon/
 import { MySql, NodeJS, ReactIcon, Sass, Ts, Webpack, Wordpress } from '../svgIcon/SvgIcon';
 import { nanoid } from '@reduxjs/toolkit';
 import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import type { Technologies } from '../../interfaces/interface.creations';
 
 const technologies: Technologies = {
@@ -24,7 +25,7 @@ const technologies: Technologies = {
 };
 
 const CreationsTechnologiesContent = (): React.JSX.Element => {
-    const { targetProject, defaultProject, projects } = creationsSelector;
+    const { targetProject, defaultProject, projects } = useSelector(creationsSelector);
     const { projectName } = useParams();
 
     const technologiesNames: string[] = !projectName
