@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AchievementsToggle component Render with props 1`] = `
+<label
+  data-testid="test-label"
+  for="all"
+>
+  <input
+    checked=""
+    id="all"
+    name="achievements"
+    type="radio"
+    value="all"
+  />
+  <div />
+  <div>
+    test text
+  </div>
+</label>
+`;

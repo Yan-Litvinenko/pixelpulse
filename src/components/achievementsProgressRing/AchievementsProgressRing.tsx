@@ -10,7 +10,13 @@ const AchievementsProgressRing = ({ percent }: IAchievementsProgressRing): React
     const circumference: number = 2 * Math.PI * radius;
 
     return (
-        <svg className={styles.ring} width={square} height={square} viewBox={`0 0 ${square} ${square}`}>
+        <svg
+            className={styles.ring}
+            width={square}
+            height={square}
+            viewBox={`0 0 ${square} ${square}`}
+            data-testid="svg"
+        >
             <circle
                 style={{
                     strokeDashoffset: `${circumference - (percent / 100) * circumference}`,
@@ -23,6 +29,7 @@ const AchievementsProgressRing = ({ percent }: IAchievementsProgressRing): React
                 cx={CYX}
                 r={radius}
                 fill="transparent"
+                data-testid="circle"
             />
         </svg>
     );

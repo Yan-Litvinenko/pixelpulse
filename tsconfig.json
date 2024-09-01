@@ -1,14 +1,15 @@
 {
     "compilerOptions": {
-        "jsx": "react",
-        "target": "es5",
-        "module": "commonjs",
-        "lib": ["es6", "dom"],
+        "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
-        "strict": true,
+        "jsx": "react",
+        "lib": ["es6", "dom"],
+        "module": "commonjs",
         "noImplicitAny": true,
-        "skipLibCheck": true,
         "resolveJsonModule": true,
-        "esModuleInterop": true
+        "skipLibCheck": true,
+        "strict": true,
+        "target": "es5",
+        "types": ["@testing-library/jest-dom", "node"]
     }
 }

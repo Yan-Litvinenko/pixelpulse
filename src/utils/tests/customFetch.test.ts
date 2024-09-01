@@ -6,7 +6,7 @@ describe('custom fetch', (): void => {
         data: 'success server response',
     };
 
-    global.fetch = jest.fn().mockResolvedValue({
+    globalThis.fetch = jest.fn().mockResolvedValue({
         json: jest.fn().mockResolvedValue(mockResponse),
     });
 
@@ -18,7 +18,7 @@ describe('custom fetch', (): void => {
     });
 
     test('Should return error', (): void => {
-        global.fetch = jest.fn().mockResolvedValue(new Error(`A request error occurred ${url}`));
+        globalThis.fetch = jest.fn().mockResolvedValue(new Error(`A request error occurred ${url}`));
         expect(() => customFetch(url)).rejects.toThrow(`A request error occurred ${url}`);
     });
 });
