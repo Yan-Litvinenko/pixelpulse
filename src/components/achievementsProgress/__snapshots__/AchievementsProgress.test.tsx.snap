@@ -8,6 +8,7 @@ exports[`AchievementsProgress component Render 1`] = `
       <section>
         <div>
           <svg
+            data-testid="svg"
             height="148"
             viewBox="0 0 148 148"
             width="148"
@@ -15,6 +16,7 @@ exports[`AchievementsProgress component Render 1`] = `
             <circle
               cx="74"
               cy="74"
+              data-testid="circle"
               fill="transparent"
               r="46"
               stroke="current-color"
@@ -49,6 +51,7 @@ exports[`AchievementsProgress component Render 1`] = `
     <section>
       <div>
         <svg
+          data-testid="svg"
           height="148"
           viewBox="0 0 148 148"
           width="148"
@@ -56,6 +59,7 @@ exports[`AchievementsProgress component Render 1`] = `
           <circle
             cx="74"
             cy="74"
+            data-testid="circle"
             fill="transparent"
             r="46"
             stroke="current-color"

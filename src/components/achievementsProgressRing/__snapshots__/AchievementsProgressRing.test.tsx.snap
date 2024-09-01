@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AchievementsProgressRing component Renders correctly with given percent 1`] = `
+<svg
+  data-testid="svg"
+  height="148"
+  viewBox="0 0 148 148"
+  width="148"
+>
+  <circle
+    cx="74"
+    cy="74"
+    data-testid="circle"
+    fill="transparent"
+    r="46"
+    stroke="current-color"
+    stroke-width="14"
+    style="stroke-dashoffset: 72.25663103256522; stroke-dasharray: 289.02652413026095 289.02652413026095;"
+  />
+</svg>
+`;
