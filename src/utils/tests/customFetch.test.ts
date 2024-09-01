@@ -10,8 +10,6 @@ describe('custom fetch', (): void => {
         json: jest.fn().mockResolvedValue(mockResponse),
     });
 
-    beforeEach(() => jest.restoreAllMocks());
-
     test('Should return data from fetch', async () => {
         const result = await customFetch<typeof mockResponse>(url);
 

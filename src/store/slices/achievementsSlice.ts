@@ -20,7 +20,7 @@ const initialState: AchievementsSlice = {
     error: null,
 };
 
-const fetchAchievements = createAsyncThunk('achievements/fetchAchievements', async () => {
+const fetchAchievements = createAsyncThunk('achievements/fetchAchievements', async (): Promise<IAchieve[]> => {
     const resolveAchievements = await customFetch<IAchieve[]>('/api/getAchievements');
     return resolveAchievements;
 });

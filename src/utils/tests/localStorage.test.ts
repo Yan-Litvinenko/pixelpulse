@@ -33,6 +33,4 @@ describe('setValueToLocalStorage', (): void => {
             `Error adding data ${largeString} to local storage`,
         );
     });
-
-    afterAll((): void => localStorage.clear());
 });

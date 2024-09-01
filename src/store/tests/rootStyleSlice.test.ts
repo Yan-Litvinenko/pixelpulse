@@ -1,5 +1,6 @@
 import { rootStyleSlice, installRootStyles } from '../slices/rootStyleSlice';
-import type { UnknownAction } from '@reduxjs/toolkit';
+import { rootStylesSelector } from '../selectors/selectors';
+import type { RootState } from '../store';
 import type { RootStyleSlice } from '../slices/rootStyleSlice';
 
 const initialState: RootStyleSlice = {
@@ -12,8 +13,12 @@ const initialState: RootStyleSlice = {
 
 describe('rootStyleSlice', (): void => {
     test('Should return empty state when passed an empty action', (): void => {
-        const result: RootStyleSlice = rootStyleSlice.reducer(undefined, { type: 'unknown' } as UnknownAction);
+        const result: RootStyleSlice = rootStyleSlice.reducer(undefined, {} as { type: string });
         expect(result).toEqual(initialState);
+    });
+
+    test('Selector should return correct rootStyle slice from the store', (): void => {
+        expect(rootStylesSelector({ rootStyles: initialState } as RootState)).toEqual(initialState);
     });
 
     test('Should install app styles', (): void => {

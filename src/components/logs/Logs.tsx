@@ -21,7 +21,7 @@ const Logs = (): React.JSX.Element => {
 
                     <a
                         className={styles.logs__github}
-                        href="https://github.com/Darth-VaderX"
+                        href="https://github.com/Yan-Litvinenko"
                         onClick={() => dispatch(soundsClickTrigger())}
                         target="_blank"
                     >

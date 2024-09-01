@@ -28,7 +28,6 @@ const musicSlice = createSlice({
 
         setActiveMusicTheme(state, actions: PayloadAction<string>): void {
             state.linkActiveMusicTheme = actions.payload;
-            console.log('смена темы на:', actions.payload);
         },
     },
 });
