@@ -1,4 +1,4 @@
-import { achievementsSelector } from '../selectors/selectors';
+import { achievementsSelector } from '../selectors';
 import { achievementsSlice } from '../slices/achievementsSlice';
 import type { AchievementsSlice } from '../slices/achievementsSlice';
 import type { RootState } from '../store';

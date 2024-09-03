@@ -1,4 +1,4 @@
-import { mediaQuerySelector, stateModalSelector, rootStylesSelector } from '../store/selectors/selectors';
+import { mediaQuerySelector, stateModalSelector, rootStylesSelector } from '../store/selectors';
 import { useSelector } from 'react-redux';
 
 const wrapperClassName = (): string => {

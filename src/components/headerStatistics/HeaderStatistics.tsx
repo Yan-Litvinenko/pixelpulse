@@ -1,6 +1,6 @@
 import React from 'react';
 import { fetchAddCoin } from '../../store/slices/headerStatisticSlice';
-import { headerStatisticSelector } from '../../store/selectors/selectors';
+import { headerStatisticSelector } from '../../store/selectors';
 import { HeaderStatisticsFallback } from './HeaderStatisticFallback';
 import { useDispatch, useSelector } from 'react-redux';
 import type { IStatistics } from '../../interfaces/interface.component';

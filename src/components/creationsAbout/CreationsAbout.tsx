@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './CreationsAbout.module.scss';
-import { creationsSelector } from '../../store/selectors/selectors';
+import { creationsSelector } from '../../store/selectors';
 import { nanoid } from '@reduxjs/toolkit';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';

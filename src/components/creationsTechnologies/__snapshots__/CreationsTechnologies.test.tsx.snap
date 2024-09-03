@@ -1,0 +1,140 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreationsTechnologies Render 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <section>
+        <h3>
+          technologies
+          <svg
+            height="70"
+            viewBox="0 0 70 70"
+            width="70"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polygon
+              fill="none"
+              id="svg_1"
+              points="13.243243396406115,7 29.729729294231674,7 37.97297358562446,20.736842453106306 29.729729294231674,34.47368490621261 13.243243396406115,34.47368490621261 5,20.736842453106306"
+              stroke="#000"
+              stroke-width="1.5"
+            />
+            <polygon
+              fill="none"
+              id="svg_2"
+              points="13.243243396406115,37.52631539181061 29.729729294231674,37.52631539181061 37.97297358562446,51.263159600888685 29.729729294231674,65.00000029802322 13.243243396406115,65.00000029802322 5,51.263159600888685"
+              stroke="#000"
+              stroke-width="1.5"
+            />
+            <polygon
+              fill="none"
+              id="svg_3"
+              points="41.270272734160244,22.263157695905306 57.756757736999134,22.263157695905306 66.00000023841858,36.00000014901161 57.756757736999134,49.73684084614615 41.270272734160244,49.73684084614615 33.0270302327408,36.00000014901161"
+              stroke="#000"
+              stroke-width="1.5"
+            />
+          </svg>
+        </h3>
+        <div>
+          <div>
+            Mock component
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>,
+  "container": <div>
+    <section>
+      <h3>
+        technologies
+        <svg
+          height="70"
+          viewBox="0 0 70 70"
+          width="70"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <polygon
+            fill="none"
+            id="svg_1"
+            points="13.243243396406115,7 29.729729294231674,7 37.97297358562446,20.736842453106306 29.729729294231674,34.47368490621261 13.243243396406115,34.47368490621261 5,20.736842453106306"
+            stroke="#000"
+            stroke-width="1.5"
+          />
+          <polygon
+            fill="none"
+            id="svg_2"
+            points="13.243243396406115,37.52631539181061 29.729729294231674,37.52631539181061 37.97297358562446,51.263159600888685 29.729729294231674,65.00000029802322 13.243243396406115,65.00000029802322 5,51.263159600888685"
+            stroke="#000"
+            stroke-width="1.5"
+          />
+          <polygon
+            fill="none"
+            id="svg_3"
+            points="41.270272734160244,22.263157695905306 57.756757736999134,22.263157695905306 66.00000023841858,36.00000014901161 57.756757736999134,49.73684084614615 41.270272734160244,49.73684084614615 33.0270302327408,36.00000014901161"
+            stroke="#000"
+            stroke-width="1.5"
+          />
+        </svg>
+      </h3>
+      <div>
+        <div>
+          Mock component
+        </div>
+      </div>
+    </section>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

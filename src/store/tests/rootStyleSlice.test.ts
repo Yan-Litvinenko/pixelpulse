@@ -1,5 +1,5 @@
 import { rootStyleSlice, installRootStyles } from '../slices/rootStyleSlice';
-import { rootStylesSelector } from '../selectors/selectors';
+import { rootStylesSelector } from '../selectors';
 import type { RootState } from '../store';
 import type { RootStyleSlice } from '../slices/rootStyleSlice';
 

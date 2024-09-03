@@ -3,7 +3,7 @@ import audioKeyboardPress from '../../assets/audio/pressKeyboard.mp3';
 import styles from './Welcome.module.scss';
 import { Link } from 'react-router-dom';
 import { soundsClickTrigger } from '../../store/slices/soundsSlice';
-import { soundsSelector } from '../../store/selectors/selectors';
+import { soundsSelector } from '../../store/selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { usePrintedText } from '../../hooks/usePrintedText';
 import type { AppDispatch } from '../../store/store';

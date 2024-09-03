@@ -36,7 +36,9 @@ exports[`About component Desktop about page 1`] = `
               </p>
             </article>
           </div>
-          <picture>
+          <picture
+            data-testid="about-mobile-picture"
+          >
             <div>
               <svg
                 fill="none"
@@ -138,7 +140,9 @@ exports[`About component Desktop about page 1`] = `
             </p>
           </article>
         </div>
-        <picture>
+        <picture
+          data-testid="about-mobile-picture"
+        >
           <div>
             <svg
               fill="none"

@@ -1,5 +1,5 @@
 import projects from '../../assets/json/projects.json';
-import { creationsSelector } from '../selectors/selectors';
+import { creationsSelector } from '../selectors';
 import { creationsSlice, setTargetImage } from '../slices/creationsSlice';
 import { setProjectImages, setTargetProject } from '../slices/creationsSlice';
 import type { CreationsSlice } from '../slices/creationsSlice';

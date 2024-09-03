@@ -1,5 +1,5 @@
 import { headerStatisticSlice } from '../slices/headerStatisticSlice';
-import { headerStatisticSelector } from '../selectors/selectors';
+import { headerStatisticSelector } from '../selectors';
 import type { HeaderStatistic } from '../slices/headerStatisticSlice';
 import type { RootState } from '../store';
 

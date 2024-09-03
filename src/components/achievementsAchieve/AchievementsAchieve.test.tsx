@@ -16,8 +16,7 @@ describe('AchievementsAchieve component', (): void => {
         const component = render(<AchievementsAchieve {...achieve} />);
 
         Object.values(achieve).forEach((element) => {
-            const result = screen.getByText(new RegExp(element));
-            expect(result).toBeInTheDocument();
+            expect(screen.getByText(new RegExp(element))).toBeInTheDocument();
         });
 
         expect(component).toMatchSnapshot();

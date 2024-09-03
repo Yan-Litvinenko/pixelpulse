@@ -1,4 +1,4 @@
-import type { RootState } from '../store';
+import type { RootState } from './store';
 
 export const mediaQuerySelector = (state: RootState) => state.mediaQuery;
 export const stateModalSelector = (state: RootState) => state.modal.stateModal;

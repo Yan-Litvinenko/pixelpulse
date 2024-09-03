@@ -6,7 +6,7 @@ const AchievementsToggle = (props: IAchievementsToggle): React.JSX.Element => {
     const { checked, id, onChange, textContent, value } = props;
 
     return (
-        <label className={styles.label} htmlFor={id} data-testid="test-label">
+        <label className={styles.label} htmlFor={id} data-testid="test-achievements-label">
             <input
                 checked={checked}
                 className={styles.label__input}

@@ -27,7 +27,7 @@ exports[`AchievementsProgress component Render 1`] = `
           <span>
             12
             /
-            20
+            21
           </span>
           <span>
             progress
@@ -70,7 +70,7 @@ exports[`AchievementsProgress component Render 1`] = `
         <span>
           12
           /
-          20
+          21
         </span>
         <span>
           progress

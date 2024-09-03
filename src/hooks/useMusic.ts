@@ -1,5 +1,5 @@
 import React from 'react';
-import { musicSelector } from '../store/selectors/selectors';
+import { musicSelector } from '../store/selectors';
 import { setValueToLocalStorage } from '../utils/setValueToLocalStorage';
 import { useFirstInteraction } from './useFirstInteraction';
 import { useSelector } from 'react-redux';

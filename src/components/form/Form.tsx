@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Form.module.scss';
 import { ClipPathBorder } from '../clipPathBorder/ClipPathBorder';
 import { FormLabel } from '../formLabel/FormLabel';
-import { mediaQuerySelector } from '../../store/selectors/selectors';
+import { mediaQuerySelector } from '../../store/selectors';
 import { ModalBackground } from '../modalBackground/ModalBackground';
 import { useSelector } from 'react-redux';
 import type { IForm } from '../../interfaces/interface.form';

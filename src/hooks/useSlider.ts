@@ -1,5 +1,5 @@
 import React from 'react';
-import { creationsSelector } from '../store/selectors/selectors';
+import { creationsSelector } from '../store/selectors';
 import { soundsClickTrigger } from '../store/slices/soundsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import type { AppDispatch } from '../store/store';

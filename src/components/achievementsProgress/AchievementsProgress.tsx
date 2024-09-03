@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './AchievementsProgress.module.scss';
 import { AchievementsProgressRing } from '../achievementsProgressRing/AchievementsProgressRing';
-import { achievementsSelector } from '../../store/selectors/selectors';
+import { achievementsSelector } from '../../store/selectors';
 import { modalOpenHandler } from '../../store/slices/modalSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import type { AppDispatch } from '../../store/store';

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './CreationsXplorer.module.scss';
-import { creationsSelector } from '../../store/selectors/selectors';
+import { creationsSelector } from '../../store/selectors';
 import { Frame } from '../frame/Frame';
 import { Outlet, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';

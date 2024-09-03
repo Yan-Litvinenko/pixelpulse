@@ -1,5 +1,5 @@
 import React from 'react';
-import { mediaQuerySelector } from '../store/selectors/selectors';
+import { mediaQuerySelector } from '../store/selectors';
 import { setMediaState } from '../store/slices/mediaQuerySlice';
 import { useDispatch, useSelector } from 'react-redux';
 

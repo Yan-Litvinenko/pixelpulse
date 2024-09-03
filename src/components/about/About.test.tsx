@@ -1,30 +1,29 @@
 import React from 'react';
 import { About } from './About';
 import { render, screen } from '@testing-library/react';
+import type { RenderResult } from '@testing-library/react';
 import * as reduxHooks from 'react-redux';
 
 jest.mock('react-redux');
-const mockIsSmall = jest.spyOn(reduxHooks, 'useSelector');
-const alt: string = 'A portrait of Yan Litvinenko';
+
+const mockUseSelector = jest.spyOn(reduxHooks, 'useSelector');
 
 describe('About component', (): void => {
     test('Desktop about page', (): void => {
-        mockIsSmall.mockReturnValue(false);
+        mockUseSelector.mockReturnValue({ isSmall: false });
 
-        const about = render(<About />);
-        const image = screen.getByAltText(alt);
+        const aboutComponent: RenderResult = render(<About />);
 
-        expect(image).toBeInTheDocument();
-        expect(about).toMatchSnapshot();
+        expect(screen.getByTestId('about-mobile-picture')).toBeInTheDocument();
+        expect(aboutComponent).toMatchSnapshot();
     });
 
     test('Mobile about page', (): void => {
-        mockIsSmall.mockReturnValue({ isSmall: true });
+        mockUseSelector.mockReturnValue({ isSmall: true });
 
-        const about = render(<About />);
-        const image = screen.queryByAltText(alt);
+        const aboutComponent: RenderResult = render(<About />);
 
-        expect(image).not.toBeInTheDocument();
-        expect(about).toMatchSnapshot();
+        expect(screen.queryByTestId('about-mobile-picture')).not.toBeInTheDocument();
+        expect(aboutComponent).toMatchSnapshot();
     });
 });

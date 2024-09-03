@@ -38,7 +38,7 @@ const About = (): React.JSX.Element => {
                 </div>
 
                 {isSmall ? null : (
-                    <picture className={styles.box_image}>
+                    <picture className={styles.box_image} data-testid="about-mobile-picture">
                         <Frame className={styles.frame} />
 
                         <source srcSet={humanAvif} />

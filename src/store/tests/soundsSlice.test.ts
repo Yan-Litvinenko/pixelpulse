@@ -1,4 +1,4 @@
-import { soundsSelector } from '../selectors/selectors';
+import { soundsSelector } from '../selectors';
 import { soundsSlice, setStateSounds } from '../slices/soundsSlice';
 import type { RootState } from '../store';
 import type { SoundsSlice } from '../slices/soundsSlice';

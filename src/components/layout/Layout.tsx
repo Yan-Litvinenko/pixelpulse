@@ -2,7 +2,7 @@ import React from 'react';
 import stylesLayout from './Layout.module.scss';
 import { Frame } from '../frame/Frame';
 import { Header } from '../header/Header';
-import { mediaQuerySelector, rootStylesSelector } from '../../store/selectors/selectors';
+import { mediaQuerySelector, rootStylesSelector } from '../../store/selectors';
 import { MobileBoxButton } from '../mobileBoxButton/MobileBoxButton';
 import { Navigation } from '../navigation/Navigation';
 import { Outlet, useLocation } from 'react-router-dom';

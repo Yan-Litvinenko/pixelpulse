@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './NavigationElement.module.scss';
 import { Hexagon } from '../svgIcon/SvgIcon';
-import { mediaQuerySelector } from '../../store/selectors/selectors';
+import { mediaQuerySelector } from '../../store/selectors';
 import { NavLink } from 'react-router-dom';
 import { scroll } from '../../classes/Scroll';
 import { soundsClickTrigger, soundsModalTrigger } from '../../store/slices/soundsSlice';

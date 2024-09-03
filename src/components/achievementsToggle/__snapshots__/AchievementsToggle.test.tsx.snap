@@ -2,7 +2,7 @@
 
 exports[`AchievementsToggle component Render with props 1`] = `
 <label
-  data-testid="test-label"
+  data-testid="test-achievements-label"
   for="all"
 >
   <input

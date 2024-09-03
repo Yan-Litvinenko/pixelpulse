@@ -1,5 +1,5 @@
 import { musicSlice, setStateMusic, setActiveMusicTheme } from '../slices/musicSlice';
-import { musicSelector } from '../selectors/selectors';
+import { musicSelector } from '../selectors';
 import type { MusicSlice } from '../slices/musicSlice';
 import type { RootState } from '../store';
 

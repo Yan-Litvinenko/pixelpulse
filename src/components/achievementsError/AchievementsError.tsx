@@ -8,7 +8,7 @@ const AchievementsError = (): React.JSX.Element => {
     const dispatch = useDispatch<AppDispatch>();
 
     return (
-        <ul className={styles.error} data-testId="achievements-error">
+        <ul className={styles.error} data-testId="achievements-list-error">
             <li className={styles.error__item}>
                 Check your internet connection. Ensure that you are connected to a stable network.
             </li>
@@ -19,7 +19,12 @@ const AchievementsError = (): React.JSX.Element => {
             <li className={styles.error__item}>Clear your browser's cache and cookies, then try reloading the page.</li>
             <li className={styles.error__item}>
                 If the error persists, please write to{' '}
-                <span onClick={() => dispatch(modalOpenHandler({ key: 'social' }))}>me</span>
+                <span
+                    onClick={() => dispatch(modalOpenHandler({ key: 'social' }))}
+                    data-testid="achievements-modal-error"
+                >
+                    me
+                </span>
             </li>
         </ul>
     );

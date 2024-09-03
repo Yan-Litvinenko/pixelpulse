@@ -95,7 +95,7 @@ exports[`Achievements component Achievements render 1`] = `
           </div>
           <div>
             <label
-              data-testid="test-label"
+              data-testid="test-achievements-label"
               for="all"
             >
               <input
@@ -111,7 +111,7 @@ exports[`Achievements component Achievements render 1`] = `
               </div>
             </label>
             <label
-              data-testid="test-label"
+              data-testid="test-achievements-label"
               for="achieved"
             >
               <input
@@ -126,7 +126,7 @@ exports[`Achievements component Achievements render 1`] = `
               </div>
             </label>
             <label
-              data-testid="test-label"
+              data-testid="test-achievements-label"
               for="inProgress"
             >
               <input
@@ -236,7 +236,7 @@ exports[`Achievements component Achievements render 1`] = `
         </div>
         <div>
           <label
-            data-testid="test-label"
+            data-testid="test-achievements-label"
             for="all"
           >
             <input
@@ -252,7 +252,7 @@ exports[`Achievements component Achievements render 1`] = `
             </div>
           </label>
           <label
-            data-testid="test-label"
+            data-testid="test-achievements-label"
             for="achieved"
           >
             <input
@@ -267,7 +267,7 @@ exports[`Achievements component Achievements render 1`] = `
             </div>
           </label>
           <label
-            data-testid="test-label"
+            data-testid="test-achievements-label"
             for="inProgress"
           >
             <input

@@ -1,4 +1,4 @@
-import { mediaQuerySelector } from '../selectors/selectors';
+import { mediaQuerySelector } from '../selectors';
 import { mediaQuerySlice, setMediaState } from '../slices/mediaQuerySlice';
 import type { MediaQueryState } from '../slices/mediaQuerySlice';
 import type { RootState } from '../store';

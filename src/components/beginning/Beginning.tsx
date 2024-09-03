@@ -7,7 +7,7 @@ import { Frame } from '../frame/Frame';
 
 const Beginning = (): React.JSX.Element => {
     return (
-        <section className={styles.beginning}>
+        <section className={styles.beginning} data-testid="beginning">
             <div className={styles.beginning__inner}>
                 <>
                     <div className={styles.beginning__box_title}>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { modalCloseHandler } from '../store/slices/modalSlice';
-import { stateModalSelector } from '../store/selectors/selectors';
+import { stateModalSelector } from '../store/selectors';
 import { useDispatch } from 'react-redux';
 import type { AppDispatch } from '../store/store';
 import type { Modal } from '../store/slices/modalSlice';

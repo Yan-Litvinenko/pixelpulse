@@ -1,5 +1,5 @@
 import React from 'react';
-import { musicSelector, soundsSelector } from '../../store/selectors/selectors';
+import { musicSelector, soundsSelector } from '../../store/selectors';
 import { setStateMusic } from '../../store/slices/musicSlice';
 import { setStateSounds, soundsClickTrigger } from '../../store/slices/soundsSlice';
 import { SettingElement } from '../settingElement/SettingElement';

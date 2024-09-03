@@ -5,7 +5,7 @@ import profileItems from '../../assets/json/profile.json';
 import styles from './Profile.module.scss';
 import { Frame } from '../frame/Frame';
 import { Link } from 'react-router-dom';
-import { mediaQuerySelector } from '../../store/selectors/selectors';
+import { mediaQuerySelector } from '../../store/selectors';
 import { nanoid } from '@reduxjs/toolkit';
 import { ProfileElement } from '../profileElement/ProfileElement';
 import { soundsClickTrigger } from '../../store/slices/soundsSlice';

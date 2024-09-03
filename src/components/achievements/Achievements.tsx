@@ -5,7 +5,7 @@ import { AchievementsError } from '../achievementsError/AchievementsError';
 import { AchievementsProgress } from '../achievementsProgress/AchievementsProgress';
 import { AchievementsToggle } from '../achievementsToggle/AchievementsToggle';
 import { achievementsFilter } from '../../utils/achievementsFilter';
-import { achievementsSelector } from '../../store/selectors/selectors';
+import { achievementsSelector } from '../../store/selectors';
 import { achievementsSort } from '../../utils/achievementsSort';
 import { soundsClickTrigger } from '../../store/slices/soundsSlice';
 import { Triangle } from 'react-loader-spinner';

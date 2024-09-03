@@ -1,5 +1,5 @@
 import React from 'react';
-import { musicSelector } from '../store/selectors/selectors';
+import { musicSelector } from '../store/selectors';
 import { setActiveMusicTheme } from '../store/slices/musicSlice';
 import { Snake } from '../classes/Snake';
 import { useDispatch, useSelector } from 'react-redux';

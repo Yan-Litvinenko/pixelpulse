@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './CreationsTechnologiesContent.module.scss';
-import { creationsSelector } from '../../store/selectors/selectors';
+import { creationsSelector } from '../../store/selectors';
 import { Figma, GitHub, Gulp, HexagonBorder, Html, JS, Redux } from '../svgIcon/SvgIcon';
 import { MySql, NodeJS, ReactIcon, Sass, Ts, Webpack, Wordpress } from '../svgIcon/SvgIcon';
 import { nanoid } from '@reduxjs/toolkit';

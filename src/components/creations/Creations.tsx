@@ -15,7 +15,7 @@ const Creations = (): React.JSX.Element => {
     useTargetProject();
 
     return (
-        <section className={styles.creations}>
+        <section className={styles.creations} data-testid="creations">
             <h2 className={styles.creations__title}>creations</h2>
 
             <div className={styles.creations__inner}>

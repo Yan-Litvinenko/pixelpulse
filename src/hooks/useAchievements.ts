@@ -1,6 +1,6 @@
 import React from 'react';
 import { fetchAchievements } from '../store/slices/achievementsSlice';
-import { headerStatisticSelector } from '../store/selectors/selectors';
+import { headerStatisticSelector } from '../store/selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import type { AppDispatch } from '../store/store';
 

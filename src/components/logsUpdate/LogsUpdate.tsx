@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './LogsUpdate.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { mediaQuerySelector } from '../../store/selectors/selectors';
+import { mediaQuerySelector } from '../../store/selectors';
 import { nanoid } from '@reduxjs/toolkit';
 import { soundsClickTrigger } from '../../store/slices/soundsSlice';
 import { useLogsUpdate } from '../../hooks/useLogsUpdate';
