@@ -1,13 +1,17 @@
 import React from 'react';
 import styles from './ErrorPage.module.scss';
+import { useDispatch } from 'react-redux';
+import { soundsClickTrigger } from '../../store/slices/soundsSlice';
 import type { IErrorPage } from '../../interfaces/interface.component';
+import type { AppDispatch } from '../../store/store';
 
-type Reset = {
-    reset: () => void;
-};
-
-const ErrorBoundaryPage = (props: IErrorPage & Reset): React.JSX.Element => {
+const ErrorBoundaryPage = (props: IErrorPage & { reset: () => void }): React.JSX.Element => {
     const { status, detail, reset } = props;
+    const dispatch = useDispatch<AppDispatch>();
+    const resetClick = (): void => {
+        dispatch(soundsClickTrigger());
+        reset();
+    };
 
     return (
         <>
@@ -21,7 +25,7 @@ const ErrorBoundaryPage = (props: IErrorPage & Reset): React.JSX.Element => {
                         {detail}
                     </p>
 
-                    <button className={styles.home} onClick={reset}>
+                    <button className={styles.home} onClick={resetClick}>
                         reset error
                         <span className={`${styles.home__line} ${styles.top_left}`}></span>
                         <span className={`${styles.home__line} ${styles.top_right}`}></span>

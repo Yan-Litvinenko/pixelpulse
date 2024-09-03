@@ -4,6 +4,7 @@ import type { IFrame } from '../../interfaces/interface.component';
 
 const Frame = (props: IFrame): React.JSX.Element => {
     const { className } = props;
+
     return (
         <div className={className}>
             <svg

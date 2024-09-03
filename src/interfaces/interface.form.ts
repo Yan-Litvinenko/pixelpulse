@@ -22,4 +22,9 @@ interface ILabel {
     textContent: string;
 }
 
-export type { Field, IForm, Rarity, ILabel };
+interface IFormChallenge extends IForm {
+    selectValue: Rarity;
+    setSelectValue: React.Dispatch<React.SetStateAction<Rarity>>;
+}
+
+export type { Field, IForm, Rarity, ILabel, IFormChallenge };

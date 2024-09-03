@@ -17,7 +17,7 @@ const Games = (): React.JSX.Element => {
             <h2 className={styles.games__title}>mini games</h2>
 
             {!isGameRoute ? (
-                <div className={styles.content}>
+                <article className={styles.content} data-testid="list-game">
                     <div className={styles.game_description}>
                         <p className={styles.game_description__text}>
                             Here you will see a few mini games I implemented in React or in Canvas.
@@ -52,7 +52,7 @@ const Games = (): React.JSX.Element => {
                             </figcaption>
                         </figure>
                     </div>
-                </div>
+                </article>
             ) : (
                 <Outlet />
             )}

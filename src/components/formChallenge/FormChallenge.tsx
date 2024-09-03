@@ -4,13 +4,7 @@ import { ClipPathBorder } from '../clipPathBorder/ClipPathBorder';
 import { FormLabel } from '../formLabel/FormLabel';
 import { ModalBackground } from '../modalBackground/ModalBackground';
 import { SelectChallenge } from '../selectChallenge/SelectChallenge';
-import type { IForm } from '../../interfaces/interface.form';
-import type { Rarity } from '../../interfaces/interface.achievements';
-
-interface IFormChallenge extends IForm {
-    selectValue: Rarity;
-    setSelectValue: React.Dispatch<React.SetStateAction<Rarity>>;
-}
+import type { IFormChallenge } from '../../interfaces/interface.form';
 
 const FormChallenge = (props: IFormChallenge): React.JSX.Element => {
     const { errors, register, selectValue, setSelectValue } = props;

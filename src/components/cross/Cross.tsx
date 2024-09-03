@@ -6,7 +6,7 @@ const Cross = (props: ICross): React.JSX.Element => {
     const { handler } = props;
 
     return (
-        <div className={styles.cross_box} onClick={handler}>
+        <div className={styles.cross_box} onClick={handler} data-testid="cross">
             <svg
                 className={styles.cross}
                 fill="none"
