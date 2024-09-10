@@ -12,15 +12,18 @@ const useModalCloseByKey = (): void => {
 
     React.useEffect(() => {
         const closeModalByKey = (event: KeyboardEvent) => {
-            const isDelayEnd = Object.values(delay).some((modalDelay) => {
-                return modalDelay === true;
-            });
             if (event.key === 'Escape') {
                 const firstTrueKey: Modal = Object.entries(stateModal).find(
                     ([, value]) => value,
                 )![0] as Modal;
 
-                if (isDelayEnd) dispatch(soundsModalTrigger());
+                const isDelayEnd = Object.values(delay).some((modalDelay) => {
+                    return modalDelay === true;
+                });
+
+                if (isDelayEnd) {
+                    dispatch(soundsModalTrigger());
+                }
 
                 dispatch(modalCloseHandler({ key: firstTrueKey as Modal }));
             }
