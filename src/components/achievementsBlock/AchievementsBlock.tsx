@@ -16,7 +16,7 @@ const AchievementsBlock = (props: IAchievementsBlock): React.JSX.Element => {
             {achievements.length ? (
                 <div
                     className={styles[prefixForClassName]}
-                    data-testId={'achievements-block'}
+                    data-testid={'achievements-block'}
                 >
                     <span className={styles[`${prefixForClassName}__title`]}>
                         {prefixForClassName === 'achieved'
