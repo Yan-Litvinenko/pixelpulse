@@ -19,7 +19,7 @@
     "lint-staged": {
         "*.{ts,tsx}": [
             "eslint --ext .ts,.tsx --fix",
-            "npm run format"
+            "prettier --write"
         ]
     },
     "browserslist": {
