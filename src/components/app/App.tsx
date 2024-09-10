@@ -23,8 +23,8 @@ import { useSounds } from '../../hooks/useSounds';
 import { wrapperClassName } from '../../utils/wrapperClassName';
 
 const App = (): React.JSX.Element => {
-    const { isSmall, isMedium } = useSelector(mediaQuerySelector);
     const modals = useSelector(stateModalSelector);
+    const { isSmall, isMedium } = useSelector(mediaQuerySelector);
     const { availability, settings, social, challenge, creations, credits, navigationMobile } = modals.stateModal;
 
     settingsColor.init();

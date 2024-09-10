@@ -28,6 +28,13 @@ const CreationsXplorerContent = (): React.JSX.Element => {
         modal.open();
     };
 
+    React.useEffect(() => {
+        if (projectName) {
+            const index = projects.findIndex((project) => project.name === projectName);
+            projectClick(index);
+        }
+    }, []);
+
     return (
         <>
             <ul className={styles.content}>
