@@ -4,13 +4,8 @@ exports[`AchievementsError component Render 1`] = `
 [MockFunction] {
   "calls": [
     [],
-    [],
   ],
   "results": [
-    {
-      "type": "return",
-      "value": [MockFunction],
-    },
     {
       "type": "return",
       "value": [MockFunction],
