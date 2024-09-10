@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './AchievementsError.module.scss';
 import { modalOpenHandler } from '../../store/slices/modalSlice';
+import { soundsModalTrigger } from '../../store/slices/soundsSlice';
 import { useDispatch } from 'react-redux';
 import type { AppDispatch } from '../../store/store';
 
@@ -27,9 +28,10 @@ const AchievementsError = (): React.JSX.Element => {
             <li className={styles.error__item}>
                 If the error persists, please write to{' '}
                 <span
-                    onClick={() =>
-                        dispatch(modalOpenHandler({ key: 'social' }))
-                    }
+                    onClick={() => {
+                        dispatch(soundsModalTrigger());
+                        dispatch(modalOpenHandler({ key: 'social' }));
+                    }}
                     data-testid="achievements-modal-error"
                 >
                     me
