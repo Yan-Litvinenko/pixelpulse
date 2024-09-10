@@ -9,7 +9,10 @@ import {
     setTargetProject,
     setTargetImage,
 } from '../../store/slices/creationsSlice';
-import { soundsClickTrigger } from '../../store/slices/soundsSlice';
+import {
+    soundsClickTrigger,
+    soundsModalTrigger,
+} from '../../store/slices/soundsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 import type { IProject } from '../../interfaces/interface.creations';
@@ -29,6 +32,7 @@ const CreationsXplorerContent = (): React.JSX.Element => {
     const imageClick = (imageIndex: number): void => {
         dispatch(modalOpenHandler({ key: 'creations' }));
         dispatch(setTargetImage(imageIndex));
+        dispatch(soundsModalTrigger());
     };
 
     return (

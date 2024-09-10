@@ -5,13 +5,18 @@ import vectorImageRight from '../../assets/images/vector-right.svg';
 import styles from './ModalCreations.module.scss';
 import { creationsSelector } from '../../store/selectors';
 import { nanoid } from '@reduxjs/toolkit';
+import { soundsModalTrigger } from '../../store/slices/soundsSlice';
+import { stateModalSelector } from '../../store/selectors';
 import { stopPropagation } from '../../utils/stopPropagation';
+import { useDispatch } from 'react-redux';
 import { useModal } from '../../hooks/useModal';
 import { useSelector } from 'react-redux';
 import { useSlider } from '../../hooks/useSlider';
 
 const ModalCreations = (): React.JSX.Element => {
+    const dispatch = useDispatch();
     const closeModalCreations = useModal('creations').close;
+    const { delay } = useSelector(stateModalSelector);
     const { targetProject, projectImages } = useSelector(creationsSelector);
 
     const slider = React.useRef<HTMLDivElement | null>(null);
@@ -22,6 +27,16 @@ const ModalCreations = (): React.JSX.Element => {
     const enter = (event: KeyboardEvent): void => {
         if (event.key === 'Enter')
             window.open(projects[targetProject].link, '_blank');
+    };
+
+    const close = () => {
+        closeModalCreations();
+
+        const isDelayEnd = Object.values(delay).some((modalDelay) => {
+            return modalDelay === true;
+        });
+
+        if (isDelayEnd) dispatch(soundsModalTrigger());
     };
 
     React.useEffect(() => {
@@ -102,7 +117,7 @@ const ModalCreations = (): React.JSX.Element => {
                     </span>
                     <button
                         className={styles.button_wrapper__escape}
-                        onClick={closeModalCreations}
+                        onClick={close}
                         type="button"
                     >
                         {'CLOSE [esc]'}
