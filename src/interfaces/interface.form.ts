@@ -1,14 +1,18 @@
-import type { UseFormRegister, FieldValues, FieldErrors } from 'react-hook-form';
+import type {
+    UseFormRegister,
+    FieldValues,
+    FieldErrors,
+} from 'react-hook-form';
 
 type Field = 'name' | 'email' | 'message' | 'title' | 'description';
 type Rarity = 'unusual' | 'rare' | 'epic' | 'legendary';
 
-interface IForm {
+type IForm = {
     register: UseFormRegister<FieldValues>;
     errors: FieldErrors<FieldValues>;
-}
+};
 
-interface ILabel {
+type ILabel = {
     autofocus?: boolean;
     child: 'input' | 'textarea';
     errors: FieldErrors<FieldValues>;
@@ -20,11 +24,11 @@ interface ILabel {
     placeholder: string;
     register: UseFormRegister<FieldValues>;
     textContent: string;
-}
+};
 
-interface IFormChallenge extends IForm {
+type IFormChallenge = IForm & {
     selectValue: Rarity;
     setSelectValue: React.Dispatch<React.SetStateAction<Rarity>>;
-}
+};
 
 export type { Field, IForm, Rarity, ILabel, IFormChallenge };

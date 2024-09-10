@@ -1,4 +1,4 @@
-interface IGithubRespone extends ITree {
+type IGithubRespone = {
     author: IUser;
     comments_url: string;
     commit: ICommit;
@@ -6,9 +6,9 @@ interface IGithubRespone extends ITree {
     html_url: string;
     node_id: string;
     parents: IParents;
-}
+} & ITree;
 
-interface ICommit {
+type ICommit = {
     author: IAuthor;
     comment_count: number;
     committer: IAuthor;
@@ -16,19 +16,19 @@ interface ICommit {
     tree: ITree;
     url: string;
     verification: IVerification;
-}
+};
 
-interface ICommitTransform {
+type ICommitTransform = {
     message: string;
     date: string;
-}
+};
 
-interface ILogsLoader {
+type ILogsLoader = {
     commits: ICommitTransform[];
     lastUpdate: string;
-}
+};
 
-interface IUser {
+type IUser = {
     avatar_url: string;
     events_url: string;
     followers_url: string;
@@ -47,28 +47,35 @@ interface IUser {
     subscriptions_url: string;
     type: string;
     url: string;
-}
+};
 
-interface IAuthor {
+type IAuthor = {
     date: string;
     email: string;
     name: string;
-}
+};
 
-interface ITree {
+type ITree = {
     sha: string;
     url: string;
-}
+};
 
-interface IVerification {
+type IVerification = {
     payload: null;
     reason: string;
     signature: null;
     verified: false;
-}
+};
 
-interface IParents extends ITree {
+type IParents = {
     html_url: string;
-}
+} & ITree;
 
-export type { IGithubRespone, ICommit, ICommitTransform, ILogsLoader, IUser, IParents };
+export type {
+    IGithubRespone,
+    ICommit,
+    ICommitTransform,
+    ILogsLoader,
+    IUser,
+    IParents,
+};

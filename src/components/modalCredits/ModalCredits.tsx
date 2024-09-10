@@ -13,11 +13,17 @@ const ModalCredits = (): React.JSX.Element => {
         <div className={styles.modal} onClick={closeModalCredits}>
             <div className={styles.modal__inner} onClick={stopPropagation}>
                 <h3 className={styles.modal__title}>Credits</h3>
-                <h4 className={styles.modal__subtitle}>Everything involved in this project</h4>
+                <h4 className={styles.modal__subtitle}>
+                    Everything involved in this project
+                </h4>
                 <div className={styles.modal__line}></div>
                 <div className={styles.modal__content}>
                     {creditsJson.map((item) => (
-                        <ModalCreditsElement key={nanoid()} title={item.title} text={item.text} />
+                        <ModalCreditsElement
+                            key={nanoid()}
+                            title={item.title}
+                            textContent={item.text}
+                        />
                     ))}
                 </div>
             </div>

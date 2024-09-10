@@ -1,15 +1,22 @@
-type Page = 'welcome' | 'beginning' | 'about' | 'logs' | 'achievements' | 'creations' | 'games';
+type Page =
+    | 'welcome'
+    | 'beginning'
+    | 'about'
+    | 'logs'
+    | 'achievements'
+    | 'creations'
+    | 'games';
 
-interface IAddCoinResult {
+type IAddCoinResult = {
     level: number;
     coins: number;
     addStatus: boolean;
     isLoad: boolean;
-}
+};
 
-interface ResolveError {
+type ResolveError = {
     status: string;
     message: string;
-}
+};
 
 export type { Page, IAddCoinResult, ResolveError };

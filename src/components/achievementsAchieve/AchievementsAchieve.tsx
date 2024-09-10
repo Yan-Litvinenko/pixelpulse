@@ -4,11 +4,21 @@ import legendary from '../../assets/images/legendary.png';
 import rare from '../../assets/images/rare.png';
 import unusual from '../../assets/images/unusual.png';
 import styles from './AchievementsAchieve.module.scss';
-import type { IAchievementsAchieve } from '../../interfaces/interface.achievements';
+import type {
+    IAchievementsAchieve,
+    Rarity,
+} from '../../interfaces/interface.achievements';
 
-const AchievementsAchieve = (props: IAchievementsAchieve): React.JSX.Element => {
+const AchievementsAchieve = (
+    props: IAchievementsAchieve,
+): React.JSX.Element => {
     const { date, description, rarity, executionStatus, title } = props;
-    const rarityPictures = { legendary, epic, rare, unusual };
+    const rarityPictures: Record<Rarity, Rarity> = {
+        legendary,
+        epic,
+        rare,
+        unusual,
+    };
     const classNameAchieve: string = `${styles.achieve} ${styles[`achieve_${rarity}`]} ${executionStatus === 'in progress' ? styles.ongoing_status : ''}`;
 
     return (
@@ -16,10 +26,12 @@ const AchievementsAchieve = (props: IAchievementsAchieve): React.JSX.Element => 
             <figure className={styles.box_image}>
                 <img
                     className={styles.box_image__image}
-                    src={rarityPictures[rarity]}
+                    src={rarityPictures[rarity as Rarity]}
                     alt={`Rarity icon representing ${rarity}`}
                 />
-                <figcaption className={styles.box_image__rarity}>{rarity}</figcaption>
+                <figcaption className={styles.box_image__rarity}>
+                    {rarity}
+                </figcaption>
             </figure>
 
             <div className={`${styles.achieve__inner}`}>

@@ -2,75 +2,74 @@ import type { Page } from './interface';
 import type { UseFormRegister, FieldValues } from 'react-hook-form';
 import type { Rarity } from './interface.achievements';
 
-interface IAboutElement {
-    title: string;
-    text: string;
-}
-
-interface ICross {
-    handler: () => void;
-}
-
-interface IFrame {
-    className?: string;
-}
-
-interface IClipPathBorder {
+type PropsComponent = {
     className: string;
-}
+    textContent: string;
+    title: string;
+};
 
-interface IStatistics {
+type IAboutElement = Omit<PropsComponent, 'className'>;
+type IFrame = Partial<Pick<PropsComponent, 'className'>>;
+type IClipPathBorder = Pick<PropsComponent, 'className'>;
+type ILogsElement = Omit<PropsComponent, 'title'> & {
+    date: string | undefined;
+};
+type ISettingElement = Omit<PropsComponent, 'title'> & {
+    audioClassName?: string;
+    image: string;
+    onClick?: () => void;
+};
+
+type ICross = {
+    handler: () => void;
+};
+
+type IStatistics = {
     styles: Record<string, string>;
-}
+};
 
-interface IJouystick {
+type IJouystick = {
     className: string;
     down: () => void;
     left: () => void;
     right: () => void;
     up: () => void;
-}
+};
 
-interface ILogsElement {
-    className: string;
-    date: string | undefined;
-    textContent: string;
-}
-
-interface IModalBoxButton {
+type IModalBoxButton = {
     handleEnter: () => void;
     handleEscape: () => void;
     isValid?: boolean;
     textEnter: string;
     textEsc: string;
     typeEnter: 'submit' | 'button';
-}
+};
 
-interface ICreditItem {
+type ICreditItem = {
     title: string;
-    text: string | string[];
-}
+    textContent: string | string[];
+};
 
-interface IModalSendState {
+type IModalSendState = {
     setError: React.Dispatch<React.SetStateAction<boolean>>;
     setLoading: React.Dispatch<React.SetStateAction<boolean>>;
     setSuccessfully: React.Dispatch<React.SetStateAction<boolean>>;
     status: boolean;
-}
+};
 
-interface ILayout {
+type ILayout = {
     children: React.JSX.Element;
-}
+};
 
-interface INavigation {
+type INavigation = {
     styles: Record<string, string>;
-}
+};
 
-interface INavigationElement {
+type INavigationElement = {
     pageName: Page;
-}
+};
 
-interface IProfileElement {
+type IProfileElement = {
     adjacent: {
         image?: string;
         text: string;
@@ -81,9 +80,9 @@ interface IProfileElement {
     };
     classRoot: string;
     modal: null | 'availability' | 'social';
-}
+};
 
-interface IQuestElement {
+type IQuestElement = {
     className: {
         header: string;
         text: string;
@@ -91,34 +90,29 @@ interface IQuestElement {
     hexagon: boolean;
     text: string;
     textTitle: string;
-}
+};
 
-interface IRange {
-    changeSettingValue: (event: React.ChangeEvent<HTMLInputElement>, variableName: 'hue' | 'size') => void;
+type IRange = {
+    changeSettingValue: (
+        event: React.ChangeEvent<HTMLInputElement>,
+        variableName: 'hue' | 'size',
+    ) => void;
     inputTarget: 'color' | 'size';
     max: number;
     min: number;
     textContent: string;
     inputValue: number;
-}
+};
 
-interface ISelectChallenge {
+type ISelectChallenge = {
     register: UseFormRegister<FieldValues>;
     selectValue: Rarity;
     setSelectValue: React.Dispatch<React.SetStateAction<Rarity>>;
-}
+};
 
-interface ISetting {
+type ISetting = {
     className: Record<string, string>;
-}
-
-interface ISettingElement {
-    audioClassName?: string;
-    className: string;
-    image: string;
-    onClick?: () => void;
-    textContent: string;
-}
+};
 
 type IErrorPage = {
     status: string;

@@ -37,11 +37,6 @@ module.exports = {
         'object-curly-spacing': ['error', 'always'],
         'react-compiler/react-compiler': 'error',
         'react-hooks/exhaustive-deps': 'off',
-        'prettier/prettier': [
-            'error',
-            {
-                endOfLine: 'auto',
-            },
-        ],
+        'prettier/prettier': 'error',
     },
 };

@@ -52,6 +52,7 @@
         @include grid-container(1fr 1fr, 1fr 1fr, $justify-content: center);
         background-color: var(--bg-creations-modal);
         min-width: 100%;
+        padding: 0px 10px;
     }
 
     &__item_img {
@@ -68,7 +69,10 @@
 }
 
 .button_wrapper {
-    @include flex-container($justify-content: space-between, $align-items: center);
+    @include flex-container(
+        $justify-content: space-between,
+        $align-items: center
+    );
     max-width: 73rem;
     position: relative;
     width: calc(100% - 10rem);

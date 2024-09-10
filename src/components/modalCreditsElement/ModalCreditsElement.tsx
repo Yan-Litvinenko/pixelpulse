@@ -4,7 +4,7 @@ import { nanoid } from '@reduxjs/toolkit';
 import type { ICreditItem } from '../../interfaces/interface.component';
 
 const ModalCreditsElement = (props: ICreditItem): React.ReactElement => {
-    const { title, text } = props;
+    const { title, textContent: text } = props;
     return (
         <div className={styles.item}>
             <h4 className={styles.item_title}>{title}</h4>

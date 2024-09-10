@@ -3,7 +3,7 @@ import styles from './AboutElement.module.scss';
 import type { IAboutElement } from '../../interfaces/interface.component';
 
 const AboutElement = (props: IAboutElement): React.JSX.Element => {
-    const { title, text } = props;
+    const { title, textContent: text } = props;
 
     return (
         <article className={styles.item}>

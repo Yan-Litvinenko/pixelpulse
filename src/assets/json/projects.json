@@ -1,11 +1,18 @@
 [
     {
-        "about": ["Coffee House is a two-page adaptive project with attractive visual effects."],
-        "backgroundColor": "#E1D4C9",
-        "brief": "popular destination for coffee lovers",
-        "images": ["CFHS_about-1.jpg", "CFHS_about-2.jpg", "CFHS_mobile-app.png"],
-        "link": "https://yan-litvinenko.github.io/coffee-house/",
-        "name": "coffee-house",
+        "about": [
+            "The application includes cross-browser and adaptive layout, ensuring perfect display on any device. Semantic HTML improves accessibility and SEO, while support for modern image formats (AVIF, WebP), including retina, ensures fast loading and crisp graphics. This is a landing page that attracts attention and works flawlessly in any browser."
+        ],
+        "backgroundColor": "#050607",
+        "brief": "Graphic Designer Portfolio",
+        "images": [
+            "ORPH_statue.png",
+            "ORPH_about.png",
+            "ORPH_contribution.png",
+            "ORPH_contacts.png"
+        ],
+        "link": "https://yan-litvinenko.github.io/orpheus/",
+        "name": "orpheus",
         "technologies": ["github", "figma", "gulp", "sass", "js"]
     }
 ]
