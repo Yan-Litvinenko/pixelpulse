@@ -8,7 +8,7 @@ const AchievementsError = (): React.JSX.Element => {
     const dispatch = useDispatch<AppDispatch>();
 
     return (
-        <ul className={styles.error} data-testId="achievements-list-error">
+        <ul className={styles.error} data-testid="achievements-list-error">
             <li className={styles.error__item}>
                 Check your internet connection. Ensure that you are connected to
                 a stable network.

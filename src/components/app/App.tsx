@@ -24,6 +24,7 @@ import { wrapperClassName } from '../../utils/wrapperClassName';
 
 const App = (): React.JSX.Element => {
     const { isSmall, isMedium } = useSelector(mediaQuerySelector);
+    const modals = useSelector(stateModalSelector);
     const {
         availability,
         settings,
@@ -32,7 +33,7 @@ const App = (): React.JSX.Element => {
         creations,
         credits,
         navigationMobile,
-    } = useSelector(stateModalSelector);
+    } = modals.stateModal;
 
     settingsColor.init();
     useApp(styles);

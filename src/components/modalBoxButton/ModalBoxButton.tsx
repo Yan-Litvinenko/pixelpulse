@@ -1,12 +1,17 @@
 import React from 'react';
 import styles from './ModalBoxButton.module.scss';
-import { soundsClickTrigger } from '../../store/slices/soundsSlice';
-import { useDispatch } from 'react-redux';
+import {
+    soundsClickTrigger,
+    soundsModalTrigger,
+} from '../../store/slices/soundsSlice';
+import { useDispatch, useSelector } from 'react-redux';
 import type { AppDispatch } from '../../store/store';
 import type { IModalBoxButton } from '../../interfaces/interface.component';
+import { stateModalSelector } from '../../store/selectors';
 
 const ModalBoxButton = (props: IModalBoxButton): React.JSX.Element => {
     const dispatch = useDispatch<AppDispatch>();
+    const { delay } = useSelector(stateModalSelector);
     const {
         handleEnter,
         isValid,
@@ -15,6 +20,16 @@ const ModalBoxButton = (props: IModalBoxButton): React.JSX.Element => {
         handleEscape,
         textEsc,
     } = props;
+
+    const closeModalByClick = () => {
+        const isDelayEnd = Object.values(delay).some((modalDelay) => {
+            return modalDelay === true;
+        });
+
+        if (isDelayEnd) dispatch(soundsModalTrigger());
+
+        handleEscape();
+    };
 
     return (
         <div className={styles.box}>
@@ -31,7 +46,7 @@ const ModalBoxButton = (props: IModalBoxButton): React.JSX.Element => {
             </button>
             <button
                 className={styles.box__esc}
-                onClick={handleEscape}
+                onClick={closeModalByClick}
                 type="button"
             >
                 {textEsc}
