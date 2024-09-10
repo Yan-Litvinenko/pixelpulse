@@ -5,18 +5,13 @@ import vectorImageRight from '../../assets/images/vector-right.svg';
 import styles from './ModalCreations.module.scss';
 import { creationsSelector } from '../../store/selectors';
 import { nanoid } from '@reduxjs/toolkit';
-import { soundsModalTrigger } from '../../store/slices/soundsSlice';
-import { stateModalSelector } from '../../store/selectors';
 import { stopPropagation } from '../../utils/stopPropagation';
-import { useDispatch } from 'react-redux';
 import { useModal } from '../../hooks/useModal';
 import { useSelector } from 'react-redux';
 import { useSlider } from '../../hooks/useSlider';
 
 const ModalCreations = (): React.JSX.Element => {
-    const dispatch = useDispatch();
-    const closeModalCreations = useModal('creations').close;
-    const { delay } = useSelector(stateModalSelector);
+    const close = useModal('creations').close;
     const { targetProject, projectImages } = useSelector(creationsSelector);
 
     const slider = React.useRef<HTMLDivElement | null>(null);
@@ -28,16 +23,6 @@ const ModalCreations = (): React.JSX.Element => {
         if (event.key === 'Enter') window.open(projects[targetProject].link, '_blank');
     };
 
-    const close = () => {
-        closeModalCreations();
-
-        const isDelayEnd = Object.values(delay).some((modalDelay) => {
-            return modalDelay === true;
-        });
-
-        if (isDelayEnd) dispatch(soundsModalTrigger());
-    };
-
     React.useEffect(() => {
         document.documentElement.style.setProperty('--bg-creations-modal', projects[targetProject].backgroundColor);
         window.addEventListener('keydown', enter);
@@ -46,7 +31,7 @@ const ModalCreations = (): React.JSX.Element => {
     }, []);
 
     return (
-        <div className={styles.modal} onClick={closeModalCreations}>
+        <div className={styles.modal} onClick={close}>
             <div className={styles.modal__inner} onClick={stopPropagation}>
                 <div className={styles.modal__header}>
                     <h3 className={styles.modal__subtitle}>previewing images from</h3>

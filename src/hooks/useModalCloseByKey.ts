@@ -14,7 +14,6 @@ const useModalCloseByKey = (): void => {
         const closeModalByKey = (event: KeyboardEvent) => {
             if (event.key === 'Escape') {
                 const firstTrueKey: Modal = Object.entries(stateModal).find(([, value]) => value)![0] as Modal;
-
                 const isDelayEnd = Object.values(delay).some((modalDelay) => {
                     return modalDelay === true;
                 });

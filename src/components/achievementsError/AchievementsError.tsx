@@ -1,12 +1,9 @@
 import React from 'react';
 import styles from './AchievementsError.module.scss';
-import { modalOpenHandler } from '../../store/slices/modalSlice';
-import { soundsModalTrigger } from '../../store/slices/soundsSlice';
-import { useDispatch } from 'react-redux';
-import type { AppDispatch } from '../../store/store';
+import { useModal } from '../../hooks/useModal';
 
 const AchievementsError = (): React.JSX.Element => {
-    const dispatch = useDispatch<AppDispatch>();
+    const modal = useModal('social');
 
     return (
         <ul className={styles.error} data-testid="achievements-list-error">
@@ -20,13 +17,7 @@ const AchievementsError = (): React.JSX.Element => {
             <li className={styles.error__item}>Clear your browser's cache and cookies, then try reloading the page.</li>
             <li className={styles.error__item}>
                 If the error persists, please write to{' '}
-                <span
-                    onClick={() => {
-                        dispatch(soundsModalTrigger());
-                        dispatch(modalOpenHandler({ key: 'social' }));
-                    }}
-                    data-testid="achievements-modal-error"
-                >
+                <span onClick={() => modal.open()} data-testid="achievements-modal-error">
                     me
                 </span>
             </li>

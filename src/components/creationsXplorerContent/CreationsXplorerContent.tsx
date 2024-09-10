@@ -2,17 +2,18 @@ import React from 'react';
 import styles from './CreationsXplorerContent.module.scss';
 import { creationsSelector } from '../../store/selectors';
 import { Image, Folder } from '../svgIcon/SvgIcon';
-import { modalOpenHandler } from '../../store/slices/modalSlice';
 import { nanoid } from '@reduxjs/toolkit';
 import { setProjectImages, setTargetProject, setTargetImage } from '../../store/slices/creationsSlice';
-import { soundsClickTrigger, soundsModalTrigger } from '../../store/slices/soundsSlice';
+import { soundsClickTrigger } from '../../store/slices/soundsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
+import { useModal } from '../../hooks/useModal';
 import type { IProject } from '../../interfaces/interface.creations';
 import type { AppDispatch } from '../../store/store';
 
 const CreationsXplorerContent = (): React.JSX.Element => {
     const dispatch = useDispatch<AppDispatch>();
+    const modal = useModal('creations');
     const { targetProject, projects } = useSelector(creationsSelector);
     const { projectName } = useParams();
 
@@ -23,9 +24,8 @@ const CreationsXplorerContent = (): React.JSX.Element => {
     };
 
     const imageClick = (imageIndex: number): void => {
-        dispatch(modalOpenHandler({ key: 'creations' }));
         dispatch(setTargetImage(imageIndex));
-        dispatch(soundsModalTrigger());
+        modal.open();
     };
 
     return (
