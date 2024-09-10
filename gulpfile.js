@@ -37,6 +37,6 @@ const fonts = () => {
 };
 
 exports.fonts = fonts;
-exports.imageminimize = imageminimize;
+exports.imageMin = imageminimize;
 exports.images = series(avif, webp, svg, imageminimize);
 exports.default = parallel(fonts, series(avif, webp, svg, imageminimize));
