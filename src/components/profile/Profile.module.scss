@@ -28,7 +28,10 @@
     margin-top: auto;
 
     &__title {
-        @include text-properties($font-size: 1.125rem, $letter-spacing: 0.075rem);
+        @include text-properties(
+            $font-size: 1.125rem,
+            $letter-spacing: 0.075rem
+        );
         color: var(--main-color);
     }
 
@@ -40,7 +43,11 @@
 
 @media (max-width: 1200px) {
     .profile {
-        @include grid-container(max-content max-content 1fr 1fr, auto auto, $gap: 0rem 2rem);
+        @include grid-container(
+            max-content max-content 1fr 1fr,
+            auto auto,
+            $gap: 0rem 2rem
+        );
         grid-column: 1 / -1;
         grid-row: 3 / 4;
     }
@@ -72,7 +79,11 @@
     }
 
     .profile {
-        @include grid-container(1fr 1fr, repeat(4, max-content), $gap: 0.9375rem 0rem);
+        @include grid-container(
+            1fr 1fr,
+            repeat(4, max-content),
+            $gap: 0.9375rem 0rem
+        );
         margin-bottom: 10rem;
     }
 }

@@ -3,7 +3,14 @@ import { scroll } from '../../classes/Scroll';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { AppThunk } from '../store';
 
-type Modal = 'social' | 'availability' | 'creations' | 'credits' | 'settings' | 'challenge' | 'navigationMobile';
+type Modal =
+    | 'social'
+    | 'availability'
+    | 'creations'
+    | 'credits'
+    | 'settings'
+    | 'challenge'
+    | 'navigationMobile';
 type SetValueAndKeyReduce = {
     key: Modal;
     value: boolean;
@@ -83,7 +90,10 @@ const modalOpenHandler =
             if (isMedium) {
                 dispatch(setDelay({ key, value: true }));
             } else {
-                setTimeout(() => dispatch(setDelay({ key, value: true })), TRANSITION_TIME);
+                setTimeout(
+                    () => dispatch(setDelay({ key, value: true })),
+                    TRANSITION_TIME,
+                );
             }
 
             scroll.off();

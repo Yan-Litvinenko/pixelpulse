@@ -21,7 +21,10 @@ const HeaderStatisticsFallback = (props: IStatistics): React.JSX.Element => {
             </div>
             <div className={styles.coins}>
                 <div className={styles.coins__add_box}>
-                    <button type="button" className={`${styles.coins__btn} ${styles.coins__btn_deactive}`}>
+                    <button
+                        type="button"
+                        className={`${styles.coins__btn} ${styles.coins__btn_deactive}`}
+                    >
                         +
                     </button>
                 </div>

@@ -8,7 +8,9 @@ import { render, screen, fireEvent } from '@testing-library/react';
 jest.mock('react-redux');
 jest.mock('react-router-dom', () => {
     return {
-        Link: (props: routerHooks.LinkProps) => <a {...props}>{props.children}</a>,
+        Link: (props: routerHooks.LinkProps) => (
+            <a {...props}>{props.children}</a>
+        ),
     };
 });
 

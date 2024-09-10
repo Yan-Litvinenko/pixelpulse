@@ -1,7 +1,11 @@
 @import '../../css/mixin.scss';
 
 .welcome {
-    @include flex-container($align-items: center, $justify-content: center, $gap: 0rem 5.25rem);
+    @include flex-container(
+        $align-items: center,
+        $justify-content: center,
+        $gap: 0rem 5.25rem
+    );
     grid-column: 1 / -1;
     grid-row: 1 / -1;
     overflow: hidden;
@@ -15,7 +19,10 @@
     }
 
     &__title {
-        @include text-properties($font-size: 1.438rem, $letter-spacing: 0.125rem);
+        @include text-properties(
+            $font-size: 1.438rem,
+            $letter-spacing: 0.125rem
+        );
         color: var(--main-text-color);
         grid-column: 1 / -1;
         grid-row: 1 / -1;

@@ -1,4 +1,7 @@
-const debounce = <T extends (...args: unknown[]) => void>(func: T, wait: number): T => {
+const debounce = <T extends (...args: unknown[]) => void>(
+    func: T,
+    wait: number,
+): T => {
     let timeout: NodeJS.Timeout | null;
 
     return function executedFunction(...args: Parameters<T>) {

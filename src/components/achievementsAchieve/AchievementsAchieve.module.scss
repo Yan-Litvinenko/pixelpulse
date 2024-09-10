@@ -1,7 +1,11 @@
 @import '../../css/mixin.scss';
 
 .box_image {
-    @include flex-container(column, $justify-content: center, $gap: 0.625rem 0rem);
+    @include flex-container(
+        column,
+        $justify-content: center,
+        $gap: 0.625rem 0rem
+    );
     border-right: 0.0625rem solid #1d1d20;
     grid-column: 1 / 2;
     grid-row: 1 / 2;
@@ -65,7 +69,11 @@
 }
 
 .achieve_legendary .achieve__inner {
-    background: linear-gradient(90deg, rgba(var(--legendary), 0) 50%, rgba(var(--legendary), 0.14) 100%);
+    background: linear-gradient(
+        90deg,
+        rgba(var(--legendary), 0) 50%,
+        rgba(var(--legendary), 0.14) 100%
+    );
     border: 1px solid rgb(74, 129, 56);
 }
 
@@ -94,7 +102,11 @@
 }
 
 .achieve_legendary .achieve__date {
-    background: linear-gradient(90deg, rgba(var(--legendary), 0) 20%, rgba(var(--legendary), 0.14) 100%);
+    background: linear-gradient(
+        90deg,
+        rgba(var(--legendary), 0) 20%,
+        rgba(var(--legendary), 0.14) 100%
+    );
 }
 
 .achieve_legendary .achieve__title {
@@ -118,11 +130,19 @@
 }
 
 .achieve_epic .achieve__inner {
-    background: linear-gradient(90deg, rgba(var(--epic), 0) 50%, rgba(var(--epic), 0.14) 100%);
+    background: linear-gradient(
+        90deg,
+        rgba(var(--epic), 0) 50%,
+        rgba(var(--epic), 0.14) 100%
+    );
 }
 
 .achieve_epic .achieve__date {
-    background: linear-gradient(90deg, rgba(var(--epic), 0) 20%, rgba(var(--epic), 0.14) 100%);
+    background: linear-gradient(
+        90deg,
+        rgba(var(--epic), 0) 20%,
+        rgba(var(--epic), 0.14) 100%
+    );
 }
 
 .achieve_epic .achieve__title {
@@ -134,11 +154,19 @@
 }
 
 .achieve_rare .achieve__inner {
-    background: linear-gradient(90deg, rgba(var(--rare), 0) 50%, rgba(var(--rare), 0.14) 100%);
+    background: linear-gradient(
+        90deg,
+        rgba(var(--rare), 0) 50%,
+        rgba(var(--rare), 0.14) 100%
+    );
 }
 
 .achieve_rare .achieve__date {
-    background: linear-gradient(90deg, rgba(var(--rare), 0) 20%, rgba(var(--rare), 0.14) 100%);
+    background: linear-gradient(
+        90deg,
+        rgba(var(--rare), 0) 20%,
+        rgba(var(--rare), 0.14) 100%
+    );
 }
 
 .achieve_rare .achieve__title {
@@ -150,11 +178,19 @@
 }
 
 .achieve_unusual .achieve__inner {
-    background: linear-gradient(90deg, rgba(var(--unusual), 0) 50%, rgba(var(--unusual), 0.14) 100%);
+    background: linear-gradient(
+        90deg,
+        rgba(var(--unusual), 0) 50%,
+        rgba(var(--unusual), 0.14) 100%
+    );
 }
 
 .achieve_unusual .achieve__date {
-    background: linear-gradient(90deg, rgba(var(--unusual), 0) 20%, rgba(var(--unusual), 0.14) 100%);
+    background: linear-gradient(
+        90deg,
+        rgba(var(--unusual), 0) 20%,
+        rgba(var(--unusual), 0.14) 100%
+    );
 }
 
 .achieve_unusual .achieve__title {

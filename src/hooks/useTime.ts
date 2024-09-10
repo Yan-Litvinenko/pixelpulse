@@ -8,7 +8,10 @@ const useTime = (dataDate: string | number): UseTime => {
     const updateTime = (newTime: string) => setTime(new Date(newTime));
 
     React.useEffect(() => {
-        const timer = setInterval(() => setTime((prevTime) => new Date(prevTime.getTime() + 1000)), 1000);
+        const timer = setInterval(
+            () => setTime((prevTime) => new Date(prevTime.getTime() + 1000)),
+            1000,
+        );
 
         return () => clearInterval(timer);
     }, []);

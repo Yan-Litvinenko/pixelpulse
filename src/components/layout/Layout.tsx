@@ -31,7 +31,9 @@ const Layout = (): React.JSX.Element => {
                     <Header />
                     <Navigation styles={styles} />
                     <Quest />
-                    <main className={`${stylesLayout.content} ${isBeginning ? stylesLayout.content_beginning : ''}`}>
+                    <main
+                        className={`${stylesLayout.content} ${isBeginning ? stylesLayout.content_beginning : ''}`}
+                    >
                         <Frame className={stylesLayout.frame} />
                         {notTransition ? (
                             <Outlet />

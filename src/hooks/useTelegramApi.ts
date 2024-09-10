@@ -18,7 +18,10 @@ const useTelegramApi = (): UseTelegramApi => {
     const [loading, setLoading] = React.useState<boolean>(false);
     const [error, setError] = React.useState<boolean>(false);
 
-    const format = (data: Record<string, string>, windowName: string): string => {
+    const format = (
+        data: Record<string, string>,
+        windowName: string,
+    ): string => {
         const formattedMessage: string[] = [`${windowName}`];
 
         for (const [key, value] of Object.entries(data)) {
@@ -28,22 +31,28 @@ const useTelegramApi = (): UseTelegramApi => {
         return formattedMessage.join('\n');
     };
 
-    const send = async (data: Record<string, string>, windowName: string): Promise<void> => {
+    const send = async (
+        data: Record<string, string>,
+        windowName: string,
+    ): Promise<void> => {
         setLoading(true);
 
         const message: string = format(data, windowName);
 
         try {
-            const response: Response = await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
+            const response: Response = await fetch(
+                `https://api.telegram.org/bot${TOKEN}/sendMessage`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: CHAT_ID,
+                        text: message,
+                    }),
                 },
-                body: JSON.stringify({
-                    chat_id: CHAT_ID,
-                    text: message,
-                }),
-            });
+            );
 
             const result: string = await response.json();
 
@@ -56,7 +65,15 @@ const useTelegramApi = (): UseTelegramApi => {
         }
     };
 
-    return { successfully, loading, error, setSuccessfully, setLoading, setError, send };
+    return {
+        successfully,
+        loading,
+        error,
+        setSuccessfully,
+        setLoading,
+        setError,
+        send,
+    };
 };
 
 export { useTelegramApi };

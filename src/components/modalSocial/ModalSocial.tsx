@@ -12,11 +12,16 @@ import type { UseFormSubmit } from '../../hooks/useFormSubmit';
 
 const ModalSocial = (): React.JSX.Element => {
     const closeModalSocial = useModal('social').close;
-    const formSubmit: UseFormSubmit = useFormSubmit('Вам отправили сообщение!', 'social');
+    const formSubmit: UseFormSubmit = useFormSubmit(
+        'Вам отправили сообщение!',
+        'social',
+    );
 
     const { successfullyTelegram, errorTelegram, loadingTelegram } = formSubmit;
-    const { registerForm, handleSubmitForm, isValidForm, errorForm } = formSubmit;
-    const { setErrorTelegram, setLoadingTelegram, setSuccessfullyTelegram } = formSubmit;
+    const { registerForm, handleSubmitForm, isValidForm, errorForm } =
+        formSubmit;
+    const { setErrorTelegram, setLoadingTelegram, setSuccessfullyTelegram } =
+        formSubmit;
 
     return (
         <>
@@ -38,12 +43,18 @@ const ModalSocial = (): React.JSX.Element => {
                         status={errorTelegram}
                     />
                 ) : null}
-                <form className={styles.modal__inner} onSubmit={handleSubmitForm} onClick={stopPropagation}>
+                <form
+                    className={styles.modal__inner}
+                    onSubmit={handleSubmitForm}
+                    onClick={stopPropagation}
+                >
                     <div className={styles.modal__box_title}>
                         <h3 className={styles.modal__title}>connect with me</h3>
                         <Cross handler={closeModalSocial} />
                     </div>
-                    <h4 className={styles.modal__subtitle}>wanna chat? Or just share something cool?</h4>
+                    <h4 className={styles.modal__subtitle}>
+                        wanna chat? Or just share something cool?
+                    </h4>
                     <Form register={registerForm} errors={errorForm} />
                     <ModalBoxButton
                         handleEnter={handleSubmitForm}

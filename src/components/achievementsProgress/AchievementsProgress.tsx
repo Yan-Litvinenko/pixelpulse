@@ -7,7 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import type { AppDispatch } from '../../store/store';
 
 const AchievementsProgress = (): React.JSX.Element => {
-    const { error, loading, amountAchieved, amountAchievements, percent } = useSelector(achievementsSelector);
+    const { error, loading, amountAchieved, amountAchievements, percent } =
+        useSelector(achievementsSelector);
     const dispatch = useDispatch<AppDispatch>();
 
     return (
@@ -22,7 +23,8 @@ const AchievementsProgress = (): React.JSX.Element => {
                     <>
                         <AchievementsProgressRing percent={Number(percent)} />
                         <span className={styles.progress__statistic}>
-                            {Number(amountAchieved)}/{Number(amountAchievements)}
+                            {Number(amountAchieved)}/
+                            {Number(amountAchievements)}
                         </span>
                     </>
                 )}
@@ -31,10 +33,12 @@ const AchievementsProgress = (): React.JSX.Element => {
             </div>
 
             <p className={styles.progress__text}>
-                I have created a set of achievements for myself and I use this page to track them.
+                I have created a set of achievements for myself and I use this
+                page to track them.
             </p>
             <p className={styles.progress__text}>
-                If you want to give me a challenge and rate it, please feel free to submit it with the button below!
+                If you want to give me a challenge and rate it, please feel free
+                to submit it with the button below!
             </p>
 
             <button

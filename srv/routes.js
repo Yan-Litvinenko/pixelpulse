@@ -90,7 +90,10 @@ exports.previewImage = (req, res) => {
     res.sendFile(imagePath, (err) => {
         if (err) {
             console.error('Error sending image:', err);
-            res.status(500).json({ error: 'Internal Server Error', message: err.message });
+            res.status(500).json({
+                error: 'Internal Server Error',
+                message: err.message,
+            });
         }
     });
 };

@@ -24,8 +24,15 @@ import { wrapperClassName } from '../../utils/wrapperClassName';
 
 const App = (): React.JSX.Element => {
     const { isSmall, isMedium } = useSelector(mediaQuerySelector);
-    const { availability, settings, social, challenge, creations, credits, navigationMobile } =
-        useSelector(stateModalSelector);
+    const {
+        availability,
+        settings,
+        social,
+        challenge,
+        creations,
+        credits,
+        navigationMobile,
+    } = useSelector(stateModalSelector);
 
     settingsColor.init();
     useApp(styles);
@@ -46,7 +53,9 @@ const App = (): React.JSX.Element => {
             {challenge ? <ModalChallenge /> : null}
             {creations ? <ModalCreations /> : null}
             {credits ? <ModalCredits /> : null}
-            {navigationMobile && (isMedium || isSmall) ? <NavigationMobile /> : null}
+            {navigationMobile && (isMedium || isSmall) ? (
+                <NavigationMobile />
+            ) : null}
             {settings ? <ModalSetting /> : null}
             {social ? <ModalSocial /> : null}
         </ErrorBoundary>

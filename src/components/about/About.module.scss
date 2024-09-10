@@ -11,7 +11,10 @@
     }
 
     &__content {
-        @include flex-container($gap: 0rem 3.125rem, $justify-content: flex-end);
+        @include flex-container(
+            $gap: 0rem 3.125rem,
+            $justify-content: flex-end
+        );
         margin-bottom: 5.3125rem;
     }
 

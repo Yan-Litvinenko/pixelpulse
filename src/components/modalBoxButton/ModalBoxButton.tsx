@@ -7,7 +7,14 @@ import type { IModalBoxButton } from '../../interfaces/interface.component';
 
 const ModalBoxButton = (props: IModalBoxButton): React.JSX.Element => {
     const dispatch = useDispatch<AppDispatch>();
-    const { handleEnter, isValid, textEnter, typeEnter, handleEscape, textEsc } = props;
+    const {
+        handleEnter,
+        isValid,
+        textEnter,
+        typeEnter,
+        handleEscape,
+        textEsc,
+    } = props;
 
     return (
         <div className={styles.box}>
@@ -22,7 +29,11 @@ const ModalBoxButton = (props: IModalBoxButton): React.JSX.Element => {
             >
                 {textEnter}
             </button>
-            <button className={styles.box__esc} onClick={handleEscape} type="button">
+            <button
+                className={styles.box__esc}
+                onClick={handleEscape}
+                type="button"
+            >
                 {textEsc}
             </button>
         </div>

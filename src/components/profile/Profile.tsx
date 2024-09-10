@@ -19,9 +19,18 @@ const Profile = (): React.JSX.Element => {
     return (
         <aside className={styles.profile}>
             {isSmall ? null : (
-                <Link to="about" className={styles.avatar} onClick={() => dispatch(soundsClickTrigger())}>
+                <Link
+                    to="about"
+                    className={styles.avatar}
+                    onClick={() => dispatch(soundsClickTrigger())}
+                >
                     <Frame className={styles.avatar__frame} />
-                    <GlitchImage className={styles.canvas} imageUrl={avatar} minDelay={20000} maxDelay={40000} />
+                    <GlitchImage
+                        className={styles.canvas}
+                        imageUrl={avatar}
+                        minDelay={20000}
+                        maxDelay={40000}
+                    />
                 </Link>
             )}
 
@@ -37,7 +46,9 @@ const Profile = (): React.JSX.Element => {
 
             <article className={styles.motto}>
                 <h3 className={styles.motto__title}>motto:</h3>
-                <p className={styles.motto__text}>Bonum modulum est, quod connecti potest.</p>
+                <p className={styles.motto__text}>
+                    Bonum modulum est, quod connecti potest.
+                </p>
             </article>
         </aside>
     );

@@ -14,7 +14,13 @@ const FormLabel = (props: ILabel): React.JSX.Element => {
         <label className={styles.label} htmlFor={id}>
             {textContent}
             {errorMessage && (
-                <span className={child === 'input' ? styles.error_input : styles.error_textarea}>
+                <span
+                    className={
+                        child === 'input'
+                            ? styles.error_input
+                            : styles.error_textarea
+                    }
+                >
                     &#10059; {errorMessage}
                 </span>
             )}

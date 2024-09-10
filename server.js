@@ -34,7 +34,10 @@ const PORT = 3000;
         app.post('/addCoin', addCoin);
 
         app.use('/api/*', (req, res) => {
-            res.status(404).json({ status: '404', message: 'Error receiving data' });
+            res.status(404).json({
+                status: '404',
+                message: 'Error receiving data',
+            });
         });
 
         app.get('*', (_, res) => {

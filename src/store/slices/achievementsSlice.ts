@@ -20,13 +20,21 @@ const initialState: AchievementsSlice = {
     error: null,
 };
 
-const fetchAchievements = createAsyncThunk('achievements/fetchAchievements', async (): Promise<IAchieve[]> => {
-    const resolveAchievements = await customFetch<IAchieve[]>('/api/getAchievements');
-    return resolveAchievements;
-});
+const fetchAchievements = createAsyncThunk(
+    'achievements/fetchAchievements',
+    async (): Promise<IAchieve[]> => {
+        const resolveAchievements = await customFetch<IAchieve[]>(
+            '/api/getAchievements',
+        );
+        return resolveAchievements;
+    },
+);
 
 const achievedCount = (allAchievements: IAchieve[]): number =>
-    allAchievements.reduce((acc, { status }) => acc + (status === 'achieved' ? 1 : 0), 0);
+    allAchievements.reduce(
+        (acc, { status }) => acc + (status === 'achieved' ? 1 : 0),
+        0,
+    );
 
 const achievementsSlice = createSlice({
     name: 'achievements',
@@ -52,7 +60,8 @@ const achievementsSlice = createSlice({
                 state.loading = true;
             })
             .addCase(fetchAchievements.rejected, (state, action) => {
-                state.error = action.error.message || 'Error achievements loading';
+                state.error =
+                    action.error.message || 'Error achievements loading';
                 state.loading = false;
             });
     },

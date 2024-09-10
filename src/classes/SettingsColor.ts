@@ -1,4 +1,7 @@
-type LOCAL_STORAGE_KEY = 'yan-litvinenko-cv-size' | 'yan-litvinenko-cv-hue' | 'yan-litvinenko-cv-image-color';
+type LOCAL_STORAGE_KEY =
+    | 'yan-litvinenko-cv-size'
+    | 'yan-litvinenko-cv-hue'
+    | 'yan-litvinenko-cv-image-color';
 type CSS_VARIABLE = '--size' | '--data-hue' | '--data-image-color';
 
 class SettingsColor {
@@ -35,9 +38,18 @@ class SettingsColor {
     }
 
     init(): void {
-        this.SIZE = this.getLocalStorageValue(this.SIZE_LS_KEY, this.DEFAULT_SIZE);
-        this.COLOR = this.getLocalStorageValue(this.COLOR_LS_KEY, this.DEFAULT_COLOR);
-        this.COLOR_IMAGE = this.getLocalStorageValue(this.COLOR_IMAGE_LS_KEY, this.DEFAULT_COLOR_IMAGE);
+        this.SIZE = this.getLocalStorageValue(
+            this.SIZE_LS_KEY,
+            this.DEFAULT_SIZE,
+        );
+        this.COLOR = this.getLocalStorageValue(
+            this.COLOR_LS_KEY,
+            this.DEFAULT_COLOR,
+        );
+        this.COLOR_IMAGE = this.getLocalStorageValue(
+            this.COLOR_IMAGE_LS_KEY,
+            this.DEFAULT_COLOR_IMAGE,
+        );
 
         this.setCssVariableValue(this.VAR_CSS_SIZE, this.SIZE);
         this.setCssVariableValue(this.VAR_CSS_COLOR, this.COLOR);
@@ -45,9 +57,18 @@ class SettingsColor {
     }
 
     save(): void {
-        this.setLocalStorageValue(this.SIZE_LS_KEY, this.getCssVariableValue(this.VAR_CSS_SIZE));
-        this.setLocalStorageValue(this.COLOR_LS_KEY, this.getCssVariableValue(this.VAR_CSS_COLOR));
-        this.setLocalStorageValue(this.COLOR_IMAGE_LS_KEY, this.getCssVariableValue(this.VAR_CSS_COLOR_IMAGE));
+        this.setLocalStorageValue(
+            this.SIZE_LS_KEY,
+            this.getCssVariableValue(this.VAR_CSS_SIZE),
+        );
+        this.setLocalStorageValue(
+            this.COLOR_LS_KEY,
+            this.getCssVariableValue(this.VAR_CSS_COLOR),
+        );
+        this.setLocalStorageValue(
+            this.COLOR_IMAGE_LS_KEY,
+            this.getCssVariableValue(this.VAR_CSS_COLOR_IMAGE),
+        );
     }
 
     default(): void {
@@ -55,22 +76,37 @@ class SettingsColor {
         this.COLOR = this.DEFAULT_COLOR;
         this.COLOR_IMAGE = this.DEFAULT_COLOR_IMAGE;
 
-        this.setLocalStorageValue(this.COLOR_IMAGE_LS_KEY, this.DEFAULT_COLOR_IMAGE);
+        this.setLocalStorageValue(
+            this.COLOR_IMAGE_LS_KEY,
+            this.DEFAULT_COLOR_IMAGE,
+        );
         this.setLocalStorageValue(this.COLOR_LS_KEY, this.DEFAULT_COLOR);
         this.setLocalStorageValue(this.SIZE_LS_KEY, this.DEFAULT_SIZE);
 
         this.setCssVariableValue(this.VAR_CSS_SIZE, this.DEFAULT_SIZE);
         this.setCssVariableValue(this.VAR_CSS_COLOR, this.DEFAULT_COLOR);
-        this.setCssVariableValue(this.VAR_CSS_COLOR_IMAGE, this.DEFAULT_COLOR_IMAGE);
+        this.setCssVariableValue(
+            this.VAR_CSS_COLOR_IMAGE,
+            this.DEFAULT_COLOR_IMAGE,
+        );
     }
 
     changeValueInputColor(event: React.ChangeEvent<HTMLInputElement>): void {
-        this.setCssVariableValue(this.VAR_CSS_COLOR, String(Number(event.target.value) * 2.5));
-        this.setCssVariableValue(this.VAR_CSS_COLOR_IMAGE, String(`${Number(event.target.value) * 2.5}deg`));
+        this.setCssVariableValue(
+            this.VAR_CSS_COLOR,
+            String(Number(event.target.value) * 2.5),
+        );
+        this.setCssVariableValue(
+            this.VAR_CSS_COLOR_IMAGE,
+            String(`${Number(event.target.value) * 2.5}deg`),
+        );
     }
 
     changeValueInputSize(event: React.ChangeEvent<HTMLInputElement>): void {
-        this.setCssVariableValue(this.VAR_CSS_SIZE, `${16 + (Number(event.target.value) / 100) * (56 - 16)}px`);
+        this.setCssVariableValue(
+            this.VAR_CSS_SIZE,
+            `${16 + (Number(event.target.value) / 100) * (56 - 16)}px`,
+        );
     }
 
     getSizeInputValue(): number {

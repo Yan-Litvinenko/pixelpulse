@@ -53,13 +53,19 @@
     }
 
     &__title {
-        @include text-properties($font-size: 1.125rem, $letter-spacing: 0.075rem);
+        @include text-properties(
+            $font-size: 1.125rem,
+            $letter-spacing: 0.075rem
+        );
         color: var(--main-text-color);
         margin-bottom: 0.625rem;
     }
 
     &__subtitle {
-        @include text-properties($font-size: 0.875rem, $letter-spacing: 0.075rem);
+        @include text-properties(
+            $font-size: 0.875rem,
+            $letter-spacing: 0.075rem
+        );
         color: var(--stone-grey);
     }
 }
@@ -76,7 +82,9 @@
 
 @media (max-width: 1380px) {
     .beginning {
-        height: calc(var(--height-small) + 1rem); // 1rem padding на других страницах
+        height: calc(
+            var(--height-small) + 1rem
+        ); // 1rem padding на других страницах
     }
 }
 
@@ -90,7 +98,11 @@
         }
 
         &__inner {
-            @include flex-container(column, $align-items: center, $gap: 1.875rem 0rem);
+            @include flex-container(
+                column,
+                $align-items: center,
+                $gap: 1.875rem 0rem
+            );
             border: none;
         }
 

@@ -8,13 +8,17 @@ jest.mock('react-router-dom', () => {
     return {
         ...jest.requireActual('react-router-dom'),
         useLocation: jest.fn(),
-        Link: (props: routerHooks.LinkProps) => <a {...props}>{props.children}</a>,
+        Link: (props: routerHooks.LinkProps) => (
+            <a {...props}>{props.children}</a>
+        ),
     };
 });
 
 describe('Games component', (): void => {
     beforeEach((): void => {
-        (routerHooks.useLocation as jest.Mock).mockReturnValue({ pathname: '' });
+        (routerHooks.useLocation as jest.Mock).mockReturnValue({
+            pathname: '',
+        });
     });
 
     test('Should return game list', (): void => {
@@ -23,7 +27,9 @@ describe('Games component', (): void => {
     });
 
     test('Should return select game', (): void => {
-        (routerHooks.useLocation as jest.Mock).mockReturnValue({ pathname: '/games/' });
+        (routerHooks.useLocation as jest.Mock).mockReturnValue({
+            pathname: '/games/',
+        });
 
         render(<Games />);
         expect(screen.queryByTestId('list-game')).toBeNull();

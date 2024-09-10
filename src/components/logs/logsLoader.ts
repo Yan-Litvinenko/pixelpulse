@@ -1,6 +1,9 @@
 import { defer } from 'react-router-dom';
 import { getZero } from '../../utils/getZero';
-import type { ICommitTransform, IGithubRespone } from '../../interfaces/interface.github';
+import type {
+    ICommitTransform,
+    IGithubRespone,
+} from '../../interfaces/interface.github';
 
 const ACCESS_TOKEN: string | undefined = process.env.REACT_APP_GITHUB_TOKEN;
 const URL: string | undefined = process.env.REACT_APP_GITHUB_URL;
@@ -29,7 +32,9 @@ const getLastUpdate = (githubCommits: IGithubRespone[]): string => {
     return transformCommitDate(githubCommits[0].commit.committer.date);
 };
 
-const getReplacementCommits = (status: 'loading' | 'error loading'): ICommitTransform[] => {
+const getReplacementCommits = (
+    status: 'loading' | 'error loading',
+): ICommitTransform[] => {
     return Array.from({ length: 5 }).map(() => {
         return {
             message: status,
@@ -40,7 +45,9 @@ const getReplacementCommits = (status: 'loading' | 'error loading'): ICommitTran
 
 const getCommits = async (): Promise<IGithubRespone[]> => {
     if (!ACCESS_TOKEN || !URL) {
-        throw new Error(`Github token or url is not defined. URL: ${URL}, TOKEN: ${ACCESS_TOKEN}`);
+        throw new Error(
+            `Github token or url is not defined. URL: ${URL}, TOKEN: ${ACCESS_TOKEN}`,
+        );
     }
 
     const responseForGithub: Response = await fetch(URL, {

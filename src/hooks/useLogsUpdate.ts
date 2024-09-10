@@ -8,15 +8,22 @@ type UseLogsUpdate = [
     (element: HTMLParagraphElement | null, index: number) => void,
 ];
 
-const useLogsUpdate = (update: Record<string, string>[], classForRemove: string): UseLogsUpdate => {
-    const [expandStates, setExpandStates] = React.useState<boolean[]>(update.map(() => false));
+const useLogsUpdate = (
+    update: Record<string, string>[],
+    classForRemove: string,
+): UseLogsUpdate => {
+    const [expandStates, setExpandStates] = React.useState<boolean[]>(
+        update.map(() => false),
+    );
     const [clippedIndexes, setClippedIndexes] = React.useState<number[]>([]);
     const textRefs = React.useRef<(HTMLParagraphElement | null)[]>([]);
 
     const calculateClippedIndexes = React.useCallback(() => {
         const newClippedIndexes: number[] = [];
         const sizePx: number = Number(
-            getComputedStyle(document.documentElement).getPropertyValue('--size').replace('px', ''),
+            getComputedStyle(document.documentElement)
+                .getPropertyValue('--size')
+                .replace('px', ''),
         );
         const maxRemHeight: number = 2.84765625;
 
@@ -54,9 +61,12 @@ const useLogsUpdate = (update: Record<string, string>[], classForRemove: string)
         };
     }, []);
 
-    const setRef = React.useCallback((element: HTMLParagraphElement | null, index: number): void => {
-        if (element) textRefs.current[index] = element;
-    }, []);
+    const setRef = React.useCallback(
+        (element: HTMLParagraphElement | null, index: number): void => {
+            if (element) textRefs.current[index] = element;
+        },
+        [],
+    );
 
     return [expandStates, clippedIndexes, setExpandStates, setRef];
 };

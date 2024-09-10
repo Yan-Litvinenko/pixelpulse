@@ -13,12 +13,17 @@ const initialState: RootStyleSlice = {
 
 describe('rootStyleSlice', (): void => {
     test('Should return empty state when passed an empty action', (): void => {
-        const result: RootStyleSlice = rootStyleSlice.reducer(undefined, {} as { type: string });
+        const result: RootStyleSlice = rootStyleSlice.reducer(
+            undefined,
+            {} as { type: string },
+        );
         expect(result).toEqual(initialState);
     });
 
     test('Selector should return correct rootStyle slice from the store', (): void => {
-        expect(rootStylesSelector({ rootStyles: initialState } as RootState)).toEqual(initialState);
+        expect(
+            rootStylesSelector({ rootStyles: initialState } as RootState),
+        ).toEqual(initialState);
     });
 
     test('Should install app styles', (): void => {
@@ -26,7 +31,10 @@ describe('rootStyleSlice', (): void => {
             wrapper: 'wrapper',
             navigation: 'navigation',
         } as RootStyleSlice;
-        const result: RootStyleSlice = rootStyleSlice.reducer(initialState, installRootStyles(installStyles));
+        const result: RootStyleSlice = rootStyleSlice.reducer(
+            initialState,
+            installRootStyles(installStyles),
+        );
 
         expect(result.wrapper).toBe('wrapper');
         expect(result.navigation).toBe('navigation');

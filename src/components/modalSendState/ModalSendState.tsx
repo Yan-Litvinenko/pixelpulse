@@ -18,8 +18,14 @@ const ModalSendState = (props: IModalSendState): React.JSX.Element => {
         <div className={styles.modal}>
             <div className={styles.modal__inner}>
                 <div className={styles.modal__content}>
-                    <p className={styles.modal__text}>{status ? success : error} </p>
-                    <button className={styles.modal__button} onClick={clickOK} type="button">
+                    <p className={styles.modal__text}>
+                        {status ? success : error}{' '}
+                    </p>
+                    <button
+                        className={styles.modal__button}
+                        onClick={clickOK}
+                        type="button"
+                    >
                         ok
                     </button>
                 </div>

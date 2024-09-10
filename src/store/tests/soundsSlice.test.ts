@@ -15,16 +15,24 @@ const initState: SoundsSlice = {
 
 describe('soundsSlice', (): void => {
     test('Should return empty state when passed an empty action', (): void => {
-        const defaultState: SoundsSlice = soundsSlice.reducer(undefined, {} as { type: string });
+        const defaultState: SoundsSlice = soundsSlice.reducer(
+            undefined,
+            {} as { type: string },
+        );
         expect(defaultState).toEqual(initState);
     });
 
     test('Selector should return correct sounds slice from the store', (): void => {
-        expect(soundsSelector({ sounds: initState } as RootState)).toEqual(initState);
+        expect(soundsSelector({ sounds: initState } as RootState)).toEqual(
+            initState,
+        );
     });
 
     test('Should set inverse sounds state', (): void => {
-        const updateState: SoundsSlice = soundsSlice.reducer(initState, setStateSounds());
+        const updateState: SoundsSlice = soundsSlice.reducer(
+            initState,
+            setStateSounds(),
+        );
         expect(updateState.soundsState).not.toBe(initState.soundsState);
     });
 });

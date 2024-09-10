@@ -19,7 +19,9 @@ describe('AchievementsProgress component', (): void => {
 
         const component = render(<AchievementsProgress />);
 
-        expect(screen.getByText(`${amountAchieved}/${amountAchievements}`)).toBeInTheDocument();
+        expect(
+            screen.getByText(`${amountAchieved}/${amountAchievements}`),
+        ).toBeInTheDocument();
         expect(component).toMatchSnapshot();
     });
 
@@ -32,6 +34,8 @@ describe('AchievementsProgress component', (): void => {
         fireEvent.click(screen.getByText(/challenge me/i));
 
         expect(dispatch).toHaveBeenCalledTimes(1);
-        expect(mockUseModalOpenAction).toHaveBeenCalledWith({ key: 'challenge' });
+        expect(mockUseModalOpenAction).toHaveBeenCalledWith({
+            key: 'challenge',
+        });
     });
 });

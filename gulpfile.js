@@ -6,11 +6,15 @@ const fonter = require('gulp-fonter');
 const ttf2woff2 = require('gulp-ttf2woff2');
 
 const avif = () => {
-    return src('src/assets/images/*.{png,jpg,jpeg}').pipe(avifPlugin()).pipe(dest('src/assets/images/'));
+    return src('src/assets/images/*.{png,jpg,jpeg}')
+        .pipe(avifPlugin())
+        .pipe(dest('src/assets/images/'));
 };
 
 const webp = () => {
-    return src('src/assets/images/*.{png,jpg,jpeg}').pipe(webpPlugin()).pipe(dest('src/assets/images/'));
+    return src('src/assets/images/*.{png,jpg,jpeg}')
+        .pipe(webpPlugin())
+        .pipe(dest('src/assets/images/'));
 };
 
 const svg = () => {
@@ -18,7 +22,9 @@ const svg = () => {
 };
 
 const imageminimize = () => {
-    return src(['src/assets/images/*.*']).pipe(imagemin()).pipe(dest('src/assets/images'));
+    return src(['src/assets/images/*.*'])
+        .pipe(imagemin())
+        .pipe(dest('src/assets/images'));
 };
 
 const fonts = () => {

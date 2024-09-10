@@ -2,7 +2,9 @@ import React from 'react';
 import styles from './AchievementsProgressRing.module.scss';
 import type { IAchievementsProgressRing } from '../../interfaces/interface.achievements';
 
-const AchievementsProgressRing = ({ percent }: IAchievementsProgressRing): React.JSX.Element => {
+const AchievementsProgressRing = ({
+    percent,
+}: IAchievementsProgressRing): React.JSX.Element => {
     const square: number = 148;
     const border: number = 14;
     const CYX: number = square / 2;

@@ -16,11 +16,15 @@ const useSlider = (
     let xDown: number = 0;
     let yDown: number = 0;
 
-    const rollSlider = (content: HTMLDivElement | null, counter: number): void => {
+    const rollSlider = (
+        content: HTMLDivElement | null,
+        counter: number,
+    ): void => {
         if (content) {
             const transformValue: string = `translateX(-${counter}00%)`;
 
-            if (content.style.transform !== transformValue) content.style.transform = transformValue;
+            if (content.style.transform !== transformValue)
+                content.style.transform = transformValue;
             dispatch(soundsClickTrigger());
         }
     };
@@ -116,8 +120,10 @@ const useSlider = (
         }
 
         return () => {
-            if (leftElement) leftElement.removeEventListener('click', prevSlide);
-            if (rightElement) rightElement.removeEventListener('click', nextSlide);
+            if (leftElement)
+                leftElement.removeEventListener('click', prevSlide);
+            if (rightElement)
+                rightElement.removeEventListener('click', nextSlide);
             if (sliderBody) {
                 sliderBody.removeEventListener('touchstart', touchStart);
                 sliderBody.removeEventListener('touchmove', touchMove);

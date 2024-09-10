@@ -26,7 +26,9 @@ const setStateToLocalStorage = <T>(key: string, value: T): void => {
 const useSnake = (): UseSnake => {
     const dispatch = useDispatch<AppDispatch>();
     const [score, setScore] = React.useState<number>(0);
-    const [bestScore, setBestScore] = React.useState<number>(getValueToLocalStorage(KEY_SNAKE_LOCALSTORAGE, 0));
+    const [bestScore, setBestScore] = React.useState<number>(
+        getValueToLocalStorage(KEY_SNAKE_LOCALSTORAGE, 0),
+    );
     const { linkSnakeMusic, linkAutomataMusic } = useSelector(musicSelector);
 
     const snake = React.useRef<null | Snake>(null);

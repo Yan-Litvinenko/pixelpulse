@@ -21,9 +21,15 @@ const GameSnake = (): React.JSX.Element => {
                     <span>score:{score}</span>
                     <span>best score:{bestScore}</span>
                 </div>
-                <canvas className={styles.canvas} width="300" height="300" ref={canvas}></canvas>
+                <canvas
+                    className={styles.canvas}
+                    width="300"
+                    height="300"
+                    ref={canvas}
+                ></canvas>
                 <Link className={styles.back} to={'/games'}>
-                    back to all games<span className={styles.back__quotes}>&#xBB;</span>
+                    back to all games
+                    <span className={styles.back__quotes}>&#xBB;</span>
                 </Link>
             </div>
         </>

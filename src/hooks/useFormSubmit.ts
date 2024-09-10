@@ -4,7 +4,11 @@ import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { useTelegramApi } from './useTelegramApi';
 import type { Modal } from '../store/slices/modalSlice';
-import type { UseFormRegister, FieldValues, FieldErrors } from 'react-hook-form';
+import type {
+    UseFormRegister,
+    FieldValues,
+    FieldErrors,
+} from 'react-hook-form';
 import type { UseTelegramApi } from './useTelegramApi';
 
 interface UseFormSubmit {
@@ -45,10 +49,19 @@ const useFormSubmit = (message: string, modalKey: Modal): UseFormSubmit => {
         dispatch(
             setModalStateForm({
                 key: modalKey,
-                value: telegramMessage.error || telegramMessage.loading || telegramMessage.successfully ? true : false,
+                value:
+                    telegramMessage.error ||
+                    telegramMessage.loading ||
+                    telegramMessage.successfully
+                        ? true
+                        : false,
             }),
         );
-    }, [telegramMessage.error, telegramMessage.loading, telegramMessage.successfully]);
+    }, [
+        telegramMessage.error,
+        telegramMessage.loading,
+        telegramMessage.successfully,
+    ]);
 
     React.useEffect(() => {
         window.addEventListener('keydown', handleKeyPress);

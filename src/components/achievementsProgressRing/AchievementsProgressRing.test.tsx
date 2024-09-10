@@ -24,8 +24,12 @@ describe('AchievementsProgressRing component', (): void => {
         expect(circle.getAttribute('cx')).toBe(`${CYX}`);
         expect(circle.getAttribute('r')).toBe(`${radius}`);
 
-        expect(circle).toHaveStyle(`stroke-dashoffset: ${circumference - (percent / 100) * circumference}`);
-        expect(circle).toHaveStyle(`stroke-dasharray: ${circumference} ${circumference}`);
+        expect(circle).toHaveStyle(
+            `stroke-dashoffset: ${circumference - (percent / 100) * circumference}`,
+        );
+        expect(circle).toHaveStyle(
+            `stroke-dasharray: ${circumference} ${circumference}`,
+        );
 
         expect(svg).toMatchSnapshot();
     });

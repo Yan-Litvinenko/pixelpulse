@@ -12,7 +12,11 @@ const FormChallenge = (props: IFormChallenge): React.JSX.Element => {
     return (
         <>
             <div className={styles.form}>
-                <SelectChallenge register={register} selectValue={selectValue} setSelectValue={setSelectValue} />
+                <SelectChallenge
+                    register={register}
+                    selectValue={selectValue}
+                    setSelectValue={setSelectValue}
+                />
                 <FormLabel
                     child={'input'}
                     errors={errors}

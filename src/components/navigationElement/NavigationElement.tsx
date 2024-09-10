@@ -4,7 +4,10 @@ import { Hexagon } from '../svgIcon/SvgIcon';
 import { mediaQuerySelector } from '../../store/selectors';
 import { NavLink } from 'react-router-dom';
 import { scroll } from '../../classes/Scroll';
-import { soundsClickTrigger, soundsModalTrigger } from '../../store/slices/soundsSlice';
+import {
+    soundsClickTrigger,
+    soundsModalTrigger,
+} from '../../store/slices/soundsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useModal } from '../../hooks/useModal';
 import type { AppDispatch } from '../../store/store';
@@ -31,13 +34,19 @@ const NavigationElement = (props: INavigationElement): React.JSX.Element => {
         <li onClick={switchPage}>
             <NavLink
                 to={pageName}
-                className={({ isActive }) => (isActive ? `${styles.link_active} ${styles.link}` : styles.link)}
+                className={({ isActive }) =>
+                    isActive
+                        ? `${styles.link_active} ${styles.link}`
+                        : styles.link
+                }
             >
                 <h4 className={styles.link__title}>
                     {pageName}
                     <Hexagon />
                 </h4>
-                <p className={styles.link__text}>Suscipit est consequatur nemo voluptatem est labore saepe.</p>
+                <p className={styles.link__text}>
+                    Suscipit est consequatur nemo voluptatem est labore saepe.
+                </p>
             </NavLink>
         </li>
     );

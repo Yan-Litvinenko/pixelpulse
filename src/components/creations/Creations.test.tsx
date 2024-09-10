@@ -8,7 +8,9 @@ import type * as routerHooks from 'react-router-dom';
 jest.mock('react-redux');
 jest.mock('react-router-dom', () => {
     return {
-        Link: (props: routerHooks.LinkProps) => <a {...props}>{props.children}</a>,
+        Link: (props: routerHooks.LinkProps) => (
+            <a {...props}>{props.children}</a>
+        ),
     };
 });
 
@@ -23,7 +25,9 @@ jest.mock('../creationsDetails/CreationsDetails', () => ({
 }));
 
 jest.mock('../creationsTechnologies/CreationsTechnologies', () => ({
-    CreationsTechnologies: () => <div>Mock CreationsTechnologies component</div>,
+    CreationsTechnologies: () => (
+        <div>Mock CreationsTechnologies component</div>
+    ),
 }));
 
 jest.mock('../creationsAbout/CreationsAbout', () => ({

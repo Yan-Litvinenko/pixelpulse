@@ -35,7 +35,11 @@ describe('Achievements component', (): void => {
 
     test('Achievements loading', (): void => {
         mockUseDispatch.mockReturnValue(jest.fn());
-        mockUseSelector.mockReturnValue({ achievements: null, loading: true, error: false });
+        mockUseSelector.mockReturnValue({
+            achievements: null,
+            loading: true,
+            error: false,
+        });
 
         render(<Achievements />);
         expect(screen.getByTestId('triangle-loading')).toBeInTheDocument();
@@ -43,12 +47,20 @@ describe('Achievements component', (): void => {
 
     test('Achievements error', (): void => {
         mockUseDispatch.mockReturnValue(jest.fn());
-        mockUseSelector.mockReturnValue({ achievements: null, loading: false, error: true });
+        mockUseSelector.mockReturnValue({
+            achievements: null,
+            loading: false,
+            error: true,
+        });
 
         render(<Achievements />);
 
-        expect(screen.getByText(/Error achievements loading/i)).toBeInTheDocument();
-        expect(screen.getByTestId('achievements-list-error')).toBeInTheDocument();
+        expect(
+            screen.getByText(/Error achievements loading/i),
+        ).toBeInTheDocument();
+        expect(
+            screen.getByTestId('achievements-list-error'),
+        ).toBeInTheDocument();
     });
 
     test('Should change the checkbox', (): void => {
@@ -58,8 +70,12 @@ describe('Achievements component', (): void => {
         render(<Achievements />);
 
         const allCheckbox = screen.getByLabelText('all') as HTMLInputElement;
-        const achievedCheckbox = screen.getByLabelText('achieved') as HTMLInputElement;
-        const inProgressCheckbox = screen.getByLabelText('in progress') as HTMLInputElement;
+        const achievedCheckbox = screen.getByLabelText(
+            'achieved',
+        ) as HTMLInputElement;
+        const inProgressCheckbox = screen.getByLabelText(
+            'in progress',
+        ) as HTMLInputElement;
 
         expect(allCheckbox.checked).toBe(true);
         fireEvent.click(achievedCheckbox);

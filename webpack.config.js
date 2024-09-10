@@ -54,7 +54,8 @@ module.exports = {
                         loader: 'css-loader',
                         options: {
                             modules: {
-                                localIdentName: '[name]__[local]___[hash:base64:5]',
+                                localIdentName:
+                                    '[name]__[local]___[hash:base64:5]',
                             },
                         },
                     },
@@ -69,7 +70,8 @@ module.exports = {
                         loader: 'css-loader',
                         options: {
                             modules: {
-                                localIdentName: '[name]__[local]--[hash:base64:5]',
+                                localIdentName:
+                                    '[name]__[local]--[hash:base64:5]',
                             },
                         },
                     },
@@ -107,7 +109,10 @@ function optimization() {
 
     if (isProd) {
         // Добавляем минификацию в продакшене
-        config.minimizer = [new TerserWebpackPlugin(), new CssMinimizerWebpackPlugin()];
+        config.minimizer = [
+            new TerserWebpackPlugin(),
+            new CssMinimizerWebpackPlugin(),
+        ];
     }
 
     return config;

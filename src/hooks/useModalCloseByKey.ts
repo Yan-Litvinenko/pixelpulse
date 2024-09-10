@@ -12,12 +12,16 @@ const useModalCloseByKey = (): void => {
     React.useEffect(() => {
         const closeModalByKey = (event: KeyboardEvent) => {
             if (event.key === 'Escape') {
-                const firstTrueKey: Modal = Object.entries(modals).find(([, value]) => value)![0] as Modal;
+                const firstTrueKey: Modal = Object.entries(modals).find(
+                    ([, value]) => value,
+                )![0] as Modal;
                 dispatch(modalCloseHandler({ key: firstTrueKey as Modal }));
             }
         };
 
-        const isAnyModalOpen: boolean = Object.values(modals).some((value) => value === true);
+        const isAnyModalOpen: boolean = Object.values(modals).some(
+            (value) => value === true,
+        );
 
         if (isAnyModalOpen) window.addEventListener('keydown', closeModalByKey);
 

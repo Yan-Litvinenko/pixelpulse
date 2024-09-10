@@ -1,4 +1,7 @@
-import { modalCloseHandler, modalOpenHandler } from '../store/slices/modalSlice';
+import {
+    modalCloseHandler,
+    modalOpenHandler,
+} from '../store/slices/modalSlice';
 import { soundsModalTrigger } from '../store/slices/soundsSlice';
 import { useDispatch } from 'react-redux';
 import type { AppDispatch } from '../store/store';

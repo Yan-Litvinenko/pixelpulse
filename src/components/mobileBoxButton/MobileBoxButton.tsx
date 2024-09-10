@@ -14,10 +14,18 @@ const MobileBoxButton = (): React.JSX.Element => {
 
     return (
         <div className={styles.box}>
-            <button className={styles.box__navigation} onClick={open} type="button">
+            <button
+                className={styles.box__navigation}
+                onClick={open}
+                type="button"
+            >
                 navigation
             </button>
-            <Link to={'about'} className={styles.box__about} onClick={aboutClick}>
+            <Link
+                to={'about'}
+                className={styles.box__about}
+                onClick={aboutClick}
+            >
                 about
             </Link>
         </div>
