@@ -25,8 +25,7 @@ const ModalCreations = (): React.JSX.Element => {
     const countSlider = useSlider(slider, vectorLeft, vectorRight);
 
     const enter = (event: KeyboardEvent): void => {
-        if (event.key === 'Enter')
-            window.open(projects[targetProject].link, '_blank');
+        if (event.key === 'Enter') window.open(projects[targetProject].link, '_blank');
     };
 
     const close = () => {
@@ -40,10 +39,7 @@ const ModalCreations = (): React.JSX.Element => {
     };
 
     React.useEffect(() => {
-        document.documentElement.style.setProperty(
-            '--bg-creations-modal',
-            projects[targetProject].backgroundColor,
-        );
+        document.documentElement.style.setProperty('--bg-creations-modal', projects[targetProject].backgroundColor);
         window.addEventListener('keydown', enter);
 
         return () => window.removeEventListener('keydown', enter);
@@ -53,12 +49,8 @@ const ModalCreations = (): React.JSX.Element => {
         <div className={styles.modal} onClick={closeModalCreations}>
             <div className={styles.modal__inner} onClick={stopPropagation}>
                 <div className={styles.modal__header}>
-                    <h3 className={styles.modal__subtitle}>
-                        previewing images from
-                    </h3>
-                    <h2 className={styles.modal__title}>
-                        {projects[targetProject].name}
-                    </h2>
+                    <h3 className={styles.modal__subtitle}>previewing images from</h3>
+                    <h2 className={styles.modal__title}>{projects[targetProject].name}</h2>
                 </div>
 
                 <div className={styles.modal__content_wrapper}>
@@ -70,25 +62,16 @@ const ModalCreations = (): React.JSX.Element => {
                         src={vectorImageLeft}
                     />
                     <div className={styles.modal__content}>
-                        <div
-                            className={styles.modal__content_inner}
-                            ref={slider}
-                        >
+                        <div className={styles.modal__content_inner} ref={slider}>
                             {projectImages.map((imageName) => {
                                 return (
-                                    <div
-                                        className={styles.modal__item}
-                                        key={nanoid()}
-                                    >
+                                    <div className={styles.modal__item} key={nanoid()}>
                                         <img
                                             alt={imageName}
                                             className={styles.modal__item_img}
                                             draggable="false"
                                             key={nanoid()}
-                                            src={require(
-                                                '../../assets/images/' +
-                                                    imageName,
-                                            )}
+                                            src={require('../../assets/images/' + imageName)}
                                         />
                                     </div>
                                 );
@@ -105,21 +88,13 @@ const ModalCreations = (): React.JSX.Element => {
                 </div>
 
                 <div className={styles.button_wrapper}>
-                    <a
-                        className={styles.button_wrapper__enter}
-                        href={projects[targetProject].link}
-                        target="_blank"
-                    >
+                    <a className={styles.button_wrapper__enter} href={projects[targetProject].link} target="_blank">
                         view project live
                     </a>
                     <span className={styles.button_wrapper__count}>
                         {countSlider + 1} of {projectImages.length}
                     </span>
-                    <button
-                        className={styles.button_wrapper__escape}
-                        onClick={close}
-                        type="button"
-                    >
+                    <button className={styles.button_wrapper__escape} onClick={close} type="button">
                         {'CLOSE [esc]'}
                     </button>
                 </div>

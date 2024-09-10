@@ -15,10 +15,7 @@ describe('headerStatistic', (): void => {
     };
 
     test('Should return empty state when passed an empty action', (): void => {
-        const updateState: HeaderStatistic = headerStatisticSlice.reducer(
-            undefined,
-            {} as { type: string },
-        );
+        const updateState: HeaderStatistic = headerStatisticSlice.reducer(undefined, {} as { type: string });
         expect(updateState).toEqual(initState);
     });
 

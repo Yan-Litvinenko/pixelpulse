@@ -25,9 +25,7 @@ const Achievements = (): React.JSX.Element => {
 
     return (
         <section className={styles.achievements}>
-            <h2 className={styles.achievements__title}>
-                {error ? 'Error achievements loading' : 'Achievements'}
-            </h2>
+            <h2 className={styles.achievements__title}>{error ? 'Error achievements loading' : 'Achievements'}</h2>
 
             <div className={styles.achievements__content}>
                 <AchievementsProgress />
@@ -50,21 +48,13 @@ const Achievements = (): React.JSX.Element => {
                             <AchievementsBlock
                                 prefixForClassName={'achieved'}
                                 achievements={achievementsSort(
-                                    achievementsFilter(
-                                        achievements || [],
-                                        filterStatus,
-                                        'achieved',
-                                    ),
+                                    achievementsFilter(achievements || [], filterStatus, 'achieved'),
                                 )}
                             />
                             <AchievementsBlock
                                 prefixForClassName={'ongoing'}
                                 achievements={achievementsSort(
-                                    achievementsFilter(
-                                        achievements || [],
-                                        filterStatus,
-                                        'in progress',
-                                    ),
+                                    achievementsFilter(achievements || [], filterStatus, 'in progress'),
                                 )}
                             />
                         </>

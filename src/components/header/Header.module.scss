@@ -1,10 +1,7 @@
 @import '../../css/mixin.scss';
 
 .header {
-    @include flex-container(
-        $align-items: flex-end,
-        $justify-content: space-between
-    );
+    @include flex-container($align-items: flex-end, $justify-content: space-between);
     grid-column: 1 / -1;
     grid-row: 1 / 2;
     padding-top: 1.25rem;
@@ -27,11 +24,7 @@
     }
 
     &__text_box {
-        @include grid-container(
-            $columns: auto auto,
-            $align-items: end,
-            $gap: 0rem 0.4125rem
-        );
+        @include grid-container($columns: auto auto, $align-items: end, $gap: 0rem 0.4125rem);
     }
 
     &__text {
@@ -86,11 +79,7 @@
 
 .level {
     &__box {
-        @include grid-container(
-            $columns: auto auto,
-            $align-items: end,
-            $gap: 0rem 0.4125rem
-        );
+        @include grid-container($columns: auto auto, $align-items: end, $gap: 0rem 0.4125rem);
         margin-right: 2.8125rem;
     }
 

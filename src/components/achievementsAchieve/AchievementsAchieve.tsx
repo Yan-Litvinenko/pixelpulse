@@ -4,14 +4,9 @@ import legendary from '../../assets/images/legendary.png';
 import rare from '../../assets/images/rare.png';
 import unusual from '../../assets/images/unusual.png';
 import styles from './AchievementsAchieve.module.scss';
-import type {
-    IAchievementsAchieve,
-    Rarity,
-} from '../../interfaces/interface.achievements';
+import type { IAchievementsAchieve, Rarity } from '../../interfaces/interface.achievements';
 
-const AchievementsAchieve = (
-    props: IAchievementsAchieve,
-): React.JSX.Element => {
+const AchievementsAchieve = (props: IAchievementsAchieve): React.JSX.Element => {
     const { date, description, rarity, executionStatus, title } = props;
     const rarityPictures: Record<Rarity, Rarity> = {
         legendary,
@@ -29,9 +24,7 @@ const AchievementsAchieve = (
                     src={rarityPictures[rarity as Rarity]}
                     alt={`Rarity icon representing ${rarity}`}
                 />
-                <figcaption className={styles.box_image__rarity}>
-                    {rarity}
-                </figcaption>
+                <figcaption className={styles.box_image__rarity}>{rarity}</figcaption>
             </figure>
 
             <div className={`${styles.achieve__inner}`}>

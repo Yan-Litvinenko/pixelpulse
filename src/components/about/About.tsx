@@ -38,19 +38,12 @@ const About = (): React.JSX.Element => {
                 </div>
 
                 {isSmall ? null : (
-                    <picture
-                        className={styles.box_image}
-                        data-testid="about-mobile-picture"
-                    >
+                    <picture className={styles.box_image} data-testid="about-mobile-picture">
                         <Frame className={styles.frame} />
 
                         <source srcSet={humanAvif} />
                         <source srcSet={humanWebp} />
-                        <img
-                            src={humanJpg}
-                            alt="A portrait of Yan Litvinenko"
-                            className={styles.about__img}
-                        />
+                        <img src={humanJpg} alt="A portrait of Yan Litvinenko" className={styles.about__img} />
                     </picture>
                 )}
             </div>

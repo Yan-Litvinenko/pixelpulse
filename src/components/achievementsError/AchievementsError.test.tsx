@@ -15,9 +15,7 @@ describe('AchievementsError component', (): void => {
 
         render(<AchievementsError />);
 
-        expect(
-            screen.getByTestId('achievements-list-error'),
-        ).toBeInTheDocument();
+        expect(screen.getByTestId('achievements-list-error')).toBeInTheDocument();
         expect(component).toMatchSnapshot();
     });
 

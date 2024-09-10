@@ -54,13 +54,7 @@
     left: $left;
 }
 
-@mixin position(
-    $position: relative,
-    $top: auto,
-    $right: auto,
-    $bottom: auto,
-    $left: auto
-) {
+@mixin position($position: relative, $top: auto, $right: auto, $bottom: auto, $left: auto) {
     position: $position;
     top: $top;
     right: $right;

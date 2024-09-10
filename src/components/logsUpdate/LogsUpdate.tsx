@@ -30,8 +30,7 @@ const LogsUpdate = (): React.JSX.Element => {
     const dispatch = useDispatch<AppDispatch>();
 
     const { isMedium } = useSelector(mediaQuerySelector);
-    const [expandStates, clippedIndexes, setExpandStates, setRef] =
-        useLogsUpdate(update, styles.element__text_clip);
+    const [expandStates, clippedIndexes, setExpandStates, setRef] = useLogsUpdate(update, styles.element__text_clip);
 
     const detail = (index: number): void => {
         setExpandStates((prevStates) => {
@@ -50,9 +49,7 @@ const LogsUpdate = (): React.JSX.Element => {
                 return (
                     <article className={styles.element} key={nanoid()}>
                         <div className={styles.border}></div>
-                        <h3 className={styles.element__title}>
-                            {element.title}
-                        </h3>
+                        <h3 className={styles.element__title}>{element.title}</h3>
                         <p
                             className={`${styles.element__text} ${expandStates[index] ? '' : styles.element__text_clip}`}
                             ref={(item) => setRef(item, index)}
@@ -62,22 +59,14 @@ const LogsUpdate = (): React.JSX.Element => {
 
                         {isMedium ? (
                             isClipped ? (
-                                <button
-                                    className={styles.element__expend}
-                                    type="button"
-                                    onClick={() => detail(index)}
-                                >
-                                    {expandStates[index]
-                                        ? '-collapse'
-                                        : '+expand'}
+                                <button className={styles.element__expend} type="button" onClick={() => detail(index)}>
+                                    {expandStates[index] ? '-collapse' : '+expand'}
                                 </button>
                             ) : null
                         ) : (
                             <button
                                 className={`${styles.element__expend} ${isClipped ? null : styles.element__expend_deactive}`}
-                                onClick={
-                                    isClipped ? () => detail(index) : undefined
-                                }
+                                onClick={isClipped ? () => detail(index) : undefined}
                                 type="button"
                             >
                                 {expandStates[index] ? '-collapse' : '+expand'}

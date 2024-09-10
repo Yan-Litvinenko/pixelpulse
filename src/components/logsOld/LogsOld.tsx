@@ -18,23 +18,13 @@ const LogsOld = (): React.JSX.Element => {
             <ul className={styles.list}>
                 <Suspense
                     fallback={getReplacementCommits('loading').map((item) => (
-                        <LogsElement
-                            key={nanoid()}
-                            className={''}
-                            date={item.date}
-                            textContent={item.message}
-                        />
+                        <LogsElement key={nanoid()} className={''} date={item.date} textContent={item.message} />
                     ))}
                 >
                     <Await resolve={githubCommits}>
                         {(resolveCommits: ResolveError | IGithubRespone[]) => {
-                            if (
-                                (resolveCommits as ResolveError).status ===
-                                '404'
-                            ) {
-                                return getReplacementCommits(
-                                    'error loading',
-                                ).map((commit) => (
+                            if ((resolveCommits as ResolveError).status === '404') {
+                                return getReplacementCommits('error loading').map((commit) => (
                                     <LogsElement
                                         key={nanoid()}
                                         className={''}
@@ -44,9 +34,7 @@ const LogsOld = (): React.JSX.Element => {
                                 ));
                             }
 
-                            return transformCommits(
-                                resolveCommits as IGithubRespone[],
-                            ).map((commit) => (
+                            return transformCommits(resolveCommits as IGithubRespone[]).map((commit) => (
                                 <LogsElement
                                     key={nanoid()}
                                     className={''}

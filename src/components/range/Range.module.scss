@@ -39,13 +39,7 @@
     &__custom_thumb {
         @include absolute-position(-0.09375rem, $left: 0rem);
         background-color: var(--main-color);
-        clip-path: polygon(
-            0.575rem 0rem,
-            100% 0rem,
-            100% 100%,
-            0% 100%,
-            0% 0.45rem
-        );
+        clip-path: polygon(0.575rem 0rem, 100% 0rem, 100% 100%, 0% 100%, 0% 0.45rem);
         cursor: pointer;
         height: 2.25rem;
         width: 2.5rem;

@@ -12,11 +12,7 @@
     }
 
     &__content {
-        @include grid-container(
-            1fr 2fr 1fr,
-            2.2rem repeat(3, auto),
-            $gap: 0rem 1.25rem
-        );
+        @include grid-container(1fr 2fr 1fr, 2.2rem repeat(3, auto), $gap: 0rem 1.25rem);
         position: relative;
     }
 

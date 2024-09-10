@@ -18,11 +18,7 @@ describe('custom fetch', (): void => {
     });
 
     test('Should return error', (): void => {
-        globalThis.fetch = jest
-            .fn()
-            .mockResolvedValue(new Error(`A request error occurred ${url}`));
-        expect(() => customFetch(url)).rejects.toThrow(
-            `A request error occurred ${url}`,
-        );
+        globalThis.fetch = jest.fn().mockResolvedValue(new Error(`A request error occurred ${url}`));
+        expect(() => customFetch(url)).rejects.toThrow(`A request error occurred ${url}`);
     });
 });

@@ -23,9 +23,7 @@ class DataBase {
     async getDataAdminTable(columnName) {
         try {
             await this.connect();
-            const [rows] = await this.db.query(
-                `SELECT ${columnName} FROM admin LIMIT 1`,
-            );
+            const [rows] = await this.db.query(`SELECT ${columnName} FROM admin LIMIT 1`);
             if (rows.length > 0) {
                 return rows[0][columnName];
             }
@@ -39,9 +37,7 @@ class DataBase {
     async updateDataAdminTable(columnName, value) {
         try {
             await this.connect();
-            await this.db.execute(`UPDATE admin SET ${columnName} = ?`, [
-                value,
-            ]);
+            await this.db.execute(`UPDATE admin SET ${columnName} = ?`, [value]);
             return true;
         } catch (error) {
             console.error('Request execution error:', error);

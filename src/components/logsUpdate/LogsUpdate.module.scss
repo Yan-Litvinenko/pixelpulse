@@ -8,13 +8,7 @@
 .element {
     @include flex-container(column, $gap: 0.3125rem 0rem);
     background-color: var(--dark-border);
-    clip-path: polygon(
-        0.875rem 0.0625rem,
-        100% 0.0625rem,
-        100% 100%,
-        0% 100%,
-        0% 0.75rem
-    );
+    clip-path: polygon(0.875rem 0.0625rem, 100% 0.0625rem, 100% 100%, 0% 100%, 0% 0.75rem);
     height: max-content;
     padding: 0.9375rem 0.9375rem 0.625rem;
     position: relative;
@@ -23,13 +17,7 @@
     &::before {
         background-color: var(--main-background-color);
         bottom: 0.0625rem;
-        clip-path: polygon(
-            0.875rem 0.0625rem,
-            100% 0.0625rem,
-            100% 100%,
-            0% 100%,
-            0% 0.75rem
-        );
+        clip-path: polygon(0.875rem 0.0625rem, 100% 0.0625rem, 100% 100%, 0% 100%, 0% 0.75rem);
         content: '';
         display: block;
         left: 0.0625rem;

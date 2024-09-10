@@ -16,15 +16,10 @@ const ModalChallenge = (): React.JSX.Element => {
 
     const [selectValue, setSelectValue] = React.useState<Rarity>('unusual');
 
-    const formSubmit: UseFormSubmit = useFormSubmit(
-        'Вам предложили проект!',
-        'challenge',
-    );
+    const formSubmit: UseFormSubmit = useFormSubmit('Вам предложили проект!', 'challenge');
     const { successfullyTelegram, errorTelegram, loadingTelegram } = formSubmit;
-    const { registerForm, handleSubmitForm, isValidForm, errorForm } =
-        formSubmit;
-    const { setErrorTelegram, setLoadingTelegram, setSuccessfullyTelegram } =
-        formSubmit;
+    const { registerForm, handleSubmitForm, isValidForm, errorForm } = formSubmit;
+    const { setErrorTelegram, setLoadingTelegram, setSuccessfullyTelegram } = formSubmit;
 
     return (
         <>
@@ -50,18 +45,12 @@ const ModalChallenge = (): React.JSX.Element => {
                 ) : (
                     ''
                 )}
-                <form
-                    className={styles.modal__inner}
-                    onSubmit={handleSubmitForm}
-                    onClick={stopPropagation}
-                >
+                <form className={styles.modal__inner} onSubmit={handleSubmitForm} onClick={stopPropagation}>
                     <div className={styles.modal__box_title}>
                         <h3 className={styles.modal__title}>challenge me</h3>
                         <Cross handler={closeModalChallenge} />
                     </div>
-                    <h4 className={styles.modal__subtitle}>
-                        Offer me a challenge!
-                    </h4>
+                    <h4 className={styles.modal__subtitle}>Offer me a challenge!</h4>
                     <FormChallenge
                         register={registerForm}
                         errors={errorForm}

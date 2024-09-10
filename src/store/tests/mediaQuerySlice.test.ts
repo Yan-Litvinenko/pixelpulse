@@ -12,17 +12,12 @@ const initialState: MediaQueryState = {
 
 describe('meduaQuerySlice', (): void => {
     test('Should return empty state when passed an empty action', (): void => {
-        const result: MediaQueryState = mediaQuerySlice.reducer(
-            undefined,
-            {} as { type: string },
-        );
+        const result: MediaQueryState = mediaQuerySlice.reducer(undefined, {} as { type: string });
         expect(result).toEqual(initialState);
     });
 
     test('Selector should return correct mediaQuery slice from the store', (): void => {
-        expect(
-            mediaQuerySelector({ mediaQuery: initialState } as RootState),
-        ).toEqual(initialState);
+        expect(mediaQuerySelector({ mediaQuery: initialState } as RootState)).toEqual(initialState);
     });
 
     test('Should set media state', (): void => {

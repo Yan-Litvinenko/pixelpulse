@@ -9,12 +9,7 @@ interface GlitchCanvasProps {
     minDelay: number;
 }
 
-const GlitchImage: React.FC<GlitchCanvasProps> = ({
-    imageUrl,
-    className,
-    minDelay,
-    maxDelay,
-}) => {
+const GlitchImage: React.FC<GlitchCanvasProps> = ({ imageUrl, className, minDelay, maxDelay }) => {
     const dispatch = useDispatch();
     const timer = React.useRef<NodeJS.Timeout | null>(null);
     const canvasRef = React.useRef<HTMLCanvasElement>(null);
@@ -28,8 +23,7 @@ const GlitchImage: React.FC<GlitchCanvasProps> = ({
 
     const glitchImage = React.useCallback((): void => {
         const canvas: HTMLCanvasElement | null = canvasRef.current;
-        const ctx: CanvasRenderingContext2D | undefined | null =
-            canvas?.getContext('2d');
+        const ctx: CanvasRenderingContext2D | undefined | null = canvas?.getContext('2d');
         const img: HTMLImageElement | null = cachedImage.current;
 
         if (!canvas || !ctx || !img) return;
@@ -39,8 +33,7 @@ const GlitchImage: React.FC<GlitchCanvasProps> = ({
         for (let i = 0; i < 5; i++) {
             const x: number = Math.random() * canvas.width;
             const y: number = Math.random() * canvas.height;
-            const spliceWidth: number =
-                canvas.width * (0.1 + Math.random() * 0.3);
+            const spliceWidth: number = canvas.width * (0.1 + Math.random() * 0.3);
             const spliceHeight: number = canvas.height * 0.1;
 
             ctx.drawImage(
@@ -59,8 +52,7 @@ const GlitchImage: React.FC<GlitchCanvasProps> = ({
         for (let i = 0; i < 5; i++) {
             const x: number = Math.random() * canvas.width;
             const y: number = Math.random() * canvas.height;
-            const spliceWidth: number =
-                canvas.width * (0.1 + Math.random() * 0.3);
+            const spliceWidth: number = canvas.width * (0.1 + Math.random() * 0.3);
             const spliceHeight: number = canvas.height * 0.1;
 
             ctx.globalCompositeOperation = 'lighter';

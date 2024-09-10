@@ -66,11 +66,7 @@
 .audio,
 .visual {
     @include text-properties('Big-Shoulders', 1.125rem, 700, 0.075rem);
-    @include flex-container(
-        $justify-content: space-between,
-        $align-items: center,
-        $gap: 0.625rem
-    );
+    @include flex-container($justify-content: space-between, $align-items: center, $gap: 0.625rem);
     background-color: transparent;
     border: none;
     color: var(--main-color);

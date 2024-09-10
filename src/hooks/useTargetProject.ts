@@ -13,10 +13,7 @@ const useTargetProject = (): void => {
 
     const transitionLink = (): void => {
         if (projectName) {
-            const project = projects.findIndex(
-                (projectElement: IProject) =>
-                    projectElement.name === projectName,
-            );
+            const project = projects.findIndex((projectElement: IProject) => projectElement.name === projectName);
 
             if (project >= 0) {
                 dispatch(setTargetProject(project));

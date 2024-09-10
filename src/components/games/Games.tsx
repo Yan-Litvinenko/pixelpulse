@@ -20,67 +20,35 @@ const Games = (): React.JSX.Element => {
                 <article className={styles.content} data-testid="list-game">
                     <div className={styles.game_description}>
                         <p className={styles.game_description__text}>
-                            Here you will see a few mini games I implemented in
-                            React or in Canvas.
+                            Here you will see a few mini games I implemented in React or in Canvas.
                         </p>
-                        <p className={styles.game_description__text}>
-                            Have fun!
-                        </p>
+                        <p className={styles.game_description__text}>Have fun!</p>
                     </div>
 
                     <div className={styles.content__games}>
-                        <Link
-                            to={'/games/snake'}
-                            onClick={() => dispatch(soundsClickTrigger())}
-                        >
+                        <Link to={'/games/snake'} onClick={() => dispatch(soundsClickTrigger())}>
                             <figure className={styles.content__item}>
-                                <img
-                                    src={SnakeImg}
-                                    alt="Snake"
-                                    draggable={false}
-                                />
-                                <figcaption
-                                    className={styles.content__description}
-                                >
-                                    <h2 className={styles.content__title}>
-                                        snake
-                                    </h2>
-                                    <p className={styles.content__text}>
-                                        classic snake game
-                                    </p>
+                                <img src={SnakeImg} alt="Snake" draggable={false} />
+                                <figcaption className={styles.content__description}>
+                                    <h2 className={styles.content__title}>snake</h2>
+                                    <p className={styles.content__text}>classic snake game</p>
                                 </figcaption>
                             </figure>
                         </Link>
 
-                        <figure
-                            className={`${styles.content__item} ${styles.content__item_deactive}`}
-                        >
+                        <figure className={`${styles.content__item} ${styles.content__item_deactive}`}>
                             <img src={MarioImg} alt="Mario" draggable={false} />
                             <figcaption className={styles.content__description}>
-                                <h2 className={styles.content__title}>
-                                    dr mario
-                                </h2>
-                                <p className={styles.content__text}>
-                                    a dr. mario clone
-                                </p>
+                                <h2 className={styles.content__title}>dr mario</h2>
+                                <p className={styles.content__text}>a dr. mario clone</p>
                             </figcaption>
                         </figure>
 
-                        <figure
-                            className={`${styles.content__item} ${styles.content__item_deactive}`}
-                        >
-                            <img
-                                src={ArcanoidImg}
-                                alt="Arcanoid"
-                                draggable={false}
-                            />
+                        <figure className={`${styles.content__item} ${styles.content__item_deactive}`}>
+                            <img src={ArcanoidImg} alt="Arcanoid" draggable={false} />
                             <figcaption className={styles.content__description}>
-                                <h2 className={styles.content__title}>
-                                    arcanoid
-                                </h2>
-                                <p className={styles.content__text}>
-                                    destroy the bricks game
-                                </p>
+                                <h2 className={styles.content__title}>arcanoid</h2>
+                                <p className={styles.content__text}>destroy the bricks game</p>
                             </figcaption>
                         </figure>
                     </div>

@@ -55,12 +55,8 @@ describe('Achievements component', (): void => {
 
         render(<Achievements />);
 
-        expect(
-            screen.getByText(/Error achievements loading/i),
-        ).toBeInTheDocument();
-        expect(
-            screen.getByTestId('achievements-list-error'),
-        ).toBeInTheDocument();
+        expect(screen.getByText(/Error achievements loading/i)).toBeInTheDocument();
+        expect(screen.getByTestId('achievements-list-error')).toBeInTheDocument();
     });
 
     test('Should change the checkbox', (): void => {
@@ -70,12 +66,8 @@ describe('Achievements component', (): void => {
         render(<Achievements />);
 
         const allCheckbox = screen.getByLabelText('all') as HTMLInputElement;
-        const achievedCheckbox = screen.getByLabelText(
-            'achieved',
-        ) as HTMLInputElement;
-        const inProgressCheckbox = screen.getByLabelText(
-            'in progress',
-        ) as HTMLInputElement;
+        const achievedCheckbox = screen.getByLabelText('achieved') as HTMLInputElement;
+        const inProgressCheckbox = screen.getByLabelText('in progress') as HTMLInputElement;
 
         expect(allCheckbox.checked).toBe(true);
         fireEvent.click(achievedCheckbox);

@@ -14,9 +14,7 @@ const Logs = (): React.JSX.Element => {
         <section className={styles.logs}>
             <>
                 <div className={styles.logs__inner}>
-                    <h2 className={styles.logs__title}>
-                        data log dump initialized
-                    </h2>
+                    <h2 className={styles.logs__title}>data log dump initialized</h2>
 
                     <LogsProject />
                     <LogsUpdate />

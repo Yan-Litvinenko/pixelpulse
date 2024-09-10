@@ -6,13 +6,10 @@ import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const CreationsAbout = (): React.JSX.Element => {
-    const { targetProject, defaultProject, projects } =
-        useSelector(creationsSelector);
+    const { targetProject, defaultProject, projects } = useSelector(creationsSelector);
     const { projectName } = useParams();
 
-    const texts: string[] = !projectName
-        ? defaultProject.about
-        : projects[targetProject].about || [];
+    const texts: string[] = !projectName ? defaultProject.about : projects[targetProject].about || [];
 
     return (
         <section className={styles.about}>

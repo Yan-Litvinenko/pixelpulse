@@ -2,12 +2,7 @@
 
 .box {
     @include flex-container(column, $justify-content: space-between);
-    background: linear-gradient(
-        to top,
-        rgba(0, 0, 0, 1),
-        rgba(0, 0, 0, 0.6) 60%,
-        rgba(0, 0, 0, 0)
-    );
+    background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.6) 60%, rgba(0, 0, 0, 0));
     position: fixed;
     inset: 0;
     padding: 0.625rem;
@@ -22,10 +17,7 @@
     }
 
     &__header {
-        @include flex-container(
-            $justify-content: space-between,
-            $align-items: center
-        );
+        @include flex-container($justify-content: space-between, $align-items: center);
         border-bottom: 0.0625rem solid var(--dark-border);
     }
 }
@@ -45,12 +37,7 @@
 
 .coins {
     @include position($top: 0.1625rem);
-    @include grid-container(
-        $columns: auto auto,
-        $align-items: end,
-        $align-content: end,
-        $gap: 0rem 0.4125rem
-    );
+    @include grid-container($columns: auto auto, $align-items: end, $align-content: end, $gap: 0rem 0.4125rem);
     margin-right: 0.8125rem;
 
     &__add_box {
@@ -58,11 +45,7 @@
     }
 
     &__text_box {
-        @include grid-container(
-            $columns: auto auto,
-            $align-items: baseline,
-            $gap: 0rem 0.4125rem
-        );
+        @include grid-container($columns: auto auto, $align-items: baseline, $gap: 0rem 0.4125rem);
         position: relative;
         top: 0.27rem;
     }
@@ -120,12 +103,7 @@
 .level {
     &__box {
         @include position($top: 0.2625rem);
-        @include grid-container(
-            $columns: auto auto,
-            $align-items: baseline,
-            $align-content: end,
-            $gap: 0rem 0.4125rem
-        );
+        @include grid-container($columns: auto auto, $align-items: baseline, $align-content: end, $gap: 0rem 0.4125rem);
         margin-right: 2.8125rem;
     }
 
@@ -153,10 +131,7 @@
 .audio,
 .visual {
     @include text-properties('Big-Shoulders', 1.125rem, 700, 0.075rem);
-    @include flex-container(
-        $justify-content: space-between,
-        $align-items: center
-    );
+    @include flex-container($justify-content: space-between, $align-items: center);
     background-color: transparent;
     border: none;
     color: var(--main-color);

@@ -35,9 +35,7 @@ describe('CreationsXplorerContent component', () => {
         render(<CreationsXplorerContent />);
 
         expect(projects.length).toBe(0);
-        expect(
-            screen.getByText('No projects have been added'),
-        ).toBeInTheDocument();
+        expect(screen.getByText('No projects have been added')).toBeInTheDocument();
     });
 
     test('Should return a list of projects', () => {
@@ -45,18 +43,9 @@ describe('CreationsXplorerContent component', () => {
             { name: 'coffee-house', images: ['image'] } as IProject,
             { name: 'library', images: ['image'] } as IProject,
         ];
-        const mockSetProjectImages = jest.spyOn(
-            creationsXplorerContentAction,
-            'setProjectImages',
-        );
-        const mockSetTargetProject = jest.spyOn(
-            creationsXplorerContentAction,
-            'setTargetProject',
-        );
-        const mockSoundsTrigger = jest.spyOn(
-            soundsTrigger,
-            'soundsClickTrigger',
-        );
+        const mockSetProjectImages = jest.spyOn(creationsXplorerContentAction, 'setProjectImages');
+        const mockSetTargetProject = jest.spyOn(creationsXplorerContentAction, 'setTargetProject');
+        const mockSoundsTrigger = jest.spyOn(soundsTrigger, 'soundsClickTrigger');
 
         mockUseParams.mockReturnValue({ projectName: '' });
         mockUseSelector.mockReturnValue({
@@ -78,17 +67,9 @@ describe('CreationsXplorerContent component', () => {
     });
 
     test('Should return a list of images', (): void => {
-        const projects: IProject[] = [
-            { name: 'test', images: ['name.img-1'] } as IProject,
-        ];
-        const mockOpenModalHandler = jest.spyOn(
-            modalActions,
-            'modalOpenHandler',
-        );
-        const mockSetTargetImage = jest.spyOn(
-            creationsXplorerContentAction,
-            'setTargetImage',
-        );
+        const projects: IProject[] = [{ name: 'test', images: ['name.img-1'] } as IProject];
+        const mockOpenModalHandler = jest.spyOn(modalActions, 'modalOpenHandler');
+        const mockSetTargetImage = jest.spyOn(creationsXplorerContentAction, 'setTargetImage');
 
         mockUseParams.mockReturnValue({ projectName: 'test' });
         mockUseSelector.mockReturnValue({

@@ -71,11 +71,4 @@ type IParents = {
     html_url: string;
 } & ITree;
 
-export type {
-    IGithubRespone,
-    ICommit,
-    ICommitTransform,
-    ILogsLoader,
-    IUser,
-    IParents,
-};
+export type { IGithubRespone, ICommit, ICommitTransform, ILogsLoader, IUser, IParents };

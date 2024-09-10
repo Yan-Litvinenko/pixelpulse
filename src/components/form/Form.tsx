@@ -21,9 +21,7 @@ const Form = (props: IForm): React.JSX.Element => {
                 minLength={2}
                 name="name"
                 pattern={/[A-Za-zА-Яа-яЁё]/}
-                patternMessage={
-                    'The name can only contain Russian or Latin alphabet'
-                }
+                patternMessage={'The name can only contain Russian or Latin alphabet'}
                 placeholder={'your name'}
                 register={register}
                 textContent={'How should I call you?'}

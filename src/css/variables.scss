@@ -4,8 +4,7 @@
     --data-hue: 0;
     --data-saturation: 71%;
     --data-lightness: 56%;
-    --data-main-color: var(--data-hue), var(--data-saturation),
-        var(--data-lightness);
+    --data-main-color: var(--data-hue), var(--data-saturation), var(--data-lightness);
     --data-image-color: 0deg;
 
     --main-background-color: #000003;
@@ -36,13 +35,7 @@
     --text-shadow-black: 0rem 0rem 0.0125rem var(--main-background-color);
     --text-shadow-white: 0rem 0rem 0.0125rem var(--main-text-color);
 
-    --clip-path-modal: polygon(
-        0.875rem 0rem,
-        100% 0rem,
-        100% 100%,
-        0% 100%,
-        0% 0.75rem
-    );
+    --clip-path-modal: polygon(0.875rem 0rem, 100% 0rem, 100% 100%, 0% 100%, 0% 0.75rem);
 
     --height-large: 50rem;
     --height-medium: 49.75rem;

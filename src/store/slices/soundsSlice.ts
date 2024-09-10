@@ -18,10 +18,7 @@ const initialState: SoundsSlice = {
     linkGlitchEffect,
     linkSoundClick,
     linkSoundModal,
-    soundsState: getValueToLocalStorage<boolean>(
-        'pixelpulse-sounds-state',
-        true,
-    ),
+    soundsState: getValueToLocalStorage<boolean>('pixelpulse-sounds-state', true),
     stateClickTrigger: false,
     stateGlitchTrigger: false,
     stateModalTrigger: false,
@@ -46,11 +43,6 @@ const soundsSlice = createSlice({
     },
 });
 
-export const {
-    setStateSounds,
-    soundsModalTrigger,
-    soundsClickTrigger,
-    soundsGlitchTrigger,
-} = soundsSlice.actions;
+export const { setStateSounds, soundsModalTrigger, soundsClickTrigger, soundsGlitchTrigger } = soundsSlice.actions;
 export type { SoundsSlice };
 export { soundsSlice };

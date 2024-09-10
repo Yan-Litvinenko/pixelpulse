@@ -1,10 +1,7 @@
 @import '../../css/mixin.scss';
 
 .wrapper {
-    @include grid-container(
-        $columns: 12.1875rem minmax(auto, 84rem) 12.1875rem,
-        $gap: 2.1875rem 0.9375rem
-    );
+    @include grid-container($columns: 12.1875rem minmax(auto, 84rem) 12.1875rem, $gap: 2.1875rem 0.9375rem);
     margin: 0 auto;
     max-width: 118.75rem;
     padding: 0 4.6875rem;
@@ -27,13 +24,11 @@
     }
 
     &__left_rotate {
-        transform: perspective(46.875rem) rotateY(-31deg) translateY(-3rem)
-            translateZ(-33.75rem);
+        transform: perspective(46.875rem) rotateY(-31deg) translateY(-3rem) translateZ(-33.75rem);
     }
 
     &__center_rotate {
-        transform: perspective(46.875rem) rotateX(25deg) translateY(-12rem)
-            translateZ(-2.5rem);
+        transform: perspective(46.875rem) rotateX(25deg) translateY(-12rem) translateZ(-2.5rem);
     }
 }
 

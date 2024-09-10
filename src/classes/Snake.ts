@@ -119,12 +119,7 @@ class Snake {
 
         for (let x = 0; x < this.cellCount; x++) {
             for (let y = 0; y < this.cellCount; y++) {
-                this.ctx.fillRect(
-                    x * this.gridSize + 4,
-                    y * this.gridSize + 4,
-                    this.gridSize - 8,
-                    this.gridSize - 8,
-                );
+                this.ctx.fillRect(x * this.gridSize + 4, y * this.gridSize + 4, this.gridSize - 8, this.gridSize - 8);
             }
         }
     }
@@ -138,12 +133,7 @@ class Snake {
             const y: number = snakeItem.y * this.gridSize;
 
             this.ctx.strokeRect(x, y, this.gridSize, this.gridSize);
-            this.ctx.fillRect(
-                x + 4,
-                y + 4,
-                this.gridSize - 8,
-                this.gridSize - 8,
-            );
+            this.ctx.fillRect(x + 4, y + 4, this.gridSize - 8, this.gridSize - 8);
         });
     }
 
@@ -234,31 +224,19 @@ class Snake {
             this.gameLoop();
         }
 
-        if (
-            (event.key === 'w' || event.key === 'ц') &&
-            this.vectorSnake.y == 0
-        ) {
+        if ((event.key === 'w' || event.key === 'ц') && this.vectorSnake.y == 0) {
             this.vectorSnake.x = 0;
             this.vectorSnake.y = -1;
         }
-        if (
-            (event.key === 's' || event.key === 'ы') &&
-            this.vectorSnake.y === 0
-        ) {
+        if ((event.key === 's' || event.key === 'ы') && this.vectorSnake.y === 0) {
             this.vectorSnake.x = 0;
             this.vectorSnake.y = 1;
         }
-        if (
-            (event.key === 'a' || event.key === 'ф') &&
-            this.vectorSnake.x === 0
-        ) {
+        if ((event.key === 'a' || event.key === 'ф') && this.vectorSnake.x === 0) {
             this.vectorSnake.x = -1;
             this.vectorSnake.y = 0;
         }
-        if (
-            (event.key === 'd' || event.key === 'в') &&
-            this.vectorSnake.x === 0
-        ) {
+        if ((event.key === 'd' || event.key === 'в') && this.vectorSnake.x === 0) {
             this.vectorSnake.x = 1;
             this.vectorSnake.y = 0;
         }
@@ -292,15 +270,9 @@ class Snake {
     }
 
     private getColor(): string {
-        const h: string = getComputedStyle(
-            document.documentElement,
-        ).getPropertyValue('--data-hue');
-        const s: string = getComputedStyle(
-            document.documentElement,
-        ).getPropertyValue('--data-saturation');
-        const l: string = getComputedStyle(
-            document.documentElement,
-        ).getPropertyValue('--data-lightness');
+        const h: string = getComputedStyle(document.documentElement).getPropertyValue('--data-hue');
+        const s: string = getComputedStyle(document.documentElement).getPropertyValue('--data-saturation');
+        const l: string = getComputedStyle(document.documentElement).getPropertyValue('--data-lightness');
 
         return `${h}, ${s}, ${l}`;
     }

@@ -12,13 +12,7 @@ import { Warning } from '../svgIcon/SvgIcon';
 
 const ModalSetting = (): React.JSX.Element => {
     const closeModalSettings = useModal('settings').close;
-    const {
-        enterBtnText,
-        inputValue,
-        handleDefault,
-        transformSaveFn,
-        changeSettingValue,
-    } = useModalSettings();
+    const { enterBtnText, inputValue, handleDefault, transformSaveFn, changeSettingValue } = useModalSettings();
 
     return (
         <div className={styles.modal} onClick={closeModalSettings}>
@@ -27,9 +21,7 @@ const ModalSetting = (): React.JSX.Element => {
                     <h3 className={styles.modal__title}>visual configurator</h3>
                     <Cross handler={closeModalSettings} />
                 </div>
-                <h4 className={styles.modal__subtitle}>
-                    apply what works best for you
-                </h4>
+                <h4 className={styles.modal__subtitle}>apply what works best for you</h4>
 
                 <div className={styles.modal__content}>
                     <div className={styles.modal__setting}>
@@ -49,11 +41,7 @@ const ModalSetting = (): React.JSX.Element => {
                             min={0}
                             textContent="hud size"
                         />
-                        <button
-                            className={styles.default_button}
-                            onClick={handleDefault}
-                            type="button"
-                        >
+                        <button className={styles.default_button} onClick={handleDefault} type="button">
                             default settings
                         </button>
                         <ClipPathBorder className={styles.border} />
@@ -63,10 +51,8 @@ const ModalSetting = (): React.JSX.Element => {
                     <div className={styles.modal__warning}>
                         <Warning />
                         <p className={styles.modal__warning_text}>
-                            The configuration data is stored in your browser. If
-                            you login from a different browser or machine, your
-                            settings will not apply. Resizing works on screens
-                            wider than 1950px
+                            The configuration data is stored in your browser. If you login from a different browser or
+                            machine, your settings will not apply. Resizing works on screens wider than 1950px
                         </p>
                     </div>
                 </div>

@@ -1,11 +1,6 @@
 import React from 'react';
 import styles from './Joystick.module.scss';
-import {
-    JoystickDown,
-    JoystickLeft,
-    JoystickRight,
-    JoystickUp,
-} from '../svgIcon/SvgIcon';
+import { JoystickDown, JoystickLeft, JoystickRight, JoystickUp } from '../svgIcon/SvgIcon';
 import type { IJouystick } from '../../interfaces/interface.component';
 
 const Joystick = (props: IJouystick): React.JSX.Element => {

@@ -42,8 +42,6 @@ describe('CreationsXplorer component', (): void => {
 
         render(<CreationsXplorer />);
 
-        expect(
-            screen.getByText(/location: \/projects\/coffee-house/),
-        ).toBeInTheDocument();
+        expect(screen.getByText(/location: \/projects\/coffee-house/)).toBeInTheDocument();
     });
 });

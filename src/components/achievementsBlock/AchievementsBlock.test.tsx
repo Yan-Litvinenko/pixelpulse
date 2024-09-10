@@ -15,24 +15,14 @@ const achieve: IAchieve[] = [
 
 describe('AchievementsBlock component', (): void => {
     test('Render with achieved length greater than 0', (): void => {
-        const component = render(
-            <AchievementsBlock
-                achievements={achieve}
-                prefixForClassName="achieved"
-            />,
-        );
+        const component = render(<AchievementsBlock achievements={achieve} prefixForClassName="achieved" />);
 
         expect(screen.getByTestId('achievements-block')).toBeInTheDocument();
         expect(component).toMatchSnapshot();
     });
 
     test('Render with array length equal to 0', (): void => {
-        render(
-            <AchievementsBlock
-                achievements={[]}
-                prefixForClassName="achieved"
-            />,
-        );
+        render(<AchievementsBlock achievements={[]} prefixForClassName="achieved" />);
         expect(screen.queryByTestId('achievements-block')).toBeNull();
     });
 });

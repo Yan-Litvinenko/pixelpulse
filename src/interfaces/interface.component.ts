@@ -93,10 +93,7 @@ type IQuestElement = {
 };
 
 type IRange = {
-    changeSettingValue: (
-        event: React.ChangeEvent<HTMLInputElement>,
-        variableName: 'hue' | 'size',
-    ) => void;
+    changeSettingValue: (event: React.ChangeEvent<HTMLInputElement>, variableName: 'hue' | 'size') => void;
     inputTarget: 'color' | 'size';
     max: number;
     min: number;

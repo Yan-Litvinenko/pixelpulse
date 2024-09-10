@@ -1,8 +1,7 @@
 import React from 'react';
 
 const useFirstInteraction = (): boolean => {
-    const [firstInteraction, setFirstInteraction] =
-        React.useState<boolean>(false);
+    const [firstInteraction, setFirstInteraction] = React.useState<boolean>(false);
     const handlerFirstinteraction = (): void => {
         setFirstInteraction(true);
         window.removeEventListener('click', handlerFirstinteraction);

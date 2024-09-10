@@ -23,20 +23,13 @@ const LogsProject = (): React.JSX.Element => {
                 }
             >
                 <Await resolve={githubCommits}>
-                    {(
-                        resolveGithubCommits: ResolveError | IGithubRespone[],
-                    ) => {
-                        if (
-                            (resolveGithubCommits as ResolveError).status ===
-                            '404'
-                        ) {
+                    {(resolveGithubCommits: ResolveError | IGithubRespone[]) => {
+                        if ((resolveGithubCommits as ResolveError).status === '404') {
                             return (
                                 <LogsElement
                                     className={styles.project__title}
                                     date={'error loading'}
-                                    textContent={
-                                        'LOG ENTRY: PROJECT DEVELOPMENT UPDATE'
-                                    }
+                                    textContent={'LOG ENTRY: PROJECT DEVELOPMENT UPDATE'}
                                 />
                             );
                         }
@@ -44,12 +37,8 @@ const LogsProject = (): React.JSX.Element => {
                         return (
                             <LogsElement
                                 className={styles.project__title}
-                                date={getLastUpdate(
-                                    resolveGithubCommits as IGithubRespone[],
-                                )}
-                                textContent={
-                                    'LOG ENTRY: PROJECT DEVELOPMENT UPDATE'
-                                }
+                                date={getLastUpdate(resolveGithubCommits as IGithubRespone[])}
+                                textContent={'LOG ENTRY: PROJECT DEVELOPMENT UPDATE'}
                             />
                         );
                     }}

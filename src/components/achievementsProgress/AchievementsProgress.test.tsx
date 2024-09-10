@@ -19,9 +19,7 @@ describe('AchievementsProgress component', (): void => {
 
         const component = render(<AchievementsProgress />);
 
-        expect(
-            screen.getByText(`${amountAchieved}/${amountAchievements}`),
-        ).toBeInTheDocument();
+        expect(screen.getByText(`${amountAchieved}/${amountAchievements}`)).toBeInTheDocument();
         expect(component).toMatchSnapshot();
     });
 

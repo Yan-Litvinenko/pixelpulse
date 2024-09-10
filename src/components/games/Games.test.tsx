@@ -8,9 +8,7 @@ jest.mock('react-router-dom', () => {
     return {
         ...jest.requireActual('react-router-dom'),
         useLocation: jest.fn(),
-        Link: (props: routerHooks.LinkProps) => (
-            <a {...props}>{props.children}</a>
-        ),
+        Link: (props: routerHooks.LinkProps) => <a {...props}>{props.children}</a>,
     };
 });
 

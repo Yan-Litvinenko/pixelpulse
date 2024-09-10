@@ -1,8 +1,4 @@
-import type {
-    UseFormRegister,
-    FieldValues,
-    FieldErrors,
-} from 'react-hook-form';
+import type { UseFormRegister, FieldValues, FieldErrors } from 'react-hook-form';
 
 type Field = 'name' | 'email' | 'message' | 'title' | 'description';
 type Rarity = 'unusual' | 'rare' | 'epic' | 'legendary';

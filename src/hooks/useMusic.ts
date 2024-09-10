@@ -6,17 +6,13 @@ import { useSelector } from 'react-redux';
 
 const useMusic = (): void => {
     const { musicState, linkActiveMusicTheme } = useSelector(musicSelector);
-    const music = React.useRef<HTMLAudioElement>(
-        new Audio(linkActiveMusicTheme),
-    );
+    const music = React.useRef<HTMLAudioElement>(new Audio(linkActiveMusicTheme));
     const firstInteraction: boolean = useFirstInteraction();
 
     music.current.volume = 0.4;
 
-    const setMusic = (newMusic: string): string =>
-        (music.current.src = newMusic);
-    const repeat = (): Promise<void> | null =>
-        musicState && firstInteraction ? music.current.play() : null;
+    const setMusic = (newMusic: string): string => (music.current.src = newMusic);
+    const repeat = (): Promise<void> | null => (musicState && firstInteraction ? music.current.play() : null);
 
     React.useEffect(() => {
         if (firstInteraction && musicState) {

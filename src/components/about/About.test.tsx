@@ -23,9 +23,7 @@ describe('About component', (): void => {
 
         const aboutComponent: RenderResult = render(<About />);
 
-        expect(
-            screen.queryByTestId('about-mobile-picture'),
-        ).not.toBeInTheDocument();
+        expect(screen.queryByTestId('about-mobile-picture')).not.toBeInTheDocument();
         expect(aboutComponent).toMatchSnapshot();
     });
 });

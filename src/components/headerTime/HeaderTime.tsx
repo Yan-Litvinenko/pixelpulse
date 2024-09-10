@@ -6,9 +6,7 @@ import { useModal } from '../../hooks/useModal';
 const HeaderTime = (): React.JSX.Element => {
     const openCredits = useModal('credits').open;
     const [localHours, localMinutes] = useTime(new Date().getTime());
-    const [serverHours, serverMinutes, updateTime] = useTime(
-        new Date().getTime(),
-    );
+    const [serverHours, serverMinutes, updateTime] = useTime(new Date().getTime());
 
     React.useEffect(() => {
         (async () => {
@@ -20,21 +18,15 @@ const HeaderTime = (): React.JSX.Element => {
 
     return (
         <div className={styles.time}>
-            <button
-                className={styles.time__credits}
-                onClick={openCredits}
-                type="button"
-            >
+            <button className={styles.time__credits} onClick={openCredits} type="button">
                 Credits
             </button>
             <div className={styles.server}>
-                <span className={styles.server__time_span}>server time:</span>{' '}
-                {`${serverHours}:${serverMinutes}`}
+                <span className={styles.server__time_span}>server time:</span> {`${serverHours}:${serverMinutes}`}
             </div>
 
             <div className={styles.local}>
-                <span className={styles.local__time_span}>local time:</span>{' '}
-                {`${localHours}:${localMinutes}`}
+                <span className={styles.local__time_span}>local time:</span> {`${localHours}:${localMinutes}`}
             </div>
         </div>
     );

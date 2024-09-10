@@ -23,10 +23,7 @@ const SelectChallenge = (props: ISelectChallenge): React.JSX.Element => {
                 <h3 className={styles.title} onClick={selectClick}>
                     achievement rarity
                 </h3>
-                <div
-                    className={`${styles.select} ${isOpen ? styles.select_deactive : ''}`}
-                    onClick={selectClick}
-                >
+                <div className={`${styles.select} ${isOpen ? styles.select_deactive : ''}`} onClick={selectClick}>
                     <h4>{selectValue}</h4>
                     {isOpen ? (
                         <div className={styles.select__content}>
@@ -35,9 +32,7 @@ const SelectChallenge = (props: ISelectChallenge): React.JSX.Element => {
                                     <div
                                         key={nanoid()}
                                         className={styles.select__option}
-                                        onClick={() =>
-                                            optionClick(option as Rarity)
-                                        }
+                                        onClick={() => optionClick(option as Rarity)}
                                     >
                                         {option}
                                     </div>

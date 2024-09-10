@@ -6,10 +6,7 @@
     }
 
     &__title {
-        @include text-properties(
-            $font-size: 0.875rem,
-            $letter-spacing: 0.065625rem
-        );
+        @include text-properties($font-size: 0.875rem, $letter-spacing: 0.065625rem);
     }
 
     &__text {

@@ -1,11 +1,4 @@
-type Page =
-    | 'welcome'
-    | 'beginning'
-    | 'about'
-    | 'logs'
-    | 'achievements'
-    | 'creations'
-    | 'games';
+type Page = 'welcome' | 'beginning' | 'about' | 'logs' | 'achievements' | 'creations' | 'games';
 
 type IAddCoinResult = {
     level: number;

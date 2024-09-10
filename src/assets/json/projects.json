@@ -5,12 +5,7 @@
         ],
         "backgroundColor": "#050607",
         "brief": "Graphic Designer Portfolio",
-        "images": [
-            "ORPH_statue.png",
-            "ORPH_works.png",
-            "ORPH_contribution.png",
-            "ORPH_contribution-2.png"
-        ],
+        "images": ["ORPH_statue.png", "ORPH_works.png", "ORPH_contribution.png", "ORPH_contribution-2.png"],
         "link": "https://yan-litvinenko.github.io/orpheus/",
         "name": "orpheus",
         "technologies": ["github", "figma", "gulp", "sass", "js"]

@@ -22,40 +22,30 @@ const initialState: HeaderStatistic = {
     error: null,
 };
 
-const fetchHeaderStatistic = createAsyncThunk(
-    'headerStatistic/fetchHeaderStatistic',
-    async () => {
-        const resolveLevel: number = await customFetch<number>('/api/getLevel');
-        const resolveCoins: number = await customFetch<number>('/api/getCoins');
-        const resolveAddStatus: boolean = await customFetch<boolean>(
-            '/api/getStatusAddToday',
-        );
+const fetchHeaderStatistic = createAsyncThunk('headerStatistic/fetchHeaderStatistic', async () => {
+    const resolveLevel: number = await customFetch<number>('/api/getLevel');
+    const resolveCoins: number = await customFetch<number>('/api/getCoins');
+    const resolveAddStatus: boolean = await customFetch<boolean>('/api/getStatusAddToday');
 
-        return {
-            level: resolveLevel,
-            coins: resolveCoins,
-            addStatus: resolveAddStatus,
-        };
-    },
-);
+    return {
+        level: resolveLevel,
+        coins: resolveCoins,
+        addStatus: resolveAddStatus,
+    };
+});
 
 const fetchAddCoin = createAsyncThunk<
     IAddCoinResult,
     React.MouseEvent<HTMLButtonElement, MouseEvent>,
     { rejectValue: string }
->(
-    'headerStatistic/fetchAddCoin',
-    async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        event.preventDefault();
+>('headerStatistic/fetchAddCoin', async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    event.preventDefault();
 
-        const response: Response = await fetch('/addCoin', { method: 'POST' });
-        const updateStatistic: IAddCoinResult = await response.json();
+    const response: Response = await fetch('/addCoin', { method: 'POST' });
+    const updateStatistic: IAddCoinResult = await response.json();
 
-        return new Promise((resolve) =>
-            setTimeout(() => resolve(updateStatistic), 500),
-        );
-    },
-);
+    return new Promise((resolve) => setTimeout(() => resolve(updateStatistic), 500));
+});
 
 const headerStatisticSlice = createSlice({
     name: 'headerStatistic',

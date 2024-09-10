@@ -44,7 +44,6 @@ const creationsSlice = createSlice({
     },
 });
 
-export const { setProjectImages, setTargetImage, setTargetProject } =
-    creationsSlice.actions;
+export const { setProjectImages, setTargetImage, setTargetProject } = creationsSlice.actions;
 export type { CreationsSlice };
 export { creationsSlice };

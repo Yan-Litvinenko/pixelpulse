@@ -23,16 +23,12 @@ describe('FormLabel component', (): void => {
 
         expect(screen.getByRole('textbox')).toBeInTheDocument();
         expect(screen.getByText(mockProps.textContent)).toBeInTheDocument();
-        expect(
-            screen.getByPlaceholderText(mockProps.placeholder),
-        ).toBeInTheDocument();
+        expect(screen.getByPlaceholderText(mockProps.placeholder)).toBeInTheDocument();
     });
 
     test('Applies autofocus prop correctly', (): void => {
         render(<FormLabel {...mockProps} />);
-        expect(
-            screen.getByPlaceholderText(mockProps.placeholder),
-        ).toHaveFocus();
+        expect(screen.getByPlaceholderText(mockProps.placeholder)).toHaveFocus();
     });
 
     test('Should return label with textarea', (): void => {
@@ -42,8 +38,6 @@ describe('FormLabel component', (): void => {
 
         expect(screen.getByRole('textbox')).toBeInstanceOf(HTMLTextAreaElement);
         expect(screen.getByText(mockProps.textContent)).toBeInTheDocument();
-        expect(
-            screen.getByPlaceholderText(mockProps.placeholder),
-        ).toBeInTheDocument();
+        expect(screen.getByPlaceholderText(mockProps.placeholder)).toBeInTheDocument();
     });
 });

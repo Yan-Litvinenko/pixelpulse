@@ -10,13 +10,7 @@ const Navigation = (props: INavigation): React.JSX.Element => {
     return (
         <nav className={styles.navigation}>
             <ul className={styles.navigationList}>
-                {[
-                    'beginning',
-                    'logs',
-                    'achievements',
-                    'creations',
-                    'games',
-                ].map((page) => (
+                {['beginning', 'logs', 'achievements', 'creations', 'games'].map((page) => (
                     <NavigationElement key={nanoid()} pageName={page as Page} />
                 ))}
             </ul>

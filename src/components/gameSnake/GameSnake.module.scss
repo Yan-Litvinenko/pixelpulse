@@ -68,11 +68,7 @@
 
 @media (max-width: 600px) {
     .wrapper {
-        @include flex-container(
-            column,
-            $gap: 0.935rem 0rem,
-            $align-items: center
-        );
+        @include flex-container(column, $gap: 0.935rem 0rem, $align-items: center);
     }
 
     .joystick {
