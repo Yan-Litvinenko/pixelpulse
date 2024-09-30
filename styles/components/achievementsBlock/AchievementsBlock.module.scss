@@ -1,0 +1,27 @@
+@import '@/styles/mixin.scss';
+
+.ongoing {
+    &__title {
+        display: block;
+        margin-bottom: 1.8rem;
+    }
+
+    &__achievements {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem 0rem;
+    }
+}
+
+.achieved {
+    &__title {
+        display: block;
+        margin-bottom: 1.8rem;
+    }
+
+    &__achievements {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem 0rem;
+    }
+}

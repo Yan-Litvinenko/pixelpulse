@@ -1,0 +1,12 @@
+@import '@/styles/mixin.scss';
+
+.achievements {
+    padding: 2.5rem 1rem 1rem;
+
+    &__title {
+        @include text-properties($font-size: 1.8rem);
+        letter-spacing: 0.12em;
+        margin-bottom: 2.6rem;
+        text-align: center;
+    }
+}

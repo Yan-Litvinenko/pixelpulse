@@ -1,0 +1,93 @@
+@import '@/styles/mixin.scss';
+
+.label {
+    @include text-properties('Big-Shoulders', 1.8rem, 700, 0.12rem);
+    color: var(--main-color);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem 0rem;
+    position: relative;
+    z-index: 2;
+
+    &__input,
+    &__textarea {
+        @include text-properties('Iceberg');
+        background-color: var(--main-background-color);
+        border: 0.1rem solid var(--dark-light-border);
+        color: var(--dark-grey);
+        height: 4.5rem;
+        outline: none;
+        padding: 0 1.5rem;
+        position: relative;
+        text-transform: uppercase;
+    }
+
+    &__textarea {
+        min-height: 23.7rem;
+        padding-top: 1.5rem;
+        resize: none;
+    }
+
+    &__input::placeholder,
+    &__textarea::placeholder {
+        @include text-properties('Iceberg');
+        text-transform: uppercase;
+    }
+
+    &__input:focus,
+    &__textarea:focus {
+        box-shadow: 0 0 0 0.1rem var(--dark-light-border);
+    }
+
+    &__field_error {
+        border: 0.1rem solid var(--main-color);
+    }
+}
+
+.error_input,
+.error_textarea {
+    @include text-properties($font-size: 1.2rem);
+    bottom: -2.1rem;
+    color: var(--dark-grey);
+    left: 0;
+    position: absolute;
+    z-index: 3;
+}
+
+.error_textarea {
+    bottom: -2.5rem;
+}
+
+@media (max-width: 1200px) {
+    .label:has(textarea) {
+        height: 100%;
+    }
+
+    .label {
+        gap: 0.8rem 0rem;
+
+        &__textarea {
+            margin-bottom: 0.96rem;
+            min-height: 31.7rem;
+        }
+    }
+
+    .error_textarea {
+        bottom: -1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .label {
+        gap: 1.2rem 0rem;
+
+        &__textarea {
+            min-height: 27rem;
+        }
+
+        &__input {
+            height: 4.5rem;
+        }
+    }
+}

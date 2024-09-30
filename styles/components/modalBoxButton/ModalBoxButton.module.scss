@@ -1,0 +1,74 @@
+@import '@/styles/mixin.scss';
+
+.box {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    width: 100%;
+
+    &__enter {
+        @include button-enter();
+    }
+
+    &__enter_deactive {
+        cursor: auto;
+    }
+
+    &__esc {
+        @include button-escape();
+        border: 0.1rem solid var(--dark-border);
+    }
+}
+
+@media (hover: hover) {
+    .box {
+        &__enter:hover {
+            background-color: var(--main-color);
+        }
+
+        &__enter_deactive:hover {
+            background-color: var(--main-darklight-color);
+        }
+
+        &__esc:hover {
+            border: 0.1rem solid var(--dark-light-border);
+            text-shadow: var(--text-shadow);
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .box {
+        flex-direction: column;
+        gap: 1rem 0rem;
+        margin-bottom: 3.2rem;
+        margin-top: auto;
+        padding: 0rem 3.2rem;
+
+        &__enter,
+        &__esc {
+            height: 4.5rem;
+            margin-top: 0rem;
+            max-width: 100%;
+            width: 100%;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .box {
+        padding: 0 2rem;
+        margin-bottom: 1.2rem;
+
+        &__enter,
+        &__esc {
+            height: auto;
+        }
+    }
+}
+
+@media (max-width: 420px) {
+    .box {
+        padding: 0 1.2rem;
+    }
+}

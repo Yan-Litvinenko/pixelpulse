@@ -1,0 +1,48 @@
+@import '@/styles/mixin.scss';
+
+.navigation {
+    background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.6) 60%, rgba(0, 0, 0, 0));
+    display: flex;
+    flex-direction: column;
+    inset: 0;
+    justify-content: space-between;
+    padding: 1rem;
+    position: fixed;
+    z-index: 10;
+
+    &__inner {
+        background-color: var(--main-background-color);
+        border: 0.1rem solid var(--dark-border);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        margin-bottom: 1rem;
+    }
+
+    &__header {
+        align-items: center;
+        border-bottom: 0.1rem solid var(--dark-border);
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__title {
+        @include text-properties('Big-Shoulders', 2.6rem, 700, 0.136rem);
+        padding: 1rem 2rem;
+    }
+}
+
+@media (max-height: 815px) {
+    .navigation {
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+        }
+
+        &__inner {
+            min-height: 80rem;
+        }
+    }
+}

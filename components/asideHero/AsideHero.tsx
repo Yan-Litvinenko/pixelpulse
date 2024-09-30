@@ -1,0 +1,54 @@
+import React from 'react';
+import HeroAvatar from '../heroAvatar/HeroAvatar';
+import HeroContacts from '../heroContacts/HeroContacts';
+import styles from '@/styles/components/asideHero/AsideHero.module.scss';
+
+export default function AsideHero(): React.JSX.Element {
+    return (
+        <aside className={styles.hero}>
+            <HeroAvatar className={{ avatar: styles.avatar, canvas: styles.canvas, link: styles.avatar__link }} />
+            <article className={styles.hero__element}>
+                <h4 className={styles.hero__title}>Name</h4>
+                <h3 className={styles.hero__text}>Yan Litvinenko</h3>
+            </article>
+
+            <article className={styles.hero__element}>
+                <h3 className={styles.hero__title}>Occupation</h3>
+                <p className={styles.hero__text}>Frontend developer</p>
+            </article>
+
+            <article className={styles.hero__element}>
+                <h3 className={styles.hero__title}>Corporation</h3>
+                <p className={styles.hero__text}>Student</p>
+            </article>
+
+            <HeroContacts
+                title="availability"
+                text="open for hire"
+                image="hexagon"
+                modal="availability"
+                className={{
+                    element: styles.hero__element,
+                    title: styles.hero__title,
+                    button: styles.hero__availability,
+                }}
+            />
+            <HeroContacts
+                title="social"
+                text="open connection"
+                image="bluetooth"
+                modal="social"
+                className={{
+                    element: styles.hero__element,
+                    title: styles.hero__title,
+                    button: styles.hero__social,
+                }}
+            />
+
+            <article className={styles.motto}>
+                <h3 className={styles.motto__title}>motto:</h3>
+                <p className={styles.motto__text}>Bonum modulum est, quod connecti potest.</p>
+            </article>
+        </aside>
+    );
+}

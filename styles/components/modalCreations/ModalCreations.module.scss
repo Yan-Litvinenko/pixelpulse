@@ -1,0 +1,244 @@
+@import '@/styles/mixin.scss';
+
+.modal {
+    @include modal();
+    justify-content: center;
+    padding: 3.2rem 0rem;
+
+    &__inner {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        gap: 3.2rem;
+        justify-content: center;
+        position: relative;
+    }
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem 0rem;
+    }
+
+    &__title {
+        @include text-properties('Big-Shoulders', 4.2rem, 700);
+        color: var(--main-color);
+        text-align: center;
+    }
+
+    &__subtitle {
+        @include text-properties();
+        text-align: center;
+    }
+
+    &__content_wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-height: 54rem;
+        max-width: 132.8rem;
+        padding: 0rem 8rem;
+        position: relative;
+        width: 100%;
+    }
+
+    &__content {
+        border: 0.1rem solid var(--frame-border-color);
+        display: flex;
+        justify-content: center;
+        max-width: 116.8rem;
+        overflow: hidden;
+        user-select: none;
+        width: 100%;
+    }
+
+    &__content_inner {
+        display: flex;
+        transition: all 0.5s;
+    }
+
+    &__item {
+        background-color: var(--bg-creations-modal);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        justify-content: center;
+        min-width: 100%;
+        padding: 0px 1rem;
+    }
+
+    &__item_img {
+        align-self: center;
+        grid-column: 1 / -1;
+        grid-row: 1 / -1;
+        height: 100%;
+        justify-self: center;
+        object-fit: contain;
+        position: relative;
+        width: 100%;
+        z-index: 1;
+    }
+}
+
+.button_wrapper {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    max-width: 116.8rem;
+    position: relative;
+    width: calc(100% - 16rem);
+
+    &__enter {
+        @include button-enter();
+        display: block;
+        text-align: center;
+        max-width: 22.6rem;
+    }
+
+    &__count {
+        @include text-properties('Big-Shoulders', 1.4rem, 700);
+    }
+
+    &__escape {
+        @include button-escape();
+        border: 0.1rem solid var(--dark-border);
+        max-width: 22.6rem;
+    }
+}
+
+.vector {
+    border: 2rem solid transparent;
+    box-sizing: content-box;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform-origin: top center;
+    transform: translateY(-50%);
+    transition: filter var(--transition-element);
+
+    &__left {
+        left: 0;
+    }
+
+    &__right {
+        right: 0;
+    }
+
+    &__deactive {
+        cursor: auto;
+        filter: invert(50%);
+    }
+}
+
+.vector:not(.vector__deactive):active {
+    transform: scale(1.1) translateY(-50%);
+}
+
+@media (hover: hover) {
+    .button_wrapper {
+        &__enter:hover {
+            background-color: var(--main-color);
+        }
+
+        &__escape:hover {
+            border: 0.1rem solid var(--dark-light-border);
+            text-shadow: var(--text-shadow);
+        }
+    }
+}
+
+@media (max-height: 772px) and (max-width: 1950px) and (min-width: 1200px),
+    (max-height: 720px) and (max-width: 1200px) {
+    .modal {
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+        }
+
+        &__inner {
+            justify-content: flex-start;
+            overflow: auto;
+            height: 100%;
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .modal {
+        background-color: var(--main-background-color);
+        padding: 2rem 3.2rem;
+
+        &__inner {
+            gap: 1.6rem 0rem;
+        }
+
+        &__content_wrapper {
+            padding: 0;
+        }
+    }
+
+    .button_wrapper {
+        width: 100%;
+    }
+
+    .vector {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .modal {
+        padding: 2rem 1rem;
+
+        &__inner {
+            display: grid;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        &__header {
+            align-self: end;
+        }
+
+        &__content_wrapper {
+            max-height: none;
+            height: 100%;
+        }
+    }
+
+    .button_wrapper {
+        align-self: start;
+    }
+}
+
+@media (max-width: 600px) {
+    .modal {
+        &__title {
+            font-size: 3.2rem;
+            line-height: 3.2rem;
+        }
+    }
+    .button_wrapper {
+        flex-wrap: wrap;
+        row-gap: 1rem;
+
+        &__count {
+            text-align: center;
+            display: block;
+            width: 100%;
+            order: 1;
+        }
+
+        &__enter {
+            max-width: 100%;
+            order: 2;
+        }
+
+        &__escape {
+            max-width: 100%;
+            order: 3;
+        }
+    }
+}

@@ -1,0 +1,127 @@
+@import '@/styles/mixin.scss';
+
+.about {
+    padding: 4rem 7rem 0rem 1rem;
+
+    &__title {
+        @include text-properties($font-size: 1.8rem);
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+    &__content {
+        display: flex;
+        gap: 0rem 5rem;
+        justify-content: flex-end;
+        margin-bottom: 8.5rem;
+    }
+
+    &__text_content {
+        display: flex;
+        flex-direction: column;
+        gap: 4rem 0rem;
+    }
+
+    &__img {
+        filter: hue-rotate(var(--data-image-color));
+        height: 60.8rem;
+        user-select: none;
+        width: 100%;
+    }
+}
+
+.box_image {
+    display: grid;
+    position: relative;
+    height: max-content;
+    width: 100%;
+    max-width: 35.5rem;
+}
+
+@media (max-width: 1380px) {
+    .about {
+        &__title {
+            margin-bottom: 2.4rem;
+        }
+
+        &__content {
+            column-gap: 2.4rem;
+            margin-bottom: 5.3rem;
+        }
+
+        &__text_content {
+            row-gap: 2.4rem;
+        }
+    }
+
+    .box_image {
+        width: 32.5rem;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about {
+        display: flex;
+        flex-direction: column;
+        padding: 2.4rem 1rem 0rem;
+        width: 100%;
+
+        &__title {
+            margin-bottom: 4rem;
+        }
+
+        &__content {
+            justify-content: space-between;
+        }
+
+        &__text_content {
+            row-gap: 5.4rem;
+            width: max-content;
+        }
+    }
+
+    .box_image {
+        width: 100%;
+    }
+}
+
+@media (max-width: 976px) {
+    .about__text_content {
+        width: 100%;
+        max-width: 40rem;
+    }
+}
+
+@media (max-width: 800px) {
+    .about__text_content {
+        max-width: 35.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .about {
+        min-height: 100vh;
+
+        &__title {
+            margin-bottom: 2.4rem;
+        }
+
+        &__content {
+            display: block;
+            margin-bottom: 8rem;
+        }
+
+        &__text_content {
+            gap: 3.2rem 0rem;
+            max-width: 100%;
+        }
+
+        &__frame {
+            display: none;
+        }
+    }
+
+    .box_image {
+        display: none;
+    }
+}

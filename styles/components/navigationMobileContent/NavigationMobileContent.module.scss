@@ -1,0 +1,74 @@
+@import '@/styles/mixin.scss';
+
+.navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem 0rem;
+    padding: 1rem 2rem;
+}
+
+.item {
+    cursor: pointer;
+    position: relative;
+    width: 100%;
+
+    &__title {
+        @include text-properties('Big-Shoulders', 1.8rem, 700, 0.12rem, 2.155rem);
+        background-color: var(--dark-border);
+        border-left: 0.2rem solid var(--dark-border);
+        overflow: hidden;
+        padding: 0.4rem 0.7rem;
+        position: relative;
+        transition: background-color var(--transition-element);
+    }
+
+    &__title_active {
+        background-color: var(--main-color);
+        border-left: 0.2rem solid var(--main-color);
+        transition: all 0.4s;
+    }
+
+    &__text {
+        @include text-properties($font-size: 0.7rem, $letter-spacing: 0.048rem, $line-height: 0.679rem);
+        background-color: var(--main-background-color);
+        border-left: 0.2rem solid var(--dark-border);
+        color: var(--dark-grey);
+        padding: 0.8rem 5rem 0.8rem 0.8rem;
+        width: 17.88rem;
+    }
+
+    &__link {
+        position: absolute;
+        inset: 0;
+    }
+}
+
+.item_active {
+    user-select: none;
+    cursor: auto;
+    pointer-events: none;
+}
+
+.item_active .item__title {
+    background-color: var(--main-color);
+    border-left: 0.2rem solid var(--main-color);
+    overflow: hidden;
+    padding: 0.4rem 0.7rem;
+    position: relative;
+    transition: all 0.4s;
+}
+
+.item_active .item__text {
+    @include text-properties($font-size: 0.7rem, $letter-spacing: 0.048rem);
+    background-color: var(--main-background-color);
+    border-left: 0.2rem solid var(--main-color);
+    color: var(--dark-grey);
+    padding: 0.8rem 5rem 0.8rem 0.8rem;
+    transition: all 0.4s;
+}
+
+@media (hover: hover) {
+    .item:not(.link_active):hover .item__title {
+        background-color: var(--dark-light-border);
+    }
+}

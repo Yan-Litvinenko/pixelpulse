@@ -1,0 +1,64 @@
+@import '~reset-css/reset.css';
+@import './variables.scss';
+@import './mixin.scss';
+@import './fonts.scss';
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+*::selection {
+    background-color: var(--main-color);
+    color: var(--main-background-color);
+}
+
+*::-webkit-scrollbar {
+    background-color: transparent;
+    width: 0.66rem;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: rgba(var(--data-main-color), 0.4);
+    box-shadow: 0.036rem 0.036rem 0.36rem 0.036rem var(--main-color) inset;
+    border-radius: 32rem;
+}
+
+html {
+    font-size: var(--size);
+}
+
+body {
+    @include text-properties();
+    background: var(--main-background-color);
+    color: var(--main-text-color);
+    overflow-x: hidden;
+    position: relative;
+    text-transform: uppercase;
+}
+
+ul,
+ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+@media (max-width: 1950px) {
+    html {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 1200px) {
+    *::-webkit-scrollbar {
+        width: 0rem;
+        height: 0rem;
+    }
+}

@@ -1,0 +1,15 @@
+@import '@/styles/mixin.scss';
+
+.btn {
+    @include text-properties('Big-Shoulders', 1.8rem, 700, 0.12rem);
+    @include button-escape();
+    background-color: transparent;
+    outline: none;
+}
+
+@media (hover: hover) {
+    .btn:hover {
+        box-shadow: var(--box-shadow);
+        text-shadow: var(--text-shadow);
+    }
+}

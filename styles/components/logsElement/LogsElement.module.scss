@@ -1,0 +1,32 @@
+@import '@/styles/mixin.scss';
+
+.element {
+    @include text-properties('Big-Shoulders', 1.8rem, 700);
+    align-items: center;
+    border: 0.1rem solid var(--main-color);
+    color: var(--main-color);
+    display: grid;
+    gap: 0 0.5rem;
+    grid-template-columns: 3fr 1fr;
+    justify-content: space-between;
+    letter-spacing: 0.12rem;
+    padding: 0.3rem 0.5rem;
+
+    &__date {
+        @include text-properties('Iceberg', 1.4rem);
+        text-align: right;
+    }
+}
+
+@media (max-width: 550px) {
+    .element {
+        font-size: 1.6rem;
+        line-height: 1.6rem;
+        grid-template-rows: auto auto;
+        grid-template-columns: 1fr;
+
+        &__date {
+            text-align: left;
+        }
+    }
+}

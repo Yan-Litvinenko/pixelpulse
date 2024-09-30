@@ -1,0 +1,130 @@
+@import '@/styles/mixin.scss';
+
+.settings {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem 0rem;
+    padding: 1rem 2rem;
+    margin-top: auto;
+    margin-bottom: 2rem;
+}
+
+.audio,
+.visual {
+    @include text-properties('Big-Shoulders', 2rem, 700, 0.12rem);
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    color: var(--main-color);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    transition:
+        border var(--transition-element),
+        box-shadow var(--transition-element),
+        text-shadow var(--transition-element);
+}
+
+.visual {
+    border: 0.1rem solid var(--dark-border);
+    outline: none;
+    padding-right: 0.5rem;
+    padding-top: 0.3rem;
+    line-height: normal;
+}
+
+.visual div {
+    padding: 0.32rem 0.5rem 0rem 0rem;
+    scale: 1.3;
+}
+
+.visual svg path {
+    fill: var(--main-color);
+    transition: filter var(--transition-element);
+}
+
+.audio .checkbox {
+    border: 0.1rem solid var(--main-color);
+    height: 3.3rem;
+    position: relative;
+    width: 3.3rem;
+}
+
+.audio .checkbox::before,
+.audio .checkbox::after {
+    position: absolute;
+    top: 44%;
+    background-color: var(--main-color);
+    content: '';
+    height: 0.3rem;
+    transition:
+        box-shadow var(--transition-element),
+        transform var(--transition-element),
+        top var(--transition-element),
+        right var(--transition-element),
+        width var(--transition-element);
+}
+
+.audio .checkbox::before {
+    right: 1.5rem;
+    top: 55%;
+    transform: rotate(45deg);
+    width: 0.9rem;
+}
+
+.audio .checkbox::after {
+    right: 0.5rem;
+    transform: rotate(-48deg);
+    width: 1.5rem;
+}
+
+.audio .checkbox__deactive::before {
+    right: 0.4rem;
+    top: 45%;
+    transform: rotate(45deg);
+    width: 2.2rem;
+}
+
+.audio .checkbox__deactive::after {
+    right: 0.4rem;
+    transform: rotate(-45deg);
+    width: 2.2rem;
+}
+
+.audio__deactive {
+    opacity: 0.5;
+}
+
+@media (hover: hover) {
+    .audio:hover {
+        text-shadow: var(--text-shadow);
+    }
+
+    .audio:hover .checkbox::before,
+    .audio:hover .checkbox::after {
+        box-shadow: var(--box-shadow);
+    }
+
+    .visual:hover {
+        border-color: var(--main-color);
+        box-shadow: var(--box-shadow);
+        text-shadow: var(--text-shadow);
+    }
+
+    .visual:hover svg path {
+        filter: drop-shadow(var(--box-shadow));
+    }
+}
+
+@media (max-width: 1200px) {
+    .audio,
+    .visual {
+        padding-right: 0;
+    }
+}
+@media (max-width: 450px) {
+    .visual div {
+        scale: 1.1;
+    }
+}

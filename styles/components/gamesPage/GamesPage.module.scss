@@ -1,0 +1,73 @@
+@import '@/styles/mixin.scss';
+
+.games {
+    display: grid;
+    grid-template-columns: minmax(22.8rem, 1fr) auto minmax(0rem, 1fr);
+
+    &__description {
+        @include text-properties();
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        color: var(--dark-grey);
+        justify-self: end;
+        max-width: 22.8rem;
+        text-align: left;
+        width: 100%;
+    }
+
+    &__content {
+        display: grid;
+        grid-template-columns: 22.8rem 22.8rem;
+        gap: 3.2rem 1.6rem;
+    }
+}
+
+@media (max-width: 974px) {
+    .games {
+        row-gap: 1.6rem;
+
+        &__description {
+            gap: 0;
+            grid-column: 1 / -1;
+            margin: 0 auto;
+            max-width: 45.2rem;
+        }
+
+        &__description_text {
+            display: none;
+            justify-self: center;
+            text-align: center;
+        }
+
+        &__description_text:nth-child(1) {
+            display: block;
+        }
+
+        &__content {
+            grid-column: 1 / -1;
+            justify-content: center;
+        }
+    }
+}
+
+@media (max-width: 550px) {
+    .games {
+        justify-items: center;
+
+        &__decription {
+            max-width: 100%;
+        }
+
+        &__content {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+@media (max-width: 370px) {
+    .games__content {
+        justify-items: center;
+        width: 100%;
+    }
+}

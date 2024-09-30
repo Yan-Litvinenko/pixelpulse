@@ -1,0 +1,70 @@
+@import '@/styles/mixin.scss';
+
+.item {
+    display: flex;
+    gap: 0rem 2.8rem;
+    justify-content: flex-end;
+
+    &__title {
+        @include text-properties($font-size: 1.4rem);
+        color: var(--dark-grey);
+        max-width: 18rem;
+        text-align: right;
+    }
+
+    &__text {
+        @include text-properties($font-size: 1.8rem);
+        max-width: 36rem;
+    }
+}
+
+@media (max-width: 1380px) {
+    .item {
+        &__title {
+            font-size: 1.2rem;
+            line-height: 1.2rem;
+        }
+
+        &__text {
+            font-size: 1.5rem;
+            line-height: 1.5rem;
+            max-width: 26.4rem;
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .item {
+        flex-direction: column;
+        row-gap: 1.2rem;
+
+        &__title {
+            max-width: 100%;
+            text-align: left;
+        }
+
+        &__text {
+            max-width: 58.4rem;
+        }
+    }
+}
+
+@media (max-width: 976px) {
+    .item {
+        &__title {
+            max-width: 100%;
+            text-align: left;
+        }
+
+        &__text {
+            max-width: 100%;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .item__text {
+        font-size: 1.6rem;
+        text-align: justify;
+    }
+}
