@@ -13,12 +13,24 @@ import { soundsClickTrigger } from '@/redux/slice/soundsSlice';
 import { usePathname } from 'next/navigation';
 import { useSelector, useDispatch } from 'react-redux';
 import type { AppDispatch } from '@/redux/store';
+import Loading from '@/app/loading';
 
 export default function CreationsLayout({ children }: { children: React.ReactNode }): React.JSX.Element {
     const dispatch = useDispatch<AppDispatch>();
     const { targetProject, projects } = useSelector(creationsSelector);
     const projectName: string = usePathname();
     const path: string = `location: /projects${!isOriginPath(projectName) ? '/' + projects[targetProject].name : ''}`;
+    const [isLoad, setIsLoad] = React.useState(true);
+
+    React.useEffect(() => {
+        setTimeout(() => {
+            setIsLoad(false);
+        }, 150);
+    }, []);
+
+    if (isLoad) {
+        return <Loading />;
+    }
 
     return (
         <section className={styles.creations}>
