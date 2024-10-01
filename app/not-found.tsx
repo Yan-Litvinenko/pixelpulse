@@ -15,7 +15,7 @@ export default function NotFound(): React.JSX.Element {
     };
 
     return (
-        <section className={styles.error} data-text={'404'} data-error>
+        <section className={styles.error} data-text={'404'} data-error="true">
             <h2 className={`${styles.error__title} ${styles.glitch}`} data-text={'404'}>
                 {'404'}
             </h2>

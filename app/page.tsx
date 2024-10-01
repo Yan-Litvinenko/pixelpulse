@@ -70,7 +70,7 @@ export const viewport: Viewport = {
 
 export default function Home(): React.JSX.Element {
     return (
-        <section className={styles.welcome}>
+        <section className={styles.welcome} data-welcome="true">
             <h2 className={styles.welcome__greeting}>HI!</h2>
             <WelcomeContent {...animatedText} />
         </section>

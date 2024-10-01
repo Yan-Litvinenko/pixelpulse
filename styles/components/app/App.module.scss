@@ -36,6 +36,10 @@
     display: none;
 }
 
+.wrapper:has([data-welcome]) {
+    height: 100vh;
+}
+
 .navigation {
     position: absolute;
     left: 50%;

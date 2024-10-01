@@ -14,7 +14,7 @@ export default function useHeaderStatistic(): void {
         const addCoinStatus = getValueToLocalStorage<number | null>('pixelpulse-added-coin-status', null);
 
         if (!addCoinStatus) {
-            setValueToLocalStorage('pixelpulse-added-coin-status', new Date().getTime());
+            setValueToLocalStorage('pixelpulse-added-coin-status', 0);
         }
     }, []);
 }
