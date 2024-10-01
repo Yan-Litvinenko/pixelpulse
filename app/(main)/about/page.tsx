@@ -1,7 +1,7 @@
 import React from 'react';
 import AboutElement from '@/components/aboutElement/AboutElement';
 import Frame from '@/components/frame/Frame';
-import humanJpg from '@/public/assets/images/human.jpg';
+import human from '@/public/assets/images/human.webp';
 import Image from 'next/image';
 import styles from '@/styles/components/about/About.module.scss';
 import type { Metadata } from 'next';
@@ -55,7 +55,7 @@ export default function About(): React.JSX.Element {
                         className={styles.about__img}
                         height={1424}
                         layout="responsive"
-                        src={humanJpg.src}
+                        src={human.src}
                         width={832}
                     />
                 </div>
