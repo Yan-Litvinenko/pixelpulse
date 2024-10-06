@@ -1,4 +1,3 @@
-import customFetch from '@/helpers/customFetch';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { HeaderStatistic } from '@/interface/header/header.interface';
 
@@ -21,10 +20,13 @@ const initialState: HeaderStatisticSlice = {
 };
 
 const fetchHeaderStatistic = createAsyncThunk('headerStatistic/fetchHeaderStatistic', async () => {
-    const [resolveLevel, resolveCoins] = await Promise.all([
-        customFetch<number>('/api/level'),
-        customFetch<number>('/api/coins'),
+    const [responseLevel, responseCoins] = await Promise.all([
+        fetch('/api/level', { method: 'GET' }),
+        fetch('/api/coins', { method: 'GET' }),
     ]);
+
+    const resolveLevel: number = await responseLevel.json();
+    const resolveCoins: number = await responseCoins.json();
 
     return {
         level: resolveLevel,
@@ -39,10 +41,11 @@ const fetchAddCoin = createAsyncThunk<
 >('headerStatistic/fetchAddCoin', async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
 
-    const response: Response = await fetch('/api/addCoins', { method: 'POST' });
-    const updateStatistic: HeaderStatistic = await response.json();
+    const response: Response = await fetch('/api/addCoins', {
+        method: 'POST',
+    });
 
-    return updateStatistic;
+    return response.json();
 });
 
 const headerStatisticSlice = createSlice({

@@ -8,24 +8,24 @@ import CreationsTechnologies from '@/components/creationsTechnologies/CreationsT
 import Frame from '@/components/frame/Frame';
 import isOriginPath from '@/helpers/creations/getOriginPath';
 import Link from 'next/link';
+import Loading from '@/app/loading';
 import { creationsSelector } from '@/redux/selectors';
 import { soundsClickTrigger } from '@/redux/slice/soundsSlice';
 import { usePathname } from 'next/navigation';
 import { useSelector, useDispatch } from 'react-redux';
 import type { AppDispatch } from '@/redux/store';
-import Loading from '@/app/loading';
 
 export default function CreationsLayout({ children }: { children: React.ReactNode }): React.JSX.Element {
     const dispatch = useDispatch<AppDispatch>();
     const { targetProject, projects } = useSelector(creationsSelector);
+    const [isLoad, setIsLoad] = React.useState(true);
     const projectName: string = usePathname();
     const path: string = `location: /projects${!isOriginPath(projectName) ? '/' + projects[targetProject].name : ''}`;
-    const [isLoad, setIsLoad] = React.useState(true);
+
+    const mockLoading = () => new Promise((resolve) => setTimeout(() => resolve(setIsLoad(false)), 150));
 
     React.useEffect(() => {
-        setTimeout(() => {
-            setIsLoad(false);
-        }, 150);
+        mockLoading();
     }, []);
 
     if (isLoad) {

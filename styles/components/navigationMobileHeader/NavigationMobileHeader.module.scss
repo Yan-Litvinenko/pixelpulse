@@ -117,6 +117,18 @@
     }
 }
 
+@keyframes pulse {
+    0% {
+        opacity: 1;
+        scale: 1;
+    }
+
+    100% {
+        opacity: 0;
+        scale: 1.4;
+    }
+}
+
 @media (hover: hover) {
     .coins__add_box:hover .pulse {
         animation: none;

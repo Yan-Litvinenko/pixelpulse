@@ -1,9 +1,10 @@
 'use client';
 
 import React from 'react';
-import styles from '@/styles/components/header/Header.module.scss';
 import getAddCoinStatus from '@/helpers/header/getAddCoinStatus';
+import useClient from '@/hooks/useClient';
 import setValueToLocalStorage from '@/helpers/setValueToLocalStorage';
+import styles from '@/styles/components/header/Header.module.scss';
 import { fetchAddCoin } from '@/redux/slice/headerStatisticSlice';
 import { Triangle } from 'react-loader-spinner';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,12 +15,8 @@ export default function HeaderStatistics(): React.JSX.Element {
     const dispatch = useDispatch<AppDispatch>();
     const { error, loading, statistic } = useSelector(headerStatisticSelector);
     const { level, coins } = statistic;
-    const [isClient, setIsClient] = React.useState(false);
     const [addStatus, setAddStatus] = React.useState<boolean>(false);
-
-    React.useEffect(() => {
-        setIsClient(true);
-    }, []);
+    const isClient = useClient();
 
     React.useEffect(() => {
         setAddStatus(getAddCoinStatus());

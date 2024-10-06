@@ -1,7 +1,7 @@
 import type { GithubRespone } from '@/interface/logs/Github.interface';
 
-const ACCESS_TOKEN: string | undefined = process.env.REACT_APP_GITHUB_TOKEN;
-const URL: string | undefined = process.env.REACT_APP_GITHUB_URL;
+const ACCESS_TOKEN: string | undefined = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
+const URL: string | undefined = process.env.NEXT_PUBLIC_GITHUB_URL;
 
 export default async function loadCommits(): Promise<GithubRespone[]> {
     if (!ACCESS_TOKEN || !URL) {
