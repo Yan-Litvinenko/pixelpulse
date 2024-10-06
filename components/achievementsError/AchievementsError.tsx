@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from '@/styles/components/achievementsError/AchievementsError.module.scss';
-// import { useModal } from '../../hooks/useModal';
+import useModal from '@/hooks/useModal';
 
 export default function AchievementsError(): React.JSX.Element {
-    // const modal = useModal('social');
+    const modal = useModal('social');
 
     return (
         <ul className={styles.error}>
@@ -19,7 +19,7 @@ export default function AchievementsError(): React.JSX.Element {
             </li>
             <li className={styles.error__item}>
                 If the error persists, please write to{' '}
-                <span onClick={() => {} /*  modal.open()*/} data-testid="achievements-modal-error">
+                <span onClick={() => modal.open()} data-testid="achievements-modal-error">
                     me
                 </span>
             </li>

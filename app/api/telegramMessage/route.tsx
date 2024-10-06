@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-const TOKEN: string | undefined = process.env.REACT_APP_TELEGRAM_TOKEN;
-const CHAT_ID: string | undefined = process.env.REACT_APP_TELEGRAM_CHAT;
+const TOKEN: string | undefined = process.env.NEXT_PUBLIC_TELEGRAM_TOKEN;
+const CHAT_ID: string | undefined = process.env.NEXT_PUBLIC_TELEGRAM_CHAT;
 
 export async function POST(req: NextRequest): Promise<
     | NextResponse<string>

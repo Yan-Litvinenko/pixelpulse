@@ -2,9 +2,9 @@
 
 import React from 'react';
 import Cross from '../cross/Cross';
-import NavigationMobileHeader from '../navigationMobileHeader/NavigationMobileHeader';
 import NavigationMobileButtons from '../navigationMobileButtons/NavigationMobileButtons';
 import NavigationMobileContent from '../navigationMobileContent/NavigationMobileContent';
+import NavigationMobileHeader from '../navigationMobileHeader/NavigationMobileHeader';
 import NavigationMobileSettings from '../navigationMobileSettings/NaviagtionMobileSettings';
 import useModal from '../../hooks/useModal';
 import styles from '@/styles/components/modalNavigation/ModalNavigation.module.scss';

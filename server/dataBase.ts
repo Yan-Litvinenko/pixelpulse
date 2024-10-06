@@ -119,11 +119,11 @@ class DataBase {
 }
 
 const dataBase: DataBase = new DataBase({
-    host: process.env.DATA_BASE_HOST!,
-    port: Number(process.env.DATA_BASE_PORT!),
-    user: process.env.DATA_BASE_USER!,
-    password: process.env.DATA_BASE_PASSWORD!,
-    database: process.env.DATA_BASE_NAME!,
+    host: process.env.NEXT_PUBLIC_DATA_BASE_HOST!,
+    port: Number(process.env.NEXT_PUBLIC_DATA_BASE_PORT!),
+    user: process.env.NEXT_PUBLIC_DATA_BASE_USER!,
+    password: process.env.NEXT_PUBLIC_DATA_BASE_PASSWORD!,
+    database: process.env.NEXT_PUBLIC_DATA_BASE_NAME!,
 });
 
 export default dataBase;

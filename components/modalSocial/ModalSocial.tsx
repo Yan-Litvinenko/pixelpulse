@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from '@/styles/components/modalSocial/ModalSocial.module.scss';
 import Cross from '../cross/Cross';
 import FormContent from '../formContent/FormContent';
 import ModalBoxButton from '../modalBoxButton/ModalBoxButton';
@@ -7,6 +6,7 @@ import ModalLoader from '../modalLoader/ModalLoader';
 import ModalSendState from '../modalSendState/ModalSendState';
 import stopPropagation from '@/helpers/stopPropagation';
 import useModal from '../../hooks/useModal';
+import styles from '@/styles/components/modalSocial/ModalSocial.module.scss';
 import { useFormSubmit } from '../../hooks/useFormSubmit';
 import type { UseFormSubmit } from '@/interface/form/form.interface';
 

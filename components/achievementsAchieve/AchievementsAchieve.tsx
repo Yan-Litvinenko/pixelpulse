@@ -1,6 +1,6 @@
 import React from 'react';
-import Image from 'next/image';
 import epic from '@/public/assets/images/epic.png';
+import Image from 'next/image';
 import legendary from '@/public/assets/images/legendary.png';
 import rare from '@/public/assets/images/rare.png';
 import unusual from '@/public/assets/images/unusual.png';

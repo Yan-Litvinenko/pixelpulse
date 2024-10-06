@@ -3,6 +3,7 @@
 import React from 'react';
 import getAddCoinStatus from '@/helpers/header/getAddCoinStatus';
 import setValueToLocalStorage from '@/helpers/setValueToLocalStorage';
+import useClient from '@/hooks/useClient';
 import styles from '@/styles/components/navigationMobileHeader/NavigationMobileHeader.module.scss';
 import { fetchAddCoin } from '@/redux/slice/headerStatisticSlice';
 import { headerStatisticSelector } from '@/redux/selectors';
@@ -14,12 +15,8 @@ export default function NavigationMobileHeader(): React.JSX.Element {
     const dispatch = useDispatch<AppDispatch>();
     const { error, loading, statistic } = useSelector(headerStatisticSelector);
     const { level, coins } = statistic;
-    const [isClient, setIsClient] = React.useState(false);
+    const isClient = useClient();
     const [addStatus, setAddStatus] = React.useState<boolean>(false);
-
-    React.useEffect(() => {
-        setIsClient(true);
-    }, []);
 
     React.useEffect(() => {
         setAddStatus(getAddCoinStatus());
