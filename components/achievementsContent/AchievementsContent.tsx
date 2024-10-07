@@ -31,7 +31,7 @@ export default function AchievementsContent(): React.JSX.Element {
         <div className={styles.achievements__content}>
             <AchievementsProgress />
 
-            <div className={styles.achievements__achievements}>
+            <section className={styles.achievements__achievements}>
                 {isClient ? (
                     loading ? (
                         <Triangle
@@ -64,7 +64,7 @@ export default function AchievementsContent(): React.JSX.Element {
                 ) : (
                     <></>
                 )}
-            </div>
+            </section>
 
             <div className={styles.switchers}>
                 <AchievementsToggle

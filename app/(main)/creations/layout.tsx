@@ -37,20 +37,20 @@ export default function CreationsLayout({ children }: { children: React.ReactNod
             <h2 className={styles.creations__title}>creations</h2>
 
             <div className={styles.creations__inner}>
-                <div className={styles.creations__details_block}>
+                <section className={styles.creations__details_block}>
                     <CreationsDetails />
                     <CreationsTechnologies />
                     <CreationsAbout />
-                </div>
+                </section>
 
-                <div className={styles.xplorer_block}>
-                    <section className={styles.xplorer}>
+                <section className={styles.xplorer_block}>
+                    <article className={styles.xplorer}>
                         <h3 className={styles.xplorer__title}>file xplorer</h3>
                         <h4 className={styles.xplorer__path}>{path}</h4>
 
                         {children}
                         <Frame className="" />
-                    </section>
+                    </article>
 
                     <div className={styles.box_button}>
                         <Link
@@ -62,7 +62,7 @@ export default function CreationsLayout({ children }: { children: React.ReactNod
                             Back to all projects
                         </Link>
                     </div>
-                </div>
+                </section>
             </div>
         </section>
     );

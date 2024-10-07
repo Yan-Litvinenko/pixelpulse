@@ -6,18 +6,19 @@ import type { GithubRespone } from '@/interface/logs/Github.interface';
 
 export default function LogsProject({ commits }: { commits: GithubRespone[] }): React.JSX.Element {
     return (
-        <ul className={styles.project}>
+        <section className={styles.project}>
             <LogsElement
                 className={styles.project__title}
                 date={commits.length && commits ? getLastUpdate(commits as GithubRespone[]) : 'error'}
                 textContent={'LOG ENTRY: PROJECT DEVELOPMENT UPDATE'}
             />
-            <li className={styles.project__item}>
-                LOCATION: <span>Belarus</span>
-            </li>
-            <li className={styles.project__item}>
-                PROJECT STATUS: <span>In Development</span>
-            </li>
-        </ul>
+            <article className={styles.project__item}>
+                <h4>LOCATION:</h4>
+                <h3>Belarus</h3>
+            </article>
+            <article className={styles.project__item}>
+                <h4>PROJECT STATUS:</h4> <h3>In Development</h3>
+            </article>
+        </section>
     );
 }

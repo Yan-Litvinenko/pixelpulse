@@ -19,6 +19,7 @@ export default function WelcomeContent(props: AnimatedText): React.JSX.Element {
     const keyboardSound = React.useRef<HTMLAudioElement | null>(null);
     const skipButton = React.useRef<null | HTMLButtonElement>(null);
     const [skipStatus, setSkipStatus] = React.useState<boolean>(false);
+    const animationEnd = React.useRef<boolean>(false);
 
     const title: UsePrintedText = usePrintedText(props.title, 0);
     const textOne: UsePrintedText = usePrintedText(props.text_1, props.title.length * printSpeed);
@@ -31,15 +32,20 @@ export default function WelcomeContent(props: AnimatedText): React.JSX.Element {
         if (event.target === skipButton.current) return;
 
         if (soundsState) {
-            keyboardSound.current = new Audio('assets/audio/pressKeyboard.mp3');
-
-            if (!skipStatus && !textTwo.animationEnd) {
+            if (!skipStatus && !textTwo.animationEnd && !animationEnd.current) {
+                keyboardSound.current = new Audio('assets/audio/pressKeyboard.mp3');
                 keyboardSound.current.play();
             }
         }
     };
 
     React.useEffect(() => {
+        setTimeout(
+            () => {
+                animationEnd.current = true;
+            },
+            (props.title.length + props.text_1.length) * printSpeed,
+        );
         window.addEventListener('click', keyboardSoundInteraction, { once: true });
         return () => window.removeEventListener('click', keyboardSoundInteraction);
     }, []);
@@ -53,7 +59,7 @@ export default function WelcomeContent(props: AnimatedText): React.JSX.Element {
     }, [textTwo.animationEnd, skipStatus]);
 
     return (
-        <div className={styles.welcome__content}>
+        <section className={styles.welcome__content}>
             <div className={styles.welcome__item}>
                 <div className={`${styles.welcome__title} ${styles.hidden}`}>{props.title}</div>
                 <h1 className={styles.welcome__title}>
@@ -98,6 +104,6 @@ export default function WelcomeContent(props: AnimatedText): React.JSX.Element {
                 skip animation
                 <span className={styles.skip__quotes}>&#xBB;</span>
             </button>
-        </div>
+        </section>
     );
 }

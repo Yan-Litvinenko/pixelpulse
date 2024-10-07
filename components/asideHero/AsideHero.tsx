@@ -13,13 +13,13 @@ export default function AsideHero(): React.JSX.Element {
             </article>
 
             <article className={styles.hero__element}>
-                <h3 className={styles.hero__title}>Occupation</h3>
-                <p className={styles.hero__text}>Frontend developer</p>
+                <h4 className={styles.hero__title}>Occupation</h4>
+                <h3 className={styles.hero__text}>Frontend developer</h3>
             </article>
 
             <article className={styles.hero__element}>
-                <h3 className={styles.hero__title}>Corporation</h3>
-                <p className={styles.hero__text}>Student</p>
+                <h4 className={styles.hero__title}>Corporation</h4>
+                <h3 className={styles.hero__text}>Student</h3>
             </article>
 
             <HeroContacts
@@ -46,8 +46,8 @@ export default function AsideHero(): React.JSX.Element {
             />
 
             <article className={styles.motto}>
-                <h3 className={styles.motto__title}>motto:</h3>
-                <p className={styles.motto__text}>Bonum modulum est, quod connecti potest.</p>
+                <h4 className={styles.motto__title}>motto:</h4>
+                <h3 className={styles.motto__text}>Bonum modulum est, quod connecti potest.</h3>
             </article>
         </aside>
     );
