@@ -14,9 +14,11 @@
 
     &__item {
         @include text-properties($line-height: 1.552rem);
+        display: flex;
+        column-gap: 0.4rem;
     }
 
-    &__item span {
+    &__item h3 {
         color: var(--dark-grey);
     }
 }

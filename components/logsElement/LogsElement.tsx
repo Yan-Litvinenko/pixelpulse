@@ -6,10 +6,12 @@ const LogsElement = (props: LogsElementProps): React.JSX.Element => {
     const { className, textContent, date } = props;
 
     return (
-        <li className={`${styles.element} ${className}`}>
+        <article className={`${styles.element} ${className}`}>
             <h3 className={styles.element__title}>{textContent}</h3>
-            <span className={styles.element__date}>date:{date}</span>
-        </li>
+            <time className={styles.element__date} dateTime={date}>
+                date:{date}
+            </time>
+        </article>
     );
 };
 
