@@ -4,11 +4,8 @@ import useModal from '@/hooks/useModal';
 import styles from '@/styles/components/NavigationMobileContent/NavigationMobileContent.module.scss';
 import { Hexagon } from '../svgIcon/SvgIcon';
 import { nanoid } from '@reduxjs/toolkit';
-import { soundsClickTrigger } from '@/redux/slice/soundsSlice';
-import { useDispatch } from 'react-redux';
 import { usePathname } from 'next/navigation';
 import type { Page } from '@/interface/interface';
-import type { AppDispatch } from '@/redux/store';
 
 const locations: Record<string, string> = {
     beginning: '/beginning',
@@ -19,13 +16,11 @@ const locations: Record<string, string> = {
 };
 
 export default function NavigationMobileContent(): React.JSX.Element {
-    const dispatch: AppDispatch = useDispatch();
     const pathname: string = usePathname();
     const closeNavigationMobile = useModal('navigationMobile').close;
 
     const handleClick = (isActive: boolean): void => {
         if (!isActive) {
-            dispatch(soundsClickTrigger());
             closeNavigationMobile();
         }
     };
