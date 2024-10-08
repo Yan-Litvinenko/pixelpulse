@@ -8,6 +8,7 @@ import useMedia from '@/hooks/useMedia';
 import useModalCloseByKey from '@/hooks/useModalCloseByKey';
 import useMusic from '@/hooks/useMusic';
 import useSounds from '@/hooks/useSounds';
+import settings from '@/helpers/SettingsColor';
 import appStyles from '@/styles/components/app/App.module.scss';
 
 export default function InstallStateProvider({ children }: { children: React.ReactNode }): React.JSX.Element {
@@ -18,6 +19,10 @@ export default function InstallStateProvider({ children }: { children: React.Rea
     useModalCloseByKey();
     useMusic();
     useSounds();
+
+    React.useEffect(() => {
+        settings.init();
+    }, []);
 
     return <>{children}</>;
 }

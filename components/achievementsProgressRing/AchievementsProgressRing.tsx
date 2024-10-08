@@ -15,8 +15,8 @@ export default function AchievementsProgressRing({ percent }: { percent: number 
     return isClient ? (
         <svg
             className={styles.ring}
-            width={square}
-            height={square}
+            width={`${square}rem`}
+            height={`${square}rem`}
             viewBox={`0 0 ${square} ${square}`}
             data-testid="svg"
         >

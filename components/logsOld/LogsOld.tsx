@@ -9,9 +9,9 @@ import type { CommitTransform, GithubRespone } from '@/interface/logs/Github.int
 
 export default function LogsOld({ commits }: { commits: GithubRespone[] }): React.JSX.Element {
     return (
-        <article>
+        <section>
             <h4 className={styles.title}>older logs:</h4>
-            <ul className={styles.list}>
+            <div className={styles.list}>
                 {transformCommits(commits).map((commit) => (
                     <LogsElement
                         key={nanoid()}
@@ -20,7 +20,7 @@ export default function LogsOld({ commits }: { commits: GithubRespone[] }): Reac
                         textContent={(commit as CommitTransform).message || 'error'}
                     />
                 ))}
-            </ul>
-        </article>
+            </div>
+        </section>
     );
 }

@@ -10,6 +10,11 @@
     justify-content: center;
     max-width: 11.2rem;
 
+    & img {
+        width: 100%;
+        height: 100%;
+    }
+
     &__image {
         padding: 0.8rem 1.5rem 0rem;
     }

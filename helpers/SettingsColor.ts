@@ -99,4 +99,6 @@ class SettingsColor {
     }
 }
 
-export default SettingsColor;
+const settings = new SettingsColor();
+
+export default settings;

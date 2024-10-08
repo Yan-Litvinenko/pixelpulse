@@ -1,8 +1,8 @@
 import React from 'react';
-import SettingsColor from '@/helpers/SettingsColor';
+import settings from '@/helpers/SettingsColor';
 
 export default function useModalSettings() {
-    const settingsColor = React.useRef<SettingsColor | null>(null);
+    const settingsColor = React.useRef(settings);
     const [enterBtnText, setEnterBtnText] = React.useState<string>('write to disk [enter]');
     const [inputValue, setInputValue] = React.useState<{
         hue: number;
@@ -34,7 +34,6 @@ export default function useModalSettings() {
     };
 
     React.useEffect(() => {
-        settingsColor.current = new SettingsColor();
         window.addEventListener('keydown', handleEnterKey);
         setInputValue(() => {
             return {
