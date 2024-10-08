@@ -1,7 +1,7 @@
 type LOCAL_STORAGE_KEY = 'yan-litvinenko-cv-size' | 'yan-litvinenko-cv-hue' | 'yan-litvinenko-cv-image-color';
 type CSS_VARIABLE = '--size' | '--data-hue' | '--data-image-color';
 
-class SettingsColor {
+class Settings {
     private readonly CSS: CSSStyleDeclaration;
 
     private readonly SIZE_LS_KEY: LOCAL_STORAGE_KEY;
@@ -99,4 +99,4 @@ class SettingsColor {
     }
 }
 
-export default SettingsColor;
+export default Settings;

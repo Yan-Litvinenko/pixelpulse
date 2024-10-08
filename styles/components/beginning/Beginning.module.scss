@@ -97,9 +97,12 @@
 
         &__background_box {
             border: 0.1rem solid var(--frame-border-color);
-            aspect-ratio: 91 / 51;
             height: auto;
             width: auto;
+        }
+
+        &__background_box img {
+            aspect-ratio: 91 / 51;
         }
 
         &__background_frame {
