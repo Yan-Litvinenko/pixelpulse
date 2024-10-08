@@ -26,12 +26,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }):
     const path: string = usePathname();
     const isBeginning: boolean = path.includes('beginning');
     const isClient: boolean = useClient();
-    const [isLoad, setIsLoad] = React.useState<boolean>(false);
     const { isMedium, isSmall } = useSelector(mediaQuerySelector);
-
-    React.useEffect(() => {
-        setIsLoad(true);
-    }, []);
 
     const renderAsideHero = (): null | React.JSX.Element => {
         if (!isBeginning && isSmall) {
@@ -53,7 +48,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }):
         return null;
     };
 
-    return isLoad ? (
+    return isClient ? (
         <>
             <Header />
             {renderAsideHero()}
