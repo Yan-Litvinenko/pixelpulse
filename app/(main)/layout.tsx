@@ -22,7 +22,7 @@ const locations: Record<string, string> = {
     games: '/games',
 };
 
-export default function MainLayout({ children }: { children: React.ReactNode }): React.JSX.Element {
+export default function MainLayout({ children }: { children: React.ReactNode }): React.JSX.Element | null {
     const path: string = usePathname();
     const isBeginning: boolean = path.includes('beginning');
     const isClient: boolean = useClient();
@@ -65,7 +65,5 @@ export default function MainLayout({ children }: { children: React.ReactNode }):
             <Navigation locations={locations} />
             {renderNavigationMobileButtons()}
         </>
-    ) : (
-        <></>
-    );
+    ) : null;
 }
