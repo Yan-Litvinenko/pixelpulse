@@ -1,5 +1,6 @@
+import fetchGraphQl from '@/helpers/fetchGraphql';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import customFetch from '@/helpers/customFetch';
+import { GET_ALL_ACHIEVEMENTS } from '@/app/api/graphql/query';
 import type { Achieve } from '@/interface/achievements/achievements.interface';
 
 type AchievementsSlice = {
@@ -21,8 +22,8 @@ const initialState: AchievementsSlice = {
 };
 
 const fetchAchievements = createAsyncThunk('achievements/fetchAchievements', async (): Promise<Achieve[]> => {
-    const resolveAchievements = await customFetch<Achieve[]>('/api/achievements');
-    return resolveAchievements;
+    const resolveAchievements = await fetchGraphQl<{ getAllAchievements: Achieve[] }>(GET_ALL_ACHIEVEMENTS);
+    return resolveAchievements.getAllAchievements;
 });
 
 const achievedCount = (allAchievements: Achieve[]): number =>
