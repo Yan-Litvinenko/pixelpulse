@@ -5,8 +5,8 @@ export type ExecutionStatus = 'achieved' | 'in progress';
 export type Achieve = {
     date: string;
     description: string;
-    rarity: string;
-    status: string;
+    rarity: Rarity;
+    status: ExecutionStatus;
     title: string;
 };
 
