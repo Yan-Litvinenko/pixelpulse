@@ -42,16 +42,20 @@
 
 .redux {
     fill: var(--main-color);
-    height: 2rem;
+    height: 2.5rem;
     left: 50%;
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 2.2rem;
+    width: 2.5rem;
 }
 
 .nextjs {
-    width: 3rem;
+    width: 3.5rem;
+}
+
+.graphql {
+    width: 2.5rem;
 }
 
 .image {

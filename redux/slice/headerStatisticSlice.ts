@@ -1,11 +1,10 @@
+import fetchGraphQl from '@/helpers/fetchGraphql';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import type { HeaderStatistic } from '@/interface/header/header.interface';
+import { GET_STATISTIC, UPDATE_STATISTIC } from '@/app/api/graphql/query';
+import type { HeaderStatistic, Statistic } from '@/interface/header/header.interface';
 
 type HeaderStatisticSlice = {
-    statistic: {
-        level: number;
-        coins: number;
-    };
+    statistic: Statistic;
     loading: boolean;
     error: string | null;
 };
@@ -19,33 +18,21 @@ const initialState: HeaderStatisticSlice = {
     error: null,
 };
 
-const fetchHeaderStatistic = createAsyncThunk('headerStatistic/fetchHeaderStatistic', async () => {
-    const [responseLevel, responseCoins] = await Promise.all([
-        fetch('/api/level', { method: 'GET' }),
-        fetch('/api/coins', { method: 'GET' }),
-    ]);
-
-    const resolveLevel: number = await responseLevel.json();
-    const resolveCoins: number = await responseCoins.json();
-
-    return {
-        level: resolveLevel,
-        coins: resolveCoins,
-    };
+const fetchHeaderStatistic = createAsyncThunk<Statistic>('headerStatistic/fetchHeaderStatistic', async () => {
+    const resolveStatistic = await fetchGraphQl<{ getStatistic: Statistic }>(GET_STATISTIC);
+    const { level, coins } = resolveStatistic.getStatistic as Statistic;
+    return { level, coins };
 });
 
 const fetchAddCoin = createAsyncThunk<
-    HeaderStatistic,
+    Statistic,
     React.MouseEvent<HTMLButtonElement, MouseEvent>,
     { rejectValue: string }
 >('headerStatistic/fetchAddCoin', async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
-
-    const response: Response = await fetch('/api/addCoins', {
-        method: 'POST',
-    });
-
-    return response.json();
+    const updateStatistic = await fetchGraphQl<{ addCoinsAndUpdateLevel: Statistic }>(UPDATE_STATISTIC);
+    const { level, coins } = updateStatistic.addCoinsAndUpdateLevel;
+    return { level, coins };
 });
 
 const headerStatisticSlice = createSlice({

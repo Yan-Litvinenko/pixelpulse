@@ -12,7 +12,7 @@ const initialState: CreationsSlice = {
         images: [],
         link: '',
         name: 'pixelpulse',
-        technologies: ['github', 'ts', 'nextjs', 'redux', 'mysql'],
+        technologies: ['ts', 'redux', 'nextjs', 'graphql', 'mysql'],
     },
     projects: [
         {

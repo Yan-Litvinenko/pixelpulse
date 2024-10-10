@@ -1,5 +1,7 @@
-import type { Connection, FieldPacket, RowDataPacket } from 'mysql2/promise';
+import getZero from '@/helpers/getZero';
 import { createConnection } from 'mysql2/promise';
+import type { Connection, FieldPacket, RowDataPacket } from 'mysql2/promise';
+import type { Achieve } from '@/interface/achievements/achievements.interface';
 
 interface DatabaseConfig {
     host: string;
@@ -50,14 +52,14 @@ class DataBase {
         }
     }
 
-    async getDataAdminTable(columnName: string): Promise<string | null> {
+    async getStatistic(columnName: string): Promise<string | null> {
         try {
             await this.connect();
             const [rows]: [RowDataPacket[], FieldPacket[]] = await this.db!.query(
                 `SELECT ${columnName} FROM admin LIMIT 1`,
             );
             if (rows.length > 0) {
-                return rows[0][columnName];
+                return rows[0][columnName] as string;
             }
             return null;
         } catch (error) {
@@ -77,13 +79,19 @@ class DataBase {
         }
     }
 
-    async getAchievements(): Promise<RowDataPacket[]> {
+    async getAllAchievements(): Promise<Achieve[]> {
         try {
             await this.connect();
-            const [rows]: [RowDataPacket[], FieldPacket[]] = await this.db!.execute('SELECT * FROM achievements');
-            return rows;
+
+            if (this.db) {
+                const rows: [RowDataPacket[], FieldPacket[]] = await this.db.execute('SELECT * FROM achievements');
+                return rows[0] as Achieve[];
+            }
+
+            console.error('Request get achievements. "this.db" === undefined');
+            return [];
         } catch (error) {
-            console.error('Request execution error:', error);
+            console.error('Request get achievements execution error:', error);
             return [];
         }
     }
@@ -99,18 +107,14 @@ class DataBase {
 
             const dateObject: Date = new Date();
             const year: number = dateObject.getFullYear();
-            const month: string = this.getZero(dateObject.getMonth() + 1);
-            const day: string = this.getZero(dateObject.getDate());
+            const month: string = getZero(dateObject.getMonth() + 1);
+            const day: string = getZero(dateObject.getDate());
             const date: string = `${year}.${month}.${day}`;
 
             await this.db!.execute(query, [status, date, description]);
         } catch (error) {
             console.error('Request execution error:', error);
         }
-    }
-
-    getZero(number: number): string {
-        return number < 10 ? `0${number}` : `${number}`;
     }
 
     levelUp(countCoins: number): number {

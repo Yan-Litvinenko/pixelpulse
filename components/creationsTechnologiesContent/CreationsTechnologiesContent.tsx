@@ -4,7 +4,7 @@ import React from 'react';
 import styles from '@/styles/components/creationsTechnologiesContent/CreationsTechnologiesContent.module.scss';
 import { creationsSelector } from '@/redux/selectors';
 import { Figma, GitHub, Gulp, HexagonBorder, Html, JS, NextJS, Redux } from '../svgIcon/SvgIcon';
-import { MySql, NodeJS, ReactIcon, Sass, Ts, Webpack, Wordpress } from '../svgIcon/SvgIcon';
+import { MySql, NodeJS, ReactIcon, Sass, Ts, Webpack, Wordpress, Graphql } from '../svgIcon/SvgIcon';
 import { nanoid } from '@reduxjs/toolkit';
 import { usePathname } from 'next/navigation';
 import { useSelector } from 'react-redux';
@@ -21,6 +21,7 @@ const technologies: Technologies = {
     react: ReactIcon,
     redux: Redux,
     nextjs: NextJS,
+    graphql: Graphql,
     sass: Sass,
     ts: Ts,
     webpack: Webpack,

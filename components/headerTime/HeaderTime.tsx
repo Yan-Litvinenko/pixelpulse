@@ -1,9 +1,11 @@
 'use client';
 
 import React from 'react';
-import useTime from '@/hooks/useTime';
+import fetchGraphQl from '@/helpers/fetchGraphql';
 import useModal from '../../hooks/useModal';
+import useTime from '@/hooks/useTime';
 import styles from '@/styles/components/headerTime/HeaderTime.module.scss';
+import { GET_SERVER_TIME } from '@/app/api/graphql/query';
 
 export default function HeaderTime(): React.JSX.Element {
     const openCredits = useModal('credits').open;
@@ -12,10 +14,8 @@ export default function HeaderTime(): React.JSX.Element {
 
     React.useEffect(() => {
         (async () => {
-            const response: Response = await fetch('/api/serverTime');
-            const serverTime: string = await response.json();
-
-            updateServerTime(serverTime);
+            const serverTime = await fetchGraphQl<{ getServerTime: { serverTime: string } }>(GET_SERVER_TIME);
+            updateServerTime(serverTime.getServerTime.serverTime);
             updateLocalTime(`${new Date().toISOString()}`);
         })();
     }, []);

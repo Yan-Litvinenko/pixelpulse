@@ -5,6 +5,7 @@ declare const styles: {
     technologies_icon: string;
     redux: string;
     nextjs: string;
+    graphql: string;
     image: string;
     folder: string;
     joystick_left: string;

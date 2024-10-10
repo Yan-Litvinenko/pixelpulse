@@ -1,5 +1,8 @@
-export type HeaderStatistic = {
+export type Statistic = {
     level: number;
     coins: number;
-    addStatus: boolean;
 };
+
+export type HeaderStatistic = {
+    addStatus: boolean;
+} & Statistic;
