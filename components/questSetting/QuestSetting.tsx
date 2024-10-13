@@ -12,8 +12,8 @@ import type { AppDispatch } from '@/redux/store';
 
 export default function QuestSetting(): React.JSX.Element {
     const dispatch = useDispatch<AppDispatch>();
-    const { musicState } = useSelector(musicSelector);
-    const { soundsState } = useSelector(soundsSelector);
+    const musicState = useSelector(musicSelector);
+    const soundsState = useSelector(soundsSelector);
 
     const closeNavigationMobile = useModal('navigationMobile').close;
     const openModalSettings = useModal('settings').open;
@@ -33,9 +33,9 @@ export default function QuestSetting(): React.JSX.Element {
     };
 
     React.useEffect(() => {
-        setMusicClass(getClassState(musicState));
-        setSoundsClass(getClassState(soundsState));
-    }, [soundsState, musicState]);
+        setMusicClass(getClassState(musicState.musicState));
+        setSoundsClass(getClassState(soundsState.soundsState));
+    }, [soundsState.soundsState, musicState.musicState]);
 
     return (
         <div className={styles.settings}>
