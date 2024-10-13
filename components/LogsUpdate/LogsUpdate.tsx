@@ -13,7 +13,7 @@ import type { AppDispatch } from '@/redux/store';
 export default function LogsUpdate({ update }: { update: UpdateItem[] }): React.JSX.Element {
     const dispatch = useDispatch<AppDispatch>();
 
-    const { isMedium } = useSelector(mediaQuerySelector);
+    const mediaQuery = useSelector(mediaQuerySelector);
     const [expandStates, clippedIndexes, setExpandStates, setRef] = useLogsUpdate(update, styles.element__text_clip);
 
     const detail = (index: number): void => {
@@ -40,7 +40,7 @@ export default function LogsUpdate({ update }: { update: UpdateItem[] }): React.
                             {element.text}
                         </p>
 
-                        {isMedium ? (
+                        {mediaQuery.isMedium ? (
                             isClipped ? (
                                 <button className={styles.element__expend} type="button" onClick={() => detail(index)}>
                                     {expandStates[index] ? '-collapse' : '+expand'}
