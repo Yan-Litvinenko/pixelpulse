@@ -1,0 +1,24 @@
+@import '@/styles/mixin.scss';
+
+.project {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem 0rem;
+    margin-bottom: 1.8rem;
+
+    &__title {
+        border: none;
+        background-color: var(--main-color);
+        color: #000;
+    }
+
+    &__item {
+        @include text-properties($line-height: 1.552rem);
+        display: flex;
+        column-gap: 0.4rem;
+    }
+
+    &__item h3 {
+        color: var(--dark-grey);
+    }
+}

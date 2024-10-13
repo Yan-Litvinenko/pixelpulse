@@ -1,0 +1,28 @@
+.top_left,
+.top_right,
+.bottom_left,
+.bottom_right {
+    position: absolute;
+    stroke: var(--main-color);
+    z-index: 3;
+}
+
+.top_left {
+    top: -0.1rem;
+    left: -0.1rem;
+}
+
+.top_right {
+    top: -0.1rem;
+    right: -0.1rem;
+}
+
+.bottom_left {
+    bottom: -0.1rem;
+    left: -0.1rem;
+}
+
+.bottom_right {
+    bottom: -0.1rem;
+    right: -0.1rem;
+}

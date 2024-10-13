@@ -1,0 +1,12 @@
+.background {
+    position: absolute;
+    inset: 0;
+    background-color: var(--main-darklight-color);
+    filter: var(--modal-filter);
+}
+
+@media (max-width: 1200px) {
+    .background {
+        display: none;
+    }
+}

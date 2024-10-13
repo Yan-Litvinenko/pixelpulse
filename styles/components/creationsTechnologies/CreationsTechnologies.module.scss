@@ -1,0 +1,35 @@
+@import '@/styles/mixin.scss';
+
+.technologies {
+    border: 0.1rem solid var(--frame-border-color);
+    max-width: 33rem;
+    padding: 1.2rem;
+
+    &__title {
+        @include text-properties();
+        background-color: var(--main-darklight-color);
+        margin-bottom: 2rem;
+        overflow: hidden;
+        padding: 0.5rem 0.8rem 0.4rem 0.8rem;
+        position: relative;
+    }
+}
+
+@media (max-width: 1380px) {
+    .technologies {
+        grid-column: 1 / 2;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .technologies {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 400px) {
+    .technologies {
+        padding: 0.56rem;
+    }
+}

@@ -1,0 +1,82 @@
+@import '@/styles/mixin.scss';
+
+.title {
+    @include text-properties('Big-Shoulders', 1.8rem, 700, 0.12rem);
+    color: var(--main-color);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem 0rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.select {
+    @include text-properties('Iceberg');
+    background-color: var(--main-background-color);
+    border: 0.1rem solid var(--dark-light-border);
+    color: var(--dark-grey);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 4.5rem;
+    justify-content: center;
+    outline: none;
+    padding: 0 1.5rem;
+    position: relative;
+    text-transform: uppercase;
+    z-index: 3;
+
+    &::before,
+    &::after {
+        background-color: var(--main-color);
+        cursor: pointer;
+        content: '';
+        display: block;
+        height: 0.3rem;
+        position: absolute;
+        right: 2rem;
+        top: 50%;
+        transform: rotate(50deg);
+        transition: transform var(--transition-element);
+        width: 1.6rem;
+    }
+
+    &::after {
+        right: 1rem;
+        transform: rotate(-50deg);
+    }
+
+    &__content {
+        background-color: var(--main-background-color);
+        border: 0.01rem solid var(--dark-light-border);
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem 0rem;
+        left: 0;
+        padding: 0.82rem 1.5rem;
+        position: absolute;
+        top: calc(100% + 0.5rem);
+        width: 100%;
+    }
+
+    &__option {
+        position: relative;
+    }
+}
+
+.select_deactive::before {
+    transform: rotate(-50deg);
+}
+
+.select_deactive::after {
+    transform: rotate(50deg);
+}
+
+@media (hover: hover) {
+    .select__option:hover {
+        color: var(--main-color);
+        text-shadow: var(--text-shadow);
+    }
+}

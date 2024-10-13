@@ -1,0 +1,128 @@
+@import '@/styles/mixin.scss';
+
+.modal {
+    @include modal();
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    &__box_title {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__title {
+        @include modal-title();
+    }
+
+    &__subtitle {
+        @include modal-subtitle();
+    }
+}
+
+@media (max-height: 760px) {
+    .modal {
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+        }
+
+        &__inner {
+            overflow: auto;
+        }
+    }
+}
+
+@media (max-width: 1700px) {
+    .modal {
+        padding-left: 9.1rem;
+    }
+}
+
+@media (max-width: 1540px) {
+    .modal {
+        padding-left: 5.9rem;
+    }
+}
+
+@media (max-width: 1420px) {
+    .modal {
+        padding-left: 2.7rem;
+    }
+}
+
+@media (max-width: 1280px) {
+    .modal {
+        padding-left: 1.6rem;
+
+        &__inner {
+            width: 43.8rem;
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .modal {
+        background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.6) 60%, rgba(0, 0, 0, 0));
+        inset: 0;
+        padding: 1rem;
+
+        &__inner {
+            background-color: var(--main-background-color);
+            border: 0.1rem solid var(--dark-border);
+            height: 100%;
+            padding-top: 1.6rem;
+            width: 100%;
+
+            &::-webkit-scrollbar {
+                width: 0;
+                height: 0;
+            }
+        }
+
+        &__title {
+            margin-bottom: 1rem;
+            padding: 0rem 3.2rem;
+        }
+
+        &__subtitle {
+            border-bottom: 0.1rem solid var(--dark-border);
+            padding: 0rem 3.2rem 1.6rem;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .modal {
+        &__inner {
+            padding-top: 1rem;
+        }
+
+        &__title {
+            padding: 0rem 2rem;
+            margin-bottom: 1rem;
+        }
+
+        &__subtitle {
+            padding: 0rem 2rem 1.6rem;
+            margin: 0;
+        }
+    }
+}
+
+@media (max-width: 420px) {
+    .modal {
+        &__title {
+            padding: 0rem 1.2rem;
+        }
+
+        &__subtitle {
+            padding: 0rem 1.2rem 1.6rem;
+        }
+    }
+}

@@ -1,0 +1,68 @@
+@mixin text-properties(
+    $font-family: 'Iceland',
+    $font-size: 1.6rem,
+    $font-weight: 400,
+    $letter-spacing: 0.12rem,
+    $line-height: normal
+) {
+    font-family: $font-family;
+    font-size: $font-size;
+    font-weight: $font-weight;
+    letter-spacing: $letter-spacing;
+    line-height: $line-height;
+}
+
+@mixin button-escape {
+    @include text-properties('Big-Shoulders', 1.8rem, 700, 0.12rem, 2.15rem);
+    background-color: var(--main-background-color);
+    border: 0.1rem solid var(--main-color);
+    color: var(--main-color);
+    cursor: pointer;
+    padding: 0.4rem 0.68rem;
+    text-transform: uppercase;
+    transition:
+        background-color var(--transition-element),
+        border var(--transition-element),
+        box-shadow var(--transition-element),
+        text-shadow var(--transition-element);
+    width: 100%;
+}
+
+@mixin button-enter {
+    @include text-properties('Big-Shoulders', 1.8rem, 700, 0.12rem, normal);
+    background-color: var(--main-darklight-color);
+    border: none;
+    color: var(--main-background-color);
+    cursor: pointer;
+    outline: none;
+    padding: 0.4rem 0.68rem;
+    text-transform: uppercase;
+    transition:
+        background-color var(--transition-element),
+        border var(--transition-element),
+        box-shadow var(--transition-element),
+        text-shadow var(--transition-element);
+    width: 100%;
+}
+
+@mixin modal {
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    inset: 0;
+    padding-left: 15.5rem;
+    position: fixed;
+    z-index: 10;
+}
+
+@mixin modal-title {
+    @include text-properties('Big-Shoulders', 1.8rem, 700, 0.12rem);
+    color: var(--main-text-color);
+    margin-bottom: 0.5rem;
+}
+
+@mixin modal-subtitle {
+    @include text-properties();
+    color: var(--stone-grey);
+    margin-bottom: 1.8rem;
+}

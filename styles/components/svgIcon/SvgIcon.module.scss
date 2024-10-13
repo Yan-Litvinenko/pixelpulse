@@ -1,0 +1,131 @@
+.hexagon {
+    height: 7rem;
+    right: -1.8rem;
+    position: absolute;
+    top: 47%;
+    transform: translateY(-50%);
+    transition: filter var(--transition-element);
+    width: 7rem;
+}
+
+.hexagon_border {
+    stroke: var(--main-color);
+    height: 6rem;
+    width: 5.2rem;
+}
+
+.hexagon polygon {
+    transition: filter var(--transition-element);
+}
+
+.technologies_icon {
+    fill: var(--main-color);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.bluetooth {
+    fill: var(--main-color);
+    height: 2.4rem;
+    right: 0.5rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2.4rem;
+}
+
+.bluetooth path {
+    transition: filter var(--transition-element);
+}
+
+.redux {
+    fill: var(--main-color);
+    height: 2.5rem;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 2.5rem;
+}
+
+.nextjs {
+    width: 3.5rem;
+}
+
+.graphql {
+    width: 2.5rem;
+}
+
+.image {
+    fill: var(--main-color);
+}
+
+.folder {
+    fill: var(--main-color);
+    height: 2.4rem;
+    width: 2.4rem;
+}
+
+.joystick_left,
+.joystick_right,
+.joystick_up,
+.joystick_down {
+    cursor: pointer;
+    fill: var(--main-color);
+    height: 6.4rem;
+    position: absolute;
+    width: 6.4rem;
+}
+
+.joystick_left:active,
+.joystick_right:active,
+.joystick_up:active,
+.joystick_down:active {
+    height: 6.88rem;
+    width: 6.88rem;
+}
+
+.joystick_down {
+    bottom: -3%;
+    right: 50%;
+    transform: translateX(50%);
+}
+
+.joystick_up {
+    left: 50%;
+    top: -3%;
+    transform: translateX(-50%);
+}
+
+.joystick_right {
+    right: -3%;
+    top: 47.5%;
+    transform: translateY(-50%);
+}
+
+.joystick_left {
+    left: -3%;
+    top: 47.5%;
+    transform: translateY(-50%);
+}
+
+.sass {
+    left: 55%;
+}
+
+.warning {
+    fill: var(--main-color);
+    height: 2.4rem;
+    min-width: 2.4rem;
+    position: relative;
+    z-index: 2;
+}
+
+@media (max-width: 1200px) {
+    .bluetooth {
+        scale: 1.2;
+        top: 56%;
+    }
+}

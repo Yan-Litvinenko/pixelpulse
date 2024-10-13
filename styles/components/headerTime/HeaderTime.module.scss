@@ -1,0 +1,33 @@
+@import '@/styles/mixin.scss';
+
+.time {
+    align-items: center;
+    color: var(--main-text-color);
+    display: flex;
+    font-size: 1.4rem;
+    gap: 0rem 2.7rem;
+    letter-spacing: 0.1rem;
+    line-height: 1.4rem;
+
+    &__credits {
+        @include text-properties('Iceberg', 1.2rem, 400, 0.1rem);
+        background-color: transparent;
+        border: none;
+        color: var(--main-text-color);
+        cursor: pointer;
+        line-height: 0.82rem;
+        text-transform: uppercase;
+        transition: text-shadow var(--transition-element);
+    }
+}
+
+.server_time_span,
+.local_time_span {
+    color: var(--dark-grey);
+}
+
+@media (hover: hover) {
+    .time__credits:hover {
+        text-shadow: var(--text-shadow-white);
+    }
+}

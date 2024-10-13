@@ -1,0 +1,71 @@
+@import '@/styles/mixin.scss';
+
+.progress {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem 0rem;
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    justify-self: end;
+    max-width: 18rem;
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        border: 0.1rem solid var(--frame-border-color);
+        height: 18rem;
+        padding: 2rem 0rem;
+        position: relative;
+        width: 18rem;
+    }
+
+    &__ring {
+        position: relative;
+    }
+
+    &__statistic {
+        @include text-properties('Big-Shoulders', 2.2rem, 700);
+        color: var(--main-color);
+        left: 50%;
+        position: absolute;
+        top: 45%;
+        transform: translate(-50%, -50%);
+    }
+
+    &__name {
+        @include text-properties('Iceberg', 1.2rem, 400);
+        bottom: 1.6rem;
+        color: var(--dark-grey);
+        left: 50%;
+        position: absolute;
+        transform: translateX(-50%);
+    }
+
+    &__text {
+        @include text-properties($line-height: 1.35rem);
+        color: var(--dark-grey);
+    }
+}
+
+@media (max-width: 768px) {
+    .progress {
+        flex-direction: row;
+        grid-column: 1 / -1;
+        grid-row: 3 / 4;
+        justify-self: start;
+        max-width: 100%;
+        width: 100%;
+
+        &__inner {
+            display: none;
+        }
+
+        &__text {
+            display: none;
+        }
+
+        &__name {
+            display: none;
+        }
+    }
+}

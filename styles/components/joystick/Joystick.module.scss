@@ -1,0 +1,15 @@
+.circle {
+    background-color: rgba(var(--data-main-color), 0.5);
+    border-radius: 50%;
+    display: none;
+    height: 15.2rem;
+    position: relative;
+    width: 15.2rem;
+}
+
+@media (max-width: 1200px) {
+    .circle {
+        display: block;
+        order: 4;
+    }
+}
