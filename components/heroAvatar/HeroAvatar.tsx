@@ -14,7 +14,7 @@ import type { AppDispatch } from '@/redux/store';
 
 export default function HeroAvatar(props: HeroAvatarProps): React.JSX.Element | null {
     const dispatch = useDispatch<AppDispatch>();
-    const { isSmall } = useSelector(mediaQuerySelector);
+    const mediaQuery = useSelector(mediaQuerySelector);
     const { link, avatar, canvas } = props.className;
     const path = usePathname();
 
@@ -24,7 +24,7 @@ export default function HeroAvatar(props: HeroAvatarProps): React.JSX.Element | 
         }
     };
 
-    return isSmall ? null : (
+    return mediaQuery.isSmall ? null : (
         <article className={avatar}>
             <Link href="/about" className={link} onClick={handleClick} />
             <Frame className="null" />
