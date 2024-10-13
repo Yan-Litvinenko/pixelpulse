@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import styles from '@/styles/components/creationsProjectList/CreationsProjectList.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
+import { nanoid } from '@reduxjs/toolkit';
 import { Folder } from '@/components/svgIcon/SvgIcon';
 import { creationsSelector } from '@/redux/selectors';
 import { setProjectImages, setTargetProject } from '@/redux/slice/creationsSlice';
@@ -23,7 +24,7 @@ export default function CreationsClient(): React.JSX.Element {
         <ul className={styles.content}>
             {projects.length === 0 ? <span className={styles.not_content}>No projects have been added</span> : null}
             {projects.map((project, index) => (
-                <li key={project.name} onClick={() => projectClick(index)}>
+                <li key={nanoid()} onClick={() => projectClick(index)}>
                     <Link className={`${styles.item} ${styles.item_link}`} href={`/creations/${project.name}`}>
                         <span className={styles.frame}>
                             <Folder />

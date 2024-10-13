@@ -7,6 +7,7 @@ import Frame from '@/components/frame/Frame';
 import Header from '@/components/header/Header';
 import Navigation from '@/components/navigation/Navigation';
 import NavigationMobileButtons from '@/components/navigationMobileButtons/NavigationMobileButtons';
+import useClient from '@/hooks/useClient';
 import SmoothTransitionProvider from '@/hoc/SmoothTransitionProvider';
 import styles from '@/styles/components/mainLayout/MainLayout.module.scss';
 import { mediaQuerySelector } from '@/redux/selectors';
@@ -24,21 +25,15 @@ const locations: Record<string, string> = {
 export default function MainLayout({ children }: { children: React.ReactNode }): React.JSX.Element | null {
     const path: string = usePathname();
     const isBeginning: boolean = path.includes('beginning');
-    const [loadStyles, setLoadStyles] = React.useState<boolean>(false);
+    const isClient: boolean = useClient();
     const { isMedium, isSmall } = useSelector(mediaQuerySelector);
-
-    React.useLayoutEffect(() => {
-        setLoadStyles(true);
-    }, []);
-
-    if (!loadStyles) return <></>;
 
     const renderAsideHero = (): null | React.JSX.Element => {
         if (!isBeginning && isSmall) {
             return null;
         }
 
-        if (loadStyles) {
+        if (isClient) {
             return <AsideHero />;
         }
 
@@ -46,14 +41,14 @@ export default function MainLayout({ children }: { children: React.ReactNode }):
     };
 
     const renderNavigationMobileButtons = (): null | React.JSX.Element => {
-        if (isMedium && loadStyles) {
+        if (isMedium && isClient) {
             return <NavigationMobileButtons />;
         }
 
         return null;
     };
 
-    return loadStyles ? (
+    return isClient ? (
         <>
             <Header />
             {renderAsideHero()}

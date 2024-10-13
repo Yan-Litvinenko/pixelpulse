@@ -4,6 +4,7 @@ import React from 'react';
 import isOriginPath from '@/helpers/creations/getOriginPath';
 import styles from '@/styles/components/creationsAbout/CreatinsAbout.module.scss';
 import { creationsSelector } from '@/redux/selectors';
+import { nanoid } from '@reduxjs/toolkit';
 import { usePathname } from 'next/navigation';
 import { useSelector } from 'react-redux';
 
@@ -18,7 +19,7 @@ export default function CreationsAbout(): React.JSX.Element {
 
             <div className={styles.about__text_box}>
                 {texts.map((text) => (
-                    <p key={text} className={styles.about__text}>
+                    <p key={nanoid()} className={styles.about__text}>
                         {text}
                     </p>
                 ))}

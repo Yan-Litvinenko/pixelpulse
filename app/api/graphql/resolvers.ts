@@ -3,8 +3,8 @@ import transformCommitDate from '@/helpers/logs/transformCommitDate';
 import type { Statistic } from '@/interface/header/header.interface';
 import type { GithubRespone } from '@/interface/logs/Github.interface';
 
-const ACCESS_GITHUB_TOKEN: string | undefined = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
-const GITHUB_URL: string | undefined = process.env.NEXT_PUBLIC_GITHUB_URL;
+const ACCESS_TOKEN: string | undefined = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
+const URL: string | undefined = process.env.NEXT_PUBLIC_GITHUB_URL;
 
 export const resolvers = {
     Query: {
@@ -20,15 +20,13 @@ export const resolvers = {
             return { serverTime: serverTime.toISOString() };
         },
         getGithubCommits: async () => {
-            if (!ACCESS_GITHUB_TOKEN || !GITHUB_URL) {
-                throw new Error(
-                    `Github token or url is not defined. URL: ${GITHUB_URL}, TOKEN: ${ACCESS_GITHUB_TOKEN}`,
-                );
+            if (!ACCESS_TOKEN || !URL) {
+                throw new Error(`Github token or url is not defined. URL: ${URL}, TOKEN: ${ACCESS_TOKEN}`);
             }
 
-            const response: Response = await fetch(GITHUB_URL, {
+            const response: Response = await fetch(URL, {
                 headers: {
-                    Authorization: `token ${ACCESS_GITHUB_TOKEN}`,
+                    Authorization: `token ${ACCESS_TOKEN}`,
                 },
             });
 

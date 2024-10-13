@@ -3,6 +3,7 @@ import Link from 'next/link';
 import useModal from '@/hooks/useModal';
 import styles from '@/styles/components/NavigationMobileContent/NavigationMobileContent.module.scss';
 import { Hexagon } from '../svgIcon/SvgIcon';
+import { nanoid } from '@reduxjs/toolkit';
 import { usePathname } from 'next/navigation';
 import type { Page } from '@/interface/interface';
 
@@ -30,7 +31,7 @@ export default function NavigationMobileContent(): React.JSX.Element {
                 const isActive: boolean = pathname.includes(url);
 
                 return (
-                    <article className={isActive ? `${styles.item_active} ${styles.item}` : styles.item} key={url}>
+                    <article className={isActive ? `${styles.item_active} ${styles.item}` : styles.item} key={nanoid()}>
                         <h4 className={styles.item__title}>
                             {pageName as Page}
                             <Hexagon />

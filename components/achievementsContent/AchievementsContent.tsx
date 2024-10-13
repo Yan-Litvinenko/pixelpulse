@@ -28,10 +28,10 @@ export default function AchievementsContent(): React.JSX.Element {
     };
 
     return (
-        <section className={styles.achievements__content}>
+        <div className={styles.achievements__content}>
             <AchievementsProgress />
 
-            <article className={styles.achievements__achievements}>
+            <section className={styles.achievements__achievements}>
                 {isClient ? (
                     loading ? (
                         <Triangle
@@ -64,9 +64,9 @@ export default function AchievementsContent(): React.JSX.Element {
                 ) : (
                     <></>
                 )}
-            </article>
+            </section>
 
-            <form className={styles.switchers}>
+            <div className={styles.switchers}>
                 <AchievementsToggle
                     checked={filterStatus === 'all'}
                     id="all"
@@ -88,7 +88,7 @@ export default function AchievementsContent(): React.JSX.Element {
                     textContent="in progress"
                     value={'inProgress'}
                 />
-            </form>
-        </section>
+            </div>
+        </div>
     );
 }

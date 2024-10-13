@@ -8,6 +8,7 @@ import useSlider from '@/hooks/useSlider';
 import styles from '@/styles/components/modalCreations/ModalCreations.module.scss';
 import { ModalVectorLeft, ModalVectorRight } from '../svgIcon/SvgIcon';
 import { creationsSelector } from '@/redux/selectors';
+import { nanoid } from '@reduxjs/toolkit';
 import { useSelector } from 'react-redux';
 
 export default function ModalCreations(): React.JSX.Element {
@@ -47,12 +48,13 @@ export default function ModalCreations(): React.JSX.Element {
                         <div className={styles.modal__content_inner} ref={slider}>
                             {projectImages.map((image) => {
                                 return (
-                                    <div className={styles.modal__item} key={image.name}>
+                                    <div className={styles.modal__item} key={nanoid()}>
                                         <Image
                                             alt={image.name}
                                             className={styles.modal__item_img}
                                             draggable="false"
                                             height={image.height}
+                                            key={nanoid()}
                                             src={`/assets/images/${image.name}`}
                                             width={image.width}
                                         />

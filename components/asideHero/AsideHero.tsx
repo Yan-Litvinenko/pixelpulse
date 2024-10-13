@@ -8,8 +8,8 @@ export default function AsideHero(): React.JSX.Element {
         <aside className={styles.hero}>
             <HeroAvatar className={{ avatar: styles.avatar, canvas: styles.canvas, link: styles.avatar__link }} />
             <article className={styles.hero__element}>
-                <h2 className={styles.hero__title}>Name</h2>
-                <h1 className={styles.hero__text}>Yan Litvinenko</h1>
+                <h4 className={styles.hero__title}>Name</h4>
+                <h3 className={styles.hero__text}>Yan Litvinenko</h3>
             </article>
 
             <article className={styles.hero__element}>
@@ -19,7 +19,7 @@ export default function AsideHero(): React.JSX.Element {
 
             <article className={styles.hero__element}>
                 <h4 className={styles.hero__title}>Corporation</h4>
-                <h3 className={styles.hero__text}>in search</h3>
+                <h3 className={styles.hero__text}>Student</h3>
             </article>
 
             <HeroContacts

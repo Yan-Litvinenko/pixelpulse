@@ -5,6 +5,7 @@ import Link from 'next/link';
 import useModal from '@/hooks/useModal';
 import styles from '@/styles/components/navigation/Navigation.module.scss';
 import { Hexagon } from '../svgIcon/SvgIcon';
+import { nanoid } from '@reduxjs/toolkit';
 import { soundsClickTrigger } from '@/redux/slice/soundsSlice';
 import { useDispatch } from 'react-redux';
 import { usePathname } from 'next/navigation';
@@ -30,7 +31,7 @@ export default function Navigation(props: NavigationProps): React.JSX.Element {
                 const isActive: boolean = pathname.includes(url);
 
                 return (
-                    <article className={isActive ? `${styles.item_active} ${styles.item}` : styles.item} key={url}>
+                    <article className={isActive ? `${styles.item_active} ${styles.item}` : styles.item} key={nanoid()}>
                         <h4 className={styles.item__title}>
                             {pageName as Page}
                             <Hexagon />

@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from '@/styles/components/modalCreditsElement/ModalCreditsElement.module.scss';
+import { nanoid } from '@reduxjs/toolkit';
 import type { ModalCreditsElementProps } from '@/interface/modal/modal.interface';
 
 export default function ModalCreditsElement(props: ModalCreditsElementProps): React.ReactElement {
@@ -12,7 +13,7 @@ export default function ModalCreditsElement(props: ModalCreditsElementProps): Re
                 {Array.isArray(text) ? (
                     text.map((textElement) => {
                         return (
-                            <p key={textElement} className={styles.item__text}>
+                            <p key={nanoid()} className={styles.item__text}>
                                 {textElement}
                             </p>
                         );

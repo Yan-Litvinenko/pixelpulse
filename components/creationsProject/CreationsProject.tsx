@@ -6,6 +6,7 @@ import isOriginPath from '@/helpers/creations/getOriginPath';
 import styles from '@/styles/components/creationsTargetProject/CreationsTargetProject.module.scss';
 import { creationsSelector } from '@/redux/selectors';
 import { ImageIcon } from '@/components/svgIcon/SvgIcon';
+import { nanoid } from '@reduxjs/toolkit';
 import { setTargetImage } from '@/redux/slice/creationsSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { usePathname, useRouter } from 'next/navigation';
@@ -40,7 +41,7 @@ export default function CreationsProject(): React.JSX.Element {
     return (
         <ul className={styles.content}>
             {projects[targetProject].images.map((image, index) => (
-                <li key={image.name} className={styles.item} onClick={() => imageClick(index)}>
+                <li key={nanoid()} className={styles.item} onClick={() => imageClick(index)}>
                     <div className={styles.frame}>
                         <ImageIcon />
                     </div>

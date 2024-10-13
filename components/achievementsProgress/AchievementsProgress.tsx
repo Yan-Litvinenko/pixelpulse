@@ -9,7 +9,7 @@ export default function AchievementsProgress(): React.JSX.Element {
     const { error, loading, amountAchieved, amountAchievements, percent } = useSelector(achievementsSelector);
 
     return (
-        <aside className={styles.progress}>
+        <section className={styles.progress}>
             <div className={styles.progress__inner}>
                 {loading || error ? (
                     <>
@@ -36,6 +36,6 @@ export default function AchievementsProgress(): React.JSX.Element {
             </p>
 
             <AchievementsChallengeBtn />
-        </aside>
+        </section>
     );
 }

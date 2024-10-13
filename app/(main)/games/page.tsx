@@ -22,12 +22,12 @@ export const metadata: Metadata = {
 export default function Games(): React.JSX.Element {
     return (
         <div className={styles.games}>
-            <aside className={styles.games__description}>
+            <section className={styles.games__description}>
                 <p className={styles.games__description_text}>
                     Here you will see a few mini games I implemented in React or in Canvas.
                 </p>
                 <p className={styles.games__description_text}>Have fun!</p>
-            </aside>
+            </section>
 
             <section className={styles.games__content}>
                 <GamesElement

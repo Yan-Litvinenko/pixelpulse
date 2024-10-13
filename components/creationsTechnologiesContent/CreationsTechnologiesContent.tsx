@@ -5,6 +5,7 @@ import styles from '@/styles/components/creationsTechnologiesContent/CreationsTe
 import { creationsSelector } from '@/redux/selectors';
 import { Figma, GitHub, Gulp, HexagonBorder, Html, JS, NextJS, Redux } from '../svgIcon/SvgIcon';
 import { MySql, NodeJS, ReactIcon, Sass, Ts, Webpack, Wordpress, Graphql } from '../svgIcon/SvgIcon';
+import { nanoid } from '@reduxjs/toolkit';
 import { usePathname } from 'next/navigation';
 import { useSelector } from 'react-redux';
 import type { Technologies } from '@/interface/creations/creations.interface';
@@ -41,7 +42,7 @@ export default function CreationsTechnologiesContent(): React.JSX.Element {
                 const IconComponent = technologies[name];
 
                 return (
-                    <div className={styles.content__item} key={name}>
+                    <div className={styles.content__item} key={nanoid()}>
                         <HexagonBorder />
                         <IconComponent />
                     </div>

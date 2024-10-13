@@ -3,6 +3,7 @@
 import React from 'react';
 import AchievementsAchieve from '../achievementsAchieve/AchievementsAchieve';
 import styles from '@/styles/components/achievementsBlock/AchievementsBlock.module.scss';
+import { nanoid } from '@reduxjs/toolkit';
 import type { Rarity, ExecutionStatus, AchievementsBlockProps } from '@/interface/achievements/achievements.interface';
 
 export default function AchievementsBlock(props: AchievementsBlockProps): React.JSX.Element {
@@ -22,7 +23,7 @@ export default function AchievementsBlock(props: AchievementsBlockProps): React.
                     <AchievementsAchieve
                         date={achieve.date}
                         description={achieve.description}
-                        key={achieve.title}
+                        key={nanoid()}
                         rarity={achieve.rarity as Rarity}
                         executionStatus={achieve.status as ExecutionStatus}
                         title={achieve.title}

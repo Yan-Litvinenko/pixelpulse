@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from '@/styles/components/selectChallenge/SelectChallenge.module.scss';
+import { nanoid } from '@reduxjs/toolkit';
 import type { Rarity } from '@/interface/achievements/achievements.interface';
 import type { SelectChallengeProps } from '@/interface/form/form.interface';
 
@@ -29,7 +30,7 @@ export default function SelectChallenge(props: SelectChallengeProps): React.JSX.
                             {isOpen &&
                                 rarity.map((option) => (
                                     <div
-                                        key={option}
+                                        key={nanoid()}
                                         className={styles.select__option}
                                         onClick={() => optionClick(option as Rarity)}
                                     >

@@ -48,16 +48,17 @@ export default function About(): React.JSX.Element {
                     />
                 </div>
 
-                <aside className={styles.box_image} data-testid="about-mobile-picture">
+                <div className={styles.box_image} data-testid="about-mobile-picture">
                     <Frame className={''} />
                     <Image
                         alt="A portrait of Yan Litvinenko"
                         className={styles.about__img}
                         height={1424}
+                        layout="responsive"
                         src={human.src}
                         width={832}
                     />
-                </aside>
+                </div>
             </section>
         </section>
     );
