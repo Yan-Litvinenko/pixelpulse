@@ -3,7 +3,7 @@ import type { UsePrintedText } from '@/interface/welcome/Welcome.interface';
 
 export default function usePrintedText(textForPrint: string, delay: number = 0): UsePrintedText {
     const [animationText, setAnimationText] = React.useState<string>('');
-    const [animationEnd, setAnimationEnd] = React.useState<boolean>(false);
+    const [animationComplete, setAnimationComplete] = React.useState<boolean>(false);
     const [timers, setTimers] = React.useState<NodeJS.Timeout[]>([]);
     const animationStarted = React.useRef<boolean>(false);
 
@@ -17,7 +17,7 @@ export default function usePrintedText(textForPrint: string, delay: number = 0):
                     return changeText;
                 });
 
-                if (i === textForPrint.length - 1) setAnimationEnd(true);
+                if (i === textForPrint.length - 1) setAnimationComplete(true);
             },
             delay + i * 50,
         );
@@ -27,7 +27,9 @@ export default function usePrintedText(textForPrint: string, delay: number = 0):
 
     React.useEffect(() => {
         if (!animationStarted.current) {
-            for (let i = 0; i < textForPrint.length; i++) printed(i);
+            for (let i = 0; i < textForPrint.length; i++) {
+                printed(i);
+            }
             setStatusAnimation(true);
         }
 
@@ -38,7 +40,7 @@ export default function usePrintedText(textForPrint: string, delay: number = 0):
         textForPrint,
         animationText,
         setAnimationText,
-        animationEnd,
+        animationEnd: animationComplete,
         timers,
     };
 }
