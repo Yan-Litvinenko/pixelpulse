@@ -1,6 +1,6 @@
 import getZero from '../getZero';
 
-export default function transformCommitDate(dateInCommit: string): string {
+export default function transformCommitDate(dateInCommit: Date): string {
     const date: Date = new Date(dateInCommit);
     const year: number = date.getFullYear();
     const month: string = getZero(date.getMonth() + 1);

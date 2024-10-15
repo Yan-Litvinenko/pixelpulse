@@ -5,7 +5,6 @@ import useLogsUpdate from '@/hooks/useLogsUpdate';
 import styles from '@/styles/components/logsUpdate/LogsUpdate.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { mediaQuerySelector } from '@/redux/selectors';
-import { nanoid } from '@reduxjs/toolkit';
 import { soundsClickTrigger } from '@/redux/slice/soundsSlice';
 import type { UpdateItem } from '@/interface/logs/Logs.interface';
 import type { AppDispatch } from '@/redux/store';
@@ -31,7 +30,7 @@ export default function LogsUpdate({ update }: { update: UpdateItem[] }): React.
                 const isClipped: boolean = clippedIndexes.includes(index);
 
                 return (
-                    <article className={styles.element} key={nanoid()}>
+                    <article className={styles.element} key={element.title}>
                         <h3 className={styles.element__title}>{element.title}</h3>
                         <p
                             className={`${styles.element__text} ${expandStates[index] ? '' : styles.element__text_clip}`}

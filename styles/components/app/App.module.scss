@@ -36,7 +36,7 @@
     display: none;
 }
 
-.wrapper:has([data-welcome]) {
+.wrapper:has(#welcome) {
     height: 100vh;
 }
 

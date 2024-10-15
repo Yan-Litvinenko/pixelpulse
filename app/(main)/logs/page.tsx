@@ -5,7 +5,7 @@ import LogsUpdate from '@/components/LogsUpdate/LogsUpdate';
 import LogsOld from '@/components/logsOld/LogsOld';
 import LogsProject from '@/components/logsProject/LogsProject';
 import styles from '@/styles/components/logs/Logs.module.scss';
-import type { GithubRespone } from '@/interface/logs/Github.interface';
+import type { GithubTransformCommits } from '@/interface/logs/Github.interface';
 import type { UpdateItem } from '@/interface/logs/Logs.interface';
 import type { Metadata } from 'next';
 
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Logs(): Promise<React.JSX.Element> {
-    const commits: GithubRespone[] = await loadCommits();
+    const commits: GithubTransformCommits[] = await loadCommits();
 
     return (
         <section className={styles.logs}>

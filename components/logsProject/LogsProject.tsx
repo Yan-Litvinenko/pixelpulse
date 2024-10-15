@@ -2,14 +2,14 @@ import React from 'react';
 import getLastUpdate from '@/helpers/logs/getLastUpdate';
 import styles from '@/styles/components/logsProject/LogsProject.module.scss';
 import { LogsElement } from '../logsElement/LogsElement';
-import type { GithubRespone } from '@/interface/logs/Github.interface';
+import type { GithubTransformCommits } from '@/interface/logs/Github.interface';
 
-export default function LogsProject({ commits }: { commits: GithubRespone[] }): React.JSX.Element {
+export default function LogsProject({ commits }: { commits: GithubTransformCommits[] }): React.JSX.Element {
     return (
         <section className={styles.project}>
             <LogsElement
                 className={styles.project__title}
-                date={commits.length && commits ? getLastUpdate(commits as GithubRespone[]) : 'error'}
+                date={commits.length && commits ? getLastUpdate(commits as GithubTransformCommits[]) : 'error'}
                 textContent={'LOG ENTRY: PROJECT DEVELOPMENT UPDATE'}
             />
             <article className={styles.project__item}>

@@ -1,6 +1,5 @@
-import transformCommitDate from './transformCommitDate';
-import type { GithubRespone } from '@/interface/logs/Github.interface';
+import type { GithubTransformCommits } from '@/interface/logs/Github.interface';
 
-export default function getLastUpdate(githubCommits: GithubRespone[]): string {
-    return transformCommitDate(githubCommits[0].commit.committer.date);
+export default function getLastUpdate(githubCommits: GithubTransformCommits[]): string {
+    return githubCommits[0].committedDate;
 }

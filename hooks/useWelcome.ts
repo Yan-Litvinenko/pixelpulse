@@ -5,10 +5,10 @@ import { soundsSelector } from '@/redux/selectors';
 import type { AnimatedText, UsePrintedText, UseWelcome } from '@/interface/welcome/Welcome.interface';
 
 export default function useWelcome(props: AnimatedText): UseWelcome {
-    const soundsState = useSelector(soundsSelector).soundsState;
+    const soundsState: boolean = useSelector(soundsSelector).soundsState;
 
     const PRINT_SPEED: number = 50;
-    const animationEnd = React.useRef<boolean>(false);
+    const allAnimationComplete = React.useRef<boolean>(false);
     const skipButton = React.useRef<HTMLButtonElement | null>(null);
     const keyboardSound = React.useRef<HTMLAudioElement | null>(null);
     const [skipPressed, setSkipPressed] = React.useState<boolean>(false);
@@ -24,7 +24,7 @@ export default function useWelcome(props: AnimatedText): UseWelcome {
         if (event.target === skipButton.current) return;
 
         if (soundsState) {
-            if (!skipPressed && !textTwo.animationEnd && !animationEnd.current) {
+            if (!skipPressed && !textTwo.animationEnd && !allAnimationComplete.current) {
                 keyboardSound.current = new Audio('assets/audio/pressKeyboard.mp3');
                 keyboardSound.current.play();
             }
@@ -34,7 +34,7 @@ export default function useWelcome(props: AnimatedText): UseWelcome {
     React.useEffect(() => {
         setTimeout(
             () => {
-                animationEnd.current = true;
+                allAnimationComplete.current = true;
             },
             (props.title.length + props.text_1.length) * PRINT_SPEED,
         );
