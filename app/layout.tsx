@@ -1,7 +1,7 @@
 'use client';
 
 import InstallStateProvider from '@/hoc/InstallStateProvider';
-import StyledJsxRegistry from './registry';
+import StyledComponentsRegistry from '@/hoc/StyledComponentsRegistry';
 import ModalProvider from '@/hoc/ModalProvider';
 import ReduxProvider from '@/hoc/ReduxProvider';
 import WrapperProvider from '@/hoc/WrapperProvider';
@@ -105,15 +105,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }):
                 />
             </head>
             <body>
-                <ReduxProvider>
-                    <InstallStateProvider>
-                        <ModalProvider>
-                            <WrapperProvider>
-                                <StyledJsxRegistry>{children}</StyledJsxRegistry>
-                            </WrapperProvider>
-                        </ModalProvider>
-                    </InstallStateProvider>
-                </ReduxProvider>
+                <StyledComponentsRegistry>
+                    <ReduxProvider>
+                        <InstallStateProvider>
+                            <ModalProvider>
+                                <WrapperProvider>{children}</WrapperProvider>
+                            </ModalProvider>
+                        </InstallStateProvider>
+                    </ReduxProvider>
+                </StyledComponentsRegistry>
             </body>
         </html>
     );

@@ -5,8 +5,6 @@
     @include button-escape();
     background-color: transparent;
     outline: none;
-    position: relative;
-    z-index: 1;
 }
 
 @media (hover: hover) {
