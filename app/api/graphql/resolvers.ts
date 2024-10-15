@@ -1,10 +1,5 @@
 import dataBase from '@/db/dataBase';
-import transformCommitDate from '@/helpers/logs/transformCommitDate';
 import type { Statistic } from '@/interface/header/header.interface';
-import type { GithubRespone } from '@/interface/logs/Github.interface';
-
-const ACCESS_TOKEN: string | undefined = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
-const URL: string | undefined = process.env.NEXT_PUBLIC_GITHUB_URL;
 
 export const resolvers = {
     Query: {
@@ -18,27 +13,6 @@ export const resolvers = {
         getServerTime: () => {
             const serverTime = new Date();
             return { serverTime: serverTime.toISOString() };
-        },
-        getGithubCommits: async () => {
-            if (!ACCESS_TOKEN || !URL) {
-                throw new Error(`Github token or url is not defined. URL: ${URL}, TOKEN: ${ACCESS_TOKEN}`);
-            }
-
-            const response: Response = await fetch(URL, {
-                headers: {
-                    Authorization: `token ${ACCESS_TOKEN}`,
-                },
-            });
-
-            if (!response.ok) {
-                throw new Error('Failed to fetch commits from GitHub');
-            }
-
-            const commits: GithubRespone[] = await response.json();
-            return commits.map((commit) => ({
-                message: commit.commit.message,
-                committedDate: transformCommitDate(commit.commit.committer.date),
-            }));
         },
     },
     Mutation: {
