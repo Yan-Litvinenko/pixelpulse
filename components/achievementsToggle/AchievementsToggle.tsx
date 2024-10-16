@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import styles from '@/styles/components/achievementsToggle/AchievementsToggle.module.scss';
 import type { AchievementsToggleProps } from '@/interface/achievements/achievements.interface';

@@ -1,0 +1,50 @@
+@import '@/styles/mixin.scss';
+
+.creations_details {
+    border: 0.1rem solid var(--frame-border-color);
+    padding: 1.2rem;
+
+    &__title {
+        @include text-properties($line-height: 2.15rem);
+        background-color: var(--main-darklight-color);
+        margin-bottom: 0.8rem;
+        overflow: hidden;
+        padding: 0.5rem 0.8rem 0.4rem 0.8rem;
+        position: relative;
+    }
+
+    &__subtitle {
+        @include text-properties();
+        margin-bottom: 0.5rem;
+    }
+
+    &__text {
+        @include text-properties('Big-Shoulders', 1.8rem, 700);
+        color: var(--main-color);
+        line-height: 2.2rem;
+    }
+}
+
+.creations_decorative_line {
+    background-color: var(--frame-border-color);
+    height: 0.1rem;
+    margin: 1.6rem 0rem 1.2rem;
+}
+
+@media (max-width: 1380px) {
+    .creations_details {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .creations_details {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 400px) {
+    .creations_details {
+        padding: 0.56rem;
+    }
+}

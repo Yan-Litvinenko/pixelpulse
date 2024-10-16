@@ -1,6 +1,5 @@
 import React from 'react';
 import WelcomeContent from '@/components/welcomeContent.tsx/WelcomeContent';
-import styles from '@/styles/components/welcome/Welcome.module.scss';
 import type { AnimatedText } from '@/interface/welcome/Welcome.interface';
 import type { Metadata, Viewport } from 'next';
 
@@ -70,8 +69,8 @@ export const viewport: Viewport = {
 
 export default function Home(): React.JSX.Element {
     return (
-        <main className={styles.welcome} id="welcome">
-            <h2 className={styles.welcome__greeting}>HI!</h2>
+        <main className={'welcome'} id="welcome">
+            <h2 className={'welcome__greeting'}>HI!</h2>
             <WelcomeContent {...animatedText} />
         </main>
     );

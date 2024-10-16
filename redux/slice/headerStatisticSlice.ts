@@ -32,7 +32,11 @@ const fetchAddCoin = createAsyncThunk<
     event.preventDefault();
     const updateStatistic = await fetchGraphQl<{ addCoinsAndUpdateLevel: Statistic }>(UPDATE_STATISTIC);
     const { level, coins } = updateStatistic.addCoinsAndUpdateLevel;
-    return { level, coins };
+    return new Promise((resolve) =>
+        setTimeout(() => {
+            return resolve({ level, coins });
+        }, 200),
+    );
 });
 
 const headerStatisticSlice = createSlice({

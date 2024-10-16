@@ -4,7 +4,6 @@ import React from 'react';
 import getAddCoinStatus from '@/helpers/header/getAddCoinStatus';
 import useClient from '@/hooks/useClient';
 import setValueToLocalStorage from '@/helpers/setValueToLocalStorage';
-import styles from '@/styles/components/header/Header.module.scss';
 import { fetchAddCoin } from '@/redux/slice/headerStatisticSlice';
 import { Triangle } from 'react-loader-spinner';
 import { useDispatch, useSelector } from 'react-redux';
@@ -37,45 +36,37 @@ export default function HeaderStatistics(): React.JSX.Element {
             height="32"
             visible={true}
             width="32"
-            wrapperClass={styles.loader}
+            wrapperClass={'statistics__loader'}
         />
     );
 
     const renderLevel = (): React.JSX.Element => {
-        return loading ? (
-            renderLoader()
-        ) : (
-            <span className={styles.level__text}>{!error ? statistic.level : 'error'}</span>
-        );
+        return loading ? renderLoader() : <span className={'level__text'}>{!error ? statistic.level : 'error'}</span>;
     };
 
     const renderCoins = (): React.JSX.Element => {
-        return loading ? (
-            renderLoader()
-        ) : (
-            <span className={styles.coins__text}>{!error ? statistic.coins : 'error'}</span>
-        );
+        return loading ? renderLoader() : <span className={'coins__text'}>{!error ? statistic.coins : 'error'}</span>;
     };
 
     return (
-        <div className={styles.statistics}>
-            <div className={styles.level__box}>
+        <div className={'statistics'}>
+            <div className={'level'}>
                 {isClient ? renderLevel() : null}
                 <span>level</span>
             </div>
-            <div className={styles.coins}>
-                <form className={styles.coins__add_box}>
+            <div className={'coins'}>
+                <form className={'coins__add_box'}>
                     <button
-                        className={`${styles.coins__btn} ${addStatus ? styles.coins__btn_pulse : styles.coins__btn_deactive}`}
+                        className={`${'coins__btn'} ${addStatus ? 'coins__btn_pulse' : 'coins__btn_deactive'}`}
                         type="button"
                         onClick={handleAddCoins}
                     >
                         +
                     </button>
-                    {addStatus && <div className={styles.pulse}></div>}
+                    {addStatus && <div className={'pulse'}></div>}
                 </form>
             </div>
-            <div className={styles.coins__text_box}>
+            <div className={'coins__text_box'}>
                 {isClient ? renderCoins() : null}
                 <span>coins awarded</span>
             </div>

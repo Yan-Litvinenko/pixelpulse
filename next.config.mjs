@@ -6,9 +6,6 @@ const nextConfig = {
     compiler: {
         styledComponents: true,
     },
-    experimental: {
-        optimizeCss: true,
-    },
 };
 
 export default nextConfig;

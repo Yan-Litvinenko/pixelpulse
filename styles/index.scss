@@ -3,6 +3,43 @@
 @import './mixin.scss';
 @import './fonts.scss';
 
+// LAYOUT
+@import './global/ErrorApp.scss';
+@import './global/layout/MainLayout.module.scss';
+@import './global/layout/Header.scss';
+@import './global/layout/HeaderTime.scss';
+@import './global/layout/AsideHero.scss';
+@import './global/layout/AsideQuest.scss';
+@import './global/layout/QuestSetting.scss';
+@import './global/layout/Navigation.scss';
+
+// WELCOME
+@import './global/welcome/Welcome.scss';
+
+// LOGS
+@import './global/logs/Logs.scss';
+@import './global/logs/LogsUpdate.scss';
+@import './global/logs/LogsOld.scss';
+@import './global/logs/LogsGithubLink.scss';
+
+// ACHIEVEMENTS
+@import './global/achievements/AchievementsBlock.scss';
+@import './global/achievements/AchievementsChallengeBtn.scss';
+@import './global/achievements/AchievementsContent.scss';
+@import './global/achievements/AchievementsError.scss';
+@import './global/achievements/AchievementsProgress.scss';
+@import './global/achievements/AchievementsProgressRing.scss';
+
+// CREATIONS
+@import './global/creations/CreationsProjectList.scss';
+@import './global/creations/CreatinsAbout.scss';
+@import './global/creations/CreationsDetails.scss';
+@import './global/creations/CreationsTargetProjectList.scss';
+@import './global/creations/CreationsTechnologiesContent.scss';
+
+//GAMES
+@import './global/games/GamesElement.scss';
+
 *,
 *::before,
 *::after {
@@ -48,6 +85,27 @@ ol {
 a {
     color: inherit;
     text-decoration: none;
+}
+
+.loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+
+    & polygon {
+        stroke-width: 2;
+    }
+
+    & svg {
+        stroke: var(--main-color);
+    }
+}
+
+.hidden {
+    opacity: 0;
+    visibility: hidden;
 }
 
 @media (max-width: 1950px) {

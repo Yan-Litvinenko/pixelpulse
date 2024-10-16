@@ -2,7 +2,6 @@
 
 import React from 'react';
 import useLogsUpdate from '@/hooks/useLogsUpdate';
-import styles from '@/styles/components/logsUpdate/LogsUpdate.module.scss';
 import { nanoid } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { mediaQuerySelector } from '@/redux/selectors';
@@ -14,7 +13,10 @@ export default function LogsUpdate({ update }: { update: UpdateItem[] }): React.
     const dispatch = useDispatch<AppDispatch>();
 
     const isMedium = useSelector(mediaQuerySelector).isMedium;
-    const [expandStates, clippedIndexes, setExpandStates, setRef] = useLogsUpdate(update, styles.element__text_clip);
+    const [expandStates, clippedIndexes, setExpandStates, setRef] = useLogsUpdate(
+        update,
+        'logs_update__element_text_clip',
+    );
 
     const detail = (index: number): void => {
         setExpandStates((prevStates) => {
@@ -26,15 +28,15 @@ export default function LogsUpdate({ update }: { update: UpdateItem[] }): React.
     };
 
     return (
-        <section className={styles.update}>
+        <section className={'logs_update'}>
             {update.map((element, index) => {
                 const isClipped: boolean = clippedIndexes.includes(index);
 
                 return (
-                    <article className={styles.element} key={nanoid()}>
-                        <h3 className={styles.element__title}>{element.title}</h3>
+                    <article className={'logs_update__element'} key={nanoid()}>
+                        <h3 className={'logs_update__element_title'}>{element.title}</h3>
                         <p
-                            className={`${styles.element__text} ${expandStates[index] ? '' : styles.element__text_clip}`}
+                            className={`logs_update__element_text ${expandStates[index] ? '' : 'logs_update__element_text_clip'}`}
                             ref={(item) => setRef(item, index)}
                         >
                             {element.text}
@@ -42,13 +44,17 @@ export default function LogsUpdate({ update }: { update: UpdateItem[] }): React.
 
                         {isMedium ? (
                             isClipped ? (
-                                <button className={styles.element__expend} type="button" onClick={() => detail(index)}>
+                                <button
+                                    className={'logs_update__element_expend'}
+                                    type="button"
+                                    onClick={() => detail(index)}
+                                >
                                     {expandStates[index] ? '-collapse' : '+expand'}
                                 </button>
                             ) : null
                         ) : (
                             <button
-                                className={`${styles.element__expend} ${isClipped ? null : styles.element__expend_deactive}`}
+                                className={`logs_update__element_expend ${isClipped ? null : 'logs_update__element_expend_deactive'}`}
                                 onClick={isClipped ? () => detail(index) : undefined}
                                 type="button"
                             >

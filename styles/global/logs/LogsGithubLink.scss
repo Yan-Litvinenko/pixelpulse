@@ -1,0 +1,23 @@
+@import '@/styles/mixin.scss';
+
+.logs_github_link {
+    @include text-properties('Big-Shoulders', 1.8rem, 700, $line-height: normal);
+    border: 0.1rem solid var(--main-color);
+    color: var(--main-color);
+    display: block;
+    margin: 0 auto 2.4rem;
+    max-width: 20rem;
+    padding: 0.4rem 0.668rem;
+    text-align: center;
+    transition:
+        box-shadow var(--transition-element),
+        text-shadow var(--transition-element);
+    width: 100%;
+}
+
+@media (hover: hover) {
+    .logs_github_link:hover {
+        box-shadow: var(--box-shadow);
+        text-shadow: var(--text-shadow);
+    }
+}

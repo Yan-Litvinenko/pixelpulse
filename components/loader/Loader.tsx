@@ -13,7 +13,7 @@ export default function Loader(): React.JSX.Element {
                 height="100"
                 visible={true}
                 width="100"
-                wrapperClass={styles.loading__loader}
+                wrapperClass={'loader'}
                 wrapperStyle={{}}
             />
         </div>

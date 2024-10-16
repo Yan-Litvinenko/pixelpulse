@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Link from 'next/link';
-import styles from '@/styles/components/errorApp/ErrorApp.module.scss';
 import { soundsClickTrigger } from '@/redux/slice/soundsSlice';
 import { useDispatch } from 'react-redux';
 import type { AppDispatch } from '@/redux/store';
@@ -22,20 +21,20 @@ export default function ErrorPage({
 
     return (
         <>
-            <section className={styles.error} data-text={error.name} data-error="true">
-                <h2 className={`${styles.error__title} ${styles.glitch}`} data-text={error.name}>
+            <section className={'error'} data-text={error.name} data-error="true">
+                <h2 className={'error__title error__glitch'} data-text={error.name}>
                     {error.name}
                 </h2>
-                <p className={`${styles.error__description} ${styles.glitch}`} data-text={'an unknown error occurred'}>
+                <p className={'error__description error__glitch'} data-text={'an unknown error occurred'}>
                     {'an unknown error occurred'}
                 </p>
-                <Link className={styles.error__link} href="/beginning" onClick={toTheHome}>
+                <Link className={'error__link'} href="/beginning" onClick={toTheHome}>
                     return home
-                    <span className={`${styles.error__link_line} ${styles.top_left}`}></span>
-                    <span className={`${styles.error__link_line} ${styles.top_right}`}></span>
-                    <span className={`${styles.error__link_line} ${styles.bottom_left}`}></span>
-                    <span className={`${styles.error__link_line} ${styles.bottom_right}`}></span>
-                    <span className={styles.slick}></span>
+                    <span className={'error__link_line error__top_left'}></span>
+                    <span className={'error__link_line styles.error__top_right'}></span>
+                    <span className={'error__link_line styles.error__bottom_left'}></span>
+                    <span className={'error__link_line styles.error__bottom_right'}></span>
+                    <span className={'error__slick'}></span>
                 </Link>
             </section>
         </>

@@ -1,5 +1,5 @@
 import React from 'react';
-import CreationsProject from '@/components/creationsProject/CreationsProject';
+import CreationsTargetProjectList from '@/components/creationsTargetProject/CreationsTargetProjectList';
 import type { Metadata } from 'next';
 
 export async function generateMetadata({ params }: { params: { project: string } }): Promise<Metadata> {
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: { project: string }
 export default function Project(): React.JSX.Element {
     return (
         <>
-            <CreationsProject />
+            <CreationsTargetProjectList />
         </>
     );
 }

@@ -3,7 +3,6 @@
 import React from 'react';
 import Link from 'next/link';
 import useModal from '@/hooks/useModal';
-import styles from '@/styles/components/navigation/Navigation.module.scss';
 import { Hexagon } from '../svgIcon/SvgIcon';
 import { nanoid } from '@reduxjs/toolkit';
 import { soundsClickTrigger } from '@/redux/slice/soundsSlice';
@@ -26,20 +25,25 @@ export default function Navigation(props: NavigationProps): React.JSX.Element {
     };
 
     return (
-        <nav className={styles.navigation}>
+        <nav className={'navigation'}>
             {Object.entries(props.locations).map(([pageName, url]) => {
                 const isActive: boolean = pathname.includes(url);
 
                 return (
-                    <article className={isActive ? `${styles.item_active} ${styles.item}` : styles.item} key={nanoid()}>
-                        <h4 className={styles.item__title}>
+                    <article
+                        className={isActive ? 'navigation__item_active navigation__item' : 'navigation__item'}
+                        key={nanoid()}
+                    >
+                        <h4 className={'navigation__item_title'}>
                             {pageName as Page}
                             <Hexagon />
                         </h4>
-                        <p className={styles.item__text}>Suscipit est consequatur nemo voluptatem est labore saepe.</p>
+                        <p className={'navigation__item_text'}>
+                            Suscipit est consequatur nemo voluptatem est labore saepe.
+                        </p>
                         <Link
                             href={url}
-                            className={styles.item__link}
+                            className={'navigation__item_link'}
                             onClick={() => handleClick(isActive)}
                             scroll={false}
                         />

@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import styles from '@/styles/components/creationsTechnologiesContent/CreationsTechnologiesContent.module.scss';
 import { creationsSelector } from '@/redux/selectors';
 import { Figma, GitHub, Gulp, HexagonBorder, Html, JS, NextJS, Redux } from '../svgIcon/SvgIcon';
 import { MySql, NodeJS, ReactIcon, Sass, Ts, Webpack, Wordpress, Graphql } from '../svgIcon/SvgIcon';
@@ -37,12 +36,12 @@ export default function CreationsTechnologiesContent(): React.JSX.Element {
         : projects[targetProject].technologies;
 
     return (
-        <div className={styles.content}>
+        <div className={'creations_technologies_content'}>
             {technologiesNames.map((name) => {
                 const IconComponent = technologies[name];
 
                 return (
-                    <div className={styles.content__item} key={nanoid()}>
+                    <div className={'creations_technologies_content__item'} key={nanoid()}>
                         <HexagonBorder />
                         <IconComponent />
                     </div>

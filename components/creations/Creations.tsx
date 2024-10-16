@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Link from 'next/link';
-import styles from '@/styles/components/creationsProjectList/CreationsProjectList.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
 import { Folder } from '@/components/svgIcon/SvgIcon';
@@ -21,12 +20,17 @@ export default function CreationsClient(): React.JSX.Element {
     };
 
     return (
-        <ul className={styles.content}>
-            {projects.length === 0 ? <span className={styles.not_content}>No projects have been added</span> : null}
+        <ul className={'creations_project_list'}>
+            {projects.length === 0 ? (
+                <span className={'creations_project_list_not_content'}>No projects have been added</span>
+            ) : null}
             {projects.map((project, index) => (
                 <li key={nanoid()} onClick={() => projectClick(index)}>
-                    <Link className={`${styles.item} ${styles.item_link}`} href={`/creations/${project.name}`}>
-                        <span className={styles.frame}>
+                    <Link
+                        className={'creations_project_list__item styles.creations_project_list__link'}
+                        href={`/creations/${project.name}`}
+                    >
+                        <span className={'creations_project_list__frame'}>
                             <Folder />
                         </span>
                         {project.name}

@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import styles from '@/styles/components/achievementsContent/AchievementsContent.module.scss';
 import AchievementsBlock from '@/components/achievementsBlock/AchievementsBlock';
 import achievementsFilter from '@/helpers/achievements/achievementsFilter';
 import AchievementsProgress from '@/components/achievementsProgress/AchievementsProgress';
@@ -28,10 +27,10 @@ export default function AchievementsContent(): React.JSX.Element {
     };
 
     return (
-        <div className={styles.achievements__content}>
+        <div className={'achievements__content'}>
             <AchievementsProgress />
 
-            <section className={styles.achievements__achievements}>
+            <section className={'achievements__achievements'}>
                 {isClient ? (
                     loading ? (
                         <Triangle
@@ -40,7 +39,7 @@ export default function AchievementsContent(): React.JSX.Element {
                             height="120"
                             visible={true}
                             width="120"
-                            wrapperClass={styles.loader}
+                            wrapperClass={'loader'}
                             wrapperStyle={{}}
                         />
                     ) : error ? (
@@ -66,7 +65,7 @@ export default function AchievementsContent(): React.JSX.Element {
                 )}
             </section>
 
-            <div className={styles.switchers}>
+            <div className={'switchers'}>
                 <AchievementsToggle
                     checked={filterStatus === 'all'}
                     id="all"
