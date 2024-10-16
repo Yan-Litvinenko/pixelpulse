@@ -4,20 +4,4 @@
     grid-column: 1 / -1;
     grid-row: 1 / -1;
     position: relative;
-
-    &__loader {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 20;
-
-        & polygon {
-            stroke-width: 2;
-        }
-
-        & svg {
-            stroke: var(--main-color);
-        }
-    }
 }

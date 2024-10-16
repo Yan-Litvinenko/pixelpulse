@@ -2,7 +2,6 @@
 
 import React from 'react';
 import useClient from '@/hooks/useClient';
-import styles from '@/styles/components/achievementsProgressRing/AchievementsProgressRing.module.scss';
 
 export default function AchievementsProgressRing({ percent }: { percent: number }): React.JSX.Element {
     const isClient = useClient();
@@ -14,7 +13,7 @@ export default function AchievementsProgressRing({ percent }: { percent: number 
 
     return isClient ? (
         <svg
-            className={styles.ring}
+            className={'progress_ring'}
             width={`${square}rem`}
             height={`${square}rem`}
             viewBox={`0 0 ${square} ${square}`}
@@ -25,7 +24,7 @@ export default function AchievementsProgressRing({ percent }: { percent: number 
                     strokeDashoffset: `${circumference - (percent / 100) * circumference}`,
                     strokeDasharray: `${circumference} ${circumference}`,
                 }}
-                className={styles.ring__circle}
+                className={'progress_ring__circle'}
                 stroke="current-color"
                 strokeWidth={border}
                 cy={CYX}

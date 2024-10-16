@@ -30,7 +30,14 @@ export default function HeaderStatistics(): React.JSX.Element {
     };
 
     const renderLoader = (): React.JSX.Element => (
-        <Triangle ariaLabel="triangle-loading" color="" height="32" visible={true} width="32" wrapperClass={'loader'} />
+        <Triangle
+            ariaLabel="triangle-loading"
+            color=""
+            height="32"
+            visible={true}
+            width="32"
+            wrapperClass={'statistics__loader'}
+        />
     );
 
     const renderLevel = (): React.JSX.Element => {

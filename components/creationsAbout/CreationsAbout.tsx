@@ -2,7 +2,6 @@
 
 import React from 'react';
 import isOriginPath from '@/helpers/creations/getOriginPath';
-import styles from '@/styles/components/creationsAbout/CreatinsAbout.module.scss';
 import { creationsSelector } from '@/redux/selectors';
 import { nanoid } from '@reduxjs/toolkit';
 import { usePathname } from 'next/navigation';
@@ -14,12 +13,12 @@ export default function CreationsAbout(): React.JSX.Element {
     const texts: string[] = isOriginPath(projectName) ? defaultProject.about : projects[targetProject].about || [];
 
     return (
-        <section className={styles.about}>
-            <h3 className={styles.about__title}>About:</h3>
+        <section className={'creations_about'}>
+            <h3 className={'creations_about__title'}>About:</h3>
 
-            <div className={styles.about__text_box}>
+            <div className={'creations_about__text_box'}>
                 {texts.map((text) => (
-                    <p key={nanoid()} className={styles.about__text}>
+                    <p key={nanoid()} className={'creations_about__text'}>
                         {text}
                     </p>
                 ))}

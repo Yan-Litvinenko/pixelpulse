@@ -2,8 +2,6 @@
 
 import React from 'react';
 import AchievementsAchieve from '../achievementsAchieve/AchievementsAchieve';
-import styles from '@/styles/components/achievementsBlock/AchievementsBlock.module.scss';
-import { nanoid } from '@reduxjs/toolkit';
 import type { Rarity, ExecutionStatus, AchievementsBlockProps } from '@/interface/achievements/achievements.interface';
 
 export default function AchievementsBlock(props: AchievementsBlockProps): React.JSX.Element {
@@ -14,16 +12,16 @@ export default function AchievementsBlock(props: AchievementsBlockProps): React.
     }
 
     return (
-        <div className={styles[prefixForClassName]}>
-            <span className={styles[`${prefixForClassName}__title`]}>
+        <div className={prefixForClassName}>
+            <span className={`${prefixForClassName}_block__title`}>
                 {prefixForClassName === 'achieved' ? 'achieved:' : 'to be achieved:'}
             </span>
-            <div className={styles[`${prefixForClassName}__achievements`]}>
+            <div className={`${prefixForClassName}_block__achievements`}>
                 {achievements.map((achieve) => (
                     <AchievementsAchieve
                         date={achieve.date}
                         description={achieve.description}
-                        key={nanoid()}
+                        key={achieve.description}
                         rarity={achieve.rarity as Rarity}
                         executionStatus={achieve.status as ExecutionStatus}
                         title={achieve.title}
