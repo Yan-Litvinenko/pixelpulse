@@ -1,6 +1,6 @@
 @import '@/styles/mixin.scss';
 
-.logs__github {
+.logs_github_link {
     @include text-properties('Big-Shoulders', 1.8rem, 700, $line-height: normal);
     border: 0.1rem solid var(--main-color);
     color: var(--main-color);
@@ -16,7 +16,7 @@
 }
 
 @media (hover: hover) {
-    .logs__github:hover {
+    .logs_github_link:hover {
         box-shadow: var(--box-shadow);
         text-shadow: var(--text-shadow);
     }

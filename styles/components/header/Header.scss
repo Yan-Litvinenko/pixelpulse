@@ -95,15 +95,13 @@
 }
 
 .level {
-    &__box {
-        display: grid;
-        grid-template-columns: auto auto;
-        align-items: end;
-        gap: 0rem 0.66rem;
-        margin-right: 4.5rem;
-    }
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: end;
+    gap: 0rem 0.66rem;
+    margin-right: 4.5rem;
 
-    &__box span:nth-child(2) {
+    & span:nth-child(2) {
         line-height: 1.6rem;
     }
 

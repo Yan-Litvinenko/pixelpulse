@@ -4,7 +4,6 @@ import React from 'react';
 import fetchGraphQl from '@/helpers/fetchGraphql';
 import useModal from '../../hooks/useModal';
 import useTime from '@/hooks/useTime';
-import styles from '@/styles/components/headerTime/HeaderTime.module.scss';
 import { GET_SERVER_TIME } from '@/app/api/graphql/query';
 
 export default function HeaderTime(): React.JSX.Element {
@@ -21,16 +20,16 @@ export default function HeaderTime(): React.JSX.Element {
     }, []);
 
     return (
-        <section className={styles.time}>
-            <button className={styles.time__credits} onClick={openCredits} type="button">
+        <section className={'time'}>
+            <button className={'time__credits'} onClick={openCredits} type="button">
                 Credits
             </button>
             <time dateTime={`${serverHours}:${serverMinutes}`}>
-                <span className={styles.server_time_span}>server time:</span> {`${serverHours}:${serverMinutes}`}
+                <span className={'server_time_span'}>server time:</span> {`${serverHours}:${serverMinutes}`}
             </time>
 
             <time dateTime={`${localHours}:${localMinutes}`}>
-                <span className={styles.local_time_span}>local time:</span> {`${localHours}:${localMinutes}`}
+                <span className={'local_time_span'}>local time:</span> {`${localHours}:${localMinutes}`}
             </time>
         </section>
     );

@@ -2,6 +2,27 @@
 @import './variables.scss';
 @import './mixin.scss';
 @import './fonts.scss';
+// ERROR PAGE
+@import './components/errorApp/ErrorApp.scss';
+// WRAPPER
+@import './components/mainLayout/MainLayout.module.scss';
+// WELCOME
+@import './components/welcome/Welcome.scss';
+// HEADER
+@import './components/header/Header.scss';
+@import './components/headerTime/HeaderTime.scss';
+// ASIDE HERO
+@import './components/asideHero/AsideHero.scss';
+// ASIDE QUEST
+@import './components/asideQuest/AsideQuest.scss';
+@import './components/questSetting/QuestSetting.scss';
+// NAVIGATION
+@import './components/navigation/Navigation.scss';
+// LOGS
+@import './components/logs/Logs.scss';
+@import './components/logsUpdate/LogsUpdate.scss';
+@import './components/logsOld/LogsOld.scss';
+@import './components/logsGithubLink/LogsGithubLink.scss';
 
 *,
 *::before,
@@ -48,6 +69,11 @@ ol {
 a {
     color: inherit;
     text-decoration: none;
+}
+
+.hidden {
+    opacity: 0;
+    visibility: hidden;
 }
 
 @media (max-width: 1950px) {

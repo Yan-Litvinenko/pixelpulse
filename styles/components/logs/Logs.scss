@@ -38,10 +38,10 @@
             max-width: 100%;
             margin-bottom: 2.4rem;
         }
-    }
 
-    .title {
-        margin-bottom: 0.66rem;
+        &__title {
+            margin-bottom: 0.66rem;
+        }
     }
 }
 
@@ -54,9 +54,5 @@
         &__title {
             margin-bottom: 2.4rem;
         }
-    }
-
-    .list {
-        margin-bottom: 3.2rem;
     }
 }

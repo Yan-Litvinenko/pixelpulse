@@ -9,7 +9,6 @@ import Navigation from '@/components/navigation/Navigation';
 import NavigationMobileButtons from '@/components/navigationMobileButtons/NavigationMobileButtons';
 import useClient from '@/hooks/useClient';
 import SmoothTransitionProvider from '@/hoc/SmoothTransitionProvider';
-import styles from '@/styles/components/mainLayout/MainLayout.module.scss';
 import { mediaQuerySelector } from '@/redux/selectors';
 import { usePathname } from 'next/navigation';
 import { useSelector } from 'react-redux';
@@ -52,8 +51,8 @@ export default function MainLayout({ children }: { children: React.ReactNode }):
         <>
             <Header />
             {renderAsideHero()}
-            <main className={styles.layout}>
-                <Frame className={styles.frame} />
+            <main className={'main_layout'}>
+                <Frame className={'main_layout__frame'} />
                 <SmoothTransitionProvider>{children}</SmoothTransitionProvider>
             </main>
             <AsideQuest />

@@ -1,4 +1,4 @@
-.layout {
+.main_layout {
     background-image: var(--background-gradient);
     border: 0.0625rem solid var(--frame-border-color);
     grid-column: 2 / 3;
@@ -8,13 +8,13 @@
 }
 
 @media (max-width: 1700px) {
-    .layout {
+    .main_layout {
         height: var(--height-medium);
     }
 }
 
 @media (max-width: 1380px) {
-    .layout {
+    .main_layout {
         padding-bottom: 0;
 
         height: calc(var(--height-small));
@@ -22,26 +22,26 @@
 }
 
 @media (max-width: 1200px) {
-    .layout {
+    .main_layout {
         background-image: none;
         border: none;
         grid-column: 1 / -1;
         grid-row: 2 / 3;
         height: auto;
         padding-bottom: 0rem;
-    }
 
-    .frame {
-        display: none;
+        &__frame {
+            display: none;
+        }
     }
 }
 
 @media (max-width: 768px) {
-    .layout {
+    .main_layout {
         grid-row: 1 / 3;
     }
 
-    .layout:not(:has([data-beginning])) {
+    .main_layout:not(:has([data-beginning])) {
         grid-row: 1 / 4;
     }
 }

@@ -3,7 +3,6 @@
 import React from 'react';
 import QuestSettingElement from '../questSettingElement/QuestSettingElement';
 import useModal from '@/hooks/useModal';
-import styles from '@/styles/components/questSetting/QuestSetting.module.scss';
 import { musicSelector, soundsSelector } from '@/redux/selectors';
 import { setStateMusic } from '@/redux/slice/musicSlice';
 import { setStateSounds, soundsClickTrigger } from '@/redux/slice/soundsSlice';
@@ -19,17 +18,15 @@ export default function QuestSetting(): React.JSX.Element {
     const openModalSettings = useModal('settings').open;
 
     const initAudioState = {
-        checkbox: styles.checkbox__deactive,
-        element: styles.audio__deactive,
+        checkbox: 'checkbox__deactive',
+        element: 'audio__deactive',
     };
 
     const [soundsClass, setSoundsClass] = React.useState(initAudioState);
     const [musicClass, setMusicClass] = React.useState(initAudioState);
 
     const getClassState = (state: boolean) => {
-        return state
-            ? { checkbox: '', element: '' }
-            : { checkbox: styles.checkbox__deactive, element: styles.audio__deactive };
+        return state ? { checkbox: '', element: '' } : { checkbox: 'checkbox__deactive', element: 'audio__deactive' };
     };
 
     React.useEffect(() => {
@@ -38,10 +35,10 @@ export default function QuestSetting(): React.JSX.Element {
     }, [sounds.soundsState, music.musicState]);
 
     return (
-        <div className={styles.settings}>
+        <div className={'settings'}>
             <QuestSettingElement
-                classNameCheckbox={`${styles.checkbox} ${soundsClass.checkbox}`}
-                classNameElement={`${styles.audio} ${soundsClass.element}`}
+                classNameCheckbox={`${'checkbox'} ${soundsClass.checkbox}`}
+                classNameElement={`${'audio'} ${soundsClass.element}`}
                 image="status"
                 onClick={() => {
                     dispatch(setStateSounds());
@@ -50,8 +47,8 @@ export default function QuestSetting(): React.JSX.Element {
                 textContent="Sounds Effects"
             />
             <QuestSettingElement
-                classNameCheckbox={`${styles.checkbox} ${musicClass.checkbox}`}
-                classNameElement={`${styles.audio} ${musicClass.element}`}
+                classNameCheckbox={`${'checkbox'} ${musicClass.checkbox}`}
+                classNameElement={`${'audio'} ${musicClass.element}`}
                 image="status"
                 onClick={() => {
                     dispatch(setStateMusic());
@@ -60,7 +57,7 @@ export default function QuestSetting(): React.JSX.Element {
                 textContent="Music"
             />
             <QuestSettingElement
-                classNameElement={styles.visual}
+                classNameElement={'visual'}
                 classNameCheckbox="null"
                 onClick={() => {
                     closeNavigationMobile();

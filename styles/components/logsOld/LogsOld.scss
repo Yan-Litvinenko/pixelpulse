@@ -1,0 +1,27 @@
+@import '@/styles/mixin.scss';
+
+.logs_old {
+    &__title {
+        @include text-properties('Iceland', 1.8rem, 400);
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem 0rem;
+    }
+}
+
+@media (max-width: 1200px) {
+    .logs_old__title {
+        margin-bottom: 0.66rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .logs_old__list {
+        margin-bottom: 3.2rem;
+    }
+}

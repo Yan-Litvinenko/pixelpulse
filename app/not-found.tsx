@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Link from 'next/link';
-import styles from '@/styles/components/errorApp/ErrorApp.module.scss';
 import { useDispatch } from 'react-redux';
 import { soundsClickTrigger } from '@/redux/slice/soundsSlice';
 import type { AppDispatch } from '@/redux/store';
@@ -15,20 +14,20 @@ export default function NotFound(): React.JSX.Element {
     };
 
     return (
-        <section className={styles.error} data-text={'404'} data-error="true">
-            <h2 className={`${styles.error__title} ${styles.glitch}`} data-text={'404'}>
+        <section className={'error'} data-text={'404'} data-error="true">
+            <h2 className={`${'error__title'} ${'error__glitch'}`} data-text={'404'}>
                 {'404'}
             </h2>
-            <p className={`${styles.error__description} ${styles.glitch}`} data-text={'page not found'}>
+            <p className={`${'error__description'} ${'error__glitch'}`} data-text={'page not found'}>
                 {'page not found'}
             </p>
-            <Link className={styles.error__link} href={'/beginning'} onClick={toTheHome}>
+            <Link className={'error__link'} href={'/beginning'} onClick={toTheHome}>
                 return home
-                <span className={`${styles.error__link_line} ${styles.top_left}`}></span>
-                <span className={`${styles.error__link_line} ${styles.top_right}`}></span>
-                <span className={`${styles.error__link_line} ${styles.bottom_left}`}></span>
-                <span className={`${styles.error__link_line} ${styles.bottom_right}`}></span>
-                <span className={styles.slick}></span>
+                <span className={'error__link_line error__top_left'}></span>
+                <span className={'error__link_line error__top_right'}></span>
+                <span className={'error__link_line error__bottom_left'}></span>
+                <span className={'error__link_line error__bottom_right'}></span>
+                <span className={'error__slick'}></span>
             </Link>
         </section>
     );

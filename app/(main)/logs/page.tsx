@@ -4,7 +4,6 @@ import LogsLink from '@/components/logsLink/LogsLink';
 import LogsUpdate from '@/components/LogsUpdate/LogsUpdate';
 import LogsOld from '@/components/logsOld/LogsOld';
 import LogsProject from '@/components/logsProject/LogsProject';
-import styles from '@/styles/components/logs/Logs.module.scss';
 import type { GithubTransformCommits } from '@/interface/logs/Github.interface';
 import type { UpdateItem } from '@/interface/logs/Logs.interface';
 import type { Metadata } from 'next';
@@ -45,10 +44,10 @@ export default async function Logs(): Promise<React.JSX.Element> {
     const commits: GithubTransformCommits[] = await loadCommits();
 
     return (
-        <section className={styles.logs}>
+        <section className={'logs'}>
             <>
-                <div className={styles.logs__inner}>
-                    <h2 className={styles.logs__title}>data log dump initialized</h2>
+                <div className={'logs__inner'}>
+                    <h2 className={'logs__title'}>data log dump initialized</h2>
 
                     <LogsProject commits={commits} />
                     <LogsUpdate update={update} />
